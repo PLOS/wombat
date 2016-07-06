@@ -56,10 +56,7 @@ public class AssetServiceImpl implements AssetService {
   private RuntimeConfiguration runtimeConfiguration;
 
   @Autowired
-  private Cache<String, String> assetFilenameCache;
-
-  @Autowired
-  private Cache<String, Object> assetContentCache;
+  private CacheManager cacheManager;
 
   private static final Object ASSET_COMPILATION_LOCK = new Object();
 
@@ -147,7 +144,9 @@ public class AssetServiceImpl implements AssetService {
       SourceFilenamesDigest sourceFilenamesDigest = new SourceFilenamesDigest(assetType, site, filenames);
       String sourceCacheKey = sourceFilenamesDigest.generateCacheKey();
 
-      String compiledFilename = assetFilenameCache.get(sourceCacheKey);
+      Cache<String, String> cacheFilename = cacheManager.getCache("assetFilenameCache", String.class, String.class);
+
+      String compiledFilename = cacheFilename != null ? cacheFilename.get(sourceCacheKey) : null;
       if (compiledFilename == null) {
         File concatenated = concatenateFiles(filenames, site, assetType.getExtension());
         CompiledAsset compiled = compileAsset(assetType, concatenated);
@@ -158,10 +157,15 @@ public class AssetServiceImpl implements AssetService {
         // In an ideal world, we would use the filename (including the hash of its contents) as
         // the only cache key.  However, it's potentially expensive to calculate that key since
         // you need the contents of the compiled file, which is why we do it this way.
-        assetFilenameCache.put(sourceCacheKey, compiledFilename);
+        if (cacheFilename != null) {
+          cacheFilename.put(sourceCacheKey, compiledFilename);
+        }
         if (compiled.contents.length < MAX_ASSET_SIZE_TO_CACHE) {
+          Cache<String, Object> cacheContent = cacheManager.getCache("assetContentCache", String.class, Object.class);
           String contentsCacheKey = compiled.digest.getCacheKey();
-          assetContentCache.put(contentsCacheKey, compiled.contents);
+          if (cacheContent != null) {
+            cacheContent.put(contentsCacheKey, compiled.contents);
+          }
         }
       }
       return AssetUrls.COMPILED_PATH_PREFIX + compiledFilename;
@@ -175,7 +179,8 @@ public class AssetServiceImpl implements AssetService {
   public void serveCompiledAsset(String assetFilename, OutputStream outputStream) throws IOException {
     try {
       CompiledDigest digest = new CompiledDigest(assetFilename);
-      byte[] cached = (byte[]) assetContentCache.get(digest.getCacheKey());
+      Cache<String, Object> cacheContent = cacheManager.getCache("assetContentCache", String.class, Object.class);
+      byte[] cached = (byte[]) (cacheContent != null ? cacheContent.get(digest.getCacheKey()) : null);
       try (InputStream is =
                (cached == null)
                    ? new FileInputStream(digest.getFile())

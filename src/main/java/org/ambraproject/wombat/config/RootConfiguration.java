@@ -27,6 +27,9 @@ import org.yaml.snakeyaml.Yaml;
 import javax.cache.Cache;
 import javax.cache.CacheManager;
 import javax.cache.Caching;
+import javax.cache.configuration.MutableConfiguration;
+import javax.cache.expiry.CreatedExpiryPolicy;
+import javax.cache.expiry.Duration;
 import javax.cache.spi.CachingProvider;
 import java.io.BufferedReader;
 import java.io.File;
@@ -94,50 +97,40 @@ public class RootConfiguration {
     return manager;
   }
 
-  private CacheManager cacheManager() throws IOException {
+  @Bean
+  public CacheManager cacheManager() throws IOException {
     CachingProvider provider = Caching.getCachingProvider();
+    CacheManager manager = provider.getCacheManager();
 
-      CachingProvider cachingProvider = Caching.getCachingProvider();
-      URI uri = new File("/etc/ambra/cache107.xml").toURI();
-      ClassLoader loader = getClass().getClassLoader();
-      CacheManager manager = cachingProvider.getCacheManager(uri, null);
-      return manager;
-  }
+    MutableConfiguration<String, String> configuration1 = new MutableConfiguration<String, String>();
+    configuration1.setTypes(String.class, String.class);
+    configuration1.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 15)));
+    manager.createCache("assetFilenameCache", configuration1);
 
-  @Bean
-  public Cache<String, String> assetFilenameCache() throws IOException {
-    /**
-     * We use a shorter cache TTL than the global default (1 hour), because it's theoretically possible that the
-     * uncompiled asset files might change in the themes directory.  And since the cache key can only be calculated by
-     * loading and hashing all the corresponding files (an expensive operation), we have to accept that we'll serve stale
-     * assets for this period.
-     */
-    return cacheManager().getCache("assetFilenameCache", String.class, String.class);
-  }
+    MutableConfiguration<String, Object> configuration2 = new MutableConfiguration<String, Object>();
+    configuration2.setTypes(String.class, Object.class);
+    configuration2.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 15)));
+    manager.createCache("assetContentCache", configuration2);
 
-  @Bean
-  public Cache<String, Object> assetContentCache() throws IOException {
-    return cacheManager().getCache("assetContentCache", String.class, Object.class);
-  }
+    MutableConfiguration<String, TaxonomyGraph> configuration3 = new MutableConfiguration<String, TaxonomyGraph>();
+    configuration3.setTypes(String.class, TaxonomyGraph.class);
+    manager.createCache("taxonomyGraphCache", configuration3);
 
-  @Bean
-  public Cache<String, TaxonomyGraph> taxonomyGraphCache() throws IOException {
-    return cacheManager().getCache("taxonomyGraphCache", String.class, TaxonomyGraph.class);
-  }
+    MutableConfiguration<String, TaxonomyCountTable> configuration4 = new MutableConfiguration<String, TaxonomyCountTable>();
+    configuration4.setTypes(String.class, TaxonomyCountTable.class);
+    manager.createCache("taxonomyCountTableCache", configuration4);
 
-  @Bean
-  public Cache<String, TaxonomyCountTable> taxonomyCountTableCache() throws IOException {
-    return cacheManager().getCache("taxonomyCountTableCache", String.class, TaxonomyCountTable.class);
-  }
+    MutableConfiguration<String, List> configuration5 = new MutableConfiguration<String, List>();
+    configuration5.setTypes(String.class, List.class);
+    configuration5.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 30)));
+    manager.createCache("recentArticleCache", configuration5);
 
-  @Bean
-  public Cache<String, List> recentArticleCache() throws IOException {
-    return cacheManager().getCache("recentArticleCache", String.class, List.class);
-  }
+    MutableConfiguration<String, Object> configuration6 = new MutableConfiguration<String, Object>();
+    configuration6.setTypes(String.class, Object.class);
+    configuration6.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.HOURS, 1)));
+    manager.createCache("remoteServiceCache", configuration6);
 
-  @Bean
-  public Cache<String, Object> remoteServiceCache() throws IOException {
-    return cacheManager().getCache("remoteServiceCache", String.class, Object.class);
+    return manager;
   }
 
   @Bean
@@ -156,14 +149,16 @@ public class RootConfiguration {
   }
 
   @Bean
-  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager) throws IOException {
-    Cache<String, Object> remoteServiceCache = cacheManager().getCache("remoteServiceCache", String.class, Object.class);
+  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager,
+                                                               CacheManager cacheManager) throws IOException {
+    Cache<String, Object> remoteServiceCache = cacheManager.getCache("remoteServiceCache", String.class, Object.class);
     return new CachedRemoteService<>(new StreamService(httpClientConnectionManager), remoteServiceCache);
   }
 
   @Bean
-  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager) throws IOException {
-    Cache<String, Object> remoteServiceCache = cacheManager().getCache("remoteServiceCache", String.class, Object.class);
+  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager,
+                                                        CacheManager cacheManager) throws IOException {
+    Cache<String, Object> remoteServiceCache = cacheManager.getCache("remoteServiceCache", String.class, Object.class);
     return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager), remoteServiceCache);
   }
 }

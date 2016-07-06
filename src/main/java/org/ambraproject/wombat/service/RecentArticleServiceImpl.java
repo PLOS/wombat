@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.cache.Cache;
+import javax.cache.CacheManager;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   @Autowired
   private ArticleApi articleApi;
   @Autowired
-  private Cache<String, List> recentArticleCache;
+  private CacheManager cacheManager;
 
   /*
    * This could be injected as a bean instead if needed.
@@ -74,18 +75,20 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     String journalKey = site.getJournalKey();
     String cacheKey = "recentArticles:" + journalKey;
     List<Map<String, Object>> articles = null;
+    Cache<String, List> cache = cacheManager.getCache("recentArticleCache", String.class, List.class);
+
     if (cacheDuration.isPresent()) {
-      articles = recentArticleCache.get(cacheKey); // remains null if not cached
+      articles = cache != null ? cache.get(cacheKey) : null; // remains null if not cached
     }
     if (articles == null) {
       articles = retrieveRecentArticles(journalKey, articleCount, numberOfDaysAgo, articleTypes, articleTypesToExclude);
-      if (cacheDuration.isPresent()) {
+      if (cache != null && cacheDuration.isPresent()) {
         /*
          * Casting to Serializable relies on all data structures that Gson uses to be serializable, which is safe
          * enough. We could avoid the cast with a shallow copy to a serializable List, but we would still rely on all
          * nested Lists and Maps being serializable. We'd rather avoid a deep copy until it's necessary.
          */
-        recentArticleCache.put(cacheKey, articles);
+        cache.put(cacheKey, articles);
       }
     }
 

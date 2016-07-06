@@ -26,21 +26,18 @@ import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.cache.Cache;
 import javax.cache.CacheManager;
-import javax.cache.configuration.CacheEntryListenerConfiguration;
-import javax.cache.integration.CompletionListener;
-import javax.cache.processor.EntryProcessor;
-import javax.cache.processor.EntryProcessorException;
-import javax.cache.processor.EntryProcessorResult;
-import java.io.IOException;
+import javax.cache.Caching;
+import javax.cache.configuration.MutableConfiguration;
+import javax.cache.expiry.CreatedExpiryPolicy;
+import javax.cache.expiry.Duration;
+import javax.cache.spi.CachingProvider;
 import java.io.Reader;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Defines spring beans needed by tests.
@@ -76,176 +73,11 @@ public class TestSpringConfiguration {
     return new AssetServiceImpl();
   }
 
-  private static class NullCache<T, V> implements Cache<T, V> {
-
-    @Override
-    public V get(T t) {
-      return null;
-    }
-
-    @Override
-    public Map<T, V> getAll(Set<? extends T> set) {
-      return null;
-    }
-
-    @Override
-    public boolean containsKey(T t) {
-      return false;
-    }
-
-    @Override
-    public void loadAll(Set<? extends T> set, boolean b, CompletionListener completionListener) {
-
-    }
-
-    @Override
-    public void put(T t, V v) {
-
-    }
-
-    @Override
-    public V getAndPut(T t, V v) {
-      return null;
-    }
-
-    @Override
-    public void putAll(Map<? extends T, ? extends V> map) {
-
-    }
-
-    @Override
-    public boolean putIfAbsent(T t, V v) {
-      return false;
-    }
-
-    @Override
-    public boolean remove(T t) {
-      return false;
-    }
-
-    @Override
-    public boolean remove(T t, V v) {
-      return false;
-    }
-
-    @Override
-    public V getAndRemove(T t) {
-      return null;
-    }
-
-    @Override
-    public boolean replace(T t, V v, V v1) {
-      return false;
-    }
-
-    @Override
-    public boolean replace(T t, V v) {
-      return false;
-    }
-
-    @Override
-    public V getAndReplace(T t, V v) {
-      return null;
-    }
-
-    @Override
-    public void removeAll(Set<? extends T> set) {
-
-    }
-
-    @Override
-    public void removeAll() {
-
-    }
-
-    @Override
-    public void clear() {
-
-    }
-
-    @Override
-    public <T1> T1 invoke(T t, EntryProcessor<T, V, T1> entryProcessor, Object... objects) throws EntryProcessorException {
-      return null;
-    }
-
-    @Override
-    public <T1> Map<T, EntryProcessorResult<T1>> invokeAll(Set<? extends T> set, EntryProcessor<T, V, T1> entryProcessor, Object... objects) {
-      return null;
-    }
-
-    @Override
-    public String getName() {
-      return null;
-    }
-
-    @Override
-    public CacheManager getCacheManager() {
-      return null;
-    }
-
-    @Override
-    public void close() {
-
-    }
-
-    @Override
-    public boolean isClosed() {
-      return false;
-    }
-
-    @Override
-    public <T1> T1 unwrap(Class<T1> aClass) {
-      return null;
-    }
-
-    @Override
-    public void registerCacheEntryListener(CacheEntryListenerConfiguration<T, V> cacheEntryListenerConfiguration) {
-
-    }
-
-    @Override
-    public void deregisterCacheEntryListener(CacheEntryListenerConfiguration<T, V> cacheEntryListenerConfiguration) {
-
-    }
-
-    @Override
-    public Iterator<Entry<T, V>> iterator() {
-      return null;
-    }
-
-    @Override
-    public <C extends javax.cache.configuration.Configuration<T, V>> C getConfiguration(Class<C> aClass) {
-      return null;
-    }
-  }
   @Bean
-  public Cache<String, String> assetFilenameCache() throws IOException {
-    return new NullCache<String, String>();
-  }
-
-  @Bean
-  public Cache<String, Object> assetContentCache() throws IOException {
-    return new NullCache<String, Object>();
-  }
-
-  @Bean
-  public Cache<String, TaxonomyGraph> taxonomyGraphCache() throws IOException {
-    return new NullCache<String, TaxonomyGraph>();
-  }
-
-  @Bean
-  public Cache<String, TaxonomyCountTable> taxonomyCountTableCache() throws IOException {
-    return new NullCache<String, TaxonomyCountTable>();
-  }
-
-  @Bean
-  public Cache<String, List> recentArticleCache() throws IOException {
-    return new NullCache<String, List>();
-  }
-
-  @Bean
-  public Cache<String, Object> remoteServiceCache() throws IOException {
-    return new NullCache<String, Object>();
+  public CacheManager cacheManager() {
+    CachingProvider provider = Caching.getCachingProvider();
+    CacheManager manager = provider.getCacheManager();
+    return manager;
   }
 
   @Bean

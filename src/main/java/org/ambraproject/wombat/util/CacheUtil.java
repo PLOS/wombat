@@ -36,10 +36,12 @@ public class CacheUtil {
   public static <T> T getOrCompute(Cache<String, T> cache, CacheKey key, Lookup<? extends T> lookup)
       throws IOException {
     String externalKey = key.getExternalKey();
-    T value = cache.get(externalKey);
+    T value = cache != null ? cache.get(externalKey) : null;
     if (value == null) {
       value = lookup.get();
-      cache.put(externalKey, value);
+      if (cache != null) {
+        cache.put(externalKey, value);
+      }
     }
     return value;
   }

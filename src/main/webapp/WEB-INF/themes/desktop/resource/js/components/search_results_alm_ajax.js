@@ -1,22 +1,19 @@
 
-var SearchResultsALMs;
+var SearchResultsALMData;
 
 (function ($) {
 
   SearchResultsALMData = Class.extend({
 
-    //TODO: change this to an object
     containerID: '.search-results-alm-container',
     DOIlist: [],
 
 
   init: function (DOIlist) {
-     this.setDOIList(DOIlist);
-      this.getALMData();
+    this.getDOIList();
     },
 
     setDOIList: function(DOIlist){
-
       var that = this;
 
       $(this.containerID).each(function (DOIlist) {
@@ -26,10 +23,9 @@ var SearchResultsALMs;
 
     },
     getDOIList: function () {
-
       return this.DOIlist;
     },
-    getALMData: function(){
+    processALMDataRequest: function(){
       var that = this;
 
       var query = new AlmQuery();
@@ -39,7 +35,6 @@ var SearchResultsALMs;
           .setDataValidator(validator)
           .getArticleSummary(that.DOIlist)
           .then(function (articleData) {
-
             var data = articleData;
             that.showALMData(data)
           })
@@ -65,11 +60,8 @@ var SearchResultsALMs;
       });
     },
     showALMErrorMessage: function (error) {
-      var that = this;
-
       var template = _.template($('#searchResultsAlmError').html());
       $(this.containerID).html(template());
-      console.log(error);
     }
   });
 

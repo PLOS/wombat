@@ -45,6 +45,8 @@ var SearchResult;
     resultTotalRecords: 0,
     resultsOffset: 0,
     pagination: null,
+    ALMData: null,
+    DOIlist: [],
     filtersParams: [
       "filterJournals",
       "filterSubjects",
@@ -72,8 +74,12 @@ var SearchResult;
         that.currentSearchParams.page = currentPage;
         that.processRequest();
       });
+
+      this.ALMData = new SearchResultsALMData();
+
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
+
       if(this.currentSearchParams.q != null) {
         this.processRequest();
       }
@@ -343,8 +349,9 @@ var SearchResult;
               that.createResultList();
 
               that.hideLoading();
-              new SearchResultsALMs();
 
+              that.ALMData.setDOIList();
+              that.ALMData.processALMDataRequest();
 
             }
             else {

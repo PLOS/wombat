@@ -4,14 +4,10 @@
   font-size: $txt-size-xxsmall;
 
   //!!!remove when putting search results AJAX into play
-     &.ajax {
+     .ajax & {
        display:block;
      }
 }
-
-
-
-
 
 .icon-warning-stack {
 

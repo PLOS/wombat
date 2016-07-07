@@ -29,7 +29,7 @@
 
       <p class="search-results-doi"><a href="http://dx.doi.org/<%= item.id %>">http://dx.doi.org/<%= item.id %></a>
       </p>
-      <div class="search-results-alm-container" data-doi="<%= item.id %>" data-index="<%= index %>">
+      <div class="search-results-alm-container ajax" data-doi="<%= item.id %>" data-index="<%= index %>">
 
         <p class="search-results-alm-loading">
           Loading metrics information...

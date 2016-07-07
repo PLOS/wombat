@@ -46,7 +46,6 @@ var SearchResult;
     resultsOffset: 0,
     pagination: null,
     ALMData: null,
-    DOIlist: [],
     filtersParams: [
       "filterJournals",
       "filterSubjects",
@@ -395,7 +394,6 @@ var SearchResult;
 
       this.$resultListEl.append(list);
       this.$resultListEl.append(this.pagination.createPaginationElement());
-      //console.log("ALMS!");
 
       this.createPageSelector();
     },

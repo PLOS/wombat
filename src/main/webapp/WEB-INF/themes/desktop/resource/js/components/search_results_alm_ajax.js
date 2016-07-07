@@ -34,8 +34,7 @@ var SearchResultsALMData;
       query
           .setDataValidator(validator)
           .getArticleSummary(that.DOIlist)
-          .then(function (articleData) {
-            var data = articleData;
+          .then(function (data) {
             that.showALMData(data)
           })
           .fail(function (error) {
@@ -44,7 +43,7 @@ var SearchResultsALMData;
     },
     showALMData: function(data){
       var that = this;
-
+      var template = _.template($('#searchResultsAlm').html());
       _.each(data, function (i) {
         var doi = i.doi;
         var templateData = {
@@ -54,7 +53,6 @@ var SearchResultsALMData;
           viewCount: i.viewed
         };
 
-        var template = _.template($('#searchResultsAlm').html());
         $(that.containerID).filter("[data-doi='" + doi + "']").html(template(templateData));
 
       });

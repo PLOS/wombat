@@ -23,12 +23,10 @@ public class CacheKey {
   static final Charset HASH_CHARSET = Charsets.UTF_8;
   static final BaseEncoding HASH_BASE = BaseEncoding.base32();
 
-  private final Optional<Integer> timeToLive;
   private final String prefix;
   private final ImmutableList<String> identifiers;
 
-  private CacheKey(Integer timeToLive, String prefix, List<String> identifiers) {
-    this.timeToLive = Optional.ofNullable(timeToLive);
+  private CacheKey(String prefix, List<String> identifiers) {
     this.prefix = Objects.requireNonNull(prefix);
     this.identifiers = ImmutableList.copyOf(identifiers);
   }
@@ -41,7 +39,7 @@ public class CacheKey {
    * @return a cache key
    */
   public static CacheKey create(String prefix, String identifier) {
-    return new CacheKey(null, prefix, ImmutableList.of(identifier));
+    return new CacheKey(prefix, ImmutableList.of(identifier));
   }
 
   /**
@@ -53,23 +51,7 @@ public class CacheKey {
   public static CacheKey create(String prefix, String firstIdentifier, String secondIdentifier, String... moreIdentifiers) {
     ImmutableList<String> identifiers = ImmutableList.<String>builder()
         .add(firstIdentifier).add(secondIdentifier).add(moreIdentifiers).build();
-    return new CacheKey(null, prefix, identifiers);
-  }
-
-  /**
-   * @param timeToLive a time-to-live parameter for the cache
-   * @return a copy of this key with the time-to-live parameter added
-   * @throws IllegalStateException if this key already has a time to live
-   */
-  public CacheKey addTimeToLive(int timeToLive) {
-    if (this.timeToLive.isPresent()) {
-      throw new IllegalStateException("timeToLive already set");
-    }
-    return new CacheKey(timeToLive, prefix, identifiers);
-  }
-
-  public Optional<Integer> getTimeToLive() {
-    return timeToLive;
+    return new CacheKey(prefix, identifiers);
   }
 
   /**
@@ -116,20 +98,12 @@ public class CacheKey {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
     CacheKey cacheKey = (CacheKey) o;
-
-    if (!timeToLive.equals(cacheKey.timeToLive)) return false;
-    if (!prefix.equals(cacheKey.prefix)) return false;
-    return identifiers.equals(cacheKey.identifiers);
-
+    return prefix.equals(cacheKey.prefix) && identifiers.equals(cacheKey.identifiers);
   }
 
   @Override
   public int hashCode() {
-    int result = timeToLive.hashCode();
-    result = 31 * result + prefix.hashCode();
-    result = 31 * result + identifiers.hashCode();
-    return result;
+    return 31 * prefix.hashCode() + identifiers.hashCode();
   }
 }

@@ -15,10 +15,10 @@ import com.google.common.base.Preconditions;
 import com.yahoo.platform.yui.compressor.CssCompressor;
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.util.CacheKey;
-import org.ambraproject.wombat.util.CacheManagerWrapper;
 import org.apache.commons.io.IOUtils;
 import org.mozilla.javascript.ErrorReporter;
 import org.mozilla.javascript.EvaluatorException;
@@ -56,7 +56,7 @@ public class AssetServiceImpl implements AssetService {
   private RuntimeConfiguration runtimeConfiguration;
 
   @Autowired
-  private CacheManagerWrapper cacheManager;
+  private ServiceCacheSet serviceCacheSet;
 
   private static final Object ASSET_COMPILATION_LOCK = new Object();
 
@@ -144,7 +144,7 @@ public class AssetServiceImpl implements AssetService {
       SourceFilenamesDigest sourceFilenamesDigest = new SourceFilenamesDigest(assetType, site, filenames);
       String sourceCacheKey = sourceFilenamesDigest.generateCacheKey();
 
-      Cache<String, String> cacheFilename = cacheManager.getAssetFilenameCache();
+      Cache<String, String> cacheFilename = serviceCacheSet.getAssetFilenameCache();
 
       String compiledFilename = cacheFilename != null ? cacheFilename.get(sourceCacheKey) : null;
       if (compiledFilename == null) {
@@ -161,7 +161,7 @@ public class AssetServiceImpl implements AssetService {
           cacheFilename.put(sourceCacheKey, compiledFilename);
         }
         if (compiled.contents.length < MAX_ASSET_SIZE_TO_CACHE) {
-          Cache<String, Object> cacheContent = cacheManager.getAssetContentCache();
+          Cache<String, Object> cacheContent = serviceCacheSet.getAssetContentCache();
           String contentsCacheKey = compiled.digest.getCacheKey();
           if (cacheContent != null) {
             cacheContent.put(contentsCacheKey, compiled.contents);
@@ -179,7 +179,7 @@ public class AssetServiceImpl implements AssetService {
   public void serveCompiledAsset(String assetFilename, OutputStream outputStream) throws IOException {
     try {
       CompiledDigest digest = new CompiledDigest(assetFilename);
-      Cache<String, Object> cacheContent = cacheManager.getAssetContentCache();
+      Cache<String, Object> cacheContent = serviceCacheSet.getAssetContentCache();
       byte[] cached = (byte[]) (cacheContent != null ? cacheContent.get(digest.getCacheKey()) : null);
       try (InputStream is =
                (cached == null)

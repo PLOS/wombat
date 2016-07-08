@@ -14,7 +14,6 @@ import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleApiImpl;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.StreamService;
-import org.ambraproject.wombat.util.CacheManagerWrapper;
 import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -84,7 +83,7 @@ public class RootConfiguration {
   }
 
   @Bean
-  public CacheManagerWrapper cacheManager() throws IOException {
+  public ServiceCacheSet serviceCacheSet() throws IOException {
     return new CacheManagerWrapper(true);
   }
 
@@ -105,15 +104,15 @@ public class RootConfiguration {
 
   @Bean
   public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager,
-                                                               CacheManagerWrapper cacheManager) throws IOException {
-    Cache<String, Object> remoteServiceCache = cacheManager.getRemoteServiceCache();
+                                                               ServiceCacheSet serviceCacheSet) throws IOException {
+    Cache<String, Object> remoteServiceCache = serviceCacheSet.getRemoteServiceCache();
     return new CachedRemoteService<>(new StreamService(httpClientConnectionManager), remoteServiceCache);
   }
 
   @Bean
   public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager,
-                                                        CacheManagerWrapper cacheManager) throws IOException {
-    Cache<String, Object> remoteServiceCache = cacheManager.getRemoteServiceCache();
+                                                        ServiceCacheSet serviceCacheSet) throws IOException {
+    Cache<String, Object> remoteServiceCache = serviceCacheSet.getRemoteServiceCache();
     return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager), remoteServiceCache);
   }
 }

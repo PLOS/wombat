@@ -1,4 +1,4 @@
-package org.ambraproject.wombat.util;
+package org.ambraproject.wombat.config;
 
 import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
@@ -13,10 +13,10 @@ import javax.cache.spi.CachingProvider;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class CacheManagerWrapper {
+public class CacheManagerWrapper implements ServiceCacheSet {
   private CacheManager manager;
 
-  public CacheManagerWrapper(boolean create) {
+  CacheManagerWrapper(boolean create) {
     CachingProvider provider = Caching.getCachingProvider();
     manager = provider.getCacheManager();
     if (create) {
@@ -54,26 +54,32 @@ public class CacheManagerWrapper {
     manager.createCache("remoteServiceCache", configuration6);
   }
 
+  @Override
   public Cache<String, String> getAssetFilenameCache() {
     return manager.getCache("assetFilenameCache", String.class, String.class);
   }
 
+  @Override
   public Cache<String, Object> getAssetContentCache() {
     return manager.getCache("assetContentCache", String.class, Object.class);
   }
 
+  @Override
   public Cache<String, TaxonomyGraph> getTaxonomyGraphCache() {
     return manager.getCache("taxonomyGraphCache", String.class, TaxonomyGraph.class);
   }
 
+  @Override
   public Cache<String, TaxonomyCountTable> getTaxonomyCountTableCache() {
     return manager.getCache("taxonomyCountTableCache", String.class, TaxonomyCountTable.class);
   }
 
+  @Override
   public Cache<String, List> getRecentArticleCache() {
     return manager.getCache("recentArticleCache", String.class, List.class);
   }
 
+  @Override
   public Cache<String, Object> getRemoteServiceCache() {
     return manager.getCache("remoteServiceCache", String.class, Object.class);
   }

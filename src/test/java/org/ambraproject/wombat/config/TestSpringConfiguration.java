@@ -21,16 +21,13 @@ import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
-import org.ambraproject.wombat.util.CacheManagerWrapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.Reader;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Defines spring beans needed by tests.
@@ -67,7 +64,7 @@ public class TestSpringConfiguration {
   }
 
   @Bean
-  public CacheManagerWrapper cacheManager() {
+  public ServiceCacheSet serviceCacheSet() {
     return new CacheManagerWrapper(false);
   }
 

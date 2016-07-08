@@ -3,9 +3,9 @@ package org.ambraproject.wombat.service;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;
+import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.util.CacheManagerWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   @Autowired
   private ArticleApi articleApi;
   @Autowired
-  private CacheManagerWrapper cacheManager;
+  private ServiceCacheSet serviceCacheSet;
 
   /*
    * This could be injected as a bean instead if needed.
@@ -74,7 +74,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     String journalKey = site.getJournalKey();
     String cacheKey = "recentArticles:" + journalKey;
     List<Map<String, Object>> articles = null;
-    Cache<String, List> cache = cacheManager.getRecentArticleCache();
+    Cache<String, List> cache = serviceCacheSet.getRecentArticleCache();
 
     if (cacheDuration.isPresent()) {
       articles = cache != null ? cache.get(cacheKey) : null; // remains null if not cached

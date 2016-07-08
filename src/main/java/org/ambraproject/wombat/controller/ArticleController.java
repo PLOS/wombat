@@ -24,7 +24,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
-import org.ambraproject.wombat.model.CitedArticle;
+import org.ambraproject.wombat.model.Reference;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -79,6 +79,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
+import org.xml.sax.SAXException;
 
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -86,6 +87,7 @@ import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -173,7 +175,7 @@ public class ArticleController extends WombatController {
                               Model model,
                               @SiteParam Site site,
                               @RequestParam("id") String articleId)
-      throws IOException {
+      throws IOException, ParserConfigurationException, SAXException {
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
 
@@ -183,7 +185,7 @@ public class ArticleController extends WombatController {
 
     byte[] xml = getArticleXml(renderContext);
     String articleHtml = getArticleHtml(renderContext, new ByteArrayInputStream(xml));
-    model.addAttribute("citedArticles", getArticleCitation(new ByteArrayInputStream(xml)));
+    model.addAttribute("references", getArticleReferences(new ByteArrayInputStream(xml)));
     model.addAttribute("article", articleMetaData);
     model.addAttribute("articleText", articleHtml);
     model.addAttribute("amendments", fillAmendments(site, articleMetaData));
@@ -1045,9 +1047,9 @@ public class ArticleController extends WombatController {
     return articleHtml.toString();
   }
 
-  private List<CitedArticle> getArticleCitation(InputStream xml) {
-    parseXmlService.parseArticleCitation(xml);
-    return null;
+  private List<Reference> getArticleReferences(InputStream xml) throws IOException, SAXException, ParserConfigurationException {
+    List<Reference> references = parseXmlService.parseArticleReferences(xml);
+    return references;
   }
 
   private Map<?, ?> addCommonModelAttributes(HttpServletRequest request, Model model, @SiteParam Site site, @RequestParam("id") String articleId) throws IOException {

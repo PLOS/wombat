@@ -88,18 +88,19 @@
  break out of the head and input all of the citation data directly into the visible dom. To further optimize,
  consider using a macro or function instead of the regex replace used below, or try to clean the data that's returned
  on the rhino side.-->
-<#if article.citedArticles??>
-  <#list article.citedArticles as citedArticle>
-    <#if citedArticle.title??>
+<#if references??>
+  <#list references as reference>
+    <#if reference.title??>
     <meta name="citation_reference" content="
-      <#if citedArticle.title??>citation_title=${citedArticle.title?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.authors?has_content>
-      <#list citedArticle.authors as author>citation_author=${author.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if citedArticle.editors?has_content>
-      citation_editors=<#list citedArticle.editors as editor>${editor.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if citedArticle.journal??>
-      citation_journal_title=${citedArticle.journal?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.volume??>
-      citation_volume=${citedArticle.volume?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.volumeNumber??>
-      citation_number=${citedArticle.volumeNumber};</#if><#if citedArticle.pages??>
-      citation_pages=${citedArticle.pages?replace('<.+?>',' ','r')?html};</#if><#if citedArticle.year??>
-      citation_date=${citedArticle.year?string.computer};</#if>" />
+      <#if reference.title??>citation_title=${reference.title?replace('<.+?>',' ','r')?html};</#if><#if reference.authors?has_content>
+      <#list reference.authors as author>citation_author=${author.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if reference.editors?has_content>
+      citation_editors=<#list reference.editors as editor>${editor.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if reference.journal??>
+      citation_journal_title=${reference.journal?replace('<.+?>',' ','r')?html};</#if><#if reference.volume??>
+      citation_volume=${reference.volume?replace('<.+?>',' ','r')?html};</#if><#if reference.volumeNumber??>
+      citation_number=${reference.volumeNumber};</#if><#if reference.issue??>citation_issue=${reference.issue};</#if>
+      <#if reference.fPage??>citation_first_page=${reference.fPage?replace('<.+?>',' ','r')?html};</#if>
+      <#if reference.lPage??>citation_last_page=${reference.lPage?replace('<.+?>',' ','r')?html};</#if>
+      <#if reference.year??>citation_publication_date=${reference.year?string.computer};</#if>" />
     </#if>
   </#list>
 </#if>

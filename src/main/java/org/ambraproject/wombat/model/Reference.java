@@ -22,43 +22,44 @@ package org.ambraproject.wombat.model;
 
 import java.util.List;
 
-/**
- * @author Alex Kudlick 11/8/11
- */
-public class CitedArticle {
+public class Reference {
 
-  private String key;
   private Integer year;
-  private String displayYear;
   private String month;
   private String day;
   private Integer volumeNumber;
   private String volume;
   private String issue;
   private String title;
-  private String publisherLocation;
   private String publisherName;
-  private String pages;
-  private String eLocationID;
+  private String publicationType;
+  private String fPage;
+  private String lPage;
   private String journal;
-  private String note;
-  private List<String> collaborativeAuthors;
   private String url;
   private String doi;
-  private String summary;
-  private String citationType;
+  private List<ReferencePerson> authors;
+  private List<ReferencePerson> editors;
 
-  private List<CitedArticlePerson> authors;
-  private List<CitedArticlePerson> editors;
+  public static enum PublicationType {
+    ARTICLE ("Article"),
+    BOOK ("Book"),
+    MISC ("Misc");
 
+    private String value;
 
-  public String getKey() {
-    return key;
-  }
+    private PublicationType(String publicationTye) {
+      this.value = publicationTye;
+    }
 
-  public void setKey(String key) {
-    this.key = key;
-  }
+    public String getValue() {
+      return value;
+    }
+
+    public String toString() {
+      return String.format("http://purl.org/net/nknouf/ns/bibtex# %s", value);
+    }
+  };
 
   public Integer getYear() {
     return year;
@@ -66,14 +67,6 @@ public class CitedArticle {
 
   public void setYear(Integer year) {
     this.year = year;
-  }
-
-  public String getDisplayYear() {
-    return displayYear;
-  }
-
-  public void setDisplayYear(String displayYear) {
-    this.displayYear = displayYear;
   }
 
   public String getMonth() {
@@ -124,14 +117,6 @@ public class CitedArticle {
     this.title = title;
   }
 
-  public String getPublisherLocation() {
-    return publisherLocation;
-  }
-
-  public void setPublisherLocation(String publisherLocation) {
-    this.publisherLocation = publisherLocation;
-  }
-
   public String getPublisherName() {
     return publisherName;
   }
@@ -140,20 +125,28 @@ public class CitedArticle {
     this.publisherName = publisherName;
   }
 
-  public String getPages() {
-    return pages;
+  public String getPublicationType() {
+    return publicationType;
   }
 
-  public void setPages(String pages) {
-    this.pages = pages;
+  public void setPublicationType(String publicationType) {
+    this.publicationType = publicationType;
   }
 
-  public String geteLocationID() {
-    return eLocationID;
+  public String getfPage() {
+    return fPage;
   }
 
-  public void seteLocationID(String eLocationID) {
-    this.eLocationID = eLocationID;
+  public void setfPage(String fPage) {
+    this.fPage = fPage;
+  }
+
+  public String getlPage() {
+    return lPage;
+  }
+
+  public void setlPage(String lPage) {
+    this.lPage = lPage;
   }
 
   public String getJournal() {
@@ -162,22 +155,6 @@ public class CitedArticle {
 
   public void setJournal(String journal) {
     this.journal = journal;
-  }
-
-  public String getNote() {
-    return note;
-  }
-
-  public void setNote(String note) {
-    this.note = note;
-  }
-
-  public List<String> getCollaborativeAuthors() {
-    return collaborativeAuthors;
-  }
-
-  public void setCollaborativeAuthors(List<String> collaborativeAuthors) {
-    this.collaborativeAuthors = collaborativeAuthors;
   }
 
   public String getUrl() {
@@ -196,35 +173,19 @@ public class CitedArticle {
     this.doi = doi;
   }
 
-  public String getSummary() {
-    return summary;
-  }
-
-  public void setSummary(String summary) {
-    this.summary = summary;
-  }
-
-  public String getCitationType() {
-    return citationType;
-  }
-
-  public void setCitationType(String citationType) {
-    this.citationType = citationType;
-  }
-
-  public List<CitedArticlePerson> getAuthors() {
+  public List<ReferencePerson> getAuthors() {
     return authors;
   }
 
-  public void setAuthors(List<CitedArticlePerson> authors) {
+  public void setAuthors(List<ReferencePerson> authors) {
     this.authors = authors;
   }
 
-  public List<CitedArticlePerson> getEditors() {
+  public List<ReferencePerson> getEditors() {
     return editors;
   }
 
-  public void setEditors(List<CitedArticlePerson> editors) {
+  public void setEditors(List<ReferencePerson> editors) {
     this.editors = editors;
   }
 

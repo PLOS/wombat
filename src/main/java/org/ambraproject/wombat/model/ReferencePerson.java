@@ -21,14 +21,21 @@
 package org.ambraproject.wombat.model;
 
 /**
- * Represent the Author or Editor of a cited article.
+ * Represent the Author or Editor of a reference.
  *
  */
-public class CitedArticlePerson {
+public class ReferencePerson {
   private String fullName;
   private String givenNames;
-  private String surnames;
+  private String surname;
   private String suffix;
+
+  private ReferencePerson(Builder builder) {
+    this.fullName = builder.fullName;
+    this.givenNames = builder.givenNames;
+    this.surname = builder.surname;
+    this.suffix = builder.suffix;
+  }
 
   public String getFullName() {
     return fullName;
@@ -46,12 +53,12 @@ public class CitedArticlePerson {
     this.givenNames = givenNames;
   }
 
-  public String getSurnames() {
-    return surnames;
+  public String getSurname() {
+    return surname;
   }
 
-  public void setSurnames(String surnames) {
-    this.surnames = surnames;
+  public void setSurname(String surname) {
+    this.surname = surname;
   }
 
   public String getSuffix() {
@@ -61,5 +68,36 @@ public class CitedArticlePerson {
   public void setSuffix(String suffix) {
     this.suffix = suffix;
   }
+
+  public static class Builder {
+    private String fullName;
+    private String givenNames;
+    private String surname;
+    private String suffix;
+
+    public Builder(String fullName) {
+      this.fullName = fullName;
+    }
+
+    public Builder givenNames(String givenNames) {
+      this.givenNames = givenNames;
+      return this;
+    }
+
+    public Builder surname(String surname) {
+      this.surname = surname;
+      return this;
+    }
+
+    public Builder suffix(String suffix) {
+      this.suffix = suffix;
+      return this;
+    }
+
+    public ReferencePerson build() {
+      return new ReferencePerson(this);
+    }
+  }
+
 
 }

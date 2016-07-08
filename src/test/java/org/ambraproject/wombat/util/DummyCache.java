@@ -33,7 +33,7 @@ public final class DummyCache<K, V> implements Cache<K, V> {
 
   @Override
   public Map<K, V> getAll(Set<? extends K> keys) {
-    Objects.requireNonNull(keys);
+    keys.forEach(Objects::requireNonNull);
     return Collections.emptyMap();
   }
 

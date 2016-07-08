@@ -10,10 +10,10 @@ var SearchResultsALMData;
 
 
   init: function (DOIlist) {
-    this.getDOIList();
-    },
+    this.setDOIList(DOIlist);
+  },
 
-    setDOIList: function(DOIlist){
+    setDOIList: function(){
       var that = this;
 
       $(this.containerID).each(function (DOIlist) {

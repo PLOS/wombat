@@ -9,76 +9,85 @@ import javax.cache.Caching;
 import javax.cache.configuration.MutableConfiguration;
 import javax.cache.expiry.CreatedExpiryPolicy;
 import javax.cache.expiry.Duration;
-import javax.cache.spi.CachingProvider;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
-public class CacheManagerWrapper implements ServiceCacheSet {
-  private CacheManager manager;
+class CacheManagerWrapper implements ServiceCacheSet {
 
-  CacheManagerWrapper() {
-    CachingProvider provider = Caching.getCachingProvider();
-    manager = provider.getCacheManager();
-    createCaches();
+  private final CacheManager manager;
+
+  private static <K, V> Cache<K, V> constructCache(CacheManager manager, String cacheName,
+                                                   Class<K> keyType, Class<V> valueType,
+                                                   Consumer<MutableConfiguration<K, V>> configurationConsumer) {
+    MutableConfiguration<K, V> configuration = new MutableConfiguration<>();
+    configuration.setTypes(keyType, valueType);
+    configurationConsumer.accept(configuration);
+    return manager.createCache(cacheName, configuration);
   }
 
-  private void createCaches() {
-    MutableConfiguration<String, String> configuration1 = new MutableConfiguration<String, String>();
-    configuration1.setTypes(String.class, String.class);
-    configuration1.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 15)));
-    manager.createCache("assetFilenameCache", configuration1);
 
-    MutableConfiguration<String, Object> configuration2 = new MutableConfiguration<String, Object>();
-    configuration2.setTypes(String.class, Object.class);
-    configuration2.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 15)));
-    manager.createCache("assetContentCache", configuration2);
+  private static final String ASSET_FILENAME_CACHE = "assetFilenameCache";
+  private static final String ASSET_CONTENT_CACHE = "assetContentCache";
+  private static final String TAXONOMY_GRAPH_CACHE = "taxonomyGraphCache";
+  private static final String TAXONOMY_COUNT_TABLE_CACHE = "taxonomyCountTableCache";
+  private static final String RECENT_ARTICLE_CACHE = "recentArticleCache";
+  private static final String REMOTE_SERVICE_CACHE = "remoteServiceCache";
 
-    MutableConfiguration<String, TaxonomyGraph> configuration3 = new MutableConfiguration<String, TaxonomyGraph>();
-    configuration3.setTypes(String.class, TaxonomyGraph.class);
-    manager.createCache("taxonomyGraphCache", configuration3);
+  CacheManagerWrapper() {
+    manager = Caching.getCachingProvider().getCacheManager();
 
-    MutableConfiguration<String, TaxonomyCountTable> configuration4 = new MutableConfiguration<String, TaxonomyCountTable>();
-    configuration4.setTypes(String.class, TaxonomyCountTable.class);
-    manager.createCache("taxonomyCountTableCache", configuration4);
+    constructCache(manager, ASSET_FILENAME_CACHE, String.class, String.class, config -> {
+      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 15)));
+    });
 
-    MutableConfiguration<String, List> configuration5 = new MutableConfiguration<String, List>();
-    configuration5.setTypes(String.class, List.class);
-    configuration5.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 30)));
-    manager.createCache("recentArticleCache", configuration5);
+    constructCache(manager, ASSET_CONTENT_CACHE, String.class, Object.class, config -> {
+      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 15)));
+    });
 
-    MutableConfiguration<String, Object> configuration6 = new MutableConfiguration<String, Object>();
-    configuration6.setTypes(String.class, Object.class);
-    configuration6.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.HOURS, 1)));
-    manager.createCache("remoteServiceCache", configuration6);
+    constructCache(manager, TAXONOMY_GRAPH_CACHE, String.class, TaxonomyGraph.class, config -> {
+    });
+
+    constructCache(manager, TAXONOMY_COUNT_TABLE_CACHE, String.class, TaxonomyCountTable.class, config -> {
+    });
+
+    constructCache(manager, RECENT_ARTICLE_CACHE, String.class, List.class, config -> {
+      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 30)));
+    });
+
+    constructCache(manager, REMOTE_SERVICE_CACHE, String.class, Object.class, config -> {
+      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.HOURS, 1)));
+    });
+
   }
 
   @Override
   public Cache<String, String> getAssetFilenameCache() {
-    return manager.getCache("assetFilenameCache", String.class, String.class);
+    return manager.getCache(ASSET_FILENAME_CACHE, String.class, String.class);
   }
 
   @Override
   public Cache<String, Object> getAssetContentCache() {
-    return manager.getCache("assetContentCache", String.class, Object.class);
+    return manager.getCache(ASSET_CONTENT_CACHE, String.class, Object.class);
   }
 
   @Override
   public Cache<String, TaxonomyGraph> getTaxonomyGraphCache() {
-    return manager.getCache("taxonomyGraphCache", String.class, TaxonomyGraph.class);
+    return manager.getCache(TAXONOMY_GRAPH_CACHE, String.class, TaxonomyGraph.class);
   }
 
   @Override
   public Cache<String, TaxonomyCountTable> getTaxonomyCountTableCache() {
-    return manager.getCache("taxonomyCountTableCache", String.class, TaxonomyCountTable.class);
+    return manager.getCache(TAXONOMY_COUNT_TABLE_CACHE, String.class, TaxonomyCountTable.class);
   }
 
   @Override
   public Cache<String, List> getRecentArticleCache() {
-    return manager.getCache("recentArticleCache", String.class, List.class);
+    return manager.getCache(RECENT_ARTICLE_CACHE, String.class, List.class);
   }
 
   @Override
   public Cache<String, Object> getRemoteServiceCache() {
-    return manager.getCache("remoteServiceCache", String.class, Object.class);
+    return manager.getCache(REMOTE_SERVICE_CACHE, String.class, Object.class);
   }
 }

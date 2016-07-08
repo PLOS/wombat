@@ -65,7 +65,7 @@ public class TestSpringConfiguration {
 
   @Bean
   public ServiceCacheSet serviceCacheSet() {
-    return new CacheManagerWrapper(false);
+    return new DummyServiceCacheSet();
   }
 
   @Bean

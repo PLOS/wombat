@@ -84,7 +84,7 @@ public class RootConfiguration {
 
   @Bean
   public ServiceCacheSet serviceCacheSet() throws IOException {
-    return new CacheManagerWrapper(true);
+    return new CacheManagerWrapper();
   }
 
   @Bean

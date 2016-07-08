@@ -16,12 +16,10 @@ import java.util.concurrent.TimeUnit;
 public class CacheManagerWrapper implements ServiceCacheSet {
   private CacheManager manager;
 
-  CacheManagerWrapper(boolean create) {
+  CacheManagerWrapper() {
     CachingProvider provider = Caching.getCachingProvider();
     manager = provider.getCacheManager();
-    if (create) {
-      createCaches();
-    }
+    createCaches();
   }
 
   private void createCaches() {

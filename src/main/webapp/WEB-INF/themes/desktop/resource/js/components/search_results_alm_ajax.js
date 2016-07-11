@@ -1,4 +1,3 @@
-
 var SearchResultsALMData;
 
 (function ($) {
@@ -9,23 +8,17 @@ var SearchResultsALMData;
     DOIlist: [],
 
 
-  init: function (DOIlist) {
-    this.setDOIList(DOIlist);
-  },
+    init: function (DOIlist) {
+      this.setDOIList(DOIlist);
+    },
 
-    setDOIList: function(){
-      var that = this;
-
-      $(this.containerID).each(function (DOIlist) {
-        var $this = $(this);
-        that.DOIlist.push([$this.data('doi')]);
-      });
-
+    setDOIList: function (DOIlist) {
+      this.DOIlist = DOIlist;
     },
     getDOIList: function () {
       return this.DOIlist;
     },
-    processALMDataRequest: function(){
+    processALMDataRequest: function () {
       var that = this;
 
       var query = new AlmQuery();
@@ -38,10 +31,10 @@ var SearchResultsALMData;
             that.showALMData(data)
           })
           .fail(function (error) {
-              that.showALMErrorMessage();
+            that.showALMErrorMessage();
           });
     },
-    showALMData: function(data){
+    showALMData: function (data) {
       var that = this;
       var template = _.template($('#searchResultsAlm').html());
       _.each(data, function (i) {

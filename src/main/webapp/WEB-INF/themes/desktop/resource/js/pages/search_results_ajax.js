@@ -349,7 +349,9 @@ var SearchResult;
 
               that.hideLoading();
 
-              that.ALMData.setDOIList();
+              that.ALMData.DOIlist = _.pluck(that.results, 'id');
+
+              that.ALMData.setDOIList(that.ALMData.DOIlist);
               that.ALMData.processALMDataRequest();
 
             }

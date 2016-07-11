@@ -24,27 +24,25 @@ import java.util.List;
 
 public class Reference {
 
-  private Integer year;
-  private String month;
-  private String day;
-  private Integer volumeNumber;
-  private String volume;
-  private String issue;
   private String title;
+  private Integer year;
+  private String journal;
+  private String volume;
+  private Integer volumeNumber;
+  private String issue;
   private String publisherName;
-  private String publicationType;
+  private String isbn;
   private String fPage;
   private String lPage;
-  private String journal;
-  private String url;
   private String doi;
-  private List<ReferencePerson> authors;
-  private List<ReferencePerson> editors;
+  private List<NlmPerson> authors;
+  private List<String> collabAuthors;
+  private String unStructuredReference;
 
   public static enum PublicationType {
-    ARTICLE ("Article"),
-    BOOK ("Book"),
-    MISC ("Misc");
+    JOURNAL ("journal"),
+    BOOK ("book"),
+    OTHER("other");
 
     private String value;
 
@@ -56,9 +54,7 @@ public class Reference {
       return value;
     }
 
-    public String toString() {
-      return String.format("http://purl.org/net/nknouf/ns/bibtex# %s", value);
-    }
+
   };
 
   public Integer getYear() {
@@ -69,21 +65,6 @@ public class Reference {
     this.year = year;
   }
 
-  public String getMonth() {
-    return month;
-  }
-
-  public void setMonth(String month) {
-    this.month = month;
-  }
-
-  public String getDay() {
-    return day;
-  }
-
-  public void setDay(String day) {
-    this.day = day;
-  }
 
   public Integer getVolumeNumber() {
     return volumeNumber;
@@ -125,12 +106,12 @@ public class Reference {
     this.publisherName = publisherName;
   }
 
-  public String getPublicationType() {
-    return publicationType;
+  public String getIsbn() {
+    return isbn;
   }
 
-  public void setPublicationType(String publicationType) {
-    this.publicationType = publicationType;
+  public void setIsbn(String isbn) {
+    this.isbn = isbn;
   }
 
   public String getfPage() {
@@ -157,14 +138,6 @@ public class Reference {
     this.journal = journal;
   }
 
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
   public String getDoi() {
     return doi;
   }
@@ -173,20 +146,59 @@ public class Reference {
     this.doi = doi;
   }
 
-  public List<ReferencePerson> getAuthors() {
+  public List<NlmPerson> getAuthors() {
     return authors;
   }
 
-  public void setAuthors(List<ReferencePerson> authors) {
+  public void setAuthors(List<NlmPerson> authors) {
     this.authors = authors;
   }
 
-  public List<ReferencePerson> getEditors() {
-    return editors;
+  public List<String> getCollabAuthors() {
+    return collabAuthors;
   }
 
-  public void setEditors(List<ReferencePerson> editors) {
-    this.editors = editors;
+  public void setCollabAuthors(List<String> collabAuthors) {
+    this.collabAuthors = collabAuthors;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Reference reference = (Reference) o;
+
+    if (authors != null ? !authors.equals(reference.authors) : reference.authors != null) return false;
+    if (doi != null ? !doi.equals(reference.doi) : reference.doi != null) return false;
+    if (fPage != null ? !fPage.equals(reference.fPage) : reference.fPage != null) return false;
+    if (issue != null ? !issue.equals(reference.issue) : reference.issue != null) return false;
+    if (journal != null ? !journal.equals(reference.journal) : reference.journal != null) return false;
+    if (lPage != null ? !lPage.equals(reference.lPage) : reference.lPage != null) return false;
+    if (publisherName != null ? !publisherName.equals(reference.publisherName) : reference.publisherName != null)
+      return false;
+    if (title != null ? !title.equals(reference.title) : reference.title != null) return false;
+    if (volume != null ? !volume.equals(reference.volume) : reference.volume != null) return false;
+    if (volumeNumber != null ? !volumeNumber.equals(reference.volumeNumber) : reference.volumeNumber != null)
+      return false;
+    if (year != null ? !year.equals(reference.year) : reference.year != null) return false;
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = year != null ? year.hashCode() : 0;
+    result = 31 * result + (volumeNumber != null ? volumeNumber.hashCode() : 0);
+    result = 31 * result + (volume != null ? volume.hashCode() : 0);
+    result = 31 * result + (issue != null ? issue.hashCode() : 0);
+    result = 31 * result + (title != null ? title.hashCode() : 0);
+    result = 31 * result + (publisherName != null ? publisherName.hashCode() : 0);
+    result = 31 * result + (fPage != null ? fPage.hashCode() : 0);
+    result = 31 * result + (lPage != null ? lPage.hashCode() : 0);
+    result = 31 * result + (journal != null ? journal.hashCode() : 0);
+    result = 31 * result + (doi != null ? doi.hashCode() : 0);
+    result = 31 * result + (authors != null ? authors.hashCode() : 0);
+    return result;
+  }
 }

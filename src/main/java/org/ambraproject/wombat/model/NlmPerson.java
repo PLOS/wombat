@@ -24,13 +24,13 @@ package org.ambraproject.wombat.model;
  * Represent the Author or Editor of a reference.
  *
  */
-public class ReferencePerson {
+public class NlmPerson {
   private String fullName;
   private String givenNames;
   private String surname;
   private String suffix;
 
-  private ReferencePerson(Builder builder) {
+  private NlmPerson(Builder builder) {
     this.fullName = builder.fullName;
     this.givenNames = builder.givenNames;
     this.surname = builder.surname;
@@ -41,32 +41,21 @@ public class ReferencePerson {
     return fullName;
   }
 
-  public void setFullName(String fullName) {
-    this.fullName = fullName;
-  }
-
   public String getGivenNames() {
     return givenNames;
-  }
-
-  public void setGivenNames(String givenNames) {
-    this.givenNames = givenNames;
   }
 
   public String getSurname() {
     return surname;
   }
 
-  public void setSurname(String surname) {
-    this.surname = surname;
-  }
 
   public String getSuffix() {
     return suffix;
   }
 
-  public void setSuffix(String suffix) {
-    this.suffix = suffix;
+  public static Builder builder() {
+    return new Builder();
   }
 
   public static class Builder {
@@ -75,29 +64,58 @@ public class ReferencePerson {
     private String surname;
     private String suffix;
 
-    public Builder(String fullName) {
-      this.fullName = fullName;
+    public Builder() {
     }
 
-    public Builder givenNames(String givenNames) {
-      this.givenNames = givenNames;
+    public Builder setFullName(String fullName) {
+      this.fullName = fullName;
       return this;
     }
 
-    public Builder surname(String surname) {
+    public Builder setGivenNames(String givenNames) {
+      this.givenNames = givenNames;
+
+      return this;
+    }
+
+    public Builder setSurname(String surname) {
       this.surname = surname;
       return this;
     }
 
-    public Builder suffix(String suffix) {
+    public Builder setSuffix(String suffix) {
       this.suffix = suffix;
       return this;
     }
 
-    public ReferencePerson build() {
-      return new ReferencePerson(this);
+    public NlmPerson build() {
+      return new NlmPerson(this);
     }
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Builder builder = (Builder) o;
+
+    if (fullName != null ? !fullName.equals(builder.fullName) : builder.fullName != null) return false;
+    if (givenNames != null ? !givenNames.equals(builder.givenNames) : builder.givenNames != null)
+      return false;
+    if (suffix != null ? !suffix.equals(builder.suffix) : builder.suffix != null) return false;
+    if (surname != null ? !surname.equals(builder.surname) : builder.surname != null) return false;
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = fullName != null ? fullName.hashCode() : 0;
+    result = 31 * result + (givenNames != null ? givenNames.hashCode() : 0);
+    result = 31 * result + (surname != null ? surname.hashCode() : 0);
+    result = 31 * result + (suffix != null ? suffix.hashCode() : 0);
+    return result;
+  }
 
 }

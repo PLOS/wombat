@@ -3,9 +3,7 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.HttpMessageUtil;
-import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.Header;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpHeaders;
@@ -50,7 +48,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   /**
    * @return a string, which is constant and unique for each service, to identify cached values the service
    */
-  protected abstract String getCachePrefix();
+  protected abstract String getCacheNamespace();
 
   /**
    * @return headers to add to every outgoing request to the service
@@ -87,7 +85,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
 
   @Override
   public final <T> T requestObject(ApiAddress address, Type responseType) throws IOException {
-    CacheKey cacheKey = CacheKey.create(getCachePrefix(), address.getAddress());
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(getCacheNamespace(), address.getAddress());
 
     // Just try to cache everything. We may want to narrow this in the future.
     return requestCachedObject(cacheKey, address, responseType);
@@ -156,25 +154,25 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   }
 
   @Override
-  public final <T> T requestCachedStream(CacheKey cacheKey, ApiAddress address,
+  public final <T> T requestCachedStream(RemoteCacheKey cacheKey, ApiAddress address,
                                          CacheDeserializer<InputStream, T> callback) throws IOException {
     return makeRemoteRequest(() -> cachedRemoteStreamer.requestCached(cacheKey, buildGet(address), callback));
   }
 
   @Override
-  public final <T> T requestCachedReader(CacheKey cacheKey, ApiAddress address,
+  public final <T> T requestCachedReader(RemoteCacheKey cacheKey, ApiAddress address,
                                          CacheDeserializer<Reader, T> callback) throws IOException {
     return makeRemoteRequest(() -> cachedRemoteReader.requestCached(cacheKey, buildGet(address), callback));
   }
 
   @Override
-  public final <T> T requestCachedObject(CacheKey cacheKey, ApiAddress address, Type responseType) throws IOException {
+  public final <T> T requestCachedObject(RemoteCacheKey cacheKey, ApiAddress address, Type responseType) throws IOException {
     return makeRemoteRequest(() ->
         (T) jsonService.requestCachedObject(cachedRemoteReader, cacheKey, buildGet(address), responseType));
   }
 
   @Override
-  public final <T> T requestCachedObject(CacheKey cacheKey, ApiAddress address, Class<T> responseClass) throws IOException {
+  public final <T> T requestCachedObject(RemoteCacheKey cacheKey, ApiAddress address, Class<T> responseClass) throws IOException {
     return requestCachedObject(cacheKey, address, (Type) responseClass);
   }
 

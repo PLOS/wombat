@@ -2,7 +2,6 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;
-import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -17,7 +16,6 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Optional;
 
 /**
  * Decorator class that adds caching capability to a wrapped {@link RemoteService} object. The uncached RemoteService
@@ -99,14 +97,13 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
    * @return the value from the service or cache
    * @throws IOException
    */
-  public <T> T requestCached(CacheKey cacheKey, HttpUriRequest target, CacheDeserializer<? super S, ? extends T> callback)
+  public <T> T requestCached(RemoteCacheKey cacheKey, HttpUriRequest target, CacheDeserializer<? super S, ? extends T> callback)
       throws IOException {
     Preconditions.checkNotNull(target);
     Preconditions.checkNotNull(callback);
     Preconditions.checkNotNull(cacheKey);
 
-    String externalKey = cacheKey.getExternalKey();
-    CachedObject<T> cached = getCachedObject(externalKey);
+    CachedObject<T> cached = getCachedObject(cacheKey);
     Calendar lastModified = getLastModified(cached);
 
     try (TimestampedResponse fromServer = requestIfModifiedSince(target, lastModified)) {
@@ -115,7 +112,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
           T value = callback.read(stream);
           if (fromServer.timestamp != null) {
             CachedObject<T> cachedObject = new CachedObject<>(fromServer.timestamp, value);
-            cache.put(externalKey, cachedObject);
+            cache.put(cacheKey, cachedObject);
           }
           return value;
         }
@@ -132,7 +129,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
    * @param <T>      the type of cached value
    * @return the cached value, wrapped with its timestamp
    */
-  private <T> CachedObject<T> getCachedObject(String cacheKey) {
+  private <T> CachedObject<T> getCachedObject(RemoteCacheKey cacheKey) {
     try {
       return (CachedObject<T>) cache.get(Preconditions.checkNotNull(cacheKey));
     } catch (Exception e) {

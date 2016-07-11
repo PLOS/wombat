@@ -2,6 +2,7 @@ package org.ambraproject.wombat.config;
 
 import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
+import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 
 import javax.cache.Cache;
 import javax.cache.CacheManager;
@@ -55,7 +56,7 @@ class CacheManagerWrapper implements ServiceCacheSet {
       config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 30)));
     });
 
-    constructCache(manager, REMOTE_SERVICE_CACHE, String.class, Object.class, config -> {
+    constructCache(manager, REMOTE_SERVICE_CACHE, RemoteCacheKey.class, Object.class, config -> {
       config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.HOURS, 1)));
     });
 
@@ -87,7 +88,7 @@ class CacheManagerWrapper implements ServiceCacheSet {
   }
 
   @Override
-  public Cache<String, Object> getRemoteServiceCache() {
-    return manager.getCache(REMOTE_SERVICE_CACHE, String.class, Object.class);
+  public Cache<RemoteCacheKey, Object> getRemoteServiceCache() {
+    return manager.getCache(REMOTE_SERVICE_CACHE, RemoteCacheKey.class, Object.class);
   }
 }

@@ -33,14 +33,13 @@ public class CacheUtil {
    * @throws IOException
    * @throws java.lang.ClassCastException if {@code lookup} returns a non-{@code Serializable} value
    */
-  public static <T> T getOrCompute(Cache<String, T> cache, CacheKey key, Lookup<? extends T> lookup)
+  public static <K, T> T getOrCompute(Cache<K, T> cache, K key, Lookup<? extends T> lookup)
       throws IOException {
-    String externalKey = key.getExternalKey();
-    T value = cache != null ? cache.get(externalKey) : null;
+    T value = cache != null ? cache.get(key) : null;
     if (value == null) {
       value = lookup.get();
       if (cache != null) {
-        cache.put(externalKey, value);
+        cache.put(key, value);
       }
     }
     return value;

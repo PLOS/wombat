@@ -2,6 +2,7 @@ package org.ambraproject.wombat.config;
 
 import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
+import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.util.DummyCache;
 
 import javax.cache.Cache;
@@ -35,7 +36,7 @@ public class DummyServiceCacheSet implements ServiceCacheSet {
   }
 
   @Override
-  public Cache<String, Object> getRemoteServiceCache() {
+  public Cache<RemoteCacheKey, Object> getRemoteServiceCache() {
     return DummyCache.getInstance();
   }
 

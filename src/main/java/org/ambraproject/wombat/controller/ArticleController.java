@@ -39,9 +39,9 @@ import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.TextUtil;
@@ -987,7 +987,7 @@ public class ArticleController extends WombatController {
    */
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
 
-    CacheKey cacheKey = CacheKey.create("amendmentBody", renderContext.getArticleId());
+    RemoteCacheKey cacheKey = RemoteCacheKey.create("amendmentBody", renderContext.getArticleId());
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
@@ -1011,7 +1011,7 @@ public class ArticleController extends WombatController {
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
 
-    CacheKey cacheKey = CacheKey.create("html", renderContext.getSite().getKey(), renderContext.getArticleId());
+    RemoteCacheKey cacheKey = RemoteCacheKey.create("html", renderContext.getSite().getKey(), renderContext.getArticleId());
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {

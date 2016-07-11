@@ -84,7 +84,7 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
   }
 
   @Override
-  protected String getCachePrefix() {
+  protected String getCacheNamespace() {
     return "user";
   }
 

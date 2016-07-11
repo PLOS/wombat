@@ -6,6 +6,7 @@ import com.google.gson.JsonSyntaxException;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.service.remote.UserApiImpl;
 import org.ambraproject.wombat.service.remote.ReaderService;
@@ -105,14 +106,14 @@ public class RootConfiguration {
   @Bean
   public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager,
                                                                ServiceCacheSet serviceCacheSet) throws IOException {
-    Cache<String, Object> remoteServiceCache = serviceCacheSet.getRemoteServiceCache();
+    Cache<RemoteCacheKey, Object> remoteServiceCache = serviceCacheSet.getRemoteServiceCache();
     return new CachedRemoteService<>(new StreamService(httpClientConnectionManager), remoteServiceCache);
   }
 
   @Bean
   public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager,
                                                         ServiceCacheSet serviceCacheSet) throws IOException {
-    Cache<String, Object> remoteServiceCache = serviceCacheSet.getRemoteServiceCache();
+    Cache<RemoteCacheKey, Object> remoteServiceCache = serviceCacheSet.getRemoteServiceCache();
     return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager), remoteServiceCache);
   }
 }

@@ -8,7 +8,6 @@ import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.SitePageContext;
 import org.ambraproject.wombat.service.ApiAddress;
-import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
@@ -120,20 +119,15 @@ public class EditorialContentApiImpl implements EditorialContentApi {
   }
 
   @Override
-  public <T> T requestCachedReader(CacheKey cacheKey, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException {
+  public <T> T requestCachedReader(RemoteCacheKey cacheKey, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException {
     Preconditions.checkNotNull(callback);
     return cachedRemoteReader.requestCached(cacheKey, new HttpGet(buildUri(key, version, RequestMode.OBJECT)), callback);
   }
 
   @Override
-  public Map<String, Object> requestMetadata(CacheKey cacheKey, String key, Optional<Integer> version) throws IOException {
+  public Map<String, Object> requestMetadata(RemoteCacheKey cacheKey, String key, Optional<Integer> version) throws IOException {
     return cachedRemoteReader.requestCached(cacheKey, new HttpGet(buildUri(key, version, RequestMode.METADATA)),
-        new CacheDeserializer<Reader, Map<String, Object>>() {
-          @Override
-          public Map<String, Object> read(Reader stream) throws IOException {
-            return gson.fromJson(stream, Map.class);
-          }
-        });
+        (Reader stream) -> gson.fromJson(stream, Map.class));
   }
 
   /**
@@ -147,7 +141,7 @@ public class EditorialContentApiImpl implements EditorialContentApi {
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
     Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);
-    CacheKey cacheKey = CacheKey.create(pageType, key);
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(pageType, key);
     Number cacheTtl = (Number) pageConfig.get("cacheTtl"); // TODO: Remove
     Optional<Integer> version = Optional.absent();     // TODO May want to support page versioning at some point using fetchHtmlDirective
 
@@ -181,14 +175,10 @@ public class EditorialContentApiImpl implements EditorialContentApi {
    */
   @Override
   public Object getJson(String pageType, String key) throws IOException {
-    CacheKey cacheKey = CacheKey.create(pageType, key);
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(pageType, key);
     Optional<Integer> version = Optional.absent();
-    Object jsonObj = requestCachedReader(cacheKey, key, version, new CacheDeserializer<Reader, Object>() {
-      @Override
-      public Object read(Reader jsonReader) throws IOException {
-        return gson.fromJson(jsonReader, Object.class);
-      }
-    });
+    Object jsonObj = requestCachedReader(cacheKey, key, version,
+        (Reader jsonReader) -> gson.fromJson(jsonReader, Object.class));
     return jsonObj;
   }
 }

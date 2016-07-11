@@ -6,7 +6,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
-import org.ambraproject.wombat.util.CacheKey;
+import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.ReproxyUtil;
 import org.apache.http.Header;
@@ -78,7 +78,7 @@ public class ExternalResourceController extends WombatController {
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
                      String key, Optional<Integer> version)
       throws IOException {
-    CacheKey cacheKey = CacheKey.create("indirect", key, String.valueOf(version.orNull()));
+    RemoteCacheKey cacheKey = RemoteCacheKey.create("indirect", key, String.valueOf(version.orNull()));
     Map<String, Object> fileMetadata;
 
     try {

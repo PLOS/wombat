@@ -491,6 +491,7 @@ Modal component
   top: $pad-default;
   background-color: white;
   padding: $pad-default;
+  position: fixed;
 
   .close-reveal-modal {
     @extend %modal-close-button;

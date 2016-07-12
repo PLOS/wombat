@@ -17,6 +17,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
 import com.google.gson.Gson;
+import org.ambraproject.wombat.config.RemoteCacheSpace;
+import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
@@ -42,9 +44,9 @@ import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.TextUtil;
@@ -88,7 +90,6 @@ import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
-import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.ByteArrayInputStream;
@@ -169,6 +170,9 @@ public class ArticleController extends WombatController {
   private RequestMappingContextDictionary requestMappingContextDictionary;
   @Autowired
   private ParseXmlService parseXmlService;
+  @Autowired
+  private ServiceCacheSet serviceCacheSet;
+
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -1001,7 +1005,7 @@ public class ArticleController extends WombatController {
    */
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
 
-    CacheKey cacheKey = CacheKey.create("amendmentBody", renderContext.getArticleId());
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.AMENDMENT_BODY, renderContext.getArticleId());
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
@@ -1040,7 +1044,8 @@ public class ArticleController extends WombatController {
    */
   private String getArticleHtml(final RenderContext renderContext, InputStream xml,
                                 List<Reference> references) throws IOException {
-    CacheKey cacheKey = CacheKey.create("html", renderContext.getSite().getKey(), renderContext.getArticleId());
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.ARTICLE_HTML,
+        renderContext.getSite().getKey(), renderContext.getArticleId());
     StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
     try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
       articleTransformService.transform(renderContext, xml, outputStream, references);

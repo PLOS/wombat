@@ -90,6 +90,7 @@ import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
+import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.ByteArrayInputStream;
@@ -116,6 +117,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.SortedMap;
+import java.util.jar.JarException;
 import java.util.stream.Collectors;
 
 /**
@@ -189,12 +191,10 @@ public class ArticleController extends WombatController {
     RenderContext renderContext = new RenderContext(site);
     renderContext.setArticleId(articleId);
 
-    byte[] xml = getArticleXml(renderContext);
-    List<Reference> references = getArticleReferences(new ByteArrayInputStream(xml));
-    String articleHtml = getArticleHtml(renderContext, new ByteArrayInputStream(xml), references);
-    model.addAttribute("references", references);
+    XmlContent xmlContent = getXmlContent(renderContext);
+    model.addAttribute("references", xmlContent.references);
     model.addAttribute("article", articleMetaData);
-    model.addAttribute("articleText", articleHtml);
+    model.addAttribute("articleText", xmlContent.html);
     model.addAttribute("amendments", fillAmendments(site, articleMetaData));
 
     return site + "/ftl/article/article";
@@ -1020,20 +1020,36 @@ public class ArticleController extends WombatController {
     });
   }
 
-  /**
-   *  Retrieves article XML from the SOA server
-   *
-   * @param renderContext
-   * @return
-   * @throws IOException
-   */
-  private byte[] getArticleXml(final RenderContext renderContext) throws IOException {
+  private class XmlContent {
+    private final String html;
+    private final ImmutableList<Reference> references;
+
+    private XmlContent(String html, List<Reference> references) {
+      this.html = Objects.requireNonNull(html);
+      this.references = ImmutableList.copyOf(references);
+    }
+  }
+
+  private XmlContent getXmlContent(RenderContext renderContext) throws IOException {
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.ARTICLE_HTML,
+        renderContext.getSite().getKey(), renderContext.getArticleId());
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
-    InputStream in = articleApi.requestStream(xmlAssetPath);
-    // store the input stream to a byte array to be able to read it more than once
-    ByteArrayOutputStream xmlBaos = new ByteArrayOutputStream();
-    IOUtils.copy(in, xmlBaos);
-    return xmlBaos.toByteArray();
+
+    return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
+      ByteArrayOutputStream xmlBaos = new ByteArrayOutputStream();
+      IOUtils.copy(stream, xmlBaos);
+      byte[] xml = xmlBaos.toByteArray();
+      List<Reference> references;
+
+      try {
+        references = getArticleReferences(new ByteArrayInputStream(xml));
+      } catch (SAXException | ParserConfigurationException | XmlContentException e) {
+        throw new RuntimeException(e);
+      }
+
+      String articleHtml = getArticleHtml(renderContext, new ByteArrayInputStream(xml), references);
+      return new XmlContent(articleHtml, references);
+    });
   }
 
   /**
@@ -1044,8 +1060,7 @@ public class ArticleController extends WombatController {
    */
   private String getArticleHtml(final RenderContext renderContext, InputStream xml,
                                 List<Reference> references) throws IOException {
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.ARTICLE_HTML,
-        renderContext.getSite().getKey(), renderContext.getArticleId());
+
     StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
     try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
       articleTransformService.transform(renderContext, xml, outputStream, references);

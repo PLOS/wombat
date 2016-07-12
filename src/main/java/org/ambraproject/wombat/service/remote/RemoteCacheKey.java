@@ -3,13 +3,14 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.RemoteCacheSpace;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Cache key for a value returned by a remote service.
  */
-public final class RemoteCacheKey {
+public final class RemoteCacheKey implements Serializable {
 
   private final RemoteCacheSpace remoteCacheSpace;
   private final ImmutableList<String> identifiers;

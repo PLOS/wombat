@@ -140,9 +140,7 @@ public class EditorialContentApiImpl implements EditorialContentApi {
                          final Set<HtmlElementTransformation> transformations,
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
-    Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);
     RemoteCacheKey cacheKey = RemoteCacheKey.create(pageType, key);
-    Number cacheTtl = (Number) pageConfig.get("cacheTtl"); // TODO: Remove
     Optional<Integer> version = Optional.absent();     // TODO May want to support page versioning at some point using fetchHtmlDirective
 
     String transformedHtml = requestCachedReader(cacheKey, key, version, new CacheDeserializer<Reader, String>() {

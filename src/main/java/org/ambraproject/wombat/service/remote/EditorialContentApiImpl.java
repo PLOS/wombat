@@ -3,6 +3,8 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
+import org.ambraproject.wombat.config.RemoteCacheSpace;
+import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
@@ -39,9 +41,11 @@ public class EditorialContentApiImpl implements EditorialContentApi {
   private Gson gson;
   @Autowired
   private SiteSet siteSet;
+  @Autowired
+  private ServiceCacheSet serviceCacheSet;
 
-  private URI contentRepoAddress;
-  private String repoBucketName;
+  private transient URI contentRepoAddress;
+  private transient String repoBucketName;
 
   private void setRepoConfig() throws IOException {
     Map<String, Object> repoConfig = (Map<String, Object>) articleApi.requestObject(
@@ -140,28 +144,25 @@ public class EditorialContentApiImpl implements EditorialContentApi {
                          final Set<HtmlElementTransformation> transformations,
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(pageType, key);
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.EDITORIAL_CONTENT, pageType, key);
     Optional<Integer> version = Optional.absent();     // TODO May want to support page versioning at some point using fetchHtmlDirective
 
-    String transformedHtml = requestCachedReader(cacheKey, key, version, new CacheDeserializer<Reader, String>() {
-      @Override
-      public String read(Reader htmlReader) throws IOException {
-        // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
-        // The whole document will be in memory anyway, so buffering it into a string is no great performance loss.
-        String htmlString = IOUtils.toString(htmlReader);
-        Document document = Jsoup.parseBodyFragment(htmlString);
+    String transformedHtml = requestCachedReader(cacheKey, key, version, (Reader htmlReader) -> {
+      // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
+      // The whole document will be in memory anyway, so buffering it into a string is no great performance loss.
+      String htmlString = IOUtils.toString(htmlReader);
+      Document document = Jsoup.parseBodyFragment(htmlString);
 
-        for (HtmlElementTransformation transformation : transformations) {
-          transformation.apply(sitePageContext, siteSet, document);
-        }
-        for (HtmlElementSubstitution substitution : substitutions) {
-          substitution.substitute(document);
-        }
-
-        // We received a snippet, which Jsoup has automatically turned into a complete HTML document.
-        // We want to return only the transformed snippet, so retrieve it from the body tag.
-        return document.getElementsByTag("body").html();
+      for (HtmlElementTransformation transformation : transformations) {
+        transformation.apply(sitePageContext, siteSet, document);
       }
+      for (HtmlElementSubstitution substitution : substitutions) {
+        substitution.substitute(document);
+      }
+
+      // We received a snippet, which Jsoup has automatically turned into a complete HTML document.
+      // We want to return only the transformed snippet, so retrieve it from the body tag.
+      return document.getElementsByTag("body").html();
     });
     return new StringReader(transformedHtml);
   }
@@ -173,7 +174,7 @@ public class EditorialContentApiImpl implements EditorialContentApi {
    */
   @Override
   public Object getJson(String pageType, String key) throws IOException {
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(pageType, key);
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.EDITORIAL_CONTENT, pageType, key);
     Optional<Integer> version = Optional.absent();
     Object jsonObj = requestCachedReader(cacheKey, key, version,
         (Reader jsonReader) -> gson.fromJson(jsonReader, Object.class));

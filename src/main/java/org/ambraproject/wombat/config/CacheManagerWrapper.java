@@ -28,12 +28,13 @@ class CacheManagerWrapper implements ServiceCacheSet {
   }
 
 
-  private static final String ASSET_FILENAME_CACHE = "assetFilenameCache";
-  private static final String ASSET_CONTENT_CACHE = "assetContentCache";
-  private static final String TAXONOMY_GRAPH_CACHE = "taxonomyGraphCache";
-  private static final String TAXONOMY_COUNT_TABLE_CACHE = "taxonomyCountTableCache";
-  private static final String RECENT_ARTICLE_CACHE = "recentArticleCache";
-  private static final String REMOTE_SERVICE_CACHE = "remoteServiceCache";
+  private static final String ASSET_FILENAME_CACHE = "assetFilename";
+  private static final String ASSET_CONTENT_CACHE = "assetContent";
+  private static final String TAXONOMY_GRAPH_CACHE = "taxonomyGraph";
+  private static final String TAXONOMY_COUNT_TABLE_CACHE = "taxonomyCountTable";
+  private static final String RECENT_ARTICLE_CACHE = "recentArticle";
+
+  static final Duration DEFAULT_TTL = new Duration(TimeUnit.HOURS, 1);
 
   CacheManagerWrapper() {
     manager = Caching.getCachingProvider().getCacheManager();
@@ -47,18 +48,22 @@ class CacheManagerWrapper implements ServiceCacheSet {
     });
 
     constructCache(manager, TAXONOMY_GRAPH_CACHE, String.class, TaxonomyGraph.class, config -> {
+      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(DEFAULT_TTL));
     });
 
     constructCache(manager, TAXONOMY_COUNT_TABLE_CACHE, String.class, TaxonomyCountTable.class, config -> {
+      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(DEFAULT_TTL));
     });
 
     constructCache(manager, RECENT_ARTICLE_CACHE, String.class, List.class, config -> {
       config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 30)));
     });
 
-    constructCache(manager, REMOTE_SERVICE_CACHE, RemoteCacheKey.class, Object.class, config -> {
-      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.HOURS, 1)));
-    });
+    for (RemoteCacheSpace remoteCacheSpace : RemoteCacheSpace.values()) {
+      constructCache(manager, remoteCacheSpace.getCacheName(), RemoteCacheKey.class, Object.class, config -> {
+        config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(remoteCacheSpace.getTimeToLive()));
+      });
+    }
 
   }
 
@@ -88,7 +93,7 @@ class CacheManagerWrapper implements ServiceCacheSet {
   }
 
   @Override
-  public Cache<RemoteCacheKey, Object> getRemoteServiceCache() {
-    return manager.getCache(REMOTE_SERVICE_CACHE, RemoteCacheKey.class, Object.class);
+  public Cache<RemoteCacheKey, Object> getCacheFor(RemoteCacheSpace space) {
+    return manager.getCache(space.getCacheName(), RemoteCacheKey.class, Object.class);
   }
 }

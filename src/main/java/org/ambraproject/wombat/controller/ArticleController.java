@@ -17,7 +17,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
 import com.google.gson.Gson;
-import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
+import org.ambraproject.wombat.config.RemoteCacheSpace;
+import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -156,7 +157,7 @@ public class ArticleController extends WombatController {
   @Autowired
   private CommentService commentService;
   @Autowired
-  private RequestMappingContextDictionary requestMappingContextDictionary;
+  private ServiceCacheSet serviceCacheSet;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -987,7 +988,7 @@ public class ArticleController extends WombatController {
    */
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
 
-    RemoteCacheKey cacheKey = RemoteCacheKey.create("amendmentBody", renderContext.getArticleId());
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.AMENDMENT_BODY, renderContext.getArticleId());
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
@@ -1011,7 +1012,8 @@ public class ArticleController extends WombatController {
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
 
-    RemoteCacheKey cacheKey = RemoteCacheKey.create("html", renderContext.getSite().getKey(), renderContext.getArticleId());
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.ARTICLE_HTML,
+        renderContext.getSite().getKey(), renderContext.getArticleId());
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {

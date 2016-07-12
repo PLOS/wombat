@@ -18,5 +18,5 @@ public interface ServiceCacheSet {
 
   Cache<String, List> getRecentArticleCache();
 
-  Cache<RemoteCacheKey, Object> getRemoteServiceCache();
+  Cache<RemoteCacheKey, Object> getCacheFor(RemoteCacheSpace space);
 }

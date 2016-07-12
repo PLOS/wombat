@@ -3,6 +3,7 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
+import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.apache.http.Header;
@@ -84,8 +85,8 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
   }
 
   @Override
-  protected String getCacheNamespace() {
-    return "user";
+  protected RemoteCacheSpace getCacheSpace() {
+    return RemoteCacheSpace.USER_API;
   }
 
   @Override

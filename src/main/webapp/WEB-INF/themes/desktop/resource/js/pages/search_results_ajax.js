@@ -20,6 +20,9 @@ var SearchResult;
     $searchAlertModalEl: $('#search-alert-modal'),
     resultPerPageElId: '#resultsPerPageDropdown',
     resetFiltersElId: '#clearAllFiltersButton',
+    dateFilterFormClass: '.date-filter-form',
+    dateFilterEndElId: '#dateFilterEndDate',
+    dateFilterStartElId: '#dateFilterStartDate',
 
     currentSearchParams: {
       "filterJournals": null,
@@ -41,6 +44,10 @@ var SearchResult;
     searchFeedEndpoint: 'search/feed/atom',
 
     searchFilters: {},
+    searchDateFilters: {
+      "end": null,
+      "start": null
+    },
     results: [],
     resultTotalRecords: 0,
     resultsOffset: 0,
@@ -235,8 +242,13 @@ var SearchResult;
             $('.advanced-search-container').slideDown();
           });
         }
+      }).on('submit', this.dateFilterFormClass, function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        that.currentSearchParams.filterEndDate = $(that.dateFilterEndElId).val();
+        that.currentSearchParams.filterStartDate = $(that.dateFilterStartElId).val();
+        that.processRequest();
       });
-
       plos_toggle.init();
 
       if ($('#searchControlBarForm').attr('data-advanced-search')) {
@@ -362,6 +374,12 @@ var SearchResult;
               that.resultsOffset = response.searchResults.start;
 
               that.searchFilters = response.searchFilters;
+              if (!_.isEmpty(response.filterStartDate)) {
+                that.searchDateFilters['start'] = response.filterStartDate;
+              }
+              if (!_.isEmpty(response.filterEndDate)) {
+                that.searchDateFilters['end'] = response.filterEndDate;
+              }
 
               that.$searchHeaderEl.show();
               that.$filtersEl.show();
@@ -470,6 +488,14 @@ var SearchResult;
             $lessButton.hide();
           }
         });
+
+        // Create date filter section
+        var filterDateTemplate = _.template($('#searchListFilterDateTemplate').html());
+        this.$filtersEl.append(filterDateTemplate(this.searchDateFilters));
+        var $dateFilterStartDateEl = $(this.dateFilterStartElId);
+        var $dateFilterEndDateEl = $(this.dateFilterEndElId);
+        RangeDatepicker.init($dateFilterStartDateEl, $dateFilterEndDateEl);
+
 
         this.createFilterHeader(activeFilters);
       }

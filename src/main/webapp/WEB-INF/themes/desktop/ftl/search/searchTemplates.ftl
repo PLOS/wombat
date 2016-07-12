@@ -94,6 +94,18 @@
 
 </script>
 
+<script type="text/template" id="searchListFilterDateTemplate">
+  <form class="date-filter-form">
+    <h3>Publication Date</h3>
+    <input name="filterStartDate" id="dateFilterStartDate" required type="text"<% if(!_.isEmpty(start)) { print('
+    value="'+start+'"'); } %> class="fdatepicker">
+    <div>&nbsp;to</div>
+    <input name="filterEndDate" id="dateFilterEndDate" required type="text"<% if(!_.isEmpty(end)) { print('
+    value="'+end+'"'); } %> class="fdatepicker">
+    <button type="submit">Apply</button>
+  </form>
+</script>
+
 <script type="text/template" id="searchHeaderFilterTemplate">
   <% if (activeFilterItems.length > 0) { %>
   <div class="filter-view-container">

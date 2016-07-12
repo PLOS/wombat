@@ -4,21 +4,24 @@ import javax.cache.expiry.Duration;
 import java.util.concurrent.TimeUnit;
 
 public enum RemoteCacheSpace {
-  ARTICLE_API(),
-  USER_API(),
-  ARTICLE_HTML(),
-  AMENDMENT_BODY(),
-  SITE_CONTENT_METADATA(),
-  EXTERNAL_RESOURCE(),
-  EDITORIAL_CONTENT();
+  ARTICLE_API("articleApi"),
+  USER_API("userApi"),
+  ARTICLE_HTML("articleHtml"),
+  AMENDMENT_BODY("amendmentBody"),
+  SITE_CONTENT_METADATA("siteContentMetadata"),
+  EXTERNAL_RESOURCE("externalResource"),
+  EDITORIAL_CONTENT("editorialContent");
 
+  private final String cacheName;
   private final Duration timeToLive;
 
-  private RemoteCacheSpace() {
-    this(null); // would be DEFAULT_TTL but static vars aren't accessible here; check in getter instead
+  private RemoteCacheSpace(String cacheName) {
+    this(cacheName,
+        null); // would be DEFAULT_TTL but static vars aren't accessible here; check in getter instead
   }
 
-  private RemoteCacheSpace(Duration timeToLive) {
+  private RemoteCacheSpace(String cacheName, Duration timeToLive) {
+    this.cacheName = cacheName;
     this.timeToLive = timeToLive;
   }
 
@@ -28,7 +31,7 @@ public enum RemoteCacheSpace {
    * @return the name to provide to {@link javax.cache.CacheManager} when creating or getting a cache
    */
   String getCacheName() {
-    return name();
+    return cacheName;
   }
 
   Duration getTimeToLive() {

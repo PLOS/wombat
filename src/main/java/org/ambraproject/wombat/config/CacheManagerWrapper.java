@@ -28,11 +28,11 @@ class CacheManagerWrapper implements ServiceCacheSet {
   }
 
 
-  private static final String ASSET_FILENAME_CACHE = "ASSET_FILENAME";
-  private static final String ASSET_CONTENT_CACHE = "ASSET_CONTENT";
-  private static final String TAXONOMY_GRAPH_CACHE = "TAXONOMY_GRAPH";
-  private static final String TAXONOMY_COUNT_TABLE_CACHE = "TAXONOMY_COUNT_TABLE";
-  private static final String RECENT_ARTICLE_CACHE = "RECENT_ARTICLE";
+  private static final String ASSET_FILENAME_CACHE = "assetFilename";
+  private static final String ASSET_CONTENT_CACHE = "assetContent";
+  private static final String TAXONOMY_GRAPH_CACHE = "taxonomyGraph";
+  private static final String TAXONOMY_COUNT_TABLE_CACHE = "taxonomyCountTable";
+  private static final String RECENT_ARTICLE_CACHE = "recentArticle";
 
   CacheManagerWrapper() {
     manager = Caching.getCachingProvider().getCacheManager();

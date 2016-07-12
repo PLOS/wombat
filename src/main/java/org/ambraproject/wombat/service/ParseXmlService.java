@@ -12,5 +12,5 @@ import java.util.List;
  * This class is used to parse the document xml
  */
 public interface ParseXmlService {
-  List<Reference> parseArticleReferences(InputStream xml) throws ParserConfigurationException, IOException, SAXException;
+  List<Reference> parseArticleReferences(InputStream xml) throws ParserConfigurationException, IOException, SAXException, XmlContentException;
 }

@@ -92,7 +92,9 @@
   <#list references as reference>
     <#if reference.title??>
     <meta name="citation_reference" content="
-      <#if reference.title??>citation_title=${reference.title?replace('<.+?>',' ','r')?html};</#if><#if reference.authors?has_content>
+      <#if reference.chapterTitle??>citation_title=${reference.chapterTitle?replace('<.+?>',' ','r')?html};
+        <#if reference.title??><citation_inbook_title=${reference.title?replace('<.+?>',' ','r')?html};</#if>
+      <#else>citation_title=${reference.title?replace('<.+?>',' ','r')?html};</#if><#if reference.authors?has_content>
       <#list reference.authors as author>citation_author=${author.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if reference.editors?has_content>
       citation_editors=<#list reference.editors as editor>${editor.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if reference.journal??>
       citation_journal_title=${reference.journal?replace('<.+?>',' ','r')?html};</#if><#if reference.volume??>
@@ -101,6 +103,8 @@
       <#if reference.fPage??>citation_first_page=${reference.fPage?replace('<.+?>',' ','r')?html};</#if>
       <#if reference.lPage??>citation_last_page=${reference.lPage?replace('<.+?>',' ','r')?html};</#if>
       <#if reference.year??>citation_publication_date=${reference.year?string.computer};</#if>" />
+    <#elseif reference.unStructuredReference??>
+        <meta name="citation_reference" content="${reference.unStructuredReference?replace('<.+?>',' ','r')?html}" />
     </#if>
   </#list>
 </#if>

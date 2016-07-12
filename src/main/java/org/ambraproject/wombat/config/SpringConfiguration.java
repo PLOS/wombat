@@ -73,6 +73,7 @@ import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.CommentValidationServiceImpl;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.FreemarkerMailServiceImpl;
+import org.ambraproject.wombat.service.ParseReferenceService;
 import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.ParseXmlServiceImpl;
 import org.ambraproject.wombat.service.PowerPointService;
@@ -358,6 +359,11 @@ public class SpringConfiguration {
   @Bean
   public ParseXmlService parseXmlService() {
     return new ParseXmlServiceImpl();
+  }
+
+  @Bean
+  public ParseReferenceService parseReferenceService() {
+    return new ParseReferenceService();
   }
 
 }

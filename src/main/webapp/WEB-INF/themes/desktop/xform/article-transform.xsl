@@ -30,9 +30,9 @@
   <!-- 1/4/12: Ambra-specific global param (pub config, passed into stylesheet from elsewhere in the pipeline) -->
   <xsl:param name="pubAppContext"/>
 
-  <!-- 11/26/14: Secondary XML data source generated from citedArticles article metadata
-                  used to provide DOIs and author/title overrides for reference links -->
-  <xsl:param name="citedArticles"/>
+  <!-- 11/26/14: Secondary XML data source generated from xml in wombat
+                 used to provide DOIs and author/title overrides for reference links -->
+  <xsl:param name="refs"/>
 
   <!-- ============================================================= -->
   <!--  ROOT TEMPLATE - HANDLES HTML FRAMEWORK                       -->
@@ -861,10 +861,10 @@
               <xsl:attribute name="class">link-target</xsl:attribute>
             </a>
 
-            <!-- retrieve extra citation data for the current reference node (sourced from the database and provided as
-            a secondary XML source via the citedArticles parameter) -->
+            <!-- retrieve extra citation data for the current reference node (sourced from the xml and provided as
+            a secondary XML source via the references parameter) -->
             <xsl:variable name="idx" as="xs:integer" select="position()"/>
-            <xsl:variable name="dbCit" select="if ($citedArticles) then $citedArticles/a/e[$idx] else node()"/>
+            <xsl:variable name="dbCit" select="if ($refs) then $refs/references/reference[$idx] else node()"/>
             <xsl:variable name="doi" select="$dbCit/doi"/>
 
             <!-- build reference text, providing templates with doi when available -->
@@ -876,12 +876,12 @@
 
             <xsl:if test="$cit[@publication-type='journal']">
               <!-- create reference links -->
-              <!-- if citedArticles parameter has not been set, fail gracefully and use XML-based data for links -->
-              <!-- use author and title preferentially from database, then XML -->
+              <!-- if refs parameter has not been set, fail gracefully and use XML-based data for links -->
+              <!-- use author and title preferentially from refs, then original XML -->
               <xsl:variable name="author">
               <xsl:choose>
-                <xsl:when test="$dbCit/authors/e[1]/surnames">
-                  <xsl:value-of select="$dbCit/authors/e[1]/surnames"/>
+                <xsl:when test="$dbCit/authors[1]/surname">
+                  <xsl:value-of select="$dbCit/authors[1]/surname"/>
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:value-of select="$cit//name[1]/surname"/>

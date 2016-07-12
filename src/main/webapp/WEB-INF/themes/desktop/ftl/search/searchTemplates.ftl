@@ -70,7 +70,7 @@
   <div class="filterSection">
     <h3><%= filterTitle %></h3>
     <% if (activeFilterItems.length > 0) { %>
-    <ul class="active-filters">
+    <ul class="active-filters" id="active-<%= activeFilterItems[0].filterParamName %>">
       <% _.each(activeFilterItems, function(item) { %>
       <li>
         <a href="#" data-filter-param-name="<%= item.filterParamName %>" data-filter-value="<%= item.filterValue %>">
@@ -80,14 +80,14 @@
       <% }); %>
     </ul>
     <% } %>
-
-    <ul>
+    <% if (inactiveFilterItems.length > 0) { %>
+    <ul class="inactive-filters" id="inactive-<%= inactiveFilterItems[0].filterParamName %>">
       <% _.each(inactiveFilterItems, function(item) { %>
       <li>
         <a href="#" data-filter-param-name="<%= item.filterParamName %>" data-filter-value="<%= item.filterValue %>">
           <input type="checkbox" data-filter-param-name="<%= item.filterParamName %>"
                  data-filter-value="<%= item.filterValue %>">
-          <span><%= item.displayName %>  (<%= item.numberOfHits %>)</span>
+          <span><%= item.displayName %>  (<%= s.numberFormat(item.numberOfHits, 0) %>)</span>
         </a>
       </li>
       <% }); %>
@@ -98,7 +98,22 @@
         <a>show less</a>
       </li>
     </ul>
+    <% } %>
+
   </div>
+
+</script>
+
+<script type="text/template" id="searchListFilterDateTemplate">
+  <form class="date-filter-form">
+    <h3>Publication Date</h3>
+    <input name="filterStartDate" id="dateFilterStartDate" required type="text"<% if(!_.isEmpty(start)) {
+    print('value="'+start+'"'); } %> class="fdatepicker">
+    <div>&nbsp;to</div>
+    <input name="filterEndDate" id="dateFilterEndDate" required type="text"<% if(!_.isEmpty(end)) {
+    print('value="'+end+'"'); } %> class="fdatepicker">
+    <button type="submit">Apply</button>
+  </form>
 </script>
 
 <script type="text/template" id="searchHeaderFilterTemplate">
@@ -142,11 +157,13 @@
 </script>
 
 <script type="text/template" id="searchNoResultsTemplate">
+  <div class="search-results-none-found">
   <p>You searched for articles that have all of the following:</p>
 
   <p>Search Term: "<span><%= q %></span>"</p>
 
   <p>There were no results; please refine your search above and try again.</p>
+  </div>
 </script>
 
 <script type="text/template" id="searchParseErrorTemplate">

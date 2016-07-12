@@ -36,7 +36,9 @@ var TwitterModule;
             twitterData = _.map(twitterData, function (item) {
               item = item.event;
               item.text = that.addTweetTextLinks(item.text);
-              item.created_at = moment(item.created_at).format('D MMM YYYY');
+              var momentDate = moment(item.created_at);
+              item.timestamp = momentDate.valueOf();
+              item.created_at = momentDate.format('D MMM YYYY');
 
               // Change the profile pic domain if is an old one
               var tweetAvatar = item.user_profile_image;
@@ -47,6 +49,13 @@ var TwitterModule;
 
               return item;
             });
+
+            // Sort by date and descend it
+            twitterData = _.sortBy(twitterData, function (item) {
+              return item.timestamp;
+            });
+            twitterData = twitterData.reverse();
+
             var templateCompiled = itemTemplate({items: twitterData});
 
             that.$listEl.html(templateCompiled);

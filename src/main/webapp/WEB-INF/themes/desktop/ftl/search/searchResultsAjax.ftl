@@ -18,7 +18,6 @@
 <@js src="resource/js/vendor/foundation-datepicker.min.js"/>
 <@js src="resource/js/pages/advanced_search.js"/>
 <@js src="resource/js/components/search_results_alm_ajax.js"/>
-
 <@js src="resource/js/pages/search_results_ajax.js"/>
 <@js src="resource/js/components/toggle.js"/>
 <@js src="resource/js/vendor/underscore-min.js"/>
@@ -40,23 +39,15 @@
 
 <#if RequestParameters.q??>
   <#assign query = RequestParameters.q?html />
-  <#assign advancedSearch = false />
 <#elseif RequestParameters.unformattedQuery??>
   <#assign query = RequestParameters.unformattedQuery?html />
-  <#assign advancedSearch = true />
 <#else>
-  <#assign query = otherQuery />
-  <#assign advancedSearch = true />
-</#if>
-<#assign advancedSearchParams = {"unformattedQuery": query} />
-<#if RequestParameters.filterJournals??>
-  <#assign advancedSearchParams = advancedSearchParams + {"filterJournals" : RequestParameters.filterJournals} />
-<#else>
+  <#assign query = '' />
 </#if>
 
 <#include "suppressSearchFilter.ftl" />
 
-<body class="static ${journalStyle} search-results-body ajax">
+<body class="static ${journalStyle} search-results-body search-results-ajax">
 <#include "searchTemplates.ftl" />
 <#include "../common/paginationTemplate.ftl" />
 
@@ -65,7 +56,7 @@
 <form name="searchControlBarForm" id="searchControlBarForm" action="<@siteLink handlerName='simpleSearch'/>"
       method="get" <#if advancedOpen??> data-advanced-search="open"  </#if>
 >
-<#include "searchInputBar.ftl" />
+<#include "searchInputBarAjax.ftl" />
 </form>
 
 <form name="searchResultsForm" id="searchResultsForm" action="<@siteLink handlerName='simpleSearch'/>"
@@ -124,8 +115,8 @@
   <aside class="search-filters" id="searchFilters">
 
   </aside>
-  <article class="searchResults" data-doi="10.1371/journal.pbio.1000015">
-    <h2>Please enter your search term above.</h2>
+  <article class="searchResults">
+    <h2 class="no-term">Please enter your search term above.</h2>
   </article>
 
 

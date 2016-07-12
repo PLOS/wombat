@@ -283,7 +283,9 @@ var AdvancedSearch = {};
       AdvancedSearch.enableSearchInput(true);
       $(containerSelector).off('click change keyup').data('advanced-search-initialized', false).children().remove();
       $(this.clearButtonSelector).off('click');
-      $(this.inputSearchSelector).val('').parents('form').off('submit');
+      if (!$('#search-alert-modal').hasClass('ajax')) {
+        $(this.inputSearchSelector).val('').parents('form').off('submit');
+      }
       this.currentConditions = 0;
       $(this.inputSearchSelector).attr('advanced-condition', null);
       $(this.inputQuerySelector).attr('advanced-condition', null);

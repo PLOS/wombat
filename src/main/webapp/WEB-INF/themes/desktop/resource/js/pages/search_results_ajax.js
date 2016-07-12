@@ -20,6 +20,9 @@ var SearchResult;
     $searchAlertModalEl: $('#search-alert-modal'),
     resultPerPageElId: '#resultsPerPageDropdown',
     resetFiltersElId: '#clearAllFiltersButton',
+    dateFilterFormClass: '.date-filter-form',
+    dateFilterEndElId: '#dateFilterEndDate',
+    dateFilterStartElId: '#dateFilterStartDate',
 
     currentSearchParams: {
       "filterJournals": null,
@@ -36,11 +39,15 @@ var SearchResult;
       "page": 1
     },
     currentUrlParams: null,
-    searchEndpoint: 'search',
+    searchEndpoint: 'searchAjax',
     ajaxSearchEndpoint: 'dynamicSearch',
     searchFeedEndpoint: 'search/feed/atom',
 
     searchFilters: {},
+    searchDateFilters: {
+      "end": null,
+      "start": null
+    },
     results: [],
     resultTotalRecords: 0,
     resultsOffset: 0,
@@ -83,6 +90,7 @@ var SearchResult;
         this.processRequest();
       }
       else {
+        $('.no-term').show();
         this.isInitialized = true;
       }
     },
@@ -226,12 +234,45 @@ var SearchResult;
         e.stopPropagation();
 
         that.showLessFilterItems($(this));
+      }).on('click', '.advanced-search-toggle-btn', function (e) {
+        e.preventDefault();
+        $('.advanced-search-toggle-btn, .edit-query').toggle();
+        if (AdvancedSearch.isInitialized('.advanced-search-container')) {
+          $('.advanced-search-container').slideUp(function () {
+            // Only destroy after it has been hidden
+            AdvancedSearch.destroy('.advanced-search-container');
+          });
+        } else {
+          AdvancedSearch.init('.advanced-search-container', function (err) {
+            if (err) return console.log(err.message);
+            // Only show after it has been initialized
+            $('.advanced-search-container').slideDown();
+          });
+        }
+      }).on('submit', this.dateFilterFormClass, function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        that.currentSearchParams.filterEndDate = $(that.dateFilterEndElId).val();
+        that.currentSearchParams.filterStartDate = $(that.dateFilterStartElId).val();
+        that.processRequest();
       });
+      plos_toggle.init();
+
+      if ($('#searchControlBarForm').attr('data-advanced-search')) {
+        $('#simpleSearchLink, .edit-query').show();
+        $('#advancedSearchLink').hide();
+
+        AdvancedSearch.init('.advanced-search-container', function (err) {
+          // Only show after it has been initialized
+          $('.advanced-search-container').show();
+          $('.advanced-search-inputs-container input[type=text]').first().focus();
+        });
+
+      }
 
       this.$searchAlertOpenModalBtnEl.on('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
-
         that.$searchAlertModalEl.foundation('reveal', 'open');
 
         if(that.$searchAlertModalEl.hasClass('loggedIn')) {
@@ -339,6 +380,12 @@ var SearchResult;
               that.resultsOffset = response.searchResults.start;
 
               that.searchFilters = response.searchFilters;
+              if (!_.isEmpty(response.filterStartDate)) {
+                that.searchDateFilters['start'] = response.filterStartDate;
+              }
+              if (!_.isEmpty(response.filterEndDate)) {
+                that.searchDateFilters['end'] = response.filterEndDate;
+              }
 
               that.$searchHeaderEl.show();
               that.$filtersEl.show();
@@ -391,12 +438,10 @@ var SearchResult;
     },
     createResultList: function () {
       var resultListTemplate = _.template($('#searchListItemTemplate').html());
-
       var list = resultListTemplate({results: this.results});
 
       this.$resultListEl.append(list);
       this.$resultListEl.append(this.pagination.createPaginationElement());
-
       this.createPageSelector();
     },
     createPageSelector: function () {
@@ -413,7 +458,7 @@ var SearchResult;
     },
     updateCounterText: function () {
       var counterText = '%TOTAL% %RESULTSTR% for <strong>%TERM%</strong>';
-      counterText = counterText.replace('%TOTAL%', this.resultTotalRecords);
+      counterText = counterText.replace('%TOTAL%', s.numberFormat(this.resultTotalRecords, 0));
       if(this.resultTotalRecords > 1) {
         counterText = counterText.replace('%RESULTSTR%', 'results');
       }
@@ -444,15 +489,25 @@ var SearchResult;
         });
 
         $('.filterSection').each(function () {
-          var items = $(this).find('ul:not(".active-filters") li');
+          var items = $(this).find('ul:not(".active-filters") li:not(.toggle-trigger)');
           var $moreButton = $(this).find('[data-show-more-items]');
+          var $lessButton = $(this).find('[data-show-less-items]');
           if (items.length > 5) {
             that.showLessFilterItems($moreButton);
           }
           else {
             $moreButton.hide();
+            $lessButton.hide();
           }
         });
+
+        // Create date filter section
+        var filterDateTemplate = _.template($('#searchListFilterDateTemplate').html());
+        this.$filtersEl.append(filterDateTemplate(this.searchDateFilters));
+        var $dateFilterStartDateEl = $(this.dateFilterStartElId);
+        var $dateFilterEndDateEl = $(this.dateFilterEndElId);
+        RangeDatepicker.init($dateFilterStartDateEl, $dateFilterEndDateEl);
+
 
         this.createFilterHeader(activeFilters);
       }

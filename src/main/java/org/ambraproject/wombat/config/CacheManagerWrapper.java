@@ -34,6 +34,8 @@ class CacheManagerWrapper implements ServiceCacheSet {
   private static final String TAXONOMY_COUNT_TABLE_CACHE = "taxonomyCountTable";
   private static final String RECENT_ARTICLE_CACHE = "recentArticle";
 
+  static final Duration DEFAULT_TTL = new Duration(TimeUnit.HOURS, 1);
+
   CacheManagerWrapper() {
     manager = Caching.getCachingProvider().getCacheManager();
 
@@ -46,9 +48,11 @@ class CacheManagerWrapper implements ServiceCacheSet {
     });
 
     constructCache(manager, TAXONOMY_GRAPH_CACHE, String.class, TaxonomyGraph.class, config -> {
+      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(DEFAULT_TTL));
     });
 
     constructCache(manager, TAXONOMY_COUNT_TABLE_CACHE, String.class, TaxonomyCountTable.class, config -> {
+      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(DEFAULT_TTL));
     });
 
     constructCache(manager, RECENT_ARTICLE_CACHE, String.class, List.class, config -> {

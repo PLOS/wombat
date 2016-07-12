@@ -1,7 +1,5 @@
 package org.ambraproject.wombat.config;
 
-import com.google.common.base.CaseFormat;
-
 import javax.cache.expiry.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -14,7 +12,6 @@ public enum RemoteCacheSpace {
   EXTERNAL_RESOURCE(),
   EDITORIAL_CONTENT();
 
-  private final String cacheName;
   private final Duration timeToLive;
 
   private RemoteCacheSpace() {
@@ -23,13 +20,15 @@ public enum RemoteCacheSpace {
 
   private RemoteCacheSpace(Duration timeToLive) {
     this.timeToLive = timeToLive;
-    this.cacheName = CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, name()) + "Cache";
   }
 
   private static final Duration DEFAULT_TTL = new Duration(TimeUnit.HOURS, 1);
 
+  /**
+   * @return the name to provide to {@link javax.cache.CacheManager} when creating or getting a cache
+   */
   String getCacheName() {
-    return cacheName;
+    return name();
   }
 
   Duration getTimeToLive() {

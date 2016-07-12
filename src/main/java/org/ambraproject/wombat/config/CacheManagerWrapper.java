@@ -27,18 +27,12 @@ class CacheManagerWrapper implements ServiceCacheSet {
     return manager.createCache(cacheName, configuration);
   }
 
-  private static Cache<RemoteCacheKey, Object> constructDefaultRemoteCache(CacheManager manager, String cacheName) {
-    return constructCache(manager, cacheName, RemoteCacheKey.class, Object.class, config -> {
-      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.HOURS, 1)));
-    });
-  }
 
-
-  private static final String ASSET_FILENAME_CACHE = "assetFilenameCache";
-  private static final String ASSET_CONTENT_CACHE = "assetContentCache";
-  private static final String TAXONOMY_GRAPH_CACHE = "taxonomyGraphCache";
-  private static final String TAXONOMY_COUNT_TABLE_CACHE = "taxonomyCountTableCache";
-  private static final String RECENT_ARTICLE_CACHE = "recentArticleCache";
+  private static final String ASSET_FILENAME_CACHE = "ASSET_FILENAME";
+  private static final String ASSET_CONTENT_CACHE = "ASSET_CONTENT";
+  private static final String TAXONOMY_GRAPH_CACHE = "TAXONOMY_GRAPH";
+  private static final String TAXONOMY_COUNT_TABLE_CACHE = "TAXONOMY_COUNT_TABLE";
+  private static final String RECENT_ARTICLE_CACHE = "RECENT_ARTICLE";
 
   CacheManagerWrapper() {
     manager = Caching.getCachingProvider().getCacheManager();

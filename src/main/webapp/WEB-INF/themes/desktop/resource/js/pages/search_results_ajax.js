@@ -52,6 +52,7 @@ var SearchResult;
     resultTotalRecords: 0,
     resultsOffset: 0,
     pagination: null,
+    ALMData: null,
     filtersParams: [
       "filterJournals",
       "filterSubjects",
@@ -79,6 +80,12 @@ var SearchResult;
         that.currentSearchParams.page = currentPage;
         that.processRequest();
       });
+
+      this.ALMData = new SearchResultsALMData();
+
+      this.$searchHeaderEl.hide();
+      this.$filtersEl.hide();
+
       if(this.currentSearchParams.q != null) {
         this.processRequest();
       }
@@ -388,6 +395,12 @@ var SearchResult;
               that.createResultList();
 
               that.hideLoading();
+
+              that.ALMData.DOIlist = _.pluck(that.results, 'id');
+
+              that.ALMData.setDOIList(that.ALMData.DOIlist);
+              that.ALMData.processALMDataRequest();
+
             }
             else {
               that.showNoResults();

@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 
@@ -50,7 +51,7 @@ public class ParseXmlServiceImpl implements ParseXmlService {
     List<Reference> references = new ArrayList<>();
     List<Node> refListNodes = NodeListAdapter.wrap(doc.getElementsByTagName("ref-list"));
 
-    if (refListNodes.size() == 0) {
+    if (ParseXmlUtil.isNullOrEmpty(refListNodes)) {
       log.info("No <ref-list> element was found in the xml.");
       return references;
     }
@@ -68,30 +69,36 @@ public class ParseXmlServiceImpl implements ParseXmlService {
 
     List<Node> refNodes = NodeListAdapter.wrap(refListElement.getElementsByTagName("ref"));
     references = refNodes.stream()
-        .map(ref -> buildReferences((Element) ref))
-        .collect(Collectors.toList()).stream() // List<List<Reference>>
+        .map(ref -> buildReferences((Element) ref)) // Stream<List<Reference>>
         .flatMap(r -> r.stream()).collect(Collectors.toList());
 
     return references;
   }
 
   private List<Reference> buildReferences(Element refElement) {
-    NodeList citationElements = refElement.getElementsByTagName("element-citation") != null ?
-        refElement.getElementsByTagName("element-citation") :
-        refElement.getElementsByTagName("mixed-citation") != null ?
-        refElement.getElementsByTagName("mixed-citation") : null;
+    List<Node> citationElements =
+        !ParseXmlUtil.isNullOrEmpty(refElement.getElementsByTagName("element-citation")) ?
+        NodeListAdapter.wrap(refElement.getElementsByTagName("element-citation")) :
+        !ParseXmlUtil.isNullOrEmpty(refElement.getElementsByTagName("mixed-citation")) ?
+        NodeListAdapter.wrap(refElement.getElementsByTagName("mixed-citation")) : null;
+
+
     List<Reference> references = new ArrayList<>();
     // a <ref> element can have one or more of citation elements
-    for (Node citationNode : NodeListAdapter.wrap(citationElements)) {
+    for (Node citationNode : citationElements) {
       if (citationNode.getNodeType() != Node.ELEMENT_NODE) {
         throw new RuntimeException("<element-citation> or <mixed-citation> is not an element.");
       }
 
       Element element = (Element) citationNode;
       Reference reference = new Reference();
-      reference.setJournal(setJournal(element));
+      reference.setJournal(parseJournal(element));
       reference.setTitle(buildTitle(element));
+      if (Strings.isNullOrEmpty(reference.getTitle())) {
+        reference.setUnStructuredReference(getUnstructuredCitation(element));
+      }
       reference.setAuthors(parseAuthors(element));
+      reference.setCollabAuthors(parseCollabAuthors(element));
       String year = ParseXmlUtil.getElementSingleValue(element, "year");
       reference.setYear(parseYear(year));
       String volume = ParseXmlUtil.getElementSingleValue(element, "volume");
@@ -102,12 +109,13 @@ public class ParseXmlServiceImpl implements ParseXmlService {
       reference.setIsbn(ParseXmlUtil.getElementSingleValue(element, "isbn"));
 
       NodeList extLinkList = element.getElementsByTagName("ext-link");
-      if (extLinkList != null && extLinkList.getLength() > 0) {
+      if (!ParseXmlUtil.isNullOrEmpty(extLinkList)) {
         Element extLink = (Element) extLinkList.item(0);
         String linkType = ParseXmlUtil.getElementAttributeValue(extLink, "ext-link-type");
         if (linkType.equals("uri")) {
-          // TODO: add doi validation
-          reference.setDoi(ParseXmlUtil.getElementAttributeValue(extLink, "xlink:href"));
+          reference.setUri(ParseXmlUtil.getElementAttributeValue(extLink, "xlink:href"));
+          // TODO: add a check for doi
+          reference.setDoi(extLink.getFirstChild().getNodeValue());
         }
       }
       buildPages(element, reference);
@@ -120,14 +128,7 @@ public class ParseXmlServiceImpl implements ParseXmlService {
   /**
    * Sets the journal title property of a reference appropriately based on the XML.
    */
-  private String setJournal(Element element) {
-    Element elementCitation = element.getElementsByTagName("element-citation") != null ?
-        (Element) element.getElementsByTagName("element-citation").item(0) : null;
-    Element mixedCitation=   element.getElementsByTagName("mixed-citation") != null ? (Element) element
-        .getElementsByTagName("mixed-citation").item(0) : null;
-
-    Element citationElement = elementCitation != null ? elementCitation : mixedCitation != null ?
-        mixedCitation : null;
+  private String parseJournal(Element citationElement) {
 
     String type = ParseXmlUtil.getElementAttributeValue(citationElement, "publication-type");
     if (Strings.isNullOrEmpty(type)) {
@@ -136,7 +137,7 @@ public class ParseXmlServiceImpl implements ParseXmlService {
 
     // pmc2obj-v3.xslt lines 730-739
     if (Reference.PublicationType.JOURNAL.getValue().equals(type)) {
-      return ParseXmlUtil.getElementSingleValue(element, "source");
+      return ParseXmlUtil.getElementSingleValue(citationElement, "source");
     }
     return null;
   }
@@ -144,21 +145,16 @@ public class ParseXmlServiceImpl implements ParseXmlService {
   /**
    * @return the value of the title property, retrieved from the XML
    */
-  private String buildTitle(Element refElement) {
+  private String buildTitle(Element citationElement) {
 
-    NodeList titleNode = refElement.getElementsByTagName("article-title");
+    NodeList titleNode = citationElement.getElementsByTagName("article-title");
 
-    if (titleNode == null || titleNode.getLength() == 0) {
-      titleNode = refElement.getElementsByTagName("source");
+    if (ParseXmlUtil.isNullOrEmpty(titleNode)) {
+      titleNode = citationElement.getElementsByTagName("source");
     }
-
-    if (titleNode == null || titleNode.getLength() == 0) {
-      NodeList mixedCitation = refElement.getElementsByTagName("mixed-citation");
-      if (mixedCitation.item(0).getNodeType() == Node.TEXT_NODE) {
-       titleNode = mixedCitation;
-      } else {
-        return null;
-      }
+    // unstructured citation
+    if (ParseXmlUtil.isNullOrEmpty(titleNode)) {
+      return null;
     }
 
     String title = ParseXmlUtil.getElementMixedContent(new StringBuilder(), titleNode.item(0)).toString();
@@ -166,29 +162,40 @@ public class ParseXmlServiceImpl implements ParseXmlService {
     return (title == null) ? null : ParseXmlUtil.standardizeWhitespace(title);
   }
 
+  private String getUnstructuredCitation(Element citationElement) {
+    String unstructuredCitation = null;
+    if (citationElement.getTagName().equals("mixed-citation")
+        && citationElement.getFirstChild().getNodeType() == Node.TEXT_NODE) {
+      unstructuredCitation = ParseXmlUtil.getElementMixedContent(new StringBuilder(), citationElement).toString();
 
-  private List<NlmPerson> parseAuthors(Element element) {
-    List<Node> personGroupElement = NodeListAdapter.wrap(element.getElementsByTagName("person-group"));
+      }
+    return (unstructuredCitation == null) ? null : ParseXmlUtil.standardizeWhitespace(unstructuredCitation);
+  }
+
+  private List<NlmPerson> parseAuthors(Element citationElement) {
+    List<Node> personGroupElement = NodeListAdapter.wrap(citationElement.getElementsByTagName("person-group"));
     List<NlmPerson> personGroup = null;
 
-
-    if (personGroupElement != null) {
+    if (!ParseXmlUtil.isNullOrEmpty(personGroupElement)) {
       String type;
       for (Node pgNode : personGroupElement) {
         Element pgElement = (Element) pgNode;
-        List<Node> personNodes = NodeListAdapter.wrap(pgElement.getElementsByTagName("name"));
+        List<Node> nameNodes = NodeListAdapter.wrap(pgElement.getElementsByTagName("name"));
         type = ParseXmlUtil.getElementAttributeValue(pgElement, "person-group-type");
-        if (type != null && type.equals("author")) {
-          personGroup = personNodes.stream().map(node -> parsePersonName((Element) node)).collect
+        if (Strings.isNullOrEmpty(type) && type.equals("author")) {
+          personGroup = nameNodes.stream().map(node -> parsePersonName((Element) node)).collect
               (Collectors.toList());
         }
       }
     } else {
-      List<Node> personNodes = NodeListAdapter.wrap(element.getElementsByTagName("name"));
+      List<Node> nameNodes = NodeListAdapter.wrap(citationElement.getElementsByTagName("name"));
+      int editorStartIndex = getEditorStartIndex(nameNodes);
 
-      personGroup = personNodes.stream().filter(node -> isEditorNode(node))
+      List<Node> authorNodes = editorStartIndex == -1 ? nameNodes: nameNodes.subList(0, editorStartIndex);
+      personGroup = authorNodes.stream()
           .map(node -> parsePersonName((Element) node))
           .collect(Collectors.toList());
+
     }
     return personGroup;
   }
@@ -223,8 +230,32 @@ public class ParseXmlServiceImpl implements ParseXmlService {
         .build();
   }
 
-  private boolean isEditorNode(Node node) {
-    return false;
+  private int getEditorStartIndex(List<Node> nameNodes) {
+    // this is a very very very ugly hack for <mixed-citation> element with the following format
+    // <name name-style="western">
+    //   <surname>s1</surname>
+    //   <given-names>g1</given-names>
+    // </name> ...
+    // <chapter-title>Some tite</chapter-title>. In:
+    // <name name-style="western">
+    //   <surname>s2</surname>
+    //   <given-names>g2</given-names>
+    // </name>, editors, ...
+    for (int i = 0; i < nameNodes.size(); i++) {
+      Node previousNode = nameNodes.get(i).getPreviousSibling();
+      if (previousNode.getNodeType() == Node.TEXT_NODE && previousNode.getNodeValue().contains("In")) {
+        return i;
+      }
+
+    }
+    return -1;
+  }
+
+  private List<String> parseCollabAuthors(Element citationElement) {
+    List<Node> collabNodes = NodeListAdapter.wrap(citationElement.getElementsByTagName("collab"));
+    return collabNodes.stream()
+        .map(collabNode -> collabNode.getFirstChild().getNodeValue())
+        .collect(Collectors.toList());
   }
 
   private Integer parseYear(String displayYear) {
@@ -285,14 +316,14 @@ public class ParseXmlServiceImpl implements ParseXmlService {
   /**
    * @return the value of the first and last page of the reference
    */
-  private void buildPages(Element refElement, Reference reference) {
-    String fPage = ParseXmlUtil.getElementSingleValue(refElement, "fpage");
+  private void buildPages(Element citationElement, Reference reference) {
+    String fPage = ParseXmlUtil.getElementSingleValue(citationElement, "fpage");
     reference.setfPage(fPage);
-    String lPage = ParseXmlUtil.getElementSingleValue(refElement, "lpage");
+    String lPage = ParseXmlUtil.getElementSingleValue(citationElement, "lpage");
     reference.setlPage(lPage);
 
     if (Strings.isNullOrEmpty(fPage) && Strings.isNullOrEmpty(lPage)) {
-      String range = ParseXmlUtil.getElementSingleValue(refElement, "page-range");
+      String range = ParseXmlUtil.getElementSingleValue(citationElement, "page-range");
       if (!Strings.isNullOrEmpty(range)) {
         int index = range.indexOf("-");
         if (index > 0) {

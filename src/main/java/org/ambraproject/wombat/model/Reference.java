@@ -35,6 +35,7 @@ public class Reference {
   private String fPage;
   private String lPage;
   private String doi;
+  private String uri;
   private List<NlmPerson> authors;
   private List<String> collabAuthors;
   private String unStructuredReference;
@@ -64,7 +65,6 @@ public class Reference {
   public void setYear(Integer year) {
     this.year = year;
   }
-
 
   public Integer getVolumeNumber() {
     return volumeNumber;
@@ -96,6 +96,14 @@ public class Reference {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+  public String getUnStructuredReference() {
+    return unStructuredReference;
+  }
+
+  public void setUnStructuredReference(String unStructuredReference) {
+    this.unStructuredReference = unStructuredReference;
   }
 
   public String getPublisherName() {
@@ -144,6 +152,14 @@ public class Reference {
 
   public void setDoi(String doi) {
     this.doi = doi;
+  }
+
+  public String getUri() {
+    return uri;
+  }
+
+  public void setUri(String uri) {
+    this.uri = uri;
   }
 
   public List<NlmPerson> getAuthors() {

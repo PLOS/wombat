@@ -91,4 +91,13 @@ public class ParseXmlUtil {
     return (text == null) ? null : CharMatcher.WHITESPACE.trimAndCollapseFrom(text, ' ');
   }
 
-}
+  public static boolean isNullOrEmpty(NodeList nodeList){
+    return nodeList == null || nodeList.getLength() == 0;
+  }
+
+  public static boolean isNullOrEmpty(List<Node> nodeList){
+    return nodeList == null || nodeList.size() == 0;
+  }
+
+
+  }

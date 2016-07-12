@@ -266,7 +266,6 @@ var SearchResult;
       this.$searchAlertOpenModalBtnEl.on('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
-
         that.$searchAlertModalEl.foundation('reveal', 'open');
 
         if(that.$searchAlertModalEl.hasClass('loggedIn')) {

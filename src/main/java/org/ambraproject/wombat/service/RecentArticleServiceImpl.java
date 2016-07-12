@@ -1,11 +1,11 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;
 import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.util.CacheUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,28 +68,13 @@ public class RecentArticleServiceImpl implements RecentArticleService {
                                                      double numberOfDaysAgo,
                                                      boolean shuffle,
                                                      List<String> articleTypes,
-                                                     List<String> articleTypesToExclude,
-                                                     Optional<Integer> cacheDuration)
+                                                     List<String> articleTypesToExclude)
       throws IOException {
     String journalKey = site.getJournalKey();
-    String cacheKey = "recentArticles:" + journalKey;
-    List<Map<String, Object>> articles = null;
     Cache<String, List> cache = serviceCacheSet.getRecentArticleCache();
 
-    if (cacheDuration.isPresent()) {
-      articles = cache != null ? cache.get(cacheKey) : null; // remains null if not cached
-    }
-    if (articles == null) {
-      articles = retrieveRecentArticles(journalKey, articleCount, numberOfDaysAgo, articleTypes, articleTypesToExclude);
-      if (cache != null && cacheDuration.isPresent()) {
-        /*
-         * Casting to Serializable relies on all data structures that Gson uses to be serializable, which is safe
-         * enough. We could avoid the cast with a shallow copy to a serializable List, but we would still rely on all
-         * nested Lists and Maps being serializable. We'd rather avoid a deep copy until it's necessary.
-         */
-        cache.put(cacheKey, articles);
-      }
-    }
+    List<Map<String, Object>> articles = CacheUtil.getOrCompute(cache, journalKey,
+        () -> retrieveRecentArticles(journalKey, articleCount, numberOfDaysAgo, articleTypes, articleTypesToExclude));
 
     if (articles.size() > articleCount) {
       articles = shuffle ? shuffleSubset(articles, articleCount) : articles.subList(0, articleCount);
@@ -99,8 +84,8 @@ public class RecentArticleServiceImpl implements RecentArticleService {
      * Returning this object, we rely on the caller not to modify the contents, as documented for
      * RecentArticleService.getRecentArticles. Depending on cache implementation and whether we made a copy to shuffle,
      * mutating the returned object (or its contents) could disrupt future calls to this method. Merely wrapping the
-     * return value in java.util.Collections.unmodifiableList would (similar to the serializability thing above) leave
-     * nested Lists and Maps mutable. Let's not recursively wrap every data structure until it's necessary.
+     * return value in java.util.Collections.unmodifiableList would leave nested Lists and Maps mutable. Let's not
+     * recursively wrap every data structure until it's necessary.
      */
     return articles;
   }
@@ -109,8 +94,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
                                               int articleCount,
                                               double numberOfDaysAgo,
                                               List<String> articleTypes,
-                                              List<String> articleTypesToExclude)
-      throws IOException {
+                                              List<String> articleTypesToExclude) {
     Calendar threshold = Calendar.getInstance();
     threshold.add(Calendar.SECOND, (int) (-numberOfDaysAgo * SECONDS_PER_DAY));
 
@@ -129,7 +113,11 @@ public class RecentArticleServiceImpl implements RecentArticleService {
       }
     }
 
-    return articleApi.requestObject(address.build(), List.class);
+    try {
+      return articleApi.requestObject(address.build(), List.class);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 
 }

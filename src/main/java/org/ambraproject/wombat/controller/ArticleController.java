@@ -17,6 +17,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
 import com.google.gson.Gson;
+import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
@@ -987,7 +988,7 @@ public class ArticleController extends WombatController {
    */
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
 
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(serviceCacheSet.getAmendmentBodyCache(), renderContext.getArticleId());
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.AMENDMENT_BODY, renderContext.getArticleId());
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
@@ -1011,7 +1012,7 @@ public class ArticleController extends WombatController {
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
 
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(serviceCacheSet.getArticleHtmlCache(),
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.ARTICLE_HTML,
         renderContext.getSite().getKey(), renderContext.getArticleId());
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 

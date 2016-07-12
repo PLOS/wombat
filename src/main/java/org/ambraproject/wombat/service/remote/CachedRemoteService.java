@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Preconditions;
 import org.ambraproject.rhombat.HttpDateUtil;
+import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -16,6 +17,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Objects;
 
 /**
  * Decorator class that adds caching capability to a wrapped {@link RemoteService} object. The uncached RemoteService
@@ -26,10 +28,12 @@ import java.util.Calendar;
 public class CachedRemoteService<S extends Closeable> implements RemoteService<S> {
   private static final Logger log = LoggerFactory.getLogger(CachedRemoteService.class);
 
+  private final ServiceCacheSet serviceCacheSet;
   private final RemoteService<S> remoteService;
 
-  public CachedRemoteService(RemoteService<S> remoteService) {
-    this.remoteService = Preconditions.checkNotNull(remoteService);
+  public CachedRemoteService(ServiceCacheSet serviceCacheSet, RemoteService<S> remoteService) {
+    this.serviceCacheSet = Objects.requireNonNull(serviceCacheSet);
+    this.remoteService = Objects.requireNonNull(remoteService);
   }
 
   @Override // delegate
@@ -103,7 +107,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
     Preconditions.checkNotNull(callback);
     Preconditions.checkNotNull(cacheKey);
 
-    Cache<RemoteCacheKey, Object> cache = cacheKey.getCache();
+    Cache<RemoteCacheKey, Object> cache = serviceCacheSet.getCacheFor(cacheKey.getRemoteCacheSpace());
     CachedObject<T> cached = getCachedObject(cache, cacheKey);
     Calendar lastModified = getLastModified(cached);
 

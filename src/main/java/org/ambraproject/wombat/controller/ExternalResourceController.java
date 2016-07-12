@@ -2,6 +2,7 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Optional;
 import com.google.common.net.HttpHeaders;
+import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
@@ -81,7 +82,7 @@ public class ExternalResourceController extends WombatController {
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
                      String key, Optional<Integer> version)
       throws IOException {
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(serviceCacheSet.getExternalResourceCache(), key, String.valueOf(version.orNull()));
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.EXTERNAL_RESOURCE, key, String.valueOf(version.orNull()));
     Map<String, Object> fileMetadata;
 
     try {

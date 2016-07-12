@@ -7,6 +7,7 @@ import org.ambraproject.wombat.util.DummyCache;
 
 import javax.cache.Cache;
 import java.util.List;
+import java.util.Objects;
 
 public class DummyServiceCacheSet implements ServiceCacheSet {
 
@@ -36,37 +37,8 @@ public class DummyServiceCacheSet implements ServiceCacheSet {
   }
 
   @Override
-  public Cache<RemoteCacheKey, Object> getArticleApiCache() {
-    return DummyCache.getInstance();
-  }
-
-  @Override
-  public Cache<RemoteCacheKey, Object> getUserApiCache() {
-    return DummyCache.getInstance();
-  }
-
-  @Override
-  public Cache<RemoteCacheKey, Object> getArticleHtmlCache() {
-    return DummyCache.getInstance();
-  }
-
-  @Override
-  public Cache<RemoteCacheKey, Object> getAmendmentBodyCache() {
-    return DummyCache.getInstance();
-  }
-
-  @Override
-  public Cache<RemoteCacheKey, Object> getSiteContentMetadataCache() {
-    return DummyCache.getInstance();
-  }
-
-  @Override
-  public Cache<RemoteCacheKey, Object> getExternalResourceCache() {
-    return DummyCache.getInstance();
-  }
-
-  @Override
-  public Cache<RemoteCacheKey, Object> getEditorialContentCache() {
+  public Cache<RemoteCacheKey, Object> getCacheFor(RemoteCacheSpace space) {
+    Objects.requireNonNull(space);
     return DummyCache.getInstance();
   }
 }

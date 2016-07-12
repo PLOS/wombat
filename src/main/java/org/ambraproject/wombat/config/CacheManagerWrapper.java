@@ -39,13 +39,6 @@ class CacheManagerWrapper implements ServiceCacheSet {
   private static final String TAXONOMY_GRAPH_CACHE = "taxonomyGraphCache";
   private static final String TAXONOMY_COUNT_TABLE_CACHE = "taxonomyCountTableCache";
   private static final String RECENT_ARTICLE_CACHE = "recentArticleCache";
-  private static final String ARTICLE_API_CACHE = "articleApiCache";
-  private static final String USER_API_CACHE = "userApiCache";
-  private static final String ARTICLE_HTML_CACHE = "articleHtmlCache";
-  private static final String AMENDMENT_BODY_CACHE = "amendmentBodyCache";
-  private static final String SITE_CONTENT_METADATA_CACHE = "siteContentMetadataCache";
-  private static final String EXTERNAL_RESOURCE_CACHE = "externalResourceCache";
-  private static final String EDITORIAL_CONTENT_CACHE = "editorialContentCache";
 
   CacheManagerWrapper() {
     manager = Caching.getCachingProvider().getCacheManager();
@@ -68,16 +61,11 @@ class CacheManagerWrapper implements ServiceCacheSet {
       config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 30)));
     });
 
-    constructDefaultRemoteCache(manager, ARTICLE_API_CACHE);
-    constructDefaultRemoteCache(manager, USER_API_CACHE);
-    constructDefaultRemoteCache(manager, ARTICLE_HTML_CACHE);
-    constructDefaultRemoteCache(manager, AMENDMENT_BODY_CACHE);
-    constructDefaultRemoteCache(manager, SITE_CONTENT_METADATA_CACHE);
-    constructDefaultRemoteCache(manager, EXTERNAL_RESOURCE_CACHE);
-
-    constructCache(manager, EDITORIAL_CONTENT_CACHE, RemoteCacheKey.class, Object.class, config -> {
-      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 30)));
-    });
+    for (RemoteCacheSpace remoteCacheSpace : RemoteCacheSpace.values()) {
+      constructCache(manager, remoteCacheSpace.getCacheName(), RemoteCacheKey.class, Object.class, config -> {
+        config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(remoteCacheSpace.getTimeToLive()));
+      });
+    }
 
   }
 
@@ -107,37 +95,7 @@ class CacheManagerWrapper implements ServiceCacheSet {
   }
 
   @Override
-  public Cache<RemoteCacheKey, Object> getArticleApiCache() {
-    return manager.getCache(ARTICLE_API_CACHE, RemoteCacheKey.class, Object.class);
-  }
-
-  @Override
-  public Cache<RemoteCacheKey, Object> getUserApiCache() {
-    return manager.getCache(USER_API_CACHE, RemoteCacheKey.class, Object.class);
-  }
-
-  @Override
-  public Cache<RemoteCacheKey, Object> getArticleHtmlCache() {
-    return manager.getCache(ARTICLE_HTML_CACHE, RemoteCacheKey.class, Object.class);
-  }
-
-  @Override
-  public Cache<RemoteCacheKey, Object> getAmendmentBodyCache() {
-    return manager.getCache(AMENDMENT_BODY_CACHE, RemoteCacheKey.class, Object.class);
-  }
-
-  @Override
-  public Cache<RemoteCacheKey, Object> getSiteContentMetadataCache() {
-    return manager.getCache(SITE_CONTENT_METADATA_CACHE, RemoteCacheKey.class, Object.class);
-  }
-
-  @Override
-  public Cache<RemoteCacheKey, Object> getExternalResourceCache() {
-    return manager.getCache(EXTERNAL_RESOURCE_CACHE, RemoteCacheKey.class, Object.class);
-  }
-
-  @Override
-  public Cache<RemoteCacheKey, Object> getEditorialContentCache() {
-    return manager.getCache(EDITORIAL_CONTENT_CACHE, RemoteCacheKey.class, Object.class);
+  public Cache<RemoteCacheKey, Object> getCacheFor(RemoteCacheSpace space) {
+    return manager.getCache(space.getCacheName(), RemoteCacheKey.class, Object.class);
   }
 }

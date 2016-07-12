@@ -3,6 +3,7 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
+import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.apache.http.Header;
@@ -12,7 +13,6 @@ import org.plos.ned_client.model.IndividualComposite;
 import org.plos.ned_client.model.Individualprofile;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.cache.Cache;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -85,8 +85,8 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
   }
 
   @Override
-  protected Cache<RemoteCacheKey, Object> getCache() {
-    return serviceCacheSet.getUserApiCache();
+  protected RemoteCacheSpace getCacheSpace() {
+    return RemoteCacheSpace.USER_API;
   }
 
   @Override

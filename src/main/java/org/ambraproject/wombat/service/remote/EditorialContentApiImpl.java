@@ -3,6 +3,7 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
+import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
@@ -143,7 +144,7 @@ public class EditorialContentApiImpl implements EditorialContentApi {
                          final Set<HtmlElementTransformation> transformations,
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(serviceCacheSet.getEditorialContentCache(), pageType, key);
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.EDITORIAL_CONTENT, pageType, key);
     Optional<Integer> version = Optional.absent();     // TODO May want to support page versioning at some point using fetchHtmlDirective
 
     String transformedHtml = requestCachedReader(cacheKey, key, version, (Reader htmlReader) -> {
@@ -173,7 +174,7 @@ public class EditorialContentApiImpl implements EditorialContentApi {
    */
   @Override
   public Object getJson(String pageType, String key) throws IOException {
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(serviceCacheSet.getEditorialContentCache(), pageType, key);
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.EDITORIAL_CONTENT, pageType, key);
     Optional<Integer> version = Optional.absent();
     Object jsonObj = requestCachedReader(cacheKey, key, version,
         (Reader jsonReader) -> gson.fromJson(jsonReader, Object.class));

@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
+import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.apache.http.Header;
@@ -7,7 +8,6 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.cache.Cache;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
@@ -23,8 +23,8 @@ public class ArticleApiImpl extends AbstractRestfulJsonApi implements ArticleApi
   }
 
   @Override
-  protected Cache<RemoteCacheKey, Object> getCache() {
-    return serviceCacheSet.getArticleApiCache();
+  protected RemoteCacheSpace getCacheSpace() {
+    return RemoteCacheSpace.ARTICLE_API;
   }
 
   @Override

@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.collect.ImmutableList;
+import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -18,7 +19,6 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.cache.Cache;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
@@ -52,7 +52,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   /**
    * @return a string, which is constant and unique for each service, to identify cached values the service
    */
-  protected abstract Cache<RemoteCacheKey, Object> getCache();
+  protected abstract RemoteCacheSpace getCacheSpace();
 
   /**
    * @return headers to add to every outgoing request to the service
@@ -89,7 +89,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
 
   @Override
   public final <T> T requestObject(ApiAddress address, Type responseType) throws IOException {
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(getCache(), address.getAddress());
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(getCacheSpace(), address.getAddress());
 
     // Just try to cache everything. We may want to narrow this in the future.
     return requestCachedObject(cacheKey, address, responseType);

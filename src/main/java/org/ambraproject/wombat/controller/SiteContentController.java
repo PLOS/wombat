@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Optional;
+import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
@@ -56,7 +57,7 @@ public class SiteContentController extends WombatController {
     }
     String repoKey = repoKeyPrefix.concat(".").concat(pageName);
 
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(serviceCacheSet.getSiteContentMetadataCache(), repoKey);
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.SITE_CONTENT_METADATA, repoKey);
 
     Optional<Integer> version = Optional.absent(); // versioning is not supported for site content
     try {

@@ -18,17 +18,5 @@ public interface ServiceCacheSet {
 
   Cache<String, List> getRecentArticleCache();
 
-  Cache<RemoteCacheKey, Object> getArticleApiCache();
-
-  Cache<RemoteCacheKey, Object> getUserApiCache();
-
-  Cache<RemoteCacheKey, Object> getArticleHtmlCache();
-
-  Cache<RemoteCacheKey, Object> getAmendmentBodyCache();
-
-  Cache<RemoteCacheKey, Object> getSiteContentMetadataCache();
-
-  Cache<RemoteCacheKey, Object> getExternalResourceCache();
-
-  Cache<RemoteCacheKey, Object> getEditorialContentCache();
+  Cache<RemoteCacheKey, Object> getCacheFor(RemoteCacheSpace space);
 }

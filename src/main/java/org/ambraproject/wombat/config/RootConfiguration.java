@@ -102,14 +102,16 @@ public class RootConfiguration {
   }
 
   @Bean
-  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager)
+  public CachedRemoteService<InputStream> cachedRemoteStreamer(ServiceCacheSet serviceCacheSet,
+                                                               HttpClientConnectionManager httpClientConnectionManager)
       throws IOException {
-    return new CachedRemoteService<>(new StreamService(httpClientConnectionManager));
+    return new CachedRemoteService<>(serviceCacheSet, new StreamService(httpClientConnectionManager));
   }
 
   @Bean
-  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager)
+  public CachedRemoteService<Reader> cachedRemoteReader(ServiceCacheSet serviceCacheSet,
+                                                        HttpClientConnectionManager httpClientConnectionManager)
       throws IOException {
-    return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager));
+    return new CachedRemoteService<>(serviceCacheSet, new ReaderService(httpClientConnectionManager));
   }
 }

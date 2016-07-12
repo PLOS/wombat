@@ -10,7 +10,7 @@ public enum RemoteCacheSpace {
   AMENDMENT_BODY("amendmentBody"),
   SITE_CONTENT_METADATA("siteContentMetadata"),
   EXTERNAL_RESOURCE("externalResource"),
-  EDITORIAL_CONTENT("editorialContent");
+  EDITORIAL_CONTENT("editorialContent", new Duration(TimeUnit.MINUTES, 30));
 
   private final String cacheName;
   private final Duration timeToLive;

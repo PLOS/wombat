@@ -4,17 +4,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
-import org.ambraproject.wombat.service.remote.CachedRemoteService;
-import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.RemoteCacheKey;
-import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.service.remote.UserApiImpl;
-import org.ambraproject.wombat.service.remote.ReaderService;
-import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleApiImpl;
+import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.ReaderService;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.StreamService;
+import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.service.remote.UserApiImpl;
 import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -22,7 +21,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.yaml.snakeyaml.Yaml;
 
-import javax.cache.Cache;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -104,16 +102,14 @@ public class RootConfiguration {
   }
 
   @Bean
-  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager,
-                                                               ServiceCacheSet serviceCacheSet) throws IOException {
-    Cache<RemoteCacheKey, Object> remoteServiceCache = serviceCacheSet.getRemoteServiceCache();
-    return new CachedRemoteService<>(new StreamService(httpClientConnectionManager), remoteServiceCache);
+  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager)
+      throws IOException {
+    return new CachedRemoteService<>(new StreamService(httpClientConnectionManager));
   }
 
   @Bean
-  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager,
-                                                        ServiceCacheSet serviceCacheSet) throws IOException {
-    Cache<RemoteCacheKey, Object> remoteServiceCache = serviceCacheSet.getRemoteServiceCache();
-    return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager), remoteServiceCache);
+  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager)
+      throws IOException {
+    return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager));
   }
 }

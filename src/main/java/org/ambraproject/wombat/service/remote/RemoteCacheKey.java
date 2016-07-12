@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.collect.ImmutableList;
 
+import javax.cache.Cache;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,46 +11,52 @@ import java.util.Objects;
  */
 public final class RemoteCacheKey {
 
-  private final String namespace;
+  private final Cache<RemoteCacheKey, Object> cache;
   private final ImmutableList<String> identifiers;
 
-  private RemoteCacheKey(String namespace, List<String> identifiers) {
-    this.namespace = Objects.requireNonNull(namespace);
+  private RemoteCacheKey(Cache<RemoteCacheKey, Object> cache, List<String> identifiers) {
+    this.cache = Objects.requireNonNull(cache);
     this.identifiers = ImmutableList.copyOf(identifiers);
   }
 
   /**
    * Create a cache key.
    *
-   * @param namespace  a constant string that identifies the namespace of identifiers in use
+   * @param cache      the cache to use
    * @param identifier a string that uniquely identifies the value to be cached
    * @return a cache key
    */
-  public static RemoteCacheKey create(String namespace, String identifier) {
-    return new RemoteCacheKey(namespace, ImmutableList.of(identifier));
+  public static RemoteCacheKey create(Cache<RemoteCacheKey, Object> cache, String identifier) {
+    return new RemoteCacheKey(cache, ImmutableList.of(identifier));
   }
 
   /**
    * Create a cache key from a sequence of strings that uniquely identifies the value to be cached.
    *
-   * @param namespace a constant string that identifies the namespace of identifiers in use
+   * @param cache the cache to use
    * @return a cache key
    */
-  public static RemoteCacheKey create(String namespace, String firstIdentifier, String secondIdentifier, String... moreIdentifiers) {
+  public static RemoteCacheKey create(Cache<RemoteCacheKey, Object> cache, String firstIdentifier, String secondIdentifier, String... moreIdentifiers) {
     ImmutableList<String> identifiers = ImmutableList.<String>builder()
         .add(firstIdentifier).add(secondIdentifier).add(moreIdentifiers).build();
-    return new RemoteCacheKey(namespace, identifiers);
+    return new RemoteCacheKey(cache, identifiers);
   }
+
+  Cache<RemoteCacheKey, Object> getCache() {
+    return cache;
+  }
+
+  // IMPORTANT: Only `identifiers` is used for this class's value identity.
+  // Do NOT reference `cache` in hashCode and equals.
 
   @Override
   public boolean equals(Object o) {
     return this == o || o != null && getClass() == o.getClass()
-        && namespace.equals(((RemoteCacheKey) o).namespace)
         && identifiers.equals(((RemoteCacheKey) o).identifiers);
   }
 
   @Override
   public int hashCode() {
-    return 31 * identifiers.hashCode() + namespace.hashCode();
+    return identifiers.hashCode();
   }
 }

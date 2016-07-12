@@ -7,6 +7,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.cache.Cache;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
@@ -22,8 +23,8 @@ public class ArticleApiImpl extends AbstractRestfulJsonApi implements ArticleApi
   }
 
   @Override
-  protected String getCacheNamespace() {
-    return "article";
+  protected Cache<RemoteCacheKey, Object> getCache() {
+    return serviceCacheSet.getArticleApiCache();
   }
 
   @Override

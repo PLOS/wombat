@@ -12,6 +12,7 @@ import org.plos.ned_client.model.IndividualComposite;
 import org.plos.ned_client.model.Individualprofile;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.cache.Cache;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -84,8 +85,8 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
   }
 
   @Override
-  protected String getCacheNamespace() {
-    return "user";
+  protected Cache<RemoteCacheKey, Object> getCache() {
+    return serviceCacheSet.getUserApiCache();
   }
 
   @Override

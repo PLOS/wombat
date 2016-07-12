@@ -36,8 +36,37 @@ public class DummyServiceCacheSet implements ServiceCacheSet {
   }
 
   @Override
-  public Cache<RemoteCacheKey, Object> getRemoteServiceCache() {
+  public Cache<RemoteCacheKey, Object> getArticleApiCache() {
     return DummyCache.getInstance();
   }
 
+  @Override
+  public Cache<RemoteCacheKey, Object> getUserApiCache() {
+    return DummyCache.getInstance();
+  }
+
+  @Override
+  public Cache<RemoteCacheKey, Object> getArticleHtmlCache() {
+    return DummyCache.getInstance();
+  }
+
+  @Override
+  public Cache<RemoteCacheKey, Object> getAmendmentBodyCache() {
+    return DummyCache.getInstance();
+  }
+
+  @Override
+  public Cache<RemoteCacheKey, Object> getSiteContentMetadataCache() {
+    return DummyCache.getInstance();
+  }
+
+  @Override
+  public Cache<RemoteCacheKey, Object> getExternalResourceCache() {
+    return DummyCache.getInstance();
+  }
+
+  @Override
+  public Cache<RemoteCacheKey, Object> getEditorialContentCache() {
+    return DummyCache.getInstance();
+  }
 }

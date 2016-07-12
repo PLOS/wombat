@@ -27,11 +27,9 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
   private static final Logger log = LoggerFactory.getLogger(CachedRemoteService.class);
 
   private final RemoteService<S> remoteService;
-  private final Cache cache;
 
-  public CachedRemoteService(RemoteService<S> remoteService, Cache cache) {
+  public CachedRemoteService(RemoteService<S> remoteService) {
     this.remoteService = Preconditions.checkNotNull(remoteService);
-    this.cache = Preconditions.checkNotNull(cache);
   }
 
   @Override // delegate
@@ -84,26 +82,29 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
   }
 
   /**
-   * Get a value either from the cache or by converting a stream from a REST request or from the cache.
+   * Get a value either from a cache or by converting a stream from a REST request or from the cache.
    * <p/>
    * If there is a cached value, and the REST service does not indicate that the value has been modified since the value
    * was inserted into the cache, return that value. Else, query the service for a new stream and convert that stream to
    * a cacheable return value using the provided callback.
    *
-   * @param cacheKey   the cache parameters object containing the cache key at which to retrieve and store the value
+   * @param cacheKey the cache key at which to retrieve and store the value
    * @param target   the request with which to query the service if the value is not cached
    * @param callback how to deserialize a new value from the stream, to return and insert into the cache
+   * @param <K>      the cache key's type
    * @param <T>      the type of value to deserialize and return
    * @return the value from the service or cache
    * @throws IOException
    */
-  public <T> T requestCached(RemoteCacheKey cacheKey, HttpUriRequest target, CacheDeserializer<? super S, ? extends T> callback)
+  public <K, T> T requestCached(RemoteCacheKey cacheKey, HttpUriRequest target,
+                                CacheDeserializer<? super S, ? extends T> callback)
       throws IOException {
     Preconditions.checkNotNull(target);
     Preconditions.checkNotNull(callback);
     Preconditions.checkNotNull(cacheKey);
 
-    CachedObject<T> cached = getCachedObject(cacheKey);
+    Cache<RemoteCacheKey, Object> cache = cacheKey.getCache();
+    CachedObject<T> cached = getCachedObject(cache, cacheKey);
     Calendar lastModified = getLastModified(cached);
 
     try (TimestampedResponse fromServer = requestIfModifiedSince(target, lastModified)) {
@@ -129,7 +130,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
    * @param <T>      the type of cached value
    * @return the cached value, wrapped with its timestamp
    */
-  private <T> CachedObject<T> getCachedObject(RemoteCacheKey cacheKey) {
+  private <T, K> CachedObject<T> getCachedObject(Cache<K, Object> cache, K cacheKey) {
     try {
       return (CachedObject<T>) cache.get(Preconditions.checkNotNull(cacheKey));
     } catch (Exception e) {

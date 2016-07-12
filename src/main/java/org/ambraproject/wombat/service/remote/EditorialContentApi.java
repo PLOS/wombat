@@ -1,10 +1,9 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Optional;
-import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
+import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.SitePageContext;
-import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 
@@ -28,9 +27,9 @@ public interface EditorialContentApi {
   public abstract CloseableHttpResponse request(String key, Optional<Integer> version, Collection<? extends Header> headers)
       throws IOException;
 
-  public abstract <T> T requestCachedReader(CacheKey cacheKey, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException;
+  public abstract <T> T requestCachedReader(RemoteCacheKey cacheKey, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException;
 
-  public abstract Map<String, Object> requestMetadata(CacheKey cacheKey, String key, Optional<Integer> version) throws IOException;
+  public abstract Map<String, Object> requestMetadata(RemoteCacheKey cacheKey, String key, Optional<Integer> version) throws IOException;
 
   /**
    * Fetch a block of HTML from

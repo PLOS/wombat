@@ -2,8 +2,5 @@ contentRepoKeyPrefix: s
 # prefix for content repo keys pointing to site content page content. The page name is appended to this prefix.
 # This should be replaced with a valid site-level key prefix in themes (e.g. desktop.biology.s)
 
-cacheTtl: null
-# If this is non-null, cache the written HTML for this many seconds.
-
 homeRepoKey: homepage
 # repo key used for site content home page

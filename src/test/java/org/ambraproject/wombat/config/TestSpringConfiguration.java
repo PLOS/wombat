@@ -11,8 +11,6 @@
 
 package org.ambraproject.wombat.config;
 
-import org.ambraproject.rhombat.cache.Cache;
-import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.TestClasspathTheme;
 import org.ambraproject.wombat.config.theme.Theme;
@@ -66,8 +64,8 @@ public class TestSpringConfiguration {
   }
 
   @Bean
-  public Cache cache() {
-    return new NullCache();
+  public ServiceCacheSet serviceCacheSet() {
+    return new DummyServiceCacheSet();
   }
 
   @Bean

@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.service.ApiAddress;
-import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 
@@ -68,10 +67,10 @@ public interface RestfulJsonApi {
    * @return the value from the service or cache
    * @throws IOException
    */
-  public abstract <T> T requestCachedStream(CacheKey cacheKey, ApiAddress address,
+  public abstract <T> T requestCachedStream(RemoteCacheKey cacheKey, ApiAddress address,
                                             CacheDeserializer<InputStream, T> callback) throws IOException;
 
-  public abstract <T> T requestCachedReader(CacheKey cacheKey, ApiAddress address,
+  public abstract <T> T requestCachedReader(RemoteCacheKey cacheKey, ApiAddress address,
                                             CacheDeserializer<Reader, T> callback) throws IOException;
 
   /**
@@ -86,9 +85,9 @@ public interface RestfulJsonApi {
    * @return the deserialized object
    * @throws IOException
    */
-  public abstract <T> T requestCachedObject(CacheKey cacheKey, ApiAddress address, Type responseType) throws IOException;
+  public abstract <T> T requestCachedObject(RemoteCacheKey cacheKey, ApiAddress address, Type responseType) throws IOException;
 
-  public abstract <T> T requestCachedObject(CacheKey cacheKey, ApiAddress address, Class<T> responseClass) throws IOException;
+  public abstract <T> T requestCachedObject(RemoteCacheKey cacheKey, ApiAddress address, Class<T> responseClass) throws IOException;
 
   public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
 

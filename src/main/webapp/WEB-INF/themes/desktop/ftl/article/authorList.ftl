@@ -10,6 +10,9 @@
        <#if hidden> data-js-toggle="toggle_target" data-visibility= "none"</#if> >
   <#if hasMeta> <a  <#else> <span </#if>data-author-id="${author_index?c}" class="author-name<#if
 !hasMeta> no-author-data</#if>" >
+  <#list author.roles.content?? as role>
+${role}
+  </#list>
 
   ${author.fullName}<#if author.onBehalfOf??>, ${author.onBehalfOf}</#if><#-- no space
  --><#if author.equalContrib> <span class="contribute"> </span></#if><#-- no space

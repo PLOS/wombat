@@ -195,8 +195,7 @@ public class ParseReferenceService {
         Element pgElement = (Element) pgNode;
         List<Node> nameNodes = NodeListAdapter.wrap(pgElement.getElementsByTagName("name"));
         type = ParseXmlUtil.getElementAttributeValue(pgElement, "person-group-type");
-        if (Strings.isNullOrEmpty(type) && type.equals("author")) {
-
+        if (!Strings.isNullOrEmpty(type) && type.equals("author")) {
           personGroup = nameNodes.stream().map(node -> parsePersonNameWrapper((Element) node)).collect
               (Collectors.toList());
         }

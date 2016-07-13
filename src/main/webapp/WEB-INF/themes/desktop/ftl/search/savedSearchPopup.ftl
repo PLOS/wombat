@@ -1,8 +1,5 @@
-<div class="top-header">
-  <span class="heading">Save this search</span>
-</div>
+<h2>Save this search</h2>
 
-<div class="body-wrapper">
   Save search as <br/>
   <input type="text" class="big-box" id="text_name_savedsearch"/><br/>
   <input type="hidden" id="alert_query_savedsearch" value='${alertQuery?html}'/>
@@ -19,4 +16,3 @@
     <input type="button" class="btn-cancel-savedsearch" value="Cancel"/>
     <span class="errortext" id="span_error_savedsearch"></span>
   </div>
-</div>

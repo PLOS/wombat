@@ -4,15 +4,12 @@
   <#assign hasMeta =
   author.equalContrib || author.deceased || author.corresponding??
   || (author.affiliations?? && author.affiliations?size gt 0) || author.currentAddress??
-  || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
+  || (author.customFootnotes?? && author.customFootnotes?size gt 0) || (author.roles?? && author.roles?size gt 0) />
 
   <li  <#if hasMeta>data-js-tooltip="tooltip_trigger"</#if>
        <#if hidden> data-js-toggle="toggle_target" data-visibility= "none"</#if> >
   <#if hasMeta> <a  <#else> <span </#if>data-author-id="${author_index?c}" class="author-name<#if
 !hasMeta> no-author-data</#if>" >
-  <#list author.roles.content?? as role>
-${role}
-  </#list>
 
   ${author.fullName}<#if author.onBehalfOf??>, ${author.onBehalfOf}</#if><#-- no space
  --><#if author.equalContrib> <span class="contribute"> </span></#if><#-- no space
@@ -35,6 +32,15 @@ ${role}
 
         <#if author.deceased><p id="authDeceased-${author_index?c}">&dagger; Deceased.</p></#if>
         <#if author.corresponding??><p id="authCorresponding-${author_index?c}"> ${author.corresponding}</p></#if>
+        <#if author.roles?size gt 0>
+          <p id="authRoles">
+            <strong>
+              Roles: <#list author.roles as role >
+          ${role.content}<#if role_has_next>,</#if>
+          </#list>
+            </strong>
+          </p>
+        </#if>
         <#if author.affiliations?? && author.affiliations?size gt 0>
           <p id="authAffiliations-${author_index?c}"><#if author.affiliations?size gt 1>Affiliations:<#else>Affiliation:</#if>
             <#list author.affiliations as affil>

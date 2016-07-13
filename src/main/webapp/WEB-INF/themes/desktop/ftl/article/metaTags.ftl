@@ -89,22 +89,25 @@
  consider using a macro or function instead of the regex replace used below, or try to clean the data that's returned
  on the rhino side.-->
 <#if references??>
-  <#list references as reference>
-    <#if reference.title??>
-    <meta name="citation_reference" content="
-      <#if reference.chapterTitle??>citation_title=${reference.chapterTitle?replace('<.+?>',' ','r')?html};
-        <#if reference.title??><citation_inbook_title=${reference.title?replace('<.+?>',' ','r')?html};</#if>
-      <#else>citation_title=${reference.title?replace('<.+?>',' ','r')?html};</#if><#if reference.authors?has_content>
-      <#list reference.authors as author>citation_author=${author.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if reference.editors?has_content>
-      citation_editors=<#list reference.editors as editor>${editor.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#if reference.journal??>
-      citation_journal_title=${reference.journal?replace('<.+?>',' ','r')?html};</#if><#if reference.volume??>
-      citation_volume=${reference.volume?replace('<.+?>',' ','r')?html};</#if><#if reference.volumeNumber??>
-      citation_number=${reference.volumeNumber};</#if><#if reference.issue??>citation_issue=${reference.issue};</#if>
-      <#if reference.fPage??>citation_first_page=${reference.fPage?replace('<.+?>',' ','r')?html};</#if>
-      <#if reference.lPage??>citation_last_page=${reference.lPage?replace('<.+?>',' ','r')?html};</#if>
-      <#if reference.year??>citation_publication_date=${reference.year?string.computer};</#if>" />
-    <#elseif reference.unStructuredReference??>
-        <meta name="citation_reference" content="${reference.unStructuredReference?replace('<.+?>',' ','r')?html}" />
-    </#if>
-  </#list>
+    <#list references as reference>
+        <#if reference.title??>
+        <meta name="citation_reference" content="<#t>
+          <#if reference.chapterTitle??>citation_title=${reference.chapterTitle?replace('<.+?>',' ','r')?html};<#t>
+            <#if reference.title??>citation_inbook_title=${reference.title?replace('<.+?>',' ','r')?html};</#if><#t>
+          <#else>citation_title=${reference.title?replace('<.+?>',' ','r')?html};<#t>
+          </#if>
+          <#if reference.authors?has_content>
+            <#list reference.authors as author>citation_author=${author.fullName?replace('<.+?>',' ','r')?html};</#list></#if><#t>
+          <#if reference.journal??>citation_journal_title=${reference.journal?replace('<.+?>',' ','r')?html};</#if><#t>
+          <#if reference.volume??>citation_volume=${reference.volume?replace('<.+?>',' ','r')?html};</#if><#t>
+          <#if reference.volumeNumber??>citation_number=${reference.volumeNumber};</#if><#t>
+          <#if reference.issue??>citation_issue=${reference.issue?replace('<.+?>',' ','r')?html};</#if><#t>
+          <#if reference.fPage??>citation_first_page=${reference.fPage?replace('<.+?>',' ','r')?html};</#if><#t>
+          <#if reference.lPage??>citation_last_page=${reference.lPage?replace('<.+?>',' ','r')?html};</#if><#t>
+          <#if reference.isbn??>citation_isbn=${reference.isbn?replace('<.+?>',' ','r')?html};</#if><#t>
+          <#if reference.year??>citation_publication_date=${reference.year?string.computer}</#if><#t>"/>
+        <#elseif reference.unStructuredReference??>
+        <meta name="citation_reference"content="${reference.unStructuredReference?replace('<.+?>',' ','r')?html}<#t>"/>
+        </#if>
+    </#list>
 </#if>

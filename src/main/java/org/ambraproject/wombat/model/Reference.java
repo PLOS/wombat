@@ -45,8 +45,8 @@ public class Reference {
   private String lPage;
   private String doi;
   private String uri;
-  private List<NlmPerson> authors;
-  private List<String> collabAuthors;
+  private ImmutableList<NlmPerson> authors;
+  private ImmutableList<String> collabAuthors;
   private String unStructuredReference;
 
   public static enum PublicationType {
@@ -264,5 +264,56 @@ public class Reference {
     }
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
 
+    Reference reference = (Reference) o;
+
+    if (authors != null ? !authors.equals(reference.authors) : reference.authors != null) return false;
+    if (chapterTitle != null ? !chapterTitle.equals(reference.chapterTitle) : reference.chapterTitle != null)
+      return false;
+    if (collabAuthors != null ? !collabAuthors.equals(reference.collabAuthors) : reference.collabAuthors != null)
+      return false;
+    if (doi != null ? !doi.equals(reference.doi) : reference.doi != null) return false;
+    if (fPage != null ? !fPage.equals(reference.fPage) : reference.fPage != null) return false;
+    if (isbn != null ? !isbn.equals(reference.isbn) : reference.isbn != null) return false;
+    if (issue != null ? !issue.equals(reference.issue) : reference.issue != null) return false;
+    if (journal != null ? !journal.equals(reference.journal) : reference.journal != null) return false;
+    if (lPage != null ? !lPage.equals(reference.lPage) : reference.lPage != null) return false;
+    if (publisherName != null ? !publisherName.equals(reference.publisherName) : reference.publisherName != null)
+      return false;
+    if (title != null ? !title.equals(reference.title) : reference.title != null) return false;
+    if (unStructuredReference != null ? !unStructuredReference.equals(reference.unStructuredReference) : reference.unStructuredReference != null)
+      return false;
+    if (uri != null ? !uri.equals(reference.uri) : reference.uri != null) return false;
+    if (volume != null ? !volume.equals(reference.volume) : reference.volume != null) return false;
+    if (volumeNumber != null ? !volumeNumber.equals(reference.volumeNumber) : reference.volumeNumber != null)
+      return false;
+    if (year != null ? !year.equals(reference.year) : reference.year != null) return false;
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = title != null ? title.hashCode() : 0;
+    result = 31 * result + (chapterTitle != null ? chapterTitle.hashCode() : 0);
+    result = 31 * result + (year != null ? year.hashCode() : 0);
+    result = 31 * result + (journal != null ? journal.hashCode() : 0);
+    result = 31 * result + (volume != null ? volume.hashCode() : 0);
+    result = 31 * result + (volumeNumber != null ? volumeNumber.hashCode() : 0);
+    result = 31 * result + (issue != null ? issue.hashCode() : 0);
+    result = 31 * result + (publisherName != null ? publisherName.hashCode() : 0);
+    result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
+    result = 31 * result + (fPage != null ? fPage.hashCode() : 0);
+    result = 31 * result + (lPage != null ? lPage.hashCode() : 0);
+    result = 31 * result + (doi != null ? doi.hashCode() : 0);
+    result = 31 * result + (uri != null ? uri.hashCode() : 0);
+    result = 31 * result + (authors != null ? authors.hashCode() : 0);
+    result = 31 * result + (collabAuthors != null ? collabAuthors.hashCode() : 0);
+    result = 31 * result + (unStructuredReference != null ? unStructuredReference.hashCode() : 0);
+    return result;
+  }
 }

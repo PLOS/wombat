@@ -47,7 +47,7 @@ public class ParseReferenceService {
   /**
    * Builds a list of Reference objects for each <ref></ref> element
    *
-   * @param refElement a <ref></ref> node which can contain (label?, (element-citation | mixed-citation)+)
+   * @param refElement a <ref></ref> node which can contain (label?, (element-citation | mixed-citation | nlm-citation)+)
    * @return list of Reference objects
    */
   public List<Reference> buildReferences(Element refElement) throws XMLParseException {
@@ -64,7 +64,8 @@ public class ParseReferenceService {
     // a <ref></ref> element can have one or more of citation elements
     for (Node citationNode : citationElements) {
       if (citationNode.getNodeType() != Node.ELEMENT_NODE) {
-        throw new XMLParseException("<element-citation> or <mixed-citation> is not an element.");
+        throw new XMLParseException("<element-citation>, <mixed-citation>, <nlm-citation> is not an element" +
+            ".");
       }
 
       Element element = (Element) citationNode;
@@ -154,6 +155,10 @@ public class ParseReferenceService {
     return (title == null) ? null : ParseXmlUtil.standardizeWhitespace(title);
   }
 
+  /**
+   *
+   * @return the text within <mixed-citation></mixed-citation> with no structure
+   */
   private String getUnstructuredCitation(Element citationElement) {
     String unstructuredCitation = null;
     if (citationElement.getTagName().equals(CitationElement.MIXED_CITATION.getValue())
@@ -164,6 +169,9 @@ public class ParseReferenceService {
     return (unstructuredCitation == null) ? null : ParseXmlUtil.standardizeWhitespace(unstructuredCitation);
   }
 
+  /**
+   * @return book chapter title
+   */
   private String buildChapterTitle(Element citationElement) {
     NodeList chapterTitleNode = citationElement.getElementsByTagName("chapter-title");
     if (ParseXmlUtil.isNullOrEmpty(chapterTitleNode)) {
@@ -311,7 +319,6 @@ public class ParseReferenceService {
     }
   }
 
-  @VisibleForTesting
   static Integer parseVolumeNumber(String volume) {
     if (Strings.isNullOrEmpty(volume)) {
       return null;

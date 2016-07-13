@@ -117,7 +117,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.SortedMap;
-import java.util.jar.JarException;
 import java.util.stream.Collectors;
 
 /**
@@ -928,7 +927,7 @@ public class ArticleController extends WombatController {
   private Map<?, ?> requestArticleMetadata(String articleId) throws IOException {
     Map<?, ?> articleMetadata;
     try {
-      articleMetadata = articleService.requestArticleMetadata(articleId, false);
+      articleMetadata = articleService.requestArticleMetadata(articleId, true);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }
@@ -1030,6 +1029,14 @@ public class ArticleController extends WombatController {
     }
   }
 
+  /**
+   * Gets article xml from cache if it exists; otherwise, gets it from rhino and caches it. Then it parses
+   * the references and does html transform
+
+   * @param renderContext
+   * @return an XmlContent containing the list of references and article html
+   * @throws IOException
+   */
   private XmlContent getXmlContent(RenderContext renderContext) throws IOException {
     RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.ARTICLE_HTML,
         renderContext.getSite().getKey(), renderContext.getArticleId());
@@ -1053,7 +1060,7 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * Transforms it into HTML, and returns it. Result will be stored in memcache.
+   * Transforms it into HTML, and returns it.
    *
    * @return String of the article HTML
    * @throws IOException

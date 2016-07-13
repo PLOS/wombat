@@ -7,9 +7,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterators;
 import com.google.common.io.Closer;
 
-
-
-import com.google.gson.Gson;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.model.Reference;
 import org.ambraproject.wombat.model.References;
@@ -45,7 +42,6 @@ import java.io.OutputStream;
 import java.io.SequenceInputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.io.Writer;
 import java.nio.charset.Charset;
 import java.util.List;
 

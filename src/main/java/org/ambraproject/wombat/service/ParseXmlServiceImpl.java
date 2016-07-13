@@ -10,6 +10,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
+
+import javax.management.modelmbean.XMLParseException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,7 +29,9 @@ public class ParseXmlServiceImpl implements ParseXmlService {
   private ParseReferenceService parseReferenceService;
 
 
-
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public List<Reference> parseArticleReferences(InputStream xml) throws ParserConfigurationException, IOException, SAXException, XmlContentException {
     Objects.requireNonNull(xml);
@@ -62,7 +66,7 @@ public class ParseXmlServiceImpl implements ParseXmlService {
         .map(ref -> {
           try {
             return parseReferenceService.buildReferences((Element) ref);
-          } catch (Exception e) {
+          } catch (XMLParseException e) {
             throw new RuntimeException(e);
           }
         }) // Stream<List<Reference>>

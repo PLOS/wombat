@@ -1,12 +1,6 @@
 .search-results-alm, .search-results-alm-error {
-  display: none;
   font-weight: bold;
   font-size: $txt-size-xxsmall;
-
-  //!!!remove when putting search results AJAX into play
-     .ajax & {
-       display:block;
-     }
 }
 
 .icon-warning-stack {

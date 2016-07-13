@@ -187,7 +187,7 @@ public class ParseReferenceService {
 
   private List<NlmPerson> parseAuthors(Element citationElement) {
     List<Node> personGroupElement = NodeListAdapter.wrap(citationElement.getElementsByTagName("person-group"));
-    List<NlmPerson> personGroup = null;
+    List<NlmPerson> personGroup = new ArrayList<>();
 
     if (!ParseXmlUtil.isNullOrEmpty(personGroupElement)) {
       String type;

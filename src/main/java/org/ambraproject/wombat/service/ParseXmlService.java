@@ -22,5 +22,5 @@ public interface ParseXmlService {
    * @throws SAXException
    * @throws XmlContentException
    */
-  List<Reference> parseArticleReferences(InputStream xml) throws ParserConfigurationException, IOException, SAXException, XmlContentException;
+  List<Reference> parseArticleReferences(InputStream xml) throws IOException;
 }

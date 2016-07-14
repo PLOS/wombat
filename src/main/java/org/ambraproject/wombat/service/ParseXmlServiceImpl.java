@@ -33,12 +33,18 @@ public class ParseXmlServiceImpl implements ParseXmlService {
    * {@inheritDoc}
    */
   @Override
-  public List<Reference> parseArticleReferences(InputStream xml) throws ParserConfigurationException, IOException, SAXException, XmlContentException {
+  public List<Reference> parseArticleReferences(InputStream xml) throws IOException {
     Objects.requireNonNull(xml);
 
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder builder = factory.newDocumentBuilder();
-    Document doc = builder.parse(xml);
+    Document doc;
+    try {
+      DocumentBuilder builder = factory.newDocumentBuilder();
+      doc = builder.parse(xml);
+    } catch (ParserConfigurationException | SAXException e) {
+      throw new RuntimeException(e);
+    }
+
     // to combine adjacent text nodes and remove empty ones in the dom
     doc.getDocumentElement().normalize();
 

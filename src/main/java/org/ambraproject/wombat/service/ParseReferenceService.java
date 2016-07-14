@@ -195,7 +195,7 @@ public class ParseReferenceService {
         List<Node> nameNodes = NodeListAdapter.wrap(pgElement.getElementsByTagName("name"));
         type = ParseXmlUtil.getElementAttributeValue(pgElement, "person-group-type");
         if (!Strings.isNullOrEmpty(type) && type.equals("author")) {
-          personGroup = nameNodes.stream().map(node -> parsePersonNameWrapper((Element) node)).collect
+          personGroup = nameNodes.stream().map(node -> parsePersonName((Element) node)).collect
               (Collectors.toList());
         }
       }
@@ -205,22 +205,14 @@ public class ParseReferenceService {
 
       List<Node> authorNodes = editorStartIndex == -1 ? nameNodes: nameNodes.subList(0, editorStartIndex);
       personGroup = authorNodes.stream()
-          .map(node -> parsePersonNameWrapper((Element) node))
+          .map(node -> parsePersonName((Element) node))
           .collect(Collectors.toList());
 
     }
     return personGroup;
   }
 
-  private NlmPerson parsePersonNameWrapper(Element nameElement) {
-    try {
-      return parsePersonName(nameElement);
-    } catch (XmlContentException xmlCE) {
-      throw new RuntimeException(xmlCE);
-    }
-
-  }
-  private NlmPerson parsePersonName(Element nameElement) throws XmlContentException {
+  private NlmPerson parsePersonName(Element nameElement) {
     String nameStyle = ParseXmlUtil.getElementAttributeValue(nameElement, "name-style");
     String surname = ParseXmlUtil.getElementSingleValue(nameElement, "surname");
     String givenNames = ParseXmlUtil.getElementSingleValue(nameElement, "given-names");

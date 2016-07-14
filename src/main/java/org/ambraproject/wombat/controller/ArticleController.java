@@ -39,7 +39,6 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.RenderContext;
-import org.ambraproject.wombat.service.XmlContentException;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
@@ -82,7 +81,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
-import org.xml.sax.SAXException;
 
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -90,7 +88,6 @@ import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -1045,14 +1042,7 @@ public class ArticleController extends WombatController {
       ByteArrayOutputStream xmlBaos = new ByteArrayOutputStream();
       IOUtils.copy(stream, xmlBaos);
       byte[] xml = xmlBaos.toByteArray();
-      List<Reference> references;
-
-      try {
-        references = getArticleReferences(new ByteArrayInputStream(xml));
-      } catch (SAXException | ParserConfigurationException | XmlContentException e) {
-        throw new RuntimeException(e);
-      }
-
+      List<Reference> references = getArticleReferences(new ByteArrayInputStream(xml));
       String articleHtml = getArticleHtml(renderContext, new ByteArrayInputStream(xml), references);
       return new XmlContent(articleHtml, references);
     });
@@ -1076,8 +1066,7 @@ public class ArticleController extends WombatController {
     return articleHtml.toString();
   }
 
-  private List<Reference> getArticleReferences(InputStream xml) throws IOException,
-      SAXException, ParserConfigurationException, XmlContentException {
+  private List<Reference> getArticleReferences(InputStream xml) throws IOException {
     List<Reference> references = parseXmlService.parseArticleReferences(xml);
     return references;
   }

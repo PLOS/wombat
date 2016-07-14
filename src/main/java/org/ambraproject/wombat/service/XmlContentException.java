@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.service;
 
 
-public class XmlContentException extends Exception {
+public class XmlContentException extends RuntimeException {
 
     public XmlContentException() {
     }

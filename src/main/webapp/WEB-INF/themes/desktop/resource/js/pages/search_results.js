@@ -39,7 +39,7 @@ var SearchResult;
       "page": 1
     },
     currentUrlParams: null,
-    searchEndpoint: 'searchAjax',
+    searchEndpoint: 'search',
     ajaxSearchEndpoint: 'dynamicSearch',
     searchFeedEndpoint: 'search/feed/atom',
 
@@ -109,6 +109,10 @@ var SearchResult;
       else {
         return 15;
       }
+    },
+    scrollWindowToTop: function () {
+      var offset = this.$searchBarForm.position().top;
+      $('body').stop().animate({scrollTop: offset}, '500', 'swing');
     },
     showLoading: function () {
       this.$loadingEl.show();
@@ -400,6 +404,8 @@ var SearchResult;
 
               that.ALMData.setDOIList(that.ALMData.DOIlist);
               that.ALMData.processALMDataRequest();
+
+              that.scrollWindowToTop();
 
             }
             else {

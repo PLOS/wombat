@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.service;
 
 
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.model.NlmPerson;
@@ -28,6 +27,8 @@ public class ParseReferenceService {
   private static final String WESTERN_NAME_STYLE = "western";
   private static final String EASTERN_NAME_STYLE = "eastern";
   private static final Joiner NAME_JOINER = Joiner.on(' ').skipNulls();
+
+  // Order is significant; see buildReferences
   private static enum CitationElement {
     ELEMENT_CITATION("element-citation"),
     MIXED_CITATION("mixed-citation"),
@@ -51,14 +52,14 @@ public class ParseReferenceService {
    * @return list of Reference objects
    */
   public List<Reference> buildReferences(Element refElement) throws XMLParseException {
-    List<Node> citationElements =
-        !ParseXmlUtil.isNullOrEmpty(refElement.getElementsByTagName(CitationElement.ELEMENT_CITATION.getValue())) ?
-        NodeListAdapter.wrap(refElement.getElementsByTagName(CitationElement.ELEMENT_CITATION.getValue())) :
-        !ParseXmlUtil.isNullOrEmpty(refElement.getElementsByTagName(CitationElement.MIXED_CITATION.getValue())) ?
-        NodeListAdapter.wrap(refElement.getElementsByTagName(CitationElement.MIXED_CITATION.getValue())) :
-        !ParseXmlUtil.isNullOrEmpty(refElement.getElementsByTagName(CitationElement.NLM_CITATION.getValue())) ?
-        NodeListAdapter.wrap(refElement.getElementsByTagName(CitationElement.NLM_CITATION.getValue())) : null;
-
+    List<Node> citationElements = null;
+    for (CitationElement elementType : CitationElement.values()) {
+      NodeList nodes = refElement.getElementsByTagName(elementType.getValue());
+      if (!ParseXmlUtil.isNullOrEmpty(nodes)) {
+        citationElements = NodeListAdapter.wrap(nodes);
+        break;
+      }
+    }
 
     List<Reference> references = new ArrayList<>();
     // a <ref></ref> element can have one or more of citation elements

@@ -90,7 +90,6 @@ import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
-import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.ByteArrayInputStream;
@@ -182,7 +181,7 @@ public class ArticleController extends WombatController {
                               Model model,
                               @SiteParam Site site,
                               @RequestParam("id") String articleId)
-      throws IOException, ParserConfigurationException, SAXException, XmlContentException {
+      throws IOException {
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
 

@@ -65,8 +65,7 @@ public class ParseReferenceService {
     // a <ref></ref> element can have one or more of citation elements
     for (Node citationNode : citationElements) {
       if (citationNode.getNodeType() != Node.ELEMENT_NODE) {
-        throw new XMLParseException("<element-citation>, <mixed-citation>, <nlm-citation> is not an element" +
-            ".");
+        throw new XMLParseException("<element-citation>, <mixed-citation>, <nlm-citation> is not an element.");
       }
 
       Element element = (Element) citationNode;

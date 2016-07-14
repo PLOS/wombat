@@ -180,6 +180,12 @@ var SearchResult;
         that.processRequest();
       });
 
+      window.onpopstate = function () {
+        that.isInitialized = false;
+        that.loadUrlParams();
+        that.processRequest();
+      };
+
       $('body').on('click', '[data-filter-param-name]', function (e) {
         e.preventDefault();
         e.stopPropagation();

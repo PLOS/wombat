@@ -1,10 +1,6 @@
 <#include "../common/userMgmtUrl.ftl" />
+<h2>Save this search</h2>
 
-<div class="top-header">
-  <span class="heading">Save this search</span>
-</div>
-
-<div class="body-wrapper">
   <div class="check-box">
     <strong>Log in to save a search alert</strong>
   </div>
@@ -16,4 +12,3 @@
     <input type="button" class="btn-cancel-savedsearch" value="Cancel"/>
     <span class="errortext" id="save-journal-alert-error"></span>
   </div>
-</div>

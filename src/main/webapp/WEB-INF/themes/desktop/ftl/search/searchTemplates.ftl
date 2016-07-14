@@ -29,7 +29,7 @@
 
       <p class="search-results-doi"><a href="http://dx.doi.org/<%= item.id %>">http://dx.doi.org/<%= item.id %></a>
       </p>
-      <div class="search-results-alm-container ajax" data-doi="<%= item.id %>" data-index="<%= index %>">
+      <div class="search-results-alm-container" data-doi="<%= item.id %>" data-index="<%= index %>">
 
         <p class="search-results-alm-loading">
           Loading metrics information...
@@ -107,11 +107,11 @@
 <script type="text/template" id="searchListFilterDateTemplate">
   <form class="date-filter-form">
     <h3>Publication Date</h3>
-    <input name="filterStartDate" id="dateFilterStartDate" required type="text"<% if(!_.isEmpty(start)) {
-    print('value="'+start+'"'); } %> class="fdatepicker">
+    <input name="filterStartDate" id="dateFilterStartDate" required type="text"
+    <% if(!_.isEmpty(start)) { print('value="'+start+'"'); } %> class="fdatepicker">
     <div>&nbsp;to</div>
-    <input name="filterEndDate" id="dateFilterEndDate" required type="text"<% if(!_.isEmpty(end)) {
-    print('value="'+end+'"'); } %> class="fdatepicker">
+    <input name="filterEndDate" id="dateFilterEndDate" required type="text"
+    <% if(!_.isEmpty(end)) { print('value="'+end+'"'); } %> class="fdatepicker">
     <button type="submit">Apply</button>
   </form>
 </script>

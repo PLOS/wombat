@@ -22,7 +22,6 @@ package org.ambraproject.wombat.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Represent the Author or Editor of a reference.
@@ -35,7 +34,12 @@ public class NlmPerson {
   private String surname;
   private String suffix;
 
-  public NlmPerson() {}
+  /**
+   * @deprecated required for JAXB serializer
+   */
+  @Deprecated
+  public NlmPerson() {
+  }
 
   private NlmPerson(Builder builder) {
     this.fullName = builder.fullName;

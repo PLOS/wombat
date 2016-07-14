@@ -72,7 +72,6 @@ public class ParseReferenceService {
       String unstructuredReference = null;
       String uri = null;
       String doi = null;
-      String[] pages = new String[2];
       String year = ParseXmlUtil.getElementSingleValue(element, "year");
       String volume = ParseXmlUtil.getElementSingleValue(element, "volume");
       String title = buildTitle(element);
@@ -91,7 +90,7 @@ public class ParseReferenceService {
           doi = extLink.getFirstChild().getNodeValue();
         }
       }
-      buildPages(element, pages);
+      PageRange pages = buildPages(element);
 
       Reference reference  = Reference.build()
           .setJournal(parseJournal(element))
@@ -108,8 +107,8 @@ public class ParseReferenceService {
           .setIsbn(ParseXmlUtil.getElementSingleValue(element, "isbn"))
           .setUri(uri)
           .setDoi(doi)
-          .setfPage(pages[0])
-          .setlPage(pages[1])
+          .setfPage(pages.firstPage)
+          .setlPage(pages.lastPage)
           .build();
 
       references.add(reference);
@@ -333,26 +332,34 @@ public class ParseReferenceService {
     }
   }
 
+  private static class PageRange {
+    private final String firstPage;
+    private final String lastPage;
+
+    private PageRange(String firstPage, String lastPage) {
+      this.firstPage = firstPage;
+      this.lastPage = lastPage;
+    }
+  }
+
   /**
    * @return the value of the first and last page of the reference
    */
-  private String[] buildPages(Element citationElement, String[] pages) {
+  private PageRange buildPages(Element citationElement) {
     String fPage = ParseXmlUtil.getElementSingleValue(citationElement, "fpage");
-    pages[0] = fPage;
     String lPage = ParseXmlUtil.getElementSingleValue(citationElement, "lpage");
-    pages[1] = lPage;
 
     if (Strings.isNullOrEmpty(fPage) && Strings.isNullOrEmpty(lPage)) {
       String range = ParseXmlUtil.getElementSingleValue(citationElement, "page-range");
       if (!Strings.isNullOrEmpty(range)) {
         int index = range.indexOf("-");
         if (index > 0) {
-          pages[0] = range.substring(0, index);
-          pages[1] = range.substring(index + 1);
+          fPage = range.substring(0, index);
+          lPage = range.substring(index + 1);
         }
       }
     }
-    return pages;
+    return new PageRange(fPage, lPage);
   }
 
 }

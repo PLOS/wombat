@@ -28,7 +28,6 @@ public class ParseReferenceService {
   private static final String EASTERN_NAME_STYLE = "eastern";
   private static final Joiner NAME_JOINER = Joiner.on(' ').skipNulls();
 
-  // Order is significant; see buildReferences
   private static enum CitationElement {
     ELEMENT_CITATION("element-citation"),
     MIXED_CITATION("mixed-citation"),

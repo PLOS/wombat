@@ -14,13 +14,15 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Optional;
+import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
+import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
-import org.ambraproject.wombat.util.CacheKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +41,8 @@ public class SiteContentController extends WombatController {
 
   @Autowired
   private EditorialContentApi editorialContentApi;
+  @Autowired
+  private ServiceCacheSet serviceCacheSet;
 
   @RequestMapping(name="siteContent", value="/s/{pageName}")
   public String renderSiteContent(Model model, @SiteParam Site site, @PathVariable String pageName)
@@ -53,7 +57,7 @@ public class SiteContentController extends WombatController {
     }
     String repoKey = repoKeyPrefix.concat(".").concat(pageName);
 
-    CacheKey cacheKey = CacheKey.create("siteContent_meta", repoKey);
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.SITE_CONTENT_METADATA, repoKey);
 
     Optional<Integer> version = Optional.absent(); // versioning is not supported for site content
     try {

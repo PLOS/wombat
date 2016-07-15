@@ -22,7 +22,6 @@ import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -77,12 +76,12 @@ public class JsonService {
    * @return the deserialized object
    * @throws IOException
    */
-  public <T> T requestCachedObject(CachedRemoteService<? extends Reader> remoteService, CacheKey cacheKey,
+  public <T> T requestCachedObject(CachedRemoteService<? extends Reader> remoteService, RemoteCacheKey cacheKey,
                                    HttpUriRequest target, final Type responseType)
       throws IOException {
     Preconditions.checkNotNull(responseType);
     return remoteService.requestCached(cacheKey, target,
-        (Reader reader) -> deserializeStream(responseType, reader, target.getURI()));
+        (Reader reader) -> (T) deserializeStream(responseType, reader, target.getURI()));
   }
 
   /**

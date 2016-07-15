@@ -7,9 +7,7 @@
     </#list>
   </p>
   </#if>
-
   <#if author.deceased><p id="authDeceased-${author_index?c}">&dagger; Deceased.</p></#if>
-  <#if author.corresponding??><p id="authCorresponding-${author_index?c}"> ${author.corresponding}</p></#if>
   <#if author.roles?size gt 0>
   <p id="authRoles">
     <strong>
@@ -19,14 +17,7 @@
     </strong>
   </p>
   </#if>
-  <#if author.affiliations?? && author.affiliations?size gt 0>
-  <p id="authAffiliations-${author_index?c}"><#if author.affiliations?size gt 1>Affiliations:<#else>Affiliation:</#if>
-    <#list author.affiliations as affil>
-    ${affil}<#if affil_has_next>, </#if>
-    </#list>
-  </p>
-  </#if>
-
+  <#if author.corresponding??><p id="authCorresponding-${author_index?c}"> ${author.corresponding}</p></#if>
   <#if author.currentAddresses?? && author.currentAddresses?size gt 0>
   <p id="authCurrentAddress-${author_index?c}">
     <#list author.currentAddresses as address>
@@ -38,6 +29,13 @@
     <#list author.customFootnotes as note>
     ${note}
     </#list>
+  </#if>
+  <#if author.affiliations?? && author.affiliations?size gt 0>
+  <p id="authAffiliations-${author_index?c}"><#if author.affiliations?size gt 1>Affiliations:<#else>Affiliation:</#if>
+    <#list author.affiliations as affil>
+    ${affil}<#if affil_has_next>, </#if>
+    </#list>
+  </p>
   </#if>
   <#if author.orcid?? && author.orcid.authenticated>
   <p id="authOrcid-${author_index?c}">

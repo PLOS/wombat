@@ -25,29 +25,8 @@
     <#include "tabs.ftl" />
     <@displayTabList 'Authors' />
     <h1>About the Authors</h1>
-    <#include "authorItem.ftl" />
-      <dl>
-    <#list authors as author><#-- Before the expander -->
-      <#if author_index lt (maxAuthorsToShow - 1) >
-        <@authorItemFull author author_index author_has_next true false false/>
-      </#if>
-    </#list>
-      </dl>
-    <#list authorListAffiliationMap?keys as affiliation>
-      <p>
-        <span class="author-list">${authorListAffiliationMap[affiliation]}</span>
-        <br/>
-        ${affiliation}
-      </p>
-    </#list>
 
-    <#if competingInterests?size gt 0>
-      <h2>Competing Interests</h2>
-      <#list competingInterests as competingInterest>
-        <p>${competingInterest}</p>
-      </#list>
-    </#if>
-
+    <#include "authorFullList.ftl" />
 
   </section>
   <aside class="article-aside">

@@ -43,6 +43,10 @@ public class ApiAddress {
     return path + (parameters.isEmpty() ? "" : "?" + URLEncodedUtils.format(parameters, Charsets.UTF_8));
   }
 
+  private static String escapeDoi(String doi) {
+    return doi.replace("+", "+-").replace("/", "++");
+  }
+
   public static Builder builder(String path) {
     return new Builder().addToken(path);
   }
@@ -57,6 +61,10 @@ public class ApiAddress {
     public Builder addToken(String token) {
       pathTokens.add(Objects.requireNonNull(token));
       return this;
+    }
+
+    public Builder embedDoi(String doiName) {
+      return addToken(escapeDoi(doiName));
     }
 
     public Builder addParameter(String name, String value) {

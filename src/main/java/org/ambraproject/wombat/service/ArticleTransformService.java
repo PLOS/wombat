@@ -1,10 +1,12 @@
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.model.Reference;
+
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Map;
+import java.util.List;
 
 public interface ArticleTransformService {
 
@@ -15,11 +17,12 @@ public interface ArticleTransformService {
    * @param renderContext provides the context for rendering the article (wraps the site and optional context data)
    * @param xml  a stream containing article XML
    * @param html the stream that will receive the presentation HTML
+   * @param references list of parsed references
    * @throws IOException          if either stream cannot be read
    * @throws TransformerException if an error occurs when applying the transformation
    */
-  public abstract void transform(RenderContext renderContext, InputStream xml, OutputStream html)
-      throws IOException, TransformerException;
+  public abstract void transform(RenderContext renderContext, InputStream xml, OutputStream html,
+      List<Reference> references) throws IOException, TransformerException;
 
 
   /**

@@ -29,6 +29,8 @@ public class ArticleServiceImpl implements ArticleService {
 
   @Autowired
   private ArticleApi articleApi;
+  @Autowired
+  private ArticleResolutionService articleResolutionService;
 
   private static final ImmutableSet<String> FIGURE_TABLE_CONTEXT_ELEMENT =
       new ImmutableSet.Builder<String>()
@@ -39,9 +41,7 @@ public class ArticleServiceImpl implements ArticleService {
   public Map<String, Object> requestArticleMetadata(ScholarlyWorkId articleId, boolean excludeCitations)
       throws IOException {
     Map<String, Object> map = (Map<String, Object>) articleApi.requestObject(
-        articleId.appendId(ApiAddress.builder("articles")
-            .addParameter("versionedPreview")
-            .addParameter("excludeCitations", Boolean.toString(excludeCitations))),
+        articleResolutionService.toIngestion(articleId).build(),
         Map.class);
     return DoiSchemeStripper.strip(map);
   }

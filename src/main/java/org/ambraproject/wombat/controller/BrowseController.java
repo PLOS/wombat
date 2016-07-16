@@ -105,7 +105,7 @@ public class BrowseController extends WombatController {
     articleGroups.stream().forEach(ag -> ag.put("articles", new ArrayList<Map<?, ?>>()));
 
     for (String articleDoi : (List<String>) issueMeta.get("articleOrder")) {
-      ScholarlyWorkId articleId = new ScholarlyWorkId(articleDoi);
+      ScholarlyWorkId articleId = ScholarlyWorkId.of(articleDoi);
       Map<?, ?> articleMetadata;
       try {
         articleMetadata = articleService.requestArticleMetadata(articleId, true);

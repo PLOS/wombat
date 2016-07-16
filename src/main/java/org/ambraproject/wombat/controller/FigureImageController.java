@@ -155,7 +155,7 @@ public class FigureImageController extends WombatController {
       assetDoi = (extensionIndex < 0) ? rawId : rawId.substring(0, extensionIndex);
     }
 
-    Map<String, Object> workMetadata = scholarlyWorkController.getWorkMetadata(new ScholarlyWorkId(assetDoi));
+    Map<String, Object> workMetadata = scholarlyWorkController.getWorkMetadata(ScholarlyWorkId.of(assetDoi));
     Set<String> fileTypes = ((Map<String, ?>) workMetadata.get("files")).keySet();
 
     final String fileType;
@@ -190,7 +190,7 @@ public class FigureImageController extends WombatController {
                                  @RequestParam(value = "download", required = false) String download)
       throws IOException {
     requireNonemptyParameter(figureId);
-    Map<String, Object> workMetadata = scholarlyWorkController.getWorkMetadata(new ScholarlyWorkId(figureId));
+    Map<String, Object> workMetadata = scholarlyWorkController.getWorkMetadata(ScholarlyWorkId.of(figureId));
     Set<String> fileTypes = ((Map<String, ?>) workMetadata.get("files")).keySet();
     if (fileTypes.contains(figureSize)) {
       return redirectToWorkFile(request, site, figureId, figureSize, booleanParameter(download));

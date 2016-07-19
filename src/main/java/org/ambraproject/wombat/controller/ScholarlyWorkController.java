@@ -43,7 +43,7 @@ public class ScholarlyWorkController extends WombatController {
   }
 
   Map<String, Object> getWorkMetadata(ScholarlyWorkId workId) throws IOException {
-    ApiAddress address = workId.appendId(ApiAddress.builder("work"));
+    ApiAddress address = ApiAddress.builder("works").embedDoi(workId.getDoi()).build(); // TODO: Update to service
     try {
       return articleApi.requestObject(address, Map.class);
     } catch (EntityNotFoundException e) {

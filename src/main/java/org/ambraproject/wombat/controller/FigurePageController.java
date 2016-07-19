@@ -5,6 +5,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -15,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,6 +28,8 @@ public class FigurePageController extends WombatController {
   private ArticleApi articleApi;
   @Autowired
   private ArticleService articleService;
+  @Autowired
+  private ArticleResolutionService articleResolutionService;
   @Autowired
   private ArticleTransformService articleTransformService;
 
@@ -65,13 +67,15 @@ public class FigurePageController extends WombatController {
   public String renderFigurePage(Model model, @SiteParam Site site,
                                  ScholarlyWorkId figureId)
       throws IOException {
-    Map<String, Object> figureMetadata;
+    Map<String, Object> articleMetadata;
     try {
-      figureMetadata = (Map<String, Object>) articleApi.requestObject(
-          figureId.appendId(ApiAddress.builder("assets").addParameter("figure")), Map.class);
+      articleMetadata = (Map<String, Object>) articleApi.requestObject(
+          articleResolutionService.toIngestion(figureId).build(), Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(figureId);
     }
+
+    Map<String, Object> figureMetadata = null; // TODO: Wire to versioned services
 
     Map<String, Object> parentArticle = (Map<String, Object>) figureMetadata.get("parentArticle");
     parentArticle = DoiSchemeStripper.strip(parentArticle);
@@ -79,7 +83,7 @@ public class FigurePageController extends WombatController {
     String parentArticleDoi = (String) parentArticle.get("doi");
     model.addAttribute("article", ImmutableMap.of("doi", parentArticleDoi));
 
-    RenderContext renderContext = new RenderContext(site, new ScholarlyWorkId(parentArticleDoi));
+    RenderContext renderContext = new RenderContext(site, ScholarlyWorkId.of(parentArticleDoi));
     transformFigureDescription(renderContext, figureMetadata);
     model.addAttribute("figure", figureMetadata);
 

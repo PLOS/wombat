@@ -26,6 +26,7 @@ import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
 import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -136,6 +137,8 @@ public class ArticleController extends WombatController {
   @Autowired
   private ArticleService articleService;
   @Autowired
+  private ArticleResolutionService articleResolutionService;
+  @Autowired
   private ArticleTransformService articleTransformService;
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;
@@ -225,7 +228,7 @@ public class ArticleController extends WombatController {
 
   private Map<String, Collection<Object>> getContainingArticleLists(ScholarlyWorkId articleId, Site site) throws IOException {
     List<Map<?, ?>> articleListObjects = articleApi.requestObject(
-        articleId.appendId(ApiAddress.builder("articles").addParameter("lists")),
+        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addParameter("lists").build(),
         List.class);
     Multimap<String, Object> result = LinkedListMultimap.create(articleListObjects.size());
     for (Map<?, ?> articleListObject : articleListObjects) {
@@ -326,7 +329,7 @@ public class ArticleController extends WombatController {
     // Display the body only on non-correction amendments. Would be better if this were configurable per theme.
     if (amendmentType != AmendmentType.CORRECTION) {
       String doi = (String) amendment.get("doi");
-      ScholarlyWorkId amendmentId = new ScholarlyWorkId(doi); // TODO: Has revision?
+      ScholarlyWorkId amendmentId = ScholarlyWorkId.of(doi); // TODO: Has revision?
       RenderContext renderContext = new RenderContext(site, amendmentId);
       String body;
       try {
@@ -485,7 +488,7 @@ public class ArticleController extends WombatController {
     }
 
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
-    ScholarlyWorkId articleId = new ScholarlyWorkId((String) parentArticleStub.get("doi")); // latest revision
+    ScholarlyWorkId articleId = ScholarlyWorkId.of((String) parentArticleStub.get("doi")); // latest revision
     Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetadata);
 
@@ -925,7 +928,7 @@ public class ArticleController extends WombatController {
    */
   private void requestAuthors(Model model, ScholarlyWorkId workId) throws IOException {
     Map<?, ?> allAuthorsData = articleApi.requestObject(
-        workId.appendId(ApiAddress.builder("articles").addParameter("authors")),
+        articleResolutionService.toIngestion(workId).addToken("authors").build(),
         Map.class);
     List<?> authors = (List<?>) allAuthorsData.get("authors");
     model.addAttribute("authors", authors);

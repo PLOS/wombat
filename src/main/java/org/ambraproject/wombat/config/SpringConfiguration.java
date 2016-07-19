@@ -30,6 +30,7 @@ import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.AppRootPage;
 import org.ambraproject.wombat.controller.ScholarlyWorkIdResolver;
+import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
@@ -50,8 +51,9 @@ import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.ambraproject.wombat.model.SearchFilterType;
 import org.ambraproject.wombat.model.SearchFilterTypeMap;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
-import org.ambraproject.wombat.feed.ArticleFeedView;
+import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.service.ArticleArchiveServiceImpl;
+import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -84,7 +86,6 @@ import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
-import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.ambraproject.wombat.util.NullJavaMailSender;
 import org.springframework.context.annotation.Bean;
@@ -270,6 +271,11 @@ public class SpringConfiguration {
   @Bean
   public ArticleService articleService() {
     return new ArticleServiceImpl();
+  }
+
+  @Bean
+  public ArticleResolutionService articleResolutionService() {
+    return new ArticleResolutionService();
   }
 
   @Bean

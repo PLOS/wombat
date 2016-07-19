@@ -121,7 +121,7 @@ public class CommentServiceImpl implements CommentService {
   @Override
   public List<Map<String, Object>> getArticleComments(ScholarlyWorkId articleId) throws IOException {
     List<Map<String, Object>> comments = articleApi.requestObject(
-        articleId.appendId(ApiAddress.builder("articles").addParameter("comments")),
+        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addToken("comments").build(),
         List.class);
     comments.forEach(comment -> modifyCommentTree(comment, CommentFormatting::addFormattingFields));
     addCreatorData(comments);

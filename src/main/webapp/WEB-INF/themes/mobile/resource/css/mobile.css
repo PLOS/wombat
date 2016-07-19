@@ -175,6 +175,12 @@
   margin: 20px 0;
 }
 
+#author-content dd {margin-bottom: 10px;}
+#author-content dt {font-weight: bold;
+margin-bottom: 5px;}
+#author-content dl span.type {font-weight: bold;}
+
+
 /* Results */
 #page-results .filter-box {
   position: absolute;

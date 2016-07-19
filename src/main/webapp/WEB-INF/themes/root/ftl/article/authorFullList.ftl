@@ -6,24 +6,9 @@
 </dl>
 
 
-<#if correspondingAuthors?? && correspondingAuthors?size gt 0>
-  <#if correspondingAuthors?size == 1>
-  <h2>Corresponding Author</h2>
-  <p class="about-author">${correspondingAuthors[0]}</p>
-  <#else>
-  <h2>Corresponding Authors</h2>
-  <ul>
-    <#list correspondingAuthors as correspondingAuthor>
-      <li class="about-author">${correspondingAuthor}</li>
-    </#list>
-  </ul>
-  </#if>
+<#if competingInterests?size gt 0>
+<h2>Competing Interests</h2>
+  <#list competingInterests as competingInterest>
+  <p>${competingInterest}</p>
+  </#list>
 </#if>
-
-<#list authorListAffiliationMap?keys as affiliation>
-<p>
-  <span class="author-list">${authorListAffiliationMap[affiliation]}</span>
-  <br/>
-${affiliation}
-</p>
-</#list>

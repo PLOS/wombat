@@ -8,19 +8,17 @@
   </p>
   </#if>
   <#if author.deceased><p id="authDeceased-${author_index?c}">&dagger; Deceased.</p></#if>
-  <#if author.roles?size gt 0>
-  <p id="authRoles">
-    <strong>
-      Roles: <#list author.roles as role >
+  <#if author.roles?? && author.roles?size gt 0>
+  <p class="roles" id="authRoles">
+    <span class="type">Roles</span><#list author.roles as role >
     ${role.content}<#if role_has_next>,</#if>
     </#list>
-    </strong>
   </p>
   </#if>
   <#if author.corresponding??><p id="authCorresponding-${author_index?c}"> ${author.corresponding}</p></#if>
   <#if author.currentAddresses?? && author.currentAddresses?size gt 0>
   <p id="authCurrentAddress-${author_index?c}">
-    <#list author.currentAddresses as address>
+    <span class="type">Address</span><#list author.currentAddresses as address>
     ${address}<#if address_has_next>; </#if>
     </#list>
   </p>
@@ -31,14 +29,15 @@
     </#list>
   </#if>
   <#if author.affiliations?? && author.affiliations?size gt 0>
-  <p id="authAffiliations-${author_index?c}"><#if author.affiliations?size gt 1>Affiliations:<#else>Affiliation:</#if>
+  <p id="authAffiliations-${author_index?c}"><span class="type"><#if author.affiliations?size gt 1>Affiliations<#else>Affiliation</#if></span>
     <#list author.affiliations as affil>
     ${affil}<#if affil_has_next>, </#if>
     </#list>
   </p>
   </#if>
   <#if author.orcid?? && author.orcid.authenticated>
-  <p id="authOrcid-${author_index?c}">
+  <p class="orcid" id="authOrcid-${author_index?c}">
+    <span class="type">Orcid</span>
     <a href="${author.orcid.value}">${author.orcid.value}</a>
   </p>
   </#if>

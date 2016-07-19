@@ -936,7 +936,7 @@ public class ArticleController extends WombatController {
     // Putting this here was a judgement call.  One could make the argument that this logic belongs
     // in Rhino, but it's so simple I elected to keep it here for now.
     List<String> equalContributors = new ArrayList<>();
-    
+
     model.addAttribute("authorContributions", allAuthorsData.get("authorContributions"));
     model.addAttribute("competingInterests", allAuthorsData.get("competingInterests"));
     model.addAttribute("correspondingAuthors", allAuthorsData.get("correspondingAuthorList"));

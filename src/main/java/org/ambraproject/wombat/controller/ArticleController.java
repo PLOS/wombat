@@ -936,37 +936,7 @@ public class ArticleController extends WombatController {
     // Putting this here was a judgement call.  One could make the argument that this logic belongs
     // in Rhino, but it's so simple I elected to keep it here for now.
     List<String> equalContributors = new ArrayList<>();
-
-    ListMultimap<String, String> authorAffiliationsMap = LinkedListMultimap.create();
-    for (Object o : authors) {
-      Map<String, Object> author = (Map<String, Object>) o;
-      String fullName = (String) author.get("fullName");
-
-      List<String> affiliations = (List<String>) author.get("affiliations");
-      for (String affiliation : affiliations) {
-        authorAffiliationsMap.put(affiliation, fullName);
-      }
-
-      Object obj = author.get("equalContrib");
-      if (obj != null && (boolean) obj) {
-        equalContributors.add(fullName);
-      }
-
-      // remove the footnote marker from the current address
-      List<String> currentAddresses = (List<String>) author.get("currentAddresses");
-      for (ListIterator<String> iterator = currentAddresses.listIterator(); iterator.hasNext(); ) {
-        String currentAddress = iterator.next();
-        iterator.set(TextUtil.removeFootnoteMarker(currentAddress));
-      }
-    }
-
-    //Create comma-separated list of authors per affiliation
-    LinkedHashMap<String, String> authorListAffiliationMap = new LinkedHashMap<>();
-    for (Map.Entry<String, Collection<String>> affiliation : authorAffiliationsMap.asMap().entrySet()) {
-      authorListAffiliationMap.put(affiliation.getKey(), Joiner.on(", ").join(affiliation.getValue()));
-    }
-
-    model.addAttribute("authorListAffiliationMap", authorListAffiliationMap);
+    
     model.addAttribute("authorContributions", allAuthorsData.get("authorContributions"));
     model.addAttribute("competingInterests", allAuthorsData.get("competingInterests"));
     model.addAttribute("correspondingAuthors", allAuthorsData.get("correspondingAuthorList"));

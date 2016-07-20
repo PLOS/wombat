@@ -139,16 +139,16 @@ public class ArticleController extends WombatController {
                               @SiteParam Site site,
                               ScholarlyWorkId workId)
       throws IOException {
-    ArticleMetadata articleMetadata = articleMetadataFactory.get(site, workId);
-    articleMetadata.populate(request, model);
-    articleMetadata.validateVisibility();
+    articleMetadataFactory.get(site, workId)
+        .validateVisibility()
+        .populate(request, model)
+        .fillAmendments(model);
 
     RenderContext renderContext = new RenderContext(site, workId);
 
     String articleHtml = getArticleHtml(renderContext);
     model.addAttribute("articleText", articleHtml);
 
-    articleMetadata.fillAmendments(model);
 
     return site + "/ftl/article/article";
   }
@@ -166,8 +166,8 @@ public class ArticleController extends WombatController {
   public String renderArticleComments(HttpServletRequest request, Model model, @SiteParam Site site,
                                       ScholarlyWorkId articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .populate(request, model)
-        .validateVisibility();
+        .validateVisibility()
+        .populate(request, model);
 
     try {
       model.addAttribute("articleComments", commentService.getArticleComments(articleId));
@@ -184,8 +184,8 @@ public class ArticleController extends WombatController {
                                      ScholarlyWorkId articleId)
       throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .populate(request, model)
-        .validateVisibility();
+        .validateVisibility()
+        .populate(request, model);
 
     model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
     return site + "/ftl/article/comment/newComment";
@@ -224,8 +224,8 @@ public class ArticleController extends WombatController {
     ScholarlyWorkId articleId = ScholarlyWorkId.of((String) parentArticleStub.get("doi")); // latest revision
 
     articleMetadataFactory.get(site, articleId)
-        .populate(request, model)
-        .validateVisibility();
+        .validateVisibility()
+        .populate(request, model);
 
     model.addAttribute("comment", comment);
     model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
@@ -321,8 +321,8 @@ public class ArticleController extends WombatController {
   public String renderArticleAuthors(HttpServletRequest request, Model model, @SiteParam Site site,
                                      ScholarlyWorkId articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .populate(request, model)
-        .validateVisibility();
+        .validateVisibility()
+        .populate(request, model);
     return site + "/ftl/article/authors";
   }
 
@@ -339,8 +339,8 @@ public class ArticleController extends WombatController {
   public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
                                      ScholarlyWorkId articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .populate(request, model)
-        .validateVisibility();
+        .validateVisibility()
+        .populate(request, model);
     return site + "/ftl/article/metrics";
   }
 
@@ -349,8 +349,8 @@ public class ArticleController extends WombatController {
                                            ScholarlyWorkId articleId)
       throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .populate(request, model)
-        .validateVisibility();
+        .validateVisibility()
+        .populate(request, model);
     return site + "/ftl/article/citationDownload";
   }
 
@@ -401,8 +401,8 @@ public class ArticleController extends WombatController {
   public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
                                             ScholarlyWorkId articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .populate(request, model)
-        .validateVisibility();
+        .validateVisibility()
+        .populate(request, model);
     String recaptchaPublicKey = site.getTheme().getConfigMap("captcha").get("publicKey").toString();
     model.addAttribute("recaptchaPublicKey", recaptchaPublicKey);
     return site + "/ftl/article/relatedContent";
@@ -548,8 +548,8 @@ public class ArticleController extends WombatController {
   public String renderEmailThisArticle(HttpServletRequest request, Model model, @SiteParam Site site,
                                        ScholarlyWorkId articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .populate(request, model)
-        .validateVisibility();
+        .validateVisibility()
+        .populate(request, model);
     model.addAttribute("maxEmails", MAX_TO_EMAILS);
     model.addAttribute("captchaHTML", captchaService.getCaptchaHtml(site, Optional.empty()));
     return site + "/ftl/article/email";

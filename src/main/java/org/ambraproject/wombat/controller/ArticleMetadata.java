@@ -100,15 +100,21 @@ public class ArticleMetadata {
     model.addAttribute("categoryTerms", getCategoryTerms(ingestionMetadata));
     requestAuthors(model, articleId);
 
-    List<?> revisionMenu = factory.articleApi.requestObject(
-        ApiAddress.builder("articles").addToken(articleId.getDoi())
-            .addParameter("versionedPreview").addParameter("revisions").build(),
-        List.class);
-    model.addAttribute("revisionMenu", revisionMenu.stream()
-        .map(n -> ((Number) n).intValue())
-        .collect(Collectors.toList()));
+    model.addAttribute("revisionMenu", getRevisionList());
 
     return this;
+  }
+
+  private List<Integer> getRevisionList() throws IOException {
+    // TODO: Unify with the same API call that we already did in articleService.requestArticleMetadata
+    Map<String, ?> articleOverview = factory.articleApi.requestObject(
+        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).build(),
+        Map.class);
+    Map<String, ?> revisionMap = (Map<String, ?>) articleOverview.get("revisions");
+    return revisionMap.keySet().stream()
+        .map(Integer::valueOf)
+        .sorted()
+        .collect(Collectors.toList());
   }
 
   private static final boolean DEBUG_VISIBILITY = true;
@@ -206,6 +212,9 @@ public class ArticleMetadata {
   }
 
   private Map<String, Integer> getCommentCount(String doi) throws IOException {
+    // TODO: Determine actual service; replace this placeholder
+    if (true) return ImmutableMap.<String, Integer>builder().put("all", 0).put("root", 0).build();
+
     return factory.articleApi.requestObject(
         ApiAddress.builder("articles").addToken(doi).addParameter("commentCount").build(),
         Map.class);

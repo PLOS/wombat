@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.RemoteCacheSpace;
 
@@ -40,6 +41,17 @@ public final class RemoteCacheKey implements Serializable {
   public static RemoteCacheKey create(RemoteCacheSpace remoteCacheSpace, String firstIdentifier, String secondIdentifier, String... moreIdentifiers) {
     ImmutableList<String> identifiers = ImmutableList.<String>builder()
         .add(firstIdentifier).add(secondIdentifier).add(moreIdentifiers).build();
+    return new RemoteCacheKey(remoteCacheSpace, identifiers);
+  }
+
+  /**
+   * Create a cache key from a sequence of strings that uniquely identifies the value to be cached.
+   *
+   * @param remoteCacheSpace identifies the cache to use
+   * @return a cache key
+   */
+  public static RemoteCacheKey create(RemoteCacheSpace remoteCacheSpace, List<String> identifiers) {
+    Preconditions.checkArgument(!identifiers.isEmpty());
     return new RemoteCacheKey(remoteCacheSpace, identifiers);
   }
 

@@ -20,47 +20,13 @@
 
 <#include "articleHeader.ftl" />
 
-  <section class="article-body content">
+  <section class="article-body content authors">
 
     <#include "tabs.ftl" />
     <@displayTabList 'Authors' />
     <h1>About the Authors</h1>
 
-    <#list authorListAffiliationMap?keys as affiliation>
-      <p>
-        <span class="author-list">${authorListAffiliationMap[affiliation]}</span>
-        <br/>
-        ${affiliation}
-      </p>
-    </#list>
-
-    <#if correspondingAuthors?? && correspondingAuthors?size gt 0>
-      <#if correspondingAuthors?size == 1>
-        <h2>Corresponding Author</h2>
-        <p class="about-author">${correspondingAuthors[0]}</p>
-      <#else>
-        <h2>Corresponding Authors</h2>
-        <ul>
-          <#list correspondingAuthors as correspondingAuthor>
-            <li class="about-author">${correspondingAuthor}</li>
-          </#list>
-        </ul>
-      </#if>
-    </#if>
-
-    <#if competingInterests?size gt 0>
-      <h2>Competing Interests</h2>
-      <#list competingInterests as competingInterest>
-        <p>${competingInterest}</p>
-      </#list>
-    </#if>
-
-    <#if authorContributions?size gt 0>
-      <h2>Author Contributions</h2>
-      <#list authorContributions as contribution>
-        <p>${contribution}</p>
-      </#list>
-    </#if>
+    <#include "authorFullList.ftl" />
 
   </section>
   <aside class="article-aside">

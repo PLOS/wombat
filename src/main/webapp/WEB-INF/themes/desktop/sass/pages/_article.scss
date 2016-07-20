@@ -453,6 +453,8 @@ $article-sidebar-width: 160;
     @extend .icon-author-address;
   }
 
+
+
   ///print styles
   [data-js-toggle="toggle_trigger"], [data-js-toggle="toggle_add"]{
     @extend .hide-for-print;
@@ -1042,4 +1044,8 @@ body.article .ui-widget-overlay {
       padding-top: $pad-default;
     }
   }
+}
+
+section.authors{
+  p{margin-bottom: rem-calc(3px);}
 }

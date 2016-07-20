@@ -33,7 +33,7 @@ public interface ArticleService {
    * @return deserialized JSON data structure as returned by the SOA layer
    * @throws IOException
    */
-  Map<?, ?> requestArticleMetadata(ScholarlyWorkId articleId, boolean excludeCitations) throws IOException;
+  Map<String, ?> requestArticleMetadata(ScholarlyWorkId articleId, boolean excludeCitations) throws IOException;
 
   /**
    * Get the list of article figures and tables from the article meta data

@@ -323,7 +323,8 @@ public class ArticleMetadata {
    * data about those articles from the service tier.
    */
   public ArticleMetadata fillAmendments(Model model) throws IOException {
-    List<Map<String, ?>> relatedArticles = (List<Map<String, ?>>) ingestionMetadata.get("relatedArticles");
+    Map<String, ?> relatedArticleMap = (Map<String, ?>) ingestionMetadata.get("relatedArticles");
+    List<Map<String, ?>> relatedArticles = ImmutableList.of(); // TODO
     List<Map<String, Object>> amendments = relatedArticles.parallelStream()
         .map((Map<String, ?> relatedArticle) -> createAmendment(site, relatedArticle))
         .filter(Objects::nonNull)

@@ -25,6 +25,8 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.CacheDeserializer;
+import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.util.TextUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -445,10 +448,8 @@ public class ArticleMetadata {
    */
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
     RemoteCacheKey cacheKey = renderContext.getCacheKey(RemoteCacheSpace.AMENDMENT_BODY);
-    ApiAddress xmlAssetPath = ArticleController.getArticleXmlAssetPath(renderContext);
-
-    return factory.articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
-
+    ContentKey manuscriptKey = factory.articleService.getManuscriptKey(renderContext.getArticleId().get());
+    CacheDeserializer<InputStream, String> htmlFunction = stream -> {
       // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
       String bodyXml = factory.xmlService.extractElement(stream, "body");
       try {
@@ -456,7 +457,8 @@ public class ArticleMetadata {
       } catch (TransformerException e) {
         throw new RuntimeException(e);
       }
-    });
+    };
+    return ""; // TODO: Pass manuscriptKey and htmlFunction to corpusContentApi
   }
 
 }

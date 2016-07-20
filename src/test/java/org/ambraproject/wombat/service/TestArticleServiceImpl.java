@@ -3,6 +3,7 @@ package org.ambraproject.wombat.service;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.service.remote.ContentKey;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -44,4 +45,8 @@ public class TestArticleServiceImpl implements ArticleService {
     return Arrays.asList(asset1, asset2, asset3, asset4);
   }
 
+  @Override
+  public ContentKey getManuscriptKey(ScholarlyWorkId articleId) throws IOException {
+    throw new UnsupportedOperationException();
+  }
 }

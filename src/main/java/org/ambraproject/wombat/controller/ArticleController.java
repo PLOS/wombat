@@ -23,7 +23,10 @@ import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.ContentKey;
+import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
@@ -69,6 +72,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringWriter;
@@ -80,7 +84,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -106,6 +109,8 @@ public class ArticleController extends WombatController {
   private UserApi userApi;
   @Autowired
   private ArticleApi articleApi;
+  @Autowired
+  private CorpusContentApi corpusContentApi;
   @Autowired
   private ArticleService articleService;
   @Autowired
@@ -648,21 +653,6 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * Build the path to request the article XML asset for an article.
-   *
-   * @return the service path to the correspond article XML asset file
-   */
-  static ApiAddress getArticleXmlAssetPath(RenderContext renderContext) {
-    ScholarlyWorkId id = renderContext.getArticleId().get();
-    OptionalInt revisionNumber = id.getRevisionNumber();
-    ApiAddress.Builder address = ApiAddress.builder("articles").addToken(id.getDoi()).addParameter("xml");
-    if (revisionNumber.isPresent()) {
-      address = address.addParameter("revision", revisionNumber.getAsInt());
-    }
-    return address.build();
-  }
-
-  /**
    * Retrieves article XML from the SOA server, transforms it into HTML, and returns it. Result will be stored in
    * memcache.
    *
@@ -671,9 +661,8 @@ public class ArticleController extends WombatController {
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
     RemoteCacheKey cacheKey = renderContext.getCacheKey(RemoteCacheSpace.ARTICLE_HTML);
-    ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
-
-    return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
+    ContentKey manuscriptKey = articleService.getManuscriptKey(renderContext.getArticleId().get());
+    CacheDeserializer<InputStream, String> htmlFunction = stream -> {
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
       try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
         articleTransformService.transform(renderContext, stream, outputStream);
@@ -681,7 +670,11 @@ public class ArticleController extends WombatController {
         throw new RuntimeException(e);
       }
       return articleHtml.toString();
-    });
+    };
+
+    if (true) return ""; // TODO: Pass manuscriptKey and htmlFunction to corpusContentApi
+
+    return articleApi.requestCachedStream(cacheKey, null, htmlFunction);
   }
 
 }

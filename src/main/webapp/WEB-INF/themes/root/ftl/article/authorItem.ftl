@@ -56,13 +56,13 @@
   <#if hasMeta> <a  <#else> <span </#if>data-author-id="${author_index?c}" class="author-name<#if
 !hasMeta> no-author-data</#if>" >
 
-${author.fullName}<#if author.onBehalfOf??>, ${author.onBehalfOf}</#if><#-- no space
- --><#if author.equalContrib> <span class="contribute"> </span></#if><#-- no space
- --><#if author.customFootnotes?? && author.customFootnotes?size gt 0> <span class="rel-footnote"> </span></#if><#-- no space
- --><#if author.corresponding??> <span class="email">  </span></#if><#-- no space
- --><#if author.deceased>&#8224</#if><#-- no space
- --><#if author_has_next><#-- no space -->,</#if><#-- no space
-    --><#if hasMeta> </a>  <#else> </span> </#if>
+${author.fullName}<#if author.onBehalfOf??>, ${author.onBehalfOf}</#if>
+  <lt/><#if author.equalContrib> <span class="contribute"> </span></#if>
+  <lt/><#if author.customFootnotes?? && author.customFootnotes?size gt 0> <span class="rel-footnote"> </span></#if>
+  <lt/><#if author.corresponding??> <span class="email">  </span></#if>
+  <lt/><#if author.deceased>&#8224</#if>
+  <lt/><#if author_has_next><lt/>,</#if>
+  <lt/><#if hasMeta> </a>  <#else> </span> </#if>
 
   <#if hasMeta>
     <div id="author-meta-${author_index?c}" class="author-info" data-js-tooltip="tooltip_target">

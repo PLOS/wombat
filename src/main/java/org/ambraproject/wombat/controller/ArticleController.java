@@ -7,15 +7,12 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RemoteCacheSpace;
-import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
 import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.ApiAddress;
-import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -25,7 +22,6 @@ import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
-import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
@@ -107,15 +103,11 @@ public class ArticleController extends WombatController {
   @Autowired
   private Charset charset;
   @Autowired
-  private SiteSet siteSet;
-  @Autowired
   private UserApi userApi;
   @Autowired
   private ArticleApi articleApi;
   @Autowired
   private ArticleService articleService;
-  @Autowired
-  private ArticleResolutionService articleResolutionService;
   @Autowired
   private ArticleTransformService articleTransformService;
   @Autowired
@@ -135,16 +127,9 @@ public class ArticleController extends WombatController {
   @Autowired
   private CommentValidationService commentValidationService;
   @Autowired
-  private XmlService xmlService;
-  @Autowired
   private CommentService commentService;
   @Autowired
-  private ServiceCacheSet serviceCacheSet;
-
-  private ArticleMetadata.Factory getArticleMetadataFactory() {
-    return new ArticleMetadata.Factory(articleApi, articleService, articleResolutionService, siteSet,
-        articleTransformService, xmlService);
-  }
+  private ArticleMetadata.Factory articleMetadataFactory;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -154,7 +139,7 @@ public class ArticleController extends WombatController {
                               @SiteParam Site site,
                               ScholarlyWorkId workId)
       throws IOException {
-    ArticleMetadata articleMetadata = getArticleMetadataFactory().get(site, workId);
+    ArticleMetadata articleMetadata = articleMetadataFactory.get(site, workId);
     articleMetadata.populate(request, model);
     articleMetadata.validateVisibility();
 
@@ -180,7 +165,7 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleComments", value = "/article/comments")
   public String renderArticleComments(HttpServletRequest request, Model model, @SiteParam Site site,
                                       ScholarlyWorkId articleId) throws IOException {
-    getArticleMetadataFactory().get(site, articleId)
+    articleMetadataFactory.get(site, articleId)
         .populate(request, model)
         .validateVisibility();
 
@@ -198,7 +183,7 @@ public class ArticleController extends WombatController {
   public String renderNewCommentForm(HttpServletRequest request, Model model, @SiteParam Site site,
                                      ScholarlyWorkId articleId)
       throws IOException {
-    getArticleMetadataFactory().get(site, articleId)
+    articleMetadataFactory.get(site, articleId)
         .populate(request, model)
         .validateVisibility();
 
@@ -238,7 +223,7 @@ public class ArticleController extends WombatController {
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
     ScholarlyWorkId articleId = ScholarlyWorkId.of((String) parentArticleStub.get("doi")); // latest revision
 
-    getArticleMetadataFactory().get(site, articleId)
+    articleMetadataFactory.get(site, articleId)
         .populate(request, model)
         .validateVisibility();
 
@@ -335,7 +320,7 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleAuthors", value = "/article/authors")
   public String renderArticleAuthors(HttpServletRequest request, Model model, @SiteParam Site site,
                                      ScholarlyWorkId articleId) throws IOException {
-    getArticleMetadataFactory().get(site, articleId)
+    articleMetadataFactory.get(site, articleId)
         .populate(request, model)
         .validateVisibility();
     return site + "/ftl/article/authors";
@@ -353,7 +338,7 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleMetrics", value = "/article/metrics")
   public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
                                      ScholarlyWorkId articleId) throws IOException {
-    getArticleMetadataFactory().get(site, articleId)
+    articleMetadataFactory.get(site, articleId)
         .populate(request, model)
         .validateVisibility();
     return site + "/ftl/article/metrics";
@@ -363,7 +348,7 @@ public class ArticleController extends WombatController {
   public String renderCitationDownloadPage(HttpServletRequest request, Model model, @SiteParam Site site,
                                            ScholarlyWorkId articleId)
       throws IOException {
-    getArticleMetadataFactory().get(site, articleId)
+    articleMetadataFactory.get(site, articleId)
         .populate(request, model)
         .validateVisibility();
     return site + "/ftl/article/citationDownload";
@@ -388,7 +373,7 @@ public class ArticleController extends WombatController {
                                                        String fileExtension,
                                                        Function<Map<String, ?>, String> serviceFunction)
       throws IOException {
-    Map<String, ?> articleMetadata = getArticleMetadataFactory().get(site, articleId)
+    Map<String, ?> articleMetadata = articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .getIngestionMetadata();
 
@@ -415,7 +400,7 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleRelatedContent", value = "/article/related")
   public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
                                             ScholarlyWorkId articleId) throws IOException {
-    getArticleMetadataFactory().get(site, articleId)
+    articleMetadataFactory.get(site, articleId)
         .populate(request, model)
         .validateVisibility();
     String recaptchaPublicKey = site.getTheme().getConfigMap("captcha").get("publicKey").toString();
@@ -549,7 +534,7 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleFigsAndTables", value = "/article/assets/figsAndTables")
   public ResponseEntity<List> listArticleFiguresAndTables(@SiteParam Site site,
                                                           ScholarlyWorkId articleId) throws IOException {
-    Map<String, ?> articleMetadata = getArticleMetadataFactory().get(site, articleId)
+    Map<String, ?> articleMetadata = articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .getIngestionMetadata();
     List<ImmutableMap<String, String>> articleFigsAndTables = articleService.getArticleFiguresAndTables(articleMetadata);
@@ -562,7 +547,7 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "email", value = "/article/email")
   public String renderEmailThisArticle(HttpServletRequest request, Model model, @SiteParam Site site,
                                        ScholarlyWorkId articleId) throws IOException {
-    getArticleMetadataFactory().get(site, articleId)
+    articleMetadataFactory.get(site, articleId)
         .populate(request, model)
         .validateVisibility();
     model.addAttribute("maxEmails", MAX_TO_EMAILS);
@@ -607,7 +592,7 @@ public class ArticleController extends WombatController {
       return renderEmailThisArticle(request, model, site, articleId);
     }
 
-    Map<String, ?> articleMetadata = getArticleMetadataFactory().get(site, articleId)
+    Map<String, ?> articleMetadata = articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .getIngestionMetadata();
 

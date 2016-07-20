@@ -27,6 +27,7 @@ import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.util.TextUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
@@ -62,24 +63,18 @@ public class ArticleMetadata {
   }
 
   public static class Factory {
-    private final ArticleApi articleApi;
-    private final ArticleService articleService;
-    private final ArticleResolutionService articleResolutionService;
-    private final SiteSet siteSet;
-    private final ArticleTransformService articleTransformService;
-    private final XmlService xmlService;
-
-    public Factory(ArticleApi articleApi,
-                   ArticleService articleService,
-                   ArticleResolutionService articleResolutionService,
-                   SiteSet siteSet, ArticleTransformService articleTransformService, XmlService xmlService) {
-      this.articleApi = Objects.requireNonNull(articleApi);
-      this.articleService = Objects.requireNonNull(articleService);
-      this.articleResolutionService = Objects.requireNonNull(articleResolutionService);
-      this.siteSet = Objects.requireNonNull(siteSet);
-      this.articleTransformService = Objects.requireNonNull(articleTransformService);
-      this.xmlService = Objects.requireNonNull(xmlService);
-    }
+    @Autowired
+    private ArticleApi articleApi;
+    @Autowired
+    private ArticleService articleService;
+    @Autowired
+    private ArticleResolutionService articleResolutionService;
+    @Autowired
+    private SiteSet siteSet;
+    @Autowired
+    private ArticleTransformService articleTransformService;
+    @Autowired
+    private XmlService xmlService;
 
     public ArticleMetadata get(Site site, ScholarlyWorkId id) throws IOException {
       Map<String, ?> ingestionMetadata;

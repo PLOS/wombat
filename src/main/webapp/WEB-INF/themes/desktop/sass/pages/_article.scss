@@ -560,8 +560,10 @@ $article-sidebar-width: 160;
     width: 79%;
     text-align: center;
     white-space: nowrap;
-    &:hover {
-      background: $plos-default;
+    &:not(.no-pdf) {
+      &:hover {
+        background: $plos-default;
+      }
     }
 
     a {

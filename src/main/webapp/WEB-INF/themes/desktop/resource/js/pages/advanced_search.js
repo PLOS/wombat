@@ -111,7 +111,9 @@ var AdvancedSearch = {};
       e.preventDefault();
       that.validateForm(function (err) {
         if (err) return alert(err.message);
-        $(e.target).unbind('submit').submit();
+        if(_.isUndefined(window.SearchResult)) {
+          $(e.target).unbind('submit').submit();
+        }
       });
     });
 
@@ -281,7 +283,9 @@ var AdvancedSearch = {};
       AdvancedSearch.enableSearchInput(true);
       $(containerSelector).off('click change keyup').data('advanced-search-initialized', false).children().remove();
       $(this.clearButtonSelector).off('click');
-      $(this.inputSearchSelector).val('').parents('form').off('submit');
+      if (!$('#search-alert-modal').hasClass('ajax')) {
+        $(this.inputSearchSelector).val('').parents('form').off('submit');
+      }
       this.currentConditions = 0;
       $(this.inputSearchSelector).attr('advanced-condition', null);
       $(this.inputQuerySelector).attr('advanced-condition', null);

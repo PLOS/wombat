@@ -1,8 +1,9 @@
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.model.ScholarlyWorkId;
-import org.ambraproject.wombat.util.CacheKey;
+import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -30,7 +31,7 @@ public class RenderContext {
     return articleId;
   }
 
-  public CacheKey getCacheKey(String prefix) {
+  public RemoteCacheKey getCacheKey(RemoteCacheSpace space) {
     throw new UnsupportedOperationException("TODO: Implement"); // TODO: Implement
   }
 

@@ -453,6 +453,7 @@ $column-size-first: ($grid-width - $column-size);
 //TODO : remove this kludge for displaying empty results
 .search-filters  ul:empty{display:none;}
 .search-filters div {
+  width: 100%;
   ul {
 
     @include nav-side($pad-left: 0);
@@ -486,6 +487,7 @@ $column-size-first: ($grid-width - $column-size);
     }
     input[type="text"] {
       width: 75%;
+      max-width: 100%;
     }
   }
   hr {
@@ -590,6 +592,30 @@ $search-icon-pad-default: 8;
   &:hover {
     background-color: $clr-link-hover;
     color: $white;
+  }
+}
+
+.search-results-ajax {
+  .searchResults {
+    .no-term {
+      display: none;
+    }
+  }
+
+  #searchFilters, .search-results-header {
+    display: none;
+  }
+}
+
+/* Modal styles */
+#search-alert-modal.ajax {
+  @extend %modal;
+  @extend .small;
+
+  border: 0px solid white;
+
+  .grey-text {
+    width: 100%;
   }
 }
 

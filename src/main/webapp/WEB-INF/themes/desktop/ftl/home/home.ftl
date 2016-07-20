@@ -21,7 +21,6 @@
 </div>
 
 <#include "../common/footer/footer.ftl" />
-<@js src="resource/js/vendor/moment.js" />
 <@js src="resource/js/components/blogfeed.js" />
 
 <@js src="resource/js/pages/home.js" />

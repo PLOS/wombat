@@ -620,11 +620,12 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
-  @RequestMapping(name = "simpleSearch", value = "/search", params = {"q"})
+
+  @RequestMapping(name = "simpleSearch", value = "/search")
   public String search(HttpServletRequest request, Model model, @SiteParam Site site,
-      @RequestParam MultiValueMap<String, String> params) throws IOException {
+                       @RequestParam MultiValueMap<String, String> params) throws IOException {
     if (!performValidSearch(request, model, site, params)) {
-      return newAdvancedSearch(model, site);
+      return advancedSearchAjax(model, site);
     }
     return site.getKey() + "/ftl/search/searchResults";
   }
@@ -716,10 +717,8 @@ public class SearchController extends WombatController {
   }
 
   @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!q"})
-  public String newAdvancedSearch(Model model, @SiteParam Site site) throws IOException {
+  public String advancedSearchAjax(Model model, @SiteParam Site site) throws IOException {
     model.addAttribute("isNewSearch", true);
-    model.addAttribute("otherQuery", "");
-    model.addAttribute("activeFilterItems", new HashSet<>());
     return site.getKey() + "/ftl/search/searchResults";
   }
 

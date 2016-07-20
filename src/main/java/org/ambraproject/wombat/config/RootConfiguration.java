@@ -1,27 +1,22 @@
 package org.ambraproject.wombat.config;
 
-import com.google.common.base.Strings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
-import org.ambraproject.rhombat.cache.Cache;
-import org.ambraproject.rhombat.cache.MemcacheClient;
-import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
-import org.ambraproject.wombat.service.remote.CachedRemoteService;
-import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.service.remote.UserApiImpl;
-import org.ambraproject.wombat.service.remote.ReaderService;
-import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleApiImpl;
+import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.ReaderService;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.StreamService;
+import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.service.remote.UserApiImpl;
 import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.joda.time.LocalDate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.yaml.snakeyaml.Yaml;
@@ -87,19 +82,8 @@ public class RootConfiguration {
   }
 
   @Bean
-  public Cache cache(RuntimeConfiguration runtimeConfiguration) throws IOException {
-    final RuntimeConfiguration.CacheConfiguration cacheConfiguration = runtimeConfiguration.getCacheConfiguration();
-    if (!Strings.isNullOrEmpty(cacheConfiguration.getMemcachedHost())) {
-
-      // TODO: consider defining this in wombat.yaml instead.
-      final int cacheTimeout = 60 * 60;
-      MemcacheClient result = new MemcacheClient(cacheConfiguration.getMemcachedHost(),
-          cacheConfiguration.getMemcachedPort(), cacheConfiguration.getCacheAppPrefix(), cacheTimeout);
-      result.connect();
-      return result;
-    } else {
-      return new NullCache();
-    }
+  public ServiceCacheSet serviceCacheSet() throws IOException {
+    return new CacheManagerWrapper();
   }
 
   @Bean
@@ -118,14 +102,16 @@ public class RootConfiguration {
   }
 
   @Bean
-  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager,
-                                                               Cache cache) {
-    return new CachedRemoteService<>(new StreamService(httpClientConnectionManager), cache);
+  public CachedRemoteService<InputStream> cachedRemoteStreamer(ServiceCacheSet serviceCacheSet,
+                                                               HttpClientConnectionManager httpClientConnectionManager)
+      throws IOException {
+    return new CachedRemoteService<>(serviceCacheSet, new StreamService(httpClientConnectionManager));
   }
 
   @Bean
-  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager,
-                                                        Cache cache) {
-    return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager), cache);
+  public CachedRemoteService<Reader> cachedRemoteReader(ServiceCacheSet serviceCacheSet,
+                                                        HttpClientConnectionManager httpClientConnectionManager)
+      throws IOException {
+    return new CachedRemoteService<>(serviceCacheSet, new ReaderService(httpClientConnectionManager));
   }
 }

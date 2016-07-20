@@ -3,7 +3,7 @@
 <#macro searchForm journal="">
 
 <li id="navsearch" class="head-search">
-    <form name="searchForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
+  <form name="searchForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
         <fieldset>
             <legend>Search</legend>
             <label for="search">Search</label>

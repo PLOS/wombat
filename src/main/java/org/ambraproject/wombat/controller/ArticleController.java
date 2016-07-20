@@ -17,7 +17,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
 import com.google.gson.Gson;
-import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
+import org.ambraproject.wombat.config.RemoteCacheSpace;
+import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -41,9 +42,9 @@ import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.TextUtil;
@@ -161,7 +162,7 @@ public class ArticleController extends WombatController {
   @Autowired
   private CommentService commentService;
   @Autowired
-  private RequestMappingContextDictionary requestMappingContextDictionary;
+  private ServiceCacheSet serviceCacheSet;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -936,6 +937,7 @@ public class ArticleController extends WombatController {
     // Putting this here was a judgement call.  One could make the argument that this logic belongs
     // in Rhino, but it's so simple I elected to keep it here for now.
     List<String> equalContributors = new ArrayList<>();
+
     ListMultimap<String, String> authorAffiliationsMap = LinkedListMultimap.create();
     for (Object o : authors) {
       Map<String, Object> author = (Map<String, Object>) o;
@@ -993,8 +995,7 @@ public class ArticleController extends WombatController {
    * @return the body of the amendment article, transformed into HTML for display in a notice on the amended article
    */
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
-
-    CacheKey cacheKey = renderContext.getCacheKey("amendmentBody");
+    RemoteCacheKey cacheKey = renderContext.getCacheKey(RemoteCacheSpace.AMENDMENT_BODY);
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
@@ -1017,8 +1018,7 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
-    ScholarlyWorkId articleId = renderContext.getArticleId().orElseThrow(IllegalArgumentException::new);
-    CacheKey cacheKey = renderContext.getCacheKey("html");
+    RemoteCacheKey cacheKey = renderContext.getCacheKey(RemoteCacheSpace.ARTICLE_HTML);
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {

@@ -61,7 +61,7 @@ public class Citations {
   private static final Joiner COMMA_JOINER = Joiner.on(", ");
 
   private static String extractYear(String date) {
-    return CalendarUtil.formatIso8601Date(date, "yyyy", false);
+    return CalendarUtil.formatIso8601Date(date, "yyyy");
   }
 
   /*

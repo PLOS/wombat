@@ -1,4 +1,5 @@
 <#macro authorItemMeta author author_index>
+
   <#if author.equalContrib>
   <p>
     <span class="contribute"> </span> Contributed equally to this work with:
@@ -37,7 +38,7 @@
   </#if>
   <#if author.orcid?? && author.orcid.authenticated>
   <p class="orcid" id="authOrcid-${author_index?c}">
-    <span class="type">Orcid</span>
+    <span class="type">ORCID</span>
     <a href="${author.orcid.value}">${author.orcid.value}</a>
   </p>
   </#if>
@@ -55,15 +56,13 @@
 >
   <#if hasMeta> <a  <#else> <span </#if>data-author-id="${author_index?c}" class="author-name<#if
 !hasMeta> no-author-data</#if>" >
-
-${author.fullName}<#if author.onBehalfOf??>, ${author.onBehalfOf}</#if>
-  <lt/><#if author.equalContrib> <span class="contribute"> </span></#if>
-  <lt/><#if author.customFootnotes?? && author.customFootnotes?size gt 0> <span class="rel-footnote"> </span></#if>
-  <lt/><#if author.corresponding??> <span class="email">  </span></#if>
-  <lt/><#if author.deceased>&#8224</#if>
-  <lt/><#if author_has_next><lt/>,</#if>
-  <lt/><#if hasMeta> </a>  <#else> </span> </#if>
-
+  ${author.fullName}<#if author.onBehalfOf??>, ${author.onBehalfOf}</#if><#t>
+  <#if author.equalContrib> <span class="contribute"> </span></#if><#t>
+  <#if author.customFootnotes?? && author.customFootnotes?size gt 0> <span class="rel-footnote"> </span></#if><#t>
+  <#if author.corresponding??> <span class="email">  </span></#if><#t>
+  <#if author.deceased> &#8224</#if><#t>
+  <#if author_has_next>,</#if><#t>
+  <#if hasMeta></a><#else></span></#if><#t>
   <#if hasMeta>
     <div id="author-meta-${author_index?c}" class="author-info" data-js-tooltip="tooltip_target">
      <@authorItemMeta author author_index/>

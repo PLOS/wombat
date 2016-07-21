@@ -116,6 +116,11 @@ public abstract class AbstractContentApi implements ContentApi {
     return cachedRemoteReader.requestCached(cacheKey, target, callback);
   }
 
+  protected final <T> T requestCachedStream(RemoteCacheKey cacheKey, ContentKey key, CacheDeserializer<InputStream, T> callback) throws IOException {
+    HttpGet target = new HttpGet(buildUri(key, RequestMode.OBJECT));
+    return cachedRemoteStreamer.requestCached(cacheKey, target, callback);
+  }
+
   @Override
   public final Map<String, Object> requestMetadata(RemoteCacheKey cacheKey, ContentKey key) throws IOException {
     return cachedRemoteReader.requestCached(cacheKey, new HttpGet(buildUri(key, RequestMode.METADATA)),

@@ -25,9 +25,7 @@ import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.service.remote.CacheDeserializer;
-import org.ambraproject.wombat.service.remote.ContentKey;
-import org.ambraproject.wombat.service.remote.RemoteCacheKey;
+import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.util.TextUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -68,6 +66,8 @@ public class ArticleMetadata {
   public static class Factory {
     @Autowired
     private ArticleApi articleApi;
+    @Autowired
+    private CorpusContentApi corpusContentApi;
     @Autowired
     private ArticleService articleService;
     @Autowired
@@ -447,18 +447,16 @@ public class ArticleMetadata {
    * @return the body of the amendment article, transformed into HTML for display in a notice on the amended article
    */
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
-    RemoteCacheKey cacheKey = renderContext.getCacheKey(RemoteCacheSpace.AMENDMENT_BODY);
-    ContentKey manuscriptKey = factory.articleService.getManuscriptKey(renderContext.getArticleId().get());
-    CacheDeserializer<InputStream, String> htmlFunction = stream -> {
-      // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
-      String bodyXml = factory.xmlService.extractElement(stream, "body");
-      try {
-        return factory.articleTransformService.transformExcerpt(renderContext, bodyXml, null);
-      } catch (TransformerException e) {
-        throw new RuntimeException(e);
-      }
-    };
-    return ""; // TODO: Pass manuscriptKey and htmlFunction to corpusContentApi
+    return factory.corpusContentApi.readManuscript(renderContext, RemoteCacheSpace.AMENDMENT_BODY,
+        (InputStream stream) -> {
+          // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
+          String bodyXml = factory.xmlService.extractElement(stream, "body");
+          try {
+            return factory.articleTransformService.transformExcerpt(renderContext, bodyXml, null);
+          } catch (TransformerException e) {
+            throw new RuntimeException(e);
+          }
+        });
   }
 
 }

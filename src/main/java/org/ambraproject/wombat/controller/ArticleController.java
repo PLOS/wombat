@@ -23,12 +23,9 @@ import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.service.remote.CacheDeserializer;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
-import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
@@ -660,21 +657,16 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
-    RemoteCacheKey cacheKey = renderContext.getCacheKey(RemoteCacheSpace.ARTICLE_HTML);
-    ContentKey manuscriptKey = articleService.getManuscriptKey(renderContext.getArticleId().get());
-    CacheDeserializer<InputStream, String> htmlFunction = stream -> {
-      StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
-      try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
-        articleTransformService.transform(renderContext, stream, outputStream);
-      } catch (TransformerException e) {
-        throw new RuntimeException(e);
-      }
-      return articleHtml.toString();
-    };
-
-    if (true) return ""; // TODO: Pass manuscriptKey and htmlFunction to corpusContentApi
-
-    return articleApi.requestCachedStream(cacheKey, null, htmlFunction);
+    return corpusContentApi.readManuscript(renderContext, RemoteCacheSpace.ARTICLE_HTML,
+        (InputStream stream) -> {
+          StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
+          try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
+            articleTransformService.transform(renderContext, stream, outputStream);
+          } catch (TransformerException e) {
+            throw new RuntimeException(e);
+          }
+          return articleHtml.toString();
+        });
   }
 
 }

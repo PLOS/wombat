@@ -486,6 +486,8 @@ $article-sidebar-width: 160;
     @include icon-offscreen;
     margin-right: $icon-space;
   }
+  .orcid span.type {display: none;}
+
 }
 
 .author-list .active {
@@ -1047,5 +1049,9 @@ body.article .ui-widget-overlay {
 }
 
 section.authors{
+  margin-bottom: $line-height-large;
   p{margin-bottom: rem-calc(3px);}
+  dt{font-size: $txt-size-medium-large; margin-bottom: $line-height-xsmall;}
+  span.rel-footnote{display: none;}
+
 }

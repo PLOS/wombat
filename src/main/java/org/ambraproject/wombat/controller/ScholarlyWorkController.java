@@ -8,6 +8,7 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ContentKey;
@@ -33,6 +34,8 @@ public class ScholarlyWorkController extends WombatController {
   private RequestMappingContextDictionary requestMappingContextDictionary;
   @Autowired
   private CorpusContentApi corpusContentApi;
+  @Autowired
+  private ArticleResolutionService articleResolutionService;
 
   @RequestMapping(name = "work", value = "/work")
   public String redirectToWork(HttpServletRequest request,
@@ -86,8 +89,12 @@ public class ScholarlyWorkController extends WombatController {
                             @RequestParam(value = "fileType", required = true) String fileType,
                             @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {
-    Map<String, ?> metadata = getWorkMetadata(workId);
-    Map<String, ?> files = (Map<String, ?>) metadata.get("files");
+    Map<String, ?> itemResponse = articleApi.requestObject(
+        articleResolutionService.toIngestion(workId).addToken("items").build(),
+        Map.class);
+    Map<String, ?> items = (Map<String, ?>) itemResponse.get("items");
+    Map<String, ?> requestedItem = (Map<String, ?>) items.get(workId.getDoi()); // TODO: Deal with ambiguous URI forms
+    Map<String, ?> files = (Map<String, ?>) requestedItem.get("files");
     Map<String, ?> fileRepoKey = (Map<String, ?>) files.get(fileType);
     if (fileRepoKey == null) {
       String message = String.format("Unrecognized file type (\"%s\") for workId: %s", fileType, workId);
@@ -101,8 +108,9 @@ public class ScholarlyWorkController extends WombatController {
   }
 
   private static ContentKey createKey(Map<String, ?> fileRepoKey) {
-    String key = (String) fileRepoKey.get("key");
-    UUID uuid = UUID.fromString((String) fileRepoKey.get("uuid"));
+    // TODO: Account for bucket name
+    String key = (String) fileRepoKey.get("crepoKey");
+    UUID uuid = UUID.fromString((String) fileRepoKey.get("crepoUuid"));
     return ContentKey.createForUuid(key, uuid);
   }
 

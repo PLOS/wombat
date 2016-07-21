@@ -163,7 +163,13 @@ public class ArticleMetadata {
   private void addCrossPublishedJournals(HttpServletRequest request, Model model)
       throws IOException {
     final Map<?, ?> publishedJournals = (Map<?, ?>) ingestionMetadata.get("journals");
-    if (publishedJournals == null) return; // TODO: Implement when cross-pub journals are supported in versioned API
+    if (publishedJournals == null) {
+      // TODO: Implement when cross-pub journals are supported in versioned API
+      model.addAttribute("crossPub", ImmutableList.of());
+      model.addAttribute("originalPub", ImmutableMap.builder()
+          .put("href", "TODO").put("title", "TODO").put("italicizeTitle", false).build());
+      return;
+    }
 
     final String eissn = (String) ingestionMetadata.get("eIssn");
     Collection<Map<String, ?>> crossPublishedJournals;

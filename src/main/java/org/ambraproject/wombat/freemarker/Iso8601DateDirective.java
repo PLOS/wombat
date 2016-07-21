@@ -20,6 +20,8 @@ import freemarker.template.TemplateModelException;
 import org.ambraproject.wombat.util.CalendarUtil;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 /**
@@ -46,7 +48,9 @@ public class Iso8601DateDirective implements TemplateDirectiveModel {
     }
     String format = params.get("format").toString();
 
-    String formattedDate = CalendarUtil.formatIso8601Date(jsonDate, format);
+    String formattedDate = (jsonDate.length() <= 10)
+        ? LocalDate.parse(jsonDate).format(DateTimeFormatter.ofPattern(format))
+        : CalendarUtil.formatIso8601Date(jsonDate, format);
     environment.getOut().write(formattedDate);
   }
 }

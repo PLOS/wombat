@@ -17,10 +17,10 @@ import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
-import org.ambraproject.wombat.util.CalendarUtil;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
@@ -46,11 +46,11 @@ public class Iso8601DateDirective implements TemplateDirectiveModel {
     if (params.get("format") == null) {
       throw new TemplateModelException("format parameter is required");
     }
-    String format = params.get("format").toString();
+    DateTimeFormatter format = DateTimeFormatter.ofPattern(params.get("format").toString());
 
     String formattedDate = (jsonDate.length() <= 10)
-        ? LocalDate.parse(jsonDate).format(DateTimeFormatter.ofPattern(format))
-        : CalendarUtil.formatIso8601Date(jsonDate, format);
+        ? LocalDate.parse(jsonDate).format(format)
+        : OffsetDateTime.parse(jsonDate).format(format);
     environment.getOut().write(formattedDate);
   }
 }

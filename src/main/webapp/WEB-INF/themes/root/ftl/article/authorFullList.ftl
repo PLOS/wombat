@@ -12,3 +12,10 @@
   <p>${competingInterest}</p>
   </#list>
 </#if>
+
+<#if authorContributions?size gt 0>
+<h2>Author Contributions</h2>
+  <#list authorContributions as contribution>
+  <p>${contribution}</p>
+  </#list>
+</#if>

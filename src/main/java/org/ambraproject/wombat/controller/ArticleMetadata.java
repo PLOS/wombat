@@ -98,9 +98,9 @@ public class ArticleMetadata {
   public ArticleMetadata populate(HttpServletRequest request, Model model) throws IOException {
     addCrossPublishedJournals(request, model);
     model.addAttribute("article", ingestionMetadata);
-    model.addAttribute("commentCount", getCommentCount(articleId.getDoi()));
-    model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
-    model.addAttribute("categoryTerms", getCategoryTerms(ingestionMetadata));
+    model.addAttribute("commentCount", getCommentCount());
+    model.addAttribute("containingLists", getContainingArticleLists());
+    model.addAttribute("categoryTerms", getCategoryTerms());
     model.addAttribute("relatedArticles", getRelatedArticles());
     requestAuthors(model, articleId);
 
@@ -221,17 +221,17 @@ public class ArticleMetadata {
     model.addAttribute("originalPub", originalJournal);
   }
 
-  private Map<String, Integer> getCommentCount(String doi) throws IOException {
+  private Map<String, Integer> getCommentCount() throws IOException {
     // TODO: Determine actual service; replace this placeholder
     if (true) return ImmutableMap.<String, Integer>builder().put("all", 0).put("root", 0).build();
 
     return factory.articleApi.requestObject(
-        ApiAddress.builder("articles").addToken(doi).addParameter("commentCount").build(),
+        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addParameter("commentCount").build(),
         Map.class);
   }
 
 
-  private Map<String, Collection<Object>> getContainingArticleLists(ScholarlyWorkId articleId, Site site) throws IOException {
+  private Map<String, Collection<Object>> getContainingArticleLists() throws IOException {
     List<Map<?, ?>> articleListObjects = factory.articleApi.requestObject(
         ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addParameter("lists").build(),
         List.class);
@@ -247,10 +247,9 @@ public class ArticleMetadata {
    * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a
    * given category path)
    *
-   * @param ingestionMetadata
    * @return a sorted list of category terms
    */
-  private List<String> getCategoryTerms(Map<?, ?> ingestionMetadata) {
+  private List<String> getCategoryTerms() {
     List<Map<String, ?>> categories = (List<Map<String, ?>>) ingestionMetadata.get("categories");
     if (categories == null || categories.isEmpty()) {
       return ImmutableList.of();

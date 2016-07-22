@@ -4,7 +4,8 @@
 <div class="related-articles-container">
   <h3><#include "relatedArticleTitle.ftl"/></h3>
   <ul>
-  <#list article.relatedArticles?sort_by("doi")?reverse as relatedArticle>
+    <#-- TODO: Order by descending publication date -->
+  <#list article.relatedArticles as relatedArticle>
       <li>
         <a href="<@siteLink path="article?id=" + relatedArticle.doi />">
           ${relatedArticle.title}

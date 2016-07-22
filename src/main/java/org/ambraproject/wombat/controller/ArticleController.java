@@ -940,12 +940,7 @@ public class ArticleController extends WombatController {
     for (Object o : authors) {
       Map<String, Object> author = (Map<String, Object>) o;
       String fullName = (String) author.get("fullName");
-
-      List<String> affiliations = (List<String>) author.get("affiliations");
-      for (String affiliation : affiliations) {
-        authorAffiliationsMap.put(affiliation, fullName);
-      }
-
+      
       Object obj = author.get("equalContrib");
       if (obj != null && (boolean) obj) {
         equalContributors.add(fullName);

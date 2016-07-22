@@ -101,6 +101,7 @@ public class ArticleMetadata {
     model.addAttribute("commentCount", getCommentCount(articleId.getDoi()));
     model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
     model.addAttribute("categoryTerms", getCategoryTerms(ingestionMetadata));
+    model.addAttribute("relatedArticles", getRelatedArticles());
     requestAuthors(model, articleId);
 
     model.addAttribute("revisionMenu", getRevisionList());
@@ -269,6 +270,13 @@ public class ArticleMetadata {
 
     return new ArrayList<>(sortedTermsMap.keySet());
 
+  }
+
+  private List<?> getRelatedArticles() {
+    Map<String, ?> relatedArticles = (Map<String, ?>) ingestionMetadata.get("relatedArticles");
+    List<?> inbound = (List<?>) relatedArticles.get("inbound");
+    List<?> outbound = (List<?>) relatedArticles.get("outbound");
+    return ImmutableList.of(); // TODO: Implement
   }
 
   /**

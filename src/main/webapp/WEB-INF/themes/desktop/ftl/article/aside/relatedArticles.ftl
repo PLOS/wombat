@@ -5,7 +5,7 @@
   <h3><#include "relatedArticleTitle.ftl"/></h3>
   <ul>
     <#-- TODO: Order by descending publication date -->
-  <#list article.relatedArticles as relatedArticle>
+  <#list relatedArticles as relatedArticle>
       <li>
         <a href="<@siteLink path="article?id=" + relatedArticle.doi />">
           ${relatedArticle.title}

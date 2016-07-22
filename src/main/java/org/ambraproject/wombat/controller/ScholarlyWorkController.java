@@ -90,7 +90,7 @@ public class ScholarlyWorkController extends WombatController {
                              @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {
     Map<String, ?> itemResponse = articleApi.requestObject(
-        articleResolutionService.toIngestion(workId).addToken("items").build(),
+        articleResolutionService.toParentIngestion(workId).addToken("items").build(),
         Map.class);
     Map<String, ?> items = (Map<String, ?>) itemResponse.get("items");
     Map<String, ?> requestedItem = (Map<String, ?>) items.get(workId.getDoi()); // TODO: Deal with ambiguous URI forms
@@ -100,6 +100,8 @@ public class ScholarlyWorkController extends WombatController {
       String message = String.format("Unrecognized file type (\"%s\") for workId: %s", fileType, workId);
       throw new NotFoundException(message);
     }
+
+    // TODO: Check visibility against site?
 
     ContentKey contentKey = createKey(fileRepoKey);
     try (CloseableHttpResponse responseFromApi = corpusContentApi.request(contentKey, ImmutableList.of())) {

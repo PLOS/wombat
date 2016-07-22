@@ -3,31 +3,16 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
 import com.google.common.base.Function;
-import com.google.common.base.Functions;
-import com.google.common.base.Joiner;
-import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.ListMultimap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Ordering;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RemoteCacheSpace;
-import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
 import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.ApiAddress;
-import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -35,19 +20,16 @@ import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.EmailMessage;
-import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.RenderContext;
-import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.HttpMessageUtil;
-import org.ambraproject.wombat.util.TextUtil;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
@@ -85,9 +67,9 @@ import javax.mail.Multipart;
 import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.DatatypeConverter;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringWriter;
@@ -95,20 +77,11 @@ import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.Set;
-import java.util.SortedMap;
 import java.util.stream.Collectors;
 
 /**
@@ -130,15 +103,13 @@ public class ArticleController extends WombatController {
   @Autowired
   private Charset charset;
   @Autowired
-  private SiteSet siteSet;
-  @Autowired
   private UserApi userApi;
   @Autowired
   private ArticleApi articleApi;
   @Autowired
-  private ArticleService articleService;
+  private CorpusContentApi corpusContentApi;
   @Autowired
-  private ArticleResolutionService articleResolutionService;
+  private ArticleService articleService;
   @Autowired
   private ArticleTransformService articleTransformService;
   @Autowired
@@ -158,11 +129,9 @@ public class ArticleController extends WombatController {
   @Autowired
   private CommentValidationService commentValidationService;
   @Autowired
-  private XmlService xmlService;
-  @Autowired
   private CommentService commentService;
   @Autowired
-  private ServiceCacheSet serviceCacheSet;
+  private ArticleMetadata.Factory articleMetadataFactory;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -172,15 +141,16 @@ public class ArticleController extends WombatController {
                               @SiteParam Site site,
                               ScholarlyWorkId workId)
       throws IOException {
-    Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, workId);
-    validateArticleVisibility(site, articleMetadata);
+    articleMetadataFactory.get(site, workId)
+        .validateVisibility()
+        .populate(request, model)
+        .fillAmendments(model);
 
     RenderContext renderContext = new RenderContext(site, workId);
 
     String articleHtml = getArticleHtml(renderContext);
-    model.addAttribute("article", articleMetadata);
     model.addAttribute("articleText", articleHtml);
-    model.addAttribute("amendments", fillAmendments(site, articleMetadata));
+
 
     return site + "/ftl/article/article";
   }
@@ -197,8 +167,9 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleComments", value = "/article/comments")
   public String renderArticleComments(HttpServletRequest request, Model model, @SiteParam Site site,
                                       ScholarlyWorkId articleId) throws IOException {
-    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-    validateArticleVisibility(site, articleMetaData);
+    articleMetadataFactory.get(site, articleId)
+        .validateVisibility()
+        .populate(request, model);
 
     try {
       model.addAttribute("articleComments", commentService.getArticleComments(articleId));
@@ -214,249 +185,12 @@ public class ArticleController extends WombatController {
   public String renderNewCommentForm(HttpServletRequest request, Model model, @SiteParam Site site,
                                      ScholarlyWorkId articleId)
       throws IOException {
-    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-    validateArticleVisibility(site, articleMetaData);
+    articleMetadataFactory.get(site, articleId)
+        .validateVisibility()
+        .populate(request, model);
+
     model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
     return site + "/ftl/article/comment/newComment";
-  }
-
-  private Map<String, Integer> getCommentCount(String doi) throws IOException {
-    return articleApi.requestObject(ApiAddress.builder("articles").addToken(doi).addParameter("commentCount").build(),
-        Map.class);
-  }
-
-
-
-  private Map<String, Collection<Object>> getContainingArticleLists(ScholarlyWorkId articleId, Site site) throws IOException {
-    List<Map<?, ?>> articleListObjects = articleApi.requestObject(
-        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addParameter("lists").build(),
-        List.class);
-    Multimap<String, Object> result = LinkedListMultimap.create(articleListObjects.size());
-    for (Map<?, ?> articleListObject : articleListObjects) {
-      String listType = Preconditions.checkNotNull((String) articleListObject.get("type"));
-      result.put(listType, articleListObject);
-    }
-    return result.asMap();
-  }
-
-  /**
-   * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a
-   * given category path)
-   *
-   * @param articleMetadata
-   * @return a sorted list of category terms
-   */
-  private List<String> getCategoryTerms(Map<?, ?> articleMetadata) {
-    List<Map<String, ?>> categories = (List<Map<String, ?>>) articleMetadata.get("categories");
-    if (categories == null || categories.isEmpty()) {
-      return ImmutableList.of();
-    }
-
-    // create a map of terms/weights (effectively removes duplicate terms through the mapping)
-    Map<String, Double> termsMap = new HashMap<>();
-    for (Map<String, ?> category : categories) {
-      String[] categoryTerms = ((String) category.get("path")).split("/");
-      String categoryTerm = categoryTerms[categoryTerms.length - 1];
-      termsMap.put(categoryTerm, (Double) category.get("weight"));
-    }
-
-    // use Guava for sorting, first on weight (descending), then on category term
-    Comparator valueComparator = Ordering.natural().reverse().onResultOf(Functions.forMap(termsMap)).compound(Ordering.natural());
-    SortedMap<String, Double> sortedTermsMap = ImmutableSortedMap.copyOf(termsMap, valueComparator);
-
-    return new ArrayList<>(sortedTermsMap.keySet());
-
-  }
-
-  
-  /**
-   * Types of related articles that get special display handling.
-   */
-  private static enum AmendmentType {
-    CORRECTION("correction-forward"),
-    EOC("expressed-concern"),
-    RETRACTION("retraction");
-
-    /**
-     * A value of the "type" field of an object in an article's "relatedArticles" list.
-     */
-    private final String relationshipType;
-
-    private AmendmentType(String relationshipType) {
-      this.relationshipType = relationshipType;
-    }
-
-    // For use as a key in maps destined for the FreeMarker model
-    private String getLabel() {
-      return name().toLowerCase();
-    }
-
-    private static final ImmutableMap<String, AmendmentType> BY_RELATIONSHIP_TYPE = Maps.uniqueIndex(
-        EnumSet.allOf(AmendmentType.class), input -> input.relationshipType);
-  }
-
-  /**
-   * Check related articles for ones that amend this article. Set them up for special display, and retrieve additional
-   * data about those articles from the service tier.
-   *
-   * @param articleMetadata the article metadata
-   * @return a map from amendment type labels to related article objects
-   */
-  private List<AmendmentGroup> fillAmendments(Site site, Map<?, ?> articleMetadata) throws IOException {
-    List<Map<String, ?>> relatedArticles = (List<Map<String, ?>>) articleMetadata.get("relatedArticles");
-    List<Map<String, Object>> amendments = relatedArticles.parallelStream()
-        .map((Map<String, ?> relatedArticle) -> createAmendment(site, relatedArticle))
-        .filter(Objects::nonNull)
-        .sorted(BY_DESCENDING_DATE)
-        .collect(Collectors.toList());
-    return buildAmendmentGroups(amendments);
-  }
-
-  private static final Comparator<Map<String, ?>> BY_DESCENDING_DATE = Comparator.comparing(
-      (Map<String, ?> objectMetadata) -> {
-        String date = (String) objectMetadata.get("date");
-        if (date == null) throw new IllegalArgumentException("Date not found");
-        return DatatypeConverter.parseDateTime(date);
-      })
-      .reversed();
-
-  private Map<String, Object> createAmendment(Site site, Map<String, ?> relatedArticle) {
-    Map<String, Object> amendment = new HashMap<>(relatedArticle); // make a copy to clobber
-
-    String relationshipType = (String) relatedArticle.get("type");
-    AmendmentType amendmentType = AmendmentType.BY_RELATIONSHIP_TYPE.get(relationshipType);
-    if (amendmentType == null) return null; // not an amendment
-
-    // Display the body only on non-correction amendments. Would be better if this were configurable per theme.
-    if (amendmentType != AmendmentType.CORRECTION) {
-      String doi = (String) amendment.get("doi");
-      ScholarlyWorkId amendmentId = ScholarlyWorkId.of(doi); // TODO: Has revision?
-      RenderContext renderContext = new RenderContext(site, amendmentId);
-      String body;
-      try {
-        body = getAmendmentBody(renderContext);
-      } catch (IOException e) {
-        throw new RuntimeException("Could not get body for amendment: " + doi, e);
-      }
-      amendment.put("body", body);
-    }
-
-    amendment.put("type", amendmentType.getLabel()); // for templating
-    return amendment;
-  }
-
-  /**
-   * Combine adjacent amendments that have the same type into one AmendmentGroup object, for display purposes. If
-   * multiple amendments share a type but are separated in order by a different type, they go in separate groups.
-   *
-   * @param amendments a list of amendment objects in their desired display order
-   * @return the amendments grouped by type in the same order
-   */
-  private List<AmendmentGroup> buildAmendmentGroups(List<Map<String, Object>> amendments) {
-    if (amendments.isEmpty()) return ImmutableList.of();
-
-    List<AmendmentGroup> amendmentGroups = new ArrayList<>(amendments.size());
-    List<Map<String, Object>> nextGroup = null;
-    String type = null;
-    for (Map<String, Object> amendment : amendments) {
-      String nextType = (String) amendment.get("type");
-      if (nextGroup == null || !Objects.equals(type, nextType)) {
-        if (nextGroup != null) {
-          amendmentGroups.add(new AmendmentGroup(type, nextGroup));
-        }
-        type = nextType;
-        nextGroup = new ArrayList<>();
-      }
-      nextGroup.add(amendment);
-    }
-    amendmentGroups.add(new AmendmentGroup(type, nextGroup));
-    return amendmentGroups;
-  }
-
-  public static class AmendmentGroup {
-    private final String type;
-    private final ImmutableList<Map<String,Object>> amendments;
-
-    private AmendmentGroup(String type, List<Map<String, Object>> amendments) {
-      this.type = Objects.requireNonNull(type);
-      this.amendments = ImmutableList.copyOf(amendments);
-      Preconditions.checkArgument(!this.amendments.isEmpty());
-    }
-
-    public String getType() {
-      return type;
-    }
-
-    public ImmutableList<Map<String, Object>> getAmendments() {
-      return amendments;
-    }
-  }
-
-
-  /**
-   * Add links to cross-published journals to the model.
-   * <p>
-   * Each journal in which the article was published (according to the supplied article metadata) will be represented in
-   * the model, other than the journal belonging to the site being browsed. If that journal is the only one, nothing is
-   * added to the model. The journal of original publication (according to the article metadata's eISSN) is added under
-   * the named {@code "originalPub"}, and other journals are added as a collection named {@code "crossPub"}.
-   *
-   * @param request         the contextual request (used to build cross-site links)
-   * @param model           the page model into which to insert the link values
-   * @param site            the site of the current page request
-   * @param articleMetadata metadata for an article being rendered
-   * @throws IOException
-   */
-  private void addCrossPublishedJournals(HttpServletRequest request, Model model, Site site, Map<?, ?> articleMetadata)
-      throws IOException {
-    final Map<?, ?> publishedJournals = (Map<?, ?>) articleMetadata.get("journals");
-    final String eissn = (String) articleMetadata.get("eIssn");
-    Collection<Map<String, Object>> crossPublishedJournals;
-    Map<String, Object> originalJournal = null;
-
-    if (publishedJournals.size() <= 1) {
-      // The article was published in only one journal.
-      // Assume it is the one being browsed (validateArticleVisibility would have caught it otherwise).
-      crossPublishedJournals = ImmutableList.of();
-    } else {
-      crossPublishedJournals = Lists.newArrayListWithCapacity(publishedJournals.size() - 1);
-      String localJournal = site.getJournalKey();
-
-      for (Map.Entry<?, ?> journalEntry : publishedJournals.entrySet()) {
-        String journalKey = (String) journalEntry.getKey();
-        if (journalKey.equals(localJournal)) {
-          // This is the journal being browsed right now, so don't add a link
-          continue;
-        }
-
-        // Make a mutable copy to clobber
-        Map<String, Object> crossPublishedJournalMetadata = new HashMap<>((Map<? extends String, ?>) journalEntry.getValue());
-
-        // Find the site object (if possible) for the other journal
-        String crossPublishedJournalKey = (String) crossPublishedJournalMetadata.get("journalKey");
-        Site crossPublishedSite = site.getTheme().resolveForeignJournalKey(siteSet, crossPublishedJournalKey);
-
-        // Set up an href link to the other site's root page.
-        // Do not link to handlerName="homePage" because we don't know if the other site has disabled it.
-        String homepageLink = Link.toForeignSite(site, crossPublishedSite).toPath("").get(request);
-        crossPublishedJournalMetadata.put("href", homepageLink);
-
-        // Look up whether the other site wants its journal title italicized
-        // (This isn't a big deal because it's only one value, but if similar display details pile up
-        // in the future, it would be better to abstract them out than to handle them all individually here.)
-        boolean italicizeTitle = (boolean) crossPublishedSite.getTheme().getConfigMap("journal").get("italicizeTitle");
-        crossPublishedJournalMetadata.put("italicizeTitle", italicizeTitle);
-
-        if (eissn.equals(crossPublishedJournalMetadata.get("eIssn"))) {
-          originalJournal = crossPublishedJournalMetadata;
-        } else {
-          crossPublishedJournals.add(crossPublishedJournalMetadata);
-        }
-      }
-    }
-
-    model.addAttribute("crossPub", crossPublishedJournals);
-    model.addAttribute("originalPub", originalJournal);
   }
 
 
@@ -490,8 +224,10 @@ public class ArticleController extends WombatController {
 
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
     ScholarlyWorkId articleId = ScholarlyWorkId.of((String) parentArticleStub.get("doi")); // latest revision
-    Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
-    validateArticleVisibility(site, articleMetadata);
+
+    articleMetadataFactory.get(site, articleId)
+        .validateVisibility()
+        .populate(request, model);
 
     model.addAttribute("comment", comment);
     model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
@@ -586,8 +322,9 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleAuthors", value = "/article/authors")
   public String renderArticleAuthors(HttpServletRequest request, Model model, @SiteParam Site site,
                                      ScholarlyWorkId articleId) throws IOException {
-    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-    validateArticleVisibility(site, articleMetaData);
+    articleMetadataFactory.get(site, articleId)
+        .validateVisibility()
+        .populate(request, model);
     return site + "/ftl/article/authors";
   }
 
@@ -603,8 +340,9 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleMetrics", value = "/article/metrics")
   public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
                                      ScholarlyWorkId articleId) throws IOException {
-    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-    validateArticleVisibility(site, articleMetaData);
+    articleMetadataFactory.get(site, articleId)
+        .validateVisibility()
+        .populate(request, model);
     return site + "/ftl/article/metrics";
   }
 
@@ -612,8 +350,9 @@ public class ArticleController extends WombatController {
   public String renderCitationDownloadPage(HttpServletRequest request, Model model, @SiteParam Site site,
                                            ScholarlyWorkId articleId)
       throws IOException {
-    Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
-    validateArticleVisibility(site, articleMetaData);
+    articleMetadataFactory.get(site, articleId)
+        .validateVisibility()
+        .populate(request, model);
     return site + "/ftl/article/citationDownload";
   }
 
@@ -636,9 +375,11 @@ public class ArticleController extends WombatController {
                                                        String fileExtension,
                                                        Function<Map<String, ?>, String> serviceFunction)
       throws IOException {
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    validateArticleVisibility(site, articleMetadata);
-    String citationBody = serviceFunction.apply((Map<String, ?>) articleMetadata);
+    Map<String, ?> articleMetadata = articleMetadataFactory.get(site, articleId)
+        .validateVisibility()
+        .getIngestionMetadata();
+
+    String citationBody = serviceFunction.apply(articleMetadata);
     String contentDispositionValue = String.format("attachment; filename=\"%s.%s\"",
         URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
         fileExtension);
@@ -661,8 +402,9 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleRelatedContent", value = "/article/related")
   public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
                                             ScholarlyWorkId articleId) throws IOException {
-    Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
-    validateArticleVisibility(site, articleMetadata);
+    articleMetadataFactory.get(site, articleId)
+        .validateVisibility()
+        .populate(request, model);
     String recaptchaPublicKey = site.getTheme().getConfigMap("captcha").get("publicKey").toString();
     model.addAttribute("recaptchaPublicKey", recaptchaPublicKey);
     return site + "/ftl/article/relatedContent";
@@ -794,8 +536,9 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleFigsAndTables", value = "/article/assets/figsAndTables")
   public ResponseEntity<List> listArticleFiguresAndTables(@SiteParam Site site,
                                                           ScholarlyWorkId articleId) throws IOException {
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    validateArticleVisibility(site, articleMetadata);
+    Map<String, ?> articleMetadata = articleMetadataFactory.get(site, articleId)
+        .validateVisibility()
+        .getIngestionMetadata();
     List<ImmutableMap<String, String>> articleFigsAndTables = articleService.getArticleFiguresAndTables(articleMetadata);
 
     HttpHeaders headers = new HttpHeaders();
@@ -806,8 +549,9 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "email", value = "/article/email")
   public String renderEmailThisArticle(HttpServletRequest request, Model model, @SiteParam Site site,
                                        ScholarlyWorkId articleId) throws IOException {
-    Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
-    validateArticleVisibility(site, articleMetadata);
+    articleMetadataFactory.get(site, articleId)
+        .validateVisibility()
+        .populate(request, model);
     model.addAttribute("maxEmails", MAX_TO_EMAILS);
     model.addAttribute("captchaHTML", captchaService.getCaptchaHtml(site, Optional.empty()));
     return site + "/ftl/article/email";
@@ -850,7 +594,10 @@ public class ArticleController extends WombatController {
       return renderEmailThisArticle(request, model, site, articleId);
     }
 
-    Map<?, ?> articleMetadata = addCommonModelAttributes(request, model, site, articleId);
+    Map<String, ?> articleMetadata = articleMetadataFactory.get(site, articleId)
+        .validateVisibility()
+        .getIngestionMetadata();
+
     String title = articleMetadata.get("title").toString();
     model.addAttribute("title", title);
     model.addAttribute("description", articleMetadata.get("description"));
@@ -903,114 +650,6 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * Loads article metadata from the SOA layer.
-   *
-   * @param workId DOI identifying the article
-   * @return Map of JSON representing the article
-   * @throws IOException
-   */
-  private Map<?, ?> requestArticleMetadata(ScholarlyWorkId workId) throws IOException {
-    Map<?, ?> articleMetadata;
-    try {
-      articleMetadata = articleService.requestArticleMetadata(workId, false);
-    } catch (EntityNotFoundException enfe) {
-      throw new ArticleNotFoundException(workId);
-    }
-    return articleMetadata;
-  }
-
-  /**
-   * Appends additional info about article authors to the model.
-   *
-   * @param model  model to be passed to the view
-   * @param workId identifies the article
-   * @return the list of authors appended to the model
-   * @throws IOException
-   */
-  private void requestAuthors(Model model, ScholarlyWorkId workId) throws IOException {
-    Map<?, ?> allAuthorsData = articleApi.requestObject(
-        articleResolutionService.toIngestion(workId).addToken("authors").build(),
-        Map.class);
-    List<?> authors = (List<?>) allAuthorsData.get("authors");
-    model.addAttribute("authors", authors);
-
-    // Putting this here was a judgement call.  One could make the argument that this logic belongs
-    // in Rhino, but it's so simple I elected to keep it here for now.
-    List<String> equalContributors = new ArrayList<>();
-
-    ListMultimap<String, String> authorAffiliationsMap = LinkedListMultimap.create();
-    for (Object o : authors) {
-      Map<String, Object> author = (Map<String, Object>) o;
-      String fullName = (String) author.get("fullName");
-
-      List<String> affiliations = (List<String>) author.get("affiliations");
-      for (String affiliation : affiliations) {
-        authorAffiliationsMap.put(affiliation, fullName);
-      }
-
-      Object obj = author.get("equalContrib");
-      if (obj != null && (boolean) obj) {
-        equalContributors.add(fullName);
-      }
-
-      // remove the footnote marker from the current address
-      List<String> currentAddresses = (List<String>) author.get("currentAddresses");
-      for (ListIterator<String> iterator = currentAddresses.listIterator(); iterator.hasNext(); ) {
-        String currentAddress = iterator.next();
-        iterator.set(TextUtil.removeFootnoteMarker(currentAddress));
-      }
-    }
-
-    //Create comma-separated list of authors per affiliation
-    LinkedHashMap<String, String> authorListAffiliationMap = new LinkedHashMap<>();
-    for (Map.Entry<String, Collection<String>> affiliation : authorAffiliationsMap.asMap().entrySet()) {
-      authorListAffiliationMap.put(affiliation.getKey(), Joiner.on(", ").join(affiliation.getValue()));
-    }
-
-    model.addAttribute("authorListAffiliationMap", authorListAffiliationMap);
-    model.addAttribute("authorContributions", allAuthorsData.get("authorContributions"));
-    model.addAttribute("competingInterests", allAuthorsData.get("competingInterests"));
-    model.addAttribute("correspondingAuthors", allAuthorsData.get("correspondingAuthorList"));
-    model.addAttribute("equalContributors", equalContributors);
-  }
-
-  /**
-   * Build the path to request the article XML asset for an article.
-   *
-   * @return the service path to the correspond article XML asset file
-   */
-  private static ApiAddress getArticleXmlAssetPath(RenderContext renderContext) {
-    ScholarlyWorkId id = renderContext.getArticleId().get();
-    OptionalInt revisionNumber = id.getRevisionNumber();
-    ApiAddress.Builder address = ApiAddress.builder("articles").addToken(id.getDoi()).addParameter("xml");
-    if (revisionNumber.isPresent()) {
-      address = address.addParameter("revision", revisionNumber.getAsInt());
-    }
-    return address.build();
-  }
-
-  /**
-   * Retrieve and transform the body of an amendment article from its XML file. The returned value is cached.
-   *
-   * @return the body of the amendment article, transformed into HTML for display in a notice on the amended article
-   */
-  private String getAmendmentBody(final RenderContext renderContext) throws IOException {
-    RemoteCacheKey cacheKey = renderContext.getCacheKey(RemoteCacheSpace.AMENDMENT_BODY);
-    ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
-
-    return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
-
-      // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
-      String bodyXml = xmlService.extractElement(stream, "body");
-      try {
-        return articleTransformService.transformExcerpt(renderContext, bodyXml, null);
-      } catch (TransformerException e) {
-        throw new RuntimeException(e);
-      }
-    });
-  }
-
-  /**
    * Retrieves article XML from the SOA server, transforms it into HTML, and returns it. Result will be stored in
    * memcache.
    *
@@ -1018,38 +657,16 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
-    RemoteCacheKey cacheKey = renderContext.getCacheKey(RemoteCacheSpace.ARTICLE_HTML);
-    ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
-
-    return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
-      StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
-      try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
-        articleTransformService.transform(renderContext, stream, outputStream);
-      } catch (TransformerException e) {
-        throw new RuntimeException(e);
-      }
-      return articleHtml.toString();
-    });
-  }
-
-  private Map<?, ?> addCommonModelAttributes(HttpServletRequest request, Model model, @SiteParam Site site, ScholarlyWorkId articleId) throws IOException {
-    Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
-    addCrossPublishedJournals(request, model, site, articleMetadata);
-    model.addAttribute("article", articleMetadata);
-    model.addAttribute("commentCount", getCommentCount(articleId.getDoi()));
-    model.addAttribute("containingLists", getContainingArticleLists(articleId, site));
-    model.addAttribute("categoryTerms", getCategoryTerms(articleMetadata));
-    requestAuthors(model, articleId);
-
-    List<?> revisionMenu = articleApi.requestObject(
-        ApiAddress.builder("articles").addToken(articleId.getDoi())
-            .addParameter("versionedPreview").addParameter("revisions").build(),
-        List.class);
-    model.addAttribute("revisionMenu", revisionMenu.stream()
-        .map(n -> ((Number) n).intValue())
-        .collect(Collectors.toList()));
-
-    return articleMetadata;
+    return corpusContentApi.readManuscript(renderContext, RemoteCacheSpace.ARTICLE_HTML,
+        (InputStream stream) -> {
+          StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
+          try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
+            articleTransformService.transform(renderContext, stream, outputStream);
+          } catch (TransformerException e) {
+            throw new RuntimeException(e);
+          }
+          return articleHtml.toString();
+        });
   }
 
 }

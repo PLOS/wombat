@@ -17,12 +17,14 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class ArticleServiceImpl implements ArticleService {
@@ -34,8 +36,8 @@ public class ArticleServiceImpl implements ArticleService {
 
   private static final ImmutableSet<String> FIGURE_TABLE_CONTEXT_ELEMENT =
       new ImmutableSet.Builder<String>()
-      .add("fig").add("table-wrap").add("alternatives")
-      .build();
+          .add("fig").add("table-wrap").add("alternatives")
+          .build();
 
   @Override
   public Map<String, Object> requestArticleMetadata(ScholarlyWorkId articleId, boolean excludeCitations)
@@ -56,5 +58,19 @@ public class ArticleServiceImpl implements ArticleService {
             .build())
         .collect(Collectors.toList());
     return figsAndTables;
+  }
+
+  @Override
+  public ContentKey getManuscriptKey(ScholarlyWorkId articleId) throws IOException {
+    Map<String, ?> itemResponse = articleApi.requestObject(articleResolutionService.toIngestion(articleId).addToken("items").build(), Map.class);
+    Map<String, ?> articleItem = (Map<String, ?>) ((Map<String, ?>) itemResponse.get("items")).values().stream()
+        .filter(itemObj -> ((Map<String, ?>) itemObj).get("itemType").equals("article"))
+        .findAny().orElseThrow(RuntimeException::new);
+    Map<String, ?> articleFiles = (Map<String, ?>) articleItem.get("files");
+    Map<String, ?> manuscriptPointer = (Map<String, ?>) articleFiles.get("manuscript");
+
+    String crepoKey = (String) manuscriptPointer.get("crepoKey");
+    UUID crepoUuid = UUID.fromString((String) manuscriptPointer.get("crepoUuid"));
+    return ContentKey.createForUuid(crepoKey, crepoUuid);
   }
 }

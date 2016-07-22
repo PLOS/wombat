@@ -29,6 +29,7 @@ import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.AppRootPage;
+import org.ambraproject.wombat.controller.ArticleMetadata;
 import org.ambraproject.wombat.controller.ScholarlyWorkIdResolver;
 import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.CommentFeedView;
@@ -369,6 +370,11 @@ public class SpringConfiguration {
   @Bean
   public CommentFeedView commentFeedView() {
     return new CommentFeedView();
+  }
+
+  @Bean
+  public ArticleMetadata.Factory articleMetadataFactory() {
+    return new ArticleMetadata.Factory();
   }
 
 }

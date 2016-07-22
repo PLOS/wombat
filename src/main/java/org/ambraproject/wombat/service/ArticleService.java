@@ -15,8 +15,11 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.service.remote.CacheDeserializer;
+import org.ambraproject.wombat.service.remote.ContentKey;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +36,9 @@ public interface ArticleService {
    * @return deserialized JSON data structure as returned by the SOA layer
    * @throws IOException
    */
-  Map<?, ?> requestArticleMetadata(ScholarlyWorkId articleId, boolean excludeCitations) throws IOException;
+  Map<String, ?> requestArticleMetadata(ScholarlyWorkId articleId, boolean excludeCitations) throws IOException;
+
+  ContentKey getManuscriptKey(ScholarlyWorkId articleId) throws IOException;
 
   /**
    * Get the list of article figures and tables from the article meta data

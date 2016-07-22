@@ -7,6 +7,7 @@ import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -60,10 +61,6 @@ public class Citations {
 
   private static final Joiner COMMA_JOINER = Joiner.on(", ");
 
-  private static String extractYear(String date) {
-    return CalendarUtil.formatIso8601Date(date, "yyyy", false);
-  }
-
   /*
    * TODO: Deduplicate src/main/webapp/WEB-INF/themes/desktop/ftl/article/citation.ftl
    */
@@ -87,8 +84,7 @@ public class Citations {
       citation.append(", et al.");
     }
 
-    String date = (String) articleMetadata.get("date");
-    String year = extractYear(date);
+    int year = LocalDate.parse((String) articleMetadata.get("publicationDate")).getYear();
     citation.append(" (").append(year).append(')');
 
     String title = (String) articleMetadata.get("title");

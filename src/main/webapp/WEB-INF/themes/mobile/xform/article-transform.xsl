@@ -1162,7 +1162,7 @@
           <span class="figure-expand">Expand</span>
           <img alt="thumbnail" class="figure-image">
             <xsl:attribute name="src">
-              <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/>
+              <xsl:value-of select="concat('article/file?type=medium&amp;id=', $imageURI)"/>
             </xsl:attribute>
           </img>
         </a>
@@ -1298,7 +1298,7 @@
           <xsl:value-of select="@xlink:href"/>
         </xsl:variable>
         <xsl:attribute name="src">
-          <xsl:value-of select="concat('article/figure/image?size=graphic&amp;id=', $graphicDOI)"/>
+          <xsl:value-of select="concat('article/file?type=graphic&amp;id=', $graphicDOI)"/>
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">

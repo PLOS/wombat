@@ -1218,7 +1218,7 @@
         <xsl:value-of select="(./graphic|./alternatives/graphic)/@xlink:href"/>
       </xsl:variable>
       <xsl:variable name="slideshowURL">
-        <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/file?type=medium&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="pptURL">
@@ -1226,11 +1226,11 @@
       </xsl:variable>
 
       <xsl:variable name="bigImgURL">
-        <xsl:value-of select="concat('article/figure/image?download&amp;size=large&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/file?download&amp;type=large&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="origImgURL">
-        <xsl:value-of select="concat('article/figure/image?download&amp;size=original&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/file?download&amp;type=original&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="targetURI">
@@ -1280,7 +1280,7 @@
             <xsl:element name="img">
               <xsl:attribute name="src">
                 <xsl:value-of
-                  select="concat('article/figure/image?size=inline&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+                  select="concat('article/file?type=inline&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
               </xsl:attribute>
               <xsl:attribute name="alt">thumbnail</xsl:attribute>
               <xsl:attribute name="class">thumbnail</xsl:attribute>

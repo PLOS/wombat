@@ -176,7 +176,7 @@ public class FigureImageController extends WombatController {
       }
     }
 
-    return redirectToWorkFile(request, site, assetDoi, fileType, booleanParameter(download));
+    return redirectToAssetFile(request, site, assetDoi, fileType, booleanParameter(download));
   }
 
   /**
@@ -193,16 +193,16 @@ public class FigureImageController extends WombatController {
     Map<String, Object> workMetadata = scholarlyWorkController.getWorkMetadata(ScholarlyWorkId.of(figureId));
     Set<String> fileTypes = ((Map<String, ?>) workMetadata.get("files")).keySet();
     if (fileTypes.contains(figureSize)) {
-      return redirectToWorkFile(request, site, figureId, figureSize, booleanParameter(download));
+      return redirectToAssetFile(request, site, figureId, figureSize, booleanParameter(download));
     } else {
       throw new NotFoundException("Not a valid size: " + figureSize);
     }
   }
 
-  private String redirectToWorkFile(HttpServletRequest request, Site site,
+  private String redirectToAssetFile(HttpServletRequest request, Site site,
                                     String id, String fileType, boolean isDownload) {
     Link.Factory.PatternBuilder link = Link.toLocalSite(site)
-        .toPattern(requestMappingContextDictionary, "workFile")
+        .toPattern(requestMappingContextDictionary, "assetFile")
         .addQueryParameter("id", id)
         .addQueryParameter("fileType", fileType);
     if (isDownload) {

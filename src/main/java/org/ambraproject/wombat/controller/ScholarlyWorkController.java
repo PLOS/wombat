@@ -82,12 +82,12 @@ public class ScholarlyWorkController extends WombatController {
     return link.build();
   }
 
-  @RequestMapping(name = "workFile", value = "/work", params = {"fileType"})
-  public void serveWorkFile(HttpServletResponse responseToClient,
-                            @SiteParam Site site,
-                            ScholarlyWorkId workId,
-                            @RequestParam(value = "fileType", required = true) String fileType,
-                            @RequestParam(value = "download", required = false) String isDownload)
+  @RequestMapping(name = "assetFile", value = "/article/file", params = {"type"})
+  public void serveAssetFile(HttpServletResponse responseToClient,
+                             @SiteParam Site site,
+                             ScholarlyWorkId workId,
+                             @RequestParam(value = "type", required = true) String fileType,
+                             @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {
     Map<String, ?> itemResponse = articleApi.requestObject(
         articleResolutionService.toIngestion(workId).addToken("items").build(),

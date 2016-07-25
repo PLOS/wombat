@@ -86,7 +86,7 @@ var SearchResult;
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
 
-      if (this.currentSearchParams.q != null || (this.currentSearchParams.filterStartDate != null && this.currentSearchParams.filterEndDate != null)) {
+      if (this.currentSearchParams.q != null || this.checkFilters()) {
         this.processRequest();
       }
       else {
@@ -133,9 +133,27 @@ var SearchResult;
         }
       });
     },
+    checkFilters: function () {
+      var that = this;
+      var standaloneFilters = [
+        'filterStartDate',
+        'filterEndDate',
+        'filterAuthors',
+        'filterSubjects'
+      ];
+      var isStandalone = false;
+
+      _.each(standaloneFilters, function (filter) {
+        if (isStandalone == false && that.currentSearchParams[filter] != null) {
+          isStandalone = true;
+        }
+      });
+
+      return isStandalone;
+    },
     createUrlParams: function () {
       var urlParams = '?';
-      if (this.currentSearchParams.filterStartDate != null && this.currentSearchParams.filterEndDate != null && this.currentSearchParams.q == null) {
+      if (this.currentSearchParams.q == null && this.checkFilters()) {
         this.currentSearchParams.q = "";
       }
       _.each(this.currentSearchParams, function (item, key) {
@@ -381,7 +399,7 @@ var SearchResult;
         this.isInitialized = true;
       }
 
-      if (_.isEmpty(this.currentSearchParams.q) && this.currentSearchParams.filterEndDate == null && this.currentSearchParams.filterStartDate == null) {
+      if (_.isEmpty(this.currentSearchParams.q) && !this.checkFilters()) {
         this.showNoResults();
         return;
       }

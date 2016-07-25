@@ -16,12 +16,12 @@ import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
-import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -54,12 +54,16 @@ public class ArticleMetadata {
   private final Factory factory; // for further service access
   private final Site site;
   private final RequestedDoiVersion articleId;
+  private final ArticlePointer articlePointer;
   private final Map<String, ?> ingestionMetadata;
 
-  private ArticleMetadata(Factory factory, Site site, RequestedDoiVersion articleId, Map<String, ?> ingestionMetadata) {
+  private ArticleMetadata(Factory factory, Site site,
+                          RequestedDoiVersion articleId, ArticlePointer articlePointer,
+                          Map<String, ?> ingestionMetadata) {
     this.factory = Objects.requireNonNull(factory);
     this.site = Objects.requireNonNull(site);
     this.articleId = Objects.requireNonNull(articleId);
+    this.articlePointer = Objects.requireNonNull(articlePointer);
     this.ingestionMetadata = Objects.requireNonNull(ingestionMetadata);
   }
 
@@ -80,14 +84,11 @@ public class ArticleMetadata {
     private XmlService xmlService;
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
-      Map<String, ?> ingestionMetadata;
-      try {
-        ingestionMetadata = articleService.requestArticleMetadata(id, false);
-      } catch (EntityNotFoundException enfe) {
-        throw new ArticleNotFoundException(id);
-      }
+      ArticlePointer articlePointer = articleResolutionService.toIngestion(id);
+      Map<String, Object> ingestionMetadata = (Map<String, Object>) articleApi.requestObject(
+          articlePointer.asApiAddress().build(), Map.class);
 
-      return new ArticleMetadata(this, site, id, ingestionMetadata);
+      return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata);
     }
   }
 
@@ -98,6 +99,7 @@ public class ArticleMetadata {
   public ArticleMetadata populate(HttpServletRequest request, Model model) throws IOException {
     addCrossPublishedJournals(request, model);
     model.addAttribute("article", ingestionMetadata);
+    model.addAttribute("articleItems", factory.articleService.getItemTable(articlePointer));
     model.addAttribute("commentCount", getCommentCount());
     model.addAttribute("containingLists", getContainingArticleLists());
     model.addAttribute("categoryTerms", getCategoryTerms());
@@ -287,8 +289,7 @@ public class ArticleMetadata {
    * @throws IOException
    */
   private void requestAuthors(Model model, RequestedDoiVersion workId) throws IOException {
-    ApiAddress authorAddress = factory.articleResolutionService.toIngestion(workId).asApiAddress()
-        .addToken("authors").build();
+    ApiAddress authorAddress = articlePointer.asApiAddress().addToken("authors").build();
     Map<?, ?> allAuthorsData = factory.articleApi.requestObject(authorAddress, Map.class);
     List<?> authors = (List<?>) allAuthorsData.get("authors");
     model.addAttribute("authors", authors);

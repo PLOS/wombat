@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ContentKey;
 
@@ -35,6 +36,8 @@ public interface ArticleService {
    * @throws IOException
    */
   Map<String, ?> requestArticleMetadata(RequestedDoiVersion articleId, boolean excludeCitations) throws IOException;
+
+  Map<String, ?> getItemTable(ArticlePointer articleId) throws IOException;
 
   ContentKey getManuscriptKey(RequestedDoiVersion articleId) throws IOException;
 

@@ -10,6 +10,7 @@ import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleResolutionService;
+import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ContentKey;
@@ -37,6 +38,8 @@ public class ScholarlyWorkController extends WombatController {
   private CorpusContentApi corpusContentApi;
   @Autowired
   private ArticleResolutionService articleResolutionService;
+  @Autowired
+  private ArticleService articleService;
 
   @RequestMapping(name = "work", value = "/work")
   public String redirectToWork(HttpServletRequest request,
@@ -91,10 +94,7 @@ public class ScholarlyWorkController extends WombatController {
                              @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {
     AssetPointer asset = articleResolutionService.toParentIngestion(workId);
-    Map<String, ?> itemResponse = articleApi.requestObject(
-        asset.getParentArticle().asApiAddress().addToken("items").build(),
-        Map.class);
-    Map<String, ?> items = (Map<String, ?>) itemResponse.get("items");
+    Map<String, ?> items = articleService.getItemTable(asset.getParentArticle());
     Map<String, ?> requestedItem = (Map<String, ?>) items.get(asset.getAssetDoi());
     Map<String, ?> files = (Map<String, ?>) requestedItem.get("files");
     Map<String, ?> fileRepoKey = (Map<String, ?>) files.get(fileType);

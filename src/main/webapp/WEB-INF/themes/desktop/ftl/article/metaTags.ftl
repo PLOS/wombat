@@ -49,8 +49,11 @@
 <#if article.publisherName??>
   <meta name="citation_publisher" content="${article.publisherName}" />
 </#if>
-<#if article.articlePdf??>
-  <meta name="citation_pdf_url" content="${pubUrlPrefix}article/asset?id=${article.articlePdf.file}">
+
+<#if articleItems[article.doi].files?keys?seq_contains("printable")>
+  <@siteLink handlerName="assetFile" queryParameters={"type": "printable", "id": article.doi} absoluteLink=true ; citationPdfUrl>
+  <meta name="citation_pdf_url" content="${citationPdfUrl}">
+  </@siteLink>
 </#if>
 
 <#--//crossmark identifier-->

@@ -3,7 +3,7 @@
  */
 ;(function ($) {
   var s;
-  plos_toggle = {
+  toggle_component = {
 
     settings: {
       toggle_trigger: '[data-js-toggle=toggle_trigger]',

@@ -42,11 +42,11 @@
 
 <script id="searchResultsAlm" type="text/template">
 
-  <#assign metricsUrl>
-    <@siteLink handlerName="articleMetrics"/>
-  </#assign>
+
+
 
   <p class="search-results-alm" data-doi="">
+  <@siteLink handlerName="articleMetrics" ; metricsUrl>
     <a href="${metricsUrl}?id=<%= itemDoi %>#viewedHeader">Views: <%= viewCount
       %></a>
     •
@@ -55,6 +55,7 @@
     •
     <a href="${metricsUrl}?id=<%= itemDoi %>#savedHeader">Saves: <%= saveCount
       %></a>
+  </@siteLink>
     •
     Shares: <%= shareCount %>
   </p>

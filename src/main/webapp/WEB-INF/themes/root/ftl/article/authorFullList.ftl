@@ -1,7 +1,7 @@
 <#include "authorItem.ftl" />
 <dl>
 <#list authors as author><#-- Before the expander -->
-        <@authorItemFull author author_index author_has_next true false false/>
+        <@authorItemFull author author_index author_has_next true false/>
     </#list>
 </dl>
 

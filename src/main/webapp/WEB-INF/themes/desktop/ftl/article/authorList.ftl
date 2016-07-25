@@ -11,21 +11,19 @@
   -->
   <#list authors as author><#-- Before the expander -->
     <#if author_index lt (maxAuthorsToShow - 1) >
-      <@authorItem author author_index author_has_next true false true/>
+      <@authorItem author author_index author_has_next true false />
     </#if>
   </#list>
       <#list authors as author><#-- Inside the expander -->
-
         <#if author_index gte (maxAuthorsToShow - 1) && author_index lt (authors?size - 1) >
-        <@authorItem author author_index author_has_next true true true/>
+        <@authorItem author author_index author_has_next true true />
       </#if>
-
      </#list>
 
 
 <li data-js-toggle="toggle_add">&nbsp;[ ... ],</li>
 
-  <@authorItem authors[authors?size - 1] authors?size - 1 false false true/><#-- Last one after expander -->
+  <@authorItem authors[authors?size - 1] authors?size - 1 false false false /><#-- Last one after expander -->
   <li data-js-toggle="toggle_trigger" >
   <#--there was no way to not do this. -->
     <a class="more-authors active" id="authors-show">[ view all ]</a>

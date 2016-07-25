@@ -44,7 +44,7 @@
   </#if>
 
 </#macro>
-<#macro authorItem author author_index author_has_next if_expander=false hidden=false shortList=true>
+<#macro authorItem author author_index author_has_next if_expander=false hidden=false>
   <#assign hasMeta =
   author.equalContrib || author.deceased || author.corresponding??
   || (author.affiliations?? && author.affiliations?size gt 0) || author.currentAddress??
@@ -72,7 +72,7 @@
 </li>
 </#macro>
 
-<#macro authorItemFull author author_index author_has_next if_expander=false hidden=false shortList=true>
+<#macro authorItemFull author author_index author_has_next if_expander=false hidden=false>
 
 <dt>
 ${author.fullName}

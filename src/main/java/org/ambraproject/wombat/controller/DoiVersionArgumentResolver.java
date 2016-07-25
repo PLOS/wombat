@@ -1,6 +1,6 @@
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -10,7 +10,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import java.util.Map;
 import java.util.OptionalInt;
 
-public class ScholarlyWorkIdResolver implements HandlerMethodArgumentResolver {
+public class DoiVersionArgumentResolver implements HandlerMethodArgumentResolver {
 
   /**
    * Apply the policy on which users, if any, may view unpublished content.
@@ -26,7 +26,7 @@ public class ScholarlyWorkIdResolver implements HandlerMethodArgumentResolver {
 
   @Override
   public boolean supportsParameter(MethodParameter parameter) {
-    return parameter.getParameterType() == ScholarlyWorkId.class;
+    return parameter.getParameterType() == RequestedDoiVersion.class;
   }
 
   private static String resolveSingleParameter(Map<String, String[]> parameterMap, String name) {
@@ -55,30 +55,30 @@ public class ScholarlyWorkIdResolver implements HandlerMethodArgumentResolver {
   }
 
   @Override
-  public ScholarlyWorkId resolveArgument(MethodParameter parameter,
-                                         ModelAndViewContainer mavContainer,
-                                         NativeWebRequest webRequest,
-                                         WebDataBinderFactory binderFactory) {
+  public RequestedDoiVersion resolveArgument(MethodParameter parameter,
+                                             ModelAndViewContainer mavContainer,
+                                             NativeWebRequest webRequest,
+                                             WebDataBinderFactory binderFactory) {
     Map<String, String[]> parameterMap = webRequest.getParameterMap();
 
     String id = resolveSingleParameter(parameterMap, "id");
     if (id == null) throw new NotFoundException("id required");
 
     OptionalInt revisionNumber = getNumericParameter(parameterMap, "rev");
-    if (revisionNumber.isPresent()) return ScholarlyWorkId.ofRevision(id, revisionNumber.getAsInt());
+    if (revisionNumber.isPresent()) return RequestedDoiVersion.ofRevision(id, revisionNumber.getAsInt());
 
     if (!revisionNumber.isPresent()) {
       OptionalInt ingestionNumber = getNumericParameter(parameterMap, "ing");
       if (ingestionNumber.isPresent()) {
         if (canViewUnpublishedIngestion(webRequest)) {
-          return ScholarlyWorkId.ofIngestion(id, ingestionNumber.getAsInt());
+          return RequestedDoiVersion.ofIngestion(id, ingestionNumber.getAsInt());
         } else {
           throw new NotFoundException("Unpublished content is not visible"); // respond with 401 status instead?
         }
       }
     }
 
-    return ScholarlyWorkId.of(id);
+    return RequestedDoiVersion.of(id);
   }
 
 }

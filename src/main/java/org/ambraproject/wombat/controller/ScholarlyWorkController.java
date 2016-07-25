@@ -6,7 +6,7 @@ import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.url.Link;
-import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -40,12 +40,12 @@ public class ScholarlyWorkController extends WombatController {
   @RequestMapping(name = "work", value = "/work")
   public String redirectToWork(HttpServletRequest request,
                                @SiteParam Site site,
-                               ScholarlyWorkId workId)
+                               RequestedDoiVersion workId)
       throws IOException {
     return getRedirectFor(site, workId).getRedirect(request);
   }
 
-  Map<String, Object> getWorkMetadata(ScholarlyWorkId workId) throws IOException {
+  Map<String, Object> getWorkMetadata(RequestedDoiVersion workId) throws IOException {
     ApiAddress address = ApiAddress.builder("works").embedDoi(workId.getDoi()).build(); // TODO: Update to service
     try {
       return articleApi.requestObject(address, Map.class);
@@ -54,7 +54,7 @@ public class ScholarlyWorkController extends WombatController {
     }
   }
 
-  private String getTypeOf(ScholarlyWorkId workId) throws IOException {
+  private String getTypeOf(RequestedDoiVersion workId) throws IOException {
     return (String) getWorkMetadata(workId).get("type");
   }
 
@@ -65,7 +65,7 @@ public class ScholarlyWorkController extends WombatController {
       // TODO: supp info
       .build();
 
-  private Link getRedirectFor(Site site, ScholarlyWorkId workId) throws IOException {
+  private Link getRedirectFor(Site site, RequestedDoiVersion workId) throws IOException {
     String handlerName = REDIRECT_HANDLERS.get(getTypeOf(workId));
     if (handlerName == null) {
       throw new RuntimeException("Unrecognized type: " + workId);
@@ -75,7 +75,7 @@ public class ScholarlyWorkController extends WombatController {
     return pointLinkToWork(handlerLink, workId);
   }
 
-  private static Link pointLinkToWork(Link.Factory.PatternBuilder link, ScholarlyWorkId workId) {
+  private static Link pointLinkToWork(Link.Factory.PatternBuilder link, RequestedDoiVersion workId) {
     link.addQueryParameter("id", workId.getDoi());
     workId.getRevisionNumber().ifPresent(revisionNumber ->
         link.addQueryParameter("rev", revisionNumber));
@@ -85,7 +85,7 @@ public class ScholarlyWorkController extends WombatController {
   @RequestMapping(name = "assetFile", value = "/article/file", params = {"type"})
   public void serveAssetFile(HttpServletResponse responseToClient,
                              @SiteParam Site site,
-                             ScholarlyWorkId workId,
+                             RequestedDoiVersion workId,
                              @RequestParam(value = "type", required = true) String fileType,
                              @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {

@@ -3,7 +3,7 @@ package org.ambraproject.wombat.config;
 import org.ambraproject.wombat.config.site.SiteHandlerMapping;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.controller.ScholarlyWorkIdResolver;
+import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
 import org.ambraproject.wombat.service.AssetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +22,7 @@ public class SpringMvcConfiguration extends WebMvcConfigurationSupport {
   @Autowired
   SiteResolver siteResolver;
   @Autowired
-  ScholarlyWorkIdResolver scholarlyWorkIdResolver;
+  DoiVersionArgumentResolver doiVersionArgumentResolver;
 
   @Autowired
   SiteSet siteSet;
@@ -39,7 +39,7 @@ public class SpringMvcConfiguration extends WebMvcConfigurationSupport {
   @Override
   protected void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
     argumentResolvers.add(siteResolver);
-    argumentResolvers.add(scholarlyWorkIdResolver);
+    argumentResolvers.add(doiVersionArgumentResolver);
   }
 
   @Override

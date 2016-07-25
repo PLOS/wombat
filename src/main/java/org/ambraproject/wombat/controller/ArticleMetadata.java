@@ -16,7 +16,7 @@ import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
-import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
@@ -53,10 +53,10 @@ public class ArticleMetadata {
 
   private final Factory factory; // for further service access
   private final Site site;
-  private final ScholarlyWorkId articleId;
+  private final RequestedDoiVersion articleId;
   private final Map<String, ?> ingestionMetadata;
 
-  private ArticleMetadata(Factory factory, Site site, ScholarlyWorkId articleId, Map<String, ?> ingestionMetadata) {
+  private ArticleMetadata(Factory factory, Site site, RequestedDoiVersion articleId, Map<String, ?> ingestionMetadata) {
     this.factory = Objects.requireNonNull(factory);
     this.site = Objects.requireNonNull(site);
     this.articleId = Objects.requireNonNull(articleId);
@@ -79,7 +79,7 @@ public class ArticleMetadata {
     @Autowired
     private XmlService xmlService;
 
-    public ArticleMetadata get(Site site, ScholarlyWorkId id) throws IOException {
+    public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
       Map<String, ?> ingestionMetadata;
       try {
         ingestionMetadata = articleService.requestArticleMetadata(id, false);
@@ -230,7 +230,7 @@ public class ArticleMetadata {
   }
 
 
-  private Map<String, Collection<Object>> getContainingArticleLists(ScholarlyWorkId articleId, Site site) throws IOException {
+  private Map<String, Collection<Object>> getContainingArticleLists(RequestedDoiVersion articleId, Site site) throws IOException {
     List<Map<?, ?>> articleListObjects = factory.articleApi.requestObject(
         ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addParameter("lists").build(),
         List.class);
@@ -279,7 +279,7 @@ public class ArticleMetadata {
    * @return the list of authors appended to the model
    * @throws IOException
    */
-  private void requestAuthors(Model model, ScholarlyWorkId workId) throws IOException {
+  private void requestAuthors(Model model, RequestedDoiVersion workId) throws IOException {
     Map<?, ?> allAuthorsData = factory.articleApi.requestObject(
         factory.articleResolutionService.toIngestion(workId).addToken("authors").build(),
         Map.class);
@@ -389,7 +389,7 @@ public class ArticleMetadata {
     // Display the body only on non-correction amendments. Would be better if this were configurable per theme.
     if (amendmentType != AmendmentType.CORRECTION) {
       String doi = (String) amendment.get("doi");
-      ScholarlyWorkId amendmentId = ScholarlyWorkId.of(doi); // TODO: Has revision?
+      RequestedDoiVersion amendmentId = RequestedDoiVersion.of(doi); // TODO: Has revision?
       RenderContext renderContext = new RenderContext(site, amendmentId);
       String body;
       try {

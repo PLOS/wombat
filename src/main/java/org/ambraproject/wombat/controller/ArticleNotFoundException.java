@@ -13,7 +13,7 @@
 
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 class ArticleNotFoundException extends NotFoundException {
 
-  public ArticleNotFoundException(ScholarlyWorkId articleId) {
+  public ArticleNotFoundException(RequestedDoiVersion articleId) {
     super(String.format("Article %s not found", articleId));
   }
 }

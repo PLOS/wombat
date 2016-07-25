@@ -2,7 +2,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.controller.NotFoundException;
-import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,7 +16,7 @@ public class ArticleResolutionService {
   @Autowired
   private ArticleApi articleApi;
 
-  private Map<String, Number> fetchRevisionTable(ScholarlyWorkId id) {
+  private Map<String, Number> fetchRevisionTable(RequestedDoiVersion id) {
     Map<String, ?> articleOverview;
     try {
       articleOverview = articleApi.requestObject(ApiAddress.builder("articles").embedDoi(id.getDoi()).build(), Map.class);
@@ -26,7 +26,7 @@ public class ArticleResolutionService {
     return (Map<String, Number>) articleOverview.get("revisions");
   }
 
-  private int resolveToIngestionNumber(ScholarlyWorkId id) {
+  private int resolveToIngestionNumber(RequestedDoiVersion id) {
     OptionalInt ingestionNumber = id.getIngestionNumber();
     if (ingestionNumber.isPresent()) {
       return ingestionNumber.getAsInt();
@@ -35,7 +35,7 @@ public class ArticleResolutionService {
     return resolveFromRevisionNumber(id, fetchRevisionTable(id));
   }
 
-  private static int resolveFromRevisionNumber(ScholarlyWorkId id, Map<String, Number> revisionTable) {
+  private static int resolveFromRevisionNumber(RequestedDoiVersion id, Map<String, Number> revisionTable) {
     OptionalInt revisionNumber = id.getRevisionNumber();
     if (revisionNumber.isPresent()) {
       Number ingestionForRevision = revisionTable.get(Integer.toString(revisionNumber.getAsInt()));
@@ -61,14 +61,14 @@ public class ArticleResolutionService {
         .addToken("ingestions").addToken(Integer.toString(ingestionId));
   }
 
-  public ApiAddress.Builder toIngestion(ScholarlyWorkId articleId) {
+  public ApiAddress.Builder toIngestion(RequestedDoiVersion articleId) {
     int ingestionId = resolveToIngestionNumber(articleId);
     return toIngestion(articleId.getDoi(), ingestionId);
   }
 
   private static final ImmutableSet<String> ARTICLE_ASSET_TYPES = ImmutableSet.of("article", "asset");
 
-  public ApiAddress.Builder toParentIngestion(ScholarlyWorkId assetId) throws IOException {
+  public ApiAddress.Builder toParentIngestion(RequestedDoiVersion assetId) throws IOException {
     Map<String, ?> doiOverview = articleApi.requestObject(
         ApiAddress.builder("dois").embedDoi(assetId.getDoi()).build(),
         Map.class);

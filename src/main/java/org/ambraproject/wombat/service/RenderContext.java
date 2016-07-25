@@ -2,7 +2,7 @@ package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 
 import java.util.ArrayList;
@@ -13,14 +13,14 @@ import java.util.Optional;
 public class RenderContext {
 
   private final Site site;
-  private final Optional<ScholarlyWorkId> articleId;
+  private final Optional<RequestedDoiVersion> articleId;
 
   public RenderContext(Site site) {
     this.site = Objects.requireNonNull(site);
     this.articleId = Optional.empty();
   }
 
-  public RenderContext(Site site, ScholarlyWorkId articleId) {
+  public RenderContext(Site site, RequestedDoiVersion articleId) {
     this.site = Objects.requireNonNull(site);
     this.articleId = Optional.of(articleId);
   }
@@ -29,7 +29,7 @@ public class RenderContext {
     return site;
   }
 
-  public Optional<ScholarlyWorkId> getArticleId() {
+  public Optional<RequestedDoiVersion> getArticleId() {
     return articleId;
   }
 

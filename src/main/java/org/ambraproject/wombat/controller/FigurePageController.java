@@ -3,8 +3,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.model.ScholarlyWorkId;
-import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -39,7 +38,7 @@ public class FigurePageController extends WombatController {
    */
   @RequestMapping(name = "figuresPage", value = "/article/figures")
   public String renderFiguresPage(Model model, @SiteParam Site site,
-                                  ScholarlyWorkId articleId)
+                                  RequestedDoiVersion articleId)
       throws IOException {
     Map<?, ?> articleMetadata;
     try {
@@ -65,7 +64,7 @@ public class FigurePageController extends WombatController {
    */
   @RequestMapping(name = "figurePage", value = "/article/figure")
   public String renderFigurePage(Model model, @SiteParam Site site,
-                                 ScholarlyWorkId figureId)
+                                 RequestedDoiVersion figureId)
       throws IOException {
     Map<String, Object> articleMetadata;
     try {
@@ -83,7 +82,7 @@ public class FigurePageController extends WombatController {
     String parentArticleDoi = (String) parentArticle.get("doi");
     model.addAttribute("article", ImmutableMap.of("doi", parentArticleDoi));
 
-    RenderContext renderContext = new RenderContext(site, ScholarlyWorkId.of(parentArticleDoi));
+    RenderContext renderContext = new RenderContext(site, RequestedDoiVersion.of(parentArticleDoi));
     transformFigureDescription(renderContext, figureMetadata);
     model.addAttribute("figure", figureMetadata);
 

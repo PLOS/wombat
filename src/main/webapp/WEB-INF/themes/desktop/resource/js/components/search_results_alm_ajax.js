@@ -40,6 +40,7 @@ var SearchResultsALMData;
       _.each(data, function (i) {
         var doi = i.doi;
         var templateData = {
+          itemDoi: doi,
           saveCount: i.saved,
           citationCount: i.cited,
           shareCount: i.discussed,

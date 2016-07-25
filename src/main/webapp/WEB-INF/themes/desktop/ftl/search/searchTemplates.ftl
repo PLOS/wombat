@@ -122,6 +122,14 @@
     <section class="filter-view">
       <h3 class="filter-label">Filters:</h3>
       <div class="filter-block">
+        <% if(searchDateFilters.start != null && searchDateFilters.end != null) { %>
+        <div class="filter-item" id="filter-date">
+          <%= moment(searchDateFilters.start).format('ll') %> TO <%= moment(searchDateFilters.end).format('ll') %>
+          <a href="#" data-filter-param-name="filterDates" data-filter-value="date">
+            &nbsp;
+          </a>
+        </div>
+        <% } %>
         <% _.each(activeFilterItems, function(item) { %>
         <div class="filter-item">
           <%= item.displayName %>

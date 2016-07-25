@@ -86,7 +86,7 @@ var SearchResult;
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
 
-      if(this.currentSearchParams.q != null) {
+      if (this.currentSearchParams.q != null || (this.currentSearchParams.filterStartDate != null && this.currentSearchParams.filterEndDate != null)) {
         this.processRequest();
       }
       else {
@@ -135,6 +135,9 @@ var SearchResult;
     },
     createUrlParams: function () {
       var urlParams = '?';
+      if (this.currentSearchParams.filterStartDate != null && this.currentSearchParams.filterEndDate != null && this.currentSearchParams.q == null) {
+        this.currentSearchParams.q = "";
+      }
       _.each(this.currentSearchParams, function (item, key) {
         if(item != null) {
           if(_.isArray(item)) {
@@ -192,30 +195,37 @@ var SearchResult;
         var param = $(this).data('filter-param-name');
         var value = $(this).data('filter-value');
 
-        var currentValue = that.currentSearchParams[param];
-
-        if(_.isArray(currentValue)) {
-          var index = _.indexOf(currentValue, value);
-
-          if (index == -1) {
-            that.currentSearchParams[param].push(value);
-          }
-          else {
-            that.currentSearchParams[param].splice(index, 1);
-          }
+        if (param == 'filterDates') {
+          that.currentSearchParams.filterStartDate = null;
+          that.currentSearchParams.filterEndDate = null;
+          that.searchDateFilters.start = that.currentSearchParams.filterStartDate;
+          that.searchDateFilters.end = that.currentSearchParams.filterEndDate;
         }
         else {
-          if(currentValue == value) {
-            that.currentSearchParams[param] = [];
-          }
-          else if(currentValue != null) {
-            that.currentSearchParams[param] = [currentValue, value];
+          var currentValue = that.currentSearchParams[param];
+
+          if (_.isArray(currentValue)) {
+            var index = _.indexOf(currentValue, value);
+
+            if (index == -1) {
+              that.currentSearchParams[param].push(value);
+            }
+            else {
+              that.currentSearchParams[param].splice(index, 1);
+            }
           }
           else {
-            that.currentSearchParams[param] = [value];
+            if (currentValue == value) {
+              that.currentSearchParams[param] = [];
+            }
+            else if (currentValue != null) {
+              that.currentSearchParams[param] = [currentValue, value];
+            }
+            else {
+              that.currentSearchParams[param] = [value];
+            }
           }
         }
-
         that.currentSearchParams.page = 1;
 
         that.processRequest();
@@ -229,6 +239,11 @@ var SearchResult;
       }).on('click', this.resetFiltersElId, function (e) {
         e.preventDefault();
         e.stopPropagation();
+
+        that.currentSearchParams.filterStartDate = null;
+        that.currentSearchParams.filterEndDate = null;
+        that.searchDateFilters.start = that.currentSearchParams.filterStartDate;
+        that.searchDateFilters.end = that.currentSearchParams.filterEndDate;
 
         _.each(that.filtersParams, function (filter) {
           that.currentSearchParams[filter] = null;
@@ -264,6 +279,8 @@ var SearchResult;
         e.stopPropagation();
         that.currentSearchParams.filterEndDate = $(that.dateFilterEndElId).val();
         that.currentSearchParams.filterStartDate = $(that.dateFilterStartElId).val();
+        that.searchDateFilters['end'] = that.currentSearchParams.filterEndDate;
+        that.searchDateFilters['start'] = that.currentSearchParams.filterStartDate;
         that.processRequest();
       });
       plos_toggle.init();
@@ -364,6 +381,11 @@ var SearchResult;
         this.isInitialized = true;
       }
 
+      if (_.isEmpty(this.currentSearchParams.q) && this.currentSearchParams.filterEndDate == null && this.currentSearchParams.filterStartDate == null) {
+        this.showNoResults();
+        return;
+      }
+
       $.ajax({
         url: this.ajaxSearchEndpoint+this.currentUrlParams,
         method: 'GET',
@@ -442,7 +464,7 @@ var SearchResult;
     showNoResults: function() {
       var noResultsTemplate = _.template($('#searchNoResultsTemplate').html());
 
-      this.$resultListEl.append(noResultsTemplate(this.currentSearchParams));
+      this.$resultListEl.html(noResultsTemplate(this.currentSearchParams));
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
       this.createFilters();
@@ -527,7 +549,10 @@ var SearchResult;
     createFilterHeader: function (activeFilters) {
       var filterHeaderTemplate = _.template($('#searchHeaderFilterTemplate').html());
       if(activeFilters.length) {
-        this.$filterHeaderEl.append(filterHeaderTemplate({activeFilterItems: activeFilters}));
+        this.$filterHeaderEl.append(filterHeaderTemplate({
+          activeFilterItems: activeFilters,
+          searchDateFilters: this.searchDateFilters
+        }));
       }
     },
     getJsonFromUrl: function (hashBased) {

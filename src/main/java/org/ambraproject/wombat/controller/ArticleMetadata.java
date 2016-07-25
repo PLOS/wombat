@@ -280,9 +280,9 @@ public class ArticleMetadata {
    * @throws IOException
    */
   private void requestAuthors(Model model, RequestedDoiVersion workId) throws IOException {
-    Map<?, ?> allAuthorsData = factory.articleApi.requestObject(
-        factory.articleResolutionService.toIngestion(workId).addToken("authors").build(),
-        Map.class);
+    ApiAddress authorAddress = factory.articleResolutionService.toIngestion(workId).asApiAddress()
+        .addToken("authors").build();
+    Map<?, ?> allAuthorsData = factory.articleApi.requestObject(authorAddress, Map.class);
     List<?> authors = (List<?>) allAuthorsData.get("authors");
     model.addAttribute("authors", authors);
 

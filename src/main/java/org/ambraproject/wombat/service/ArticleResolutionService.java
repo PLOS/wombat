@@ -18,23 +18,12 @@ public class ArticleResolutionService {
   @Autowired
   private ArticleApi articleApi;
 
-  private Map<String, Number> fetchRevisionTable(RequestedDoiVersion id) {
-    Map<String, ?> articleOverview;
+  private Map<String, ?> fetchArticleOverview(RequestedDoiVersion id) {
     try {
-      articleOverview = articleApi.requestObject(ApiAddress.builder("articles").embedDoi(id.getDoi()).build(), Map.class);
+      return articleApi.requestObject(ApiAddress.builder("articles").embedDoi(id.getDoi()).build(), Map.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    return (Map<String, Number>) articleOverview.get("revisions");
-  }
-
-  private int resolveToIngestionNumber(RequestedDoiVersion id) {
-    OptionalInt ingestionNumber = id.getIngestionNumber();
-    if (ingestionNumber.isPresent()) {
-      return ingestionNumber.getAsInt();
-    }
-
-    return resolveFromRevisionNumber(id, fetchRevisionTable(id));
   }
 
   private static int resolveFromRevisionNumber(RequestedDoiVersion id, Map<String, Number> revisionTable) {
@@ -58,14 +47,14 @@ public class ArticleResolutionService {
     }
   }
 
-  private static ApiAddress.Builder toIngestion(String doi, int ingestionId) {
-    return ApiAddress.builder("articles").embedDoi(doi)
-        .addToken("ingestions").addToken(Integer.toString(ingestionId));
-  }
-
-  public ApiAddress.Builder toIngestion(RequestedDoiVersion articleId) {
-    int ingestionId = resolveToIngestionNumber(articleId);
-    return toIngestion(articleId.getDoi(), ingestionId);
+  public ArticlePointer toIngestion(RequestedDoiVersion articleId) {
+    Map<String, ?> articleOverview = fetchArticleOverview(articleId);
+    String canonicalDoi = (String) articleOverview.get("doi");
+    int ingestionNumber = articleId.getIngestionNumber().orElseGet(() -> {
+      Map<String, Number> revisionTable = (Map<String, Number>) articleOverview.get("revisions");
+      return resolveFromRevisionNumber(articleId, revisionTable);
+    });
+    return new ArticlePointer(canonicalDoi, ingestionNumber);
   }
 
   private static final ImmutableSet<String> ARTICLE_ASSET_TYPES = ImmutableSet.of("article", "asset");

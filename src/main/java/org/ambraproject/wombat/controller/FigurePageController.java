@@ -69,7 +69,7 @@ public class FigurePageController extends WombatController {
     Map<String, Object> articleMetadata;
     try {
       articleMetadata = (Map<String, Object>) articleApi.requestObject(
-          articleResolutionService.toIngestion(figureId).build(), Map.class);
+          articleResolutionService.toIngestion(figureId).asApiAddress().build(), Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(figureId);
     }

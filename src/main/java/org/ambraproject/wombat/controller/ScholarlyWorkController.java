@@ -6,6 +6,7 @@ import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleResolutionService;
@@ -89,11 +90,12 @@ public class ScholarlyWorkController extends WombatController {
                              @RequestParam(value = "type", required = true) String fileType,
                              @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {
+    AssetPointer asset = articleResolutionService.toParentIngestion(workId);
     Map<String, ?> itemResponse = articleApi.requestObject(
-        articleResolutionService.toParentIngestion(workId).addToken("items").build(),
+        asset.getParentArticle().asApiAddress().addToken("items").build(),
         Map.class);
     Map<String, ?> items = (Map<String, ?>) itemResponse.get("items");
-    Map<String, ?> requestedItem = (Map<String, ?>) items.get(workId.getDoi()); // TODO: Deal with ambiguous URI forms
+    Map<String, ?> requestedItem = (Map<String, ?>) items.get(asset.getAssetDoi());
     Map<String, ?> files = (Map<String, ?>) requestedItem.get("files");
     Map<String, ?> fileRepoKey = (Map<String, ?>) files.get(fileType);
     if (fileRepoKey == null) {

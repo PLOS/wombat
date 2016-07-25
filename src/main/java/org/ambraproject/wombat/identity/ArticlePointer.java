@@ -1,5 +1,7 @@
 package org.ambraproject.wombat.identity;
 
+import org.ambraproject.wombat.service.ApiAddress;
+
 import java.util.Objects;
 
 /**
@@ -23,6 +25,11 @@ public final class ArticlePointer {
 
   public int getIngestionNumber() {
     return ingestionNumber;
+  }
+
+  public ApiAddress.Builder asApiAddress() {
+    return ApiAddress.builder("articles").embedDoi(doi)
+        .addToken("ingestions").addToken(Integer.toString(ingestionNumber));
   }
 
   @Override

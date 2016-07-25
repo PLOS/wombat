@@ -2,6 +2,8 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.controller.NotFoundException;
+import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,10 +70,11 @@ public class ArticleResolutionService {
 
   private static final ImmutableSet<String> ARTICLE_ASSET_TYPES = ImmutableSet.of("article", "asset");
 
-  public ApiAddress.Builder toParentIngestion(RequestedDoiVersion assetId) throws IOException {
+  public AssetPointer toParentIngestion(RequestedDoiVersion assetId) throws IOException {
     Map<String, ?> doiOverview = articleApi.requestObject(
         ApiAddress.builder("dois").embedDoi(assetId.getDoi()).build(),
         Map.class);
+
     String type = (String) doiOverview.get("type");
     if (!ARTICLE_ASSET_TYPES.contains(type)) {
       throw new NotFoundException("Not an article asset: " + assetId);
@@ -79,13 +82,14 @@ public class ArticleResolutionService {
 
     Map<String, ?> parentArticle = (Map<String, ?>) doiOverview.get("article");
     String parentDoi = (String) parentArticle.get("doi");
-
     int ingestionNumber = assetId.getIngestionNumber().orElseGet(() -> {
       Map<String, Number> revisionTable = (Map<String, Number>) parentArticle.get("revisions");
       return resolveFromRevisionNumber(assetId, revisionTable);
     });
+    ArticlePointer parentArticlePtr = new ArticlePointer(parentDoi, ingestionNumber);
 
-    return toIngestion(parentDoi, ingestionNumber);
+    String canonicalAssetDoi = (String) doiOverview.get("doi");
+    return new AssetPointer(canonicalAssetDoi, parentArticlePtr);
   }
 
 }

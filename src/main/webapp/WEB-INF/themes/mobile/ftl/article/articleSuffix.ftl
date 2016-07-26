@@ -47,9 +47,11 @@
   </div>
 </#macro>
 
-<@siteLink handlerName="asset" queryParameters={"id": "${article.doi}.PDF"} ; href>
-  <@articleSaveButton href>Download Article (PDF)</@articleSaveButton>
-</@siteLink>
+<#if articleItems[article.doi].files?keys?seq_contains("printable")>
+  <@siteLink handlerName="assetFile" queryParameters={"type": "printable", "id": article.doi} ; href>
+    <@articleSaveButton href>Download Article (PDF)</@articleSaveButton>
+  </@siteLink>
+</#if>
 
 <@siteLink handlerName="citationDownloadPage" queryParameters={"id": article.doi} ; href>
   <@articleSaveButton href>Download Citation</@articleSaveButton>

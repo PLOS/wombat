@@ -1,5 +1,3 @@
-<#assign issue_image_suffix = ".g001.PNG_M"/>
-
 <h1>Table of Contents: ${issue.displayName} ${issue.parentVolume.displayName}</h1>
 
     <nav id="nav-toc" >
@@ -32,9 +30,9 @@
       <div class="detail-container">
         <div class="img">
         <#if issue.imageUri?has_content>
-            <#assign issueImageFileId = issue.imageUri + issue_image_suffix/>
-            <img src="<@siteLink handlerName="asset" queryParameters={"id": issueImageFileId, "size" : "inline"}/>"
-            alt="Issue Image" data-doi="${issue.imageUri}">
+          <#assign issueImageFigureDoi = 'TODO' /><#-- TODO: Retrieve figure DOI from metadata -->
+          <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "inline", "id": issueImageFigureDoi} />"
+               alt="Issue Image" data-doi="${issue.imageUri}">
         </#if>
         </div>
         <div class="txt">${issueDescription}</div>

@@ -1,5 +1,3 @@
-<#assign thumbnail_suffix = ".g001.PNG_S"/>
-
 <h1>Journal Archive</h1>
 <#if journal??>
   <#if journal.currentIssue??>
@@ -12,9 +10,9 @@
           <@siteLink
           handlerName="browseIssues"
           queryParameters={"id": journal.currentIssue.issueUri}; issueLink>
-            <a href="${issueLink}"/>
-            <#assign issueImageFileId = journal.currentIssue.imageUri + thumbnail_suffix/>
-            <img src="<@siteLink handlerName="asset" queryParameters={"id": issueImageFileId}/>"
+            <a href="${issueLink}">
+            <#assign issueImageFigureDoi = 'TODO' /><#-- TODO: Retrieve figure DOI from metadata -->
+            <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "small", "id": issueImageFigureDoi}/>"
                  class="current-img" alt="Current Issue"/>
             <span>${journal.currentIssue.displayName}</span>
             </a>
@@ -55,8 +53,8 @@
                 queryParameters={"id": "${issue.issueUri}"}; issueLink>
                   <a href="${issueLink}">
                     <#if issue.imageUri??>
-                      <#assign issueImageFileId = issue.imageUri + thumbnail_suffix/>
-                      <@siteLink handlerName="asset" queryParameters={"id": issueImageFileId}; issueImgURL>
+                      <#assign issueImageFigureDoi = 'TODO' /><#-- TODO: Retrieve figure DOI from metadata -->
+                      <@siteLink handlerName="assetFile" queryParameters={"type": "small", "id": issueImageFigureDoi}; issueImgURL>
                         <img src="${issueImgURL}"
                              alt="${issue.displayName} Journal Cover"/>
                       </@siteLink>

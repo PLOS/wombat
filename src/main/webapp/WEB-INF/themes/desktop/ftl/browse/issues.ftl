@@ -15,10 +15,6 @@
 
 <#include "../common/header/headerContainer.ftl" />
 
-<!-- TODO: This is how Ambra does it, but it would be much preferred to provide the proper thumbnail asset file ids
-      for each issue in the controller layer. -->
-<#assign issue_image_suffix = ".g001.PNG_M"/>
-
 <section >
     <h1>Table of Contents: ${issue.displayName} ${issue.parentVolume.displayName}</h1>
 
@@ -53,10 +49,10 @@
               <div class="detail-container">
                 <div class="img">
                 <#if issue.imageUri?has_content>
-                  <#assign issueImageFileId = issue.imageUri + issue_image_suffix/>
+                  <#assign issueImageFigureDoi = 'TODO' /><#-- TODO: Retrieve figure DOI from metadata -->
                   <a href="<@siteLink handlerName="article" queryParameters={"id": issue.imageUri} />">
-                    <img src="<@siteLink handlerName="asset" queryParameters={"id": issueImageFileId, "size" : "inline"}/>"
-                    alt="Issue Image" data-doi="${issue.imageUri}">
+                    <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "inline", "id": issueImageFigureDoi} />"
+                         alt="Issue Image" data-doi="${issue.imageUri}">
                   </a>
                 </#if>
                 </div>

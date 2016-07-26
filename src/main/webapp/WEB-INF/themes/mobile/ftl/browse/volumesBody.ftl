@@ -1,7 +1,3 @@
-<!-- TODO: This is how Ambra does it, but it would be much preferred to provide the proper thumbnail asset file ids
-      for each issue in the controller layer. -->
-<#assign thumbnail_suffix = ".g001.PNG_S"/>
-
 <h1>Journal Archive</h1>
 <#if journal??>
   <#if journal.currentIssue??>
@@ -21,8 +17,8 @@
         <div class="journal_thumb">
         <p>
             <a href="${issueLink}" class="">
-            <#assign issueImageFileId = journal.currentIssue.imageUri + thumbnail_suffix/>
-              <img src="<@siteLink handlerName="asset" queryParameters={"id": issueImageFileId}/>"
+              <#assign issueImageFigureDoi = 'TODO' /><#-- TODO: Retrieve figure DOI from metadata -->
+              <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "small", "id": issueImageFigureDoi}/>"
                  class="center-block"
                  alt="Current Issue"/>
             </a>

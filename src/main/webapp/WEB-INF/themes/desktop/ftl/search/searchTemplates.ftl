@@ -17,7 +17,7 @@
         <span id="article-result-<%= index %>-type"><%= item.article_type %></span> |
         <% } %>
                       <span id="article-result-<%= index %>-date">
-                published <%= moment(item.publication_date).format("DD MMM YYYY") %>
+                published <%= moment.tz(item.publication_date, 'America/Los_Angeles').format("DD MMM YYYY") %>
                           |
               </span>
         <% if(!_.isEmpty(item.cross_published_journal_name)) { %>

@@ -2,7 +2,7 @@
 <@siteLink handlerName="article" queryParameters={"id":article.doi} ; articleUrl>
       <#if (article.strkImgURI?? && article.strkImgURI?length > 0) >
           <a class="article-url"  href="${articleUrl}">
-              <@siteLink handlerName="figureImage" queryParameters={"id" : article.strkImgURI, "size": "inline"} ; href>
+              <@siteLink handlerName="assetFile" queryParameters={"id" : article.strkImgURI, "type": "inline"} ; href>
                   <img class="grayscale" src="${href}"/>
               </@siteLink>
           </a>

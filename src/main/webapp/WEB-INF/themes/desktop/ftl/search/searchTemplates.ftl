@@ -119,7 +119,7 @@
 </script>
 
 <script type="text/template" id="searchHeaderFilterTemplate">
-  <% if (activeFilterItems.length > 0) { %>
+  <% if (activeFilterItems.length > 0 || searchDateFilters.start != null && searchDateFilters.end != null) { %>
   <div class="filter-view-container">
     <section class="filter-view">
       <h3 class="filter-label">Filters:</h3>

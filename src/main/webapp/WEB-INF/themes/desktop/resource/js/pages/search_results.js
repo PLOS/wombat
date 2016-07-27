@@ -44,6 +44,7 @@ var SearchResult;
     searchFeedEndpoint: 'search/feed/atom',
 
     searchFilters: {},
+    searchActiveFilters: [],
     searchDateFilters: {
       "end": null,
       "start": null
@@ -94,8 +95,8 @@ var SearchResult;
         this.isInitialized = true;
       }
     },
-    getCurrentPage: function() {
-      if(this.currentSearchParams.page && this.currentSearchParams.page != null) {
+    getCurrentPage: function () {
+      if (this.currentSearchParams.page && this.currentSearchParams.page != null) {
         return parseInt(this.currentSearchParams.page);
       }
       else {
@@ -103,7 +104,7 @@ var SearchResult;
       }
     },
     getResultsPerPage: function () {
-      if(this.currentSearchParams.resultsPerPage && this.currentSearchParams.resultsPerPage != null) {
+      if (this.currentSearchParams.resultsPerPage && this.currentSearchParams.resultsPerPage != null) {
         return parseInt(this.currentSearchParams.resultsPerPage);
       }
       else {
@@ -125,7 +126,7 @@ var SearchResult;
       var urlVars = this.getJsonFromUrl();
       this.currentSearchParams = _.mapObject(this.currentSearchParams, function (item, key) {
         var urlVar = urlVars[key];
-        if(!_.isEmpty(urlVar)) {
+        if (!_.isEmpty(urlVar)) {
           return urlVar;
         }
         else {
@@ -157,8 +158,8 @@ var SearchResult;
         this.currentSearchParams.q = "";
       }
       _.each(this.currentSearchParams, function (item, key) {
-        if(item != null) {
-          if(_.isArray(item)) {
+        if (item != null) {
+          if (_.isArray(item)) {
             _.each(item, function (item) {
               urlParams = urlParams + key + '=' + encodeURIComponent(item) + '&';
             });
@@ -172,7 +173,7 @@ var SearchResult;
       this.updatePageUrl();
     },
     updatePageUrl: function () {
-      if(this.isInitialized) {
+      if (this.isInitialized) {
         var title = document.title;
         var href = this.searchEndpoint + this.currentUrlParams;
         window.history.pushState(href, title, href);
@@ -320,7 +321,7 @@ var SearchResult;
         e.stopPropagation();
         that.$searchAlertModalEl.foundation('reveal', 'open');
 
-        if(that.$searchAlertModalEl.hasClass('loggedIn')) {
+        if (that.$searchAlertModalEl.hasClass('loggedIn')) {
           var textInput = $('#text_name_savedsearch');
           textInput.val(that.currentSearchParams.q);
           textInput.focus();
@@ -358,7 +359,7 @@ var SearchResult;
       var query = {};
 
       _.mapObject(this.currentSearchParams, function (item, key) {
-        if(!_.isEmpty(item)) {
+        if (!_.isEmpty(item)) {
           query[key] = item;
         }
       });
@@ -372,8 +373,8 @@ var SearchResult;
         data: 'name=' + encodeURIComponent(name)
         + "&query=" + encodeURIComponent(query)
         + (weekly ? "&frequency=weekly" : "") + (monthly ? "&frequency=monthly" : ""),
-        dataType:'json',
-        success: function(response) {
+        dataType: 'json',
+        success: function (response) {
           if (response.error) {
             var errorMessage = response.error;
             $('#span_error_savedsearch').html(errorMessage);
@@ -382,11 +383,54 @@ var SearchResult;
 
           that.$searchAlertModalEl.foundation('reveal', 'close');
         },
-        error: function(req, textStatus, errorThrown) {
+        error: function (req, textStatus, errorThrown) {
           $('#span_error_savedsearch').html(errorThrown);
           console.log('error: ' + errorThrown);
         }
       });
+    },
+
+    mapActiveFilters: function (response) {
+      var types = {
+        "filterJournals": response.filterJournals,
+        "filterSubjects": response.filterSubjects,
+        "filterArticleTypes": response.filterArticleTypes,
+        "filterAuthors": response.filterAuthors,
+        "filterSections": response.filterSections
+      };
+
+      var activeFilters = [];
+      _.each(types, function (value, type) {
+        if(type == 'filterJournals') {
+          var filters = _.map(value, function (filterValue, key) {
+            return {
+              displayName: response.filterJournalNames[key],
+              filterParamName: type,
+              filterValue: filterValue
+            }
+          });
+        }
+        else {
+          var filters = _.map(value, function (filterValue, key) {
+            return {
+              displayName: filterValue,
+              filterParamName: type,
+              filterValue: filterValue
+            }
+          });
+
+        }
+        activeFilters = activeFilters.concat(filters);
+      });
+
+      if (!_.isEmpty(response.filterStartDate)) {
+        this.searchDateFilters['start'] = response.filterStartDate;
+      }
+      if (!_.isEmpty(response.filterEndDate)) {
+        this.searchDateFilters['end'] = response.filterEndDate;
+      }
+
+      this.searchActiveFilters = activeFilters;
     },
 
     processRequest: function () {
@@ -395,7 +439,7 @@ var SearchResult;
       this.showLoading();
       this.createUrlParams();
 
-      if(!this.isInitialized) {
+      if (!this.isInitialized) {
         this.isInitialized = true;
       }
 
@@ -405,14 +449,14 @@ var SearchResult;
       }
 
       $.ajax({
-        url: this.ajaxSearchEndpoint+this.currentUrlParams,
+        url: this.ajaxSearchEndpoint + this.currentUrlParams,
         method: 'GET',
         jsonp: 'callback',
         dataType: 'json',
         timeout: 20000,
         success: function (response) {
           that.$resultListEl.html('');
-          if(response.cannotParseQueryError) {
+          if (response.cannotParseQueryError) {
             that.showParseError();
           }
           else if (response.unknownQueryError) {
@@ -420,6 +464,9 @@ var SearchResult;
           }
           else {
             that.resultTotalRecords = response.searchResults.numFound;
+
+            that.mapActiveFilters(response);
+
             if (that.resultTotalRecords > 0) {
               that.results = response.searchResults.docs;
               var currentPage = that.getCurrentPage();
@@ -430,12 +477,6 @@ var SearchResult;
               that.resultsOffset = response.searchResults.start;
 
               that.searchFilters = response.searchFilters;
-              if (!_.isEmpty(response.filterStartDate)) {
-                that.searchDateFilters['start'] = response.filterStartDate;
-              }
-              if (!_.isEmpty(response.filterEndDate)) {
-                that.searchDateFilters['end'] = response.filterEndDate;
-              }
 
               that.$searchHeaderEl.show();
               that.$filtersEl.show();
@@ -470,22 +511,20 @@ var SearchResult;
       this.$resultListEl.append(errorTemplate());
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
-      this.createFilters();
     },
     showParseError: function () {
       var errorTemplate = _.template($('#searchParseErrorTemplate').html());
       this.$resultListEl.append(errorTemplate());
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
-      this.createFilters();
     },
-    showNoResults: function() {
+    showNoResults: function () {
       var noResultsTemplate = _.template($('#searchNoResultsTemplate').html());
 
       this.$resultListEl.html(noResultsTemplate(this.currentSearchParams));
+      this.createFilterHeader();
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
-      this.createFilters();
 
     },
     createResultList: function () {
@@ -497,7 +536,7 @@ var SearchResult;
       this.createPageSelector();
     },
     createPageSelector: function () {
-      if(this.resultTotalRecords > 0) {
+      if (this.resultTotalRecords > 0) {
         var pages = {
           15: false,
           30: false,
@@ -505,13 +544,13 @@ var SearchResult;
         };
         var pagingTemplate = _.template($('#searchPagingSelectorTemplate').html());
         pages[this.getResultsPerPage()] = true;
-        this.$resultListEl.append(pagingTemplate({ pages:pages }));
+        this.$resultListEl.append(pagingTemplate({pages: pages}));
       }
     },
     updateCounterText: function () {
       var counterText = '%TOTAL% %RESULTSTR% for <strong>%TERM%</strong>';
       counterText = counterText.replace('%TOTAL%', s.numberFormat(this.resultTotalRecords, 0));
-      if(this.resultTotalRecords > 1) {
+      if (this.resultTotalRecords > 1) {
         counterText = counterText.replace('%RESULTSTR%', 'results');
       }
       else {
@@ -526,16 +565,13 @@ var SearchResult;
 
       this.$filtersEl.html('');
       this.$filterHeaderEl.html('');
-      if(this.resultTotalRecords > 0) {
-        var activeFilters = [];
+      if (this.resultTotalRecords > 0) {
         var filterSectionTemplate = _.template($('#searchListFilterSectionTemplate').html());
 
         _.each(this.filtersTitles, function (filterTitle, key) {
           var filter = that.searchFilters[key];
           filter.filterTitle = filterTitle;
-          if(filter.activeFilterItems.length > 0 || filter.inactiveFilterItems.length > 0) {
-            activeFilters = activeFilters.concat(filter.activeFilterItems);
-
+          if (filter.activeFilterItems.length > 0 || filter.inactiveFilterItems.length > 0) {
             that.$filtersEl.append(filterSectionTemplate(filter));
           }
         });
@@ -561,12 +597,13 @@ var SearchResult;
         RangeDatepicker.init($dateFilterStartDateEl, $dateFilterEndDateEl);
 
 
-        this.createFilterHeader(activeFilters);
+        this.createFilterHeader();
       }
     },
-    createFilterHeader: function (activeFilters) {
+    createFilterHeader: function () {
+      var activeFilters = this.searchActiveFilters;
       var filterHeaderTemplate = _.template($('#searchHeaderFilterTemplate').html());
-      if(activeFilters.length) {
+      if (activeFilters.length || this.searchDateFilters.start != null && this.searchDateFilters.end != null) {
         this.$filterHeaderEl.append(filterHeaderTemplate({
           activeFilterItems: activeFilters,
           searchDateFilters: this.searchDateFilters
@@ -575,25 +612,25 @@ var SearchResult;
     },
     getJsonFromUrl: function (hashBased) {
       var query;
-      if(hashBased) {
+      if (hashBased) {
         var pos = location.href.indexOf("?");
-        if(pos==-1) return [];
-        query = location.href.substr(pos+1);
+        if (pos == -1) return [];
+        query = location.href.substr(pos + 1);
       } else {
         query = location.search.substr(1);
       }
       var result = {};
-      query.split("&").forEach(function(part) {
-        if(!part) return;
+      query.split("&").forEach(function (part) {
+        if (!part) return;
         part = part.split("+").join(" "); // replace every + with space, regexp-free version
         var eq = part.indexOf("=");
-        var key = eq>-1 ? part.substr(0,eq) : part;
-        var val = eq>-1 ? decodeURIComponent(part.substr(eq+1)) : "";
+        var key = eq > -1 ? part.substr(0, eq) : part;
+        var val = eq > -1 ? decodeURIComponent(part.substr(eq + 1)) : "";
         var from = key.indexOf("[");
-        if(from==-1) {
+        if (from == -1) {
           var key = decodeURIComponent(key);
-          if(!_.isEmpty(result[key])) {
-            if(_.isArray(result[key])) {
+          if (!_.isEmpty(result[key])) {
+            if (_.isArray(result[key])) {
               result[key].push(val);
             }
             else {
@@ -607,10 +644,10 @@ var SearchResult;
         }
         else {
           var to = key.indexOf("]");
-          var index = decodeURIComponent(key.substring(from+1,to));
-          key = decodeURIComponent(key.substring(0,from));
-          if(!result[key]) result[key] = [];
-          if(!index) result[key].push(val);
+          var index = decodeURIComponent(key.substring(from + 1, to));
+          key = decodeURIComponent(key.substring(0, from));
+          if (!result[key]) result[key] = [];
+          if (!index) result[key].push(val);
           else result[key][index] = val;
         }
       });

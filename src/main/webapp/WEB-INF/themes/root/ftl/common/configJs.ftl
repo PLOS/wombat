@@ -3,7 +3,7 @@
     WombatConfig.resourcePath = "<@siteLink handlerName="staticResource" wildcardValues=[""]/>";
     WombatConfig.imgPath = "<@siteLink handlerName="staticResource" wildcardValues=["img/"]/>";
     WombatConfig.journalKey = <@themeConfig map="journal" value="journalKey" ; journalKey>"${journalKey}"</@themeConfig>;
-    WombatConfig.figurePath = "<@siteLink handlerName="figureImage" />";
+    WombatConfig.figurePath = "<@siteLink handlerName="assetFile" />";
     WombatConfig.metrics = WombatConfig.metrics || {};
     WombatConfig.metrics.referenceUrl      = "http://lagotto.io/plos";
     WombatConfig.metrics.googleScholarUrl  = "http://scholar.google.com/scholar";

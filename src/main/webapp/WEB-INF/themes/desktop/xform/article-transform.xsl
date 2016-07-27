@@ -1507,8 +1507,7 @@
           <xsl:value-of select="@xlink:href"/>
         </xsl:variable>
         <xsl:attribute name="src">
-          <xsl:value-of
-            select="concat('article/asset?id=',$graphicDOI,'.PNG')"/><!-- TODO: Avoid hard-coding 'PNG' -->
+          <xsl:value-of select="concat('article/file?type=thumbnail&amp;id=',$graphicDOI)"/>
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">
@@ -2203,7 +2202,7 @@
 
         <xsl:element name="a">
           <xsl:attribute name="href">
-            <xsl:value-of select="concat('article/asset?unique&amp;id=', $objURI)"/>
+            <xsl:value-of select="concat('article/file?type=supplementary&amp;id=', $objURI)"/>
           </xsl:attribute>
           <xsl:apply-templates select="label"/>
         </xsl:element>

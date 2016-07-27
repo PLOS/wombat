@@ -11,6 +11,7 @@ import javax.cache.configuration.MutableConfiguration;
 import javax.cache.expiry.CreatedExpiryPolicy;
 import javax.cache.expiry.Duration;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
@@ -36,9 +37,15 @@ class CacheManagerWrapper implements ServiceCacheSet {
 
   static final Duration DEFAULT_TTL = new Duration(TimeUnit.HOURS, 1);
 
+  // TODO: Extract into configuration
+  private static Properties getCacheManagerProperties() {
+    Properties properties = new Properties();
+    properties.setProperty("maxBytesLocalHeap", "2g");
+    return properties;
+  }
+
   CacheManagerWrapper() {
-    manager = Caching.getCachingProvider().getCacheManager();
-    manager.getProperties().setProperty("maxBytesLocalHeap", "2g"); // TODO: Extract into configuration
+    manager = Caching.getCachingProvider().getCacheManager(null, null, getCacheManagerProperties());
 
     constructCache(manager, ASSET_FILENAME_CACHE, String.class, String.class, config -> {
       config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 15)));

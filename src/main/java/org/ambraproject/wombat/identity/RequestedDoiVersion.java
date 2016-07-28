@@ -8,7 +8,11 @@ import java.util.OptionalInt;
 /**
  * A DOI requested by the end user, which may indicate a version, either by revision number or ingestion number. The DOI
  * is in unsanitized form (with regard to both URI prefixes and case-sensitivity) and may not exactly match keys used by
- * the service API until it has been resolved in an API request..
+ * the service API until it has been resolved in an API request.
+ * <p>
+ * Compare to {@link ArticlePointer}, which differs in two ways: it contains the canonical DOI name provided by the
+ * article API, and it always points to a back-end ingestion number. See {@link org.ambraproject.wombat.service.ArticleResolutionService#toIngestion},
+ * which resolves a {@code RequestedDoiVersion} into an {@link ArticlePointer}.
  */
 public class RequestedDoiVersion {
 

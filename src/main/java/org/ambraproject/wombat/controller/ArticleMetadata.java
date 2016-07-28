@@ -283,12 +283,12 @@ public class ArticleMetadata {
   /**
    * Appends additional info about article authors to the model.
    *
-   * @param model  model to be passed to the view
-   * @param workId identifies the article
+   * @param model model to be passed to the view
+   * @param id    identifies the article
    * @return the list of authors appended to the model
    * @throws IOException
    */
-  private void requestAuthors(Model model, RequestedDoiVersion workId) throws IOException {
+  private void requestAuthors(Model model, RequestedDoiVersion id) throws IOException {
     ApiAddress authorAddress = articlePointer.asApiAddress().addToken("authors").build();
     Map<?, ?> allAuthorsData = factory.articleApi.requestObject(authorAddress, Map.class);
     List<?> authors = (List<?>) allAuthorsData.get("authors");

@@ -139,14 +139,14 @@ public class ArticleController extends WombatController {
   public String renderArticle(HttpServletRequest request,
                               Model model,
                               @SiteParam Site site,
-                              RequestedDoiVersion workId)
+                              RequestedDoiVersion id)
       throws IOException {
-    articleMetadataFactory.get(site, workId)
+    articleMetadataFactory.get(site, id)
         .validateVisibility()
         .populate(request, model)
         .fillAmendments(model);
 
-    RenderContext renderContext = new RenderContext(site, workId);
+    RenderContext renderContext = new RenderContext(site, id);
 
     String articleHtml = getArticleHtml(renderContext);
     model.addAttribute("articleText", articleHtml);

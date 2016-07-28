@@ -44,22 +44,22 @@ public class ScholarlyWorkController extends WombatController {
   @RequestMapping(name = "work", value = "/work")
   public String redirectToWork(HttpServletRequest request,
                                @SiteParam Site site,
-                               RequestedDoiVersion workId)
+                               RequestedDoiVersion id)
       throws IOException {
-    return getRedirectFor(site, workId).getRedirect(request);
+    return getRedirectFor(site, id).getRedirect(request);
   }
 
-  Map<String, Object> getWorkMetadata(RequestedDoiVersion workId) throws IOException {
-    ApiAddress address = ApiAddress.builder("works").embedDoi(workId.getDoi()).build(); // TODO: Update to service
+  Map<String, Object> getWorkMetadata(RequestedDoiVersion id) throws IOException {
+    ApiAddress address = ApiAddress.builder("works").embedDoi(id.getDoi()).build(); // TODO: Update to service
     try {
       return articleApi.requestObject(address, Map.class);
     } catch (EntityNotFoundException e) {
-      throw new NotFoundException("No work exists with ID: " + workId, e);
+      throw new NotFoundException("No work exists with ID: " + id, e);
     }
   }
 
-  private String getTypeOf(RequestedDoiVersion workId) throws IOException {
-    return (String) getWorkMetadata(workId).get("type");
+  private String getTypeOf(RequestedDoiVersion id) throws IOException {
+    return (String) getWorkMetadata(id).get("type");
   }
 
   private static final ImmutableMap<String, String> REDIRECT_HANDLERS = ImmutableMap.<String, String>builder()
@@ -69,19 +69,19 @@ public class ScholarlyWorkController extends WombatController {
       // TODO: supp info
       .build();
 
-  private Link getRedirectFor(Site site, RequestedDoiVersion workId) throws IOException {
-    String handlerName = REDIRECT_HANDLERS.get(getTypeOf(workId));
+  private Link getRedirectFor(Site site, RequestedDoiVersion id) throws IOException {
+    String handlerName = REDIRECT_HANDLERS.get(getTypeOf(id));
     if (handlerName == null) {
-      throw new RuntimeException("Unrecognized type: " + workId);
+      throw new RuntimeException("Unrecognized type: " + id);
     }
     Link.Factory.PatternBuilder handlerLink = Link.toLocalSite(site)
         .toPattern(requestMappingContextDictionary, handlerName);
-    return pointLinkToWork(handlerLink, workId);
+    return pointLinkToWork(handlerLink, id);
   }
 
-  private static Link pointLinkToWork(Link.Factory.PatternBuilder link, RequestedDoiVersion workId) {
-    link.addQueryParameter("id", workId.getDoi());
-    workId.getRevisionNumber().ifPresent(revisionNumber ->
+  private static Link pointLinkToWork(Link.Factory.PatternBuilder link, RequestedDoiVersion id) {
+    link.addQueryParameter("id", id.getDoi());
+    id.getRevisionNumber().ifPresent(revisionNumber ->
         link.addQueryParameter("rev", revisionNumber));
     return link.build();
   }
@@ -89,17 +89,17 @@ public class ScholarlyWorkController extends WombatController {
   @RequestMapping(name = "assetFile", value = "/article/file", params = {"type"})
   public void serveAssetFile(HttpServletResponse responseToClient,
                              @SiteParam Site site,
-                             RequestedDoiVersion workId,
+                             RequestedDoiVersion id,
                              @RequestParam(value = "type", required = true) String fileType,
                              @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {
-    AssetPointer asset = articleResolutionService.toParentIngestion(workId);
+    AssetPointer asset = articleResolutionService.toParentIngestion(id);
     Map<String, ?> items = articleService.getItemTable(asset.getParentArticle());
     Map<String, ?> requestedItem = (Map<String, ?>) items.get(asset.getAssetDoi());
     Map<String, ?> files = (Map<String, ?>) requestedItem.get("files");
     Map<String, ?> fileRepoKey = (Map<String, ?>) files.get(fileType);
     if (fileRepoKey == null) {
-      String message = String.format("Unrecognized file type (\"%s\") for workId: %s", fileType, workId);
+      String message = String.format("Unrecognized file type (\"%s\") for id: %s", fileType, id);
       throw new NotFoundException(message);
     }
 

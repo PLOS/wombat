@@ -1,5 +1,5 @@
 /**
- *  the PLOS implementation of scrolling behaviour - scrolls to the jquery selector it is called on.
+ *  Scrolls to the jquery selector it is called on.
  * example implementation:
   scrollLocation = '#' + this.hash.substring(1);
  $(scrollLocation).myScrollTo({

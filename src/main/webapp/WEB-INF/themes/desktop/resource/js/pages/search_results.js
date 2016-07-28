@@ -301,7 +301,7 @@ var SearchResult;
         that.searchDateFilters['start'] = that.currentSearchParams.filterStartDate;
         that.processRequest();
       });
-      plos_toggle.init();
+      toggle_component.init();
 
       if ($('#searchControlBarForm').attr('data-advanced-search')) {
         $('#simpleSearchLink, .edit-query').show();

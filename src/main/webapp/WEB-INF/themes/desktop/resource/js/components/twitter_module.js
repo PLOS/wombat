@@ -19,6 +19,7 @@ var TwitterModule;
 
       var query = new AlmQuery();
 
+
       query.getArticleTweets(ArticleData.doi)
           .then(function (articleData) {
             // Check if we have the twitter source and also if it has events
@@ -31,7 +32,6 @@ var TwitterModule;
           })
           .then(function (twitterData) {
             var itemTemplate = _.template($('#twitterModuleItemTemplate').html());
-
             // Map twitter data to be in the template pattern
             twitterData = _.map(twitterData, function (item) {
               item = item.event;
@@ -54,8 +54,8 @@ var TwitterModule;
             twitterData = _.sortBy(twitterData, function (item) {
               return item.timestamp;
             });
-            twitterData = twitterData.reverse();
-
+            twitterData = _.last(twitterData.reverse(), 10);
+            console.log(twitterData);
             var templateCompiled = itemTemplate({items: twitterData});
 
             that.$listEl.html(templateCompiled);

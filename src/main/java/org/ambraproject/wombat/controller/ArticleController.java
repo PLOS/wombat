@@ -9,9 +9,9 @@ import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
-import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -139,14 +139,14 @@ public class ArticleController extends WombatController {
   public String renderArticle(HttpServletRequest request,
                               Model model,
                               @SiteParam Site site,
-                              RequestedDoiVersion id)
+                              RequestedDoiVersion articleId)
       throws IOException {
-    articleMetadataFactory.get(site, id)
+    articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .populate(request, model)
         .fillAmendments(model);
 
-    RenderContext renderContext = new RenderContext(site, id);
+    RenderContext renderContext = new RenderContext(site, articleId);
 
     String articleHtml = getArticleHtml(renderContext);
     model.addAttribute("articleText", articleHtml);

@@ -104,7 +104,7 @@ public class ArticleMetadata {
     model.addAttribute("containingLists", getContainingArticleLists());
     model.addAttribute("categoryTerms", getCategoryTerms());
     model.addAttribute("relatedArticles", getRelatedArticles());
-    requestAuthors(model, articleId);
+    requestAuthors(model);
 
     model.addAttribute("revisionMenu", getRevisionList());
 
@@ -284,11 +284,10 @@ public class ArticleMetadata {
    * Appends additional info about article authors to the model.
    *
    * @param model model to be passed to the view
-   * @param id    identifies the article
    * @return the list of authors appended to the model
    * @throws IOException
    */
-  private void requestAuthors(Model model, RequestedDoiVersion id) throws IOException {
+  private void requestAuthors(Model model) throws IOException {
     ApiAddress authorAddress = articlePointer.asApiAddress().addToken("authors").build();
     Map<?, ?> allAuthorsData = factory.articleApi.requestObject(authorAddress, Map.class);
     List<?> authors = (List<?>) allAuthorsData.get("authors");

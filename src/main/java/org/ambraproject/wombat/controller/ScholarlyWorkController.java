@@ -6,8 +6,11 @@ import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.url.Link;
-import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.identity.AssetPointer;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.ArticleResolutionService;
+import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ContentKey;
@@ -33,26 +36,30 @@ public class ScholarlyWorkController extends WombatController {
   private RequestMappingContextDictionary requestMappingContextDictionary;
   @Autowired
   private CorpusContentApi corpusContentApi;
+  @Autowired
+  private ArticleResolutionService articleResolutionService;
+  @Autowired
+  private ArticleService articleService;
 
   @RequestMapping(name = "work", value = "/work")
   public String redirectToWork(HttpServletRequest request,
                                @SiteParam Site site,
-                               ScholarlyWorkId workId)
+                               RequestedDoiVersion id)
       throws IOException {
-    return getRedirectFor(site, workId).getRedirect(request);
+    return getRedirectFor(site, id).getRedirect(request);
   }
 
-  Map<String, Object> getWorkMetadata(ScholarlyWorkId workId) throws IOException {
-    ApiAddress address = ApiAddress.builder("works").embedDoi(workId.getDoi()).build(); // TODO: Update to service
+  Map<String, Object> getWorkMetadata(RequestedDoiVersion id) throws IOException {
+    ApiAddress address = ApiAddress.builder("works").embedDoi(id.getDoi()).build(); // TODO: Update to service
     try {
       return articleApi.requestObject(address, Map.class);
     } catch (EntityNotFoundException e) {
-      throw new NotFoundException("No work exists with ID: " + workId, e);
+      throw new NotFoundException("No work exists with ID: " + id, e);
     }
   }
 
-  private String getTypeOf(ScholarlyWorkId workId) throws IOException {
-    return (String) getWorkMetadata(workId).get("type");
+  private String getTypeOf(RequestedDoiVersion id) throws IOException {
+    return (String) getWorkMetadata(id).get("type");
   }
 
   private static final ImmutableMap<String, String> REDIRECT_HANDLERS = ImmutableMap.<String, String>builder()
@@ -62,37 +69,41 @@ public class ScholarlyWorkController extends WombatController {
       // TODO: supp info
       .build();
 
-  private Link getRedirectFor(Site site, ScholarlyWorkId workId) throws IOException {
-    String handlerName = REDIRECT_HANDLERS.get(getTypeOf(workId));
+  private Link getRedirectFor(Site site, RequestedDoiVersion id) throws IOException {
+    String handlerName = REDIRECT_HANDLERS.get(getTypeOf(id));
     if (handlerName == null) {
-      throw new RuntimeException("Unrecognized type: " + workId);
+      throw new RuntimeException("Unrecognized type: " + id);
     }
     Link.Factory.PatternBuilder handlerLink = Link.toLocalSite(site)
         .toPattern(requestMappingContextDictionary, handlerName);
-    return pointLinkToWork(handlerLink, workId);
+    return pointLinkToWork(handlerLink, id);
   }
 
-  private static Link pointLinkToWork(Link.Factory.PatternBuilder link, ScholarlyWorkId workId) {
-    link.addQueryParameter("id", workId.getDoi());
-    workId.getRevisionNumber().ifPresent(revisionNumber ->
+  private static Link pointLinkToWork(Link.Factory.PatternBuilder link, RequestedDoiVersion id) {
+    link.addQueryParameter("id", id.getDoi());
+    id.getRevisionNumber().ifPresent(revisionNumber ->
         link.addQueryParameter("rev", revisionNumber));
     return link.build();
   }
 
-  @RequestMapping(name = "workFile", value = "/work", params = {"fileType"})
-  public void serveWorkFile(HttpServletResponse responseToClient,
-                            @SiteParam Site site,
-                            ScholarlyWorkId workId,
-                            @RequestParam(value = "fileType", required = true) String fileType,
-                            @RequestParam(value = "download", required = false) String isDownload)
+  @RequestMapping(name = "assetFile", value = "/article/file", params = {"type"})
+  public void serveAssetFile(HttpServletResponse responseToClient,
+                             @SiteParam Site site,
+                             RequestedDoiVersion id,
+                             @RequestParam(value = "type", required = true) String fileType,
+                             @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {
-    Map<String, ?> metadata = getWorkMetadata(workId);
-    Map<String, ?> files = (Map<String, ?>) metadata.get("files");
+    AssetPointer asset = articleResolutionService.toParentIngestion(id);
+    Map<String, ?> items = articleService.getItemTable(asset.getParentArticle());
+    Map<String, ?> requestedItem = (Map<String, ?>) items.get(asset.getAssetDoi());
+    Map<String, ?> files = (Map<String, ?>) requestedItem.get("files");
     Map<String, ?> fileRepoKey = (Map<String, ?>) files.get(fileType);
     if (fileRepoKey == null) {
-      String message = String.format("Unrecognized file type (\"%s\") for workId: %s", fileType, workId);
+      String message = String.format("Unrecognized file type (\"%s\") for id: %s", fileType, id);
       throw new NotFoundException(message);
     }
+
+    // TODO: Check visibility against site?
 
     ContentKey contentKey = createKey(fileRepoKey);
     try (CloseableHttpResponse responseFromApi = corpusContentApi.request(contentKey, ImmutableList.of())) {
@@ -101,8 +112,9 @@ public class ScholarlyWorkController extends WombatController {
   }
 
   private static ContentKey createKey(Map<String, ?> fileRepoKey) {
-    String key = (String) fileRepoKey.get("key");
-    UUID uuid = UUID.fromString((String) fileRepoKey.get("uuid"));
+    // TODO: Account for bucket name
+    String key = (String) fileRepoKey.get("crepoKey");
+    UUID uuid = UUID.fromString((String) fileRepoKey.get("crepoUuid"));
     return ContentKey.createForUuid(key, uuid);
   }
 

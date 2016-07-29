@@ -2,7 +2,8 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
-import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ContentKey;
 
 import java.io.BufferedReader;
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 public class TestArticleServiceImpl implements ArticleService {
   @Override
-  public Map<String, ?> requestArticleMetadata(ScholarlyWorkId articleId, boolean excludeCitations) throws IOException {
+  public Map<String, ?> requestArticleMetadata(RequestedDoiVersion articleId, boolean excludeCitations) throws IOException {
     BufferedReader reader = new BufferedReader(
             new FileReader("src/test/resources/articleMeta/" + articleId.getDoi().replace("10.1371/journal.","") + ".json"));
     return (Map<String, Object>) new Gson().fromJson(reader, HashMap.class);
@@ -46,7 +47,12 @@ public class TestArticleServiceImpl implements ArticleService {
   }
 
   @Override
-  public ContentKey getManuscriptKey(ScholarlyWorkId articleId) throws IOException {
+  public ContentKey getManuscriptKey(RequestedDoiVersion articleId) throws IOException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public Map<String, ?> getItemTable(ArticlePointer articleId) throws IOException {
     throw new UnsupportedOperationException();
   }
 }

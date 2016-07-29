@@ -9,9 +9,9 @@ import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
-import org.ambraproject.wombat.model.ScholarlyWorkId;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -139,14 +139,14 @@ public class ArticleController extends WombatController {
   public String renderArticle(HttpServletRequest request,
                               Model model,
                               @SiteParam Site site,
-                              ScholarlyWorkId workId)
+                              RequestedDoiVersion articleId)
       throws IOException {
-    articleMetadataFactory.get(site, workId)
+    articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .populate(request, model)
         .fillAmendments(model);
 
-    RenderContext renderContext = new RenderContext(site, workId);
+    RenderContext renderContext = new RenderContext(site, articleId);
 
     String articleHtml = getArticleHtml(renderContext);
     model.addAttribute("articleText", articleHtml);
@@ -166,7 +166,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articleComments", value = "/article/comments")
   public String renderArticleComments(HttpServletRequest request, Model model, @SiteParam Site site,
-                                      ScholarlyWorkId articleId) throws IOException {
+                                      RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .populate(request, model);
@@ -183,7 +183,7 @@ public class ArticleController extends WombatController {
 
   @RequestMapping(name = "articleCommentForm", value = "/article/comments/new")
   public String renderNewCommentForm(HttpServletRequest request, Model model, @SiteParam Site site,
-                                     ScholarlyWorkId articleId)
+                                     RequestedDoiVersion articleId)
       throws IOException {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility()
@@ -223,7 +223,7 @@ public class ArticleController extends WombatController {
     }
 
     Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
-    ScholarlyWorkId articleId = ScholarlyWorkId.of((String) parentArticleStub.get("doi")); // latest revision
+    RequestedDoiVersion articleId = RequestedDoiVersion.of((String) parentArticleStub.get("doi")); // latest revision
 
     articleMetadataFactory.get(site, articleId)
         .validateVisibility()
@@ -321,7 +321,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articleAuthors", value = "/article/authors")
   public String renderArticleAuthors(HttpServletRequest request, Model model, @SiteParam Site site,
-                                     ScholarlyWorkId articleId) throws IOException {
+                                     RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .populate(request, model);
@@ -339,7 +339,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articleMetrics", value = "/article/metrics")
   public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
-                                     ScholarlyWorkId articleId) throws IOException {
+                                     RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .populate(request, model);
@@ -348,7 +348,7 @@ public class ArticleController extends WombatController {
 
   @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
   public String renderCitationDownloadPage(HttpServletRequest request, Model model, @SiteParam Site site,
-                                           ScholarlyWorkId articleId)
+                                           RequestedDoiVersion articleId)
       throws IOException {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility()
@@ -357,21 +357,21 @@ public class ArticleController extends WombatController {
   }
 
   @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris", produces = "application/x-research-info-systems;charset=UTF-8")
-  public ResponseEntity<String> serveRisCitationDownload(@SiteParam Site site, ScholarlyWorkId articleId)
+  public ResponseEntity<String> serveRisCitationDownload(@SiteParam Site site, RequestedDoiVersion articleId)
       throws IOException {
     return serveCitationDownload(site, articleId, "ris",
         citationDownloadService::buildRisCitation);
   }
 
   @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex", produces = "application/x-bibtex;charset=UTF-8")
-  public ResponseEntity<String> serveBibtexCitationDownload(@SiteParam Site site, ScholarlyWorkId articleId)
+  public ResponseEntity<String> serveBibtexCitationDownload(@SiteParam Site site, RequestedDoiVersion articleId)
       throws IOException {
     return serveCitationDownload(site, articleId, "bib",
         citationDownloadService::buildBibtexCitation);
   }
 
   private ResponseEntity<String> serveCitationDownload(Site site,
-                                                       ScholarlyWorkId articleId,
+                                                       RequestedDoiVersion articleId,
                                                        String fileExtension,
                                                        Function<Map<String, ?>, String> serviceFunction)
       throws IOException {
@@ -401,7 +401,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articleRelatedContent", value = "/article/related")
   public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
-                                            ScholarlyWorkId articleId) throws IOException {
+                                            RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .populate(request, model);
@@ -535,7 +535,7 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articleFigsAndTables", value = "/article/assets/figsAndTables")
   public ResponseEntity<List> listArticleFiguresAndTables(@SiteParam Site site,
-                                                          ScholarlyWorkId articleId) throws IOException {
+                                                          RequestedDoiVersion articleId) throws IOException {
     Map<String, ?> articleMetadata = articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .getIngestionMetadata();
@@ -548,7 +548,7 @@ public class ArticleController extends WombatController {
 
   @RequestMapping(name = "email", value = "/article/email")
   public String renderEmailThisArticle(HttpServletRequest request, Model model, @SiteParam Site site,
-                                       ScholarlyWorkId articleId) throws IOException {
+                                       RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .populate(request, model);
@@ -566,7 +566,7 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "emailPost", value = "/article/email", method = RequestMethod.POST)
   public String emailArticle(HttpServletRequest request, HttpServletResponse response, Model model,
                              @SiteParam Site site,
-                             ScholarlyWorkId articleId,
+                             RequestedDoiVersion articleId,
                              @RequestParam("articleUri") String articleUri,
                              @RequestParam("emailToAddresses") String emailToAddresses,
                              @RequestParam("emailFrom") String emailFrom,

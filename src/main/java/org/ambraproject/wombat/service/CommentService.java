@@ -1,6 +1,6 @@
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,7 +26,7 @@ public interface CommentService {
    * @throws IOException
    * @throws EntityNotFoundException if the article does not exist
    */
-  List<Map<String, Object>> getArticleComments(ScholarlyWorkId articleId) throws IOException;
+  List<Map<String, Object>> getArticleComments(RequestedDoiVersion articleId) throws IOException;
 
   /**
    * Retrieve the most recent comments among all articles from a journal and wire in additional data needed for

@@ -9,7 +9,7 @@ import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.url.Link;
-import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -155,7 +155,7 @@ public class FigureImageController extends WombatController {
       assetDoi = (extensionIndex < 0) ? rawId : rawId.substring(0, extensionIndex);
     }
 
-    Map<String, Object> workMetadata = scholarlyWorkController.getWorkMetadata(ScholarlyWorkId.of(assetDoi));
+    Map<String, Object> workMetadata = scholarlyWorkController.getWorkMetadata(RequestedDoiVersion.of(assetDoi));
     Set<String> fileTypes = ((Map<String, ?>) workMetadata.get("files")).keySet();
 
     final String fileType;
@@ -176,7 +176,7 @@ public class FigureImageController extends WombatController {
       }
     }
 
-    return redirectToWorkFile(request, site, assetDoi, fileType, booleanParameter(download));
+    return redirectToAssetFile(request, site, assetDoi, fileType, booleanParameter(download));
   }
 
   /**
@@ -190,19 +190,19 @@ public class FigureImageController extends WombatController {
                                  @RequestParam(value = "download", required = false) String download)
       throws IOException {
     requireNonemptyParameter(figureId);
-    Map<String, Object> workMetadata = scholarlyWorkController.getWorkMetadata(ScholarlyWorkId.of(figureId));
+    Map<String, Object> workMetadata = scholarlyWorkController.getWorkMetadata(RequestedDoiVersion.of(figureId));
     Set<String> fileTypes = ((Map<String, ?>) workMetadata.get("files")).keySet();
     if (fileTypes.contains(figureSize)) {
-      return redirectToWorkFile(request, site, figureId, figureSize, booleanParameter(download));
+      return redirectToAssetFile(request, site, figureId, figureSize, booleanParameter(download));
     } else {
       throw new NotFoundException("Not a valid size: " + figureSize);
     }
   }
 
-  private String redirectToWorkFile(HttpServletRequest request, Site site,
+  private String redirectToAssetFile(HttpServletRequest request, Site site,
                                     String id, String fileType, boolean isDownload) {
     Link.Factory.PatternBuilder link = Link.toLocalSite(site)
-        .toPattern(requestMappingContextDictionary, "workFile")
+        .toPattern(requestMappingContextDictionary, "assetFile")
         .addQueryParameter("id", id)
         .addQueryParameter("fileType", fileType);
     if (isDownload) {

@@ -15,7 +15,8 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
@@ -40,10 +41,10 @@ public class ArticleServiceImpl implements ArticleService {
           .build();
 
   @Override
-  public Map<String, Object> requestArticleMetadata(ScholarlyWorkId articleId, boolean excludeCitations)
+  public Map<String, Object> requestArticleMetadata(RequestedDoiVersion articleId, boolean excludeCitations)
       throws IOException {
     Map<String, Object> map = (Map<String, Object>) articleApi.requestObject(
-        articleResolutionService.toIngestion(articleId).build(),
+        articleResolutionService.toIngestion(articleId).asApiAddress().build(),
         Map.class);
     return DoiSchemeStripper.strip(map);
   }
@@ -61,9 +62,16 @@ public class ArticleServiceImpl implements ArticleService {
   }
 
   @Override
-  public ContentKey getManuscriptKey(ScholarlyWorkId articleId) throws IOException {
-    Map<String, ?> itemResponse = articleApi.requestObject(articleResolutionService.toIngestion(articleId).addToken("items").build(), Map.class);
-    Map<String, ?> articleItem = (Map<String, ?>) ((Map<String, ?>) itemResponse.get("items")).values().stream()
+  public Map<String, ?> getItemTable(ArticlePointer articleId) throws IOException {
+    ApiAddress itemAddress = articleId.asApiAddress().addToken("items").build();
+    Map<String, ?> itemResponse = articleApi.requestObject(itemAddress, Map.class);
+    return (Map<String, ?>) itemResponse.get("items");
+  }
+
+  @Override
+  public ContentKey getManuscriptKey(RequestedDoiVersion articleId) throws IOException {
+    Map<String, ?> itemTable = getItemTable(articleResolutionService.toIngestion(articleId));
+    Map<String, ?> articleItem = (Map<String, ?>) itemTable.values().stream()
         .filter(itemObj -> ((Map<String, ?>) itemObj).get("itemType").equals("article"))
         .findAny().orElseThrow(RuntimeException::new);
     Map<String, ?> articleFiles = (Map<String, ?>) articleItem.get("files");

@@ -16,12 +16,12 @@ import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
-import org.ambraproject.wombat.model.ScholarlyWorkId;
+import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
-import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -53,13 +53,17 @@ public class ArticleMetadata {
 
   private final Factory factory; // for further service access
   private final Site site;
-  private final ScholarlyWorkId articleId;
+  private final RequestedDoiVersion articleId;
+  private final ArticlePointer articlePointer;
   private final Map<String, ?> ingestionMetadata;
 
-  private ArticleMetadata(Factory factory, Site site, ScholarlyWorkId articleId, Map<String, ?> ingestionMetadata) {
+  private ArticleMetadata(Factory factory, Site site,
+                          RequestedDoiVersion articleId, ArticlePointer articlePointer,
+                          Map<String, ?> ingestionMetadata) {
     this.factory = Objects.requireNonNull(factory);
     this.site = Objects.requireNonNull(site);
     this.articleId = Objects.requireNonNull(articleId);
+    this.articlePointer = Objects.requireNonNull(articlePointer);
     this.ingestionMetadata = Objects.requireNonNull(ingestionMetadata);
   }
 
@@ -79,15 +83,12 @@ public class ArticleMetadata {
     @Autowired
     private XmlService xmlService;
 
-    public ArticleMetadata get(Site site, ScholarlyWorkId id) throws IOException {
-      Map<String, ?> ingestionMetadata;
-      try {
-        ingestionMetadata = articleService.requestArticleMetadata(id, false);
-      } catch (EntityNotFoundException enfe) {
-        throw new ArticleNotFoundException(id);
-      }
+    public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
+      ArticlePointer articlePointer = articleResolutionService.toIngestion(id);
+      Map<String, Object> ingestionMetadata = (Map<String, Object>) articleApi.requestObject(
+          articlePointer.asApiAddress().build(), Map.class);
 
-      return new ArticleMetadata(this, site, id, ingestionMetadata);
+      return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata);
     }
   }
 
@@ -98,11 +99,12 @@ public class ArticleMetadata {
   public ArticleMetadata populate(HttpServletRequest request, Model model) throws IOException {
     addCrossPublishedJournals(request, model);
     model.addAttribute("article", ingestionMetadata);
+    model.addAttribute("articleItems", factory.articleService.getItemTable(articlePointer));
     model.addAttribute("commentCount", getCommentCount());
     model.addAttribute("containingLists", getContainingArticleLists());
     model.addAttribute("categoryTerms", getCategoryTerms());
     model.addAttribute("relatedArticles", getRelatedArticles());
-    requestAuthors(model, articleId);
+    requestAuthors(model);
 
     model.addAttribute("revisionMenu", getRevisionList());
 
@@ -281,15 +283,13 @@ public class ArticleMetadata {
   /**
    * Appends additional info about article authors to the model.
    *
-   * @param model  model to be passed to the view
-   * @param workId identifies the article
+   * @param model model to be passed to the view
    * @return the list of authors appended to the model
    * @throws IOException
    */
-  private void requestAuthors(Model model, ScholarlyWorkId workId) throws IOException {
-    Map<?, ?> allAuthorsData = factory.articleApi.requestObject(
-        factory.articleResolutionService.toIngestion(workId).addToken("authors").build(),
-        Map.class);
+  private void requestAuthors(Model model) throws IOException {
+    ApiAddress authorAddress = articlePointer.asApiAddress().addToken("authors").build();
+    Map<?, ?> allAuthorsData = factory.articleApi.requestObject(authorAddress, Map.class);
     List<?> authors = (List<?>) allAuthorsData.get("authors");
     model.addAttribute("authors", authors);
 
@@ -396,7 +396,7 @@ public class ArticleMetadata {
     // Display the body only on non-correction amendments. Would be better if this were configurable per theme.
     if (amendmentType != AmendmentType.CORRECTION) {
       String doi = (String) amendment.get("doi");
-      ScholarlyWorkId amendmentId = ScholarlyWorkId.of(doi); // TODO: Has revision?
+      RequestedDoiVersion amendmentId = RequestedDoiVersion.of(doi); // TODO: Has revision?
       RenderContext renderContext = new RenderContext(site, amendmentId);
       String body;
       try {

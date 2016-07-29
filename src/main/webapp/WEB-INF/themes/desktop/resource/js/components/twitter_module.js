@@ -56,7 +56,7 @@ var TwitterModule;
               return item.timestamp;
             });
             twitterData = _.last(twitterData.reverse(), that.maxTweets);
-            console.log(twitterData);
+
             var templateCompiled = itemTemplate({items: twitterData});
 
             that.$listEl.html(templateCompiled);

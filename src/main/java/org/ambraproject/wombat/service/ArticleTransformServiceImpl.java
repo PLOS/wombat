@@ -6,8 +6,10 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterators;
 import com.google.common.io.Closer;
-import net.sf.json.JSONArray;
+
 import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.model.Reference;
+import org.ambraproject.wombat.model.References;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
@@ -17,8 +19,10 @@ import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-import net.sf.json.xml.XMLSerializer;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -40,7 +44,6 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.List;
-import java.util.Map;
 
 public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final Logger log = LoggerFactory.getLogger(ArticleTransformServiceImpl.class);
@@ -50,8 +53,6 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
   @Autowired
   private Charset charset;
-  @Autowired
-  private ArticleService articleService;
 
   /*
   JATS (Journal Archiving Tag Suite) is a continuation of the work to create and support the "NLM DTDs".
@@ -118,7 +119,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    * @return the transformer
    * @throws IOException
    */
-  private Transformer buildTransformer(RenderContext renderContext, XMLReader xmlReader) throws IOException {
+  private Transformer buildTransformer(RenderContext renderContext, XMLReader xmlReader,
+      List<Reference> references) throws IOException {
     Theme theme = renderContext.getSite().getTheme();
     log.debug("Building transformer for: {}", renderContext.getSite());
     TransformerFactory factory = newTransformerFactory();
@@ -135,21 +137,30 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     // Add cited articles metadata for inclusion of DOI links in reference list
     // TODO: abstract out into a strategy pattern when and if render options become more complex
     boolean showsCitedArticles = (boolean) theme.getConfigMap("article").get("showsCitedArticles");
-    if (showsCitedArticles && renderContext.getArticleId() != null) {
-      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getArticleId(), false);
-      Object citedArticles = articleMetadata.get("citedArticles");
-      JSONArray jsonArr = JSONArray.fromObject(citedArticles);
-      String metadataXml = new XMLSerializer().write(jsonArr);
+    if (showsCitedArticles && renderContext.getArticleId() != null && references != null) {
+      References refs = new References();
+      refs.setReferences(references);
+      StringWriter sw = new StringWriter();
+      try {
+        JAXBContext jaxbContext = JAXBContext.newInstance(References.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshaller.marshal(refs, sw);
+      } catch (JAXBException jaxbE) {
+        throw new RuntimeException(jaxbE);
+      }
+
+      String metadataXml = sw.toString();
       SAXSource saxSourceMeta = new SAXSource(xmlReader, new InputSource(IOUtils.toInputStream(metadataXml)));
-      transformer.setParameter("citedArticles", saxSourceMeta);
+      transformer.setParameter("refs", saxSourceMeta);
     }
     return transformer;
   }
 
 
   @Override
-  public void transform(RenderContext renderContext, InputStream xml, OutputStream html)
-      throws IOException, TransformerException {
+  public void transform(RenderContext renderContext, InputStream xml, OutputStream html,
+                        List<Reference> references) throws IOException, TransformerException {
     Preconditions.checkNotNull(renderContext);
     Preconditions.checkNotNull(xml);
     Preconditions.checkNotNull(html);
@@ -188,7 +199,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     });
     // build the transformer and add any context-dependent parameters required for the transform
     // NOTE: the XMLReader is passed here for use in creating any required secondary SAX sources
-    Transformer transformer = buildTransformer(renderContext, xmlr);
+    Transformer transformer = buildTransformer(renderContext, xmlr, references);
     SAXSource saxSource = new SAXSource(xmlr, new InputSource(xml));
     transformer.transform(saxSource, new StreamResult(html));
 
@@ -214,7 +225,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       streamToTransform = new SequenceInputStream(Iterators.asEnumeration(concatenation.iterator()));
     }
 
-    transform(renderContext, streamToTransform, html);
+    transform(renderContext, streamToTransform, html, null);
   }
 
   @Override

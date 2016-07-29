@@ -19,12 +19,14 @@ import com.google.common.collect.Ordering;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.ServiceCacheSet;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
+import org.ambraproject.wombat.model.Reference;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -35,6 +37,7 @@ import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
+import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -47,6 +50,7 @@ import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.TextUtil;
 import org.ambraproject.wombat.util.UriUtil;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
@@ -85,7 +89,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
 import javax.xml.transform.TransformerException;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringWriter;
@@ -157,7 +164,12 @@ public class ArticleController extends WombatController {
   @Autowired
   private CommentService commentService;
   @Autowired
+  private RequestMappingContextDictionary requestMappingContextDictionary;
+  @Autowired
+  private ParseXmlService parseXmlService;
+  @Autowired
   private ServiceCacheSet serviceCacheSet;
+
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -174,9 +186,10 @@ public class ArticleController extends WombatController {
     RenderContext renderContext = new RenderContext(site);
     renderContext.setArticleId(articleId);
 
-    String articleHtml = getArticleHtml(renderContext);
+    XmlContent xmlContent = getXmlContent(renderContext);
+    model.addAttribute("references", xmlContent.references);
     model.addAttribute("article", articleMetaData);
-    model.addAttribute("articleText", articleHtml);
+    model.addAttribute("articleText", xmlContent.html);
     model.addAttribute("amendments", fillAmendments(site, articleMetaData));
 
     return site + "/ftl/article/article";
@@ -223,7 +236,6 @@ public class ArticleController extends WombatController {
     return articleApi.requestObject(ApiAddress.builder("articles").addToken(doi).addParameter("commentCount").build(),
         Map.class);
   }
-
 
 
   private Map<String, Collection<Object>> getContainingArticleLists(String doi, Site site) throws IOException {
@@ -911,7 +923,7 @@ public class ArticleController extends WombatController {
   private Map<?, ?> requestArticleMetadata(String articleId) throws IOException {
     Map<?, ?> articleMetadata;
     try {
-      articleMetadata = articleService.requestArticleMetadata(articleId, false);
+      articleMetadata = articleService.requestArticleMetadata(articleId, true);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }
@@ -991,31 +1003,63 @@ public class ArticleController extends WombatController {
     });
   }
 
+  private class XmlContent {
+    private final String html;
+    private final ImmutableList<Reference> references;
+
+    private XmlContent(String html, List<Reference> references) {
+      this.html = Objects.requireNonNull(html);
+      this.references = ImmutableList.copyOf(references);
+    }
+  }
+
   /**
-   * Retrieves article XML from the SOA server, transforms it into HTML, and returns it. Result will be stored in
-   * memcache.
-   *
-   * @return String of the article HTML
+   * Gets article xml from cache if it exists; otherwise, gets it from rhino and caches it. Then it parses
+   * the references and does html transform
+
+   * @param renderContext
+   * @return an XmlContent containing the list of references and article html
    * @throws IOException
    */
-  private String getArticleHtml(final RenderContext renderContext) throws IOException {
-
+  private XmlContent getXmlContent(RenderContext renderContext) throws IOException {
     RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.ARTICLE_HTML,
         renderContext.getSite().getKey(), renderContext.getArticleId());
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
-      StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
-      try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
-        articleTransformService.transform(renderContext, stream, outputStream);
-      } catch (TransformerException e) {
-        throw new RuntimeException(e);
-      }
-      return articleHtml.toString();
+      ByteArrayOutputStream xmlBaos = new ByteArrayOutputStream();
+      IOUtils.copy(stream, xmlBaos);
+      byte[] xml = xmlBaos.toByteArray();
+      List<Reference> references = getArticleReferences(new ByteArrayInputStream(xml));
+      String articleHtml = getArticleHtml(renderContext, new ByteArrayInputStream(xml), references);
+      return new XmlContent(articleHtml, references);
     });
   }
 
-    private Map<?, ?> addCommonModelAttributes(HttpServletRequest request, Model model, @SiteParam Site site, @RequestParam("id") String articleId) throws IOException {
+  /**
+   * Transforms it into HTML, and returns it.
+   *
+   * @return String of the article HTML
+   * @throws IOException
+   */
+  private String getArticleHtml(final RenderContext renderContext, InputStream xml,
+                                List<Reference> references) throws IOException {
+
+    StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
+    try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
+      articleTransformService.transform(renderContext, xml, outputStream, references);
+    } catch (TransformerException e) {
+      throw new RuntimeException(e);
+    }
+    return articleHtml.toString();
+  }
+
+  private List<Reference> getArticleReferences(InputStream xml) throws IOException {
+    List<Reference> references = parseXmlService.parseArticleReferences(xml);
+    return references;
+  }
+
+  private Map<?, ?> addCommonModelAttributes(HttpServletRequest request, Model model, @SiteParam Site site, @RequestParam("id") String articleId) throws IOException {
         Map<?, ?> articleMetadata = requestArticleMetadata(articleId);
         addCrossPublishedJournals(request, model, site, articleMetadata);
         model.addAttribute("article", articleMetadata);

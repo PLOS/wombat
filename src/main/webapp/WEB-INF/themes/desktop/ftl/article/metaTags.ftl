@@ -69,7 +69,9 @@
     <meta property="twitter:description" content="${articleDescription}" />
   </#if>
   <#if hasStrkImgUri >
-    <meta property="twitter:image" content="${doiResolverLink(article.strkImgURI)}" />
+    <@siteLink handlerName="figureImage" queryParameters={"id" : article.strkImgURI, "size": "inline"} ; href>
+    <meta property="twitter:image" content="${href}" />
+    </@siteLink>
   </#if>
 </#if>
 
@@ -84,7 +86,9 @@
   <meta property="og:description" content="${articleDescription}" />
 </#if>
 <#if hasStrkImgUri >
-  <meta property="og:image" content="${doiResolverLink(article.strkImgURI)}" />
+  <@siteLink handlerName="figureImage" queryParameters={"id" : article.strkImgURI, "size": "inline"} ; href>
+  <meta property="og:image" content="${href}" />
+  </@siteLink>
 </#if>
 
 <#--All of this data must be HTML char stripped to compensate for some XML in the database. If not, an ending tag can

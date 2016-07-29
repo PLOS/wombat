@@ -42,15 +42,20 @@
 
 <script id="searchResultsAlm" type="text/template">
 
+
+
+
   <p class="search-results-alm" data-doi="">
-    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#viewedHeader">Views: <%= viewCount
+  <@siteLink handlerName="articleMetrics" ; metricsUrl>
+    <a href="${metricsUrl}?id=<%= itemDoi %>#viewedHeader">Views: <%= viewCount
       %></a>
     •
-    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#citedHeader">Citations: <%=
+    <a href="${metricsUrl}?id=<%= itemDoi %>#citedHeader">Citations: <%=
       citationCount %></a>
     •
-    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#savedHeader">Saves: <%= saveCount
+    <a href="${metricsUrl}?id=<%= itemDoi %>#savedHeader">Saves: <%= saveCount
       %></a>
+  </@siteLink>
     •
     Shares: <%= shareCount %>
   </p>
@@ -122,6 +127,14 @@
     <section class="filter-view">
       <h3 class="filter-label">Filters:</h3>
       <div class="filter-block">
+        <% if(searchDateFilters.start != null && searchDateFilters.end != null) { %>
+        <div class="filter-item" id="filter-date">
+          <%= moment(searchDateFilters.start).format('ll') %> TO <%= moment(searchDateFilters.end).format('ll') %>
+          <a href="#" data-filter-param-name="filterDates" data-filter-value="date">
+            &nbsp;
+          </a>
+        </div>
+        <% } %>
         <% _.each(activeFilterItems, function(item) { %>
         <div class="filter-item">
           <%= item.displayName %>

@@ -1,13 +1,11 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Functions;
-import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
@@ -40,7 +38,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -297,15 +294,9 @@ public class ArticleMetadata {
     // in Rhino, but it's so simple I elected to keep it here for now.
     List<String> equalContributors = new ArrayList<>();
 
-    ListMultimap<String, String> authorAffiliationsMap = LinkedListMultimap.create();
     for (Object o : authors) {
-      Map<String, ?> author = (Map<String, ?>) o;
+      Map<String, Object> author = (Map<String, Object>) o;
       String fullName = (String) author.get("fullName");
-
-      List<String> affiliations = (List<String>) author.get("affiliations");
-      for (String affiliation : affiliations) {
-        authorAffiliationsMap.put(affiliation, fullName);
-      }
 
       Object obj = author.get("equalContrib");
       if (obj != null && (boolean) obj) {
@@ -320,13 +311,6 @@ public class ArticleMetadata {
       }
     }
 
-    //Create comma-separated list of authors per affiliation
-    LinkedHashMap<String, String> authorListAffiliationMap = new LinkedHashMap<>();
-    for (Map.Entry<String, Collection<String>> affiliation : authorAffiliationsMap.asMap().entrySet()) {
-      authorListAffiliationMap.put(affiliation.getKey(), Joiner.on(", ").join(affiliation.getValue()));
-    }
-
-    model.addAttribute("authorListAffiliationMap", authorListAffiliationMap);
     model.addAttribute("authorContributions", allAuthorsData.get("authorContributions"));
     model.addAttribute("competingInterests", allAuthorsData.get("competingInterests"));
     model.addAttribute("correspondingAuthors", allAuthorsData.get("correspondingAuthorList"));

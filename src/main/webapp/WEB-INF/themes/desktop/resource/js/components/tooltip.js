@@ -3,7 +3,7 @@
 
 ;(function ($) {
   var s;
-plos_tooltip = {
+  tooltip_component = {
 
   settings: {
     tooltip_trigger: '[data-js-tooltip=tooltip_trigger]',

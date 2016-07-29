@@ -38,6 +38,7 @@ class CacheManagerWrapper implements ServiceCacheSet {
 
   CacheManagerWrapper() {
     manager = Caching.getCachingProvider().getCacheManager();
+    manager.getProperties().setProperty("maxBytesLocalHeap", "2g"); // TODO: Extract into configuration
 
     constructCache(manager, ASSET_FILENAME_CACHE, String.class, String.class, config -> {
       config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 15)));

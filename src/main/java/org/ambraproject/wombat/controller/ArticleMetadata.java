@@ -25,6 +25,8 @@ import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.util.TextUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
@@ -33,6 +35,7 @@ import javax.xml.bind.DatatypeConverter;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -45,23 +48,28 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ArticleMetadata {
+  private static final Logger log = LoggerFactory.getLogger(ArticleMetadata.class);
 
   private final Factory factory; // for further service access
   private final Site site;
   private final RequestedDoiVersion articleId;
   private final ArticlePointer articlePointer;
   private final Map<String, ?> ingestionMetadata;
+  private final Map<String, List<Map<String, ?>>> relationships;
 
   private ArticleMetadata(Factory factory, Site site,
                           RequestedDoiVersion articleId, ArticlePointer articlePointer,
-                          Map<String, ?> ingestionMetadata) {
+                          Map<String, ?> ingestionMetadata,
+                          Map<String, List<Map<String, ?>>> relationships) {
     this.factory = Objects.requireNonNull(factory);
     this.site = Objects.requireNonNull(site);
     this.articleId = Objects.requireNonNull(articleId);
     this.articlePointer = Objects.requireNonNull(articlePointer);
     this.ingestionMetadata = Objects.requireNonNull(ingestionMetadata);
+    this.relationships = Objects.requireNonNull(relationships);
   }
 
   public static class Factory {
@@ -84,8 +92,11 @@ public class ArticleMetadata {
       ArticlePointer articlePointer = articleResolutionService.toIngestion(id);
       Map<String, Object> ingestionMetadata = (Map<String, Object>) articleApi.requestObject(
           articlePointer.asApiAddress().build(), Map.class);
+      Map<String, List<Map<String, ?>>> relationships = articleApi.requestObject(
+          ApiAddress.builder("articles").embedDoi(articlePointer.getDoi()).addToken("relationships").build(),
+          Map.class);
 
-      return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata);
+      return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata, relationships);
     }
   }
 
@@ -270,11 +281,28 @@ public class ArticleMetadata {
 
   }
 
+  private Iterable<Map<String, ?>> readRelatedArticles() {
+    return () -> Stream.of("inbound", "outbound")
+        .flatMap(relationshipDirection -> relationships.get(relationshipDirection).stream())
+        .iterator();
+  }
+
+  private static final Comparator<Map<String, ?>> BY_DESCENDING_PUB_DATE = Comparator
+      .comparing((Map<String, ?> articleMetadata) ->
+          LocalDate.parse((String) articleMetadata.get("publicationDate")))
+      .reversed();
+
   private List<?> getRelatedArticles() {
-    Map<String, ?> relatedArticles = (Map<String, ?>) ingestionMetadata.get("relatedArticles");
-    List<?> inbound = (List<?>) relatedArticles.get("inbound");
-    List<?> outbound = (List<?>) relatedArticles.get("outbound");
-    return ImmutableList.of(); // TODO: Implement
+    // Eliminate duplicate DOIs (in case there is are inbound and outbound relationships with the same article)
+    Map<String, Map<String, ?>> relationshipsByDoi = new HashMap<>();
+    for (Map<String, ?> relatedArticle : readRelatedArticles()) {
+      // It doesn't matter if this overwrites: we expect the title and date to be the same
+      relationshipsByDoi.put((String) relatedArticle.get("doi"), relatedArticle);
+    }
+
+    return relationshipsByDoi.values().stream()
+        .sorted(BY_DESCENDING_PUB_DATE)
+        .collect(Collectors.toList());
   }
 
   /**
@@ -323,7 +351,6 @@ public class ArticleMetadata {
    * data about those articles from the service tier.
    */
   public ArticleMetadata fillAmendments(Model model) throws IOException {
-    Map<String, ?> relatedArticleMap = (Map<String, ?>) ingestionMetadata.get("relatedArticles");
     List<Map<String, ?>> relatedArticles = ImmutableList.of(); // TODO
     List<Map<String, Object>> amendments = relatedArticles.parallelStream()
         .map((Map<String, ?> relatedArticle) -> createAmendment(site, relatedArticle))

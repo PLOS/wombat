@@ -31,7 +31,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.bind.DatatypeConverter;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,6 +44,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
@@ -351,11 +351,11 @@ public class ArticleMetadata {
    * data about those articles from the service tier.
    */
   public ArticleMetadata fillAmendments(Model model) throws IOException {
-    List<Map<String, ?>> relatedArticles = ImmutableList.of(); // TODO
-    List<Map<String, Object>> amendments = relatedArticles.parallelStream()
+    List<Map<String, ?>> inboundRelationships = relationships.get("inbound");
+    List<Map<String, Object>> amendments = inboundRelationships.parallelStream()
         .map((Map<String, ?> relatedArticle) -> createAmendment(site, relatedArticle))
-        .filter(Objects::nonNull)
-        .sorted(BY_DESCENDING_DATE)
+        .filter(Optional::isPresent).map(Optional::get)
+        .sorted(BY_DESCENDING_PUB_DATE)
         .collect(Collectors.toList());
     List<AmendmentGroup> amendmentGroups = buildAmendmentGroups(amendments);
     model.addAttribute("amendments", amendmentGroups);
@@ -367,12 +367,12 @@ public class ArticleMetadata {
    * Types of related articles that get special display handling.
    */
   private static enum AmendmentType {
-    CORRECTION("correction-forward"),
-    EOC("expressed-concern"),
-    RETRACTION("retraction");
+    CORRECTION("corrected-article"),
+    EOC("object-of-concern"),
+    RETRACTION("retracted-article");
 
     /**
-     * A value of the "type" field of an object in an article's "relatedArticles" list.
+     * A value of the "type" field of an object in the list of inbound relationships.
      */
     private final String relationshipType;
 
@@ -389,26 +389,30 @@ public class ArticleMetadata {
         EnumSet.allOf(AmendmentType.class), input -> input.relationshipType);
   }
 
-  private static final Comparator<Map<String, ?>> BY_DESCENDING_DATE = Comparator.comparing(
-      (Map<String, ?> objectMetadata) -> {
-        String date = (String) objectMetadata.get("date");
-        if (date == null) throw new IllegalArgumentException("Date not found");
-        return DatatypeConverter.parseDateTime(date);
-      })
-      .reversed();
-
-  private Map<String, Object> createAmendment(Site site, Map<String, ?> relatedArticle) {
-    Map<String, Object> amendment = new HashMap<>(relatedArticle); // make a copy to clobber
-
+  private Optional<Map<String, Object>> createAmendment(Site site, Map<String, ?> relatedArticle) {
     String relationshipType = (String) relatedArticle.get("type");
     AmendmentType amendmentType = AmendmentType.BY_RELATIONSHIP_TYPE.get(relationshipType);
-    if (amendmentType == null) return null; // not an amendment
+    if (amendmentType == null) return Optional.empty(); // not an amendment
+
+    String doi = (String) relatedArticle.get("doi");
+
+    ArticlePointer amendmentId;
+    Map<String, Object> amendment;
+    Map<String, ?> authors;
+    try {
+      amendmentId = factory.articleResolutionService.toIngestion(RequestedDoiVersion.of(doi)); // always uses latest revision
+      amendment = (Map<String, Object>) factory.articleApi.requestObject(amendmentId.asApiAddress().build(), Map.class);
+      authors = factory.articleApi.requestObject(amendmentId.asApiAddress().addToken("authors").build(), Map.class);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+
+    amendment.putAll(authors);
 
     // Display the body only on non-correction amendments. Would be better if this were configurable per theme.
     if (amendmentType != AmendmentType.CORRECTION) {
-      String doi = (String) amendment.get("doi");
-      RequestedDoiVersion amendmentId = RequestedDoiVersion.of(doi); // TODO: Has revision?
-      RenderContext renderContext = new RenderContext(site, amendmentId);
+      RenderContext renderContext = new RenderContext(site,
+          RequestedDoiVersion.ofIngestion(amendmentId.getDoi(), amendmentId.getIngestionNumber()));
       String body;
       try {
         body = getAmendmentBody(renderContext);
@@ -418,8 +422,8 @@ public class ArticleMetadata {
       amendment.put("body", body);
     }
 
-    amendment.put("type", amendmentType.getLabel()); // for templating
-    return amendment;
+    amendment.put("type", amendmentType.getLabel());
+    return Optional.of(amendment);
   }
 
   /**
@@ -462,6 +466,10 @@ public class ArticleMetadata {
 
     public String getType() {
       return type;
+    }
+
+    public ImmutableList<Map<String, Object>> getAmendments() {
+      return amendments;
     }
   }
 

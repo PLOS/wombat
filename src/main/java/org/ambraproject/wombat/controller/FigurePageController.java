@@ -42,7 +42,7 @@ public class FigurePageController extends WombatController {
       throws IOException {
     Map<?, ?> articleMetadata;
     try {
-      articleMetadata = articleService.requestArticleMetadata(articleId, true);
+      articleMetadata = articleService.requestArticleMetadata(articleId);
     } catch (EntityNotFoundException enfe) {
       throw new ArticleNotFoundException(articleId);
     }

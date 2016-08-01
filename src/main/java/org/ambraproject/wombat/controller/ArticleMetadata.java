@@ -353,8 +353,8 @@ public class ArticleMetadata {
   public ArticleMetadata fillAmendments(Model model) throws IOException {
     List<Map<String, ?>> inboundRelationships = relationships.get("inbound");
     List<Map<String, Object>> amendments = inboundRelationships.parallelStream()
+        .filter((Map<String, ?> relatedArticle) -> getAmendmentType(relatedArticle).isPresent())
         .map((Map<String, ?> relatedArticle) -> createAmendment(site, relatedArticle))
-        .filter(Optional::isPresent).map(Optional::get)
         .sorted(BY_DESCENDING_PUB_DATE)
         .collect(Collectors.toList());
     List<AmendmentGroup> amendmentGroups = buildAmendmentGroups(amendments);
@@ -389,10 +389,23 @@ public class ArticleMetadata {
         EnumSet.allOf(AmendmentType.class), input -> input.relationshipType);
   }
 
-  private Optional<Map<String, Object>> createAmendment(Site site, Map<String, ?> relatedArticle) {
+  /**
+   * @return the amendment type of the relationship, or empty if the relationship is not an amendment
+   */
+  private Optional<AmendmentType> getAmendmentType(Map<String, ?> relatedArticle) {
     String relationshipType = (String) relatedArticle.get("type");
     AmendmentType amendmentType = AmendmentType.BY_RELATIONSHIP_TYPE.get(relationshipType);
-    if (amendmentType == null) return Optional.empty(); // not an amendment
+    return Optional.ofNullable(amendmentType);
+  }
+
+  /**
+   * @param site           the site being rendered
+   * @param relatedArticle a relationship to an amendment to this article
+   * @return a model of the amendment
+   * @throws IllegalArgumentException if the relationship is not of an amendment type
+   */
+  private Map<String, Object> createAmendment(Site site, Map<String, ?> relatedArticle) {
+    AmendmentType amendmentType = getAmendmentType(relatedArticle).orElseThrow(IllegalArgumentException::new);
 
     String doi = (String) relatedArticle.get("doi");
 
@@ -423,7 +436,7 @@ public class ArticleMetadata {
     }
 
     amendment.put("type", amendmentType.getLabel());
-    return Optional.of(amendment);
+    return amendment;
   }
 
   /**

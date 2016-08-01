@@ -292,7 +292,7 @@ public class ArticleMetadata {
           LocalDate.parse((String) articleMetadata.get("publicationDate")))
       .reversed();
 
-  private List<?> getRelatedArticles() {
+  private List<Map<String, ?>> getRelatedArticles() {
     // Eliminate duplicate DOIs (in case there is are inbound and outbound relationships with the same article)
     Map<String, Map<String, ?>> relationshipsByDoi = new HashMap<>();
     for (Map<String, ?> relatedArticle : readRelatedArticles()) {

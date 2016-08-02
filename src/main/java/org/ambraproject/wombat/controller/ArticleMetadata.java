@@ -297,8 +297,16 @@ public class ArticleMetadata {
     Map<String, Map<String, ?>> relationshipsByDoi = new HashMap<>();
     for (String direction : RELATIONSHIP_DIRECTIONS) {
       for (Map<String, ?> relatedArticle : relationships.get(direction)) {
-        // It doesn't matter if this overwrites: we expect the title and date to be the same
-        relationshipsByDoi.put((String) relatedArticle.get("doi"), relatedArticle);
+        String relatedArticleDoi = (String) relatedArticle.get("doi");
+        Map<String, ?> previous = relationshipsByDoi.put(relatedArticleDoi, relatedArticle);
+
+        if (previous != null) {
+          // Collisions are okay if a relationship exists in each direction. Verify that the data are consistent.
+          Preconditions.checkState(Objects.equals(relatedArticle.get("revisionNumber"), previous.get("revisionNumber"))
+              && Objects.equals(relatedArticle.get("title"), previous.get("title"))
+              && Objects.equals(relatedArticle.get("publicationDate"), previous.get("publicationDate")));
+          // It is fine for relatedArticle.get("type") and previous.get("type") to be unequal.
+        }
       }
     }
 

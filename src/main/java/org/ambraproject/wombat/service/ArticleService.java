@@ -13,13 +13,11 @@
 
 package org.ambraproject.wombat.service;
 
-import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ContentKey;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -41,11 +39,4 @@ public interface ArticleService {
 
   ContentKey getManuscriptKey(RequestedDoiVersion articleId) throws IOException;
 
-  /**
-   * Get the list of article figures and tables from the article meta data
-   *
-   * @param articleMetadata article metadata
-   * @return list of figures and tables
-   */
-  List<ImmutableMap<String, String>> getArticleFiguresAndTables(Map<?, ?> articleMetadata);
 }

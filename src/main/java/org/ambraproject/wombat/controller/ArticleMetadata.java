@@ -36,6 +36,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -54,15 +55,17 @@ public class ArticleMetadata {
   private final RequestedDoiVersion articleId;
   private final ArticlePointer articlePointer;
   private final Map<String, ?> ingestionMetadata;
+  private final Map<String, ?> itemTable;
 
   private ArticleMetadata(Factory factory, Site site,
                           RequestedDoiVersion articleId, ArticlePointer articlePointer,
-                          Map<String, ?> ingestionMetadata) {
+                          Map<String, ?> ingestionMetadata, Map<String, ?> itemTable) {
     this.factory = Objects.requireNonNull(factory);
     this.site = Objects.requireNonNull(site);
     this.articleId = Objects.requireNonNull(articleId);
     this.articlePointer = Objects.requireNonNull(articlePointer);
-    this.ingestionMetadata = Objects.requireNonNull(ingestionMetadata);
+    this.ingestionMetadata = Collections.unmodifiableMap(ingestionMetadata);
+    this.itemTable = Collections.unmodifiableMap(itemTable);
   }
 
   public static class Factory {
@@ -85,8 +88,9 @@ public class ArticleMetadata {
       ArticlePointer articlePointer = articleResolutionService.toIngestion(id);
       Map<String, Object> ingestionMetadata = (Map<String, Object>) articleApi.requestObject(
           articlePointer.asApiAddress().build(), Map.class);
+      Map<String, ?> itemTable = articleService.getItemTable(articlePointer);
 
-      return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata);
+      return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata, itemTable);
     }
   }
 
@@ -98,9 +102,9 @@ public class ArticleMetadata {
     addCrossPublishedJournals(request, model);
     model.addAttribute("article", ingestionMetadata);
 
-    Map<String, ?> itemTable = factory.articleService.getItemTable(articlePointer);
+
     model.addAttribute("articleItems", itemTable);
-    model.addAttribute("figures", buildFigureView(itemTable));
+    model.addAttribute("figures", getFigureView());
 
     model.addAttribute("commentCount", getCommentCount());
     model.addAttribute("containingLists", getContainingArticleLists());
@@ -237,7 +241,7 @@ public class ArticleMetadata {
    *   (2) Only items of the type "figure" or "table" are included. It excludes other items such as the manuscript,
    *       the PDF file, supplementary material, inline graphics, and striking images.
    */
-  private List<Map<String, ?>> buildFigureView(Map<String, ?> itemTable) {
+  public List<Map<String, ?>> getFigureView() {
     List<Map<String, ?>> assetsLinkedFromManuscript = (List<Map<String, ?>>) ingestionMetadata.get("assetsLinkedFromManuscript");
     return assetsLinkedFromManuscript.stream()
         .map((Map<String, ?> asset) -> {

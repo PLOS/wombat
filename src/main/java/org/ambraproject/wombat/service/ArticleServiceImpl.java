@@ -13,8 +13,6 @@
 
 package org.ambraproject.wombat.service;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -23,10 +21,8 @@ import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class ArticleServiceImpl implements ArticleService {
 
@@ -35,11 +31,6 @@ public class ArticleServiceImpl implements ArticleService {
   @Autowired
   private ArticleResolutionService articleResolutionService;
 
-  private static final ImmutableSet<String> FIGURE_TABLE_CONTEXT_ELEMENT =
-      new ImmutableSet.Builder<String>()
-          .add("fig").add("table-wrap").add("alternatives")
-          .build();
-
   @Override
   public Map<String, Object> requestArticleMetadata(RequestedDoiVersion articleId, boolean excludeCitations)
       throws IOException {
@@ -47,18 +38,6 @@ public class ArticleServiceImpl implements ArticleService {
         articleResolutionService.toIngestion(articleId).asApiAddress().build(),
         Map.class);
     return DoiSchemeStripper.strip(map);
-  }
-
-  @Override
-  public List<ImmutableMap<String, String>> getArticleFiguresAndTables(Map<?, ?> articleMetadata) {
-    List<Map<String, String>> assets = (List<Map<String, String>>) articleMetadata.get("figures");
-    List<ImmutableMap<String, String>> figsAndTables = assets.stream()
-        .filter(asset -> FIGURE_TABLE_CONTEXT_ELEMENT.contains(asset.get("contextElement")))
-        .map(asset -> ImmutableMap.<String, String>builder().put("title", asset.get("title"))
-            .put("doi", asset.get("doi"))
-            .build())
-        .collect(Collectors.toList());
-    return figsAndTables;
   }
 
   @Override

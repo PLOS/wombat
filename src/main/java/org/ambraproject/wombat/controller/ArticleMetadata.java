@@ -4,6 +4,7 @@ import com.google.common.base.Functions;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Lists;
@@ -96,7 +97,11 @@ public class ArticleMetadata {
   public ArticleMetadata populate(HttpServletRequest request, Model model) throws IOException {
     addCrossPublishedJournals(request, model);
     model.addAttribute("article", ingestionMetadata);
-    model.addAttribute("articleItems", factory.articleService.getItemTable(articlePointer));
+
+    Map<String, ?> itemTable = factory.articleService.getItemTable(articlePointer);
+    model.addAttribute("articleItems", itemTable);
+    model.addAttribute("figures", buildFigureView(itemTable));
+
     model.addAttribute("commentCount", getCommentCount());
     model.addAttribute("containingLists", getContainingArticleLists());
     model.addAttribute("categoryTerms", getCategoryTerms());
@@ -218,6 +223,34 @@ public class ArticleMetadata {
 
     model.addAttribute("crossPub", crossPublishedJournals);
     model.addAttribute("originalPub", originalJournal);
+  }
+
+  private static final ImmutableSet<String> FIGURE_TYPES = ImmutableSet.of("figure", "table");
+
+  /*
+   * Build a view of the article's figures and tables, with the following properties that are significant for display:
+   *
+   *   (1) The figure DOIs are listed in the same order in which they appear in the original manuscript and should be
+   *       displayed to the user (in a table of contents, figure carousel, etc.). Compare to the item table, which has
+   *       no order.
+   *
+   *   (2) Only items of the type "figure" or "table" are included. It excludes other items such as the manuscript,
+   *       the PDF file, supplementary material, inline graphics, and striking images.
+   */
+  private List<Map<String, ?>> buildFigureView(Map<String, ?> itemTable) {
+    List<Map<String, ?>> assetsLinkedFromManuscript = (List<Map<String, ?>>) ingestionMetadata.get("assetsLinkedFromManuscript");
+    return assetsLinkedFromManuscript.stream()
+        .map((Map<String, ?> asset) -> {
+          Map<String, ?> item = (Map<String, ?>) itemTable.get((String) asset.get("doi"));
+          String type = (String) item.get("itemType");
+          if (!FIGURE_TYPES.contains(type)) return null;
+
+          Map<String, Object> view = new HashMap<>(asset);
+          view.put("type", type);
+          return view;
+        })
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
   }
 
   private Map<String, Integer> getCommentCount() throws IOException {

@@ -20,6 +20,7 @@ import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.IssueService;
 import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -48,15 +49,14 @@ public class BrowseController extends WombatController {
 
   @Autowired
   private ArticleApi articleApi;
-
   @Autowired
   private ArticleService articleService;
-
   @Autowired
   private ArticleTransformService articleTransformService;
-
   @Autowired
   private XmlService xmlService;
+  @Autowired
+  private IssueService issueService;
 
 
   @RequestMapping(name = "browseVolumes", value = "/volume")
@@ -93,6 +93,10 @@ public class BrowseController extends WombatController {
       throw new NotFoundException(e);
     }
     model.addAttribute("issue", issueMeta);
+
+    String imageArticleDoi = (String) ((Map<String, ?>) issueMeta.get("imageArticle")).get("doi");
+    model.addAttribute("issueImageArticle", imageArticleDoi);
+    model.addAttribute("issueImage", issueService.getIssueImage(site, imageArticleDoi));
 
     String issueDesc = (String) issueMeta.getOrDefault("description", "");
     model.addAttribute("issueTitle", articleTransformService.transformImageDescription(new RenderContext(site),

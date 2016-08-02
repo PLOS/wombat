@@ -9,9 +9,9 @@ import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.feed.FeedMetadataField;
 import org.ambraproject.wombat.feed.FeedType;
-import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.CommentService;
+import org.ambraproject.wombat.service.IssueService;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -57,7 +57,7 @@ public class HomeController extends WombatController {
   @Autowired
   private CommentService commentService;
   @Autowired
-  private ArticleMetadata.Factory articleMetadataFactory;
+  private IssueService issueService;
 
   /**
    * Enumerates the allowed values for the section parameter for this page.
@@ -269,15 +269,7 @@ public class HomeController extends WombatController {
     model.addAttribute("currentIssue", currentIssue);
     String imageUri = currentIssue.get("imageUri").toString();
 
-    List<Map<String, ?>> imageArticleFigures = articleMetadataFactory.get(site, RequestedDoiVersion.of(imageUri)).getFigureView();
-    if (imageArticleFigures.isEmpty()) {
-      log.error("Issue image article has no figures: {}", imageUri);
-    } else {
-      if (imageArticleFigures.size() > 1) {
-        log.warn("Issue image article has more than one figure: {}", imageUri);
-      }
-      model.addAttribute("issueImage", imageArticleFigures.get(0));
-    }
+    model.addAttribute("issueImage", issueService.getIssueImage(site, imageUri));
   }
 
   /**

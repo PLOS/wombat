@@ -4,6 +4,7 @@ import com.google.common.base.Functions;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Lists;
@@ -48,7 +49,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ArticleMetadata {
   private static final Logger log = LoggerFactory.getLogger(ArticleMetadata.class);
@@ -281,23 +281,21 @@ public class ArticleMetadata {
 
   }
 
-  private Iterable<Map<String, ?>> readRelatedArticles() {
-    return () -> Stream.of("inbound", "outbound")
-        .flatMap(relationshipDirection -> relationships.get(relationshipDirection).stream())
-        .iterator();
-  }
-
   private static final Comparator<Map<String, ?>> BY_DESCENDING_PUB_DATE = Comparator
       .comparing((Map<String, ?> articleMetadata) ->
           LocalDate.parse((String) articleMetadata.get("publicationDate")))
       .reversed();
 
+  private static final ImmutableSet<String> RELATIONSHIP_DIRECTIONS = ImmutableSet.of("inbound", "outbound");
+
   private List<Map<String, ?>> getRelatedArticles() {
     // Eliminate duplicate DOIs (in case there is are inbound and outbound relationships with the same article)
     Map<String, Map<String, ?>> relationshipsByDoi = new HashMap<>();
-    for (Map<String, ?> relatedArticle : readRelatedArticles()) {
-      // It doesn't matter if this overwrites: we expect the title and date to be the same
-      relationshipsByDoi.put((String) relatedArticle.get("doi"), relatedArticle);
+    for (String direction : RELATIONSHIP_DIRECTIONS) {
+      for (Map<String, ?> relatedArticle : relationships.get(direction)) {
+        // It doesn't matter if this overwrites: we expect the title and date to be the same
+        relationshipsByDoi.put((String) relatedArticle.get("doi"), relatedArticle);
+      }
     }
 
     return relationshipsByDoi.values().stream()

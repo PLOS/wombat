@@ -281,6 +281,10 @@ public class ArticleMetadata {
 
   }
 
+  private static boolean isPublished(Map<String, ?> relatedArticle) {
+    return relatedArticle.get("revisionNumber") != null;
+  }
+
   private static final Comparator<Map<String, ?>> BY_DESCENDING_PUB_DATE = Comparator
       .comparing((Map<String, ?> articleMetadata) ->
           LocalDate.parse((String) articleMetadata.get("publicationDate")))
@@ -299,6 +303,7 @@ public class ArticleMetadata {
     }
 
     return relationshipsByDoi.values().stream()
+        .filter(ArticleMetadata::isPublished)
         .sorted(BY_DESCENDING_PUB_DATE)
         .collect(Collectors.toList());
   }
@@ -351,7 +356,7 @@ public class ArticleMetadata {
   public ArticleMetadata fillAmendments(Model model) throws IOException {
     List<Map<String, ?>> inboundRelationships = relationships.get("inbound");
     List<Map<String, Object>> amendments = inboundRelationships.parallelStream()
-        .filter((Map<String, ?> relatedArticle) -> getAmendmentType(relatedArticle).isPresent())
+        .filter((Map<String, ?> relatedArticle) -> isPublished(relatedArticle) && getAmendmentType(relatedArticle).isPresent())
         .map((Map<String, ?> relatedArticle) -> createAmendment(site, relatedArticle))
         .sorted(BY_DESCENDING_PUB_DATE)
         .collect(Collectors.toList());

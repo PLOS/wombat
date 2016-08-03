@@ -21,7 +21,7 @@ public class IssueServiceImpl implements IssueService {
     List<Map<String, ?>> imageArticleFigures = articleMetadataFactory.get(site, RequestedDoiVersion.of(imageArticleDoi))
         .getFigureView();
     if (imageArticleFigures.isEmpty()) {
-      throw new RuntimeException("Issue image article has more than no figures: " + imageArticleDoi);
+      throw new RuntimeException("Issue image article has no figures: " + imageArticleDoi);
     } else {
       if (imageArticleFigures.size() > 1) {
         log.warn("Issue image article has more than one figure: {}", imageArticleDoi);

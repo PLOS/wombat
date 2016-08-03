@@ -389,11 +389,6 @@ var SearchResult;
       });
     },
 
-    updateAlertQueryInput: function (alertQuery) {
-      var $input = $('#alert_query_savedsearch');
-      $input.val(alertQuery);
-    },
-
     processRequest: function () {
       var that = this;
       this.pagination.setCurrentPage(this.getCurrentPage());
@@ -444,10 +439,6 @@ var SearchResult;
 
               that.$searchHeaderEl.show();
               that.$filtersEl.show();
-
-              if(request.alertQuery) {
-                that.updateAlertQueryInput(request.alertQuery)
-              }
 
               that.createFilters();
               that.updateCounterText();

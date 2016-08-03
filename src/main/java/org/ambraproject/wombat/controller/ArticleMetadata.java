@@ -95,6 +95,7 @@ public class ArticleMetadata {
 
   public ArticleMetadata populate(HttpServletRequest request, Model model) throws IOException {
     addCrossPublishedJournals(request, model);
+    model.addAttribute("articlePtr", articlePointer.asParameterMap());
     model.addAttribute("article", ingestionMetadata);
     model.addAttribute("articleItems", factory.articleService.getItemTable(articlePointer));
     model.addAttribute("commentCount", getCommentCount());

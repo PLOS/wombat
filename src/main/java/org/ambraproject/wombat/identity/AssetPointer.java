@@ -1,5 +1,8 @@
 package org.ambraproject.wombat.identity;
 
+import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
+
 import java.util.Objects;
 
 public final class AssetPointer {
@@ -18,6 +21,13 @@ public final class AssetPointer {
 
   public ArticlePointer getParentArticle() {
     return parentArticle;
+  }
+
+  public ImmutableMap<String, String> asParameterMap() {
+    return ImmutableMap.<String, String>builder()
+        .put(DoiVersionArgumentResolver.ID_PARAMETER, assetDoi)
+        .put(parentArticle.getVersionParameter())
+        .build();
   }
 
   @Override

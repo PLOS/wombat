@@ -1,7 +1,11 @@
 package org.ambraproject.wombat.identity;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
 import org.ambraproject.wombat.service.ApiAddress;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.OptionalInt;
 
@@ -49,6 +53,19 @@ public final class ArticlePointer {
 
   public OptionalInt getRevisionNumber() {
     return revisionNumber;
+  }
+
+  Map.Entry<String, String> getVersionParameter() {
+    return revisionNumber.isPresent()
+        ? Maps.immutableEntry(DoiVersionArgumentResolver.REVISION_PARAMETER, Integer.toString(revisionNumber.getAsInt()))
+        : Maps.immutableEntry(DoiVersionArgumentResolver.INGESTION_PARAMETER, Integer.toString(ingestionNumber));
+  }
+
+  public ImmutableMap<String, String> asParameterMap() {
+    return ImmutableMap.<String, String>builder()
+        .put(DoiVersionArgumentResolver.ID_PARAMETER, doi)
+        .put(getVersionParameter())
+        .build();
   }
 
   public ApiAddress.Builder asApiAddress() {

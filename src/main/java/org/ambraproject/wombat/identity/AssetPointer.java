@@ -26,7 +26,7 @@ public final class AssetPointer {
   public ImmutableMap<String, String> asParameterMap() {
     return ImmutableMap.<String, String>builder()
         .put(DoiVersionArgumentResolver.ID_PARAMETER, assetDoi)
-        .put(parentArticle.getVersionParameter())
+        .putAll(parentArticle.getVersionParameter())
         .build();
   }
 

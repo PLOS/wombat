@@ -55,16 +55,16 @@ public final class ArticlePointer {
     return revisionNumber;
   }
 
-  Map.Entry<String, String> getVersionParameter() {
+  public ImmutableMap<String, String> getVersionParameter() {
     return revisionNumber.isPresent()
-        ? Maps.immutableEntry(DoiVersionArgumentResolver.REVISION_PARAMETER, Integer.toString(revisionNumber.getAsInt()))
-        : Maps.immutableEntry(DoiVersionArgumentResolver.INGESTION_PARAMETER, Integer.toString(ingestionNumber));
+        ? ImmutableMap.of(DoiVersionArgumentResolver.REVISION_PARAMETER, Integer.toString(revisionNumber.getAsInt()))
+        : ImmutableMap.of(DoiVersionArgumentResolver.INGESTION_PARAMETER, Integer.toString(ingestionNumber));
   }
 
   public ImmutableMap<String, String> asParameterMap() {
     return ImmutableMap.<String, String>builder()
         .put(DoiVersionArgumentResolver.ID_PARAMETER, doi)
-        .put(getVersionParameter())
+        .putAll(getVersionParameter())
         .build();
   }
 

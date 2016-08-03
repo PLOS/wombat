@@ -122,6 +122,7 @@ public class HomeController extends WombatController {
     private final List<String> articleTypesToExclude;
     private final String curatedListName;
     private final String curatedListType;
+    private final Integer cacheTtl; // nullable
 
     private SectionSpec(Map<String, Object> configuration) {
       type = SectionType.forCaseInsensitiveName((String) configuration.get("name"));
@@ -142,6 +143,9 @@ public class HomeController extends WombatController {
 
       this.curatedListType = (String) configuration.get("curatedListType");
       Preconditions.checkArgument((curatedListType != null) == (type == SectionType.CURATED));
+
+      Number cacheTtl = (Number) configuration.get("cacheTtl");
+      this.cacheTtl = (cacheTtl == null) ? null : cacheTtl.intValue();
     }
 
     public String getName() {
@@ -152,7 +156,7 @@ public class HomeController extends WombatController {
       if (since != null) {
         if (type == SectionType.RECENT) {
           List<Map<String, Object>> recentArticles = recentArticleService.getRecentArticles(site,
-              resultCount, since, shuffle, articleTypes, articleTypesToExclude);
+              resultCount, since, shuffle, articleTypes, articleTypesToExclude, Optional.fromNullable(cacheTtl));
           return recentArticles.stream().map(SolrArticleAdapter::adaptFromRhino).collect(Collectors.toList());
         } else {
           throw new IllegalArgumentException("Shuffling is supported only on RECENT section"); // No plans to support

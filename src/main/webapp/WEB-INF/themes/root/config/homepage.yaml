@@ -50,12 +50,6 @@ sections:
     # The type of the article list identified by "curatedListName". This is used to request the article list from the
     # service tier, but unlike "curatedListName" it does not show up in page URLs.
 
-    cacheTtl: null
-    # Ignored unless "name" is "recent" and "since" is non-null.
-    #
-    # Cache recent articles for this many seconds. If "shuffle" is true, articles are still shuffled every time the
-    # home page is loaded, but the set from which articles are randomly picked is cached.
-
 defaultSelection: "recent"
 # The value must be either null or equal to the "name" value of one of the entries under "section".
 # If null, the homepage takes no selection, and loads articles for every supported section into the model.
@@ -64,7 +58,3 @@ defaultSelection: "recent"
 
 showsIssue: false
 # If true, populate the model with metadata for the site's journal's current issue.
-
-cacheTtl: null
-# If this is non-null and the homepage uses any FetchHtmlDirectives, cache the written HTML for this many seconds.
-# Has no effect if the homepage does not use a FetchHtmlDirective.

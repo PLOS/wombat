@@ -293,7 +293,7 @@ public class ArticleMetadata {
   private static final ImmutableSet<String> RELATIONSHIP_DIRECTIONS = ImmutableSet.of("inbound", "outbound");
 
   private List<Map<String, ?>> getRelatedArticles() {
-    // Eliminate duplicate DOIs (in case there is are inbound and outbound relationships with the same article)
+    // Eliminate duplicate DOIs (in case there are inbound and outbound relationships with the same article)
     Map<String, Map<String, ?>> relationshipsByDoi = new HashMap<>();
     for (String direction : RELATIONSHIP_DIRECTIONS) {
       for (Map<String, ?> relatedArticle : relationships.get(direction)) {

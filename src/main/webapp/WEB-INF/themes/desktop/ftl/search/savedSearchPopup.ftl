@@ -2,7 +2,7 @@
 
   Save search as <br/>
   <input type="text" class="big-box" id="text_name_savedsearch"/><br/>
-  <input type="hidden" id="alert_query_savedsearch" value='${alertQuery?html}'/>
+  <input type="hidden" id="alert_query_savedsearch" value=''/>
 
   <div class="check-box"><strong>Create an email alert:</strong>
     <input type="checkbox" checked id="cb_weekly_savedsearch"/>Weekly

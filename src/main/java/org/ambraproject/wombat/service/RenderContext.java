@@ -1,20 +1,16 @@
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.identity.RequestedDoiVersion;
-import org.ambraproject.wombat.service.remote.RemoteCacheKey;
+import org.ambraproject.wombat.identity.ArticlePointer;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class RenderContext {
 
   private final Site site;
-  private final RequestedDoiVersion articleId;
+  private final ArticlePointer articleId;
 
-  public RenderContext(Site site, RequestedDoiVersion articleId) {
+  public RenderContext(Site site, ArticlePointer articleId) {
     this.site = Objects.requireNonNull(site);
     this.articleId = Objects.requireNonNull(articleId);
   }
@@ -23,26 +19,8 @@ public class RenderContext {
     return site;
   }
 
-  public RequestedDoiVersion getArticleId() {
+  public ArticlePointer getArticleId() {
     return articleId;
-  }
-
-  public RemoteCacheKey getCacheKey(RemoteCacheSpace space) {
-    List<String> keyTokens = new ArrayList<>(4);
-    keyTokens.add(site.getKey());
-    keyTokens.add(articleId.getDoi());
-
-    articleId.getIngestionNumber().ifPresent(ingestionNumber -> {
-      keyTokens.add("ingestion");
-      keyTokens.add(Integer.toString(ingestionNumber));
-    });
-
-    articleId.getRevisionNumber().ifPresent(revisionNumber -> {
-      keyTokens.add("revision");
-      keyTokens.add(Integer.toString(revisionNumber));
-    });
-
-    return RemoteCacheKey.create(space, keyTokens);
   }
 
   @Override

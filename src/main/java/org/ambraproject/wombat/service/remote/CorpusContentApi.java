@@ -1,8 +1,8 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.config.RemoteCacheSpace;
+import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.service.ArticleService;
-import org.ambraproject.wombat.service.RenderContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -27,11 +27,12 @@ public class CorpusContentApi extends AbstractContentApi {
    * @return the result of the operation
    * @throws IOException
    */
-  public String readManuscript(RenderContext articleId, RemoteCacheSpace cacheSpace,
+  public String readManuscript(ArticlePointer articleId, RemoteCacheSpace cacheSpace,
                                CacheDeserializer<InputStream, String> htmlCallback)
       throws IOException {
-    RemoteCacheKey cacheKey = articleId.getCacheKey(cacheSpace);
-    ContentKey manuscriptKey = articleService.getManuscriptKey(articleId.getArticleId());
+    RemoteCacheKey cacheKey = RemoteCacheKey.create(cacheSpace,
+        articleId.getDoi(), Integer.toString(articleId.getIngestionNumber()));
+    ContentKey manuscriptKey = articleService.getManuscriptKey(articleId);
     return requestCachedStream(cacheKey, manuscriptKey, htmlCallback);
   }
 

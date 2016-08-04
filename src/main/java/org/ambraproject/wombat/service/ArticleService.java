@@ -28,14 +28,14 @@ public interface ArticleService {
   /**
    * Requests metadata about an article.
    *
-   * @param articleId        DOI string
    * @return deserialized JSON data structure as returned by the SOA layer
    * @throws IOException
    */
   Map<String, ?> requestArticleMetadata(RequestedDoiVersion articleId) throws IOException;
 
+  Map<String, ?> requestArticleMetadata(ArticlePointer articleId) throws IOException;
+
   Map<String, ?> getItemTable(ArticlePointer articleId) throws IOException;
 
-  ContentKey getManuscriptKey(RequestedDoiVersion articleId) throws IOException;
-
+  ContentKey getManuscriptKey(ArticlePointer articleId) throws IOException;
 }

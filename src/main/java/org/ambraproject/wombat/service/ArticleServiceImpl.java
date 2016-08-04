@@ -32,12 +32,14 @@ public class ArticleServiceImpl implements ArticleService {
   private ArticleResolutionService articleResolutionService;
 
   @Override
-  public Map<String, Object> requestArticleMetadata(RequestedDoiVersion articleId)
+  public Map<String, ?> requestArticleMetadata(RequestedDoiVersion articleId)
       throws IOException {
-    Map<String, Object> map = (Map<String, Object>) articleApi.requestObject(
-        articleResolutionService.toIngestion(articleId).asApiAddress().build(),
-        Map.class);
-    return DoiSchemeStripper.strip(map);
+    return requestArticleMetadata(articleResolutionService.toIngestion(articleId));
+  }
+
+  @Override
+  public Map<String, ?> requestArticleMetadata(ArticlePointer articleId) throws IOException {
+    return (Map<String, ?>) articleApi.requestObject(articleId.asApiAddress().build(), Map.class);
   }
 
   @Override
@@ -48,8 +50,8 @@ public class ArticleServiceImpl implements ArticleService {
   }
 
   @Override
-  public ContentKey getManuscriptKey(RequestedDoiVersion articleId) throws IOException {
-    Map<String, ?> itemTable = getItemTable(articleResolutionService.toIngestion(articleId));
+  public ContentKey getManuscriptKey(ArticlePointer articleId) throws IOException {
+    Map<String, ?> itemTable = getItemTable(articleId);
     Map<String, ?> articleItem = (Map<String, ?>) itemTable.values().stream()
         .filter(itemObj -> ((Map<String, ?>) itemObj).get("itemType").equals("article"))
         .findAny().orElseThrow(RuntimeException::new);

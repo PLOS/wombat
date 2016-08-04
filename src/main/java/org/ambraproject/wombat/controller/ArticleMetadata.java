@@ -21,7 +21,6 @@ import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
-import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
@@ -102,6 +101,10 @@ public class ArticleMetadata {
 
       return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata, itemTable, relationships);
     }
+  }
+
+  public ArticlePointer getArticlePointer() {
+    return articlePointer;
   }
 
   public Map<String, ?> getIngestionMetadata() {
@@ -475,11 +478,9 @@ public class ArticleMetadata {
 
     // Display the body only on non-correction amendments. Would be better if this were configurable per theme.
     if (amendmentType != AmendmentType.CORRECTION) {
-      RenderContext renderContext = new RenderContext(site,
-          RequestedDoiVersion.ofIngestion(amendmentId.getDoi(), amendmentId.getIngestionNumber()));
       String body;
       try {
-        body = getAmendmentBody(renderContext);
+        body = getAmendmentBody(amendmentId);
       } catch (IOException e) {
         throw new RuntimeException("Could not get body for amendment: " + doi, e);
       }
@@ -542,8 +543,8 @@ public class ArticleMetadata {
    *
    * @return the body of the amendment article, transformed into HTML for display in a notice on the amended article
    */
-  private String getAmendmentBody(final RenderContext renderContext) throws IOException {
-    return factory.corpusContentApi.readManuscript(renderContext, RemoteCacheSpace.AMENDMENT_BODY,
+  private String getAmendmentBody(ArticlePointer amendmentId) throws IOException {
+    return factory.corpusContentApi.readManuscript(amendmentId, RemoteCacheSpace.AMENDMENT_BODY,
         (InputStream stream) -> {
           // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
           String bodyXml = factory.xmlService.extractElement(stream, "body");

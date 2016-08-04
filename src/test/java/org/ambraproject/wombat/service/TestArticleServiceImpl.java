@@ -23,7 +23,12 @@ public class TestArticleServiceImpl implements ArticleService {
   }
 
   @Override
-  public ContentKey getManuscriptKey(RequestedDoiVersion articleId) throws IOException {
+  public Map<String, ?> requestArticleMetadata(ArticlePointer articleId) throws IOException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ContentKey getManuscriptKey(ArticlePointer articleId) throws IOException {
     throw new UnsupportedOperationException();
   }
 

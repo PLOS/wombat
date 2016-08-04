@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
@@ -138,14 +139,13 @@ public class ArticleController extends WombatController {
                               @SiteParam Site site,
                               RequestedDoiVersion articleId)
       throws IOException {
-    articleMetadataFactory.get(site, articleId)
+    ArticlePointer articlePointer = articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .populate(request, model)
-        .fillAmendments(model);
+        .fillAmendments(model)
+        .getArticlePointer();
 
-    RenderContext renderContext = new RenderContext(site, articleId);
-
-    String articleHtml = getArticleHtml(renderContext);
+    String articleHtml = getArticleHtml(new RenderContext(site, articlePointer));
     model.addAttribute("articleText", articleHtml);
 
 
@@ -653,7 +653,7 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private String getArticleHtml(final RenderContext renderContext) throws IOException {
-    return corpusContentApi.readManuscript(renderContext, RemoteCacheSpace.ARTICLE_HTML,
+    return corpusContentApi.readManuscript(renderContext.getArticleId(), RemoteCacheSpace.ARTICLE_HTML,
         (InputStream stream) -> {
           StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
           try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {

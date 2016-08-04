@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public class TestArticleServiceImpl implements ArticleService {
   @Override
-  public Map<String, ?> requestArticleMetadata(RequestedDoiVersion articleId, boolean excludeCitations) throws IOException {
+  public Map<String, ?> requestArticleMetadata(RequestedDoiVersion articleId) throws IOException {
     BufferedReader reader = new BufferedReader(
             new FileReader("src/test/resources/articleMeta/" + articleId.getDoi().replace("10.1371/journal.","") + ".json"));
     return (Map<String, Object>) new Gson().fromJson(reader, HashMap.class);

@@ -1,5 +1,5 @@
 
-<#if article.relatedArticles?size gt 0>
+<#if relatedArticles?size gt 0>
 
 <div class="related-articles-container">
   <h3><#include "relatedArticleTitle.ftl"/></h3>

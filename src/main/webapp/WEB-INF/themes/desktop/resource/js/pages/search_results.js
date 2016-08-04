@@ -604,7 +604,7 @@ var SearchResult;
       var activeFilters = this.searchActiveFilters;
       var filterHeaderTemplate = _.template($('#searchHeaderFilterTemplate').html());
       if (activeFilters.length || this.searchDateFilters.start != null && this.searchDateFilters.end != null) {
-        this.$filterHeaderEl.append(filterHeaderTemplate({
+        this.$filterHeaderEl.html(filterHeaderTemplate({
           activeFilterItems: activeFilters,
           searchDateFilters: this.searchDateFilters
         }));

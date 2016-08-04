@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
@@ -16,7 +15,6 @@ import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -43,6 +41,7 @@ import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final Logger log = LoggerFactory.getLogger(ArticleTransformServiceImpl.class);
@@ -56,17 +55,17 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   private ArticleService articleService;
 
   /*
-  JATS (Journal Archiving Tag Suite) is a continuation of the work to create and support the "NLM DTDs".
-  JATS is fully backward compatible with NLM version 3.0 and is being maintained by NISO as the NLM working
-  group was disbanded. You can read more at: http://jats.nlm.nih.gov/about.html
-  We decided to whitelist the valid dtds instead of letting everything through and log the exceptions later
-  in the workflow, because the list is short and it doesn't seem to grow often and it is better to prevent
-  bugs than looking for them.
-  */
-  private static final ImmutableSet<String> VALID_DTDS =
-      ImmutableSet.of("http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd",
-          "http://jats.nlm.nih.gov/publishing/1.1d2/JATS-journalpublishing1.dtd",
-          "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd");
+   * JATS (Journal Archiving Tag Suite) is a continuation of the work to create and support the "NLM DTDs".
+   * JATS is fully backward compatible with NLM version 3.0 and is being maintained by NISO as the NLM working
+   * group was disbanded. You can read more at: http://jats.nlm.nih.gov/about.html
+   * We decided to whitelist the valid dtds instead of letting everything through and log the exceptions later
+   * in the workflow, because the list is short and it doesn't seem to grow often and it is better to prevent
+   * bugs than looking for them.
+   */
+  private static final ImmutableSet<String> VALID_DTDS = ImmutableSet.of(
+      "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd",
+      "http://jats.nlm.nih.gov/publishing/1.1d2/JATS-journalpublishing1.dtd",
+      "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd");
 
   private static TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here
@@ -86,7 +85,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     private final Theme theme;
 
     private ThemeUriResolver(Theme theme) {
-      this.theme = Preconditions.checkNotNull(theme);
+      this.theme = Objects.requireNonNull(theme);
     }
 
     @Override
@@ -176,9 +175,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
   private void transform(Site site, InputStream xml, OutputStream html, TransformerInitialization initialization)
       throws IOException, TransformerException {
-    Preconditions.checkNotNull(site);
-    Preconditions.checkNotNull(xml);
-    Preconditions.checkNotNull(html);
+    Objects.requireNonNull(site);
+    Objects.requireNonNull(xml);
+    Objects.requireNonNull(html);
 
     log.debug("Starting XML transformation");
     SAXParserFactory spf = SAXParserFactory.newInstance();
@@ -190,26 +189,24 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       throw new TransformerException(e);
     }
 
-    // This is a little unorthodox.  Without setting this custom EntityResolver, the transform will
-    // make ~50 HTTP calls to nlm.nih.gov to retrieve the DTD and various entity files referenced
-    // in the article XML. By setting a custom EntityResolver that just returns an empty string
-    // for each of these, we prevent that.  This seems to have no ill effects on the transformation
-    // itself.  This is a roundabout way of turning off DTD validation, which is more
-    // straightforward to do with a Document/DocumentBuilder, but the saxon library we're using
-    // is much faster at XSLT if it uses its own XML parser instead of DocumentBuilder.  See
-    // http://stackoverflow.com/questions/155101/make-documentbuilder-parse-ignore-dtd-references
-    // for a discussion.
-    xmlr.setEntityResolver(new EntityResolver() {
-      @Override
-      public InputSource resolveEntity(String publicId, String systemId) throws SAXException, IOException {
+    /*
+     * This is a little unorthodox.  Without setting this custom EntityResolver, the transform will
+     * make ~50 HTTP calls to nlm.nih.gov to retrieve the DTD and various entity files referenced
+     * in the article XML. By setting a custom EntityResolver that just returns an empty string
+     * for each of these, we prevent that.  This seems to have no ill effects on the transformation
+     * itself.  This is a roundabout way of turning off DTD validation, which is more
+     * straightforward to do with a Document/DocumentBuilder, but the saxon library we're using
+     * is much faster at XSLT if it uses its own XML parser instead of DocumentBuilder.  See
+     * http://stackoverflow.com/questions/155101/make-documentbuilder-parse-ignore-dtd-references
+     * for a discussion.
+     */
+    xmlr.setEntityResolver((String publicId, String systemId) -> {
+      // Note: returning null here will cause the HTTP request to be made.
 
-        // Note: returning null here will cause the HTTP request to be made.
-
-        if (VALID_DTDS.contains(systemId)) {
-          return new InputSource(new StringReader(""));
-        } else {
-          throw new IllegalArgumentException("Unexpected entity encountered: " + systemId);
-        }
+      if (VALID_DTDS.contains(systemId)) {
+        return new InputSource(new StringReader(""));
+      } else {
+        throw new IllegalArgumentException("Unexpected entity encountered: " + systemId);
       }
     });
     // build the transformer and add any context-dependent parameters required for the transform
@@ -224,9 +221,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   @Override
   public void transformExcerpt(Site site, InputStream xmlExcerpt, OutputStream html, String enclosingTag)
       throws IOException, TransformerException {
-    Preconditions.checkNotNull(site);
-    Preconditions.checkNotNull(xmlExcerpt);
-    Preconditions.checkNotNull(html);
+    Objects.requireNonNull(site);
+    Objects.requireNonNull(xmlExcerpt);
+    Objects.requireNonNull(html);
 
     InputStream streamToTransform;
     if (Strings.isNullOrEmpty(enclosingTag)) {
@@ -245,8 +242,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
   @Override
   public String transformExcerpt(Site site, String xmlExcerpt, String enclosingTag) throws TransformerException {
-    Preconditions.checkNotNull(site);
-    Preconditions.checkNotNull(xmlExcerpt);
+    Objects.requireNonNull(site);
+    Objects.requireNonNull(xmlExcerpt);
     StringWriter html = new StringWriter();
     OutputStream outputStream = new WriterOutputStream(html, charset);
     InputStream inputStream = IOUtils.toInputStream(xmlExcerpt, charset);

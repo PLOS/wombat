@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
 import org.ambraproject.wombat.controller.NotFoundException;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.AssetPointer;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.OptionalInt;
 
 public class ArticleResolutionService {
@@ -26,35 +28,40 @@ public class ArticleResolutionService {
     }
   }
 
-  private static int resolveFromRevisionNumber(RequestedDoiVersion id, Map<String, Number> revisionTable) {
+  private static ArticlePointer resolve(RequestedDoiVersion id, Map<String, ?> articleOverview) {
+    final String canonicalDoi = (String) Objects.requireNonNull(articleOverview.get("doi"));
+    final Map<String, Number> revisionTable = (Map<String, Number>) Objects.requireNonNull(articleOverview.get("revisions"));
+
+    OptionalInt ingestionNumber = id.getIngestionNumber();
+    if (ingestionNumber.isPresent()) {
+      return new ArticlePointer(canonicalDoi, ingestionNumber.getAsInt(), OptionalInt.empty());
+    }
+
     OptionalInt revisionNumber = id.getRevisionNumber();
     if (revisionNumber.isPresent()) {
-      Number ingestionForRevision = revisionTable.get(Integer.toString(revisionNumber.getAsInt()));
+      int revisionValue = revisionNumber.getAsInt();
+      Number ingestionForRevision = revisionTable.get(Integer.toString(revisionValue));
       if (ingestionForRevision == null) {
-        String message = String.format("Article %s has no revision %d", id.getDoi(), revisionNumber.getAsInt());
+        String message = String.format("Article %s has no revision %d", id.getDoi(), revisionValue);
         throw new NotFoundException(message);
       }
-      return ingestionForRevision.intValue();
+      return new ArticlePointer(canonicalDoi, ingestionForRevision.intValue(), OptionalInt.of(revisionValue));
     } else {
-      // Find the maximum revision number in the table and return its ingestion number
-      return revisionTable.entrySet().stream()
-          .max(Comparator.comparing(entry -> Integer.valueOf(entry.getKey())))
-          .map(entry -> entry.getValue().intValue())
+      // Find the maximum revision number in the table
+      Map.Entry<Integer, Integer> maxRevisionEntry = revisionTable.entrySet().stream()
+          .map((Map.Entry<String, Number> entry) ->
+              Maps.immutableEntry(Integer.valueOf(entry.getKey()), entry.getValue().intValue()))
+          .max(Comparator.comparing(Map.Entry::getKey))
           .orElseThrow(() -> {
             String message = String.format("Article %s has no published revisions", id.getDoi());
             return new NotFoundException(message);
           });
+      return new ArticlePointer(canonicalDoi, maxRevisionEntry.getValue(), OptionalInt.of(maxRevisionEntry.getKey()));
     }
   }
 
   public ArticlePointer toIngestion(RequestedDoiVersion articleId) {
-    Map<String, ?> articleOverview = fetchArticleOverview(articleId);
-    String canonicalDoi = (String) articleOverview.get("doi");
-    int ingestionNumber = articleId.getIngestionNumber().orElseGet(() -> {
-      Map<String, Number> revisionTable = (Map<String, Number>) articleOverview.get("revisions");
-      return resolveFromRevisionNumber(articleId, revisionTable);
-    });
-    return new ArticlePointer(canonicalDoi, ingestionNumber);
+    return resolve(articleId, fetchArticleOverview(articleId));
   }
 
   private static final ImmutableSet<String> ARTICLE_ASSET_TYPES = ImmutableSet.of("article", "asset");
@@ -70,12 +77,7 @@ public class ArticleResolutionService {
     }
 
     Map<String, ?> parentArticle = (Map<String, ?>) doiOverview.get("article");
-    String parentDoi = (String) parentArticle.get("doi");
-    int ingestionNumber = assetId.getIngestionNumber().orElseGet(() -> {
-      Map<String, Number> revisionTable = (Map<String, Number>) parentArticle.get("revisions");
-      return resolveFromRevisionNumber(assetId, revisionTable);
-    });
-    ArticlePointer parentArticlePtr = new ArticlePointer(parentDoi, ingestionNumber);
+    ArticlePointer parentArticlePtr = resolve(assetId, parentArticle);
 
     String canonicalAssetDoi = (String) doiOverview.get("doi");
     return new AssetPointer(canonicalAssetDoi, parentArticlePtr);

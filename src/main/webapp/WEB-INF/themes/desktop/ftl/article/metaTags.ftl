@@ -51,7 +51,7 @@
 </#if>
 
 <#if articleItems[article.doi].files?keys?seq_contains("printable")>
-  <@siteLink handlerName="assetFile" queryParameters={"type": "printable", "id": article.doi} absoluteLink=true ; citationPdfUrl>
+  <@siteLink handlerName="assetFile" queryParameters=(articlePtr + {"type": "printable"}) absoluteLink=true ; citationPdfUrl>
   <meta name="citation_pdf_url" content="${citationPdfUrl}">
   </@siteLink>
 </#if>

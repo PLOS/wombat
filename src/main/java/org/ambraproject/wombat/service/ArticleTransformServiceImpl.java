@@ -136,7 +136,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     // TODO: abstract out into a strategy pattern when and if render options become more complex
     boolean showsCitedArticles = (boolean) theme.getConfigMap("article").get("showsCitedArticles");
     if (showsCitedArticles && renderContext.getArticleId() != null) {
-      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getArticleId().get(), false);
+      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getArticleId().get());
       Object citedArticles = articleMetadata.get("citedArticles");
       JSONArray jsonArr = JSONArray.fromObject(citedArticles);
       String metadataXml = new XMLSerializer().write(jsonArr);

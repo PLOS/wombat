@@ -12,6 +12,10 @@ import java.util.OptionalInt;
 
 public class DoiVersionArgumentResolver implements HandlerMethodArgumentResolver {
 
+  public static final String ID_PARAMETER = "id";
+  public static final String REVISION_PARAMETER = "rev";
+  public static final String INGESTION_PARAMETER = "ing";
+
   /**
    * Apply the policy on which users, if any, may view unpublished content.
    * <p>
@@ -61,14 +65,14 @@ public class DoiVersionArgumentResolver implements HandlerMethodArgumentResolver
                                              WebDataBinderFactory binderFactory) {
     Map<String, String[]> parameterMap = webRequest.getParameterMap();
 
-    String id = resolveSingleParameter(parameterMap, "id");
+    String id = resolveSingleParameter(parameterMap, ID_PARAMETER);
     if (id == null) throw new NotFoundException("id required");
 
-    OptionalInt revisionNumber = getNumericParameter(parameterMap, "rev");
+    OptionalInt revisionNumber = getNumericParameter(parameterMap, REVISION_PARAMETER);
     if (revisionNumber.isPresent()) return RequestedDoiVersion.ofRevision(id, revisionNumber.getAsInt());
 
     if (!revisionNumber.isPresent()) {
-      OptionalInt ingestionNumber = getNumericParameter(parameterMap, "ing");
+      OptionalInt ingestionNumber = getNumericParameter(parameterMap, INGESTION_PARAMETER);
       if (ingestionNumber.isPresent()) {
         if (canViewUnpublishedIngestion(webRequest)) {
           return RequestedDoiVersion.ofIngestion(id, ingestionNumber.getAsInt());

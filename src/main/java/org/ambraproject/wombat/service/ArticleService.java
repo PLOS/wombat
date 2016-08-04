@@ -29,11 +29,10 @@ public interface ArticleService {
    * Requests metadata about an article.
    *
    * @param articleId        DOI string
-   * @param excludeCitations if true, citation data will not be returned (optimization param)
    * @return deserialized JSON data structure as returned by the SOA layer
    * @throws IOException
    */
-  Map<String, ?> requestArticleMetadata(RequestedDoiVersion articleId, boolean excludeCitations) throws IOException;
+  Map<String, ?> requestArticleMetadata(RequestedDoiVersion articleId) throws IOException;
 
   Map<String, ?> getItemTable(ArticlePointer articleId) throws IOException;
 

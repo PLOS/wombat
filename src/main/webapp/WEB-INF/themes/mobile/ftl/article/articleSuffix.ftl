@@ -48,7 +48,7 @@
 </#macro>
 
 <#if articleItems[article.doi].files?keys?seq_contains("printable")>
-  <@siteLink handlerName="assetFile" queryParameters={"type": "printable", "id": article.doi} ; href>
+  <@siteLink handlerName="assetFile" queryParameters=(articlePtr + {"type": "printable"}) ; href>
     <@articleSaveButton href>Download Article (PDF)</@articleSaveButton>
   </@siteLink>
 </#if>

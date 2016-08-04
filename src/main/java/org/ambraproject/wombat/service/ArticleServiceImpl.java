@@ -32,7 +32,7 @@ public class ArticleServiceImpl implements ArticleService {
   private ArticleResolutionService articleResolutionService;
 
   @Override
-  public Map<String, Object> requestArticleMetadata(RequestedDoiVersion articleId, boolean excludeCitations)
+  public Map<String, Object> requestArticleMetadata(RequestedDoiVersion articleId)
       throws IOException {
     Map<String, Object> map = (Map<String, Object>) articleApi.requestObject(
         articleResolutionService.toIngestion(articleId).asApiAddress().build(),

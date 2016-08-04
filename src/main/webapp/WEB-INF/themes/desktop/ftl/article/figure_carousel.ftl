@@ -10,15 +10,15 @@
 
           <div class="carousel-item lightbox-figure" data-doi="${figure.doi?html}">
 
-            <@siteLink handlerName="assetFile" queryParameters={"type": "inline", "id": figure.doi} ; src>
-              <img src="${src?html}"
-                <#if figure.title?has_content >
-                   alt="${figure.title?html}"
-                </#if>
-              />
-            </@siteLink>
+              <@siteLink handlerName="assetFile" parameters=(versionPtr + {"type": "inline", "id": figure.doi}) ; src>
+                <img src="${src?html}"
+                     <#if figure.title?has_content >
+                     alt="${figure.title?html}"
+                     </#if>
+                />
+              </@siteLink>
 
-          </div>
+            </div>
         </#list>
       </div>
     </div>

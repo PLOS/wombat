@@ -112,7 +112,7 @@ public class BrowseController extends WombatController {
       RequestedDoiVersion articleId = RequestedDoiVersion.of(articleDoi);
       Map<?, ?> articleMetadata;
       try {
-        articleMetadata = articleService.requestArticleMetadata(articleId, true);
+        articleMetadata = articleService.requestArticleMetadata(articleId);
       } catch (EntityNotFoundException e) {
         throw new ArticleNotFoundException(articleId);
       }

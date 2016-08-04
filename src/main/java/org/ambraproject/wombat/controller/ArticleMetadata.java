@@ -26,14 +26,16 @@ import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.util.TextUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.bind.DatatypeConverter;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -44,11 +46,13 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
 
 public class ArticleMetadata {
+  private static final Logger log = LoggerFactory.getLogger(ArticleMetadata.class);
 
   private final Factory factory; // for further service access
   private final Site site;
@@ -56,16 +60,19 @@ public class ArticleMetadata {
   private final ArticlePointer articlePointer;
   private final Map<String, ?> ingestionMetadata;
   private final Map<String, ?> itemTable;
+  private final Map<String, List<Map<String, ?>>> relationships;
 
   private ArticleMetadata(Factory factory, Site site,
                           RequestedDoiVersion articleId, ArticlePointer articlePointer,
-                          Map<String, ?> ingestionMetadata, Map<String, ?> itemTable) {
+                          Map<String, ?> ingestionMetadata, Map<String, ?> itemTable,
+                          Map<String, List<Map<String, ?>>> relationships) {
     this.factory = Objects.requireNonNull(factory);
     this.site = Objects.requireNonNull(site);
     this.articleId = Objects.requireNonNull(articleId);
     this.articlePointer = Objects.requireNonNull(articlePointer);
     this.ingestionMetadata = Collections.unmodifiableMap(ingestionMetadata);
     this.itemTable = Collections.unmodifiableMap(itemTable);
+    this.relationships = Collections.unmodifiableMap(relationships);
   }
 
   public static class Factory {
@@ -89,8 +96,11 @@ public class ArticleMetadata {
       Map<String, Object> ingestionMetadata = (Map<String, Object>) articleApi.requestObject(
           articlePointer.asApiAddress().build(), Map.class);
       Map<String, ?> itemTable = articleService.getItemTable(articlePointer);
+      Map<String, List<Map<String, ?>>> relationships = articleApi.requestObject(
+          ApiAddress.builder("articles").embedDoi(articlePointer.getDoi()).addToken("relationships").build(),
+          Map.class);
 
-      return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata, itemTable);
+      return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata, itemTable, relationships);
     }
   }
 
@@ -100,6 +110,10 @@ public class ArticleMetadata {
 
   public ArticleMetadata populate(HttpServletRequest request, Model model) throws IOException {
     addCrossPublishedJournals(request, model);
+
+    model.addAttribute("versionPtr", articlePointer.getVersionParameter());
+    model.addAttribute("articlePtr", articlePointer.asParameterMap());
+
     model.addAttribute("article", ingestionMetadata);
 
 
@@ -307,11 +321,39 @@ public class ArticleMetadata {
 
   }
 
-  private List<?> getRelatedArticles() {
-    Map<String, ?> relatedArticles = (Map<String, ?>) ingestionMetadata.get("relatedArticles");
-    List<?> inbound = (List<?>) relatedArticles.get("inbound");
-    List<?> outbound = (List<?>) relatedArticles.get("outbound");
-    return ImmutableList.of(); // TODO: Implement
+  private static boolean isPublished(Map<String, ?> relatedArticle) {
+    return relatedArticle.get("revisionNumber") != null;
+  }
+
+  private static final Comparator<Map<String, ?>> BY_DESCENDING_PUB_DATE = Comparator
+      .comparing((Map<String, ?> articleMetadata) ->
+          LocalDate.parse((String) articleMetadata.get("publicationDate")))
+      .reversed();
+
+  private static final ImmutableSet<String> RELATIONSHIP_DIRECTIONS = ImmutableSet.of("inbound", "outbound");
+
+  private List<Map<String, ?>> getRelatedArticles() {
+    // Eliminate duplicate DOIs (in case there are inbound and outbound relationships with the same article)
+    Map<String, Map<String, ?>> relationshipsByDoi = new HashMap<>();
+    for (String direction : RELATIONSHIP_DIRECTIONS) {
+      for (Map<String, ?> relatedArticle : relationships.get(direction)) {
+        String relatedArticleDoi = (String) relatedArticle.get("doi");
+        Map<String, ?> previous = relationshipsByDoi.put(relatedArticleDoi, relatedArticle);
+
+        if (previous != null) {
+          // Collisions are okay if a relationship exists in each direction. Verify that the data are consistent.
+          Preconditions.checkState(Objects.equals(relatedArticle.get("revisionNumber"), previous.get("revisionNumber"))
+              && Objects.equals(relatedArticle.get("title"), previous.get("title"))
+              && Objects.equals(relatedArticle.get("publicationDate"), previous.get("publicationDate")));
+          // It is fine for relatedArticle.get("type") and previous.get("type") to be unequal.
+        }
+      }
+    }
+
+    return relationshipsByDoi.values().stream()
+        .filter(ArticleMetadata::isPublished)
+        .sorted(BY_DESCENDING_PUB_DATE)
+        .collect(Collectors.toList());
   }
 
   /**
@@ -360,12 +402,11 @@ public class ArticleMetadata {
    * data about those articles from the service tier.
    */
   public ArticleMetadata fillAmendments(Model model) throws IOException {
-    Map<String, ?> relatedArticleMap = (Map<String, ?>) ingestionMetadata.get("relatedArticles");
-    List<Map<String, ?>> relatedArticles = ImmutableList.of(); // TODO
-    List<Map<String, Object>> amendments = relatedArticles.parallelStream()
+    List<Map<String, ?>> inboundRelationships = relationships.get("inbound");
+    List<Map<String, Object>> amendments = inboundRelationships.parallelStream()
+        .filter((Map<String, ?> relatedArticle) -> isPublished(relatedArticle) && getAmendmentType(relatedArticle).isPresent())
         .map((Map<String, ?> relatedArticle) -> createAmendment(site, relatedArticle))
-        .filter(Objects::nonNull)
-        .sorted(BY_DESCENDING_DATE)
+        .sorted(BY_DESCENDING_PUB_DATE)
         .collect(Collectors.toList());
     List<AmendmentGroup> amendmentGroups = buildAmendmentGroups(amendments);
     model.addAttribute("amendments", amendmentGroups);
@@ -377,12 +418,12 @@ public class ArticleMetadata {
    * Types of related articles that get special display handling.
    */
   private static enum AmendmentType {
-    CORRECTION("correction-forward"),
-    EOC("expressed-concern"),
-    RETRACTION("retraction");
+    CORRECTION("corrected-article"),
+    EOC("object-of-concern"),
+    RETRACTION("retracted-article");
 
     /**
-     * A value of the "type" field of an object in an article's "relatedArticles" list.
+     * A value of the "type" field of an object in the list of inbound relationships.
      */
     private final String relationshipType;
 
@@ -399,26 +440,43 @@ public class ArticleMetadata {
         EnumSet.allOf(AmendmentType.class), input -> input.relationshipType);
   }
 
-  private static final Comparator<Map<String, ?>> BY_DESCENDING_DATE = Comparator.comparing(
-      (Map<String, ?> objectMetadata) -> {
-        String date = (String) objectMetadata.get("date");
-        if (date == null) throw new IllegalArgumentException("Date not found");
-        return DatatypeConverter.parseDateTime(date);
-      })
-      .reversed();
-
-  private Map<String, Object> createAmendment(Site site, Map<String, ?> relatedArticle) {
-    Map<String, Object> amendment = new HashMap<>(relatedArticle); // make a copy to clobber
-
+  /**
+   * @return the amendment type of the relationship, or empty if the relationship is not an amendment
+   */
+  private Optional<AmendmentType> getAmendmentType(Map<String, ?> relatedArticle) {
     String relationshipType = (String) relatedArticle.get("type");
     AmendmentType amendmentType = AmendmentType.BY_RELATIONSHIP_TYPE.get(relationshipType);
-    if (amendmentType == null) return null; // not an amendment
+    return Optional.ofNullable(amendmentType);
+  }
+
+  /**
+   * @param site           the site being rendered
+   * @param relatedArticle a relationship to an amendment to this article
+   * @return a model of the amendment
+   * @throws IllegalArgumentException if the relationship is not of an amendment type
+   */
+  private Map<String, Object> createAmendment(Site site, Map<String, ?> relatedArticle) {
+    AmendmentType amendmentType = getAmendmentType(relatedArticle).orElseThrow(IllegalArgumentException::new);
+
+    String doi = (String) relatedArticle.get("doi");
+
+    ArticlePointer amendmentId;
+    Map<String, Object> amendment;
+    Map<String, ?> authors;
+    try {
+      amendmentId = factory.articleResolutionService.toIngestion(RequestedDoiVersion.of(doi)); // always uses latest revision
+      amendment = (Map<String, Object>) factory.articleApi.requestObject(amendmentId.asApiAddress().build(), Map.class);
+      authors = factory.articleApi.requestObject(amendmentId.asApiAddress().addToken("authors").build(), Map.class);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+
+    amendment.putAll(authors);
 
     // Display the body only on non-correction amendments. Would be better if this were configurable per theme.
     if (amendmentType != AmendmentType.CORRECTION) {
-      String doi = (String) amendment.get("doi");
-      RequestedDoiVersion amendmentId = RequestedDoiVersion.of(doi); // TODO: Has revision?
-      RenderContext renderContext = new RenderContext(site, amendmentId);
+      RenderContext renderContext = new RenderContext(site,
+          RequestedDoiVersion.ofIngestion(amendmentId.getDoi(), amendmentId.getIngestionNumber()));
       String body;
       try {
         body = getAmendmentBody(renderContext);
@@ -428,7 +486,7 @@ public class ArticleMetadata {
       amendment.put("body", body);
     }
 
-    amendment.put("type", amendmentType.getLabel()); // for templating
+    amendment.put("type", amendmentType.getLabel());
     return amendment;
   }
 
@@ -472,6 +530,10 @@ public class ArticleMetadata {
 
     public String getType() {
       return type;
+    }
+
+    public ImmutableList<Map<String, Object>> getAmendments() {
+      return amendments;
     }
   }
 

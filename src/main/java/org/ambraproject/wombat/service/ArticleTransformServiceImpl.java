@@ -9,6 +9,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.xml.XMLSerializer;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
@@ -42,6 +43,7 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.OptionalInt;
 
 public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final Logger log = LoggerFactory.getLogger(ArticleTransformServiceImpl.class);
@@ -160,17 +162,39 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       throws IOException, TransformerException {
     transform(site, xml, html,
         (XMLReader xmlReader, Theme theme, Transformer transformer) -> {
-          // Add cited articles metadata for inclusion of DOI links in reference list
-          boolean showsCitedArticles = (boolean) theme.getConfigMap("article").get("showsCitedArticles");
-          if (showsCitedArticles) {
-            Map<?, ?> articleMetadata = articleService.requestArticleMetadata(articleId);
-            Object citedArticles = articleMetadata.get("citedArticles");
-            JSONArray jsonArr = JSONArray.fromObject(citedArticles);
-            String metadataXml = new XMLSerializer().write(jsonArr);
-            SAXSource saxSourceMeta = new SAXSource(xmlReader, new InputSource(IOUtils.toInputStream(metadataXml)));
-            transformer.setParameter("citedArticles", saxSourceMeta);
+          if ((boolean) theme.getConfigMap("article").get("showsCitedArticles")) {
+            setCitedArticles(articleId, xmlReader, transformer);
           }
+
+          setVersionLink(articleId, transformer);
         });
+  }
+
+  // Add cited articles metadata for inclusion of DOI links in reference list
+  private void setCitedArticles(ArticlePointer articleId, XMLReader xmlReader, Transformer transformer) throws IOException {
+    Map<?, ?> articleMetadata = articleService.requestArticleMetadata(articleId);
+    Object citedArticles = articleMetadata.get("citedArticles");
+    JSONArray jsonArr = JSONArray.fromObject(citedArticles);
+    String metadataXml = new XMLSerializer().write(jsonArr);
+    SAXSource saxSourceMeta = new SAXSource(xmlReader, new InputSource(IOUtils.toInputStream(metadataXml)));
+    transformer.setParameter("citedArticles", saxSourceMeta);
+  }
+
+  private void setVersionLink(ArticlePointer articleId, Transformer transformer) {
+    final String parameterName;
+    final int parameterValue;
+
+    OptionalInt revisionNumber = articleId.getRevisionNumber();
+    if (revisionNumber.isPresent()) {
+      parameterName = DoiVersionArgumentResolver.REVISION_PARAMETER;
+      parameterValue = revisionNumber.getAsInt();
+    } else {
+      parameterName = DoiVersionArgumentResolver.INGESTION_PARAMETER;
+      parameterValue = articleId.getIngestionNumber();
+    }
+
+    transformer.setParameter("versionType", parameterName);
+    transformer.setParameter("versionNumber", parameterValue);
   }
 
   private void transform(Site site, InputStream xml, OutputStream html, TransformerInitialization initialization)

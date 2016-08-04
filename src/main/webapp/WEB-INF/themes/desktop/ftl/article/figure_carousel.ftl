@@ -10,7 +10,7 @@
 
           <div class="carousel-item lightbox-figure" data-doi="${figure.doi?html}">
 
-              <@siteLink handlerName="assetFile" parameters=(versionPtr + {"type": "inline", "id": figure.doi}) ; src>
+              <@siteLink handlerName="assetFile" queryParameters=(versionPtr + {"type": "inline", "id": figure.doi}) ; src>
                 <img src="${src?html}"
                      <#if figure.title?has_content >
                      alt="${figure.title?html}"

@@ -445,8 +445,8 @@ var SearchResult;
               that.$searchHeaderEl.show();
               that.$filtersEl.show();
 
-              if(request.alertQuery) {
-                that.updateAlertQueryInput(request.alertQuery)
+              if(response.alertQuery) {
+                that.updateAlertQueryInput(response.alertQuery)
               }
 
               that.createFilters();

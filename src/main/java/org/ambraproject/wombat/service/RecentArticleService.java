@@ -35,6 +35,9 @@ public interface RecentArticleService {
    * @param articleTypesToExclude Article types to exclude from results, taking precedence over all other criteria. An
    *                              article with both one of these types and a type in {@code articleTypes} will not be
    *                              matched. Articles of these types will also not be matched by {@code "*"}.
+   * @param cacheTtl              The time, in seconds, to cache the results of a query to the service tier. In other
+   *                              words, amount of time between refreshing recent articles. If absent, don't read or add
+   *                              to the cache and always check for new recent articles.  @return the list of results
    * @throws IOException
    */
   public abstract List<Map<String, Object>> getRecentArticles(Site site,
@@ -42,7 +45,8 @@ public interface RecentArticleService {
                                                               double numberOfDaysAgo,
                                                               boolean shuffle,
                                                               List<String> articleTypes,
-                                                              List<String> articleTypesToExclude)
+                                                              List<String> articleTypesToExclude,
+                                                              Optional<Integer> cacheTtl)
       throws IOException;
 
 }

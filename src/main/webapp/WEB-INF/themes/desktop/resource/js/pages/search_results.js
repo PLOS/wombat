@@ -390,47 +390,9 @@ var SearchResult;
       });
     },
 
-    mapActiveFilters: function (response) {
-      var types = {
-        "filterJournals": response.filterJournals,
-        "filterSubjects": response.filterSubjects,
-        "filterArticleTypes": response.filterArticleTypes,
-        "filterAuthors": response.filterAuthors,
-        "filterSections": response.filterSections
-      };
-
-      var activeFilters = [];
-      _.each(types, function (value, type) {
-        if(type == 'filterJournals') {
-          var filters = _.map(value, function (filterValue, key) {
-            return {
-              displayName: response.filterJournalNames[key],
-              filterParamName: type,
-              filterValue: filterValue
-            }
-          });
-        }
-        else {
-          var filters = _.map(value, function (filterValue, key) {
-            return {
-              displayName: filterValue,
-              filterParamName: type,
-              filterValue: filterValue
-            }
-          });
-
-        }
-        activeFilters = activeFilters.concat(filters);
-      });
-
-      if (!_.isEmpty(response.filterStartDate)) {
-        this.searchDateFilters['start'] = response.filterStartDate;
-      }
-      if (!_.isEmpty(response.filterEndDate)) {
-        this.searchDateFilters['end'] = response.filterEndDate;
-      }
-
-      this.searchActiveFilters = activeFilters;
+    updateAlertQueryInput: function (alertQuery) {
+      var $input = $('#alert_query_savedsearch');
+      $input.val(alertQuery);
     },
 
     processRequest: function () {
@@ -480,6 +442,10 @@ var SearchResult;
 
               that.$searchHeaderEl.show();
               that.$filtersEl.show();
+
+              if(response.alertQuery) {
+                that.updateAlertQueryInput(response.alertQuery)
+              }
 
               that.createFilters();
               that.updateCounterText();

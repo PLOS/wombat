@@ -162,8 +162,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
         (XMLReader xmlReader, Theme theme, Transformer transformer) -> {
           // Add cited articles metadata for inclusion of DOI links in reference list
           boolean showsCitedArticles = (boolean) theme.getConfigMap("article").get("showsCitedArticles");
-          if (showsCitedArticles && renderContext.getArticleId() != null) {
-            Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getArticleId().get());
+          if (showsCitedArticles) {
+            Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getArticleId());
             Object citedArticles = articleMetadata.get("citedArticles");
             JSONArray jsonArr = JSONArray.fromObject(citedArticles);
             String metadataXml = new XMLSerializer().write(jsonArr);

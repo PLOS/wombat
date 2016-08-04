@@ -31,7 +31,7 @@ public class CorpusContentApi extends AbstractContentApi {
                                CacheDeserializer<InputStream, String> htmlCallback)
       throws IOException {
     RemoteCacheKey cacheKey = articleId.getCacheKey(cacheSpace);
-    ContentKey manuscriptKey = articleService.getManuscriptKey(articleId.getArticleId().get());
+    ContentKey manuscriptKey = articleService.getManuscriptKey(articleId.getArticleId());
     return requestCachedStream(cacheKey, manuscriptKey, htmlCallback);
   }
 

@@ -48,10 +48,9 @@
                 </div>
               <div class="detail-container">
                 <div class="img">
-                <#if issue.imageUri?has_content>
-                  <#assign issueImageFigureDoi = 'TODO' /><#-- TODO: Retrieve figure DOI from metadata -->
-                  <a href="<@siteLink handlerName="article" queryParameters={"id": issue.imageUri} />">
-                    <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "inline", "id": issueImageFigureDoi} />"
+                <#if issueImageArticle??>
+                  <a href="<@siteLink handlerName="article" queryParameters={"id": issueImageArticle} />">
+                    <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "inline", "id": issueImage.doi} />"
                          alt="Issue Image" data-doi="${issue.imageUri}">
                   </a>
                 </#if>

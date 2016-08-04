@@ -13,7 +13,6 @@ import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
 import org.ambraproject.wombat.service.ApiAddress;
-import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
@@ -108,8 +107,6 @@ public class ArticleController extends WombatController {
   private ArticleApi articleApi;
   @Autowired
   private CorpusContentApi corpusContentApi;
-  @Autowired
-  private ArticleService articleService;
   @Autowired
   private ArticleTransformService articleTransformService;
   @Autowired
@@ -536,14 +533,13 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "articleFigsAndTables", value = "/article/assets/figsAndTables")
   public ResponseEntity<List> listArticleFiguresAndTables(@SiteParam Site site,
                                                           RequestedDoiVersion articleId) throws IOException {
-    Map<String, ?> articleMetadata = articleMetadataFactory.get(site, articleId)
+    List<Map<String, ?>> figureView = articleMetadataFactory.get(site, articleId)
         .validateVisibility()
-        .getIngestionMetadata();
-    List<ImmutableMap<String, String>> articleFigsAndTables = articleService.getArticleFiguresAndTables(articleMetadata);
+        .getFigureView();
 
     HttpHeaders headers = new HttpHeaders();
     headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-    return new ResponseEntity<>(articleFigsAndTables, headers, HttpStatus.OK);
+    return new ResponseEntity<>(figureView, headers, HttpStatus.OK);
   }
 
   @RequestMapping(name = "email", value = "/article/email")

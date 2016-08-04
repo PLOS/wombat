@@ -1,21 +1,21 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.feed.FeedMetadataField;
 import org.ambraproject.wombat.feed.FeedType;
-import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.CommentService;
+import org.ambraproject.wombat.service.IssueService;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
-import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.slf4j.Logger;
@@ -46,21 +46,18 @@ public class HomeController extends WombatController {
 
   @Autowired
   private SolrSearchApi solrSearchApi;
-
   @Autowired
   private ArticleApi articleApi;
-
   @Autowired
   private RecentArticleService recentArticleService;
-
   @Autowired
   private ArticleFeedView articleFeedView;
-
   @Autowired
   private CommentFeedView commentFeedView;
-
   @Autowired
   private CommentService commentService;
+  @Autowired
+  private IssueService issueService;
 
   /**
    * Enumerates the allowed values for the section parameter for this page.
@@ -271,8 +268,8 @@ public class HomeController extends WombatController {
     Map<String, Object> currentIssue = articleApi.requestObject(issueAddress, Map.class);
     model.addAttribute("currentIssue", currentIssue);
     String imageUri = currentIssue.get("imageUri").toString();
-    Map<String, Object> issueImageMetadata = articleApi.requestObject(ApiAddress.builder("articles").addToken(imageUri).build(), Map.class);
-    model.addAttribute("issueImage", issueImageMetadata);
+
+    model.addAttribute("issueImage", issueService.getIssueImage(site, imageUri));
   }
 
   /**

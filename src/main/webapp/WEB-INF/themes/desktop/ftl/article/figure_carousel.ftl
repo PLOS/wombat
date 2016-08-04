@@ -1,4 +1,4 @@
-<#if article.figures?has_content>
+<#if figures?has_content>
 <div id="figure-carousel-section">
   <h2>Figures</h2>
 
@@ -6,12 +6,9 @@
 
     <div class="carousel-wrapper"><#-- Horizontally scrolling view window -->
       <div class="slider"><#-- Large-width container -->
-        <#list article.figures as figure>
+        <#list figures as figure>
 
-          <#-- Omit figures that don't appear in article body (e.g. a striking image) -->
-          <#if figure.contextElement?has_content>
-
-            <div class="carousel-item lightbox-figure" data-doi="${figure.doi?html}">
+          <div class="carousel-item lightbox-figure" data-doi="${figure.doi?html}">
 
               <@siteLink handlerName="assetFile" parameters=(versionPtr + {"type": "inline", "id": figure.doi}) ; src>
                 <img src="${src?html}"
@@ -22,7 +19,6 @@
               </@siteLink>
 
             </div>
-          </#if>
         </#list>
       </div>
     </div>

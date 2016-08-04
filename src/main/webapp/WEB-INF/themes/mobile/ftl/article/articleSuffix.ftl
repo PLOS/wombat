@@ -1,10 +1,10 @@
 <nav>
   <ul class="article-buttons">
-  <#if article.figures?? && article.figures?size &gt; 0 >
+  <#if figures?has_content>
     <li class="menuitem">
       <a class="btn-lg" href="<@siteLink handlerName="figuresPage" queryParameters={"id": article.doi} />">
         <span class="arrow">View</span>
-        Figures (${article.figures?size})
+        Figures (${figures?size})
       </a>
     </li>
   </#if>

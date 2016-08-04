@@ -38,6 +38,7 @@ import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -58,18 +59,20 @@ public class ArticleMetadata {
   private final RequestedDoiVersion articleId;
   private final ArticlePointer articlePointer;
   private final Map<String, ?> ingestionMetadata;
+  private final Map<String, ?> itemTable;
   private final Map<String, List<Map<String, ?>>> relationships;
 
   private ArticleMetadata(Factory factory, Site site,
                           RequestedDoiVersion articleId, ArticlePointer articlePointer,
-                          Map<String, ?> ingestionMetadata,
+                          Map<String, ?> ingestionMetadata, Map<String, ?> itemTable,
                           Map<String, List<Map<String, ?>>> relationships) {
     this.factory = Objects.requireNonNull(factory);
     this.site = Objects.requireNonNull(site);
     this.articleId = Objects.requireNonNull(articleId);
     this.articlePointer = Objects.requireNonNull(articlePointer);
-    this.ingestionMetadata = Objects.requireNonNull(ingestionMetadata);
-    this.relationships = Objects.requireNonNull(relationships);
+    this.ingestionMetadata = Collections.unmodifiableMap(ingestionMetadata);
+    this.itemTable = Collections.unmodifiableMap(itemTable);
+    this.relationships = Collections.unmodifiableMap(relationships);
   }
 
   public static class Factory {
@@ -92,11 +95,12 @@ public class ArticleMetadata {
       ArticlePointer articlePointer = articleResolutionService.toIngestion(id);
       Map<String, Object> ingestionMetadata = (Map<String, Object>) articleApi.requestObject(
           articlePointer.asApiAddress().build(), Map.class);
+      Map<String, ?> itemTable = articleService.getItemTable(articlePointer);
       Map<String, List<Map<String, ?>>> relationships = articleApi.requestObject(
           ApiAddress.builder("articles").embedDoi(articlePointer.getDoi()).addToken("relationships").build(),
           Map.class);
 
-      return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata, relationships);
+      return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata, itemTable, relationships);
     }
   }
 
@@ -111,7 +115,11 @@ public class ArticleMetadata {
     model.addAttribute("articlePtr", articlePointer.asParameterMap());
 
     model.addAttribute("article", ingestionMetadata);
-    model.addAttribute("articleItems", factory.articleService.getItemTable(articlePointer));
+
+
+    model.addAttribute("articleItems", itemTable);
+    model.addAttribute("figures", getFigureView());
+
     model.addAttribute("commentCount", getCommentCount());
     model.addAttribute("containingLists", getContainingArticleLists());
     model.addAttribute("categoryTerms", getCategoryTerms());
@@ -233,6 +241,34 @@ public class ArticleMetadata {
 
     model.addAttribute("crossPub", crossPublishedJournals);
     model.addAttribute("originalPub", originalJournal);
+  }
+
+  private static final ImmutableSet<String> FIGURE_TYPES = ImmutableSet.of("figure", "table");
+
+  /*
+   * Build a view of the article's figures and tables, with the following properties that are significant for display:
+   *
+   *   (1) The figure DOIs are listed in the same order in which they appear in the original manuscript and should be
+   *       displayed to the user (in a table of contents, figure carousel, etc.). Compare to the item table, which has
+   *       no order.
+   *
+   *   (2) Only items of the type "figure" or "table" are included. It excludes other items such as the manuscript,
+   *       the PDF file, supplementary material, inline graphics, and striking images.
+   */
+  public List<Map<String, ?>> getFigureView() {
+    List<Map<String, ?>> assetsLinkedFromManuscript = (List<Map<String, ?>>) ingestionMetadata.get("assetsLinkedFromManuscript");
+    return assetsLinkedFromManuscript.stream()
+        .map((Map<String, ?> asset) -> {
+          Map<String, ?> item = (Map<String, ?>) itemTable.get((String) asset.get("doi"));
+          String type = (String) item.get("itemType");
+          if (!FIGURE_TYPES.contains(type)) return null;
+
+          Map<String, Object> view = new HashMap<>(asset);
+          view.put("type", type);
+          return view;
+        })
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
   }
 
   private Map<String, Integer> getCommentCount() throws IOException {

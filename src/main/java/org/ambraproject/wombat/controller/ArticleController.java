@@ -657,7 +657,7 @@ public class ArticleController extends WombatController {
         (InputStream stream) -> {
           StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
           try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
-            articleTransformService.transform(renderContext, stream, outputStream);
+            articleTransformService.transformArticle(renderContext, stream, outputStream);
           } catch (TransformerException e) {
             throw new RuntimeException(e);
           }

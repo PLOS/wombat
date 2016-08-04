@@ -7,6 +7,8 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterators;
 import com.google.common.io.Closer;
 import net.sf.json.JSONArray;
+import net.sf.json.xml.XMLSerializer;
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
@@ -17,7 +19,6 @@ import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-import net.sf.json.xml.XMLSerializer;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -63,8 +64,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   */
   private static final ImmutableSet<String> VALID_DTDS =
       ImmutableSet.of("http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd",
-                      "http://jats.nlm.nih.gov/publishing/1.1d2/JATS-journalpublishing1.dtd",
-                      "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd");
+          "http://jats.nlm.nih.gov/publishing/1.1d2/JATS-journalpublishing1.dtd",
+          "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd");
 
   private static TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here
@@ -105,22 +106,39 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
 
+  @FunctionalInterface
+  private static interface TransformerInitialization {
+    /**
+     * Set up a {@link Transformer} to render a particular piece of article content.
+     *
+     * @param xmlReader   an {@link XMLReader} instance to use
+     * @param theme       the theme under which the content will be rendered
+     * @param transformer the {@code Transformer} object to modify
+     * @throws IOException
+     */
+    void initialize(XMLReader xmlReader, Theme theme, Transformer transformer) throws IOException;
+  }
+
+  private static final TransformerInitialization EMPTY_INIT = (xmlReader, theme, transformer) -> {
+  };
 
   /**
    * Build a new transformer and attach any required parameters for the given render context
    *
-   * @param renderContext The render context contains information (such as the site object and articleId, and
-   *                      potentially other variables related to client side capabilities or identifiers of specific
-   *                      excerpts targeted for rendering) that may be used to determine which parameters to pass to
-   *                      the transformer object.
-   * @param xmlReader An XML reader instance which is provided to parse XML-formatted strings for the purpose of
-   *                  creating any secondary SAX sources for the transform (passed to the transformer as parameters)
+   * @param site           The site on which the content will be rendered.
+   * @param xmlReader      An XML reader instance which is provided to parse XML-formatted strings for the purpose of
+   *                       creating any secondary SAX sources for the transform (passed to the transformer as
+   *                       parameters)
+   * @param initialization Hook in which information (such as the site object and articleId, and potentially other
+   *                       variables related to client side capabilities or identifiers of specific excerpts targeted
+   *                       for rendering) to be injected and passed to the transformer object.
    * @return the transformer
    * @throws IOException
    */
-  private Transformer buildTransformer(RenderContext renderContext, XMLReader xmlReader) throws IOException {
-    Theme theme = renderContext.getSite().getTheme();
-    log.debug("Building transformer for: {}", renderContext.getSite());
+  private Transformer buildTransformer(Site site, XMLReader xmlReader, TransformerInitialization initialization)
+      throws IOException {
+    Theme theme = site.getTheme();
+    log.debug("Building transformer for: {}", site);
     TransformerFactory factory = newTransformerFactory();
 
     Transformer transformer;
@@ -132,25 +150,32 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       throw new RuntimeException(e);
     }
 
-    // Add cited articles metadata for inclusion of DOI links in reference list
-    // TODO: abstract out into a strategy pattern when and if render options become more complex
-    boolean showsCitedArticles = (boolean) theme.getConfigMap("article").get("showsCitedArticles");
-    if (showsCitedArticles && renderContext.getArticleId() != null) {
-      Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getArticleId().get());
-      Object citedArticles = articleMetadata.get("citedArticles");
-      JSONArray jsonArr = JSONArray.fromObject(citedArticles);
-      String metadataXml = new XMLSerializer().write(jsonArr);
-      SAXSource saxSourceMeta = new SAXSource(xmlReader, new InputSource(IOUtils.toInputStream(metadataXml)));
-      transformer.setParameter("citedArticles", saxSourceMeta);
-    }
+    initialization.initialize(xmlReader, theme, transformer);
+
     return transformer;
   }
 
-
   @Override
-  public void transform(RenderContext renderContext, InputStream xml, OutputStream html)
+  public void transformArticle(RenderContext renderContext, InputStream xml, OutputStream html)
       throws IOException, TransformerException {
-    Preconditions.checkNotNull(renderContext);
+    transform(renderContext.getSite(), xml, html,
+        (XMLReader xmlReader, Theme theme, Transformer transformer) -> {
+          // Add cited articles metadata for inclusion of DOI links in reference list
+          boolean showsCitedArticles = (boolean) theme.getConfigMap("article").get("showsCitedArticles");
+          if (showsCitedArticles && renderContext.getArticleId() != null) {
+            Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getArticleId().get());
+            Object citedArticles = articleMetadata.get("citedArticles");
+            JSONArray jsonArr = JSONArray.fromObject(citedArticles);
+            String metadataXml = new XMLSerializer().write(jsonArr);
+            SAXSource saxSourceMeta = new SAXSource(xmlReader, new InputSource(IOUtils.toInputStream(metadataXml)));
+            transformer.setParameter("citedArticles", saxSourceMeta);
+          }
+        });
+  }
+
+  private void transform(Site site, InputStream xml, OutputStream html, TransformerInitialization initialization)
+      throws IOException, TransformerException {
+    Preconditions.checkNotNull(site);
     Preconditions.checkNotNull(xml);
     Preconditions.checkNotNull(html);
 
@@ -188,7 +213,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     });
     // build the transformer and add any context-dependent parameters required for the transform
     // NOTE: the XMLReader is passed here for use in creating any required secondary SAX sources
-    Transformer transformer = buildTransformer(renderContext, xmlr);
+    Transformer transformer = buildTransformer(site, xmlr, initialization);
     SAXSource saxSource = new SAXSource(xmlr, new InputSource(xml));
     transformer.transform(saxSource, new StreamResult(html));
 
@@ -196,9 +221,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   @Override
-  public void transformExcerpt(RenderContext renderContext, InputStream xmlExcerpt, OutputStream html, String enclosingTag)
+  public void transformExcerpt(Site site, InputStream xmlExcerpt, OutputStream html, String enclosingTag)
       throws IOException, TransformerException {
-    Preconditions.checkNotNull(renderContext);
+    Preconditions.checkNotNull(site);
     Preconditions.checkNotNull(xmlExcerpt);
     Preconditions.checkNotNull(html);
 
@@ -214,18 +239,18 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       streamToTransform = new SequenceInputStream(Iterators.asEnumeration(concatenation.iterator()));
     }
 
-    transform(renderContext, streamToTransform, html);
+    transform(site, streamToTransform, html, EMPTY_INIT);
   }
 
   @Override
-  public String transformExcerpt(RenderContext renderContext, String xmlExcerpt, String enclosingTag) throws TransformerException {
-    Preconditions.checkNotNull(renderContext);
+  public String transformExcerpt(Site site, String xmlExcerpt, String enclosingTag) throws TransformerException {
+    Preconditions.checkNotNull(site);
     Preconditions.checkNotNull(xmlExcerpt);
     StringWriter html = new StringWriter();
     OutputStream outputStream = new WriterOutputStream(html, charset);
     InputStream inputStream = IOUtils.toInputStream(xmlExcerpt, charset);
     try {
-      transformExcerpt(renderContext, inputStream, outputStream, enclosingTag);
+      transformExcerpt(site, inputStream, outputStream, enclosingTag);
       outputStream.close(); // to flush (StringWriter doesn't require a finally block)
     } catch (IOException e) {
       throw new RuntimeException(e); // unexpected, since both streams are in memory
@@ -234,10 +259,10 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   @Override
-  public String transformImageDescription(RenderContext renderContext, String description) {
+  public String transformImageDescription(Site site, String description) {
     String descriptionHtml;
     try {
-      descriptionHtml = transformExcerpt(renderContext, description, "desc");
+      descriptionHtml = transformExcerpt(site, description, "desc");
     } catch (TransformerException e) {
       throw new RuntimeException(e);
     }

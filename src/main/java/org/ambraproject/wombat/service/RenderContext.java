@@ -15,11 +15,6 @@ public class RenderContext {
   private final Site site;
   private final Optional<RequestedDoiVersion> articleId;
 
-  public RenderContext(Site site) {
-    this.site = Objects.requireNonNull(site);
-    this.articleId = Optional.empty();
-  }
-
   public RenderContext(Site site, RequestedDoiVersion articleId) {
     this.site = Objects.requireNonNull(site);
     this.articleId = Optional.of(articleId);

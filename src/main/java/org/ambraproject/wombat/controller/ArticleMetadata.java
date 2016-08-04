@@ -548,7 +548,7 @@ public class ArticleMetadata {
           // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
           String bodyXml = factory.xmlService.extractElement(stream, "body");
           try {
-            return factory.articleTransformService.transformExcerpt(renderContext, bodyXml, null);
+            return factory.articleTransformService.transformExcerpt(site, bodyXml, null);
           } catch (TransformerException e) {
             throw new RuntimeException(e);
           }

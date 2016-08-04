@@ -67,7 +67,7 @@ public class BrowseController extends WombatController {
     String issueDesc = (String) journalMetadata.getOrDefault("currentIssue",
         Collections.emptyMap()).getOrDefault("description", "");
     model.addAttribute("currentIssueDescription",
-        articleTransformService.transformImageDescription(new RenderContext(site), issueDesc));
+        articleTransformService.transformImageDescription(site, issueDesc));
     model.addAttribute("journal", journalMetadata);
     return site.getKey() + "/ftl/browse/volumes";
   }
@@ -99,9 +99,9 @@ public class BrowseController extends WombatController {
     model.addAttribute("issueImage", issueService.getIssueImage(site, imageArticleDoi));
 
     String issueDesc = (String) issueMeta.getOrDefault("description", "");
-    model.addAttribute("issueTitle", articleTransformService.transformImageDescription(new RenderContext(site),
+    model.addAttribute("issueTitle", articleTransformService.transformImageDescription(site,
         xmlService.extractElementFromFragment(issueDesc, "title")));
-    model.addAttribute("issueDescription", articleTransformService.transformImageDescription(new RenderContext(site),
+    model.addAttribute("issueDescription", articleTransformService.transformImageDescription(site,
         xmlService.removeElementFromFragment(issueDesc, "title")));
 
     List<Map<String, Object>> articleGroups = articleApi.requestObject(ARTICLE_TYPES_ADDRESS, List.class);

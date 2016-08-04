@@ -8,7 +8,6 @@ import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,11 +48,10 @@ public class FigurePageController extends WombatController {
     validateArticleVisibility(site, articleMetadata);
     model.addAttribute("article", articleMetadata);
 
-    RenderContext renderContext = new RenderContext(site, articleId);
     List<Map<String, Object>> figureMetadataList = (List<Map<String, Object>>) articleMetadata.get("figures");
     for (Map<String, Object> figureMetadata : figureMetadataList) {
       figureMetadata = DoiSchemeStripper.strip(figureMetadata);
-      transformFigureDescription(renderContext, figureMetadata);
+      transformFigureDescription(site, figureMetadata);
     }
 
     return site + "/ftl/article/figures";
@@ -82,8 +80,7 @@ public class FigurePageController extends WombatController {
     String parentArticleDoi = (String) parentArticle.get("doi");
     model.addAttribute("article", ImmutableMap.of("doi", parentArticleDoi));
 
-    RenderContext renderContext = new RenderContext(site, RequestedDoiVersion.of(parentArticleDoi));
-    transformFigureDescription(renderContext, figureMetadata);
+    transformFigureDescription(site, figureMetadata);
     model.addAttribute("figure", figureMetadata);
 
     return site + "/ftl/article/figure";
@@ -103,12 +100,12 @@ public class FigurePageController extends WombatController {
    * Apply a site's article transformation to a figure's {@code description} member and store the result in a new {@code
    * descriptionHtml} member.
    *
-   * @param renderContext the context for the transform which wraps the site object and optional context values
+   * @param site the context for the transform
    * @param figureMetadata the figure metadata object (per the service API's JSON response) to be read and added to
    */
-  private void transformFigureDescription(RenderContext renderContext, Map<String, Object> figureMetadata) {
+  private void transformFigureDescription(Site site, Map<String, Object> figureMetadata) {
     String description = (String) figureMetadata.get("description");
-    figureMetadata.put("descriptionHtml", articleTransformService.transformImageDescription(renderContext, description));
+    figureMetadata.put("descriptionHtml", articleTransformService.transformImageDescription(site, description));
   }
 
 }

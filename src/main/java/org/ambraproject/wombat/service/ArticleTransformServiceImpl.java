@@ -10,6 +10,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.xml.XMLSerializer;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.identity.ArticlePointer;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
@@ -156,14 +157,14 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   @Override
-  public void transformArticle(RenderContext renderContext, InputStream xml, OutputStream html)
+  public void transformArticle(Site site, ArticlePointer articleId, InputStream xml, OutputStream html)
       throws IOException, TransformerException {
-    transform(renderContext.getSite(), xml, html,
+    transform(site, xml, html,
         (XMLReader xmlReader, Theme theme, Transformer transformer) -> {
           // Add cited articles metadata for inclusion of DOI links in reference list
           boolean showsCitedArticles = (boolean) theme.getConfigMap("article").get("showsCitedArticles");
           if (showsCitedArticles) {
-            Map<?, ?> articleMetadata = articleService.requestArticleMetadata(renderContext.getArticleId());
+            Map<?, ?> articleMetadata = articleService.requestArticleMetadata(articleId);
             Object citedArticles = articleMetadata.get("citedArticles");
             JSONArray jsonArr = JSONArray.fromObject(citedArticles);
             String metadataXml = new XMLSerializer().write(jsonArr);

@@ -21,7 +21,6 @@ import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
-import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
@@ -145,9 +144,8 @@ public class ArticleController extends WombatController {
         .fillAmendments(model)
         .getArticlePointer();
 
-    String articleHtml = getArticleHtml(new RenderContext(site, articlePointer));
+    String articleHtml = getArticleHtml(site, articlePointer);
     model.addAttribute("articleText", articleHtml);
-
 
     return site + "/ftl/article/article";
   }
@@ -652,12 +650,12 @@ public class ArticleController extends WombatController {
    * @return String of the article HTML
    * @throws IOException
    */
-  private String getArticleHtml(final RenderContext renderContext) throws IOException {
-    return corpusContentApi.readManuscript(renderContext.getArticleId(), RemoteCacheSpace.ARTICLE_HTML,
+  private String getArticleHtml(Site site, ArticlePointer articleId) throws IOException {
+    return corpusContentApi.readManuscript(articleId, RemoteCacheSpace.ARTICLE_HTML,
         (InputStream stream) -> {
           StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
           try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
-            articleTransformService.transformArticle(renderContext, stream, outputStream);
+            articleTransformService.transformArticle(site, articleId, stream, outputStream);
           } catch (TransformerException e) {
             throw new RuntimeException(e);
           }

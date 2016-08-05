@@ -1,9 +1,6 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterators;
 import com.google.common.io.Closer;
 import net.sf.json.JSONArray;
 import net.sf.json.xml.XMLSerializer;
@@ -36,11 +33,9 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.SequenceInputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.OptionalInt;
@@ -243,36 +238,14 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   @Override
-  public void transformExcerpt(Site site, InputStream xmlExcerpt, OutputStream html, String enclosingTag)
-      throws IOException, TransformerException {
-    Objects.requireNonNull(site);
-    Objects.requireNonNull(xmlExcerpt);
-    Objects.requireNonNull(html);
-
-    InputStream streamToTransform;
-    if (Strings.isNullOrEmpty(enclosingTag)) {
-      streamToTransform = xmlExcerpt;
-    } else {
-      // Build a stream that contains the original stream surrounded by tags.
-      // To avoid dumping the original stream into memory, append two mini-streams.
-      InputStream prefix = IOUtils.toInputStream('<' + enclosingTag + '>', charset);
-      InputStream suffix = IOUtils.toInputStream("</" + enclosingTag + '>', charset);
-      List<InputStream> concatenation = ImmutableList.of(prefix, xmlExcerpt, suffix);
-      streamToTransform = new SequenceInputStream(Iterators.asEnumeration(concatenation.iterator()));
-    }
-
-    transform(site, streamToTransform, html, EMPTY_INIT);
-  }
-
-  @Override
-  public String transformExcerpt(Site site, String xmlExcerpt, String enclosingTag) throws TransformerException {
+  public String transformExcerpt(Site site, String xmlExcerpt) throws TransformerException {
     Objects.requireNonNull(site);
     Objects.requireNonNull(xmlExcerpt);
     StringWriter html = new StringWriter();
     OutputStream outputStream = new WriterOutputStream(html, charset);
     InputStream inputStream = IOUtils.toInputStream(xmlExcerpt, charset);
     try {
-      transformExcerpt(site, inputStream, outputStream, enclosingTag);
+      transform(site, inputStream, outputStream, EMPTY_INIT);
       outputStream.close(); // to flush (StringWriter doesn't require a finally block)
     } catch (IOException e) {
       throw new RuntimeException(e); // unexpected, since both streams are in memory
@@ -284,7 +257,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   public String transformImageDescription(Site site, String description) {
     String descriptionHtml;
     try {
-      descriptionHtml = transformExcerpt(site, description, "desc");
+      descriptionHtml = transformExcerpt(site, description);
     } catch (TransformerException e) {
       throw new RuntimeException(e);
     }

@@ -44,13 +44,15 @@ public class FigurePageController extends WombatController {
     ArticleMetadata articleMetadata = articleMetadataFactory.get(site, articleId)
         .validateVisibility();
     model.addAttribute("article", articleMetadata.getIngestionMetadata());
+    ArticlePointer articlePointer = articleMetadata.getArticlePointer();
 
     List<Map<String, ?>> figures = articleMetadata.getFigureView().stream()
         .map((Map<String, ?> figureMetadata) -> {
-          String figureDescription = transformFigureDescription(site, figureMetadata);
+          String description = (String) figureMetadata.get("description");
+          String descriptionHtml = articleTransformService.transformImageDescription(site, articlePointer, description);
           return ImmutableMap.<String, Object>builder()
               .putAll(figureMetadata)
-              .put("descriptionHtml", figureDescription)
+              .put("descriptionHtml", descriptionHtml)
               .build();
         })
         .collect(Collectors.toList());
@@ -79,7 +81,10 @@ public class FigurePageController extends WombatController {
         .filter((Map<String, ?> fig) -> fig.get("doi").equals(assetPointer.getAssetDoi()))
         .findAny().orElseThrow(RuntimeException::new);
     model.addAttribute("figure", figureMetadata);
-    model.addAttribute("descriptionHtml", transformFigureDescription(site, figureMetadata));
+
+    String description = (String) figureMetadata.get("description");
+    String descriptionHtml = articleTransformService.transformImageDescription(site, articlePointer, description);
+    model.addAttribute("descriptionHtml", descriptionHtml);
 
     return site + "/ftl/article/figure";
   }
@@ -90,18 +95,6 @@ public class FigurePageController extends WombatController {
   @RequestMapping(name = "lightbox", value = "/article/lightbox")
   public String renderLightbox(Model model, @SiteParam Site site) throws IOException {
     return site + "/ftl/article/articleLightbox";
-  }
-
-  /**
-   * Apply a site's article transformation to a figure's {@code description} member and store the result in a new {@code
-   * descriptionHtml} member.
-   *
-   * @param site           the context for the transform
-   * @param figureMetadata the figure metadata object (per the service API's JSON response) to be read and added to
-   */
-  private String transformFigureDescription(Site site, Map<String, ?> figureMetadata) {
-    String description = (String) figureMetadata.get("description");
-    return articleTransformService.transformImageDescription(site, description);
   }
 
 }

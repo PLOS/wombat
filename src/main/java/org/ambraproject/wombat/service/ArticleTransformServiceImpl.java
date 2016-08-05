@@ -109,15 +109,12 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
      * Set up a {@link Transformer} to render a particular piece of article content.
      *
      * @param xmlReader   an {@link XMLReader} instance to use
-     * @param theme       the theme under which the content will be rendered
      * @param transformer the {@code Transformer} object to modify
      * @throws IOException
      */
-    void initialize(XMLReader xmlReader, Theme theme, Transformer transformer) throws IOException;
+    void initialize(XMLReader xmlReader, Transformer transformer) throws IOException;
   }
 
-  private static final TransformerInitialization EMPTY_INIT = (xmlReader, theme, transformer) -> {
-  };
 
   /**
    * Build a new transformer and attach any required parameters for the given render context
@@ -147,7 +144,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       throw new RuntimeException(e);
     }
 
-    initialization.initialize(xmlReader, theme, transformer);
+    initialization.initialize(xmlReader, transformer);
 
     return transformer;
   }
@@ -155,9 +152,10 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   @Override
   public void transformArticle(Site site, ArticlePointer articleId, InputStream xml, OutputStream html)
       throws IOException, TransformerException {
+    boolean showsCitedArticles = (boolean) site.getTheme().getConfigMap("article").get("showsCitedArticles");
     transform(site, xml, html,
-        (XMLReader xmlReader, Theme theme, Transformer transformer) -> {
-          if ((boolean) theme.getConfigMap("article").get("showsCitedArticles")) {
+        (XMLReader xmlReader, Transformer transformer) -> {
+          if (showsCitedArticles) {
             setCitedArticles(articleId, xmlReader, transformer);
           }
 
@@ -246,14 +244,14 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    * @return the presentation HTML
    * @throws TransformerException if an error occurs when applying the transformation
    */
-  private String transformExcerpt(Site site, String xmlExcerpt) throws TransformerException {
+  private String transformExcerpt(Site site, String xmlExcerpt, TransformerInitialization initialization) throws TransformerException {
     Objects.requireNonNull(site);
     Objects.requireNonNull(xmlExcerpt);
     StringWriter html = new StringWriter();
     OutputStream outputStream = new WriterOutputStream(html, charset);
     InputStream inputStream = IOUtils.toInputStream(xmlExcerpt, charset);
     try {
-      transform(site, inputStream, outputStream, EMPTY_INIT);
+      transform(site, inputStream, outputStream, initialization);
       outputStream.close(); // to flush (StringWriter doesn't require a finally block)
     } catch (IOException e) {
       throw new RuntimeException(e); // unexpected, since both streams are in memory
@@ -262,15 +260,17 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   @Override
-  public String transformAmendmentBody(Site site, String xmlExcerpt) throws TransformerException {
-    return transformExcerpt(site, xmlExcerpt);
+  public String transformAmendmentBody(Site site, ArticlePointer amendmentId, String xmlExcerpt) throws TransformerException {
+    return transformExcerpt(site, xmlExcerpt,
+        (xmlReader, transformer) -> setVersionLink(amendmentId, transformer));
   }
 
   @Override
-  public String transformImageDescription(Site site, String description) {
+  public String transformImageDescription(Site site, ArticlePointer parentArticleId, String description) {
     String descriptionHtml;
     try {
-      descriptionHtml = transformExcerpt(site, description);
+      descriptionHtml = transformExcerpt(site, description,
+          (xmlReader, transformer) -> setVersionLink(parentArticleId, transformer));
     } catch (TransformerException e) {
       throw new RuntimeException(e);
     }

@@ -24,7 +24,7 @@ public interface ArticleTransformService {
   public abstract void transformArticle(Site site, ArticlePointer articleId, InputStream xml, OutputStream html)
       throws IOException, TransformerException;
 
-  public abstract String transformAmendmentBody(Site site, String xmlExcerpt) throws TransformerException;
+  public abstract String transformAmendmentBody(Site site, ArticlePointer amendmentId, String xmlExcerpt) throws TransformerException;
 
-  public abstract String transformImageDescription(Site site, String description);
+  public abstract String transformImageDescription(Site site, ArticlePointer parentArticleId, String description);
 }

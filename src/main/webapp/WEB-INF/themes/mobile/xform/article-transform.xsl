@@ -1301,7 +1301,7 @@
           <xsl:value-of select="@xlink:href"/>
         </xsl:variable>
         <xsl:attribute name="src">
-          <xsl:value-of select="concat('article/file?type=graphic&amp;id=', $graphicDOI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
+          <xsl:value-of select="concat('article/file?type=thumbnail&amp;id=', $graphicDOI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">

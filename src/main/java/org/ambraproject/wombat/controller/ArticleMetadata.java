@@ -91,7 +91,10 @@ public class ArticleMetadata {
     private XmlService xmlService;
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
-      ArticlePointer articlePointer = articleResolutionService.toIngestion(id);
+      return get(site,id, articleResolutionService.toIngestion(id));
+    }
+
+    public ArticleMetadata get(Site site, RequestedDoiVersion id, ArticlePointer articlePointer) throws IOException {
       Map<String, Object> ingestionMetadata = (Map<String, Object>) articleApi.requestObject(
           articlePointer.asApiAddress().build(), Map.class);
       Map<String, ?> itemTable = articleService.getItemTable(articlePointer);

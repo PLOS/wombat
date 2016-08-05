@@ -55,6 +55,16 @@ public class RequestedDoiVersion {
     return ingestionNumber;
   }
 
+  /**
+   * Construct another {@code RequestedDoiVersion} with a different DOI, but the same version number as this one.
+   *
+   * @param doi the new DOI
+   * @return the new {@code RequestedDoiVersion}
+   */
+  public RequestedDoiVersion forDoi(String doi) {
+    return new RequestedDoiVersion(doi, revisionNumber, ingestionNumber);
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

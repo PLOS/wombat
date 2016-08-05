@@ -151,7 +151,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
   @Override
   public void transformArticle(Site site, ArticlePointer articleId, InputStream xml, OutputStream html)
-      throws IOException, TransformerException {
+      throws IOException {
     boolean showsCitedArticles = (boolean) site.getTheme().getConfigMap("article").get("showsCitedArticles");
     transform(site, xml, html,
         (XMLReader xmlReader, Transformer transformer) -> {
@@ -191,7 +191,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   private void transform(Site site, InputStream xml, OutputStream html, TransformerInitialization initialization)
-      throws IOException, TransformerException {
+      throws IOException {
     Objects.requireNonNull(site);
     Objects.requireNonNull(xml);
     Objects.requireNonNull(html);
@@ -203,7 +203,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       SAXParser sp = spf.newSAXParser();
       xmlr = sp.getXMLReader();
     } catch (ParserConfigurationException | SAXException e) {
-      throw new TransformerException(e);
+      throw new RuntimeException(e);
     }
 
     /*
@@ -230,7 +230,11 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     // NOTE: the XMLReader is passed here for use in creating any required secondary SAX sources
     Transformer transformer = buildTransformer(site, xmlr, initialization);
     SAXSource saxSource = new SAXSource(xmlr, new InputSource(xml));
-    transformer.transform(saxSource, new StreamResult(html));
+    try {
+      transformer.transform(saxSource, new StreamResult(html));
+    } catch (TransformerException e) {
+      throw new RuntimeException(e);
+    }
 
     log.debug("Finished XML transformation");
   }
@@ -244,7 +248,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    * @return the presentation HTML
    * @throws TransformerException if an error occurs when applying the transformation
    */
-  private String transformExcerpt(Site site, String xmlExcerpt, TransformerInitialization initialization) throws TransformerException {
+  private String transformExcerpt(Site site, String xmlExcerpt, TransformerInitialization initialization) {
     Objects.requireNonNull(site);
     Objects.requireNonNull(xmlExcerpt);
     StringWriter html = new StringWriter();
@@ -260,20 +264,15 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   @Override
-  public String transformAmendmentBody(Site site, ArticlePointer amendmentId, String xmlExcerpt) throws TransformerException {
+  public String transformAmendmentBody(Site site, ArticlePointer amendmentId, String xmlExcerpt) {
     return transformExcerpt(site, xmlExcerpt,
         (xmlReader, transformer) -> setVersionLink(amendmentId, transformer));
   }
 
   @Override
   public String transformImageDescription(Site site, ArticlePointer parentArticleId, String description) {
-    String descriptionHtml;
-    try {
-      descriptionHtml = transformExcerpt(site, description,
-          (xmlReader, transformer) -> setVersionLink(parentArticleId, transformer));
-    } catch (TransformerException e) {
-      throw new RuntimeException(e);
-    }
+    String descriptionHtml = transformExcerpt(site, description,
+        (xmlReader, transformer) -> setVersionLink(parentArticleId, transformer));
     return kludgeRelativeImageLinks(descriptionHtml);
   }
 

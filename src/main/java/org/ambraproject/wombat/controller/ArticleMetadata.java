@@ -31,7 +31,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
@@ -551,11 +550,7 @@ public class ArticleMetadata {
         (InputStream stream) -> {
           // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
           String bodyXml = factory.xmlService.extractElement(stream, "body");
-          try {
-            return factory.articleTransformService.transformAmendmentBody(site, amendmentId, bodyXml);
-          } catch (TransformerException e) {
-            throw new RuntimeException(e);
-          }
+          return factory.articleTransformService.transformAmendmentBody(site, amendmentId, bodyXml);
         });
   }
 

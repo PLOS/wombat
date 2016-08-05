@@ -22,9 +22,9 @@ public interface ArticleTransformService {
    * @throws TransformerException if an error occurs when applying the transformation
    */
   public abstract void transformArticle(Site site, ArticlePointer articleId, InputStream xml, OutputStream html)
-      throws IOException, TransformerException;
+      throws IOException;
 
-  public abstract String transformAmendmentBody(Site site, ArticlePointer amendmentId, String xmlExcerpt) throws TransformerException;
+  public abstract String transformAmendmentBody(Site site, ArticlePointer amendmentId, String xmlExcerpt);
 
   public abstract String transformImageDescription(Site site, ArticlePointer parentArticleId, String description);
 }

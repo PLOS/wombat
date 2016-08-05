@@ -66,7 +66,6 @@ import javax.mail.Multipart;
 import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -656,8 +655,6 @@ public class ArticleController extends WombatController {
           StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
           try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
             articleTransformService.transformArticle(site, articleId, stream, outputStream);
-          } catch (TransformerException e) {
-            throw new RuntimeException(e);
           }
           return articleHtml.toString();
         });

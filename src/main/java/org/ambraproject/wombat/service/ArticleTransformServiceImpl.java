@@ -237,8 +237,16 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     log.debug("Finished XML transformation");
   }
 
-  @Override
-  public String transformExcerpt(Site site, String xmlExcerpt) throws TransformerException {
+  /**
+   * Enclose an excerpt from article XML in a tag pair, then transform the created element into presentation HTML using
+   * the XSL transformation specified for a site.
+   *
+   * @param site       the site on which the excerpt will be rendered
+   * @param xmlExcerpt the XML code to transform
+   * @return the presentation HTML
+   * @throws TransformerException if an error occurs when applying the transformation
+   */
+  private String transformExcerpt(Site site, String xmlExcerpt) throws TransformerException {
     Objects.requireNonNull(site);
     Objects.requireNonNull(xmlExcerpt);
     StringWriter html = new StringWriter();
@@ -251,6 +259,11 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       throw new RuntimeException(e); // unexpected, since both streams are in memory
     }
     return html.toString();
+  }
+
+  @Override
+  public String transformAmendmentBody(Site site, String xmlExcerpt) throws TransformerException {
+    return transformExcerpt(site, xmlExcerpt);
   }
 
   @Override

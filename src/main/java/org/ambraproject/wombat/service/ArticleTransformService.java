@@ -24,17 +24,7 @@ public interface ArticleTransformService {
   public abstract void transformArticle(Site site, ArticlePointer articleId, InputStream xml, OutputStream html)
       throws IOException, TransformerException;
 
-  /**
-   * Enclose an excerpt from article XML in a tag pair, then transform the created element into presentation HTML using
-   * the XSL transformation specified for a site.
-   *
-   * @param site       the site on which the excerpt will be rendered
-   * @param xmlExcerpt the XML code to transform
-   * @return the presentation HTML
-   * @throws IOException          if either stream cannot be read
-   * @throws TransformerException if an error occurs when applying the transformation
-   */
-  public abstract String transformExcerpt(Site site, String xmlExcerpt) throws TransformerException;
+  public abstract String transformAmendmentBody(Site site, String xmlExcerpt) throws TransformerException;
 
   public abstract String transformImageDescription(Site site, String description);
 }

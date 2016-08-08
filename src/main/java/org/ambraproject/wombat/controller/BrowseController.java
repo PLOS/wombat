@@ -15,13 +15,13 @@ package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.IssueService;
-import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.slf4j.Logger;
@@ -66,8 +66,9 @@ public class BrowseController extends WombatController {
         Map.class);
     String issueDesc = (String) journalMetadata.getOrDefault("currentIssue",
         Collections.emptyMap()).getOrDefault("description", "");
+    ArticlePointer issueImageArticleId = null; // TODO
     model.addAttribute("currentIssueDescription",
-        articleTransformService.transformImageDescription(new RenderContext(site), issueDesc));
+        articleTransformService.transformImageDescription(site, issueImageArticleId, issueDesc));
     model.addAttribute("journal", journalMetadata);
     return site.getKey() + "/ftl/browse/volumes";
   }
@@ -99,9 +100,10 @@ public class BrowseController extends WombatController {
     model.addAttribute("issueImage", issueService.getIssueImage(site, imageArticleDoi));
 
     String issueDesc = (String) issueMeta.getOrDefault("description", "");
-    model.addAttribute("issueTitle", articleTransformService.transformImageDescription(new RenderContext(site),
+    ArticlePointer issueImageArticleId = null; // TODO
+    model.addAttribute("issueTitle", articleTransformService.transformImageDescription(site, issueImageArticleId,
         xmlService.extractElementFromFragment(issueDesc, "title")));
-    model.addAttribute("issueDescription", articleTransformService.transformImageDescription(new RenderContext(site),
+    model.addAttribute("issueDescription", articleTransformService.transformImageDescription(site, issueImageArticleId,
         xmlService.removeElementFromFragment(issueDesc, "title")));
 
     List<Map<String, Object>> articleGroups = articleApi.requestObject(ARTICLE_TYPES_ADDRESS, List.class);

@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
@@ -20,7 +21,6 @@ import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
-import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
@@ -66,7 +66,6 @@ import javax.mail.Multipart;
 import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -138,16 +137,14 @@ public class ArticleController extends WombatController {
                               @SiteParam Site site,
                               RequestedDoiVersion articleId)
       throws IOException {
-    articleMetadataFactory.get(site, articleId)
+    ArticlePointer articlePointer = articleMetadataFactory.get(site, articleId)
         .validateVisibility()
         .populate(request, model)
-        .fillAmendments(model);
+        .fillAmendments(model)
+        .getArticlePointer();
 
-    RenderContext renderContext = new RenderContext(site, articleId);
-
-    String articleHtml = getArticleHtml(renderContext);
+    String articleHtml = getArticleHtml(site, articlePointer);
     model.addAttribute("articleText", articleHtml);
-
 
     return site + "/ftl/article/article";
   }
@@ -652,14 +649,12 @@ public class ArticleController extends WombatController {
    * @return String of the article HTML
    * @throws IOException
    */
-  private String getArticleHtml(final RenderContext renderContext) throws IOException {
-    return corpusContentApi.readManuscript(renderContext, RemoteCacheSpace.ARTICLE_HTML,
+  private String getArticleHtml(Site site, ArticlePointer articleId) throws IOException {
+    return corpusContentApi.readManuscript(articleId, RemoteCacheSpace.ARTICLE_HTML,
         (InputStream stream) -> {
           StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
           try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
-            articleTransformService.transform(renderContext, stream, outputStream);
-          } catch (TransformerException e) {
-            throw new RuntimeException(e);
+            articleTransformService.transformArticle(site, articleId, stream, outputStream);
           }
           return articleHtml.toString();
         });

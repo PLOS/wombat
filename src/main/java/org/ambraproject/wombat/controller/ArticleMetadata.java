@@ -21,7 +21,6 @@ import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
-import org.ambraproject.wombat.service.RenderContext;
 import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
@@ -32,7 +31,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
@@ -92,7 +90,10 @@ public class ArticleMetadata {
     private XmlService xmlService;
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
-      ArticlePointer articlePointer = articleResolutionService.toIngestion(id);
+      return get(site,id, articleResolutionService.toIngestion(id));
+    }
+
+    public ArticleMetadata get(Site site, RequestedDoiVersion id, ArticlePointer articlePointer) throws IOException {
       Map<String, Object> ingestionMetadata = (Map<String, Object>) articleApi.requestObject(
           articlePointer.asApiAddress().build(), Map.class);
       Map<String, ?> itemTable = articleService.getItemTable(articlePointer);
@@ -102,6 +103,10 @@ public class ArticleMetadata {
 
       return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata, itemTable, relationships);
     }
+  }
+
+  public ArticlePointer getArticlePointer() {
+    return articlePointer;
   }
 
   public Map<String, ?> getIngestionMetadata() {
@@ -475,11 +480,9 @@ public class ArticleMetadata {
 
     // Display the body only on non-correction amendments. Would be better if this were configurable per theme.
     if (amendmentType != AmendmentType.CORRECTION) {
-      RenderContext renderContext = new RenderContext(site,
-          RequestedDoiVersion.ofIngestion(amendmentId.getDoi(), amendmentId.getIngestionNumber()));
       String body;
       try {
-        body = getAmendmentBody(renderContext);
+        body = getAmendmentBody(amendmentId);
       } catch (IOException e) {
         throw new RuntimeException("Could not get body for amendment: " + doi, e);
       }
@@ -542,16 +545,12 @@ public class ArticleMetadata {
    *
    * @return the body of the amendment article, transformed into HTML for display in a notice on the amended article
    */
-  private String getAmendmentBody(final RenderContext renderContext) throws IOException {
-    return factory.corpusContentApi.readManuscript(renderContext, RemoteCacheSpace.AMENDMENT_BODY,
+  private String getAmendmentBody(ArticlePointer amendmentId) throws IOException {
+    return factory.corpusContentApi.readManuscript(amendmentId, RemoteCacheSpace.AMENDMENT_BODY,
         (InputStream stream) -> {
           // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
           String bodyXml = factory.xmlService.extractElement(stream, "body");
-          try {
-            return factory.articleTransformService.transformExcerpt(renderContext, bodyXml, null);
-          } catch (TransformerException e) {
-            throw new RuntimeException(e);
-          }
+          return factory.articleTransformService.transformAmendmentBody(site, amendmentId, bodyXml);
         });
   }
 

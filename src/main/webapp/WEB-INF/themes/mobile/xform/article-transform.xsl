@@ -30,6 +30,9 @@
   <!-- Ambra-specific global param (pub config, passed into stylesheet from elsewhere in the pipeline) -->
   <xsl:param name="pubAppContext"/>
 
+  <xsl:param name="versionType"/>
+  <xsl:param name="versionNumber"/>
+
   <!-- ============================================================= -->
   <!--  ROOT TEMPLATE - HANDLES HTML FRAMEWORK                       -->
   <!-- ============================================================= -->
@@ -1157,12 +1160,12 @@
         </xsl:attribute>
         <a class="figure-link">
           <xsl:attribute name="href">
-            <xsl:value-of select="concat('article/figure?id=', $imageURI)"/>
+            <xsl:value-of select="concat('article/figure?id=', $imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
           </xsl:attribute>
           <span class="figure-expand">Expand</span>
           <img alt="thumbnail" class="figure-image">
             <xsl:attribute name="src">
-              <xsl:value-of select="concat('article/file?type=medium&amp;id=', $imageURI)"/>
+              <xsl:value-of select="concat('article/file?type=medium&amp;id=', $imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
             </xsl:attribute>
           </img>
         </a>
@@ -1185,7 +1188,7 @@
           </div>
           <a>
             <xsl:attribute name="href">
-              <xsl:value-of select="concat('article/figure?id=', $imageURI)"/>
+              <xsl:value-of select="concat('article/figure?id=', $imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
             </xsl:attribute>
             More »
           </a>
@@ -1298,7 +1301,7 @@
           <xsl:value-of select="@xlink:href"/>
         </xsl:variable>
         <xsl:attribute name="src">
-          <xsl:value-of select="concat('article/file?type=graphic&amp;id=', $graphicDOI)"/>
+          <xsl:value-of select="concat('article/file?type=thumbnail&amp;id=', $graphicDOI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">
@@ -2022,7 +2025,7 @@
       <strong>
         <xsl:element name="a">
           <xsl:attribute name="href">
-            <xsl:value-of select="concat('article/file?type=supplementary&amp;id=', $objURI)"/>
+            <xsl:value-of select="concat('article/file?type=supplementary&amp;id=', $objURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
           </xsl:attribute>
           <xsl:apply-templates select="label"/>
         </xsl:element>

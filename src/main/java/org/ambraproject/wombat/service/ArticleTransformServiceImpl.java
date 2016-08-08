@@ -104,7 +104,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
 
   @FunctionalInterface
-  private static interface TransformerInitialization {
+  private static interface TransformerInitializer {
     /**
      * Set up a {@link Transformer} to render a particular piece of article content.
      *
@@ -129,7 +129,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    * @return the transformer
    * @throws IOException
    */
-  private Transformer buildTransformer(Site site, XMLReader xmlReader, TransformerInitialization initialization)
+  private Transformer buildTransformer(Site site, XMLReader xmlReader, TransformerInitializer initialization)
       throws IOException {
     Theme theme = site.getTheme();
     log.debug("Building transformer for: {}", site);
@@ -190,7 +190,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
     transformer.setParameter("versionNumber", parameterValue);
   }
 
-  private void transform(Site site, InputStream xml, OutputStream html, TransformerInitialization initialization)
+  private void transform(Site site, InputStream xml, OutputStream html, TransformerInitializer initialization)
       throws IOException {
     Objects.requireNonNull(site);
     Objects.requireNonNull(xml);
@@ -248,7 +248,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    * @return the presentation HTML
    * @throws TransformerException if an error occurs when applying the transformation
    */
-  private String transformExcerpt(Site site, String xmlExcerpt, TransformerInitialization initialization) {
+  private String transformExcerpt(Site site, String xmlExcerpt, TransformerInitializer initialization) {
     Objects.requireNonNull(site);
     Objects.requireNonNull(xmlExcerpt);
     StringWriter html = new StringWriter();

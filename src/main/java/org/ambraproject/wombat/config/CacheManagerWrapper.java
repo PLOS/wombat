@@ -37,15 +37,16 @@ class CacheManagerWrapper implements ServiceCacheSet {
 
   static final Duration DEFAULT_TTL = new Duration(TimeUnit.HOURS, 1);
 
-  // TODO: Extract into configuration
-  private static Properties getCacheManagerProperties() {
+  private static Properties getCacheManagerProperties(RuntimeConfiguration configuration) {
+    RuntimeConfiguration.CacheConfiguration cacheConfiguration = configuration.getCacheConfiguration();
     Properties properties = new Properties();
-    properties.setProperty("maxBytesLocalHeap", "2g");
+    properties.setProperty("maxBytesLocalHeap", cacheConfiguration.getMaxBytesLocalHeap());
     return properties;
   }
 
-  CacheManagerWrapper() {
-    manager = Caching.getCachingProvider().getCacheManager(null, null, getCacheManagerProperties());
+  CacheManagerWrapper(RuntimeConfiguration configuration) {
+    Properties properties = getCacheManagerProperties(configuration);
+    manager = Caching.getCachingProvider().getCacheManager(null, null, properties);
 
     constructCache(manager, ASSET_FILENAME_CACHE, String.class, String.class, config -> {
       config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 15)));

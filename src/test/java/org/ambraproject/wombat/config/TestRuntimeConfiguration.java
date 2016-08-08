@@ -94,18 +94,8 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public CacheConfiguration getCacheConfiguration() {
     return new CacheConfiguration() {
       @Override
-      public String getMemcachedHost() {
+      public String getMaxBytesLocalHeap() {
         return null;
-      }
-
-      @Override
-      public int getMemcachedPort() {
-        return -1;
-      }
-
-      @Override
-      public String getCacheAppPrefix() {
-        return "testWombat";
       }
     };
   }

@@ -33,20 +33,9 @@ public interface RuntimeConfiguration {
 
   interface CacheConfiguration {
     /**
-     * @return the memcached host, or null if it is not present in the config
+     * @return the value to pass to Ehcache to set the size of its local heap
      */
-    String getMemcachedHost();
-
-    /**
-     * @return the memcached port, or -1 if it is not present in the config
-     */
-    int getMemcachedPort();
-
-    /**
-     * @return the cacheAppPrefix value, or null if it is not defined in the config.  This should be a String that is
-     * shared by all wombat app servers, defining a namespace for them.
-     */
-    String getCacheAppPrefix();
+    String getMaxBytesLocalHeap();
   }
 
   CacheConfiguration getCacheConfiguration();

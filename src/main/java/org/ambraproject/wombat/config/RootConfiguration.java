@@ -82,8 +82,8 @@ public class RootConfiguration {
   }
 
   @Bean
-  public ServiceCacheSet serviceCacheSet() throws IOException {
-    return new CacheManagerWrapper();
+  public ServiceCacheSet serviceCacheSet(RuntimeConfiguration configuration) throws IOException {
+    return new CacheManagerWrapper(configuration);
   }
 
   @Bean

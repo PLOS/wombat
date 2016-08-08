@@ -23,7 +23,7 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.IssueService;
-import org.ambraproject.wombat.service.XmlService;
+import org.ambraproject.wombat.service.XmlUtil;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,8 +56,6 @@ public class BrowseController extends WombatController {
   private ArticleTransformService articleTransformService;
   @Autowired
   private ArticleResolutionService articleResolutionService;
-  @Autowired
-  private XmlService xmlService;
   @Autowired
   private IssueService issueService;
 
@@ -108,9 +106,9 @@ public class BrowseController extends WombatController {
     String issueDesc = (String) imageArticleMetadata.get("description");
 
     model.addAttribute("issueTitle", articleTransformService.transformImageDescription(site, issueImageArticleId,
-        xmlService.extractElementFromFragment(issueDesc, "title")));
+        XmlUtil.extractElement(issueDesc, "title")));
     model.addAttribute("issueDescription", articleTransformService.transformImageDescription(site, issueImageArticleId,
-        xmlService.removeElementFromFragment(issueDesc, "title")));
+        XmlUtil.removeElement(issueDesc, "title")));
 
     List<Map<String, Object>> articleGroups = articleApi.requestObject(ARTICLE_TYPES_ADDRESS, List.class);
 

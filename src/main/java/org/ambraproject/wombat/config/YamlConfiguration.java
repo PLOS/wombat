@@ -97,20 +97,12 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   private final CacheConfiguration cacheConfiguration = new CacheConfiguration() {
-    @Override
-    public String getMemcachedHost() {
-      return (input.cache == null) ? null : input.cache.memcachedHost;
-    }
+    private static final String DEFAULT_MAX_BYTES_LOCAL_HEAP = "2g";
 
     @Override
-    public int getMemcachedPort() {
-      return (input.cache == null || input.cache.memcachedPort == null) ? -1
-          : input.cache.memcachedPort;
-    }
-
-    @Override
-    public String getCacheAppPrefix() {
-      return (input.cache == null) ? null : input.cache.cacheAppPrefix;
+    public String getMaxBytesLocalHeap() {
+      return (input.cache == null || Strings.isNullOrEmpty(input.cache.maxBytesLocalHeap)) ? DEFAULT_MAX_BYTES_LOCAL_HEAP
+          : input.cache.maxBytesLocalHeap;
     }
   };
 
@@ -148,7 +140,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     }
 
     @Override
-    public String getLogoutUrl()  {
+    public String getLogoutUrl() {
       return (input.cas == null) ? null : input.cas.logoutUrl;
     }
   };
@@ -178,14 +170,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
         new URL(input.solrServer);
       } catch (MalformedURLException e) {
         throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
-      }
-    }
-    if (input.cache != null) {
-      if (!Strings.isNullOrEmpty(input.cache.memcachedHost) && input.cache.memcachedPort == null) {
-        throw new RuntimeConfigurationException("No memcachedPort specified");
-      }
-      if (!Strings.isNullOrEmpty(input.cache.memcachedHost) && Strings.isNullOrEmpty(input.cache.cacheAppPrefix)) {
-        throw new RuntimeConfigurationException("If memcachedHost is specified, cacheAppPrefix must be as well");
       }
     }
   }
@@ -320,32 +304,14 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   public static class CacheConfigurationInput {
-    private String memcachedHost;
-    private Integer memcachedPort;
-    private String cacheAppPrefix;
+    private String maxBytesLocalHeap;
 
     /**
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setMemcachedHost(String memcachedHost) {
-      this.memcachedHost = memcachedHost;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setMemcachedPort(Integer memcachedPort) {
-      this.memcachedPort = memcachedPort;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setCacheAppPrefix(String cacheAppPrefix) {
-      this.cacheAppPrefix = cacheAppPrefix;
+    public void setMaxBytesLocalHeap(String maxBytesLocalHeap) {
+      this.maxBytesLocalHeap = maxBytesLocalHeap;
     }
   }
 

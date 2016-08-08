@@ -18,6 +18,7 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -53,6 +54,8 @@ public class BrowseController extends WombatController {
   private ArticleService articleService;
   @Autowired
   private ArticleTransformService articleTransformService;
+  @Autowired
+  private ArticleResolutionService articleResolutionService;
   @Autowired
   private XmlService xmlService;
   @Autowired
@@ -95,12 +98,15 @@ public class BrowseController extends WombatController {
     }
     model.addAttribute("issue", issueMeta);
 
-    String imageArticleDoi = (String) ((Map<String, ?>) issueMeta.get("imageArticle")).get("doi");
+    String imageArticleDoi = (String) issueMeta.get("imageArticleDoi");
     model.addAttribute("issueImageArticle", imageArticleDoi);
     model.addAttribute("issueImage", issueService.getIssueImage(site, imageArticleDoi));
 
-    String issueDesc = (String) issueMeta.getOrDefault("description", "");
-    ArticlePointer issueImageArticleId = null; // TODO
+    ArticlePointer issueImageArticleId =
+        articleResolutionService.toIngestion(RequestedDoiVersion.of(imageArticleDoi));
+    Map<String, ?> imageArticleMetadata = articleService.requestArticleMetadata(issueImageArticleId);
+    String issueDesc = (String) imageArticleMetadata.get("description");
+
     model.addAttribute("issueTitle", articleTransformService.transformImageDescription(site, issueImageArticleId,
         xmlService.extractElementFromFragment(issueDesc, "title")));
     model.addAttribute("issueDescription", articleTransformService.transformImageDescription(site, issueImageArticleId,

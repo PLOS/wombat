@@ -18,6 +18,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.io.StringWriter;
 
 public class XmlUtil {
@@ -40,7 +41,8 @@ public class XmlUtil {
   }
 
   public static String extractElement(String xml, String tagName) throws IOException {
-    return createXmlString(extractElement(createXmlDocument(new InputSource(xml)), tagName));
+    InputSource xmlSource = new InputSource(new StringReader(xml));
+    return createXmlString(extractElement(createXmlDocument(xmlSource), tagName));
   }
 
   public static String extractElement(InputStream xmlStream, String tagName) throws IOException {
@@ -52,7 +54,8 @@ public class XmlUtil {
   }
 
   public static String removeElement(String xml, String tagName) throws IOException {
-    return createXmlString(removeElement(createXmlDocument(new InputSource(xml)), tagName));
+    InputSource xmlSource = new InputSource(new StringReader(xml));
+    return createXmlString(removeElement(createXmlDocument(xmlSource), tagName));
   }
 
   public static String removeElement(InputStream xmlStream, String tagName) throws IOException {

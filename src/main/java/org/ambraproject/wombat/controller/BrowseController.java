@@ -73,7 +73,7 @@ public class BrowseController extends WombatController {
 
     ApiAddress readIssueUrl = (issueId == null)
         ? ApiAddress.builder("journals").addToken(site.getJournalKey()).addParameter("currentIssue").build()
-        : ApiAddress.builder("issues").addToken(issueId).build();
+        : ApiAddress.builder("issues").embedDoi(issueId).build();
     Map<String, Object> issueMetadata = getIssueMetadata(readIssueUrl);
     model.addAttribute("issue", issueMetadata);
 

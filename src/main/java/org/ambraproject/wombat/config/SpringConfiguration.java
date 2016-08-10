@@ -77,8 +77,6 @@ import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.CommentValidationServiceImpl;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.FreemarkerMailServiceImpl;
-import org.ambraproject.wombat.service.IssueService;
-import org.ambraproject.wombat.service.IssueServiceImpl;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.PowerPointServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
@@ -357,11 +355,6 @@ public class SpringConfiguration {
   @Bean
   public CommentService commentService() {
     return new CommentServiceImpl();
-  }
-
-  @Bean
-  public IssueService issueService() {
-    return new IssueServiceImpl();
   }
 
   @Bean

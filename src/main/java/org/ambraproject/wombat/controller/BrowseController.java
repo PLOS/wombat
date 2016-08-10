@@ -18,11 +18,9 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
-import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.IssueService;
 import org.ambraproject.wombat.service.XmlUtil;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.slf4j.Logger;
@@ -35,7 +33,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -55,22 +52,14 @@ public class BrowseController extends WombatController {
   @Autowired
   private ArticleTransformService articleTransformService;
   @Autowired
-  private ArticleResolutionService articleResolutionService;
-  @Autowired
-  private IssueService issueService;
-
+  private ArticleMetadata.Factory articleMetadataFactory;
 
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
-    Map<String, Map<String, Object>> journalMetadata = articleApi.requestObject(
-        ApiAddress.builder("journals").addToken(site.getJournalKey()).build(),
-        Map.class);
-    String issueDesc = (String) journalMetadata.getOrDefault("currentIssue",
-        Collections.emptyMap()).getOrDefault("description", "");
-    ArticlePointer issueImageArticleId = null; // TODO
-    model.addAttribute("currentIssueDescription",
-        articleTransformService.transformImageDescription(site, issueImageArticleId, issueDesc));
-    model.addAttribute("journal", journalMetadata);
+    Map<String, Object> journalMetadata = modelJournalMetadata(model, site);
+    String imageArticleDoi = (String) ((Map) ((Map) journalMetadata.get("currentIssue")).get("imageArticle")).get("doi");
+    transformIssueImageMetadata(model, site, imageArticleDoi);
+
     return site.getKey() + "/ftl/browse/volumes";
   }
 
@@ -80,41 +69,58 @@ public class BrowseController extends WombatController {
   public String browseIssue(Model model, @SiteParam Site site,
                             @RequestParam(value = "id", required = false) String issueId) throws IOException {
 
+    modelJournalMetadata(model, site);
+
+    ApiAddress readIssueUrl = (issueId == null)
+        ? ApiAddress.builder("journals").addToken(site.getJournalKey()).addParameter("currentIssue").build()
+        : ApiAddress.builder("issues").addToken(issueId).build();
+    Map<String, Object> issueMetadata = getIssueMetadata(readIssueUrl);
+    model.addAttribute("issue", issueMetadata);
+
+    String imageArticleDoi = (String) ((Map) issueMetadata.get("imageArticle")).get("doi");
+    transformIssueImageMetadata(model, site, imageArticleDoi);
+
+    modelArticleGroups(model, site, issueMetadata);
+
+    return site.getKey() + "/ftl/browse/issues";
+  }
+
+  private Map<String, Object> modelJournalMetadata(Model model, @SiteParam Site site) throws IOException {
     Map<String, Object> journalMetadata = articleApi.requestObject(
         ApiAddress.builder("journals").addToken(site.getJournalKey()).build(),
         Map.class);
     model.addAttribute("journal", journalMetadata);
+    return journalMetadata;
+  }
 
-    ApiAddress issueMetaUrl = (issueId == null)
-        ? ApiAddress.builder("journals").addToken(site.getJournalKey()).addParameter("currentIssue").build()
-        : ApiAddress.builder("issues").addToken(issueId).build();
+  private Map<String, Object> getIssueMetadata(ApiAddress issueMetaUrl) throws IOException {
     Map<String, Object> issueMeta;
     try {
       issueMeta = articleApi.requestObject(issueMetaUrl, Map.class);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }
-    model.addAttribute("issue", issueMeta);
+    return issueMeta;
+  }
 
-    String imageArticleDoi = (String) issueMeta.get("imageArticleDoi");
-    model.addAttribute("issueImageArticle", imageArticleDoi);
-    model.addAttribute("issueImage", issueService.getIssueImage(site, imageArticleDoi));
-
-    ArticlePointer issueImageArticleId =
-        articleResolutionService.toIngestion(RequestedDoiVersion.of(imageArticleDoi));
-    Map<String, ?> imageArticleMetadata = articleService.requestArticleMetadata(issueImageArticleId);
-    String issueDesc = (String) imageArticleMetadata.get("description");
+  private void transformIssueImageMetadata(Model model, Site site, String imageArticleDoi) throws IOException {
+    RequestedDoiVersion requestedDoiVersion = RequestedDoiVersion.of(imageArticleDoi);
+    ArticleMetadata imageArticleMetadata = articleMetadataFactory.get(site, requestedDoiVersion);
+    ArticlePointer issueImageArticleId = imageArticleMetadata.getArticlePointer();
+    String issueDesc = (String) imageArticleMetadata.getIngestionMetadata().get("description");
 
     model.addAttribute("issueTitle", articleTransformService.transformImageDescription(site, issueImageArticleId,
         XmlUtil.extractElement(issueDesc, "title")));
     model.addAttribute("issueDescription", articleTransformService.transformImageDescription(site, issueImageArticleId,
         XmlUtil.removeElement(issueDesc, "title")));
+  }
 
+  private void modelArticleGroups(Model model, Site site, Map<String, Object> issueMetadata) throws IOException {
     List<Map<String, Object>> articleGroups = articleApi.requestObject(ARTICLE_TYPES_ADDRESS, List.class);
 
     articleGroups.stream().forEach(ag -> ag.put("articles", new ArrayList<Map<?, ?>>()));
 
-    for (String articleDoi : (List<String>) issueMeta.get("articleOrder")) {
+    for (String articleDoi : (List<String>) issueMetadata.get("articleOrder")) {
       RequestedDoiVersion articleId = RequestedDoiVersion.of(articleDoi);
       Map<?, ?> articleMetadata;
       try {
@@ -142,8 +148,5 @@ public class BrowseController extends WombatController {
         .collect(Collectors.toList());
 
     model.addAttribute("articleGroups", articleGroups);
-
-    return site.getKey() + "/ftl/browse/issues";
   }
-
 }

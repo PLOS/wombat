@@ -11,7 +11,6 @@ import org.ambraproject.wombat.feed.FeedMetadataField;
 import org.ambraproject.wombat.feed.FeedType;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.CommentService;
-import org.ambraproject.wombat.service.IssueService;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -56,8 +55,6 @@ public class HomeController extends WombatController {
   private CommentFeedView commentFeedView;
   @Autowired
   private CommentService commentService;
-  @Autowired
-  private IssueService issueService;
 
   /**
    * Enumerates the allowed values for the section parameter for this page.
@@ -267,9 +264,6 @@ public class HomeController extends WombatController {
     ApiAddress issueAddress = ApiAddress.builder("journals").addToken(site.getJournalKey()).addParameter("currentIssue").build();
     Map<String, Object> currentIssue = articleApi.requestObject(issueAddress, Map.class);
     model.addAttribute("currentIssue", currentIssue);
-    String imageUri = currentIssue.get("imageUri").toString();
-
-    model.addAttribute("issueImage", issueService.getIssueImage(site, imageUri));
   }
 
   /**

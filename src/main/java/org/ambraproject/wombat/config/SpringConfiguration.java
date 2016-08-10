@@ -35,6 +35,7 @@ import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
+import org.ambraproject.wombat.freemarker.ArticleExcerptTransformDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
 import org.ambraproject.wombat.freemarker.IsDevFeatureEnabledDirective;
@@ -174,6 +175,11 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public ArticleExcerptTransformDirective articleExcerptTransformDirective() {
+    return new ArticleExcerptTransformDirective();
+  }
+
+  @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            IsDevFeatureEnabledDirective isDevFeatureEnabledDirective,
                                            SiteLinkDirective siteLinkDirective,
@@ -182,7 +188,8 @@ public class SpringConfiguration {
                                            BuildInfoDirective buildInfoDirective,
                                            FetchHtmlDirective fetchHtmlDirective,
                                            ThemeConfigDirective themeConfigDirective,
-                                           AppLinkDirective appLinkDirective)
+                                           AppLinkDirective appLinkDirective,
+                                           ArticleExcerptTransformDirective articleExcerptTransformDirective)
       throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
@@ -206,6 +213,7 @@ public class SpringConfiguration {
     variables.put("themeConfig", themeConfigDirective);
     variables.put("appLink", appLinkDirective);
     variables.put("abbreviatedName", new AbbreviatedNameDirective());
+    variables.put("xform", articleExcerptTransformDirective);
     config.setFreemarkerVariables(variables.build());
     return config;
   }

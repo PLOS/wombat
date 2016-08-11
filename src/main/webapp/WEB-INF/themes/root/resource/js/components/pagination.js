@@ -177,7 +177,12 @@ var Pagination;
           disabled: (this.getCurrentPage() == this.getTotalPages())
         });
 
-        return paginationTemplate({ pages: paginationData });
+        return paginationTemplate({
+          pages: paginationData,
+          currentPage: this.getCurrentPage(),
+          itemsPerPage: this.getItemsPerPage(),
+          totalRecords: this.getTotalRecords()
+        });
       }
     },
     

@@ -11,7 +11,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
-import org.ambraproject.wombat.config.RemoteCacheSpace;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
@@ -544,7 +543,7 @@ public class ArticleMetadata {
    * @return the body of the amendment article, transformed into HTML for display in a notice on the amended article
    */
   private String getAmendmentBody(ArticlePointer amendmentId) throws IOException {
-    return factory.corpusContentApi.readManuscript(amendmentId, RemoteCacheSpace.AMENDMENT_BODY,
+    return factory.corpusContentApi.readManuscript(amendmentId, "amendmentBody",
         (InputStream stream) -> {
           // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
           String bodyXml = XmlUtil.extractElement(stream, "body");

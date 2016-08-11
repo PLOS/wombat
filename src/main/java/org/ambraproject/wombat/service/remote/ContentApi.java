@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service.remote;
 
+import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 
@@ -20,6 +21,6 @@ public interface ContentApi {
   public abstract CloseableHttpResponse request(ContentKey key, Collection<? extends Header> headers)
       throws IOException;
 
-  public abstract Map<String, Object> requestMetadata(RemoteCacheKey cacheKey, ContentKey key) throws IOException;
+  public abstract Map<String, Object> requestMetadata(CacheKey cacheKey, ContentKey key) throws IOException;
 
 }

@@ -21,7 +21,7 @@ import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
-import org.ambraproject.wombat.service.XmlService;
+import org.ambraproject.wombat.service.XmlUtil;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.util.TextUtil;
@@ -86,8 +86,6 @@ public class ArticleMetadata {
     private SiteSet siteSet;
     @Autowired
     private ArticleTransformService articleTransformService;
-    @Autowired
-    private XmlService xmlService;
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
       return get(site,id, articleResolutionService.toIngestion(id));
@@ -549,7 +547,7 @@ public class ArticleMetadata {
     return factory.corpusContentApi.readManuscript(amendmentId, RemoteCacheSpace.AMENDMENT_BODY,
         (InputStream stream) -> {
           // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
-          String bodyXml = factory.xmlService.extractElement(stream, "body");
+          String bodyXml = XmlUtil.extractElement(stream, "body");
           return factory.articleTransformService.transformAmendmentBody(site, amendmentId, bodyXml);
         });
   }

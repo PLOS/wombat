@@ -77,14 +77,10 @@ import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.CommentValidationServiceImpl;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.FreemarkerMailServiceImpl;
-import org.ambraproject.wombat.service.IssueService;
-import org.ambraproject.wombat.service.IssueServiceImpl;
 import org.ambraproject.wombat.service.PowerPointService;
 import org.ambraproject.wombat.service.PowerPointServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
-import org.ambraproject.wombat.service.XmlService;
-import org.ambraproject.wombat.service.XmlServiceImpl;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
@@ -287,9 +283,6 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public XmlService xmlService() { return new XmlServiceImpl(); }
-
-  @Bean
   public AssetService assetService() {
     return new AssetServiceImpl();
   }
@@ -362,11 +355,6 @@ public class SpringConfiguration {
   @Bean
   public CommentService commentService() {
     return new CommentServiceImpl();
-  }
-
-  @Bean
-  public IssueService issueService() {
-    return new IssueServiceImpl();
   }
 
   @Bean

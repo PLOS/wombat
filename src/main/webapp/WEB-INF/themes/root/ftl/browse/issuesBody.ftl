@@ -21,18 +21,15 @@
         <a id="Cover" name="Cover" toc="Cover" title="Cover"></a>
         <div class="header">
             <p class="kicker">COVER</p>
-                <@siteLink
-                handlerName="browseIssues"
-                queryParameters={"id": issue.issueUri}; issueLink>
+                <@siteLink handlerName="browseIssues" queryParameters={"id": issue.doi}; issueLink>
                     <h2 id="issue-title"><a href="${issueLink}">${issueTitle}</a></h2>
                 </@siteLink>
         </div>
       <div class="detail-container">
         <div class="img">
-        <#if issue.imageUri?has_content>
-          <#assign issueImageFigureDoi = 'TODO' /><#-- TODO: Retrieve figure DOI from metadata -->
-          <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "inline", "id": issueImageFigureDoi} />"
-               alt="Issue Image" data-doi="${issue.imageUri}">
+        <#if issue.imageArticle??>
+          <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "inline", "id": issue.imageArticle.figureImageDoi} />"
+               alt="Issue Image" data-doi="${issue.doi}">
         </#if>
         </div>
         <div class="txt">${issueDescription}</div>
@@ -51,31 +48,26 @@
         <h2>${articleHeader!"No Header Defined"}</h2>
         <#list articleGrp.articles as articleInfo>
             <div class="item cf">
-                <@siteLink
-                handlerName="article"
-                queryParameters={"id": articleInfo.doi}; articleLink>
+                <@siteLink handlerName="article" queryParameters={"id": articleInfo.doi}; articleLink>
+                  <h3><a href="${articleLink}" title="Read Open Access Article">
+                      <@titleFormat removeTags(articleInfo.title) /></a>
+                  </h3>
 
-                        <h3><a href="${articleLink}" title="Read Open Access Article">
-                            <@titleFormat removeTags(articleInfo.title) /></a>
-                        </h3>
-
-                        <p class="authors">
-                          <#list articleInfo.authors as auth>
-                            <#rt>${auth.fullName?trim}<#if auth_has_next>,</#if>
-                          </#list>
-                          <#if (articleInfo.collaborativeAuthors??)>
-                            <#if (articleInfo.authors?size > 0) && (articleInfo.collaborativeAuthors?size > 0)><#lt>,</#if>
-                            <#list articleInfo.collaborativeAuthors as cauth>
-                              ${cauth?trim}<#if cauth_has_next>,</#if>
-                            </#list>
-                          </#if>
-                        </p>
-
+                  <p class="authors">
+                    <#list articleInfo.authors as auth>
+                      <#rt>${auth.fullName?trim}<#if auth_has_next>,</#if>
+                    </#list>
+                    <#if (articleInfo.collaborativeAuthors??)>
+                      <#if (articleInfo.authors?size > 0) && (articleInfo.collaborativeAuthors?size > 0)><#lt>,</#if>
+                      <#list articleInfo.collaborativeAuthors as cauth>
+                        ${cauth?trim}<#if cauth_has_next>,</#if>
+                      </#list>
+                    </#if>
+                  </p>
                 </@siteLink>
 
-
                 <p class="article-info"><b>${journal.title}:</b> published
-                        <@formatJsonDate date="${articleInfo.date}" format="MMMM d, yyyy" /> | ${articleInfo.doi}
+                  <@formatJsonDate date="${articleInfo.date}" format="MMMM d, yyyy" /> | ${articleInfo.doi}
                 </p>
 
                 <#if articleGrp.heading == "Research Article" >

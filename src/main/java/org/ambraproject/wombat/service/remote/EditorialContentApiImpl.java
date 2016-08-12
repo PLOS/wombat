@@ -1,11 +1,10 @@
 package org.ambraproject.wombat.service.remote;
 
-import org.ambraproject.wombat.config.RemoteCacheSpace;
-import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.SitePageContext;
+import org.ambraproject.wombat.util.CacheKey;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -22,8 +21,6 @@ public class EditorialContentApiImpl extends AbstractContentApi implements Edito
 
   @Autowired
   private SiteSet siteSet;
-  @Autowired
-  private ServiceCacheSet serviceCacheSet;
 
   @Override
   protected String getRepoConfigKey() {
@@ -41,8 +38,12 @@ public class EditorialContentApiImpl extends AbstractContentApi implements Edito
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
     Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.EDITORIAL_CONTENT, pageType, key);
     ContentKey version = ContentKey.createForLatestVersion(key); // TODO May want to support page versioning at some point using fetchHtmlDirective
+    CacheKey cacheKey = CacheKey.create(pageType, key);
+    Number cacheTtl = (Number) pageConfig.get("cacheTtl");
+    if (cacheTtl != null) {
+      cacheKey = cacheKey.addTimeToLive(cacheTtl.intValue());
+    }
 
     String transformedHtml = requestCachedReader(cacheKey, version, new CacheDeserializer<Reader, String>() {
       @Override
@@ -74,7 +75,7 @@ public class EditorialContentApiImpl extends AbstractContentApi implements Edito
    */
   @Override
   public Object getJson(String pageType, String key) throws IOException {
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.EDITORIAL_CONTENT, pageType, key);
+    CacheKey cacheKey = CacheKey.create(pageType, key);
     ContentKey version = ContentKey.createForLatestVersion(key);
     return requestCachedReader(cacheKey, version, jsonReader -> gson.fromJson(jsonReader, Object.class));
   }

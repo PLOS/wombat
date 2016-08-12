@@ -5,15 +5,12 @@
     <h2>Current Issue</h2>
 
     <div class="issue_container">
-      <#if journal.currentIssue.imageUri??>
+      <#if journal.currentIssue.imageArticle??>
         <div class="journal_thumb">
-          <@siteLink
-          handlerName="browseIssues"
-          queryParameters={"id": journal.currentIssue.issueUri}; issueLink>
+          <@siteLink handlerName="browseIssues" queryParameters={"id": journal.currentIssue.doi}; issueLink>
             <a href="${issueLink}">
-            <#assign issueImageFigureDoi = 'TODO' /><#-- TODO: Retrieve figure DOI from metadata -->
-            <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "small", "id": issueImageFigureDoi}/>"
-                 class="current-img" alt="Current Issue"/>
+            <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "small", "id": journal.currentIssue.imageArticle.figureImageDoi}/>"
+              class="current-img" alt="Current Issue"/>
             <span>${journal.currentIssue.displayName}</span>
             </a>
           </@siteLink>
@@ -22,7 +19,7 @@
 
       <div class="journal_description">
         <p class="tag">ABOUT THIS IMAGE</p>
-        ${currentIssueDescription}
+        ${issueDescription}
       </div>
     </div> <!--  issue_container -->
   </div><!-- journal_current -->
@@ -48,22 +45,17 @@
             <#assign issues = volume.issues />
             <#list issues as issue>
               <li<#if ((issue_index + 1) % 6) = 0> class="endrow"</#if>>
-                <@siteLink
-                handlerName="browseIssues"
-                queryParameters={"id": "${issue.issueUri}"}; issueLink>
+                <@siteLink handlerName="browseIssues" queryParameters={"id": "${issue.doi}"}; issueLink>
                   <a href="${issueLink}">
-                    <#if issue.imageUri??>
-                      <#assign issueImageFigureDoi = 'TODO' /><#-- TODO: Retrieve figure DOI from metadata -->
-                      <@siteLink handlerName="assetFile" queryParameters={"type": "small", "id": issueImageFigureDoi}; issueImgURL>
-                        <img src="${issueImgURL}"
-                             alt="${issue.displayName} Journal Cover"/>
+                    <#if issue.imageArticle??>
+                      <@siteLink handlerName="assetFile" queryParameters={"type": "small", "id": issue.imageArticle.figureImageDoi}; issueImgURL>
+                        <img src="${issueImgURL}" alt="${issue.displayName} Journal Cover"/>
                       </@siteLink>
                     </#if>
                     <span>${issue.displayName}</span>
                   </a>
                 </@siteLink>
               </li>
-
             </#list>
           </ul>
         </li>

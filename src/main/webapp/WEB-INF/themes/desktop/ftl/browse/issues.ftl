@@ -40,18 +40,16 @@
 
                 <div class="header">
                     <p class="kicker">COVER</p>
-                        <@siteLink
-                        handlerName="browseIssues"
-                        queryParameters={"id": issue.issueUri}; issueLink>
+                        <@siteLink handlerName="browseIssues" queryParameters={"id": issue.doi}; issueLink>
                             <h2><a href="${issueLink}">${issueTitle}</a></h2>
                         </@siteLink>
                 </div>
               <div class="detail-container">
                 <div class="img">
-                <#if issueImageArticle??>
-                  <a href="<@siteLink handlerName="article" queryParameters={"id": issueImageArticle} />">
-                    <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "inline", "id": issueImage.doi} />"
-                         alt="Issue Image" data-doi="${issue.imageUri}">
+                <#if issue.imageArticle??>
+                  <a href="<@siteLink handlerName="article" queryParameters={"id": issue.imageArticle.doi} />">
+                    <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "inline", "id": issue.imageArticle.figureImageDoi} />"
+                         alt="Issue Image" data-doi="${issue.imageArticle.doi}">
                   </a>
                 </#if>
                 </div>

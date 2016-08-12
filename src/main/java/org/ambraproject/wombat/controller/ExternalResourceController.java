@@ -1,14 +1,12 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.net.HttpHeaders;
-import org.ambraproject.wombat.config.RemoteCacheSpace;
-import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
-import org.ambraproject.wombat.service.remote.RemoteCacheKey;
+import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.ReproxyUtil;
 import org.apache.http.Header;
@@ -40,8 +38,6 @@ public class ExternalResourceController extends WombatController {
 
   @Autowired
   private EditorialContentApi editorialContentApi;
-  @Autowired
-  private ServiceCacheSet serviceCacheSet;
 
   @RequestMapping(name = "repoObject", value = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/{key}")
   public void serve(HttpServletResponse response,
@@ -82,7 +78,7 @@ public class ExternalResourceController extends WombatController {
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
                      ContentKey key)
       throws IOException {
-    RemoteCacheKey cacheKey = key.asCacheKey(RemoteCacheSpace.EXTERNAL_RESOURCE);
+    CacheKey cacheKey = key.asCacheKey("indirect");
     Map<String, Object> fileMetadata;
 
     try {

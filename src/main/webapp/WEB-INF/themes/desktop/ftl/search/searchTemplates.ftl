@@ -17,8 +17,7 @@
         <span id="article-result-<%= index %>-type"><%= item.article_type %></span> |
         <% } %>
                       <span id="article-result-<%= index %>-date">
-                published <%= moment(item.publication_date).format("DD MMM YYYY") %>
-                          |
+                published <%= moment.utc(item.publication_date).format("DD MMM YYYY") %>
               </span>
         <% if(!_.isEmpty(item.cross_published_journal_name)) { %>
                         <span id="article-result-<%= index %>-journal-name">
@@ -41,8 +40,6 @@
 </script>
 
 <script id="searchResultsAlm" type="text/template">
-
-
 
 
   <p class="search-results-alm" data-doi="">
@@ -122,7 +119,7 @@
 </script>
 
 <script type="text/template" id="searchHeaderFilterTemplate">
-  <% if (activeFilterItems.length > 0) { %>
+  <% if (activeFilterItems.length > 0 || searchDateFilters.start != null && searchDateFilters.end != null) { %>
   <div class="filter-view-container">
     <section class="filter-view">
       <h3 class="filter-label">Filters:</h3>
@@ -171,11 +168,11 @@
 
 <script type="text/template" id="searchNoResultsTemplate">
   <div class="search-results-none-found">
-  <p>You searched for articles that have all of the following:</p>
+    <p>You searched for articles that have all of the following:</p>
 
-  <p>Search Term: "<span><%= q %></span>"</p>
+    <p>Search Term: "<span><%= q %></span>"</p>
 
-  <p>There were no results; please refine your search above and try again.</p>
+    <p>There were no results; please refine your search above and try again.</p>
   </div>
 </script>
 

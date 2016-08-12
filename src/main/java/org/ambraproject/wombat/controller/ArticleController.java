@@ -6,7 +6,7 @@ import com.google.common.base.Function;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
-import org.ambraproject.wombat.config.RemoteCacheSpace;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.identity.ArticlePointer;
@@ -128,6 +128,8 @@ public class ArticleController extends WombatController {
   private CommentService commentService;
   @Autowired
   private ArticleMetadata.Factory articleMetadataFactory;
+  @Autowired
+  private RequestMappingContextDictionary requestMappingContextDictionary;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -650,7 +652,7 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private String getArticleHtml(Site site, ArticlePointer articleId) throws IOException {
-    return corpusContentApi.readManuscript(articleId, RemoteCacheSpace.ARTICLE_HTML,
+    return corpusContentApi.readManuscript(articleId, "html",
         (InputStream stream) -> {
           StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
           try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {

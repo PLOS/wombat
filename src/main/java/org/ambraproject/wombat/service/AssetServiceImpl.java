@@ -14,11 +14,11 @@ package org.ambraproject.wombat.service;
 import com.google.common.base.Preconditions;
 import com.yahoo.platform.yui.compressor.CssCompressor;
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
+import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.util.KeyHashing;
+import org.ambraproject.wombat.util.CacheKey;
 import org.apache.commons.io.IOUtils;
 import org.mozilla.javascript.ErrorReporter;
 import org.mozilla.javascript.EvaluatorException;
@@ -26,7 +26,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.cache.Cache;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -52,11 +51,19 @@ public class AssetServiceImpl implements AssetService {
    */
   private static final int MAX_ASSET_SIZE_TO_CACHE = 1024 * 1024;
 
+  /**
+   * We use a shorter cache TTL than the global default (1 hour), because it's theoretically possible that the
+   * uncompiled asset files might change in the themes directory.  And since the cache key can only be calculated by
+   * loading and hashing all the corresponding files (an expensive operation), we have to accept that we'll serve stale
+   * assets for this period.
+   */
+  private static final int CACHE_TTL = 15 * 60;
+
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
   @Autowired
-  private ServiceCacheSet serviceCacheSet;
+  private Cache cache;
 
   private static final Object ASSET_COMPILATION_LOCK = new Object();
 
@@ -85,7 +92,8 @@ public class AssetServiceImpl implements AssetService {
     }
 
     private String generateCacheKey() {
-      String filenameDigest = KeyHashing.createKeyHash(filenames);
+      String filenameDigest = CacheKey.createKeyHash(filenames);
+
       return String.format("%sFile:%s:%s", assetType.name().toLowerCase(), site, filenameDigest);
     }
   }
@@ -143,9 +151,7 @@ public class AssetServiceImpl implements AssetService {
       SourceFilenamesDigest sourceFilenamesDigest = new SourceFilenamesDigest(assetType, site, filenames);
       String sourceCacheKey = sourceFilenamesDigest.generateCacheKey();
 
-      Cache<String, String> cacheFilename = serviceCacheSet.getAssetFilenameCache();
-
-      String compiledFilename = cacheFilename != null ? cacheFilename.get(sourceCacheKey) : null;
+      String compiledFilename = cache.get(sourceCacheKey);
       if (compiledFilename == null) {
         File concatenated = concatenateFiles(filenames, site, assetType.getExtension());
         CompiledAsset compiled = compileAsset(assetType, concatenated);
@@ -156,15 +162,10 @@ public class AssetServiceImpl implements AssetService {
         // In an ideal world, we would use the filename (including the hash of its contents) as
         // the only cache key.  However, it's potentially expensive to calculate that key since
         // you need the contents of the compiled file, which is why we do it this way.
-        if (cacheFilename != null) {
-          cacheFilename.put(sourceCacheKey, compiledFilename);
-        }
+        cache.put(sourceCacheKey, compiledFilename, CACHE_TTL);
         if (compiled.contents.length < MAX_ASSET_SIZE_TO_CACHE) {
-          Cache<String, Object> cacheContent = serviceCacheSet.getAssetContentCache();
           String contentsCacheKey = compiled.digest.getCacheKey();
-          if (cacheContent != null) {
-            cacheContent.put(contentsCacheKey, compiled.contents);
-          }
+          cache.put(contentsCacheKey, compiled.contents, CACHE_TTL);
         }
       }
       return AssetUrls.COMPILED_PATH_PREFIX + compiledFilename;
@@ -178,8 +179,7 @@ public class AssetServiceImpl implements AssetService {
   public void serveCompiledAsset(String assetFilename, OutputStream outputStream) throws IOException {
     try {
       CompiledDigest digest = new CompiledDigest(assetFilename);
-      Cache<String, Object> cacheContent = serviceCacheSet.getAssetContentCache();
-      byte[] cached = (byte[]) (cacheContent != null ? cacheContent.get(digest.getCacheKey()) : null);
+      byte[] cached = cache.get(digest.getCacheKey());
       try (InputStream is =
                (cached == null)
                    ? new FileInputStream(digest.getFile())
@@ -293,7 +293,7 @@ public class AssetServiceImpl implements AssetService {
     }
     byte[] contents = baos.toByteArray();
 
-    String contentHash = KeyHashing.createContentHash(contents);
+    String contentHash = CacheKey.createContentHash(contents);
     CompiledDigest digest = new CompiledDigest(AssetUrls.COMPILED_NAME_PREFIX
         + contentHash + assetType.getExtension());
     File file = digest.getFile();

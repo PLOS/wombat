@@ -42,7 +42,7 @@
 
 
   <xsl:template match="overline">
-    <span class="txt-overline" style="text-decoration: overline">
+    <span class="overline" style="text-decoration: overline">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
@@ -56,21 +56,21 @@
 
 
   <xsl:template match="roman">
-    <span class="txt-roman">
+    <span class="roman">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
 
   <xsl:template match="sans-serif">
-    <span class="txt-sans-serif" style="font-family: sans-serif; font-size: 80%">
+    <span class="sans-serif">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
 
   <xsl:template match="sc">
-    <span class="txt-small-caps" style="font-variant: small-caps">
+    <span class="small-caps" style="font-variant: small-caps">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
@@ -98,7 +98,7 @@
 
 
   <xsl:template match="underline">
-    <span style="text-decoration: underline">
+    <span class="underline" style="text-decoration: underline">
       <xsl:apply-templates/>
     </span>
   </xsl:template>

@@ -319,7 +319,7 @@ example | extension
 }
 
 //////////////
-//font decorations
+//font decorations and JATS tags
 ///////////////
 
 
@@ -350,13 +350,22 @@ example | extension
   margin-bottom: 0;
 }
 
-%small-caps {
+.small-caps {
   font-variant: small-caps;
 }
 
-%monospace {
-  font-family: "Courier New", Courier, monospace;
+.monospace {
+  font-family: $font-face-monospace;
 }
+.roman {
+  font-family: $font-face-roman;
+}
+.sans-serif {
+  font-family: $font-face-sans-serif;
+}
+
+
+
 
 //////////////
 //form styles

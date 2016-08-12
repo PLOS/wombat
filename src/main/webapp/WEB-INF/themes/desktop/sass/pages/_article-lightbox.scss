@@ -478,14 +478,6 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
             font-size: $txt-size-xsmall;
             margin-left: 3px;
           }
-
-          .monospace {
-            @extend %monospace;
-          }
-
-          .small-caps {
-            @extend %small-caps;
-          }
         }
 
         a {

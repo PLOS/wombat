@@ -24,7 +24,6 @@ import java.io.StringWriter;
 public class XmlUtil {
 
   private static Document createXmlDocument(InputSource xmlSource) throws IOException {
-    Document document;
     DocumentBuilder documentBuilder; // not thread-safe
     try {
       documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -33,11 +32,16 @@ public class XmlUtil {
     }
 
     try {
-      document = documentBuilder.parse(xmlSource);
+      return documentBuilder.parse(xmlSource);
     } catch (SAXException e) {
       throw new RuntimeException("Invalid XML syntax during document creation", e);
     }
-    return document;
+  }
+
+  public static String extractText(String xml) throws IOException {
+    InputSource xmlSource = new InputSource(new StringReader(xml));
+    Node rootNode = createXmlDocument(xmlSource).getFirstChild();
+    return rootNode.getTextContent().trim();
   }
 
   public static String extractElement(String xml, String tagName) throws IOException {

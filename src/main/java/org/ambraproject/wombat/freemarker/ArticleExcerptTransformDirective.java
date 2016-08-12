@@ -1,11 +1,13 @@
 package org.ambraproject.wombat.freemarker;
 
 import freemarker.core.Environment;
+import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
 import freemarker.template.TemplateScalarModel;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.service.SiteTransformerFactory;
+import org.ambraproject.wombat.service.XmlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.transform.Transformer;
@@ -53,8 +55,6 @@ public class ArticleExcerptTransformDirective extends VariableLookupDirective<St
 
   @Override
   protected String getValue(Environment env, Map params) throws TemplateModelException, IOException {
-    Site site = new SitePageContext(siteResolver, env).getSite();
-    Transformer transformer = getTransformer(site);
 
     Object xmlParam = params.get("xml");
     if (!(xmlParam instanceof TemplateScalarModel)) {
@@ -62,6 +62,13 @@ public class ArticleExcerptTransformDirective extends VariableLookupDirective<St
     }
     String xml = ((TemplateScalarModel) xmlParam).getAsString();
 
+    boolean isTextOnly = TemplateModelUtil.getBooleanValue((TemplateModel) params.get("textOnly"));
+    if (isTextOnly) {
+      return XmlUtil.extractText(xml);
+    }
+
+    Site site = new SitePageContext(siteResolver, env).getSite();
+    Transformer transformer = getTransformer(site);
     StringWriter html = new StringWriter();
     try {
       transformer.transform(new StreamSource(new StringReader(xml)), new StreamResult(html));

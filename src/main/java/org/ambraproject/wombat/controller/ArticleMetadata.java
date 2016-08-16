@@ -87,7 +87,7 @@ public class ArticleMetadata {
     private ArticleTransformService articleTransformService;
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
-      return get(site,id, articleResolutionService.toIngestion(id));
+      return get(site, id, articleResolutionService.toIngestion(id));
     }
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id, ArticlePointer articlePointer) throws IOException {
@@ -126,7 +126,7 @@ public class ArticleMetadata {
     model.addAttribute("containingLists", getContainingArticleLists());
     model.addAttribute("categoryTerms", getCategoryTerms());
     model.addAttribute("relatedArticles", getRelatedArticles());
-    requestAuthors(model);
+    populateAuthors(model);
 
     model.addAttribute("revisionMenu", getRevisionList());
 
@@ -358,6 +358,11 @@ public class ArticleMetadata {
         .collect(Collectors.toList());
   }
 
+  public Map<String, ?> getAuthors() throws IOException {
+    ApiAddress authorAddress = articlePointer.asApiAddress().addToken("authors").build();
+    return factory.articleApi.requestObject(authorAddress, Map.class);
+  }
+
   /**
    * Appends additional info about article authors to the model.
    *
@@ -365,9 +370,8 @@ public class ArticleMetadata {
    * @return the list of authors appended to the model
    * @throws IOException
    */
-  private void requestAuthors(Model model) throws IOException {
-    ApiAddress authorAddress = articlePointer.asApiAddress().addToken("authors").build();
-    Map<?, ?> allAuthorsData = factory.articleApi.requestObject(authorAddress, Map.class);
+  private void populateAuthors(Model model) throws IOException {
+    Map<?, ?> allAuthorsData = getAuthors();
     List<?> authors = (List<?>) allAuthorsData.get("authors");
     model.addAttribute("authors", authors);
 

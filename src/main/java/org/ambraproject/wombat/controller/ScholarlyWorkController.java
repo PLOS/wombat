@@ -94,9 +94,7 @@ public class ScholarlyWorkController extends WombatController {
                              @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {
     AssetPointer asset = articleResolutionService.toParentIngestion(id);
-    Map<String, ?> items = articleService.getItemTable(asset.getParentArticle());
-    Map<String, ?> requestedItem = (Map<String, ?>) items.get(asset.getAssetDoi());
-    Map<String, ?> files = (Map<String, ?>) requestedItem.get("files");
+    Map<String, ?> files = articleService.getItemFiles(asset);
     Map<String, ?> fileRepoKey = (Map<String, ?>) files.get(fileType);
     if (fileRepoKey == null) {
       String message = String.format("Unrecognized file type (\"%s\") for id: %s", fileType, id);

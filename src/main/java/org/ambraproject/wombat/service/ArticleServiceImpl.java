@@ -14,10 +14,10 @@
 package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ContentKey;
-import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -47,6 +47,12 @@ public class ArticleServiceImpl implements ArticleService {
     ApiAddress itemAddress = articleId.asApiAddress().addToken("items").build();
     Map<String, ?> itemResponse = articleApi.requestObject(itemAddress, Map.class);
     return (Map<String, ?>) itemResponse.get("items");
+  }
+
+  @Override public Map<String, ?> getItemFiles(AssetPointer assetId) throws IOException {
+    Map<String, ?> itemTable = getItemTable(assetId.getParentArticle());
+    Map<String, ?> item = (Map<String, ?>) itemTable.get(assetId.getAssetDoi());
+    return (Map<String, ?>) item.get("files");
   }
 
   @Override

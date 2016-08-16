@@ -39,7 +39,7 @@ public class Citations {
     return abbreviation.toString();
   }
 
-  private static String getAbbreviatedName(Map<String, Object> author) {
+  private static String getAbbreviatedName(Map<String, ?> author) {
     String surnames = (String) author.get("surnames");
     String givenNames = (String) author.get("givenNames");
     String suffix = (String) author.get("suffix");
@@ -64,13 +64,12 @@ public class Citations {
   /*
    * TODO: Deduplicate src/main/webapp/WEB-INF/themes/desktop/ftl/article/citation.ftl
    */
-  public static String buildCitation(Map<String, Object> articleMetadata) {
+  public static String buildCitation(Map<String, ?> articleMetadata, List<Map<String, ?>> authors) {
     StringBuilder citation = new StringBuilder();
 
     List<String> authorNames = Lists.newArrayListWithCapacity(MAX_AUTHORS);
-    List<Map<String, Object>> authors = (List<Map<String, Object>>) articleMetadata.get("authors");
     List<String> collaborativeAuthors = (List<String>) articleMetadata.get("collaborativeAuthors");
-    for (Map<String, Object> author : authors) {
+    for (Map<String, ?> author : authors) {
       if (authorNames.size() >= MAX_AUTHORS) break;
       authorNames.add(getAbbreviatedName(author));
     }
@@ -99,7 +98,6 @@ public class Citations {
     citation.append(' ').append(pubInfo);
 
     String doi = (String) articleMetadata.get("doi");
-    doi = DoiSchemeStripper.strip(doi);
     citation.append(" doi:").append(doi);
 
     return citation.toString();

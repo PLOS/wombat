@@ -67,9 +67,14 @@ public class ArticleResolutionService {
   private static final ImmutableSet<String> ARTICLE_ASSET_TYPES = ImmutableSet.of("article", "asset");
 
   public AssetPointer toParentIngestion(RequestedDoiVersion assetId) throws IOException {
-    Map<String, ?> doiOverview = articleApi.requestObject(
-        ApiAddress.builder("dois").embedDoi(assetId.getDoi()).build(),
-        Map.class);
+    Map<String, ?> doiOverview;
+    try {
+      doiOverview = articleApi.requestObject(
+          ApiAddress.builder("dois").embedDoi(assetId.getDoi()).build(),
+          Map.class);
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException(e);
+    }
 
     String type = (String) doiOverview.get("type");
     if (!ARTICLE_ASSET_TYPES.contains(type)) {

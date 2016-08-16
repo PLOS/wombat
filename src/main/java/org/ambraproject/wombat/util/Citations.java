@@ -64,7 +64,7 @@ public class Citations {
   /*
    * TODO: Deduplicate src/main/webapp/WEB-INF/themes/desktop/ftl/article/citation.ftl
    */
-  public static String buildCitation(Map<String, Object> articleMetadata) {
+  public static String buildCitation(Map<String, ?> articleMetadata) {
     StringBuilder citation = new StringBuilder();
 
     List<String> authorNames = Lists.newArrayListWithCapacity(MAX_AUTHORS);

@@ -35,7 +35,7 @@ public interface PowerPointService {
    * @return the slide show object
    * @throws IOException
    */
-  public abstract SlideShow createPowerPointFile(Map<String, Object> figureMetadata,
+  public abstract SlideShow createPowerPointFile(Map<String, ?> figureMetadata,
                                                  URL articleLink,
                                                  JournalLogoCallback logoCallback)
       throws IOException;

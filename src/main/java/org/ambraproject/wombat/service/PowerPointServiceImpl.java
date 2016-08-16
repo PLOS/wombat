@@ -35,7 +35,7 @@ public class PowerPointServiceImpl implements PowerPointService {
   private ArticleApi articleApi;
 
   @Override
-  public SlideShow createPowerPointFile(Map<String, Object> figureMetadata,
+  public SlideShow createPowerPointFile(Map<String, ?> figureMetadata,
                                         URL downloadLink,
                                         JournalLogoCallback logoCallback)
       throws IOException {
@@ -70,9 +70,9 @@ public class PowerPointServiceImpl implements PowerPointService {
     return new Dimension(LETTER_SIZE_WIDTH, LETTER_SIZE_HEIGHT);
   }
 
-  private byte[] readFigureImage(Map<String, Object> figureMetadata) throws IOException {
-    Map<String, Object> thumbnails = (Map<String, Object>) figureMetadata.get("thumbnails");
-    Map<String, Object> medium = (Map<String, Object>) thumbnails.get("medium");
+  private byte[] readFigureImage(Map<String, ?> figureMetadata) throws IOException {
+    Map<String, ?> thumbnails = (Map<String, ?>) figureMetadata.get("thumbnails");
+    Map<String, ?> medium = (Map<String, ?>) thumbnails.get("medium");
     String file = (String) medium.get("file");
     try (InputStream stream = articleApi.requestStream(ApiAddress.builder("assetfiles").addToken(file).build())) {
       return IOUtils.toByteArray(stream);
@@ -129,7 +129,7 @@ public class PowerPointServiceImpl implements PowerPointService {
     return picture;
   }
 
-  private static void addTitle(Map<String, Object> figureMetadata, Slide slide) {
+  private static void addTitle(Map<String, ?> figureMetadata, Slide slide) {
     //add the title to slide
     String title = getTitleText(figureMetadata);
     if (!title.isEmpty()) {
@@ -145,7 +145,7 @@ public class PowerPointServiceImpl implements PowerPointService {
 
   private static final Pattern TITLE_EXTRACTOR = Pattern.compile("<title[^>]*?>(.*?)</title\\s*>");
 
-  private static String getTitleText(Map<String, Object> figureMetadata) {
+  private static String getTitleText(Map<String, ?> figureMetadata) {
     String title = TextUtil.sanitizeWhitespace((String) figureMetadata.get("title"));
     String description = TextUtil.sanitizeWhitespace((String) figureMetadata.get("description"));
 
@@ -168,7 +168,7 @@ public class PowerPointServiceImpl implements PowerPointService {
     return String.format("%s. %s", title, descriptionTitleText);
   }
 
-  private TextBox buildCitation(Map<String, Object> figureMetadata, URL articleLink, SlideShow slideShow) {
+  private TextBox buildCitation(Map<String, ?> figureMetadata, URL articleLink, SlideShow slideShow) {
     String pptUrl = articleLink.toString();
     TextBox pptCitationText = new TextBox();
 
@@ -189,13 +189,13 @@ public class PowerPointServiceImpl implements PowerPointService {
     return pptCitationText;
   }
 
-  private String getCitationText(Map<String, Object> figureMetadata) {
-    Map<String, Object> parentArticle = getParentArticleMetadata(figureMetadata);
+  private String getCitationText(Map<String, ?> figureMetadata) {
+    Map<String, ?> parentArticle = getParentArticleMetadata(figureMetadata);
     return Citations.buildCitation(parentArticle);
   }
 
-  private Map<String, Object> getParentArticleMetadata(Map<String, Object> figureMetadata) {
-    Map<String, Object> parentArticleSummary = (Map<String, Object>) figureMetadata.get("parentArticle");
+  private Map<String, ?> getParentArticleMetadata(Map<String, ?> figureMetadata) {
+    Map<String, ?> parentArticleSummary = (Map<String, ?>) figureMetadata.get("parentArticle");
     String parentArticleDoi = (String) parentArticleSummary.get("doi");
     try {
       return articleApi.requestObject(ApiAddress.builder("articles").addToken(parentArticleDoi).build(), Map.class);

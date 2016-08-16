@@ -63,9 +63,9 @@ public class PowerPointController extends WombatController {
     AssetPointer assetPointer = articleResolutionService.toParentIngestion(figureId);
     ArticlePointer parentArticleId = assetPointer.getParentArticle();
 
-    ArticleMetadata parentArticleMetadata = articleMetadataFactory.get(site, figureId.forDoi(parentArticleId.getDoi()), parentArticleId)
+    ArticleMetadata parentArticle = articleMetadataFactory.get(site, figureId.forDoi(parentArticleId.getDoi()), parentArticleId)
         .validateVisibility();
-    List<Map<String, ?>> figureViewList = parentArticleMetadata
+    List<Map<String, ?>> figureViewList = parentArticle
         .getFigureView();
     Map<String, ?> figureMetadata = findFigureViewFor(figureViewList, assetPointer).orElseThrow(() ->
         new NotFoundException("Asset exists but is not a figure: " + assetPointer.getAssetDoi()));
@@ -77,7 +77,11 @@ public class PowerPointController extends WombatController {
     ByteSource imageFileSource = getImageFile(assetPointer);
     ByteSource logoSource = new LogoSource(site.getTheme());
 
-    SlideShow powerPointFile = new PowerPointDownload(parentArticleMetadata.getIngestionMetadata(), articleUrl, figureTitle, figureDescription, imageFileSource, logoSource)
+    Map<String, ?> parentArticleMetadata = parentArticle.getIngestionMetadata();
+    List<Map<String, ?>> parentArticleAuthors = (List<Map<String, ?>>) parentArticle.getAuthors().get("authors");
+
+    SlideShow powerPointFile = new PowerPointDownload(parentArticleMetadata, parentArticleAuthors, articleUrl,
+        figureTitle, figureDescription, imageFileSource, logoSource)
         .createPowerPointFile();
 
     response.setContentType(MediaType.MICROSOFT_POWERPOINT.toString());

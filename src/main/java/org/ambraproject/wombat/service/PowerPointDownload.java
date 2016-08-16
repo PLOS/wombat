@@ -19,7 +19,9 @@ import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -43,16 +45,19 @@ public class PowerPointDownload {
   }
 
   private final Map<String, ?> parentArticleMetadata;
+  private final List<Map<String, ?>> parentArticleAuthors;
   private final URL downloadLink;
   private final String figureTitle;
   private final String figureDescription;
   private final ByteSource figureImageSource;
   private final ByteSource journalLogoSource;
 
-  public PowerPointDownload(Map<String, ?> parentArticleMetadata, URL downloadLink,
+  public PowerPointDownload(Map<String, ?> parentArticleMetadata, List<Map<String, ?>> parentArticleAuthors,
+                            URL downloadLink,
                             String figureTitle, String figureDescription,
                             ByteSource figureImageSource, ByteSource journalLogoSource) {
-    this.parentArticleMetadata = Objects.requireNonNull(parentArticleMetadata);
+    this.parentArticleMetadata = Collections.unmodifiableMap(parentArticleMetadata);
+    this.parentArticleAuthors = Collections.unmodifiableList(parentArticleAuthors);
     this.downloadLink = Objects.requireNonNull(downloadLink);
     this.figureTitle = TextUtil.sanitizeWhitespace(figureTitle);
     this.figureDescription = TextUtil.sanitizeWhitespace(figureDescription);
@@ -189,7 +194,7 @@ public class PowerPointDownload {
     String pptUrl = downloadLink.toString();
     TextBox pptCitationText = new TextBox();
 
-    String citation = getCitationText();
+    String citation = Citations.buildCitation(parentArticleMetadata, parentArticleAuthors);
     pptCitationText.setText(citation + "\n" + pptUrl);
     pptCitationText.setAnchor(new Rectangle(35, 513, 723, 26));
 
@@ -204,10 +209,6 @@ public class PowerPointDownload {
     int startIndex = text.indexOf(pptUrl);
     pptCitationText.setHyperlink(linkId, startIndex, startIndex + pptUrl.length());
     return pptCitationText;
-  }
-
-  private String getCitationText() {
-    return Citations.buildCitation(parentArticleMetadata);
   }
 
   private Picture buildLogo(SlideShow slideShow) throws IOException {

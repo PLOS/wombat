@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ContentKey;
 
@@ -36,6 +37,8 @@ public interface ArticleService {
   Map<String, ?> requestArticleMetadata(ArticlePointer articleId) throws IOException;
 
   Map<String, ?> getItemTable(ArticlePointer articleId) throws IOException;
+
+  Map<String, ?> getItemFiles(AssetPointer assetId) throws IOException;
 
   ContentKey getManuscriptKey(ArticlePointer articleId) throws IOException;
 }

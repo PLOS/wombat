@@ -1,5 +1,7 @@
 package org.ambraproject.wombat.controller;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.io.ByteSource;
 import com.google.common.net.HttpHeaders;
 import com.google.common.net.MediaType;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
@@ -11,7 +13,10 @@ import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ArticleResolutionService;
-import org.ambraproject.wombat.service.PowerPointService;
+import org.ambraproject.wombat.service.ArticleService;
+import org.ambraproject.wombat.service.PowerPointDownload;
+import org.ambraproject.wombat.service.remote.ContentKey;
+import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.poi.hslf.usermodel.SlideShow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +33,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Endpoint for downloading PowerPoint slides of figures.
@@ -37,16 +44,16 @@ import java.util.Optional;
 public class PowerPointController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(PowerPointController.class);
 
-  private static final String LOGO_PATH = "resource/img/logo.png";
-
   @Autowired
   private RequestMappingContextDictionary requestMappingContextDictionary;
   @Autowired
-  private PowerPointService powerPointService;
+  private ArticleService articleService;
   @Autowired
   private ArticleResolutionService articleResolutionService;
   @Autowired
   private ArticleMetadata.Factory articleMetadataFactory;
+  @Autowired
+  private CorpusContentApi corpusContentApi;
 
   @RequestMapping(name = "powerPoint", value = "/article/figure/powerpoint")
   public void download(HttpServletRequest request, HttpServletResponse response,
@@ -56,24 +63,22 @@ public class PowerPointController extends WombatController {
     AssetPointer assetPointer = articleResolutionService.toParentIngestion(figureId);
     ArticlePointer parentArticleId = assetPointer.getParentArticle();
 
-    List<Map<String, ?>> figureViewList = articleMetadataFactory.get(site, figureId.forDoi(parentArticleId.getDoi()), parentArticleId)
-        .validateVisibility()
+    ArticleMetadata parentArticleMetadata = articleMetadataFactory.get(site, figureId.forDoi(parentArticleId.getDoi()), parentArticleId)
+        .validateVisibility();
+    List<Map<String, ?>> figureViewList = parentArticleMetadata
         .getFigureView();
     Map<String, ?> figureMetadata = findFigureViewFor(figureViewList, assetPointer).orElseThrow(() ->
         new NotFoundException("Asset exists but is not a figure: " + assetPointer.getAssetDoi()));
 
-    final Theme theme = site.getTheme();
-    PowerPointService.JournalLogoCallback logoCallback = () -> {
-      InputStream stream = theme.getStaticResource(LOGO_PATH);
-      if (stream == null) {
-        log.warn("Logo file not found at {} for theme: {}", LOGO_PATH, theme.getKey());
-      }
-      return stream;
-    };
+    String figureTitle = (String) figureMetadata.get("title");
+    String figureDescription = (String) figureMetadata.get("description");
 
     URL articleUrl = buildArticleUrl(request, site, parentArticleId);
+    ByteSource imageFileSource = getImageFile(assetPointer);
+    ByteSource logoSource = new LogoSource(site.getTheme());
 
-    SlideShow powerPointFile = powerPointService.createPowerPointFile(figureMetadata, articleUrl, logoCallback);
+    SlideShow powerPointFile = new PowerPointDownload(parentArticleMetadata.getIngestionMetadata(), articleUrl, figureTitle, figureDescription, imageFileSource, logoSource)
+        .createPowerPointFile();
 
     response.setContentType(MediaType.MICROSOFT_POWERPOINT.toString());
     response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + getDownloadFilename(assetPointer));
@@ -116,6 +121,41 @@ public class PowerPointController extends WombatController {
     int slashIndex = figureId.lastIndexOf('/');
     String name = figureId.substring(slashIndex + 1);
     return name + ".ppt";
+  }
+
+  private static final String IMAGE_SIZE = "medium";
+
+  private ByteSource getImageFile(AssetPointer assetId) throws IOException {
+    Map<String, ?> files = articleService.getItemFiles(assetId);
+    Map<String, ?> file = (Map<String, ?>) files.get(IMAGE_SIZE);
+    ContentKey key = ContentKey.createForUuid((String) file.get("crepoKey"),
+        UUID.fromString((String) file.get("crepoUuid")));
+    return new ByteSource() {
+      @Override
+      public InputStream openStream() throws IOException {
+        return corpusContentApi.request(key, ImmutableList.of()).getEntity().getContent();
+      }
+    };
+  }
+
+  private static class LogoSource extends ByteSource {
+    private final Theme theme;
+
+    private LogoSource(Theme theme) {
+      this.theme = Objects.requireNonNull(theme);
+    }
+
+    private static final String LOGO_PATH = "resource/img/logo.png";
+
+    @Override
+    public InputStream openStream() throws IOException {
+      InputStream stream = theme.getStaticResource(LOGO_PATH);
+      if (stream == null) {
+        throw new PowerPointDownload.JournalHasNoLogoException(
+            String.format("Logo file not found at %s for theme: %s", LOGO_PATH, theme.getKey()));
+      }
+      return stream;
+    }
   }
 
 }

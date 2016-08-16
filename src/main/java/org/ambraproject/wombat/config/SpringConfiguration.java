@@ -77,8 +77,6 @@ import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.CommentValidationServiceImpl;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.FreemarkerMailServiceImpl;
-import org.ambraproject.wombat.service.PowerPointService;
-import org.ambraproject.wombat.service.PowerPointServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
@@ -315,11 +313,6 @@ public class SpringConfiguration {
   @Bean
   public CorpusContentApi corpusContentApi() {
     return new CorpusContentApi();
-  }
-
-  @Bean
-  public PowerPointService powerPointService() {
-    return new PowerPointServiceImpl();
   }
 
   @Bean

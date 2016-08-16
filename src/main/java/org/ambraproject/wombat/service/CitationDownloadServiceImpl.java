@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Strings;
-import org.ambraproject.wombat.util.DoiSchemeStripper;
 
 import javax.xml.bind.DatatypeConverter;
 import java.text.DateFormat;
@@ -66,7 +65,7 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     appendRisCitationLine(citation, "SP", (String) articleMetadata.get("eLocationId"));
     appendRisCitationLine(citation, "EP", null); // Always blank (copied from legacy implementation)
     appendRisCitationLine(citation, "PB", (String) articleMetadata.get("publisherName"));
-    appendRisCitationLine(citation, "M3", "doi:" + DoiSchemeStripper.strip((String) articleMetadata.get("doi")));
+    appendRisCitationLine(citation, "M3", "doi:" + articleMetadata.get("doi"));
     appendRisCitationLine(citation, "ER", null); // Always blank (copied from legacy implementation)
 
     return citation.toString();
@@ -130,7 +129,7 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
 
   @Override
   public String buildBibtexCitation(Map<String, ?> articleMetadata) {
-    String doiName = DoiSchemeStripper.strip((String) articleMetadata.get("doi"));
+    String doiName = (String) articleMetadata.get("doi");
     StringBuilder result = new StringBuilder();
     result.append("@article{").append(doiName).append(",\n");
 

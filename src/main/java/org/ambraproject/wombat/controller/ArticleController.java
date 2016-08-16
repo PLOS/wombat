@@ -27,7 +27,6 @@ import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.output.WriterOutputStream;
@@ -377,7 +376,7 @@ public class ArticleController extends WombatController {
 
     String citationBody = serviceFunction.apply(articleMetadata);
     String contentDispositionValue = String.format("attachment; filename=\"%s.%s\"",
-        URLEncoder.encode(DoiSchemeStripper.strip((String) articleMetadata.get("doi")), Charsets.UTF_8.toString()),
+        URLEncoder.encode((String) articleMetadata.get("doi"), Charsets.UTF_8.toString()),
         fileExtension);
 
     HttpHeaders headers = new HttpHeaders();

@@ -201,6 +201,11 @@ public class Link {
         return this;
       }
 
+      public PatternBuilder addQueryParameters(Map<String, ?> queryParameters) {
+        queryParameters.forEach(this.queryParameters::put);
+        return this;
+      }
+
       public PatternBuilder addQueryParameters(Multimap<String, ?> queryParameters) {
         this.queryParameters.putAll(queryParameters);
         return this;

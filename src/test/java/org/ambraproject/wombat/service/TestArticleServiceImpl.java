@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.gson.Gson;
 import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ContentKey;
 
@@ -34,6 +35,11 @@ public class TestArticleServiceImpl implements ArticleService {
 
   @Override
   public Map<String, ?> getItemTable(ArticlePointer articleId) throws IOException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public Map<String, ?> getItemFiles(AssetPointer assetId) throws IOException {
     throw new UnsupportedOperationException();
   }
 }

@@ -10,11 +10,11 @@
 <#macro displayCitation citation useUrlDoiStyle>
   <#assign maxAuthors = 5 /><#-- May want this to be configurable in the future. -->
 
-  <#list citation.authors as author>
+  <#list authors as author>
     <#if author_index lt maxAuthors>
       <#assign isCommaShown =
       author_has_next ||
-      (citation.authors?size lt maxAuthors         <#-- Show a comma before "et al."     -->
+      (authors?size lt maxAuthors         <#-- Show a comma before "et al."     -->
       && citation.collaborativeAuthors?size gt 0)  <#-- or if collab authors will follow -->
       />
     ${author.surnames!}
@@ -24,7 +24,7 @@
     </#if>
   </#list>
 
-  <#assign maxCollabAuthors = maxAuthors - citation.authors?size />
+  <#assign maxCollabAuthors = maxAuthors - authors?size />
   <#list citation.collaborativeAuthors as author>
     <#if author_index lt maxCollabAuthors>
       <#assign isCommaShown = author_has_next || citation.collaborativeAuthors?size gt maxCollabAuthors />
@@ -32,11 +32,11 @@
     </#if>
   </#list>
 
-  <#if citation.authors?size + citation.collaborativeAuthors?size gt maxAuthors>
+  <#if authors?size + citation.collaborativeAuthors?size gt maxAuthors>
   et al.
   </#if>
 
-  <#if citation.date??>(<@formatJsonDate date="${citation.date}" format="yyyy" />)</#if>
+  <#if citation.publicationDate??>(<@formatJsonDate date="${citation.publicationDate}" format="yyyy" />)</#if>
 
   <#if citation.title??>
   ${citation.title}<#if !citation.title?ends_with('?')>.</#if>

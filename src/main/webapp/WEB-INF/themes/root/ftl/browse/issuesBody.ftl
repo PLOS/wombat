@@ -3,14 +3,14 @@
 <nav id="nav-toc">
   <ul class="nav-page">
     <li data-toc="Cover"><a href="#Cover">Cover</a></li>
-  <#list articleGroups as articleGrp>
-    <#if (articleGrp?size > 1)>
-      <#assign articleHeader="${articleGrp.pluralHeading!articleGrp.heading!'No Header Defined'}">
+  <#list articleGroups as articleGroup>
+    <#if (articleGroup.articles?size > 1)>
+      <#assign articleHeader="${articleGroup.type.pluralName!articleGroup.type.name!'No Header Defined'}">
     <#else>
-      <#assign articleHeader="${articleGrp.heading!'No Header Defined'}">
+      <#assign articleHeader="${articleGroup.type.name!'No Header Defined'}">
     </#if>
-    <li data-toc="${articleGrp.heading?replace(" ", "_")}"><a
-        href="#${articleGrp.heading?replace(" ", "_")}">${articleHeader}</a></li>
+    <li data-toc="${articleGroup.type.name?replace(" ", "_")}"><a
+        href="#${articleGroup.type.name?replace(" ", "_")}">${articleHeader}</a></li>
   </#list>
   </ul>
 </nav>
@@ -40,30 +40,29 @@
     </div>
   </div>
 
-<#list articleGroups as articleGrp>
+<#list articleGroups as articleGroup>
   <div class="section">
-    <a id="${articleGrp.heading?replace(" ", "_")}" name="${articleGrp.heading?replace(" ", "_")}"
-       toc="${articleGrp.heading}" title="${articleGrp.heading}"></a>
-    <#if (articleGrp?size > 1)>
-      <#assign articleHeader="${articleGrp.pluralHeading!articleGrp.heading!'No Header Defined'}">
+    <a id="${articleGroup.type.name?replace(" ", "_")}" name="${articleGroup.type.name?replace(" ", "_")}"
+       toc="${articleGroup.type.name}" title="${articleGroup.type.name}"></a>
+    <#if (articleGroup.articles?size > 1)>
+      <#assign articleHeader="${articleGroup.type.pluralName!articleGroup.type.name!'No Header Defined'}">
     <#else>
-      <#assign articleHeader="${articleGrp.heading!'No Header Defined'}">
+      <#assign articleHeader="${articleGroup.type.name!'No Header Defined'}">
     </#if>
 
     <h2>${articleHeader!"No Header Defined"}</h2>
-    <#list articleGrp.articles as articleInfo>
+    <#list articleGroup.articles as articleInfo>
       <div class="item cf">
-        <@siteLink
-        handlerName="article"
-        queryParameters={"id": articleInfo.doi}; articleLink>
-
+        <@siteLink handlerName="article" queryParameters={"id": articleInfo.doi} ; articleLink>
           <h3>
             <a href="${articleLink}" title="Read Open Access Article">
             ${articleInfo.title}
             </a>
           </h3>
+        </@siteLink>
 
-          <p class="authors">
+        <p class="authors">
+          <#if articleInfo.authors??><#-- TODO: Support this -->
             <#list articleInfo.authors as auth>
               <#rt>${auth.fullName?trim}<#if auth_has_next>,</#if>
             </#list>
@@ -73,18 +72,17 @@
               ${cauth?trim}<#if cauth_has_next>,</#if>
               </#list>
             </#if>
-          </p>
-
-        </@siteLink>
+          </#if>
+        </p>
 
 
         <p class="article-info"><b>${journal.title}:</b> published
-          <@formatJsonDate date="${articleInfo.date}" format="MMMM d, yyyy" /> |
+          <@formatJsonDate date="${articleInfo.publicationDate}" format="MMMM d, yyyy" /> |
           <#include "../macro/doiAsLink.ftl" />
           <@doiAsLink articleInfo.doi />
         </p>
 
-        <#if articleGrp.heading == "Research Article" >
+        <#if articleGroup.type.name == "Research Article" >
           <p class="links">
           <#--assuming that all research articles have abstract-->
                             <#-- TODO: When able to launch lightbox from here, uncomment and wire to lightbox
@@ -96,17 +94,19 @@
           </p>
         </#if>
 
-        <#if (articleInfo.relatedArticles?size > 0)>
-          <h4>Related Articles</h4>
-          <ol>
-            <#list articleInfo.relatedArticles as relArticle>
-              <li>
-                <a href="${doiResolverLink(relArticle.doi)}" title="Read Open Access Article">
-                  <@xform xml=relArticle.title />
-                </a>
-              </li>
-            </#list>
-          </ol>
+        <#if articleInfo.relatedArticles??><#-- TODO: Support this -->
+          <#if (articleInfo.relatedArticles?size > 0)>
+            <h4>Related Articles</h4>
+            <ol>
+              <#list articleInfo.relatedArticles as relArticle>
+                <li>
+                  <a href="${doiResolverLink(relArticle.doi)}" title="Read Open Access Article">
+                    <@xform xml=relArticle.title />
+                  </a>
+                </li>
+              </#list>
+            </ol>
+          </#if>
         </#if>
       </div>
     </#list>

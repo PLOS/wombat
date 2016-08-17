@@ -38,6 +38,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -116,13 +117,21 @@ public class BrowseController extends WombatController {
         XmlUtil.removeElement(issueDesc, "title")));
   }
 
-  private static class TypedArticleGroup {
-    private final ArticleType articleType;
+  public static class TypedArticleGroup {
+    private final ArticleType type;
     private final ImmutableList<Map<String, ?>> articles;
 
-    private TypedArticleGroup(ArticleType articleType, List<Map<String, ?>> articles) {
-      this.articleType = articleType;
+    private TypedArticleGroup(ArticleType type, List<Map<String, ?>> articles) {
+      this.type = Objects.requireNonNull(type);
       this.articles = ImmutableList.copyOf(articles);
+    }
+
+    public ArticleType getType() {
+      return type;
+    }
+
+    public ImmutableList<Map<String, ?>> getArticles() {
+      return articles;
     }
   }
 

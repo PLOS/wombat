@@ -1,0 +1,7 @@
+types:
+  - name:   Research Article
+    plural: Research Articles
+    code:   research_article
+  - name:   Issue Image
+    plural: Issue Images
+    code:   issue_image

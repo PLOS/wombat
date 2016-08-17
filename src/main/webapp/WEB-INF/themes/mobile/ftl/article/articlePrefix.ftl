@@ -1,4 +1,3 @@
-<#include "../common/article/articleType.ftl" />
 <div id="article-content" class="content" data-article-id="0059893">
     <article class="article-item">
 
@@ -6,7 +5,7 @@
     <a class="save-article circular coloration-text-color" data-list-type="individual">x</a>
     -->
 
-      <h5 class="item-title lead-in">${articleTypeHeading}</h5>
+      <h5 class="item-title lead-in">${articleType.name}</h5>
 
       <h2 class="article-title">${article.title}</h2>
 

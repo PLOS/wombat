@@ -13,10 +13,14 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Multimaps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
+import org.ambraproject.wombat.model.ArticleType;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -32,9 +36,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -62,8 +66,6 @@ public class BrowseController extends WombatController {
 
     return site.getKey() + "/ftl/browse/volumes";
   }
-
-  private static final ApiAddress ARTICLE_TYPES_ADDRESS = ApiAddress.builder("articleTypes").build();
 
   @RequestMapping(name = "browseIssues", value = "/issue")
   public String browseIssue(Model model, @SiteParam Site site,
@@ -115,36 +117,32 @@ public class BrowseController extends WombatController {
         XmlUtil.removeElement(issueDesc, "title")));
   }
 
-  private void modelArticleGroups(Model model, Site site, Map<String, Object> issueMetadata) throws IOException {
-    List<Map<String, Object>> articleGroups = articleApi.requestObject(ARTICLE_TYPES_ADDRESS, List.class);
+  public static class TypedArticleGroup {
+    private final ArticleType type;
+    private final ImmutableList<Map<String, ?>> articles;
 
-    articleGroups.stream().forEach(ag -> ag.put("articles", new ArrayList<Map<?, ?>>()));
-
-    for (String articleDoi : (List<String>) issueMetadata.get("articleOrder")) {
-      RequestedDoiVersion articleId = RequestedDoiVersion.of(articleDoi);
-      Map<?, ?> articleMetadata;
-      try {
-        articleMetadata = articleService.requestArticleMetadata(articleId);
-      } catch (EntityNotFoundException e) {
-        throw new ArticleNotFoundException(articleId);
-      }
-      try {
-        validateArticleVisibility(site, articleMetadata);
-      } catch (NotVisibleException e) {
-        continue; //skip any articles that should be hidden from view
-      }
-      Map<String, String> currentArticleType = (Map<String, String>) articleMetadata.get("articleType");
-      if (currentArticleType == null || currentArticleType.get("heading") == null) {
-        log.warn("No article type found for {}", articleId);
-        continue;
-      }
-      articleGroups.stream()
-          .filter(ag -> ag.get("heading").equals(currentArticleType.get("heading")))
-          .forEach(ag -> ((ArrayList<Map<?, ?>>) ag.get("articles")).add(articleMetadata));
+    private TypedArticleGroup(ArticleType type, List<Map<String, ?>> articles) {
+      this.type = Objects.requireNonNull(type);
+      this.articles = ImmutableList.copyOf(articles);
     }
 
-    articleGroups = articleGroups.stream()
-        .filter(ag -> !((ArrayList<Map<?, ?>>) ag.get("articles")).isEmpty())
+    public ArticleType getType() {
+      return type;
+    }
+
+    public ImmutableList<Map<String, ?>> getArticles() {
+      return articles;
+    }
+  }
+
+  private void modelArticleGroups(Model model, Site site, Map<String, Object> issueMetadata) throws IOException {
+    List<Map<String, ?>> articles = (List<Map<String, ?>>) issueMetadata.get("articles");
+    ListMultimap<String, Map<String, ?>> groupedArticles = Multimaps.index(articles, article -> (String) article.get("articleType"));
+
+    ImmutableList<ArticleType> articleTypes = ArticleType.read(site.getTheme());
+    List<TypedArticleGroup> articleGroups = articleTypes.stream()
+        .map((ArticleType articleType) -> new TypedArticleGroup(articleType, groupedArticles.get(articleType.getName())))
+        .filter((TypedArticleGroup articleGroup) -> !articleGroup.articles.isEmpty())
         .collect(Collectors.toList());
 
     model.addAttribute("articleGroups", articleGroups);

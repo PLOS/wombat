@@ -26,7 +26,7 @@
   <@tabyLink tabPage "Article" "article" true>Article</@tabyLink>
 
   <#if authors?? && authors?size gt 0>
-    <#if !["Correction", "Retraction", "Expression of Concern", "Obituary"]?seq_contains(articleTypeHeading) >
+    <#if !["Correction", "Retraction", "Expression of Concern", "Obituary"]?seq_contains(articleType.name) >
       <@tabyLink tabPage "Authors" "articleAuthors" true>Authors</@tabyLink>
     </#if>
   </#if>

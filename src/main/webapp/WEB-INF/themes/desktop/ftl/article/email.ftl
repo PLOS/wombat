@@ -4,7 +4,6 @@
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
-<#include "../common/article/articleType.ftl" />
 <#include "../macro/doiResolverLink.ftl" />
 
 <body class="${journalStyle}">

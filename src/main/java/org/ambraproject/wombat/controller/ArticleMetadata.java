@@ -16,6 +16,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
+import org.ambraproject.wombat.model.ArticleType;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
@@ -118,10 +119,10 @@ public class ArticleMetadata {
 
     model.addAttribute("article", ingestionMetadata);
 
-
     model.addAttribute("articleItems", itemTable);
     model.addAttribute("figures", getFigureView());
 
+    model.addAttribute("articleType", getArticleType());
     model.addAttribute("commentCount", getCommentCount());
     model.addAttribute("containingLists", getContainingArticleLists());
     model.addAttribute("categoryTerms", getCategoryTerms());
@@ -271,6 +272,13 @@ public class ArticleMetadata {
         })
         .filter(Objects::nonNull)
         .collect(Collectors.toList());
+  }
+
+  private ArticleType getArticleType() {
+    String typeName = (String) ingestionMetadata.get("articleType");
+    return ArticleType.read(site.getTheme()).stream()
+        .filter(articleType -> articleType.getName().equals(typeName))
+        .findAny().orElse(ArticleType.UNCLASSIFIED);
   }
 
   private Map<String, Integer> getCommentCount() throws IOException {

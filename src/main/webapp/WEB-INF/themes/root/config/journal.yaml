@@ -18,10 +18,3 @@ otherJournals: null
 # journal, the map could point from a desktop site to the other desktop sites for the other journals.) If it is left
 # null, the application will reverse-lookup journal keys on its own, choosing one in no defined order if the journal
 # keys are overloaded.
-
-italicizeTitle: true
-# Whether to italicize the title of this site's journal, when it appears in a cross-pub link from another site.
-#
-# The title itself is defined by the service tier, as a field of the journal object identified by the journalKey.
-# But that data contains no information about whether to italicize the title, which is an additional display detail
-# controlled here.

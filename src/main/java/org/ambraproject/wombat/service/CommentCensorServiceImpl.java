@@ -44,12 +44,7 @@ public class CommentCensorServiceImpl implements CommentCensorService {
   }
 
   private static Collection<String> getCensoredWordList(Site site) {
-    Map<String, Object> commentConfig;
-    try {
-      commentConfig = site.getTheme().getConfigMap("comment");
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    Map<String, Object> commentConfig = site.getTheme().getConfigMap("comment");
     return (Collection<String>) commentConfig.get("censoredWords");
   }
 

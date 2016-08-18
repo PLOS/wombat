@@ -215,11 +215,16 @@ public abstract class Theme {
    * @param path a path within the theme's {@code config/} directory
    * @return a map of overridden values
    */
-  public final Map<String, Object> getConfigMap(String path) throws IOException {
+  public final Map<String, Object> getConfigMap(String path) {
     String configPath = "config/" + path;
     Map<String, Object> values = Maps.newLinkedHashMap();
     for (Theme theme : getChain()) {
-      Map<?, ?> valuesFromTheme = readYamlConfigValues(theme, configPath);
+      Map<?, ?> valuesFromTheme;
+      try {
+        valuesFromTheme = readYamlConfigValues(theme, configPath);
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
       if (valuesFromTheme == null) {
         continue; // no overrides present in this theme
       }
@@ -265,9 +270,8 @@ public abstract class Theme {
    * @param siteSet    the system's set of all sites
    * @param journalKey a journal key belonging to another site
    * @return a site for the journal key, using preferences defined for this theme if any
-   * @throws IOException if the theme's config values can't be read
    */
-  public Site resolveForeignJournalKey(SiteSet siteSet, String journalKey) throws IOException, UnmatchedSiteException {
+  public Site resolveForeignJournalKey(SiteSet siteSet, String journalKey) throws UnmatchedSiteException {
     Preconditions.checkArgument(!Strings.isNullOrEmpty(journalKey));
     Map<?, ?> otherJournals = (Map<?, ?>) getConfigMap("journal").get("otherJournals");
     if (otherJournals != null) {

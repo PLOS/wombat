@@ -3,7 +3,6 @@ package org.ambraproject.wombat.model;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.theme.Theme;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -44,12 +43,7 @@ public class ArticleType {
   public static final ArticleType UNCLASSIFIED = new ArticleType("unclassified", null, null, null);
 
   public static ImmutableList<ArticleType> read(Theme theme) {
-    Map<String, ?> articleTypeMap;
-    try {
-      articleTypeMap = theme.getConfigMap("articleType");
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    Map<String, ?> articleTypeMap = theme.getConfigMap("articleType");
 
     List<Map<String, ?>> articleTypeList = (List<Map<String, ?>>) articleTypeMap.get("types");
     Collection<ArticleType> articleTypes = articleTypeList.stream()

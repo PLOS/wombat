@@ -10,7 +10,6 @@ import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Map;
@@ -187,12 +186,7 @@ public abstract class SiteRequestCondition implements RequestCondition<SiteReque
    * @return the pattern mapped to that handler on that site, or {@code null} if the handler is disabled on the site
    */
   private static RequestMappingContext getMappingForSite(RequestMappingContext mapping, Site site) {
-    final Map<String, Object> mappingsConfig;
-    try {
-      mappingsConfig = site.getTheme().getConfigMap("mappings");
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    Map<String, Object> mappingsConfig = site.getTheme().getConfigMap("mappings");
 
     Map<String, Object> override = (Map<String, Object>) mappingsConfig.get(mapping.getAnnotation().name());
     if (override != null) {

@@ -11,6 +11,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
@@ -45,7 +46,6 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
 
@@ -86,6 +86,8 @@ public class ArticleMetadata {
     private SiteSet siteSet;
     @Autowired
     private ArticleTransformService articleTransformService;
+    @Autowired
+    private RequestMappingContextDictionary requestMappingContextDictionary;
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
       return get(site, id, articleResolutionService.toIngestion(id));
@@ -156,14 +158,28 @@ public class ArticleMetadata {
    * @throws NotVisibleException if the article is not visible on the site
    */
   public ArticleMetadata validateVisibility() {
-    // TODO: Update to new API
-    Set<String> articleJournalKeys = ((Map<String, ?>) ingestionMetadata.get("journals")).keySet();
+    Map<String, ?> journal = (Map<String, ?>) ingestionMetadata.get("journal");
+    String publishedJournalKey = (String) journal.get("journalKey");
     String siteJournalKey = site.getJournalKey();
-    if (!articleJournalKeys.contains(siteJournalKey)) {
-      throw new NotVisibleException("Article is not published in: " + site);
+    if (!publishedJournalKey.equals(siteJournalKey)) {
+      String handlerName = "article"; // TODO: Extract to argument
+      Link link = buildCrossSiteRedirect(publishedJournalKey, handlerName);
+      throw new InternalRedirectException(link);
     }
-
     return this;
+  }
+
+  private Link buildCrossSiteRedirect(String targetJournal, String handlerName) {
+    Site targetSite;
+    try {
+      targetSite = this.site.getTheme().resolveForeignJournalKey(factory.siteSet, targetJournal);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+    return Link.toForeignSite(site, targetSite)
+        .toPattern(factory.requestMappingContextDictionary, handlerName)
+        .addQueryParameters(articlePointer.asParameterMap())
+        .build();
   }
 
   /**

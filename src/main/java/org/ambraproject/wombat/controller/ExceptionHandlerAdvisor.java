@@ -44,7 +44,7 @@ class ExceptionHandlerAdvisor {
    */
   @ExceptionHandler(Exception.class)
   protected ModelAndView handleException(Exception exception, HttpServletRequest request, HttpServletResponse response)
-          throws IOException {
+      throws IOException {
     log.error("handleException", exception);
     response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
     Site site = siteResolver.resolveSite(request);
@@ -80,7 +80,7 @@ class ExceptionHandlerAdvisor {
    * @return ModelAndView specifying the view
    */
   @ExceptionHandler({MissingServletRequestParameterException.class, NotFoundException.class, NotVisibleException.class,
-          NoHandlerFoundException.class})
+      NoHandlerFoundException.class})
   protected ModelAndView handleNotFound(HttpServletRequest request, HttpServletResponse response) {
     Site site = siteResolver.resolveSite(request);
     if (site == null && request.getServletPath().equals("/")) {
@@ -90,6 +90,11 @@ class ExceptionHandlerAdvisor {
     response.setStatus(HttpStatus.NOT_FOUND.value());
     String viewName = (site == null) ? "//notFound" : (site.getKey() + "/ftl/error/notFound");
     return new ModelAndView(viewName);
+  }
+
+  @ExceptionHandler(InternalRedirectException.class)
+  protected ModelAndView handleRedirectToSite(InternalRedirectException exception, HttpServletRequest request) {
+    return new ModelAndView(exception.getLink().getRedirect(request));
   }
 
 }

@@ -917,8 +917,7 @@
                           </xsl:when>
                           <xsl:otherwise>
                             <!-- build link and use + for spaces for consistency with Ambra -->
-                            <xsl:value-of select="replace(concat('http://www.crossref.org/guestquery?auth2=', $author,
-                            '&amp;atitle2=', $title, '&amp;auth=', $author, '&amp;atitle=', $title),'%20','+')"/>
+                            <xsl:value-of select="encode-for-uri($cit)"/>
                           </xsl:otherwise>
                         </xsl:choose>
                       </xsl:attribute>

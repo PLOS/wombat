@@ -138,6 +138,9 @@ var tooltip_references, initReferenceTooltip;
 
     }
 
+
+
+
   $('.ref-tip').hover(
     function () {
       var $ref_link = $(this);  // hovered over link
@@ -170,5 +173,40 @@ var tooltip_references, initReferenceTooltip;
     });
   };
   initReferenceTooltip = tooltip_references();
+
+
+  ///////////////////
+
+  $('.references li ul.reflinks li:first-child a').on('click',
+      function () {
+
+        var $that = $(this);
+
+       var queryString = $(this).attr('href');
+
+        event.preventDefault();
+
+
+        $.ajax({
+              url: "http://api.crossref.org/works?query=" + queryString + "sort=score&rows=1",
+            })
+            .done(function( data ) {
+              var DOIs = data.message.items[0].DOI;
+              var DOIResolver = 'http://dx.doi.org/';
+              window.open( DOIResolver +  DOIs, 'test');
+              console.log( "Sample of datas3:", DOIs);
+              console.log($that.attr('href'));
+
+            });
+
+
+
+  }
+  );
+
+
+
+
+
 
 })(jQuery);

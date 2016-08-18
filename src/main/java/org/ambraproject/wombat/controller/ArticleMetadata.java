@@ -157,12 +157,11 @@ public class ArticleMetadata {
    *
    * @throws NotVisibleException if the article is not visible on the site
    */
-  public ArticleMetadata validateVisibility() {
+  public ArticleMetadata validateVisibility(String handlerName) {
     Map<String, ?> journal = (Map<String, ?>) ingestionMetadata.get("journal");
     String publishedJournalKey = (String) journal.get("journalKey");
     String siteJournalKey = site.getJournalKey();
     if (!publishedJournalKey.equals(siteJournalKey)) {
-      String handlerName = "article"; // TODO: Extract to argument
       Link link = buildCrossSiteRedirect(publishedJournalKey, handlerName);
       throw new InternalRedirectException(link);
     }

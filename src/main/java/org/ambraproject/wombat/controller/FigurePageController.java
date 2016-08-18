@@ -42,7 +42,7 @@ public class FigurePageController extends WombatController {
                                   RequestedDoiVersion articleId)
       throws IOException {
     ArticleMetadata articleMetadata = articleMetadataFactory.get(site, articleId)
-        .validateVisibility();
+        .validateVisibility("figuresPage");
     model.addAttribute("article", articleMetadata.getIngestionMetadata());
     ArticlePointer articlePointer = articleMetadata.getArticlePointer();
 

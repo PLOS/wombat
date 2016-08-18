@@ -139,7 +139,7 @@ public class ArticleController extends WombatController {
                               RequestedDoiVersion articleId)
       throws IOException {
     ArticlePointer articlePointer = articleMetadataFactory.get(site, articleId)
-        .validateVisibility()
+        .validateVisibility("article")
         .populate(request, model)
         .fillAmendments(model)
         .getArticlePointer();
@@ -163,7 +163,7 @@ public class ArticleController extends WombatController {
   public String renderArticleComments(HttpServletRequest request, Model model, @SiteParam Site site,
                                       RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .validateVisibility()
+        .validateVisibility("articleComments")
         .populate(request, model);
 
     try {
@@ -181,7 +181,7 @@ public class ArticleController extends WombatController {
                                      RequestedDoiVersion articleId)
       throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .validateVisibility()
+        .validateVisibility("articleCommentForm")
         .populate(request, model);
 
     model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
@@ -221,7 +221,7 @@ public class ArticleController extends WombatController {
     RequestedDoiVersion articleId = RequestedDoiVersion.of((String) parentArticleStub.get("doi")); // latest revision
 
     articleMetadataFactory.get(site, articleId)
-        .validateVisibility()
+        .validateVisibility("articleCommentTree")
         .populate(request, model);
 
     model.addAttribute("comment", comment);
@@ -318,7 +318,7 @@ public class ArticleController extends WombatController {
   public String renderArticleAuthors(HttpServletRequest request, Model model, @SiteParam Site site,
                                      RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .validateVisibility()
+        .validateVisibility("articleAuthors")
         .populate(request, model);
     return site + "/ftl/article/authors";
   }
@@ -336,7 +336,7 @@ public class ArticleController extends WombatController {
   public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
                                      RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .validateVisibility()
+        .validateVisibility("articleMetrics")
         .populate(request, model);
     return site + "/ftl/article/metrics";
   }
@@ -346,7 +346,7 @@ public class ArticleController extends WombatController {
                                            RequestedDoiVersion articleId)
       throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .validateVisibility()
+        .validateVisibility("citationDownloadPage")
         .populate(request, model);
     return site + "/ftl/article/citationDownload";
   }
@@ -354,24 +354,24 @@ public class ArticleController extends WombatController {
   @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris", produces = "application/x-research-info-systems;charset=UTF-8")
   public ResponseEntity<String> serveRisCitationDownload(@SiteParam Site site, RequestedDoiVersion articleId)
       throws IOException {
-    return serveCitationDownload(site, articleId, "ris",
+    return serveCitationDownload(site, "downloadRisCitation", articleId, "ris",
         citationDownloadService::buildRisCitation);
   }
 
   @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex", produces = "application/x-bibtex;charset=UTF-8")
   public ResponseEntity<String> serveBibtexCitationDownload(@SiteParam Site site, RequestedDoiVersion articleId)
       throws IOException {
-    return serveCitationDownload(site, articleId, "bib",
+    return serveCitationDownload(site, "downloadBibtexCitation", articleId, "bib",
         citationDownloadService::buildBibtexCitation);
   }
 
-  private ResponseEntity<String> serveCitationDownload(Site site,
+  private ResponseEntity<String> serveCitationDownload(Site site, String handlerName,
                                                        RequestedDoiVersion articleId,
                                                        String fileExtension,
                                                        Function<Map<String, ?>, String> serviceFunction)
       throws IOException {
     Map<String, ?> articleMetadata = articleMetadataFactory.get(site, articleId)
-        .validateVisibility()
+        .validateVisibility(handlerName)
         .getIngestionMetadata();
 
     String citationBody = serviceFunction.apply(articleMetadata);
@@ -398,7 +398,7 @@ public class ArticleController extends WombatController {
   public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
                                             RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .validateVisibility()
+        .validateVisibility("articleRelatedContent")
         .populate(request, model);
     String recaptchaPublicKey = site.getTheme().getConfigMap("captcha").get("publicKey").toString();
     model.addAttribute("recaptchaPublicKey", recaptchaPublicKey);
@@ -532,7 +532,7 @@ public class ArticleController extends WombatController {
   public ResponseEntity<List> listArticleFiguresAndTables(@SiteParam Site site,
                                                           RequestedDoiVersion articleId) throws IOException {
     List<Map<String, ?>> figureView = articleMetadataFactory.get(site, articleId)
-        .validateVisibility()
+        .validateVisibility("articleFigsAndTables")
         .getFigureView();
 
     HttpHeaders headers = new HttpHeaders();
@@ -544,7 +544,7 @@ public class ArticleController extends WombatController {
   public String renderEmailThisArticle(HttpServletRequest request, Model model, @SiteParam Site site,
                                        RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
-        .validateVisibility()
+        .validateVisibility("email")
         .populate(request, model);
     model.addAttribute("maxEmails", MAX_TO_EMAILS);
     model.addAttribute("captchaHTML", captchaService.getCaptchaHtml(site, Optional.empty()));
@@ -589,7 +589,7 @@ public class ArticleController extends WombatController {
     }
 
     Map<String, ?> articleMetadata = articleMetadataFactory.get(site, articleId)
-        .validateVisibility()
+        .validateVisibility("emailPost")
         .getIngestionMetadata();
 
     String title = articleMetadata.get("title").toString();

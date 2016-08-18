@@ -276,9 +276,7 @@ public class ArticleMetadata {
 
   private ArticleType getArticleType() {
     String typeName = (String) ingestionMetadata.get("articleType");
-    return ArticleType.read(site.getTheme()).stream()
-        .filter(articleType -> articleType.getName().equals(typeName))
-        .findAny().orElse(ArticleType.UNCLASSIFIED);
+    return ArticleType.get(site.getTheme(), typeName);
   }
 
   private Map<String, Integer> getCommentCount() throws IOException {

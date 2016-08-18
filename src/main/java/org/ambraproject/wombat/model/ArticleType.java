@@ -17,6 +17,10 @@ public class ArticleType {
   private final String code;
   private final String description;
 
+  private ArticleType(String name) {
+    this(name, null, null, null);
+  }
+
   private ArticleType(String name, String pluralName, String code, String description) {
     this.name = Objects.requireNonNull(name);
     this.pluralName = pluralName;
@@ -41,7 +45,7 @@ public class ArticleType {
   }
 
 
-  public static final ArticleType UNCLASSIFIED = new ArticleType("unclassified", null, null, null);
+  public static final ArticleType UNCLASSIFIED = new ArticleType("Unclassified");
 
   public static ImmutableList<ArticleType> read(Theme theme) {
     Map<String, ?> articleTypeMap;
@@ -63,6 +67,16 @@ public class ArticleType {
         .collect(Collectors.toList());
     return ImmutableList.copyOf(articleTypes);
   }
+
+  public static ArticleType get(Theme theme, String name) {
+    Objects.requireNonNull(theme);
+    if (name == null) return UNCLASSIFIED;
+    return read(theme).stream()
+        .filter(articleType -> articleType.getName().equals(name))
+        .findAny()
+        .orElseGet(() -> new ArticleType(name));
+  }
+
 
   @Override
   public boolean equals(Object o) {

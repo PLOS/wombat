@@ -28,15 +28,13 @@
 </#if>
 <#assign hasStrkImgUri=article.strkImgURI?? && (article.strkImgURI?length > 0) />
 
-<#include "./alterJournalTitle.ftl">
-
 <#if article.title??>
   <meta name="citation_title" content="${articleTitle}" />
   <meta itemprop="name" content="${articleTitle}" />
 </#if>
 <#if article.journal??>
-  <meta name="citation_journal_title" content="${alterJournalTitle(article.journal)}" />
-  <meta name="citation_journal_abbrev" content="${alterJournalTitle(article.journal)}" />
+  <meta name="citation_journal_title" content="${article.journal.title}" />
+  <meta name="citation_journal_abbrev" content="${article.journal.title}" />
 </#if>
 <#if article.date??>
   <meta name="citation_date" content="${article.date?date("yyyy-MM-dd")}" />

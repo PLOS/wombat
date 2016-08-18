@@ -146,8 +146,6 @@ public class ArticleMetadata {
         .collect(Collectors.toList());
   }
 
-  private static final boolean DEBUG_VISIBILITY = true;
-
   /**
    * Validate that an article ought to be visible to the user. If not, throw an exception indicating that the user
    * should see a 404.
@@ -158,16 +156,10 @@ public class ArticleMetadata {
    * @throws NotVisibleException if the article is not visible on the site
    */
   public ArticleMetadata validateVisibility() {
-    if (DEBUG_VISIBILITY) return this;
-
-    String state = (String) ingestionMetadata.get("state");
-    if (!"published".equals(state)) {
-      throw new NotVisibleException("Article is in unpublished state: " + state);
-    }
-
+    // TODO: Update to new API
     Set<String> articleJournalKeys = ((Map<String, ?>) ingestionMetadata.get("journals")).keySet();
     String siteJournalKey = site.getJournalKey();
-    if (!articleJournalKeys.contains(siteJournalKey) && !DEBUG_VISIBILITY) {
+    if (!articleJournalKeys.contains(siteJournalKey)) {
       throw new NotVisibleException("Article is not published in: " + site);
     }
 

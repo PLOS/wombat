@@ -142,16 +142,17 @@ public class BrowseController extends WombatController {
     List<Map<String, ?>> articles = (List<Map<String, ?>>) issueMetadata.get("articles");
 
     // Articles grouped by their type. Order within the value lists is significant.
+    ArticleType.Dictionary typeDictionary = ArticleType.getDictionary(site.getTheme());
     ListMultimap<ArticleType, Map<String, ?>> groupedArticles = LinkedListMultimap.create();
     for (Map<String, ?> article : articles) {
       if (!article.containsKey("revisionNumber")) continue; // Omit unpublished articles
 
-      ArticleType articleType = ArticleType.get(site.getTheme(), (String) article.get("articleType"));
+      ArticleType articleType = typeDictionary.lookUp((String) article.get("articleType"));
       groupedArticles.put(articleType, article);
     }
 
     // The article types supported by this site, in the order in which they are supposed to appear.
-    ImmutableList<ArticleType> articleTypes = ArticleType.read(site.getTheme());
+    ImmutableList<ArticleType> articleTypes = typeDictionary.getSequence();
 
     // Produce a correctly ordered list of TypedArticleGroup, populated with the article groups.
     List<TypedArticleGroup> articleGroups = new ArrayList<>(articleTypes.size());

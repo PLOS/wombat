@@ -276,7 +276,7 @@ public class ArticleMetadata {
 
   private ArticleType getArticleType() {
     String typeName = (String) ingestionMetadata.get("articleType");
-    return ArticleType.get(site.getTheme(), typeName);
+    return ArticleType.getDictionary(site.getTheme()).lookUp(typeName);
   }
 
   private Map<String, Integer> getCommentCount() throws IOException {

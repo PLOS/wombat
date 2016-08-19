@@ -21,7 +21,6 @@ import org.ambraproject.wombat.service.remote.UserApiImpl;
 import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.yaml.snakeyaml.Yaml;
@@ -43,34 +42,20 @@ public class RootConfiguration {
   }
 
   private static final String CONFIG_DIR_PROPERTY_NAME = "wombat.configDir";
-  private static final String CONFIG_DIR_ENVIRONMENT_NAME = "WOMBAT_CONFIG_DIR";
 
-  private static File getConfigDirectory(ApplicationContext applicationContext) {
+  private static File getConfigDirectory() {
     String property = System.getProperty(CONFIG_DIR_PROPERTY_NAME);
     if (!Strings.isNullOrEmpty(property)) {
       return new File(property);
+    } else {
+      throw new RuntimeException("Config directory not found. " + CONFIG_DIR_PROPERTY_NAME + " must be defined.");
     }
-
-    String environmentVar = System.getenv(CONFIG_DIR_ENVIRONMENT_NAME);
-    if (!Strings.isNullOrEmpty(environmentVar)) {
-      return new File(environmentVar);
-    }
-
-    String applicationName = applicationContext.getApplicationName();
-    if (!Strings.isNullOrEmpty(applicationName)) {
-      return new File("/etc", applicationName);
-    }
-
-    throw new RuntimeException("Config directory not found. " +
-        "(If application name is empty, " + CONFIG_DIR_PROPERTY_NAME + " or "
-        + CONFIG_DIR_ENVIRONMENT_NAME + " must be defined.)");
   }
 
   @Bean
-  public RuntimeConfiguration runtimeConfiguration(ApplicationContext applicationContext,
-                                                   Yaml yaml)
+  public RuntimeConfiguration runtimeConfiguration(Yaml yaml)
       throws IOException {
-    File configDirectory = getConfigDirectory(applicationContext);
+    File configDirectory = getConfigDirectory();
     File configPath = new File(configDirectory, "wombat.yaml");
     if (!configPath.exists()) {
       throw new RuntimeConfigurationException(configPath.getPath() + " not found");

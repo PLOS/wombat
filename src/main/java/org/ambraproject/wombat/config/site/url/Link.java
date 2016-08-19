@@ -14,7 +14,6 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -111,12 +110,7 @@ public class Link {
    * @param siteSet           the global site set
    */
   public static Factory toForeignSite(Site localSite, String foreignJournalKey, SiteSet siteSet) {
-    Site foreignSite;
-    try {
-      foreignSite = localSite.getTheme().resolveForeignJournalKey(siteSet, foreignJournalKey);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    Site foreignSite = localSite.getTheme().resolveForeignJournalKey(siteSet, foreignJournalKey);
     return toForeignSite(localSite, foreignSite);
   }
 

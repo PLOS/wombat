@@ -7,10 +7,10 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
@@ -45,7 +45,6 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
 
@@ -86,6 +85,8 @@ public class ArticleMetadata {
     private SiteSet siteSet;
     @Autowired
     private ArticleTransformService articleTransformService;
+    @Autowired
+    private RequestMappingContextDictionary requestMappingContextDictionary;
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
       return get(site, id, articleResolutionService.toIngestion(id));
@@ -112,8 +113,6 @@ public class ArticleMetadata {
   }
 
   public ArticleMetadata populate(HttpServletRequest request, Model model) throws IOException {
-    addCrossPublishedJournals(request, model);
-
     model.addAttribute("versionPtr", articlePointer.getVersionParameter());
     model.addAttribute("articlePtr", articlePointer.asParameterMap());
 
@@ -146,8 +145,6 @@ public class ArticleMetadata {
         .collect(Collectors.toList());
   }
 
-  private static final boolean DEBUG_VISIBILITY = true;
-
   /**
    * Validate that an article ought to be visible to the user. If not, throw an exception indicating that the user
    * should see a 404.
@@ -157,93 +154,23 @@ public class ArticleMetadata {
    *
    * @throws NotVisibleException if the article is not visible on the site
    */
-  public ArticleMetadata validateVisibility() {
-    if (DEBUG_VISIBILITY) return this;
-
-    String state = (String) ingestionMetadata.get("state");
-    if (!"published".equals(state)) {
-      throw new NotVisibleException("Article is in unpublished state: " + state);
-    }
-
-    Set<String> articleJournalKeys = ((Map<String, ?>) ingestionMetadata.get("journals")).keySet();
+  public ArticleMetadata validateVisibility(String handlerName) {
+    Map<String, ?> journal = (Map<String, ?>) ingestionMetadata.get("journal");
+    String publishedJournalKey = (String) journal.get("journalKey");
     String siteJournalKey = site.getJournalKey();
-    if (!articleJournalKeys.contains(siteJournalKey) && !DEBUG_VISIBILITY) {
-      throw new NotVisibleException("Article is not published in: " + site);
+    if (!publishedJournalKey.equals(siteJournalKey)) {
+      Link link = buildCrossSiteRedirect(publishedJournalKey, handlerName);
+      throw new InternalRedirectException(link);
     }
-
     return this;
   }
 
-  /**
-   * Add links to cross-published journals to the model.
-   * <p>
-   * Each journal in which the article was published (according to the supplied article metadata) will be represented in
-   * the model, other than the journal belonging to the site being browsed. If that journal is the only one, nothing is
-   * added to the model. The journal of original publication (according to the article metadata's eISSN) is added under
-   * the named {@code "originalPub"}, and other journals are added as a collection named {@code "crossPub"}.
-   *
-   * @param request the contextual request (used to build cross-site links)
-   * @param model   the page model into which to insert the link values
-   * @throws IOException
-   */
-  private void addCrossPublishedJournals(HttpServletRequest request, Model model)
-      throws IOException {
-    final Map<?, ?> publishedJournals = (Map<?, ?>) ingestionMetadata.get("journals");
-    if (publishedJournals == null) {
-      // TODO: Implement when cross-pub journals are supported in versioned API
-      model.addAttribute("crossPub", ImmutableList.of());
-      model.addAttribute("originalPub", ImmutableMap.builder()
-          .put("href", "TODO").put("title", "TODO").put("italicizeTitle", false).build());
-      return;
-    }
-
-    final String eissn = (String) ingestionMetadata.get("eIssn");
-    Collection<Map<String, ?>> crossPublishedJournals;
-    Map<String, ?> originalJournal = null;
-
-    if (publishedJournals.size() <= 1) {
-      // The article was published in only one journal.
-      // Assume it is the one being browsed (validateArticleVisibility would have caught it otherwise).
-      crossPublishedJournals = ImmutableList.of();
-    } else {
-      crossPublishedJournals = Lists.newArrayListWithCapacity(publishedJournals.size() - 1);
-      String localJournal = site.getJournalKey();
-
-      for (Map.Entry<?, ?> journalEntry : publishedJournals.entrySet()) {
-        String journalKey = (String) journalEntry.getKey();
-        if (journalKey.equals(localJournal)) {
-          // This is the journal being browsed right now, so don't add a link
-          continue;
-        }
-
-        // Make a mutable copy to clobber
-        Map<String, Object> crossPublishedJournalMetadata = new HashMap<>((Map<? extends String, ?>) journalEntry.getValue());
-
-        // Find the site object (if possible) for the other journal
-        String crossPublishedJournalKey = (String) crossPublishedJournalMetadata.get("journalKey");
-        Site crossPublishedSite = site.getTheme().resolveForeignJournalKey(factory.siteSet, crossPublishedJournalKey);
-
-        // Set up an href link to the other site's root page.
-        // Do not link to handlerName="homePage" because we don't know if the other site has disabled it.
-        String homepageLink = Link.toForeignSite(site, crossPublishedSite).toPath("").get(request);
-        crossPublishedJournalMetadata.put("href", homepageLink);
-
-        // Look up whether the other site wants its journal title italicized
-        // (This isn't a big deal because it's only one value, but if similar display details pile up
-        // in the future, it would be better to abstract them out than to handle them all individually here.)
-        boolean italicizeTitle = (boolean) crossPublishedSite.getTheme().getConfigMap("journal").get("italicizeTitle");
-        crossPublishedJournalMetadata.put("italicizeTitle", italicizeTitle);
-
-        if (eissn.equals(crossPublishedJournalMetadata.get("eIssn"))) {
-          originalJournal = crossPublishedJournalMetadata;
-        } else {
-          crossPublishedJournals.add(crossPublishedJournalMetadata);
-        }
-      }
-    }
-
-    model.addAttribute("crossPub", crossPublishedJournals);
-    model.addAttribute("originalPub", originalJournal);
+  private Link buildCrossSiteRedirect(String targetJournal, String handlerName) {
+    Site targetSite = this.site.getTheme().resolveForeignJournalKey(factory.siteSet, targetJournal);
+    return Link.toForeignSite(site, targetSite)
+        .toPattern(factory.requestMappingContextDictionary, handlerName)
+        .addQueryParameters(articlePointer.asParameterMap())
+        .build();
   }
 
   private static final ImmutableSet<String> FIGURE_TYPES = ImmutableSet.of("figure", "table");

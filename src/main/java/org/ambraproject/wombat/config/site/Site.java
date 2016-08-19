@@ -9,8 +9,6 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-
 public class Site {
 
   private final String key;
@@ -39,12 +37,7 @@ public class Site {
   public static final String JOURNAL_NAME = "journalName";
 
   private static String findJournalKey(Theme theme) {
-    String journalKey;
-    try {
-      journalKey = (String) theme.getConfigMap(JOURNAL_KEY_PATH).get(CONFIG_KEY_FOR_JOURNAL);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    String journalKey = (String) theme.getConfigMap(JOURNAL_KEY_PATH).get(CONFIG_KEY_FOR_JOURNAL);
     if (Strings.isNullOrEmpty(journalKey)) {
       String message = String.format("The theme %s must provide or inherit a journal key at the path: config/%s",
           theme.getKey(), JOURNAL_KEY_PATH);
@@ -54,12 +47,7 @@ public class Site {
   }
 
   private static String findJournalName(Theme theme) {
-    String journalName;
-    try {
-      journalName = (String) theme.getConfigMap(JOURNAL_KEY_PATH).get(JOURNAL_NAME);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    String journalName = (String) theme.getConfigMap(JOURNAL_KEY_PATH).get(JOURNAL_NAME);
     if (Strings.isNullOrEmpty(journalName)) {
       String message = String.format("The theme %s did not provide or inherit a journal name at the path: config/%s",
           theme.getKey(), JOURNAL_KEY_PATH);

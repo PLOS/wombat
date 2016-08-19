@@ -77,7 +77,7 @@ public class DoiVersionArgumentResolver implements HandlerMethodArgumentResolver
         if (canViewUnpublishedIngestion(webRequest)) {
           return RequestedDoiVersion.ofIngestion(id, ingestionNumber.getAsInt());
         } else {
-          throw new NotFoundException("Unpublished content is not visible"); // respond with 401 status instead?
+          throw new NotVisibleException("Unpublished content is not visible"); // respond with 401 status instead?
         }
       }
     }

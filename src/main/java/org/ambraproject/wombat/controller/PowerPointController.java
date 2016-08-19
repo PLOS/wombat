@@ -64,7 +64,7 @@ public class PowerPointController extends WombatController {
     ArticlePointer parentArticleId = assetPointer.getParentArticle();
 
     ArticleMetadata parentArticle = articleMetadataFactory.get(site, figureId.forDoi(parentArticleId.getDoi()), parentArticleId)
-        .validateVisibility();
+        .validateVisibility("powerPoint");
     List<Map<String, ?>> figureViewList = parentArticle
         .getFigureView();
     Map<String, ?> figureMetadata = findFigureViewFor(figureViewList, assetPointer).orElseThrow(() ->

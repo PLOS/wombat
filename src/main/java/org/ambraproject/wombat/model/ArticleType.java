@@ -5,7 +5,6 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.theme.Theme;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -47,12 +46,7 @@ public class ArticleType {
 
 
   private static List<ArticleType> read(Theme theme) {
-    Map<String, ?> articleTypeMap;
-    try {
-      articleTypeMap = theme.getConfigMap("articleType");
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    Map<String, ?> articleTypeMap = theme.getConfigMap("articleType");
 
     List<Map<String, ?>> articleTypeList = (List<Map<String, ?>>) articleTypeMap.get("types");
     return articleTypeList.stream()

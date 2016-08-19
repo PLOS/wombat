@@ -917,7 +917,18 @@
                           </xsl:when>
                           <xsl:otherwise>
                             <!-- build link and use + for spaces for consistency with Ambra -->
-                            <xsl:value-of select="encode-for-uri($cit)"/>
+                            <xsl:value-of select="'#'"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:attribute>
+                      <xsl:attribute name="data-citation">
+                        <xsl:choose>
+                          <xsl:when test="$doi">
+                            <xsl:value-of select="'doi-provided'"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <!-- build link and use + for spaces for consistency with Ambra -->
+                            <xsl:value-of select="concat('query.author=', $author, '&amp;query.title=', $title)"/>
                           </xsl:otherwise>
                         </xsl:choose>
                       </xsl:attribute>

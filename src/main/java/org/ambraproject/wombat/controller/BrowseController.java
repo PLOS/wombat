@@ -14,7 +14,9 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Multimaps;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
@@ -36,10 +38,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 /**
  * Controller for the browse page.
@@ -82,7 +84,7 @@ public class BrowseController extends WombatController {
     String imageArticleDoi = (String) ((Map) issueMetadata.get("imageArticle")).get("doi");
     transformIssueImageMetadata(model, site, imageArticleDoi);
 
-    modelArticleGroups(model, site, issueMetadata);
+    model.addAttribute("articleGroups", buildArticleGroups(site, issueMetadata));
 
     return site.getKey() + "/ftl/browse/issues";
   }
@@ -135,16 +137,43 @@ public class BrowseController extends WombatController {
     }
   }
 
-  private void modelArticleGroups(Model model, Site site, Map<String, Object> issueMetadata) throws IOException {
+  private List<TypedArticleGroup> buildArticleGroups(Site site, Map<String, Object> issueMetadata) throws IOException {
+    // Ordered list of all articles in the issue.
     List<Map<String, ?>> articles = (List<Map<String, ?>>) issueMetadata.get("articles");
-    ListMultimap<String, Map<String, ?>> groupedArticles = Multimaps.index(articles, article -> (String) article.get("articleType"));
 
-    ImmutableList<ArticleType> articleTypes = ArticleType.read(site.getTheme());
-    List<TypedArticleGroup> articleGroups = articleTypes.stream()
-        .map((ArticleType articleType) -> new TypedArticleGroup(articleType, groupedArticles.get(articleType.getName())))
-        .filter((TypedArticleGroup articleGroup) -> !articleGroup.articles.isEmpty())
-        .collect(Collectors.toList());
+    // Articles grouped by their type. Order within the value lists is significant.
+    ArticleType.Dictionary typeDictionary = ArticleType.getDictionary(site.getTheme());
+    ListMultimap<ArticleType, Map<String, ?>> groupedArticles = LinkedListMultimap.create();
+    for (Map<String, ?> article : articles) {
+      if (!article.containsKey("revisionNumber")) continue; // Omit unpublished articles
 
-    model.addAttribute("articleGroups", articleGroups);
+      ArticleType articleType = typeDictionary.lookUp((String) article.get("articleType"));
+      groupedArticles.put(articleType, article);
+    }
+
+    // The article types supported by this site, in the order in which they are supposed to appear.
+    ImmutableList<ArticleType> articleTypes = typeDictionary.getSequence();
+
+    // Produce a correctly ordered list of TypedArticleGroup, populated with the article groups.
+    List<TypedArticleGroup> articleGroups = new ArrayList<>(articleTypes.size());
+    for (ArticleType articleType : articleTypes) {
+      List<Map<String, ?>> articlesOfType = groupedArticles.removeAll(articleType);
+      if (!articlesOfType.isEmpty()) {
+        articleGroups.add(new TypedArticleGroup(articleType, articlesOfType));
+      }
+    }
+
+    // If any article groups were not matched, append them to the end.
+    for (Map.Entry<ArticleType, List<Map<String, ?>>> entry : Multimaps.asMap(groupedArticles).entrySet()) {
+      ArticleType type = entry.getKey();
+      TypedArticleGroup group = new TypedArticleGroup(type, entry.getValue());
+      articleGroups.add(group);
+
+      log.warn(String.format("Issue %s has articles of type \"%s\", which is not configured for %s: %s",
+          issueMetadata.get("doi"), type.getName(), site.getKey(),
+          Lists.transform(group.articles, article -> article.get("doi"))));
+    }
+
+    return articleGroups;
   }
 }

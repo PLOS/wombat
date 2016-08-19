@@ -1,9 +1,10 @@
 package org.ambraproject.wombat.model;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.theme.Theme;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -15,6 +16,10 @@ public class ArticleType {
   private final String pluralName;
   private final String code;
   private final String description;
+
+  private ArticleType(String name) {
+    this(name, null, null, null);
+  }
 
   private ArticleType(String name, String pluralName, String code, String description) {
     this.name = Objects.requireNonNull(name);
@@ -40,13 +45,11 @@ public class ArticleType {
   }
 
 
-  public static final ArticleType UNCLASSIFIED = new ArticleType("unclassified", null, null, null);
-
-  public static ImmutableList<ArticleType> read(Theme theme) {
+  private static List<ArticleType> read(Theme theme) {
     Map<String, ?> articleTypeMap = theme.getConfigMap("articleType");
 
     List<Map<String, ?>> articleTypeList = (List<Map<String, ?>>) articleTypeMap.get("types");
-    Collection<ArticleType> articleTypes = articleTypeList.stream()
+    return articleTypeList.stream()
         .map((Map<String, ?> articleType) -> {
           String name = (String) articleType.get("name");
           String pluralName = (String) articleType.get("plural");
@@ -55,8 +58,46 @@ public class ArticleType {
           return new ArticleType(name, pluralName, code, description);
         })
         .collect(Collectors.toList());
-    return ImmutableList.copyOf(articleTypes);
   }
+
+  public static Dictionary getDictionary(Theme theme) {
+    return new Dictionary(read(theme));
+  }
+
+  /**
+   * Stores the configured article types for a theme.
+   */
+  public static class Dictionary {
+    private final ImmutableMap<String, ArticleType> map;
+
+    private Dictionary(List<ArticleType> types) {
+      this.map = Maps.uniqueIndex(types, ArticleType::getName);
+    }
+
+    /**
+     * @return the list of article types supported by this object's theme, in the order in which they should appear
+     */
+    public ImmutableList<ArticleType> getSequence() {
+      return map.values().asList();
+    }
+
+    private static final ArticleType UNCLASSIFIED = new ArticleType("Unclassified");
+
+    /**
+     * Look up an article type according to this object's theme. If the name is not configured for this theme, provide a
+     * one-off type with that name and no other configured values. For null article type names, return an object
+     * representing unclassified articles.
+     *
+     * @param name the article type name (nullable)
+     * @return the configured article type if it available, or a non-null default otherwise
+     */
+    public ArticleType lookUp(String name) {
+      if (name == null) return UNCLASSIFIED;
+      ArticleType type = map.get(name);
+      return (type != null) ? type : new ArticleType(name);
+    }
+  }
+
 
   @Override
   public boolean equals(Object o) {

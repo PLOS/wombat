@@ -1,11 +1,9 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableSet;
-import com.google.common.io.Closer;
 import net.sf.json.JSONArray;
 import net.sf.json.xml.XMLSerializer;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.apache.commons.io.IOUtils;
@@ -20,16 +18,10 @@ import org.xml.sax.XMLReader;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.URIResolver;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
-import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -43,8 +35,8 @@ import java.util.OptionalInt;
 public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final Logger log = LoggerFactory.getLogger(ArticleTransformServiceImpl.class);
 
-  private static final String TEMPLATE_ROOT_PATH = "xform/";
-  private static final String TRANSFORM_TEMPLATE_PATH = TEMPLATE_ROOT_PATH + "article-transform.xsl";
+  private static final SiteTransformerFactory SITE_TRANSFORMER_FACTORY = new SiteTransformerFactory(
+      "xform/", "article-transform.xsl");
 
   @Autowired
   private Charset charset;
@@ -63,44 +55,6 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd",
       "http://jats.nlm.nih.gov/publishing/1.1d2/JATS-journalpublishing1.dtd",
       "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd");
-
-  private static TransformerFactory newTransformerFactory() {
-    // This implementation is required for XSLT features, so just hard-code it here
-    // Preferred over TransformerFactory.newInstance because Java system properties can burn in hell
-    return new net.sf.saxon.TransformerFactoryImpl();
-  }
-
-
-  private static class ThemeUriResolver implements URIResolver, Closeable {
-
-    /*
-     * Any stream opened while providing a Source gets stored here,
-     * then is closed when the outer ThemeUriResolver object is closed.
-     */
-    private final Closer closer = Closer.create();
-
-    private final Theme theme;
-
-    private ThemeUriResolver(Theme theme) {
-      this.theme = Objects.requireNonNull(theme);
-    }
-
-    @Override
-    public Source resolve(String href, String base) throws TransformerException {
-      InputStream resourceStream;
-      try {
-        resourceStream = closer.register(theme.getStaticResource(TEMPLATE_ROOT_PATH + href));
-      } catch (IOException e) {
-        throw new TransformerException(e);
-      }
-      return new StreamSource(resourceStream);
-    }
-
-    @Override
-    public void close() throws IOException {
-      closer.close();
-    }
-  }
 
 
   @FunctionalInterface
@@ -131,21 +85,9 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
    */
   private Transformer buildTransformer(Site site, XMLReader xmlReader, TransformerInitializer initialization)
       throws IOException {
-    Theme theme = site.getTheme();
     log.debug("Building transformer for: {}", site);
-    TransformerFactory factory = newTransformerFactory();
-
-    Transformer transformer;
-    try (ThemeUriResolver resolver = new ThemeUriResolver(theme);
-         InputStream transformFile = theme.getStaticResource(TRANSFORM_TEMPLATE_PATH)) {
-      factory.setURIResolver(resolver);
-      transformer = factory.newTransformer(new StreamSource(transformFile));
-    } catch (TransformerConfigurationException e) {
-      throw new RuntimeException(e);
-    }
-
+    Transformer transformer = SITE_TRANSFORMER_FACTORY.build(site);
     initialization.initialize(xmlReader, transformer);
-
     return transformer;
   }
 

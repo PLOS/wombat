@@ -171,15 +171,6 @@ $line-height-small: ($line-height * .5);
     }
 
   }
-  span.underline{ text-decoration: underline;}
-
-  span.small-caps {
-    @extend %small-caps;
-  }
-
-  .monospace {
-    @extend %monospace;
-  }
 
   // supplementary materials - need to have no margin between paragraphs just below the box
   .supplementary-material{

@@ -3,15 +3,11 @@
 <#include "../macro/doiResolverLink.ftl" />
 
 <#--//analytics related meta tags - description and keywords-->
-<#--todo: these assignments should be moved to the controller-->
-<#--todo: stop repeating "replace('<.+?>',' ','r')"-->
 <#if article.description??>
-  <#assign articleDescription=article.description?replace('<.+?>',' ','r')?html/>
+  <#assign articleDescription><@xform xml=article.description textOnly=true/></#assign>
   <meta name="description" content="${articleDescription}" />
 </#if>
-<#if article.title??>
-  <#assign articleTitle=article.title?replace('<.+?>',' ','r')?html/>
-</#if>
+<#assign articleTitle><@xform xml=article.title textOnly=true/></#assign>
 
 <#if categoryTerms??>
   <meta name="keywords" content="<#list categoryTerms as categoryTerm>${categoryTerm}<#if categoryTerm_has_next>,</#if></#list>" />

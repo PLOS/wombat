@@ -150,9 +150,8 @@ public class HomeController extends WombatController {
     public List<SolrArticleAdapter> getArticles(Site site, int start) throws IOException {
       if (since != null) {
         if (type == SectionType.RECENT) {
-          List<Map<String, Object>> recentArticles = recentArticleService.getRecentArticles(site,
-              resultCount, since, shuffle, articleTypes, articleTypesToExclude, Optional.fromNullable(cacheTtl));
-          return recentArticles.stream().map(SolrArticleAdapter::adaptFromRhino).collect(Collectors.toList());
+          return recentArticleService.getRecentArticles(site, resultCount, since, shuffle,
+              articleTypes, articleTypesToExclude, Optional.fromNullable(cacheTtl));
         } else {
           throw new IllegalArgumentException("Shuffling is supported only on RECENT section"); // No plans to support
         }

@@ -23,7 +23,7 @@
     <div class="header">
       <p class="kicker">COVER</p>
     <@siteLink handlerName="browseIssues" queryParameters={"id": issue.doi}; issueLink>
-      <h2><a href="${issueLink}">${issueTitle}</a></h2>
+      <h2><a href="${issueLink}"><@xform xml=issueTitle/></a></h2>
     </@siteLink>
     </div>
     <div class="detail-container">
@@ -56,7 +56,7 @@
         <@siteLink handlerName="article" queryParameters={"id": articleInfo.doi} ; articleLink>
           <h3>
             <a href="${articleLink}" title="Read Open Access Article">
-            ${articleInfo.title}
+              <@xform xml=articleInfo.title/>
             </a>
           </h3>
         </@siteLink>

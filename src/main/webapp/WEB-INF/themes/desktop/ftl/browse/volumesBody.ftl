@@ -19,6 +19,7 @@
 
       <div class="journal_description">
         <p class="tag">ABOUT THIS IMAGE</p>
+        ${issueTitle}
         ${issueDescription}
       </div>
     </div> <!--  issue_container -->

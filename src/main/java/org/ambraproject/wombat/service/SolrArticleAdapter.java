@@ -41,9 +41,10 @@ public class SolrArticleAdapter {
   private final String strkImgURI; // nullable (forego Optional because we want it to be clean as an FTL model)
   private final boolean hasFigures;
   private final ImmutableList<Author> authors; // non-null
+  private final String articleType; // non-null
 
   private SolrArticleAdapter(String doi, String title, String eIssn, String date, String strkImgURI,
-                             boolean hasFigures, List<Author> authors) {
+                             boolean hasFigures, List<Author> authors, String articleType) {
     this.doi = Objects.requireNonNull(doi);
     this.title = Objects.requireNonNull(title);
     this.eIssn = Objects.requireNonNull(eIssn);
@@ -51,6 +52,7 @@ public class SolrArticleAdapter {
     this.strkImgURI = strkImgURI;
     this.hasFigures = hasFigures;
     this.authors = ImmutableList.copyOf(authors);
+    this.articleType = Objects.requireNonNull(articleType);
   }
 
   /**
@@ -80,8 +82,9 @@ public class SolrArticleAdapter {
 
     List<String> solrAuthors = (List<String>) solrArticle.get("author_display");
     List<Author> authors = (solrAuthors != null) ? Lists.transform(solrAuthors, Author::new) : ImmutableList.of();
+    String articleType = (String) solrArticle.get("article_type");
 
-    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors);
+    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors, articleType);
   }
 
   /**
@@ -110,7 +113,9 @@ public class SolrArticleAdapter {
     List<Author> authors = Lists.transform(rhinoAuthors,
         (Map<String, ?> author) -> new Author((String) author.get("fullName")));
 
-    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors);
+    String articleType = ((String) rhinoArticle.get("articleType"));
+
+    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors, articleType);
   }
 
   public String getDoi() {
@@ -141,5 +146,8 @@ public class SolrArticleAdapter {
     return authors;
   }
 
+  public String getArticleType() {
+    return articleType;
+  }
 }
 

@@ -87,6 +87,9 @@ var SearchResult;
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
 
+      if (this.currentSearchParams.unformattedQuery != null) {
+        this.currentSearchParams.q = this.currentSearchParams.unformattedQuery;
+      }
       if (this.currentSearchParams.q != null || this.checkFilters()) {
         this.processRequest();
       }

@@ -227,7 +227,7 @@ blockquote, .pullquote, .block-quote {
 }
 
 .block-tip {
-  @include callout($padding-x: 0, $padding-y: 0, $icon-type: 'pointer');
+  @include callout($icon-type: 'pointer');
 }
 
 .block-important {

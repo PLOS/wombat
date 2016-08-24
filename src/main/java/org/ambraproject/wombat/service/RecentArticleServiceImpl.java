@@ -127,16 +127,16 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     // in order to preserve the "preference order" in the articleTypes list.
     List<SolrArticleAdapter> articles = new ArrayList<>();
     for (String articleType : articleTypes) {
-      List<SolrArticleAdapter> recentArticlesByType;
+      List<SolrArticleAdapter> recentArticles;
       if (articleType.equals(ARTICLE_TYPE_WILDCARD)) {
-        recentArticlesByType = getAllRecentArticles(articleTypesToExclude, journalKeys, dateRange);
+        recentArticles = getAllRecentArticles(articleTypesToExclude, journalKeys, dateRange);
       } else {
-        recentArticlesByType = getRecentArticlesByType(articleType, articleTypesToExclude,
+        recentArticles = getRecentArticlesByType(articleType, articleTypesToExclude,
             journalKeys, dateRange);
       }
 
       // Add each query result to 'results' only if the DOI is not already in 'uniqueDois'
-      for (SolrArticleAdapter article : recentArticlesByType) {
+      for (SolrArticleAdapter article : recentArticles) {
         if (uniqueDois.add(article.getDoi())) {
           articles.add(article);
         }

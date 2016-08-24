@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RecentArticleServiceImpl implements RecentArticleService {
   private static final Logger log = LoggerFactory.getLogger(RecentArticleServiceImpl.class);
@@ -136,11 +137,9 @@ public class RecentArticleServiceImpl implements RecentArticleService {
       }
 
       // Add each query result to 'results' only if the DOI is not already in 'uniqueDois'
-      for (SolrArticleAdapter article : recentArticles) {
-        if (uniqueDois.add(article.getDoi())) {
-          articles.add(article);
-        }
-      }
+      articles.addAll(recentArticles.stream()
+          .filter(article -> uniqueDois.add(article.getDoi()))
+          .collect(Collectors.toList()));
     }
 
     if (articles.size() < articleCount) {
@@ -154,7 +153,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
             "(3) include the wildcard type parameter ('type=*').";
         throw new RuntimeException(errorMessage);
       } else {
-        articles = getAllArticlesByType(articleTypes, articleTypesToExclude, journalKeys);
+        articles.addAll(getAllArticlesByType(articleTypes, articleTypesToExclude, journalKeys));
       }
     }
     return articles;

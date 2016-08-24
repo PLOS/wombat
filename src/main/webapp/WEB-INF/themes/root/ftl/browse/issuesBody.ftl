@@ -56,7 +56,7 @@
         <@siteLink handlerName="article" queryParameters={"id": articleInfo.doi} ; articleLink>
           <h3>
             <a href="${articleLink}" title="Read Open Access Article">
-            ${articleInfo.title}
+              <@xform xml=articleInfo.title/>
             </a>
           </h3>
         </@siteLink>

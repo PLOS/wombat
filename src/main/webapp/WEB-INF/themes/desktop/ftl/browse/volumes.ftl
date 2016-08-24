@@ -13,12 +13,10 @@
 
 <body class="static ${journalStyle}">
 
-
 <#include "../common/header/headerContainer.ftl" />
 
     <section>
       <#include "volumesBody.ftl"/>
-
     </section>
 
 <#include "../common/footer/footer.ftl" />

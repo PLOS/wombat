@@ -6,8 +6,7 @@
     -->
 
       <h5 class="item-title lead-in">${articleType.name}</h5>
-
-      <h2 class="article-title">${article.title}</h2>
+      <h2 class="article-title"><@xform xml=article.title/></h2>
 
       <p class="author-list">
       <#include "maxAuthorsToShow.ftl" />

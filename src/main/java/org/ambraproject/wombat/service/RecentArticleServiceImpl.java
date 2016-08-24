@@ -2,7 +2,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
-import com.rometools.utils.Lists;
+import com.google.common.collect.ImmutableList;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
@@ -21,28 +21,22 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RecentArticleServiceImpl implements RecentArticleService {
   private static final Logger log = LoggerFactory.getLogger(RecentArticleServiceImpl.class);
 
   private final int MAXIMUM_RESULTS = 1000;
+  //todo: turn this field into a flag in homepage.yaml instead of treating as an article type.
+  //The current usage of this wildcard behaves like so: If the specified article types does not meet
+  //the minimum, fill the rest of the list with articles of any type.
   private static final String ARTICLE_TYPE_WILDCARD = "*";
 
   @Autowired
   private SolrSearchApi solrSearchApi;
   @Autowired
   private Cache cache;
-
-  /*
-   * This could be injected as a bean instead if needed.
-   *
-   * Does not need to be SecureRandom. Although it is important for feature correctness that we use a fair random
-   * distribution, there is no security risk if the randomness becomes predictable.
-   */
-  private final Random random = new Random();
 
   /**
    * Select a random subset of elements and shuffle their order.
@@ -62,7 +56,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     Preconditions.checkArgument(size >= n);
 
     for (int i = 0; i < n; i++) {
-      int swapTarget = i + random.nextInt(size - i);
+      int swapTarget = i + ThreadLocalRandom.current().nextInt(size - i);
       Collections.swap(sequence, i, swapTarget);
     }
     return sequence.subList(0, n);
@@ -116,7 +110,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
                                                           List<String> articleTypesToExclude)
       throws IOException {
 
-    List<String> journalKeys = Lists.create(journalKey);
+    List<String> journalKeys = ImmutableList.of(journalKey);
 
     LocalDate startDate = LocalDate.now().minusDays((long) numberOfDaysAgo);
     SolrSearchApiImpl.SolrExplicitDateRange dateRange = new SolrSearchApiImpl.SolrExplicitDateRange
@@ -137,20 +131,20 @@ public class RecentArticleServiceImpl implements RecentArticleService {
       }
 
       // Add each query result to 'results' only if the DOI is not already in 'uniqueDois'
-      articles.addAll(recentArticles.stream()
-          .filter(article -> uniqueDois.add(article.getDoi()))
-          .collect(Collectors.toList()));
+      for (SolrArticleAdapter article : recentArticles) {
+        if (uniqueDois.add(article.getDoi())) {
+          articles.add(article);
+        }
+      }
     }
 
     if (articles.size() < articleCount) {
-      if (articleTypes.size() > 1) {
+      if (articleTypes.size() > 1 && !articleTypes.contains(ARTICLE_TYPE_WILDCARD)) {
         String errorMessage = "" +
-            "Service does not support queries for a minimum number of recent articles " +
-            "filtered by multiple article types. " +
-            "To make a valid query, client must either " +
-            "(1) omit the 'min' parameter, " +
-            "(2) use no more than one 'type' parameter, or " +
-            "(3) include the wildcard type parameter ('type=*').";
+            "Recent articles results did not contain more articles than the minimum number " +
+            "configured via the resultCount parameter. To make a valid query, alter homepage.yaml: " +
+            "(1) use no more than one article type in the articleType list, or " +
+            "(2) use the wildcard type parameter (*).";
         throw new RuntimeException(errorMessage);
       } else {
         articles.addAll(getAllArticlesByType(articleTypes, articleTypesToExclude, journalKeys));
@@ -168,7 +162,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
         .setStart(0)
         .setRows(MAXIMUM_RESULTS)
         .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
-        .setArticleTypes(Lists.create(articleType))
+        .setArticleTypes(ImmutableList.of(articleType))
         .setArticleTypesToExclude(articleTypesToExclude)
         .setDateRange(dateRange)
         .setJournalKeys(journalKeys)

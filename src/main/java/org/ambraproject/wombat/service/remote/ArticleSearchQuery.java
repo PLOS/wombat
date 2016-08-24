@@ -170,8 +170,11 @@ public class ArticleSearchQuery {
 
     if (!ListUtil.isNullOrEmpty(articleTypes)) {
       List<String> articleTypeQueryList = articleTypes.stream()
-          .map(articleType -> "article_type_facet:" + (articleType.equals("*")
-              ? articleType : "\"" + articleType + "\""))
+          .map(articleType ->
+          {
+            String articleTypeStr = articleType.equals("*") ? articleType : "\"" + articleType + "\"";
+            return "article_type_facet:" + articleTypeStr;
+          })
           .collect(Collectors.toList());
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(articleTypeQueryList)));
     }
@@ -476,7 +479,7 @@ public class ArticleSearchQuery {
     }
 
     /**
-     * @param minFacetCount   minimum number of facets to use
+     * @param minFacetCount minimum number of facets to use
      */
     public Builder setMinFacetCount(int minFacetCount) {
       this.minFacetCount = minFacetCount;

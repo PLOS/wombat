@@ -5,22 +5,15 @@ import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ehcache.config.builders.CacheConfigurationBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
-import org.ehcache.config.CacheConfiguration;
 import org.ehcache.expiry.Expirations;
-//import org.ehcache.expiry.Expiry;
 import org.ehcache.jsr107.Eh107Configuration;
 import org.ehcache.expiry.Duration;
-
 import javax.cache.Cache;
 import javax.cache.CacheManager;
 import javax.cache.Caching;
-//import javax.cache.configuration.MutableConfiguration;
-import javax.cache.expiry.CreatedExpiryPolicy;
-//import javax.cache.expiry.Duration;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-//import java.util.function.Consumer;
 
 class CacheManagerWrapper implements ServiceCacheSet {
 

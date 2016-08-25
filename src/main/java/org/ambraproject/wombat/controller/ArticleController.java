@@ -680,8 +680,6 @@ public class ArticleController extends WombatController {
       @RequestParam("doi") String doi,
       @RequestParam("link") String link,
       @RequestParam("comment") String comment,
-      @RequestParam("title") String title,
-      @RequestParam("publishedOn") String publishedOn,
       @RequestParam("name") String name,
       @RequestParam("email") String email,
       @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
@@ -689,7 +687,7 @@ public class ArticleController extends WombatController {
       throws IOException {
     requireNonemptyParameter(doi);
 
-    if (!validateMediaCurationInput(model, link, name, email, title, publishedOn, captchaChallenge,
+    if (!validateMediaCurationInput(model, link, name, email, captchaChallenge,
         captchaResponse, site, request)) {
       model.addAttribute("formError", "Invalid values have been submitted.");
       //return model for error reporting
@@ -702,10 +700,6 @@ public class ArticleController extends WombatController {
     params.add(new BasicNameValuePair("doi", doi.replaceFirst("info:doi/", "")));
     params.add(new BasicNameValuePair("link", link));
     params.add(new BasicNameValuePair("comment", linkComment));
-    params.add(new BasicNameValuePair("title", title));
-
-    params.add(new BasicNameValuePair("publishedOn", publishedOn));
-
     UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
 
     String mediaCurationUrl = site.getTheme().getConfigMap("mediaCuration").get("mediaCurationUrl").toString();
@@ -743,13 +737,12 @@ public class ArticleController extends WombatController {
    * @param link link pointing to media content relating to the article
    * @param name name of the user submitting the media curation request
    * @param email email of the user submitting the media curation request
-   * @param response
-   * @param s
-   * @param site current site  @return true if everything is ok
+   * @param site current site
+   * @return true if everything is ok
    */
   private boolean validateMediaCurationInput(Model model, String link, String name,
-                                             String email, String captchaChallenge, String captchaResponse, String response, String s, Site site,
-                                             HttpServletRequest request) throws IOException {
+      String email, String captchaChallenge, String captchaResponse, Site site,
+      HttpServletRequest request) throws IOException {
 
     boolean isValid = true;
 

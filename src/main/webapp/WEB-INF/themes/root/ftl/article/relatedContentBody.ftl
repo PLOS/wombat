@@ -49,12 +49,12 @@
           </li>
           <li class="cf">
             <label for="mcform-title">Article Title</label>
-            <input type="text" name="link" id="mcform-title" placeholder="" maxlength="1000">
+            <input type="text" name="title" id="mcform-title" placeholder="" maxlength="1000">
             <span class="form-error"></span>
           </li>
           <li class="cf">
-            <label for="mcform-link">Published on</label>
-            <input type="text" name="link" id="mcform-link" placeholder="2016-02-17" maxlength="1000">
+            <label for="mcform-publishedOn">Published on</label>
+            <input type="text" name="publishedOn" id="mcform-publishedOn" placeholder="2016-02-17" maxlength="1000">
             <span class="form-error"></span>
           </li>
           <li><label for="mcform-comment">Comments:</label>

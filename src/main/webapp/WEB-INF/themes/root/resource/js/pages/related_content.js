@@ -127,7 +127,10 @@ var ArticleRelatedContent;
         name: $('#mcform-name').val(),
         email: $('#mcform-email').val(),
         link: $('#mcform-link').val(),
+        title: $('#mcform-title').val(),
+        publishedOn: $('#mcform-publishedOn').val(),
         comment: $('#mcform-comment').val(),
+
         recaptcha_challenge_field: $('#recaptcha_challenge_field').val(),
         recaptcha_response_field: $('#recaptcha_response_field').val()
       };
@@ -161,6 +164,14 @@ var ArticleRelatedContent;
 
             if (data.emailError) {
               $("#mcform-email").next().text(data.emailError);
+            }
+
+            if (data.titleError) {
+              $("#mcform-title").next().text(data.titleError);
+            }
+
+            if (data.publishedOnError) {
+              $("#mcform-publishedOn").next().text(data.publishedOnError);
             }
 
             if (data.captchaError) {

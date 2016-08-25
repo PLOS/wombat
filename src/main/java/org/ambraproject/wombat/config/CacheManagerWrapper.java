@@ -3,39 +3,44 @@ package org.ambraproject.wombat.config;
 import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.service.remote.RemoteCacheKey;
+import org.ehcache.config.builders.CacheConfigurationBuilder;
+import org.ehcache.config.builders.ResourcePoolsBuilder;
+import org.ehcache.config.CacheConfiguration;
+import org.ehcache.expiry.Expirations;
+//import org.ehcache.expiry.Expiry;
+import org.ehcache.jsr107.Eh107Configuration;
+import org.ehcache.expiry.Duration;
 
 import javax.cache.Cache;
 import javax.cache.CacheManager;
 import javax.cache.Caching;
-import javax.cache.configuration.MutableConfiguration;
+//import javax.cache.configuration.MutableConfiguration;
 import javax.cache.expiry.CreatedExpiryPolicy;
-import javax.cache.expiry.Duration;
+//import javax.cache.expiry.Duration;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
+//import java.util.function.Consumer;
 
 class CacheManagerWrapper implements ServiceCacheSet {
 
   private final CacheManager manager;
 
   private static <K, V> Cache<K, V> constructCache(CacheManager manager, String cacheName,
-                                                   Class<K> keyType, Class<V> valueType,
-                                                   Consumer<MutableConfiguration<K, V>> configurationConsumer) {
-    MutableConfiguration<K, V> configuration = new MutableConfiguration<>();
-    configuration.setTypes(keyType, valueType);
-    configurationConsumer.accept(configuration);
-    return manager.createCache(cacheName, configuration);
-  }
+        Class<K> keyType, Class<V> valueType, long entries, long ttl, TimeUnit unit) {
 
+    // see http://www.ehcache.org/documentation/3.1/107.html "The Ehcache 3.x JSR-107 Provider"
+    // section: "Building the configuration using Ehcache APIs"
+    CacheConfigurationBuilder cacheBuilder = CacheConfigurationBuilder.newCacheConfigurationBuilder(keyType, valueType, ResourcePoolsBuilder.heap(entries))
+        .withExpiry(Expirations.timeToLiveExpiration(Duration.of(ttl, unit)));
+    return manager.createCache(cacheName, Eh107Configuration.fromEhcacheCacheConfiguration(cacheBuilder.build()));
+  }
 
   private static final String ASSET_FILENAME_CACHE = "assetFilename";
   private static final String ASSET_CONTENT_CACHE = "assetContent";
   private static final String TAXONOMY_GRAPH_CACHE = "taxonomyGraph";
   private static final String TAXONOMY_COUNT_TABLE_CACHE = "taxonomyCountTable";
   private static final String RECENT_ARTICLE_CACHE = "recentArticle";
-
-  static final Duration DEFAULT_TTL = new Duration(TimeUnit.HOURS, 1);
 
   private static Properties getCacheManagerProperties(RuntimeConfiguration configuration) {
     RuntimeConfiguration.CacheConfiguration cacheConfiguration = configuration.getCacheConfiguration();
@@ -48,32 +53,21 @@ class CacheManagerWrapper implements ServiceCacheSet {
     Properties properties = getCacheManagerProperties(configuration);
     manager = Caching.getCachingProvider().getCacheManager(null, null, properties);
 
-    constructCache(manager, ASSET_FILENAME_CACHE, String.class, String.class, config -> {
-      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 15)));
-    });
+    constructCache(manager, ASSET_FILENAME_CACHE, String.class, String.class,
+        10_000, 15, TimeUnit.MINUTES);
+    constructCache(manager, ASSET_CONTENT_CACHE, String.class, Object.class,
+        10_000, 15, TimeUnit.MINUTES);
+    constructCache(manager, TAXONOMY_GRAPH_CACHE, String.class, TaxonomyGraph.class,
+        10_000, 1, TimeUnit.HOURS);
+    constructCache(manager, TAXONOMY_COUNT_TABLE_CACHE, String.class, TaxonomyCountTable.class,
+        10_000, 1, TimeUnit.HOURS);
+    constructCache(manager, RECENT_ARTICLE_CACHE, String.class, List.class,
+        10_000, 30, TimeUnit.MINUTES);
 
-    constructCache(manager, ASSET_CONTENT_CACHE, String.class, Object.class, config -> {
-      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 15)));
-    });
-
-    constructCache(manager, TAXONOMY_GRAPH_CACHE, String.class, TaxonomyGraph.class, config -> {
-      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(DEFAULT_TTL));
-    });
-
-    constructCache(manager, TAXONOMY_COUNT_TABLE_CACHE, String.class, TaxonomyCountTable.class, config -> {
-      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(DEFAULT_TTL));
-    });
-
-    constructCache(manager, RECENT_ARTICLE_CACHE, String.class, List.class, config -> {
-      config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 30)));
-    });
-
-    for (RemoteCacheSpace remoteCacheSpace : RemoteCacheSpace.values()) {
-      constructCache(manager, remoteCacheSpace.getCacheName(), RemoteCacheKey.class, Object.class, config -> {
-        config.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(remoteCacheSpace.getTimeToLive()));
-      });
+    for (RemoteCacheSpace rcs : RemoteCacheSpace.values()) {
+      constructCache(manager, rcs.getCacheName(), rcs.getKeyClass(),
+          Object.class, rcs.getEntries(), rcs.getTimeToLive(), rcs.getTTLUnits());
     }
-
   }
 
   @Override

@@ -6,9 +6,7 @@
   <ul>
   <#list article.relatedArticles?sort_by("doi")?reverse as relatedArticle>
       <li>
-        <a href="<@siteLink path="article?id=" + relatedArticle.doi />">
-          ${relatedArticle.title}
-        </a>
+        <a href="http://dx.doi.org/${relatedArticle.doi}">${relatedArticle.title}</a>
       </li>
   </#list>
   </ul>

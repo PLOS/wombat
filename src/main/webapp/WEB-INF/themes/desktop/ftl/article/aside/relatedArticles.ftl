@@ -6,7 +6,7 @@
   <ul>
   <#list article.relatedArticles?sort_by("doi")?reverse as relatedArticle>
       <li>
-        <a href="http://dx.doi.org/${relatedArticle.doi}">${relatedArticle.title}</a>
+        <a href="${doiResolverLink(relatedArticle.doi)}">${relatedArticle.title}</a>
       </li>
   </#list>
   </ul>

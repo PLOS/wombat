@@ -47,6 +47,16 @@
             <input type="text" name="link" id="mcform-link" placeholder="e.g. http://www...." maxlength="1000">
             <span class="form-error"></span>
           </li>
+          <li class="cf">
+            <label for="mcform-title">Article Title</label>
+            <input type="text" name="link" id="mcform-title" placeholder="" maxlength="1000">
+            <span class="form-error"></span>
+          </li>
+          <li class="cf">
+            <label for="mcform-link">Published on</label>
+            <input type="text" name="link" id="mcform-link" placeholder="2016-02-17" maxlength="1000">
+            <span class="form-error"></span>
+          </li>
           <li><label for="mcform-comment">Comments:</label>
             <textarea rows="4" cols="50" name="comment" id="mcform-comment" maxlength="1000"></textarea>
           </li>

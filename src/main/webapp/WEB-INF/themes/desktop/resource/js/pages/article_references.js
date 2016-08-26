@@ -12,54 +12,58 @@
 
     getJSON: function () {
       that = this;
-
+      var queryStringAuthor = $(this).attr('data-author');
+      var queryStringTitle= $(this).attr('data-title');
+      var queryStringCit= $(this).attr('data-citation');
+      var doiAvailableText = 'doi-provided'
 
       $('.references li').one('click', 'ul.reflinks li:first-child a', function (event) {
 
-        var $that = $(this);
+        if (queryStringCit !== doiAvailableText) {
 
-        var queryStringAuthor = $(this).attr('data-author');
-        var queryStringTitle= $(this).attr('data-title');
-        var queryStringCit= $(this).attr('data-citation');
+          var $that = $(this);
 
-        var queryStringConcat = 'query.author=' + queryStringAuthor + '&query.title=' + queryStringTitle;
-        var crossrefApi = "http://api.crossref.org/works?query=" + queryStringConcat + "&sort=score&rows=1";
-        var DOIResolver = 'http://dx.doi.org/';
+          var queryStringConcat = 'query.author=' + queryStringAuthor + '&query.title=' + queryStringTitle;
+          var crossrefApi = "http://api.crossref.org/works?query=" + queryStringConcat + "&sort=score&rows=1";
+          var DOIResolver = 'http://dx.doi.org/';
 
-        var crossrefSearchString = 'http://search.crossref.org/?q=' + queryStringCit;
+          var crossrefSearchString = 'http://search.crossref.org/?q=' + queryStringCit;
 
-        var articleLink = null;
+          var articleLink = null;
 
-        event.preventDefault();
+          event.preventDefault();
 
-        $.ajax({
-              url: crossrefApi,
-            })
-            .success(
-                function (data) {
-                  var DOIs = data.message.items[0].DOI;
-                  var titleAPI = data.message.items[0].title;
-                  var titleXML = queryStringTitle.replace(/%20/g, ' ');
-                  var titleXMLConcat = s.trim(titleXML, '.');
+          $.ajax({
+                url: crossrefApi,
+              })
+              .success(
+                  function (data) {
+                    var DOIs = data.message.items[0].DOI;
+                    var titleAPI = data.message.items[0].title;
+                    var titleXML = queryStringTitle.replace(/%20/g, ' ');
+                    var titleXMLConcat = s.trim(titleXML, '.');
 
-                  $that.attr('href', DOIResolver + DOIs);
+                    $that.attr('href', DOIResolver + DOIs);
 
-                  if (titleAPI === titleXMLConcat) {
-                    articleLink = DOIResolver + DOIs;
-                  } else {
+                    if (titleAPI === titleXMLConcat) {
+                      articleLink = DOIResolver + DOIs;
+                    } else {
+                      articleLink = crossrefSearchString;
+                    }
+                    ;
+
+                  }
+              )
+              .error(
+                  function () {
                     articleLink = crossrefSearchString;
-                  };
+                  }
+              )
+              .done(function () {
+                window.open(articleLink, '_new');
+              });
 
-                }
-            )
-            .error(
-                function () {
-                  articleLink = crossrefSearchString;
-                }
-            )
-            .done(function () {
-              window.open( articleLink, '_new');
-            });
+        };
       });
 
     },

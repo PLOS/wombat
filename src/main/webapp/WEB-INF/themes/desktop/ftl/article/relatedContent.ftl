@@ -15,6 +15,7 @@
   <section class="article-body">
 
   <#include "tabs.ftl" />
+
   <@displayTabList "Related" />
   <#include "relatedContentBody.ftl" />
 
@@ -24,14 +25,17 @@
   </aside>
 </div>
 
+
+
 <#include "../common/footer/footer.ftl" />
 <#include "articleJs.ftl" />
-
+<@js src="resource/js/vendor/foundation-datepicker.min.js"/>
 <@js src="resource/js/pages/related_content.js"/>
+
+
 <@renderJs />
 
 <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
-
 <#include "aside/crossmarkIframe.ftl" />
 
 </body>

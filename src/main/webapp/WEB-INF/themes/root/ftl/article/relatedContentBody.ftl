@@ -54,11 +54,11 @@
           </li>
           <li class="cf">
             <label for="mcform-publishedOn">Published on</label>
-            <input type="text" name="publishedOn" id="mcform-publishedOn" placeholder="2016-02-17" maxlength="1000">
+            <input type="text" name="publishedOn" id="mcform-publishedOn" placeholder="YYYY-MM-DD" maxlength="1000">
             <span class="form-error"></span>
           </li>
           <li><label for="mcform-comment">Comments:</label>
-            <textarea rows="4" cols="50" name="comment" id="mcform-comment" maxlength="1000"></textarea>
+            <textarea rows="3" cols="50" name="comment" id="mcform-comment" maxlength="1000"></textarea>
           </li>
           <li><label>Security Check:</label>
 

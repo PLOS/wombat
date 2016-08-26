@@ -1,6 +1,7 @@
 var ArticleRelatedContent;
 
 (function ($) {
+
   ArticleRelatedContent = Class.extend({
 
     $mediaCoverageEl: $('#media-coverage-data'),
@@ -27,6 +28,8 @@ var ArticleRelatedContent;
     modalSuccessCloseTimeout: this.modalErrorCloseTimeout/2,
 
     init: function () {
+
+
       var query = new AlmQuery();
       var that = this;
 
@@ -84,6 +87,12 @@ var ArticleRelatedContent;
 
     modalFormBindings: function () {
       var that = this;
+
+      $('form input#mcform-publishedOn').fdatepicker({
+        format: 'yyyy-mm-dd',
+        disableDblClickSelection: true
+      });
+
       $(this.modalFormEl).on('click', '.cancel', function () {
         that.modalFormDismiss(0);
       });
@@ -96,8 +105,14 @@ var ArticleRelatedContent;
       });
 
       $(document).on('open.fndtn.reveal', '[data-reveal]', function () {
+        $('input#mcform-publishedOn').fdatepicker({
+          initialDate: '02-12-1989',
+          format: 'mm-dd-yyyy',
+          disableDblClickSelection: true
+        });
         that.modalFormReset();
       });
+
     },
 
     modalFormReset: function () {
@@ -117,6 +132,10 @@ var ArticleRelatedContent;
       Recaptcha.create($('#reCaptcha-info').val(), element, {
         theme: "white",
         callback: Recaptcha.focus_response_field});
+    },
+
+    modalFormDatePicker: function () {
+
     },
 
     modalFormSubmit: function () {

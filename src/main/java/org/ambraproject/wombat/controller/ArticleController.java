@@ -97,6 +97,8 @@ import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
@@ -680,6 +682,8 @@ public class ArticleController extends WombatController {
       @RequestParam("doi") String doi,
       @RequestParam("link") String link,
       @RequestParam("comment") String comment,
+      @RequestParam("title") String title,
+      @RequestParam("publishedOn") String publishedOn,
       @RequestParam("name") String name,
       @RequestParam("email") String email,
       @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
@@ -687,7 +691,7 @@ public class ArticleController extends WombatController {
       throws IOException {
     requireNonemptyParameter(doi);
 
-    if (!validateMediaCurationInput(model, link, name, email, captchaChallenge,
+    if (!validateMediaCurationInput(model, link, name, email, title, publishedOn, captchaChallenge,
         captchaResponse, site, request)) {
       model.addAttribute("formError", "Invalid values have been submitted.");
       //return model for error reporting
@@ -700,6 +704,9 @@ public class ArticleController extends WombatController {
     params.add(new BasicNameValuePair("doi", doi.replaceFirst("info:doi/", "")));
     params.add(new BasicNameValuePair("link", link));
     params.add(new BasicNameValuePair("comment", linkComment));
+    params.add(new BasicNameValuePair("title", title));
+    params.add(new BasicNameValuePair("publishedOn", publishedOn));
+
     UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
 
     String mediaCurationUrl = site.getTheme().getConfigMap("mediaCuration").get("mediaCurationUrl").toString();
@@ -741,8 +748,8 @@ public class ArticleController extends WombatController {
    * @return true if everything is ok
    */
   private boolean validateMediaCurationInput(Model model, String link, String name,
-      String email, String captchaChallenge, String captchaResponse, Site site,
-      HttpServletRequest request) throws IOException {
+                                             String email, String title, String publishedOn, String captchaChallenge, String captchaResponse, Site site,
+                                             HttpServletRequest request) throws IOException {
 
     boolean isValid = true;
 
@@ -758,6 +765,19 @@ public class ArticleController extends WombatController {
 
     if (StringUtils.isBlank(name)) {
       model.addAttribute("nameError", "This field is required.");
+      isValid = false;
+    }
+
+    if (StringUtils.isBlank(title)) {
+      model.addAttribute("titleError", "This field is required.");
+      isValid = false;
+    }
+
+    if (StringUtils.isBlank(publishedOn)) {
+      model.addAttribute("publishedOnError", "This field is required.");
+      isValid = false;
+    } else if (StringUtils.isAlpha(publishedOn)) {
+      model.addAttribute("publishedOnError", "Invalid Date Format, should be YYYY-MM-DD");
       isValid = false;
     }
 

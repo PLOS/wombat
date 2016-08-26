@@ -254,7 +254,8 @@ public class ParseReferenceService {
     // </name>, editors, ...
     for (int i = 0; i < nameNodes.size(); i++) {
       Node previousNode = nameNodes.get(i).getPreviousSibling();
-      if (previousNode.getNodeType() == Node.TEXT_NODE && previousNode.getNodeValue().contains("In")) {
+      if (previousNode != null && previousNode.getNodeType() == Node.TEXT_NODE && previousNode.getNodeValue()
+          .contains("In")) {
         return i;
       }
 

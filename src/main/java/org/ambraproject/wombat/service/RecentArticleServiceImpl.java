@@ -2,47 +2,47 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
-import org.ambraproject.rhombat.HttpDateUtil;
+import com.google.common.collect.ImmutableList;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RecentArticleServiceImpl implements RecentArticleService {
   private static final Logger log = LoggerFactory.getLogger(RecentArticleServiceImpl.class);
 
+  private final int MAXIMUM_RESULTS = 1000;
+  //todo: turn this field into a flag in homepage.yaml instead of treating as an article type.
+  //The current usage of this wildcard behaves like so: If the specified article types does not meet
+  //the minimum, fill the rest of the list with articles of any type.
+  private static final String ARTICLE_TYPE_WILDCARD = "*";
+
   @Autowired
-  private ArticleApi articleApi;
+  private SolrSearchApi solrSearchApi;
   @Autowired
   private Cache cache;
 
-  /*
-   * This could be injected as a bean instead if needed.
-   *
-   * Does not need to be SecureRandom. Although it is important for feature correctness that we use a fair random
-   * distribution, there is no security risk if the randomness becomes predictable.
-   */
-  private final Random random = new Random();
-
-  private static final int SECONDS_PER_DAY = 60 * 60 * 24;
-
   /**
    * Select a random subset of elements and shuffle their order.
-   * <p/>
+   * <p>
    * The argument {@code sequence} is not mutated.
-   * <p/>
+   * <p>
    * This is more efficient than using {@link Collections#shuffle(List)} if {@code n} is much smaller than {@code
    * sequence.size()}, as it shuffles only part of the list.
    *
@@ -56,24 +56,24 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     Preconditions.checkArgument(size >= n);
 
     for (int i = 0; i < n; i++) {
-      int swapTarget = i + random.nextInt(size - i);
+      int swapTarget = i + ThreadLocalRandom.current().nextInt(size - i);
       Collections.swap(sequence, i, swapTarget);
     }
     return sequence.subList(0, n);
   }
 
   @Override
-  public List<Map<String, Object>> getRecentArticles(Site site,
-                                                     int articleCount,
-                                                     double numberOfDaysAgo,
-                                                     boolean shuffle,
-                                                     List<String> articleTypes,
-                                                     List<String> articleTypesToExclude,
-                                                     Optional<Integer> cacheDuration)
+  public List<SolrArticleAdapter> getRecentArticles(Site site,
+                                                    int articleCount,
+                                                    double numberOfDaysAgo,
+                                                    boolean shuffle,
+                                                    List<String> articleTypes,
+                                                    List<String> articleTypesToExclude,
+                                                    Optional<Integer> cacheDuration)
       throws IOException {
     String journalKey = site.getJournalKey();
     String cacheKey = "recentArticles:" + journalKey;
-    List<Map<String, Object>> articles = null;
+    List<SolrArticleAdapter> articles = null;
     if (cacheDuration.isPresent()) {
       articles = cache.get(cacheKey); // remains null if not cached
     }
@@ -103,31 +103,105 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     return articles;
   }
 
-  private List<Map<String, Object>> retrieveRecentArticles(String journalKey,
-                                              int articleCount,
-                                              double numberOfDaysAgo,
-                                              List<String> articleTypes,
-                                              List<String> articleTypesToExclude)
+  private List<SolrArticleAdapter> retrieveRecentArticles(String journalKey,
+                                                          int articleCount,
+                                                          double numberOfDaysAgo,
+                                                          List<String> articleTypes,
+                                                          List<String> articleTypesToExclude)
       throws IOException {
-    Calendar threshold = Calendar.getInstance();
-    threshold.add(Calendar.SECOND, (int) (-numberOfDaysAgo * SECONDS_PER_DAY));
 
-    ApiAddress.Builder address = ApiAddress.builder("articles")
-        .addParameter("journal", journalKey)
-        .addParameter("min", Integer.toString(articleCount))
-        .addParameter("since", HttpDateUtil.format(threshold));
-    if (articleTypes != null) {
-      for (String articleType : articleTypes) {
-        address.addParameter("type", articleType);
+    List<String> journalKeys = ImmutableList.of(journalKey);
+
+    LocalDate startDate = LocalDate.now().minusDays((long) numberOfDaysAgo);
+    SolrSearchApiImpl.SolrExplicitDateRange dateRange = new SolrSearchApiImpl.SolrExplicitDateRange
+        ("Recent Articles", startDate.toString(), LocalDate.now().toString());
+
+    Set<String> uniqueDois = new HashSet<>();
+
+    // Query for each article type separately and concatenate the results,
+    // in order to preserve the "preference order" in the articleTypes list.
+    List<SolrArticleAdapter> articles = new ArrayList<>();
+    for (String articleType : articleTypes) {
+      List<SolrArticleAdapter> recentArticles;
+      if (articleType.equals(ARTICLE_TYPE_WILDCARD)) {
+        recentArticles = getAllRecentArticles(articleTypesToExclude, journalKeys, dateRange);
+      } else {
+        recentArticles = getRecentArticlesByType(articleType, articleTypesToExclude,
+            journalKeys, dateRange);
+      }
+
+      // Add each query result to 'results' only if the DOI is not already in 'uniqueDois'
+      for (SolrArticleAdapter article : recentArticles) {
+        if (uniqueDois.add(article.getDoi())) {
+          articles.add(article);
+        }
       }
     }
-    if (articleTypesToExclude != null) {
-      for (String articleType : articleTypesToExclude) {
-        address.addParameter("exclude", articleType);
+
+    if (articles.size() < articleCount) {
+      if (articleTypes.size() > 1 && !articleTypes.contains(ARTICLE_TYPE_WILDCARD)) {
+        String errorMessage = "" +
+            "Recent articles results did not contain more articles than the minimum number " +
+            "configured via the resultCount parameter. To make a valid query, alter homepage.yaml: " +
+            "(1) use no more than one article type in the articleType list, or " +
+            "(2) use the wildcard type parameter (*).";
+        throw new RuntimeException(errorMessage);
+      } else {
+        articles.addAll(getAllArticlesByType(articleTypes, articleTypesToExclude, journalKeys));
       }
     }
+    return articles;
+  }
 
-    return articleApi.requestObject(address.build(), List.class);
+  private List<SolrArticleAdapter> getRecentArticlesByType(String articleType,
+                                                           List<String> articleTypesToExclude,
+                                                           List<String> journalKeys,
+                                                           SolrSearchApiImpl.SolrExplicitDateRange dateRange)
+      throws IOException {
+    ArticleSearchQuery recentArticleSearchQuery = ArticleSearchQuery.builder()
+        .setStart(0)
+        .setRows(MAXIMUM_RESULTS)
+        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setArticleTypes(ImmutableList.of(articleType))
+        .setArticleTypesToExclude(articleTypesToExclude)
+        .setDateRange(dateRange)
+        .setJournalKeys(journalKeys)
+        .build();
+
+    Map<String, ?> results = solrSearchApi.search(recentArticleSearchQuery);
+    return SolrArticleAdapter.unpackSolrQuery(results);
+  }
+
+  private List<SolrArticleAdapter> getAllRecentArticles(List<String> articleTypesToExclude,
+                                                        List<String> journalKeys,
+                                                        SolrSearchApiImpl.SolrExplicitDateRange dateRange)
+      throws IOException {
+    ArticleSearchQuery recentArticleSearchQuery = ArticleSearchQuery.builder()
+        .setStart(0)
+        .setRows(MAXIMUM_RESULTS)
+        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setArticleTypesToExclude(articleTypesToExclude)
+        .setDateRange(dateRange)
+        .setJournalKeys(journalKeys)
+        .build();
+
+    Map<String, ?> results = solrSearchApi.search(recentArticleSearchQuery);
+    return SolrArticleAdapter.unpackSolrQuery(results);
+  }
+
+  private List<SolrArticleAdapter> getAllArticlesByType(List<String> articleTypes,
+                                                        List<String> articleTypesToExclude,
+                                                        List<String> journalKeys)
+      throws IOException {
+    ArticleSearchQuery allArticleSearchQuery = ArticleSearchQuery.builder()
+        .setStart(0)
+        .setRows(MAXIMUM_RESULTS)
+        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setArticleTypes(articleTypes)
+        .setArticleTypesToExclude(articleTypesToExclude)
+        .setJournalKeys(journalKeys)
+        .build();
+    return SolrArticleAdapter.unpackSolrQuery(solrSearchApi.search(allArticleSearchQuery));
   }
 
 }

@@ -105,7 +105,8 @@
           <#if reference.fPage??>citation_first_page=${reference.fPage?replace('<.+?>',' ','r')?html};</#if><#t>
           <#if reference.lPage??>citation_last_page=${reference.lPage?replace('<.+?>',' ','r')?html};</#if><#t>
           <#if reference.isbn??>citation_isbn=${reference.isbn?replace('<.+?>',' ','r')?html};</#if><#t>
-          <#if reference.year??>citation_publication_date=${reference.year?string.computer}</#if><#t>"/>
+          <#if reference.year??>citation_publication_date=${reference.year?string.computer};</#if><#t>
+          <#if reference.publisherName??>citation_publisher=${reference.publisherName?replace('<.+?>',' ','r')?html}</#if><#t>"/>
         <#elseif reference.unStructuredReference??>
         <meta name="citation_reference"content="${reference.unStructuredReference?replace('<.+?>',' ','r')?html}<#t>"/>
         </#if>

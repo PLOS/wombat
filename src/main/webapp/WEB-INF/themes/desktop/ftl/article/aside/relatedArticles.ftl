@@ -7,7 +7,7 @@
     <#-- TODO: Order by descending publication date -->
   <#list relatedArticles as relatedArticle>
       <li>
-        <a href="<@siteLink path="article?id=" + relatedArticle.doi />">
+        <a href="${doiResolverLink(relatedArticle.doi)}">
           <@xform xml=relatedArticle.title/>
         </a>
       </li>

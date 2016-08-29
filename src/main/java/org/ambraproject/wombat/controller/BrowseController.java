@@ -24,7 +24,6 @@ import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleType;
 import org.ambraproject.wombat.service.ApiAddress;
-import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.XmlUtil;
@@ -54,17 +53,21 @@ public class BrowseController extends WombatController {
   @Autowired
   private ArticleApi articleApi;
   @Autowired
-  private ArticleService articleService;
-  @Autowired
   private ArticleTransformService articleTransformService;
   @Autowired
   private ArticleMetadata.Factory articleMetadataFactory;
 
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
-    Map<String, Object> journalMetadata = modelJournalMetadata(model, site);
-    String imageArticleDoi = (String) ((Map) ((Map) journalMetadata.get("currentIssue")).get("imageArticle")).get("doi");
-    transformIssueImageMetadata(model, site, imageArticleDoi);
+    Map<String, ?> journalMetadata = modelJournalMetadata(model, site);
+    Map<String, ?> currentIssue = (Map<String, ?>) journalMetadata.get("currentIssue");
+    if (currentIssue != null) {
+      Map<String, ?> imageArticle = (Map<String, ?>) currentIssue.get("imageArticle");
+      if (imageArticle != null) {
+        String imageArticleDoi = (String) imageArticle.get("doi");
+        transformIssueImageMetadata(model, site, imageArticleDoi);
+      }
+    }
 
     return site.getKey() + "/ftl/browse/volumes";
   }
@@ -81,8 +84,11 @@ public class BrowseController extends WombatController {
     Map<String, Object> issueMetadata = getIssueMetadata(readIssueUrl);
     model.addAttribute("issue", issueMetadata);
 
-    String imageArticleDoi = (String) ((Map) issueMetadata.get("imageArticle")).get("doi");
-    transformIssueImageMetadata(model, site, imageArticleDoi);
+    Map<String, ?> imageArticle = (Map<String, ?>) issueMetadata.get("imageArticle");
+    if (imageArticle != null) {
+      String imageArticleDoi = (String) (imageArticle).get("doi");
+      transformIssueImageMetadata(model, site, imageArticleDoi);
+    }
 
     model.addAttribute("articleGroups", buildArticleGroups(site, issueMetadata));
 

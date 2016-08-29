@@ -17,28 +17,29 @@
 
 <article>
 
+<#if issue.imageArticle??>
   <div class="section cover">
     <a id="Cover" name="Cover" toc="Cover" title="Cover"></a>
 
     <div class="header">
       <p class="kicker">COVER</p>
-    <@siteLink handlerName="browseIssues" queryParameters={"id": issue.doi}; issueLink>
-      <h2><a href="${issueLink}">${issueTitle}</a></h2>
-    </@siteLink>
+      <@siteLink handlerName="browseIssues" queryParameters={"id": issue.doi}; issueLink>
+        <h2><a href="${issueLink}">${issueTitle}</a></h2>
+      </@siteLink>
     </div>
     <div class="detail-container">
       <div class="img">
-      <#if issue.imageArticle??>
         <a href="<@siteLink handlerName="article" queryParameters={"id": issue.imageArticle.doi} />">
           <img
               src="<@siteLink handlerName="assetFile" queryParameters={"type": "inline", "id": issue.imageArticle.figureImageDoi} />"
               alt="Issue Image" data-doi="${issue.imageArticle.doi}">
         </a>
-      </#if>
       </div>
       <div class="txt">${issueDescription}</div>
     </div>
   </div>
+</#if>
+
 
 <#list articleGroups as articleGroup>
   <div class="section">

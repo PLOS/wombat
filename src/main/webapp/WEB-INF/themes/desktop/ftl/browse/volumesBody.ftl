@@ -4,26 +4,27 @@
   <div class="journal_current">
     <h2>Current Issue</h2>
 
-    <div class="issue_container">
-      <#if journal.currentIssue.imageArticle??>
+    <#if journal.currentIssue.imageArticle??>
+      <div class="issue_container">
         <div class="journal_thumb">
           <@siteLink handlerName="browseIssues" queryParameters={"id": journal.currentIssue.doi}; issueLink>
             <a href="${issueLink}">
-            <img src="<@siteLink handlerName="assetFile" queryParameters={"type": "small", "id": journal.currentIssue.imageArticle.figureImageDoi}/>"
-              class="current-img" alt="Current Issue"/>
-            <span>${journal.currentIssue.displayName}</span>
+              <img
+                  src="<@siteLink handlerName="assetFile" queryParameters={"type": "small", "id": journal.currentIssue.imageArticle.figureImageDoi}/>"
+                  class="current-img" alt="Current Issue"/>
+              <span>${journal.currentIssue.displayName}</span>
             </a>
           </@siteLink>
         </div>
-      </#if>
 
-      <div class="journal_description">
-        <p class="tag">ABOUT THIS IMAGE</p>
+        <div class="journal_description">
+          <p class="tag">ABOUT THIS IMAGE</p>
         ${issueTitle}
         ${issueDescription}
-      </div>
-    </div> <!--  issue_container -->
-  </div><!-- journal_current -->
+        </div>
+      </div> <#--  issue_container -->
+    </#if>
+  </div><#-- journal_current -->
   </#if>
 
   <#if journal.volumes??>

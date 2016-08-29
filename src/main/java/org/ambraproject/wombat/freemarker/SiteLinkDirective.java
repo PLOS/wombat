@@ -1,17 +1,11 @@
 package org.ambraproject.wombat.freemarker;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableListMultimap;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ListMultimap;
 import freemarker.core.Environment;
 import freemarker.template.TemplateBooleanModel;
-import freemarker.template.TemplateHashModelEx;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
-import freemarker.template.TemplateModelIterator;
 import freemarker.template.TemplateScalarModel;
-import freemarker.template.TemplateSequenceModel;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
@@ -20,6 +14,7 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.List;
 import java.util.Map;
 
@@ -93,6 +88,7 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
     String targetJournal = getStringValue(params.get("journalKey"));
     String handlerName = getStringValue(params.get("handlerName"));
     boolean absoluteLink = getBoolValue(params.get("absoluteLink"));
+    boolean urlDecodeLink = getBoolValue(params.get("urlDecodeLink"));
 
     SitePageContext sitePageContext = new SitePageContext(siteResolver, env);
     Site site = sitePageContext.getSite();
@@ -113,7 +109,12 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
       throw new RuntimeException("Either a path or handlerName parameter is required");
     }
 
-    return link.get(sitePageContext.getRequest());
+    String url = link.get(sitePageContext.getRequest());
+    if (urlDecodeLink) {
+      url = URLDecoder.decode(url, "UTF-8");
+    }
+
+    return url;
   }
 
   private static boolean getBoolValue(Object valueObj) throws TemplateModelException {

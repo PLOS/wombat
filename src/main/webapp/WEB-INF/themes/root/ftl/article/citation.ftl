@@ -43,7 +43,7 @@
   </#if>
 
   <#if citation.journal??>
-  ${citation.journal}<#t/>
+  ${citation.journal.title}<#t/>
     <#if citation.volume??> <#--space--> ${citation.volume}</#if><#if citation.issue??>(${citation.issue})</#if><#t/>
     <#if citation.eLocationId??><#t/>: ${citation.eLocationId}</#if>.
   </#if>

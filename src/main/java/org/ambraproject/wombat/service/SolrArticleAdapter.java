@@ -4,6 +4,7 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
  * Translates a Solr query result, representing an article's metadata, to have a common interface with article metadata
  * provided by Rhino.
  */
-public class SolrArticleAdapter {
+public class SolrArticleAdapter implements Serializable {
 
   /**
    * An object representing one article author.
@@ -22,7 +23,7 @@ public class SolrArticleAdapter {
    * Solr provides bare strings for author names, which we represent here as the {@code fullName} field of Rhino's
    * author object. Because no other data is available from Solr, {@code fullName} is the only field.
    */
-  public static class Author {
+  public static class Author implements Serializable {
     private final String fullName;
 
     private Author(String fullName) {

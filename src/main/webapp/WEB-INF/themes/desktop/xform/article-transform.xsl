@@ -901,6 +901,7 @@
               <!-- remove any HTML tags from title (e.g. italics) and encode author and title for url-->
               <xsl:variable name="title" select="encode-for-uri(replace($title, '&lt;/?\w+?&gt;', ''))"/>
               <xsl:variable name="author" select="encode-for-uri($author)"/>
+              <xsl:variable name="citEncoded" select="encode-for-uri(replace($cit, '&lt;/?\w+?&gt;', ''))"/>
               <xsl:element name="ul">
                 <xsl:attribute name="class">reflinks</xsl:attribute>
                 <xsl:if test="$doi">
@@ -917,8 +918,40 @@
                           </xsl:when>
                           <xsl:otherwise>
                             <!-- build link and use + for spaces for consistency with Ambra -->
-                            <xsl:value-of select="replace(concat('http://www.crossref.org/guestquery?auth2=', $author,
-                            '&amp;atitle2=', $title, '&amp;auth=', $author, '&amp;atitle=', $title),'%20','+')"/>
+                            <xsl:value-of select="'#'"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:attribute>
+                      <xsl:attribute name="data-author">
+                        <xsl:choose>
+                          <xsl:when test="$doi">
+                            <xsl:value-of select="'doi-provided'"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <!-- build link and use + for spaces for consistency with Ambra -->
+                            <xsl:value-of select="$author"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:attribute>
+                      <xsl:attribute name="data-cit">
+                        <xsl:choose>
+                          <xsl:when test="$doi">
+                            <xsl:value-of select="'doi-provided'"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <!-- build link and use + for spaces for consistency with Ambra -->
+                            <xsl:value-of select="$citEncoded"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:attribute>
+                      <xsl:attribute name="data-title">
+                        <xsl:choose>
+                          <xsl:when test="$doi">
+                            <xsl:value-of select="'doi-provided'"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <!-- build link and use + for spaces for consistency with Ambra -->
+                            <xsl:value-of select="$title"/>
                           </xsl:otherwise>
                         </xsl:choose>
                       </xsl:attribute>

@@ -107,7 +107,7 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
       throw new RuntimeException("Either a path or handlerName parameter is required");
     }
 
-    return link.get(sitePageContext.getRequest()).replace("%2F", "/");
+    return link.get(sitePageContext.getRequest());
   }
 
   private static boolean getBoolValue(Object valueObj) throws TemplateModelException {

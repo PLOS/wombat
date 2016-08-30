@@ -13,7 +13,7 @@
         <#list docs as doc>
           <#assign doi = doc["id"] />
           <li style="b">
-            <a href="<@siteLink urlDecodeLink=true handlerName="article" queryParameters={"id": doi} />">
+            <a href="<@siteLink handlerName="article" queryParameters={"id": doi} />">
               ${doi}
             </a>
           </li>

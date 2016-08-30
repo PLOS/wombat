@@ -14,7 +14,6 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.net.URLDecoder;
 import java.util.List;
 import java.util.Map;
 
@@ -88,7 +87,6 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
     String targetJournal = getStringValue(params.get("journalKey"));
     String handlerName = getStringValue(params.get("handlerName"));
     boolean absoluteLink = getBoolValue(params.get("absoluteLink"));
-    boolean urlDecodeLink = getBoolValue(params.get("urlDecodeLink"));
 
     SitePageContext sitePageContext = new SitePageContext(siteResolver, env);
     Site site = sitePageContext.getSite();
@@ -109,12 +107,7 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
       throw new RuntimeException("Either a path or handlerName parameter is required");
     }
 
-    String url = link.get(sitePageContext.getRequest());
-    if (urlDecodeLink) {
-      url = URLDecoder.decode(url, "UTF-8");
-    }
-
-    return url;
+    return link.get(sitePageContext.getRequest()).replace("%2F", "/");
   }
 
   private static boolean getBoolValue(Object valueObj) throws TemplateModelException {

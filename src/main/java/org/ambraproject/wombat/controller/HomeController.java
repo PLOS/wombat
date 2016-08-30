@@ -77,9 +77,12 @@ public class HomeController extends WombatController {
       @Override
       public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
         String journalKey = site.getJournalKey();
-        String listId = String.format("%s/%s/%s", section.curatedListType, journalKey, section.curatedListName);
         Map<String, Object> curatedList = context.articleApi.requestObject(
-            ApiAddress.builder("lists").addToken(listId).build(), Map.class);
+            ApiAddress.builder("lists").addToken(section.curatedListType)
+                .addToken("journals").addToken(journalKey)
+                .addToken("keys").addToken(section.curatedListName)
+                .build(),
+            Map.class);
         List<Map<String,Object>> articles = (List<Map<String, Object>>) curatedList.get("articles");
         return articles.stream().map(SolrArticleAdapter::adaptFromRhino).collect(Collectors.toList());
       }

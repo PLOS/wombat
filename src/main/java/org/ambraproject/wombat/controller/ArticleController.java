@@ -4,14 +4,12 @@ import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
-import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
@@ -91,13 +89,14 @@ import java.io.StringWriter;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -680,6 +679,8 @@ public class ArticleController extends WombatController {
       @RequestParam("doi") String doi,
       @RequestParam("link") String link,
       @RequestParam("comment") String comment,
+      @RequestParam("title") String title,
+      @RequestParam("publishedOn") String publishedOn,
       @RequestParam("name") String name,
       @RequestParam("email") String email,
       @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
@@ -687,7 +688,7 @@ public class ArticleController extends WombatController {
       throws IOException {
     requireNonemptyParameter(doi);
 
-    if (!validateMediaCurationInput(model, link, name, email, captchaChallenge,
+    if (!validateMediaCurationInput(model, link, name, email, title, publishedOn, captchaChallenge,
         captchaResponse, site, request)) {
       model.addAttribute("formError", "Invalid values have been submitted.");
       //return model for error reporting
@@ -700,6 +701,9 @@ public class ArticleController extends WombatController {
     params.add(new BasicNameValuePair("doi", doi.replaceFirst("info:doi/", "")));
     params.add(new BasicNameValuePair("link", link));
     params.add(new BasicNameValuePair("comment", linkComment));
+    params.add(new BasicNameValuePair("title", title));
+    params.add(new BasicNameValuePair("publishedOn", publishedOn));
+
     UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
 
     String mediaCurationUrl = site.getTheme().getConfigMap("mediaCuration").get("mediaCurationUrl").toString();
@@ -740,9 +744,12 @@ public class ArticleController extends WombatController {
    * @param site current site
    * @return true if everything is ok
    */
+
   private boolean validateMediaCurationInput(Model model, String link, String name,
-      String email, String captchaChallenge, String captchaResponse, Site site,
-      HttpServletRequest request) throws IOException {
+                                             String email, String title, String publishedOn,
+                                             String captchaChallenge, String captchaResponse,
+                                             Site site, HttpServletRequest request)
+      throws IOException {
 
     boolean isValid = true;
 
@@ -759,6 +766,23 @@ public class ArticleController extends WombatController {
     if (StringUtils.isBlank(name)) {
       model.addAttribute("nameError", "This field is required.");
       isValid = false;
+    }
+
+    if (StringUtils.isBlank(title)) {
+      model.addAttribute("titleError", "This field is required.");
+      isValid = false;
+    }
+
+    if (StringUtils.isBlank(publishedOn)) {
+      model.addAttribute("publishedOnError", "This field is required.");
+      isValid = false;
+    } else {
+      try {
+        LocalDate.parse(publishedOn);
+      } catch (DateTimeParseException e) {
+        model.addAttribute("publishedOnError", "Invalid Date Format, should be YYYY-MM-DD");
+        isValid = false;
+      }
     }
 
     if (StringUtils.isBlank(email)) {

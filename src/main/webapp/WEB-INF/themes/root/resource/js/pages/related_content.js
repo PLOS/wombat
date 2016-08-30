@@ -1,6 +1,7 @@
 var ArticleRelatedContent;
 
 (function ($) {
+
   ArticleRelatedContent = Class.extend({
 
     $mediaCoverageEl: $('#media-coverage-data'),
@@ -27,6 +28,8 @@ var ArticleRelatedContent;
     modalSuccessCloseTimeout: this.modalErrorCloseTimeout/2,
 
     init: function () {
+
+
       var query = new AlmQuery();
       var that = this;
 
@@ -84,6 +87,12 @@ var ArticleRelatedContent;
 
     modalFormBindings: function () {
       var that = this;
+
+      $('form input#mcform-publishedOn').fdatepicker({
+        format: 'yyyy-mm-dd',
+        disableDblClickSelection: true
+      });
+
       $(this.modalFormEl).on('click', '.cancel', function () {
         that.modalFormDismiss(0);
       });
@@ -96,8 +105,14 @@ var ArticleRelatedContent;
       });
 
       $(document).on('open.fndtn.reveal', '[data-reveal]', function () {
+        $('input#mcform-publishedOn').fdatepicker({
+          initialDate: '02-12-1989',
+          format: 'mm-dd-yyyy',
+          disableDblClickSelection: true
+        });
         that.modalFormReset();
       });
+
     },
 
     modalFormReset: function () {
@@ -119,6 +134,10 @@ var ArticleRelatedContent;
         callback: Recaptcha.focus_response_field});
     },
 
+    modalFormDatePicker: function () {
+
+    },
+
     modalFormSubmit: function () {
       var that = this;
       var doi = $('#media-coverage-form').find('form').data('doi');
@@ -127,7 +146,10 @@ var ArticleRelatedContent;
         name: $('#mcform-name').val(),
         email: $('#mcform-email').val(),
         link: $('#mcform-link').val(),
+        title: $('#mcform-title').val(),
+        publishedOn: $('#mcform-publishedOn').val(),
         comment: $('#mcform-comment').val(),
+
         recaptcha_challenge_field: $('#recaptcha_challenge_field').val(),
         recaptcha_response_field: $('#recaptcha_response_field').val()
       };
@@ -161,6 +183,14 @@ var ArticleRelatedContent;
 
             if (data.emailError) {
               $("#mcform-email").next().text(data.emailError);
+            }
+
+            if (data.titleError) {
+              $("#mcform-title").next().text(data.titleError);
+            }
+
+            if (data.publishedOnError) {
+              $("#mcform-publishedOn").next().text(data.publishedOnError);
             }
 
             if (data.captchaError) {

@@ -74,6 +74,8 @@ public interface SolrSearchApi {
    */
   public Map<?, ?> lookupArticleByDoi(String doi) throws IOException;
 
+  public Map<?, ?> lookupArticlesByDois(List<String> dois) throws IOException;
+
   /**
    * Attempts to retrieve information about an article based on the journal key and eLocationId.
    *

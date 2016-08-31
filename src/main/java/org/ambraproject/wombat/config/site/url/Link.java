@@ -316,7 +316,7 @@ public class Link {
       }
       path = path + "?" + paramBuilder.format();
     }
-    return path.replace("%2F", "/");
+    return path;
   }
 
 

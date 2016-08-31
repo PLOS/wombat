@@ -12,16 +12,14 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * Translates a Solr query result, representing an article's metadata, to have a common interface with article metadata
- * provided by Rhino.
+ * Translates a Solr query result, representing an article's metadata
  */
 public class SolrArticleAdapter implements Serializable {
 
   /**
    * An object representing one article author.
    * <p>
-   * Solr provides bare strings for author names, which we represent here as the {@code fullName} field of Rhino's
-   * author object. Because no other data is available from Solr, {@code fullName} is the only field.
+   * Solr provides bare strings for author names - {@code fullName} is the only field.
    */
   public static class Author implements Serializable {
     private final String fullName;

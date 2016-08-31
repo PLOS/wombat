@@ -249,8 +249,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery(doiQueryString)
         .setStart(0)
-        .setRows(dois.size())
-        .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
+        .setRows(dois.size());
     return search(query.build());
   }
 

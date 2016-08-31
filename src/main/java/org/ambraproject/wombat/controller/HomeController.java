@@ -84,7 +84,13 @@ public class HomeController extends WombatController {
                 .build(),
             Map.class);
         List<Map<String,Object>> articles = (List<Map<String, Object>>) curatedList.get("articles");
-        return articles.stream().map(SolrArticleAdapter::adaptFromRhino).collect(Collectors.toList());
+
+        List<String> dois = articles.stream()
+            .map(article -> (String) article.get("doi"))
+            .collect(Collectors.toList());
+
+        Map<String, Object> results = (Map<String, Object>) context.solrSearchApi.lookupArticlesByDois(dois);
+        return SolrArticleAdapter.unpackSolrQuery(results);
       }
     };
 

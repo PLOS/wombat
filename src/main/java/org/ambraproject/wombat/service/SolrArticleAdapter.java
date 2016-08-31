@@ -12,16 +12,14 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * Translates a Solr query result, representing an article's metadata, to have a common interface with article metadata
- * provided by Rhino.
+ * Translates a Solr query result, representing an article's metadata
  */
 public class SolrArticleAdapter implements Serializable {
 
   /**
    * An object representing one article author.
    * <p>
-   * Solr provides bare strings for author names, which we represent here as the {@code fullName} field of Rhino's
-   * author object. Because no other data is available from Solr, {@code fullName} is the only field.
+   * Solr provides bare strings for author names - {@code fullName} is the only field.
    */
   public static class Author implements Serializable {
     private final String fullName;
@@ -84,37 +82,6 @@ public class SolrArticleAdapter implements Serializable {
     List<String> solrAuthors = (List<String>) solrArticle.get("author_display");
     List<Author> authors = (solrAuthors != null) ? Lists.transform(solrAuthors, Author::new) : ImmutableList.of();
     String articleType = (String) solrArticle.get("article_type");
-
-    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors, articleType);
-  }
-
-  /**
-   * Adapt article metadata from Rhino with the common interface used for Solr queries.
-   * <p>
-   * This is useful in contexts where data from Solr is being merged with data from Rhino, so that all data can be
-   * represented with {@code SolrArticleAdapter} objects regardless of their source. Why do this, instead of leaving the
-   * Rhino data alone? If code depends on data that only comes from Rhino, then it will break unexpectedly if it
-   * consumes data from Solr instead. Adapting the Rhino data will remove the fields that we can't expect Solr to
-   * provide, causing code to fail early if it depends on those fields.
-   *
-   * @param rhinoArticle a map of article metadata fields from Rhino
-   * @return the extracted fields
-   */
-  public static SolrArticleAdapter adaptFromRhino(Map<String, ?> rhinoArticle) {
-    String doi = (String) rhinoArticle.get("doi");
-    String title = (String) rhinoArticle.get("title");
-    String eIssn = (String) rhinoArticle.get("eIssn");
-    String date = (String) rhinoArticle.get("date");
-    String strkImgURI = (String) rhinoArticle.get("strkImgURI");
-
-    Collection<?> figures = (Collection<?>) rhinoArticle.get("figures");
-    boolean hasFigures = !figures.isEmpty();
-
-    List<Map<String, ?>> rhinoAuthors = (List<Map<String, ?>>) rhinoArticle.get("authors");
-    List<Author> authors = Lists.transform(rhinoAuthors,
-        (Map<String, ?> author) -> new Author((String) author.get("fullName")));
-
-    String articleType = ((String) rhinoArticle.get("articleType"));
 
     return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors, articleType);
   }

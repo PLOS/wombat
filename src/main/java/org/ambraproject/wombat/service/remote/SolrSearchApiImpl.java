@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
@@ -239,6 +240,17 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     params.add(new BasicNameValuePair("fl", "id,eissn"));
     params.add(new BasicNameValuePair("q", String.format("id:\"%s\"", doi)));
     return executeQuery(params);
+  }
+
+  @Override
+  public Map<?, ?> lookupArticlesByDois(List<String> dois) throws IOException {
+    String doiQueryString = Joiner.on(" OR ").join(dois);
+
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setQuery(doiQueryString)
+        .setStart(0)
+        .setRows(dois.size());
+    return search(query.build());
   }
 
   @Override

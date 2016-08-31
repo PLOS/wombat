@@ -244,7 +244,9 @@ public class SolrSearchApiImpl implements SolrSearchApi {
 
   @Override
   public Map<?, ?> lookupArticlesByDois(List<String> dois) throws IOException {
-    String doiQueryString = Joiner.on(" OR ").join(dois);
+    List<String> solrDois = dois.stream().map(doi -> "id:" + doi).collect(Collectors.toList());
+
+    String doiQueryString = Joiner.on(" OR ").join(solrDois);
 
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery(doiQueryString)

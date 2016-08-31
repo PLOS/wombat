@@ -1,17 +1,11 @@
 package org.ambraproject.wombat.freemarker;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableListMultimap;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ListMultimap;
 import freemarker.core.Environment;
 import freemarker.template.TemplateBooleanModel;
-import freemarker.template.TemplateHashModelEx;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
-import freemarker.template.TemplateModelIterator;
 import freemarker.template.TemplateScalarModel;
-import freemarker.template.TemplateSequenceModel;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;

@@ -37,7 +37,7 @@ public class UrlParamBuilder {
   }
 
   public String format() {
-    return URLEncodedUtils.format(params, Charsets.UTF_8);
+    return URLEncodedUtils.format(params, Charsets.UTF_8).replace("%2F", "/");
   }
 
   @Override

@@ -71,18 +71,6 @@
 
   <@renderJs />
 
-  <script type="text/javascript">
-
-    (function ($) {
-
-      /*filesizetable*/
-      $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
-
-    })(jQuery);
-
-  </script>
-
-
   <#include "aside/crossmarkIframe.ftl" />
 <#--
 TODO: move reveal mode & fig-viewer divs to global location when the new lightbox is implemented sitewide

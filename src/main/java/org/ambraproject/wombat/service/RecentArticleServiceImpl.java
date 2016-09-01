@@ -27,7 +27,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RecentArticleServiceImpl implements RecentArticleService {
   private static final Logger log = LoggerFactory.getLogger(RecentArticleServiceImpl.class);
 
-  private final int MAXIMUM_RESULTS = 1000;
+  private static final int MAXIMUM_RESULTS = 1000;
+
   //todo: turn this field into a flag in homepage.yaml instead of treating as an article type.
   //The current usage of this wildcard behaves like so: If the specified article types does not meet
   //the minimum, fill the rest of the list with articles of any type.
@@ -147,7 +148,10 @@ public class RecentArticleServiceImpl implements RecentArticleService {
             "(2) use the wildcard type parameter (*).";
         throw new RuntimeException(errorMessage);
       } else {
-        articles.addAll(getAllArticlesByType(articleTypes, articleTypesToExclude, journalKeys));
+        // Not enough results. Get outside the date range in order to meet the minimum.
+        // Ignore order of articleTypes and get the union of all.
+        int limit = articleCount - articles.size();
+        articles.addAll(getAllArticlesByType(articleTypes, articleTypesToExclude, journalKeys, limit));
       }
     }
     return articles;
@@ -191,11 +195,12 @@ public class RecentArticleServiceImpl implements RecentArticleService {
 
   private List<SolrArticleAdapter> getAllArticlesByType(List<String> articleTypes,
                                                         List<String> articleTypesToExclude,
-                                                        List<String> journalKeys)
+                                                        List<String> journalKeys,
+                                                        int limit)
       throws IOException {
     ArticleSearchQuery allArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
-        .setRows(MAXIMUM_RESULTS)
+        .setRows(limit)
         .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setArticleTypes(articleTypes)
         .setArticleTypesToExclude(articleTypesToExclude)

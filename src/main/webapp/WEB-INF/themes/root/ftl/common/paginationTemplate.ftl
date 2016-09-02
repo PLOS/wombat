@@ -1,5 +1,8 @@
 <script type="text/template" id="resultsPaginationTemplate">
-  <nav id="article-pagination" class="nav-pagination">
+  <nav id="article-pagination" class="nav-pagination"
+       data-pagination-total-records="<%= totalRecords %>"
+       data-pagination-current-page="<%= currentPage %>"
+       data-pagination-items-per-page="<%= itemsPerPage %>">
     <% _.each(pages, function (item) {%>
     <% if(item.type == 'previous-page') { %>
     <<% if(item.disabled) { %>span<% } else { %>a<% } %> id="prevPageLink" href="#" class="previous-page switch<% if(item.disabled) { %> disabled<% } %>">

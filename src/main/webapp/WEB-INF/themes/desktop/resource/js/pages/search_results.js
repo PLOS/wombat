@@ -44,6 +44,7 @@ var SearchResult;
     searchFeedEndpoint: 'search/feed/atom',
 
     searchFilters: {},
+    searchActiveFilters: [],
     searchDateFilters: {
       "end": null,
       "start": null
@@ -86,7 +87,10 @@ var SearchResult;
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
 
-      if(this.currentSearchParams.q != null) {
+      if (this.currentSearchParams.unformattedQuery != null) {
+        this.currentSearchParams.q = this.currentSearchParams.unformattedQuery;
+      }
+      if (this.currentSearchParams.q != null || this.checkFilters()) {
         this.processRequest();
       }
       else {
@@ -94,8 +98,8 @@ var SearchResult;
         this.isInitialized = true;
       }
     },
-    getCurrentPage: function() {
-      if(this.currentSearchParams.page && this.currentSearchParams.page != null) {
+    getCurrentPage: function () {
+      if (this.currentSearchParams.page && this.currentSearchParams.page != null) {
         return parseInt(this.currentSearchParams.page);
       }
       else {
@@ -103,7 +107,7 @@ var SearchResult;
       }
     },
     getResultsPerPage: function () {
-      if(this.currentSearchParams.resultsPerPage && this.currentSearchParams.resultsPerPage != null) {
+      if (this.currentSearchParams.resultsPerPage && this.currentSearchParams.resultsPerPage != null) {
         return parseInt(this.currentSearchParams.resultsPerPage);
       }
       else {
@@ -125,7 +129,7 @@ var SearchResult;
       var urlVars = this.getJsonFromUrl();
       this.currentSearchParams = _.mapObject(this.currentSearchParams, function (item, key) {
         var urlVar = urlVars[key];
-        if(!_.isEmpty(urlVar)) {
+        if (!_.isEmpty(urlVar)) {
           return urlVar;
         }
         else {
@@ -133,11 +137,32 @@ var SearchResult;
         }
       });
     },
+    checkFilters: function () {
+      var that = this;
+      var standaloneFilters = [
+        'filterStartDate',
+        'filterEndDate',
+        'filterAuthors',
+        'filterSubjects'
+      ];
+      var isStandalone = false;
+
+      _.each(standaloneFilters, function (filter) {
+        if (isStandalone == false && that.currentSearchParams[filter] != null) {
+          isStandalone = true;
+        }
+      });
+
+      return isStandalone;
+    },
     createUrlParams: function () {
       var urlParams = '?';
+      if (this.currentSearchParams.q == null && this.checkFilters()) {
+        this.currentSearchParams.q = "";
+      }
       _.each(this.currentSearchParams, function (item, key) {
-        if(item != null) {
-          if(_.isArray(item)) {
+        if (item != null) {
+          if (_.isArray(item)) {
             _.each(item, function (item) {
               urlParams = urlParams + key + '=' + encodeURIComponent(item) + '&';
             });
@@ -151,7 +176,7 @@ var SearchResult;
       this.updatePageUrl();
     },
     updatePageUrl: function () {
-      if(this.isInitialized) {
+      if (this.isInitialized) {
         var title = document.title;
         var href = this.searchEndpoint + this.currentUrlParams;
         window.history.pushState(href, title, href);
@@ -192,30 +217,37 @@ var SearchResult;
         var param = $(this).data('filter-param-name');
         var value = $(this).data('filter-value');
 
-        var currentValue = that.currentSearchParams[param];
-
-        if(_.isArray(currentValue)) {
-          var index = _.indexOf(currentValue, value);
-
-          if (index == -1) {
-            that.currentSearchParams[param].push(value);
-          }
-          else {
-            that.currentSearchParams[param].splice(index, 1);
-          }
+        if (param == 'filterDates') {
+          that.currentSearchParams.filterStartDate = null;
+          that.currentSearchParams.filterEndDate = null;
+          that.searchDateFilters.start = that.currentSearchParams.filterStartDate;
+          that.searchDateFilters.end = that.currentSearchParams.filterEndDate;
         }
         else {
-          if(currentValue == value) {
-            that.currentSearchParams[param] = [];
-          }
-          else if(currentValue != null) {
-            that.currentSearchParams[param] = [currentValue, value];
+          var currentValue = that.currentSearchParams[param];
+
+          if (_.isArray(currentValue)) {
+            var index = _.indexOf(currentValue, value);
+
+            if (index == -1) {
+              that.currentSearchParams[param].push(value);
+            }
+            else {
+              that.currentSearchParams[param].splice(index, 1);
+            }
           }
           else {
-            that.currentSearchParams[param] = [value];
+            if (currentValue == value) {
+              that.currentSearchParams[param] = [];
+            }
+            else if (currentValue != null) {
+              that.currentSearchParams[param] = [currentValue, value];
+            }
+            else {
+              that.currentSearchParams[param] = [value];
+            }
           }
         }
-
         that.currentSearchParams.page = 1;
 
         that.processRequest();
@@ -229,6 +261,11 @@ var SearchResult;
       }).on('click', this.resetFiltersElId, function (e) {
         e.preventDefault();
         e.stopPropagation();
+
+        that.currentSearchParams.filterStartDate = null;
+        that.currentSearchParams.filterEndDate = null;
+        that.searchDateFilters.start = that.currentSearchParams.filterStartDate;
+        that.searchDateFilters.end = that.currentSearchParams.filterEndDate;
 
         _.each(that.filtersParams, function (filter) {
           that.currentSearchParams[filter] = null;
@@ -264,9 +301,11 @@ var SearchResult;
         e.stopPropagation();
         that.currentSearchParams.filterEndDate = $(that.dateFilterEndElId).val();
         that.currentSearchParams.filterStartDate = $(that.dateFilterStartElId).val();
+        that.searchDateFilters['end'] = that.currentSearchParams.filterEndDate;
+        that.searchDateFilters['start'] = that.currentSearchParams.filterStartDate;
         that.processRequest();
       });
-      plos_toggle.init();
+      toggle_component.init();
 
       if ($('#searchControlBarForm').attr('data-advanced-search')) {
         $('#simpleSearchLink, .edit-query').show();
@@ -285,7 +324,7 @@ var SearchResult;
         e.stopPropagation();
         that.$searchAlertModalEl.foundation('reveal', 'open');
 
-        if(that.$searchAlertModalEl.hasClass('loggedIn')) {
+        if (that.$searchAlertModalEl.hasClass('loggedIn')) {
           var textInput = $('#text_name_savedsearch');
           textInput.val(that.currentSearchParams.q);
           textInput.focus();
@@ -323,7 +362,7 @@ var SearchResult;
       var query = {};
 
       _.mapObject(this.currentSearchParams, function (item, key) {
-        if(!_.isEmpty(item)) {
+        if (!_.isEmpty(item)) {
           query[key] = item;
         }
       });
@@ -337,8 +376,8 @@ var SearchResult;
         data: 'name=' + encodeURIComponent(name)
         + "&query=" + encodeURIComponent(query)
         + (weekly ? "&frequency=weekly" : "") + (monthly ? "&frequency=monthly" : ""),
-        dataType:'json',
-        success: function(response) {
+        dataType: 'json',
+        success: function (response) {
           if (response.error) {
             var errorMessage = response.error;
             $('#span_error_savedsearch').html(errorMessage);
@@ -347,11 +386,59 @@ var SearchResult;
 
           that.$searchAlertModalEl.foundation('reveal', 'close');
         },
-        error: function(req, textStatus, errorThrown) {
+        error: function (req, textStatus, errorThrown) {
           $('#span_error_savedsearch').html(errorThrown);
           console.log('error: ' + errorThrown);
         }
       });
+    },
+
+    mapActiveFilters: function (response) {
+      var types = {
+        "filterJournals": response.filterJournals,
+        "filterSubjects": response.filterSubjects,
+        "filterArticleTypes": response.filterArticleTypes,
+        "filterAuthors": response.filterAuthors,
+        "filterSections": response.filterSections
+      };
+
+      var activeFilters = [];
+      _.each(types, function (value, type) {
+        if(type == 'filterJournals') {
+          var filters = _.map(value, function (filterValue, key) {
+            return {
+              displayName: response.filterJournalNames[key],
+              filterParamName: type,
+              filterValue: filterValue
+            }
+          });
+        }
+        else {
+          var filters = _.map(value, function (filterValue, key) {
+            return {
+              displayName: filterValue,
+              filterParamName: type,
+              filterValue: filterValue
+            }
+          });
+
+        }
+        activeFilters = activeFilters.concat(filters);
+      });
+
+      if (!_.isEmpty(response.filterStartDate)) {
+        this.searchDateFilters['start'] = response.filterStartDate;
+      }
+      if (!_.isEmpty(response.filterEndDate)) {
+        this.searchDateFilters['end'] = response.filterEndDate;
+      }
+
+      this.searchActiveFilters = activeFilters;
+    },
+
+    updateAlertQueryInput: function (alertQuery) {
+      var $input = $('#alert_query_savedsearch');
+      $input.val(alertQuery);
     },
 
     processRequest: function () {
@@ -360,19 +447,24 @@ var SearchResult;
       this.showLoading();
       this.createUrlParams();
 
-      if(!this.isInitialized) {
+      if (!this.isInitialized) {
         this.isInitialized = true;
       }
 
+      if (_.isEmpty(this.currentSearchParams.q) && !this.checkFilters()) {
+        this.showNoResults();
+        return;
+      }
+
       $.ajax({
-        url: this.ajaxSearchEndpoint+this.currentUrlParams,
+        url: this.ajaxSearchEndpoint + this.currentUrlParams,
         method: 'GET',
         jsonp: 'callback',
         dataType: 'json',
         timeout: 20000,
         success: function (response) {
           that.$resultListEl.html('');
-          if(response.cannotParseQueryError) {
+          if (response.cannotParseQueryError) {
             that.showParseError();
           }
           else if (response.unknownQueryError) {
@@ -380,6 +472,9 @@ var SearchResult;
           }
           else {
             that.resultTotalRecords = response.searchResults.numFound;
+
+            that.mapActiveFilters(response);
+
             if (that.resultTotalRecords > 0) {
               that.results = response.searchResults.docs;
               var currentPage = that.getCurrentPage();
@@ -390,15 +485,13 @@ var SearchResult;
               that.resultsOffset = response.searchResults.start;
 
               that.searchFilters = response.searchFilters;
-              if (!_.isEmpty(response.filterStartDate)) {
-                that.searchDateFilters['start'] = response.filterStartDate;
-              }
-              if (!_.isEmpty(response.filterEndDate)) {
-                that.searchDateFilters['end'] = response.filterEndDate;
-              }
 
               that.$searchHeaderEl.show();
               that.$filtersEl.show();
+
+              if(response.alertQuery) {
+                that.updateAlertQueryInput(response.alertQuery)
+              }
 
               that.createFilters();
               that.updateCounterText();
@@ -430,22 +523,20 @@ var SearchResult;
       this.$resultListEl.append(errorTemplate());
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
-      this.createFilters();
     },
     showParseError: function () {
       var errorTemplate = _.template($('#searchParseErrorTemplate').html());
       this.$resultListEl.append(errorTemplate());
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
-      this.createFilters();
     },
-    showNoResults: function() {
+    showNoResults: function () {
       var noResultsTemplate = _.template($('#searchNoResultsTemplate').html());
 
-      this.$resultListEl.append(noResultsTemplate(this.currentSearchParams));
+      this.$resultListEl.html(noResultsTemplate(this.currentSearchParams));
+      this.createFilterHeader();
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
-      this.createFilters();
 
     },
     createResultList: function () {
@@ -457,7 +548,7 @@ var SearchResult;
       this.createPageSelector();
     },
     createPageSelector: function () {
-      if(this.resultTotalRecords > 0) {
+      if (this.resultTotalRecords > 0) {
         var pages = {
           15: false,
           30: false,
@@ -465,13 +556,13 @@ var SearchResult;
         };
         var pagingTemplate = _.template($('#searchPagingSelectorTemplate').html());
         pages[this.getResultsPerPage()] = true;
-        this.$resultListEl.append(pagingTemplate({ pages:pages }));
+        this.$resultListEl.append(pagingTemplate({pages: pages}));
       }
     },
     updateCounterText: function () {
       var counterText = '%TOTAL% %RESULTSTR% for <strong>%TERM%</strong>';
       counterText = counterText.replace('%TOTAL%', s.numberFormat(this.resultTotalRecords, 0));
-      if(this.resultTotalRecords > 1) {
+      if (this.resultTotalRecords > 1) {
         counterText = counterText.replace('%RESULTSTR%', 'results');
       }
       else {
@@ -486,16 +577,13 @@ var SearchResult;
 
       this.$filtersEl.html('');
       this.$filterHeaderEl.html('');
-      if(this.resultTotalRecords > 0) {
-        var activeFilters = [];
+      if (this.resultTotalRecords > 0) {
         var filterSectionTemplate = _.template($('#searchListFilterSectionTemplate').html());
 
         _.each(this.filtersTitles, function (filterTitle, key) {
           var filter = that.searchFilters[key];
           filter.filterTitle = filterTitle;
-          if(filter.activeFilterItems.length > 0 || filter.inactiveFilterItems.length > 0) {
-            activeFilters = activeFilters.concat(filter.activeFilterItems);
-
+          if (filter.activeFilterItems.length > 0 || filter.inactiveFilterItems.length > 0) {
             that.$filtersEl.append(filterSectionTemplate(filter));
           }
         });
@@ -521,36 +609,40 @@ var SearchResult;
         RangeDatepicker.init($dateFilterStartDateEl, $dateFilterEndDateEl);
 
 
-        this.createFilterHeader(activeFilters);
+        this.createFilterHeader();
       }
     },
-    createFilterHeader: function (activeFilters) {
+    createFilterHeader: function () {
+      var activeFilters = this.searchActiveFilters;
       var filterHeaderTemplate = _.template($('#searchHeaderFilterTemplate').html());
-      if(activeFilters.length) {
-        this.$filterHeaderEl.append(filterHeaderTemplate({activeFilterItems: activeFilters}));
+      if (activeFilters.length || this.searchDateFilters.start != null && this.searchDateFilters.end != null) {
+        this.$filterHeaderEl.html(filterHeaderTemplate({
+          activeFilterItems: activeFilters,
+          searchDateFilters: this.searchDateFilters
+        }));
       }
     },
     getJsonFromUrl: function (hashBased) {
       var query;
-      if(hashBased) {
+      if (hashBased) {
         var pos = location.href.indexOf("?");
-        if(pos==-1) return [];
-        query = location.href.substr(pos+1);
+        if (pos == -1) return [];
+        query = location.href.substr(pos + 1);
       } else {
         query = location.search.substr(1);
       }
       var result = {};
-      query.split("&").forEach(function(part) {
-        if(!part) return;
+      query.split("&").forEach(function (part) {
+        if (!part) return;
         part = part.split("+").join(" "); // replace every + with space, regexp-free version
         var eq = part.indexOf("=");
-        var key = eq>-1 ? part.substr(0,eq) : part;
-        var val = eq>-1 ? decodeURIComponent(part.substr(eq+1)) : "";
+        var key = eq > -1 ? part.substr(0, eq) : part;
+        var val = eq > -1 ? decodeURIComponent(part.substr(eq + 1)) : "";
         var from = key.indexOf("[");
-        if(from==-1) {
+        if (from == -1) {
           var key = decodeURIComponent(key);
-          if(!_.isEmpty(result[key])) {
-            if(_.isArray(result[key])) {
+          if (!_.isEmpty(result[key])) {
+            if (_.isArray(result[key])) {
               result[key].push(val);
             }
             else {
@@ -564,10 +656,10 @@ var SearchResult;
         }
         else {
           var to = key.indexOf("]");
-          var index = decodeURIComponent(key.substring(from+1,to));
-          key = decodeURIComponent(key.substring(0,from));
-          if(!result[key]) result[key] = [];
-          if(!index) result[key].push(val);
+          var index = decodeURIComponent(key.substring(from + 1, to));
+          key = decodeURIComponent(key.substring(0, from));
+          if (!result[key]) result[key] = [];
+          if (!index) result[key].push(val);
           else result[key][index] = val;
         }
       });
@@ -577,4 +669,3 @@ var SearchResult;
 
   new SearchResult();
 })(jQuery);
-

@@ -6,6 +6,8 @@ var TwitterModule;
     $containerEl: $('.twitter-container'),
     $showMoreButtonEl: null,
     $viewAllButtonEl: null,
+    maxTweets: 10,
+    maxTweetsShown: 5,
 
     init: function () {
       this.$showMoreButtonEl = this.$containerEl.find('.load-more');
@@ -31,7 +33,6 @@ var TwitterModule;
           })
           .then(function (twitterData) {
             var itemTemplate = _.template($('#twitterModuleItemTemplate').html());
-
             // Map twitter data to be in the template pattern
             twitterData = _.map(twitterData, function (item) {
               item = item.event;
@@ -54,7 +55,7 @@ var TwitterModule;
             twitterData = _.sortBy(twitterData, function (item) {
               return item.timestamp;
             });
-            twitterData = twitterData.reverse();
+            twitterData = _.last(twitterData.reverse(), that.maxTweets);
 
             var templateCompiled = itemTemplate({items: twitterData});
 
@@ -77,7 +78,9 @@ var TwitterModule;
 
     bindShowMoreEvent: function () {
       var that = this;
-      this.$listEl.find('li:gt(4)').hide();
+      that.maxTweetsShown = that.maxTweetsShown - 1;
+
+      this.$listEl.find('li:gt(' + that.maxTweetsShown + ')').hide();
       this.$showMoreButtonEl.on('click', function () {
         that.$listEl.find('li').show();
         that.$viewAllButtonEl.show();

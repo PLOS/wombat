@@ -12,7 +12,11 @@
       <ol>
         <#list docs as doc>
           <#assign doi = doc["id"] />
-          <li style="b"><a href="<@siteLink handlerName="article" queryParameters={"id": doi} />"> ${doi} </a></li>
+          <li style="b">
+            <a href="<@siteLink handlerName="article" queryParameters={"id": doi} />">
+              ${doi}
+            </a>
+          </li>
         </#list>
       </ol>
     </#if>

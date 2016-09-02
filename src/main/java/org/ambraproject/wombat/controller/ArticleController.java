@@ -4,21 +4,17 @@ import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
-import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
 import com.google.gson.Gson;
-import org.ambraproject.wombat.config.RemoteCacheSpace;
-import org.ambraproject.wombat.config.ServiceCacheSet;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
@@ -43,9 +39,9 @@ import org.ambraproject.wombat.service.XmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.RemoteCacheKey;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.DoiSchemeStripper;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.TextUtil;
@@ -99,13 +95,14 @@ import java.io.StringWriter;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -167,8 +164,6 @@ public class ArticleController extends WombatController {
   private RequestMappingContextDictionary requestMappingContextDictionary;
   @Autowired
   private ParseXmlService parseXmlService;
-  @Autowired
-  private ServiceCacheSet serviceCacheSet;
 
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
@@ -693,6 +688,8 @@ public class ArticleController extends WombatController {
       @RequestParam("doi") String doi,
       @RequestParam("link") String link,
       @RequestParam("comment") String comment,
+      @RequestParam("title") String title,
+      @RequestParam("publishedOn") String publishedOn,
       @RequestParam("name") String name,
       @RequestParam("email") String email,
       @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
@@ -700,7 +697,7 @@ public class ArticleController extends WombatController {
       throws IOException {
     requireNonemptyParameter(doi);
 
-    if (!validateMediaCurationInput(model, link, name, email, captchaChallenge,
+    if (!validateMediaCurationInput(model, link, name, email, title, publishedOn, captchaChallenge,
         captchaResponse, site, request)) {
       model.addAttribute("formError", "Invalid values have been submitted.");
       //return model for error reporting
@@ -713,6 +710,9 @@ public class ArticleController extends WombatController {
     params.add(new BasicNameValuePair("doi", doi.replaceFirst("info:doi/", "")));
     params.add(new BasicNameValuePair("link", link));
     params.add(new BasicNameValuePair("comment", linkComment));
+    params.add(new BasicNameValuePair("title", title));
+    params.add(new BasicNameValuePair("publishedOn", publishedOn));
+
     UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
 
     String mediaCurationUrl = site.getTheme().getConfigMap("mediaCuration").get("mediaCurationUrl").toString();
@@ -753,9 +753,12 @@ public class ArticleController extends WombatController {
    * @param site current site
    * @return true if everything is ok
    */
+
   private boolean validateMediaCurationInput(Model model, String link, String name,
-      String email, String captchaChallenge, String captchaResponse, Site site,
-      HttpServletRequest request) throws IOException {
+                                             String email, String title, String publishedOn,
+                                             String captchaChallenge, String captchaResponse,
+                                             Site site, HttpServletRequest request)
+      throws IOException {
 
     boolean isValid = true;
 
@@ -772,6 +775,23 @@ public class ArticleController extends WombatController {
     if (StringUtils.isBlank(name)) {
       model.addAttribute("nameError", "This field is required.");
       isValid = false;
+    }
+
+    if (StringUtils.isBlank(title)) {
+      model.addAttribute("titleError", "This field is required.");
+      isValid = false;
+    }
+
+    if (StringUtils.isBlank(publishedOn)) {
+      model.addAttribute("publishedOnError", "This field is required.");
+      isValid = false;
+    } else {
+      try {
+        LocalDate.parse(publishedOn);
+      } catch (DateTimeParseException e) {
+        model.addAttribute("publishedOnError", "Invalid Date Format, should be YYYY-MM-DD");
+        isValid = false;
+      }
     }
 
     if (StringUtils.isBlank(email)) {
@@ -949,16 +969,10 @@ public class ArticleController extends WombatController {
     // in Rhino, but it's so simple I elected to keep it here for now.
     List<String> equalContributors = new ArrayList<>();
 
-    ListMultimap<String, String> authorAffiliationsMap = LinkedListMultimap.create();
     for (Object o : authors) {
       Map<String, Object> author = (Map<String, Object>) o;
       String fullName = (String) author.get("fullName");
-
-      List<String> affiliations = (List<String>) author.get("affiliations");
-      for (String affiliation : affiliations) {
-        authorAffiliationsMap.put(affiliation, fullName);
-      }
-
+      
       Object obj = author.get("equalContrib");
       if (obj != null && (boolean) obj) {
         equalContributors.add(fullName);
@@ -972,13 +986,6 @@ public class ArticleController extends WombatController {
       }
     }
 
-    //Create comma-separated list of authors per affiliation
-    LinkedHashMap<String, String> authorListAffiliationMap = new LinkedHashMap<>();
-    for (Map.Entry<String, Collection<String>> affiliation : authorAffiliationsMap.asMap().entrySet()) {
-      authorListAffiliationMap.put(affiliation.getKey(), Joiner.on(", ").join(affiliation.getValue()));
-    }
-
-    model.addAttribute("authorListAffiliationMap", authorListAffiliationMap);
     model.addAttribute("authorContributions", allAuthorsData.get("authorContributions"));
     model.addAttribute("competingInterests", allAuthorsData.get("competingInterests"));
     model.addAttribute("correspondingAuthors", allAuthorsData.get("correspondingAuthorList"));
@@ -1001,7 +1008,7 @@ public class ArticleController extends WombatController {
    */
   private String getAmendmentBody(final RenderContext renderContext) throws IOException {
 
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.AMENDMENT_BODY, renderContext.getArticleId());
+    CacheKey cacheKey = CacheKey.create("amendmentBody", renderContext.getArticleId());
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {
@@ -1035,8 +1042,7 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private XmlContent getXmlContent(RenderContext renderContext) throws IOException {
-    RemoteCacheKey cacheKey = RemoteCacheKey.create(RemoteCacheSpace.ARTICLE_HTML,
-        renderContext.getSite().getKey(), renderContext.getArticleId());
+    CacheKey cacheKey = CacheKey.create("html", renderContext.getSite().getKey(), renderContext.getArticleId());
     ApiAddress xmlAssetPath = getArticleXmlAssetPath(renderContext);
 
     return articleApi.requestCachedStream(cacheKey, xmlAssetPath, stream -> {

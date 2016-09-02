@@ -29,7 +29,7 @@ var Signposts;
           if(!_.isUndefined(data.sources)) {
             var scopus = _.findWhere(data.sources, { name: 'scopus' });
             if(scopus.metrics.total > 0) {
-              $('#almCitations').find('.citations-tip a').html('Scopus data unavailable. Displaying Crossref citation count.');
+              $('#almCitations').find('.citations-tip a').html('Displaying Scopus citation count.');
             }
           }
 

@@ -1,4 +1,6 @@
 @import "screen";
+@import "vendor/foundation-datepicker";
+
 @import "sections/ambra/forms";
 
 /* Customized css for the FigShare dialog */
@@ -12,11 +14,16 @@
 
 #media-coverage-modal {
   @extend %modal;
-  @extend .small;
+  @extend .medium;
 
   #media-coverage-success, #media-coverage-failure {
     display: none;
   }
+
+}
+
+form.standard textarea#mcform-comment{
+  height: 8em;
 }
 
 #media-coverage-data ul {

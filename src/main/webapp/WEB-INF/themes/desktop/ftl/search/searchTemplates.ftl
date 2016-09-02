@@ -17,8 +17,7 @@
         <span id="article-result-<%= index %>-type"><%= item.article_type %></span> |
         <% } %>
                       <span id="article-result-<%= index %>-date">
-                published <%= moment(item.publication_date).format("DD MMM YYYY") %>
-                          |
+                published <%= moment.utc(item.publication_date).format("DD MMM YYYY") %>
               </span>
         <% if(!_.isEmpty(item.cross_published_journal_name)) { %>
                         <span id="article-result-<%= index %>-journal-name">
@@ -42,15 +41,18 @@
 
 <script id="searchResultsAlm" type="text/template">
 
+
   <p class="search-results-alm" data-doi="">
-    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#viewedHeader">Views: <%= viewCount
+  <@siteLink handlerName="articleMetrics" ; metricsUrl>
+    <a href="${metricsUrl}?id=<%= itemDoi %>#viewedHeader">Views: <%= viewCount
       %></a>
     •
-    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#citedHeader">Citations: <%=
+    <a href="${metricsUrl}?id=<%= itemDoi %>#citedHeader">Citations: <%=
       citationCount %></a>
     •
-    <a href="/wombat/DesktopPlosOne/article/metrics?id=10.1371%2Fjournal.pone.0009020#savedHeader">Saves: <%= saveCount
+    <a href="${metricsUrl}?id=<%= itemDoi %>#savedHeader">Saves: <%= saveCount
       %></a>
+  </@siteLink>
     •
     Shares: <%= shareCount %>
   </p>
@@ -117,11 +119,19 @@
 </script>
 
 <script type="text/template" id="searchHeaderFilterTemplate">
-  <% if (activeFilterItems.length > 0) { %>
+  <% if (activeFilterItems.length > 0 || searchDateFilters.start != null && searchDateFilters.end != null) { %>
   <div class="filter-view-container">
     <section class="filter-view">
       <h3 class="filter-label">Filters:</h3>
       <div class="filter-block">
+        <% if(searchDateFilters.start != null && searchDateFilters.end != null) { %>
+        <div class="filter-item" id="filter-date">
+          <%= moment(searchDateFilters.start).format('ll') %> TO <%= moment(searchDateFilters.end).format('ll') %>
+          <a href="#" data-filter-param-name="filterDates" data-filter-value="date">
+            &nbsp;
+          </a>
+        </div>
+        <% } %>
         <% _.each(activeFilterItems, function(item) { %>
         <div class="filter-item">
           <%= item.displayName %>
@@ -158,11 +168,11 @@
 
 <script type="text/template" id="searchNoResultsTemplate">
   <div class="search-results-none-found">
-  <p>You searched for articles that have all of the following:</p>
+    <p>You searched for articles that have all of the following:</p>
 
-  <p>Search Term: "<span><%= q %></span>"</p>
+    <p>Search Term: "<span><%= q %></span>"</p>
 
-  <p>There were no results; please refine your search above and try again.</p>
+    <p>There were no results; please refine your search above and try again.</p>
   </div>
 </script>
 

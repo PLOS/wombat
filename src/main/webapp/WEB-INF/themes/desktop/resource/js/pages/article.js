@@ -83,7 +83,7 @@
       truncate_elem.remove_overflowed('#floatAuthorList');
 
       // initialize tooltip for author info
-      plos_tooltip.init();
+      tooltip_component.init();
     }
 
     float_header.init();
@@ -95,7 +95,7 @@
          signposts.getSignpostData(doi);
      }
     // initialize toggle for author list view more
-    plos_toggle.init();
+   toggle_component.init();
 
     spin_opts = {
       width: 1,

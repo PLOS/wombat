@@ -153,7 +153,8 @@ public class BrowseController extends WombatController {
     for (Map<String, ?> article : articles) {
       if (!article.containsKey("revisionNumber")) continue; // Omit unpublished articles
 
-      ArticleType articleType = typeDictionary.lookUp((String) article.get("articleType"));
+      Map<String, ?> ingestion = (Map<String, ?>) article.get("ingestion");
+      ArticleType articleType = typeDictionary.lookUp((String) ingestion.get("articleType"));
       groupedArticles.put(articleType, article);
     }
 

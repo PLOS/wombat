@@ -148,10 +148,19 @@ public class RecentArticleServiceImpl implements RecentArticleService {
             "(2) use the wildcard type parameter (*).";
         throw new RuntimeException(errorMessage);
       } else {
+
+        // the results of the new query may contain previously added articles
+        int limit = articleCount + articles.size();
+
         // Not enough results. Get outside the date range in order to meet the minimum.
         // Ignore order of articleTypes and get the union of all.
-        int limit = articleCount - articles.size();
-        articles.addAll(getAllArticlesByType(articleTypes, articleTypesToExclude, journalKeys, limit));
+        List<SolrArticleAdapter> articlesByType = getAllArticlesByType(articleTypes, articleTypesToExclude,
+            journalKeys, limit);
+        for (SolrArticleAdapter article : articlesByType) {
+          if (articles.size() < articleCount && uniqueDois.add(article.getDoi())) {
+            articles.add(article);
+          }
+        }
       }
     }
     return articles;

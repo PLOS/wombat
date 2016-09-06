@@ -271,8 +271,8 @@ public class ArticleMetadata {
       if (previous != null) {
         // They should differ only by path.
         if (category.weight != previous.weight) {
-          log.warn(String.format("Inconsistent category weights for same term. \"%s\": %d; \"%s\": %d",
-              category.path, category.weight, previous.path, previous.weight));
+          log.warn(String.format("In category assignments for %s, inconsistent weights for same term. \"%s\": %d; \"%s\": %d",
+              articlePointer.getDoi(), category.path, category.weight, previous.path, previous.weight));
         } // else, it's okay for it to be replaced because the term and weight are the same
       }
     }

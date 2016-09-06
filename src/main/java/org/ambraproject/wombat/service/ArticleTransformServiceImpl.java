@@ -1,11 +1,11 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableSet;
-import net.sf.json.JSONArray;
-import net.sf.json.xml.XMLSerializer;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
 import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.model.Reference;
+import org.ambraproject.wombat.model.References;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
@@ -15,6 +15,9 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -28,7 +31,7 @@ import java.io.OutputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
 import java.util.OptionalInt;
 
@@ -40,8 +43,6 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
 
   @Autowired
   private Charset charset;
-  @Autowired
-  private ArticleService articleService;
 
   /*
    * JATS (Journal Archiving Tag Suite) is a continuation of the work to create and support the "NLM DTDs".
@@ -92,13 +93,14 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   @Override
-  public void transformArticle(Site site, ArticlePointer articleId, InputStream xml, OutputStream html)
+  public void transformArticle(Site site, ArticlePointer articleId, List<Reference> references,
+                               InputStream xml, OutputStream html)
       throws IOException {
     boolean showsCitedArticles = (boolean) site.getTheme().getConfigMap("article").get("showsCitedArticles");
     transform(site, xml, html,
         (XMLReader xmlReader, Transformer transformer) -> {
           if (showsCitedArticles) {
-            setCitedArticles(articleId, xmlReader, transformer);
+            setCitedArticles(references, xmlReader, transformer);
           }
 
           setVersionLink(articleId, transformer);
@@ -106,13 +108,22 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   // Add cited articles metadata for inclusion of DOI links in reference list
-  private void setCitedArticles(ArticlePointer articleId, XMLReader xmlReader, Transformer transformer) throws IOException {
-    Map<?, ?> articleMetadata = articleService.requestArticleMetadata(articleId);
-    Object citedArticles = articleMetadata.get("citedArticles");
-    JSONArray jsonArr = JSONArray.fromObject(citedArticles);
-    String metadataXml = new XMLSerializer().write(jsonArr);
+  private void setCitedArticles(List<Reference> references, XMLReader xmlReader, Transformer transformer) throws IOException {
+    References refs = new References();
+    refs.setReferences(references);
+    StringWriter sw = new StringWriter();
+    try {
+      JAXBContext jaxbContext = JAXBContext.newInstance(References.class);
+      Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+      jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+      jaxbMarshaller.marshal(refs, sw);
+    } catch (JAXBException jaxbE) {
+      throw new RuntimeException(jaxbE);
+    }
+
+    String metadataXml = sw.toString();
     SAXSource saxSourceMeta = new SAXSource(xmlReader, new InputSource(IOUtils.toInputStream(metadataXml)));
-    transformer.setParameter("citedArticles", saxSourceMeta);
+    transformer.setParameter("refs", saxSourceMeta);
   }
 
   private void setVersionLink(ArticlePointer articleId, Transformer transformer) {

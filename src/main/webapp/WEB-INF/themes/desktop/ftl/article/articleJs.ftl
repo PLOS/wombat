@@ -12,6 +12,9 @@
 <@js src="resource/js/pages/article.js"/>
 <@js src="resource/js/pages/article_sidebar.js"/>
 
+<@js src="resource/js/pages/article_references.js"/>
+
+
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
 <script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.5/crossmark.min.js"></script>

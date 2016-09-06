@@ -22,13 +22,14 @@ public class CorpusContentApi extends AbstractContentApi {
    * Consume an article manuscript.
    *
    * @param articleId    the article whose manuscript to read
-   * @param cachePrefix   the cache space that stores the operation output
+   * @param cachePrefix  the cache space that stores the operation output
    * @param htmlCallback the operation to perform on the manuscript
+   * @param <T>          the result type
    * @return the result of the operation
    * @throws IOException
    */
-  public String readManuscript(ArticlePointer articleId, String cachePrefix,
-                               CacheDeserializer<InputStream, String> htmlCallback)
+  public <T> T readManuscript(ArticlePointer articleId, String cachePrefix,
+                              CacheDeserializer<InputStream, T> htmlCallback)
       throws IOException {
     CacheKey cacheKey = CacheKey.create(cachePrefix,
         articleId.getDoi(), Integer.toString(articleId.getIngestionNumber()));

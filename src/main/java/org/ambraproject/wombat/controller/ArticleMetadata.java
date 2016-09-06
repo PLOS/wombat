@@ -480,7 +480,7 @@ public class ArticleMetadata {
    * @return the body of the amendment article, transformed into HTML for display in a notice on the amended article
    */
   private String getAmendmentBody(ArticlePointer amendmentId) throws IOException {
-    return factory.corpusContentApi.readManuscript(amendmentId, "amendmentBody",
+    return factory.corpusContentApi.readManuscript(amendmentId, site, "amendmentBody",
         (InputStream stream) -> {
           // Extract the "/article/body" element from the amendment XML, not to be confused with the HTML <body> element.
           String bodyXml = XmlUtil.extractElement(stream, "body");

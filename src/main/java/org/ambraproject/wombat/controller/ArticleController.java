@@ -700,7 +700,7 @@ public class ArticleController extends WombatController {
    * @throws IOException
    */
   private XmlContent getXmlContent(Site site, ArticlePointer articlePointer) throws IOException {
-    return corpusContentApi.readManuscript(articlePointer, "html", (InputStream stream) -> {
+    return corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
       ByteArrayOutputStream xmlBaos = new ByteArrayOutputStream();
       IOUtils.copy(stream, xmlBaos);
       byte[] xml = xmlBaos.toByteArray();

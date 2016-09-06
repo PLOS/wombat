@@ -91,6 +91,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
+import java.io.Serializable;
 import java.io.StringWriter;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -1023,7 +1024,7 @@ public class ArticleController extends WombatController {
     });
   }
 
-  private class XmlContent {
+  private static class XmlContent implements Serializable {
     private final String html;
     private final ImmutableList<Reference> references;
 

@@ -318,6 +318,11 @@ example | extension
   @include link-text($color: $plos-default, $decoration-hover: underline);
 }
 
+.link-disabled {
+  pointer-events: none;
+  color: $clr-btn-disabled;
+}
+
 //////////////
 //font decorations
 ///////////////

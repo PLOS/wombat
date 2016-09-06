@@ -23,16 +23,30 @@ import java.io.StringWriter;
 
 public class XmlUtil {
 
-  private static Document createXmlDocument(InputSource xmlSource) throws IOException {
-    DocumentBuilder documentBuilder; // not thread-safe
+  /**
+   * Construct a non-validating document builder. We assume that we don't want to connect to remote servers to validate
+   * except with a specific reason.
+   *
+   * @return a new document builder
+   */
+  static DocumentBuilder newDocumentBuilder() {
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    // at a minimum the document builder needs to be namespace aware
+    factory.setNamespaceAware(true);
+    factory.setValidating(false);
     try {
-      documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+      factory.setFeature("http://xml.org/sax/features/validation", false);
+      factory.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
+      factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+      return factory.newDocumentBuilder();
     } catch (ParserConfigurationException e) {
-      throw new RuntimeException(e); // using default configuration; should be impossible
+      throw new RuntimeException(e);
     }
+  }
 
+  private static Document createXmlDocument(InputSource xmlSource) throws IOException {
     try {
-      return documentBuilder.parse(xmlSource);
+      return newDocumentBuilder().parse(xmlSource);
     } catch (SAXException e) {
       throw new RuntimeException("Invalid XML syntax during document creation", e);
     }

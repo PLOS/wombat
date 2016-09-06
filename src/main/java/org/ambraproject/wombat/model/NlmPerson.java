@@ -22,13 +22,14 @@ package org.ambraproject.wombat.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import java.io.Serializable;
 
 /**
  * Represent the Author or Editor of a reference.
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-public class NlmPerson {
+public class NlmPerson implements Serializable {
   private String fullName;
   private String givenNames;
   private String surname;

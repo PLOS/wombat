@@ -6,6 +6,7 @@ import com.google.common.base.Function;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
@@ -32,7 +33,6 @@ import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.UriUtil;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
@@ -70,7 +70,6 @@ import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -701,10 +700,8 @@ public class ArticleController extends WombatController {
    */
   private XmlContent getXmlContent(Site site, ArticlePointer articlePointer) throws IOException {
     return corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
-      ByteArrayOutputStream xmlBaos = new ByteArrayOutputStream();
-      IOUtils.copy(stream, xmlBaos);
-      byte[] xml = xmlBaos.toByteArray();
-      List<Reference> references = getArticleReferences(new ByteArrayInputStream(xml));
+      byte[] xml = ByteStreams.toByteArray(stream);
+      List<Reference> references = parseXmlService.parseArticleReferences(new ByteArrayInputStream(xml));
 
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
       try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
@@ -714,11 +711,6 @@ public class ArticleController extends WombatController {
 
       return new XmlContent(articleHtml.toString(), references);
     });
-  }
-
-  private List<Reference> getArticleReferences(InputStream xml) throws IOException {
-    List<Reference> references = parseXmlService.parseArticleReferences(xml);
-    return references;
   }
 
 }

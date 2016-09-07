@@ -57,7 +57,7 @@
         <@siteLink handlerName="article" queryParameters={"id": articleInfo.doi} ; articleLink>
           <h3>
             <a href="${articleLink}" title="Read Open Access Article">
-              <@xform xml=articleInfo.title/>
+              <@xform xml=articleInfo.ingestion.title/>
             </a>
           </h3>
         </@siteLink>
@@ -78,7 +78,7 @@
 
 
         <p class="article-info"><b>${journal.title}:</b> published
-          <@formatJsonDate date="${articleInfo.publicationDate}" format="MMMM d, yyyy" /> |
+          <@formatJsonDate date="${articleInfo.ingestion.publicationDate}" format="MMMM d, yyyy" /> |
           <#include "../macro/doiAsLink.ftl" />
           <@doiAsLink articleInfo.doi />
         </p>

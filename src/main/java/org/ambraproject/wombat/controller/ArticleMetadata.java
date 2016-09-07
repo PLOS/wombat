@@ -1,15 +1,14 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Functions;
 import com.google.common.base.Preconditions;
+import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Ordering;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -45,7 +44,6 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.SortedMap;
 import java.util.stream.Collectors;
 
 public class ArticleMetadata {
@@ -228,32 +226,62 @@ public class ArticleMetadata {
     return result.asMap();
   }
 
+  private static class Category {
+    private final String path;
+    private final String term;
+    private final int weight;
+
+    private Category(Map<String, ?> categoryData) {
+      this.path = Objects.requireNonNull((String) categoryData.get("path"));
+      this.term = getCategoryTermFromPath(path);
+      this.weight = ((Number) categoryData.get("weight")).intValue();
+    }
+
+    private static final Splitter CATEGORY_SPLITTER = Splitter.on('/').omitEmptyStrings();
+
+    private static String getCategoryTermFromPath(String path) {
+      return Iterables.getLast(CATEGORY_SPLITTER.split(path));
+    }
+
+    private String getTerm() {
+      return term;
+    }
+
+    private int getWeight() {
+      return weight;
+    }
+  }
+
   /**
    * Iterate over article categories and extract and sort unique category terms (i.e., the final category term in a
    * given category path)
    *
    * @return a sorted list of category terms
    */
-  private List<String> getCategoryTerms() {
-    List<Map<String, ?>> categories = (List<Map<String, ?>>) ingestionMetadata.get("categories");
-    if (categories == null || categories.isEmpty()) {
-      return ImmutableList.of();
+  private List<String> getCategoryTerms() throws IOException {
+    List<Map<String, ?>> categoryViews = (List<Map<String, ?>>) factory.articleApi.requestObject(
+        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addToken("categories").build(),
+        List.class);
+
+    // Remove duplicate paths that have the same term.
+    Map<String, Category> categoryMap = Maps.newHashMapWithExpectedSize(categoryViews.size());
+    for (Map<String, ?> categoryView : categoryViews) {
+      Category category = new Category(categoryView);
+      Category previous = categoryMap.put(category.term, category);
+      if (previous != null) {
+        // They should differ only by path.
+        if (category.weight != previous.weight) {
+          log.warn(String.format("In category assignments for %s, inconsistent weights for same term. \"%s\": %d; \"%s\": %d",
+              articlePointer.getDoi(), category.path, category.weight, previous.path, previous.weight));
+        } // else, it's okay for it to be replaced because the term and weight are the same
+      }
     }
 
-    // create a map of terms/weights (effectively removes duplicate terms through the mapping)
-    Map<String, Double> termsMap = new HashMap<>();
-    for (Map<String, ?> category : categories) {
-      String[] categoryTerms = ((String) category.get("path")).split("/");
-      String categoryTerm = categoryTerms[categoryTerms.length - 1];
-      termsMap.put(categoryTerm, (Double) category.get("weight"));
-    }
-
-    // use Guava for sorting, first on weight (descending), then on category term
-    Comparator valueComparator = Ordering.natural().reverse().onResultOf(Functions.forMap(termsMap)).compound(Ordering.natural());
-    SortedMap<String, Double> sortedTermsMap = ImmutableSortedMap.copyOf(termsMap, valueComparator);
-
-    return new ArrayList<>(sortedTermsMap.keySet());
-
+    // Sort by descending weight, then alphabetically by term
+    return categoryMap.values().stream()
+        .sorted(Comparator.comparing(Category::getWeight).reversed().thenComparing(Category::getTerm))
+        .map(Category::getTerm)
+        .collect(Collectors.toList());
   }
 
   private static boolean isPublished(Map<String, ?> relatedArticle) {

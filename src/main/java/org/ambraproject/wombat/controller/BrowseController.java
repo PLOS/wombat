@@ -78,10 +78,7 @@ public class BrowseController extends WombatController {
 
     modelJournalMetadata(model, site);
 
-    ApiAddress readIssueUrl = (issueId == null)
-        ? ApiAddress.builder("journals").addToken(site.getJournalKey()).addParameter("currentIssue").build()
-        : ApiAddress.builder("issues").embedDoi(issueId).build();
-    Map<String, Object> issueMetadata = getIssueMetadata(readIssueUrl);
+    Map<String, ?> issueMetadata = getCurrentIssue(site, issueId);
     model.addAttribute("issue", issueMetadata);
 
     Map<String, ?> imageArticle = (Map<String, ?>) issueMetadata.get("imageArticle");
@@ -103,14 +100,23 @@ public class BrowseController extends WombatController {
     return journalMetadata;
   }
 
-  private Map<String, Object> getIssueMetadata(ApiAddress issueMetaUrl) throws IOException {
-    Map<String, Object> issueMeta;
-    try {
-      issueMeta = articleApi.requestObject(issueMetaUrl, Map.class);
-    } catch (EntityNotFoundException e) {
-      throw new NotFoundException(e);
+  private Map<String, ?> getCurrentIssue(Site site, String issueId) throws IOException {
+    if (issueId == null) {
+      ApiAddress journalAddress = ApiAddress.builder("journals").addToken(site.getJournalKey()).build();
+      Map<String, ?> journalMetadata = articleApi.requestObject(journalAddress, Map.class);
+      Map<String, ?> issueMetadata = (Map<String, ?>) journalMetadata.get("currentIssue");
+      if (issueMetadata == null) {
+        throw new RuntimeException("Current issue is not set for " + site.getJournalKey());
+      }
+      return issueMetadata;
+    } else {
+      ApiAddress issueAddress = ApiAddress.builder("issues").embedDoi(issueId).build();
+      try {
+        return articleApi.requestObject(issueAddress, Map.class);
+      } catch (EntityNotFoundException e) {
+        throw new NotFoundException(e);
+      }
     }
-    return issueMeta;
   }
 
   private void transformIssueImageMetadata(Model model, Site site, String imageArticleDoi) throws IOException {
@@ -143,7 +149,7 @@ public class BrowseController extends WombatController {
     }
   }
 
-  private List<TypedArticleGroup> buildArticleGroups(Site site, Map<String, Object> issueMetadata) throws IOException {
+  private List<TypedArticleGroup> buildArticleGroups(Site site, Map<String, ?> issueMetadata) throws IOException {
     // Ordered list of all articles in the issue.
     List<Map<String, ?>> articles = (List<Map<String, ?>>) issueMetadata.get("articles");
 

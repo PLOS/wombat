@@ -274,8 +274,12 @@ public class HomeController extends WombatController {
   }
 
   private void populateCurrentIssue(Model model, Site site) throws IOException {
-    ApiAddress issueAddress = ApiAddress.builder("journals").addToken(site.getJournalKey()).addParameter("currentIssue").build();
-    Map<String, Object> currentIssue = articleApi.requestObject(issueAddress, Map.class);
+    ApiAddress journalAddress = ApiAddress.builder("journals").addToken(site.getJournalKey()).build();
+    Map<String, Object> journal = articleApi.requestObject(journalAddress, Map.class);
+    Map<String, Object> currentIssue = (Map<String, Object>) journal.get("currentIssue");
+    if (currentIssue == null) {
+      throw new RuntimeException("Current issue is not set for " + site.getJournalKey());
+    }
     model.addAttribute("currentIssue", currentIssue);
   }
 

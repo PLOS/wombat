@@ -41,18 +41,7 @@
               .success(
                   function (data) {
                     var DOIs = data.message.items[0].DOI;
-                    var titleAPI = data.message.items[0].title;
-                    var titleXML = queryStringTitle.replace(/%20/g, ' ');
-                    var titleXMLConcat = s.trim(titleXML, '.');
-
-                    $that.attr('href', DOIResolver + DOIs);
-
-                    if (titleAPI === titleXMLConcat) {
-                      articleLink = DOIResolver + DOIs;
-                    } else {
-                      articleLink = crossrefSearchString;
-                    }
-                    ;
+                    articleLink = DOIResolver + DOIs;
                   }
               )
               .error(
@@ -65,8 +54,7 @@
                 $that.removeClass('link-disabled');
               });
 
-        }
-        ;
+        };
       });
 
     },

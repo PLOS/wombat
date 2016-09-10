@@ -2,10 +2,7 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.service.ApiAddress;
-import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.util.CacheKey;
-import org.ambraproject.wombat.util.HttpMessageUtil;
-import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.Header;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpHeaders;
@@ -19,7 +16,6 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
@@ -104,13 +100,17 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   private <R extends HttpUriRequest & HttpEntityEnclosingRequest>
   void uploadObject(ApiAddress address, Object object, Function<URI, R> requestConstructor)
       throws IOException {
-    String json = jsonService.serialize(object);
     R request = buildRequest(address, requestConstructor);
-    try {
-      request.setEntity(new StringEntity(json));
-    } catch (UnsupportedEncodingException e) {
-      throw new RuntimeException(e);
+
+    if (object != null) {
+      String json = jsonService.serialize(object);
+      try {
+        request.setEntity(new StringEntity(json));
+      } catch (UnsupportedEncodingException e) {
+        throw new RuntimeException(e);
+      }
     }
+
     request.addHeader(HttpHeaders.CONTENT_TYPE, APPLICATION_JSON_CONTENT_TYPE);
 
     try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(request)) {
@@ -138,17 +138,6 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
     }
   }
 
-
-  @Override
-  public final void forwardResponse(HttpUriRequest requestToService, HttpServletResponse responseToClient) throws IOException {
-    try (CloseableHttpResponse responseFromService = this.getResponse(requestToService)) {
-      HttpMessageUtil.copyResponse(responseFromService, responseToClient);
-    } catch (EntityNotFoundException e) {
-      responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND);
-    } catch (Exception e) {
-      responseToClient.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-    }
-  }
 
   @Override
   public final CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException {

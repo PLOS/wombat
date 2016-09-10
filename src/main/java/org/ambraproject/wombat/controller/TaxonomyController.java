@@ -20,13 +20,10 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.model.TaxonomyGraph.CategoryView;
+import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.util.UrlParamBuilder;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.methods.RequestBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
@@ -39,7 +36,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -152,23 +148,17 @@ public class TaxonomyController extends WombatController {
                       @RequestParam(value = "categoryTerm", required = true) String categoryTerm,
                       @RequestParam(value = "articleDoi", required = true) String articleDoi)
       throws IOException {
-    UrlParamBuilder params = UrlParamBuilder.params()
-        .add("categoryTerm", categoryTerm)
-        .add("articleDoi", articleDoi);
+    ApiAddress.Builder address = ApiAddress.builder("articles").embedDoi(articleDoi).addToken("categories").addParameter("flag")
+        .addParameter("categoryTerm", categoryTerm)
+        .addParameter("action", action);
 
     String authId = request.getRemoteUser();
     if (authId != null) {
       String userId = userApi.getUserIdFromAuthId(authId);
-      params.add("userId", userId);
+      address.addParameter("userId", userId);
     }
 
-    URI serviceUri = URI.create(String.format("%s/taxonomy/flag/%s", articleApi.getServerUrl(), action));
-    HttpUriRequest requestToService = RequestBuilder.create(HttpPost.METHOD_NAME)
-        .setUri(serviceUri)
-        .addParameters(params.buildArray())
-        .build();
-
-    articleApi.forwardResponse(requestToService, responseToClient);
+    articleApi.postObject(address.build(), null);
   }
 
   /**

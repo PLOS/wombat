@@ -148,9 +148,9 @@ public class TaxonomyController extends WombatController {
                       @RequestParam(value = "categoryTerm", required = true) String categoryTerm,
                       @RequestParam(value = "articleDoi", required = true) String articleDoi)
       throws IOException {
-    ApiAddress.Builder address = ApiAddress.builder("articles").embedDoi(articleDoi).addToken("categories").addParameter("flag")
-        .addParameter("categoryTerm", categoryTerm)
-        .addParameter("action", action);
+    ApiAddress.Builder address = ApiAddress.builder("articles").embedDoi(articleDoi).addToken("categories")
+        .addParameter("flag", action)
+        .addParameter("categoryTerm", categoryTerm);
 
     String authId = request.getRemoteUser();
     if (authId != null) {

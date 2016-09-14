@@ -34,9 +34,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -93,7 +93,19 @@ public class HomeController extends WombatController {
 
         Map<String, Object> results = (Map<String, Object>) context.solrSearchApi.lookupArticlesByDois(dois);
         List<SolrArticleAdapter> unpacked = SolrArticleAdapter.unpackSolrQuery(results);
+        validateSolrResultsFromList(section, dois, unpacked);
         return Ordering.explicit(dois).onResultOf(SolrArticleAdapter::getDoi).sortedCopy(unpacked);
+      }
+
+      private void validateSolrResultsFromList(SectionSpec section, Collection<String> persistentListMembers, Collection<SolrArticleAdapter> solrResults) {
+        if (solrResults.size() < persistentListMembers.size()) {
+          Set<String> solrDois = solrResults.stream().map(SolrArticleAdapter::getDoi).collect(Collectors.toSet());
+          for (String doi : persistentListMembers) {
+            if (!solrDois.contains(doi)) {
+              log.error(String.format("Article from list \"%s\" not found in Solr: %s", section.curatedListName, doi));
+            }
+          }
+        }
       }
     };
 

@@ -40,10 +40,11 @@ public class SolrArticleAdapter implements Serializable {
   private final String strkImgURI; // nullable (forego Optional because we want it to be clean as an FTL model)
   private final boolean hasFigures;
   private final ImmutableList<Author> authors; // non-null
+  private final ImmutableList<Author> collabAuthors;
   private final String articleType; // non-null
 
   private SolrArticleAdapter(String doi, String title, String eIssn, String date, String strkImgURI,
-                             boolean hasFigures, List<Author> authors, String articleType) {
+                             boolean hasFigures, List<Author> authors, List<Author> collabAuthors, String articleType) {
     this.doi = Objects.requireNonNull(doi);
     this.title = Objects.requireNonNull(title);
     this.eIssn = Objects.requireNonNull(eIssn);
@@ -51,6 +52,7 @@ public class SolrArticleAdapter implements Serializable {
     this.strkImgURI = strkImgURI;
     this.hasFigures = hasFigures;
     this.authors = ImmutableList.copyOf(authors);
+    this.collabAuthors= ImmutableList.copyOf(collabAuthors);
     this.articleType = Objects.requireNonNull(articleType);
   }
 
@@ -79,11 +81,14 @@ public class SolrArticleAdapter implements Serializable {
     Collection<?> figureTableCaption = (Collection<?>) solrArticle.get("figure_table_caption");
     boolean hasFigures = (figureTableCaption != null) && !figureTableCaption.isEmpty();
 
-    List<String> solrAuthors = (List<String>) solrArticle.get("author_display");
+    List<String> solrAuthors = (List<String>) solrArticle.get("author_without_collab_display");
+    List<String> solrCollabAuthors = (List<String>) solrArticle.get("author_collab_only_display");
+
     List<Author> authors = (solrAuthors != null) ? Lists.transform(solrAuthors, Author::new) : ImmutableList.of();
+    List<Author> collabAuthors = (solrCollabAuthors != null) ? Lists.transform(solrCollabAuthors, Author::new) : ImmutableList.of();
     String articleType = (String) solrArticle.get("article_type");
 
-    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors, articleType);
+    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors, collabAuthors, articleType);
   }
 
   public String getDoi() {
@@ -112,6 +117,10 @@ public class SolrArticleAdapter implements Serializable {
 
   public ImmutableList<Author> getAuthors() {
     return authors;
+  }
+
+  public ImmutableList<Author> getCollabAuthors() {
+    return collabAuthors;
   }
 
   public String getArticleType() {

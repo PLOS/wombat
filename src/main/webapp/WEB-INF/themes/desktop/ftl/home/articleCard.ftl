@@ -23,6 +23,7 @@
     </h2>
         <#include "../article/authorListHomepage.ftl" />
         <@authorList article.authors></@authorList>
+        <@authorList article.collaborativeAuthors></@authorList>
     </div><!-- /.details -->
   <ul class="actions">
   <#--@TODO: When able to launch lightbox from here, uncomment, remove alerts, and redirect to lightbox

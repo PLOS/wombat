@@ -4,6 +4,7 @@
     <#include "articleClassifications.ftl" />
     </div>
     <div class="article-title-etc">
+
     <#include "articleTitle.ftl" />
 
         <ul class="date-doi">
@@ -11,6 +12,7 @@
             <li id="artDoi">
               <#include "../macro/doiAsLink.ftl" />
               <@doiAsLink article.doi />
+
             </li>
 
         </ul>

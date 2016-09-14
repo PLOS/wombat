@@ -205,11 +205,8 @@ public class ArticleMetadata {
   }
 
   private Map<String, Integer> getCommentCount() throws IOException {
-    // TODO: Determine actual service; replace this placeholder
-    if (true) return ImmutableMap.<String, Integer>builder().put("all", 0).put("root", 0).build();
-
     return factory.articleApi.requestObject(
-        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addParameter("commentCount").build(),
+        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addToken("comments").addParameter("count").build(),
         Map.class);
   }
 

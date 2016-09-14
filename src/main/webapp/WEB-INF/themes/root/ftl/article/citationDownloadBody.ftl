@@ -8,7 +8,7 @@
   </a>
   <br/>
 <#include "citation.ftl" />
-<@displayCitation article false />
+<@displayCitation article false authors/>
 </p>
 
 <h2>Download the article citation in the following formats:</h2>

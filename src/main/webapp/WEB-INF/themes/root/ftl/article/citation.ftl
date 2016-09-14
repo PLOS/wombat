@@ -7,7 +7,7 @@
       useUrlDoiStyle - Boolean. True to format the DOI as a URL at http://dx.doi.org/; false to
                        just prefix it with "doi:".
   -->
-<#macro displayCitation citation useUrlDoiStyle>
+<#macro displayCitation citation useUrlDoiStyle authors=citation.authors>
   <#assign maxAuthors = 5 /><#-- May want this to be configurable in the future. -->
 
   <#list authors as author>
@@ -23,7 +23,6 @@
       <#if isCommaShown><#t/>,</#if>
     </#if>
   </#list>
-
   <#assign maxCollabAuthors = maxAuthors - authors?size />
   <#list citation.collaborativeAuthors as author>
     <#if author_index lt maxCollabAuthors>
@@ -39,7 +38,7 @@
   <#if citation.publicationDate??>(<@formatJsonDate date="${citation.publicationDate}" format="yyyy" />)</#if>
 
   <#if citation.title??>
-  ${citation.title}<#if !citation.title?ends_with('?')>.</#if>
+    <@xform xml=citation.title/><#if !citation.title?ends_with('?')>.</#if>
   </#if>
 
   <#if citation.journal??>

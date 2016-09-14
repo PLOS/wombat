@@ -15,16 +15,15 @@
     </#if>
     <div class="amendment-citation">
       <p>
-        <#if amendment.date??>
+        <#if amendment.publicationDate??>
           <span class="amendment-date">
-            <@formatJsonDate date="${amendment.date}" format="d MMM yyyy" />:
+            <@formatJsonDate date="${amendment.publicationDate}" format="d MMM yyyy" />:
           </span>
         </#if>
 
         <@displayCitation amendment false />
 
         <#if amendment.doi??>
-
           <@siteLink path="article?id=" ; path>
             <span class="link-separator"> </span>
             <a href="${path + amendment.doi}" class="amendment-link">

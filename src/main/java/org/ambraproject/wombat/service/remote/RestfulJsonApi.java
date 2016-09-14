@@ -5,7 +5,6 @@ import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
@@ -91,14 +90,5 @@ public interface RestfulJsonApi {
   public abstract <T> T requestCachedObject(CacheKey cacheKey, ApiAddress address, Class<T> responseClass) throws IOException;
 
   public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
-
-  /**
-   * Forward the remote service response from a given request to a client
-   *
-   * @return
-   * @throws IOException
-   */
-  public abstract void forwardResponse(HttpUriRequest requestToService,
-                                       HttpServletResponse responseToClient) throws IOException;
 
 }

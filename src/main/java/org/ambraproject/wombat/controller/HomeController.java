@@ -4,6 +4,7 @@ import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.feed.ArticleFeedView;
@@ -35,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -90,7 +92,20 @@ public class HomeController extends WombatController {
             .collect(Collectors.toList());
 
         Map<String, Object> results = (Map<String, Object>) context.solrSearchApi.lookupArticlesByDois(dois);
-        return SolrArticleAdapter.unpackSolrQuery(results);
+        List<SolrArticleAdapter> unpacked = SolrArticleAdapter.unpackSolrQuery(results);
+        validateSolrResultsFromList(section, dois, unpacked);
+        return Ordering.explicit(dois).onResultOf(SolrArticleAdapter::getDoi).sortedCopy(unpacked);
+      }
+
+      private void validateSolrResultsFromList(SectionSpec section, Collection<String> persistentListMembers, Collection<SolrArticleAdapter> solrResults) {
+        if (solrResults.size() < persistentListMembers.size()) {
+          Set<String> solrDois = solrResults.stream().map(SolrArticleAdapter::getDoi).collect(Collectors.toSet());
+          for (String doi : persistentListMembers) {
+            if (!solrDois.contains(doi)) {
+              log.error(String.format("Article from list \"%s\" not found in Solr: %s", section.curatedListName, doi));
+            }
+          }
+        }
       }
     };
 

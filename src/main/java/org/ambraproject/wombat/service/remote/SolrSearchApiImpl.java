@@ -25,7 +25,6 @@ import org.ambraproject.wombat.service.ApiAddress;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URLEncodedUtils;
-import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -209,13 +208,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
 
   }
 
-  /**
-   * Specifies the article fields in the solr schema that we want returned in the results.
-   */
-  private static final String FL = "id,eissn,publication_date,title,cross_published_journal_name,author_display,"
-      + "article_type,counter_total_all,alm_scopusCiteCount,alm_citeulikeCount,alm_mendeleyCount,alm_twitterCount,"
-      + "alm_facebookCount,retraction,expression_of_concern";
-
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
@@ -225,21 +217,8 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   @Override
-  public Map<?, ?> searchVolume(ArticleSearchQuery query, int volumeNumber) throws IOException {
-    String volumeFilter = String.format("volume:%d", volumeNumber);
-    ArticleSearchQuery volumeQuery = query.copy()
-        .setFilterQueries(ImmutableList.of(volumeFilter))
-        .build();
-    return search(volumeQuery);
-  }
-
-  @Override
   public Map<?, ?> lookupArticleByDoi(String doi) throws IOException {
-    List<NameValuePair> params = new ArrayList<>();
-    params.add(new BasicNameValuePair("wt", "json"));
-    params.add(new BasicNameValuePair("fl", "id,eissn"));
-    params.add(new BasicNameValuePair("q", String.format("id:\"%s\"", doi)));
-    return executeQuery(params);
+    return lookupArticlesByDois(ImmutableList.of(doi));
   }
 
   @Override
@@ -253,20 +232,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
         .setStart(0)
         .setRows(dois.size());
     return search(query.build());
-  }
-
-  @Override
-  public Map<?, ?> lookupArticleByELocationId(String eLocationId, String journalKey) throws IOException {
-    List<NameValuePair> params = new ArrayList<>();
-    params.add(new BasicNameValuePair("wt", "json"));
-    params.add(new BasicNameValuePair("fl", "id,eissn"));
-
-    // Many eLocationIds may be associated with an article (for example, one for each section).  So
-    // we need to set this parameter to get at most one result.
-    params.add(new BasicNameValuePair("fq", "doc_type:full"));
-    params.add(new BasicNameValuePair("fq", "cross_published_journal_key:" + journalKey));
-    params.add(new BasicNameValuePair("q", "elocation_id:" + eLocationId));
-    return executeQuery(params);
   }
 
   @Override

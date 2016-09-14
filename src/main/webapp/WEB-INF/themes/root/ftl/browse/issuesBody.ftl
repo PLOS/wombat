@@ -63,19 +63,12 @@
         </@siteLink>
 
         <p class="authors">
-          <#if articleInfo.authors??><#-- TODO: Support this -->
+          <#if articleInfo.authors??>
             <#list articleInfo.authors as auth>
               <#rt>${auth.fullName?trim}<#if auth_has_next>,</#if>
             </#list>
-            <#if (articleInfo.collaborativeAuthors??)>
-              <#if (articleInfo.authors?size > 0) && (articleInfo.collaborativeAuthors?size > 0)><#lt>,</#if>
-              <#list articleInfo.collaborativeAuthors as cauth>
-              ${cauth?trim}<#if cauth_has_next>,</#if>
-              </#list>
-            </#if>
           </#if>
         </p>
-
 
         <p class="article-info"><b>${journal.title}:</b> published
           <@formatJsonDate date="${articleInfo.ingestion.publicationDate}" format="MMMM d, yyyy" /> |
@@ -95,7 +88,7 @@
           </p>
         </#if>
 
-        <#if articleInfo.relatedArticles??><#-- TODO: Support this -->
+        <#if articleInfo.relatedArticles??>
           <#if (articleInfo.relatedArticles?size > 0)>
             <h4>Related Articles</h4>
             <ol>

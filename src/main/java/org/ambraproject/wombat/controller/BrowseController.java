@@ -23,11 +23,14 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleType;
+import org.ambraproject.wombat.model.RelatedArticle;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.XmlUtil;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +44,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Controller for the browse page.
@@ -56,6 +60,8 @@ public class BrowseController extends WombatController {
   private ArticleTransformService articleTransformService;
   @Autowired
   private ArticleMetadata.Factory articleMetadataFactory;
+  @Autowired
+  private SolrSearchApi solrSearchApi;
 
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
@@ -76,9 +82,9 @@ public class BrowseController extends WombatController {
   public String browseIssue(Model model, @SiteParam Site site,
                             @RequestParam(value = "id", required = false) String issueId) throws IOException {
 
-    modelJournalMetadata(model, site);
+    Map<String, Object> journalMetadata = modelJournalMetadata(model, site);
 
-    Map<String, ?> issueMetadata = getCurrentIssue(site, issueId);
+    Map<String, ?> issueMetadata = getCurrentIssue(site, issueId, journalMetadata);
     model.addAttribute("issue", issueMetadata);
 
     Map<String, ?> imageArticle = (Map<String, ?>) issueMetadata.get("imageArticle");
@@ -100,10 +106,9 @@ public class BrowseController extends WombatController {
     return journalMetadata;
   }
 
-  private Map<String, ?> getCurrentIssue(Site site, String issueId) throws IOException {
+  private Map<String, ?> getCurrentIssue(Site site, String issueId,
+                                         Map<String, Object> journalMetadata) throws IOException {
     if (issueId == null) {
-      ApiAddress journalAddress = ApiAddress.builder("journals").addToken(site.getJournalKey()).build();
-      Map<String, ?> journalMetadata = articleApi.requestObject(journalAddress, Map.class);
       Map<String, ?> issueMetadata = (Map<String, ?>) journalMetadata.get("currentIssue");
       if (issueMetadata == null) {
         throw new RuntimeException("Current issue is not set for " + site.getJournalKey());
@@ -135,7 +140,7 @@ public class BrowseController extends WombatController {
     private final ArticleType type;
     private final ImmutableList<Map<String, ?>> articles;
 
-    private TypedArticleGroup(ArticleType type, List<Map<String, ?>> articles) {
+    private TypedArticleGroup(ArticleType type, List<Map<String, Object>> articles) {
       this.type = Objects.requireNonNull(type);
       this.articles = ImmutableList.copyOf(articles);
     }
@@ -151,16 +156,21 @@ public class BrowseController extends WombatController {
 
   private List<TypedArticleGroup> buildArticleGroups(Site site, Map<String, ?> issueMetadata) throws IOException {
     // Ordered list of all articles in the issue.
-    List<Map<String, ?>> articles = (List<Map<String, ?>>) issueMetadata.get("articles");
+    List<Map<String, Object>> articles = (List<Map<String, Object>>) issueMetadata.get("articles");
 
     // Articles grouped by their type. Order within the value lists is significant.
     ArticleType.Dictionary typeDictionary = ArticleType.getDictionary(site.getTheme());
-    ListMultimap<ArticleType, Map<String, ?>> groupedArticles = LinkedListMultimap.create();
-    for (Map<String, ?> article : articles) {
+    ListMultimap<ArticleType, Map<String, Object>> groupedArticles = LinkedListMultimap.create();
+    for (Map<String, Object> article : articles) {
       if (!article.containsKey("revisionNumber")) continue; // Omit unpublished articles
 
       Map<String, ?> ingestion = (Map<String, ?>) article.get("ingestion");
       ArticleType articleType = typeDictionary.lookUp((String) ingestion.get("articleType"));
+
+      populateRelatedArticles(article);
+
+      populateAuthors(article);
+
       groupedArticles.put(articleType, article);
     }
 
@@ -170,14 +180,14 @@ public class BrowseController extends WombatController {
     // Produce a correctly ordered list of TypedArticleGroup, populated with the article groups.
     List<TypedArticleGroup> articleGroups = new ArrayList<>(articleTypes.size());
     for (ArticleType articleType : articleTypes) {
-      List<Map<String, ?>> articlesOfType = groupedArticles.removeAll(articleType);
+      List<Map<String, Object>> articlesOfType = groupedArticles.removeAll(articleType);
       if (!articlesOfType.isEmpty()) {
         articleGroups.add(new TypedArticleGroup(articleType, articlesOfType));
       }
     }
 
     // If any article groups were not matched, append them to the end.
-    for (Map.Entry<ArticleType, List<Map<String, ?>>> entry : Multimaps.asMap(groupedArticles).entrySet()) {
+    for (Map.Entry<ArticleType, List<Map<String, Object>>> entry : Multimaps.asMap(groupedArticles).entrySet()) {
       ArticleType type = entry.getKey();
       TypedArticleGroup group = new TypedArticleGroup(type, entry.getValue());
       articleGroups.add(group);
@@ -188,5 +198,25 @@ public class BrowseController extends WombatController {
     }
 
     return articleGroups;
+  }
+
+  private void populateRelatedArticles(Map<String, Object> article) throws IOException {
+    Map<String, Object> relationshipMetadata = articleApi.requestObject(
+        ApiAddress.builder("articles").embedDoi((String) article.get("doi"))
+            .addToken("relationships").build(), Map.class);
+
+    List<RelatedArticle> relatedArticles = new ArrayList<>();
+    List<Map<String, String>> relationships = (List<Map<String, String>>) relationshipMetadata.get("inbound");
+    relationships.addAll((List<Map<String, String>>) relationshipMetadata.get("outbound"));
+    relatedArticles.addAll(relationships.stream()
+        .map(amendment -> new RelatedArticle(amendment.get("doi"), amendment.get("title")))
+        .collect(Collectors.toList()));
+    article.put("relatedArticles", relatedArticles);
+  }
+
+  private void populateAuthors(Map<String, Object> article) throws IOException {
+    Map<String, ?> solrResult = (Map<String, ?>) solrSearchApi.lookupArticleByDoi((String) article.get("doi"));
+    SolrArticleAdapter solrArticle = SolrArticleAdapter.unpackSolrQuery(solrResult).get(0);
+    article.put("authors", solrArticle.getAuthors());
   }
 }

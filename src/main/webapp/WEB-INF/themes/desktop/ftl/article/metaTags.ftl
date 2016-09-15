@@ -32,6 +32,7 @@
 <#if article.publisherName?has_content><meta name="citation_publisher" content="${article.publisherName}"/></#if>
 
 <#if articleItems[article.doi].files?keys?seq_contains("printable")>
+<#-- Uses articlePtr to point to the PDF for this particular revision. -->
   <@siteLink handlerName="assetFile" queryParameters=(articlePtr + {"type": "printable"}) absoluteLink=true ; citationPdfUrl>
   <meta name="citation_pdf_url" content="${citationPdfUrl}">
   </@siteLink>
@@ -41,6 +42,7 @@
 <meta name="dc.identifier" content="${article.doi}" />
 
 <#if article.strikingImage??>
+<#-- Provide an evergreen URL (not articlePtr) for striking image. Assumes striking image DOI will not change between revisions. -->
   <#assign strikingImageUrl><@siteLink handlerName="figureImage" absoluteLink=true queryParameters={"id" : article.strikingImage.doi, "size": "inline"}/></#assign>
 </#if>
 
@@ -59,6 +61,7 @@
 </#if>
 
 <meta property="og:type" content="article" />
+<#-- Provide an evergreen URL (not articlePtr) for the canonical article URL. -->
 <@siteLink handlerName="article" absoluteLink=true queryParameters={"id" : article.doi} ; articleUrl>
 <meta property="og:url" content="${articleUrl}"/>
 </@siteLink>

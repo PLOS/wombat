@@ -40,11 +40,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Controller for the browse page.
@@ -205,12 +208,15 @@ public class BrowseController extends WombatController {
         ApiAddress.builder("articles").embedDoi((String) article.get("doi"))
             .addToken("relationships").build(), Map.class);
 
-    List<RelatedArticle> relatedArticles = new ArrayList<>();
-    List<Map<String, String>> relationships = (List<Map<String, String>>) relationshipMetadata.get("inbound");
-    relationships.addAll((List<Map<String, String>>) relationshipMetadata.get("outbound"));
-    relatedArticles.addAll(relationships.stream()
-        .map(amendment -> new RelatedArticle(amendment.get("doi"), amendment.get("title")))
-        .collect(Collectors.toList()));
+    List<Map<String, String>> inbound = (List<Map<String, String>>) relationshipMetadata.get("inbound");
+    List<Map<String, String>> outbound = (List<Map<String, String>>) relationshipMetadata.get("outbound");
+    List<RelatedArticle> relatedArticles = Stream.concat(inbound.stream(), outbound.stream())
+        .map(amendment -> new RelatedArticle(amendment.get("doi"), amendment.get("title"),
+            LocalDate.parse(amendment.get("publicationDate"))))
+        .distinct()
+        .sorted(Comparator.comparing(RelatedArticle::getPublicationDate).reversed())
+        .collect(Collectors.toList());
+
     article.put("relatedArticles", relatedArticles);
   }
 

@@ -12,18 +12,21 @@
 
   <#list authors as author>
     <#if author_index lt maxAuthors>
-    <#-- Show a comma if another author or "et al." will follow -->
-      <#assign isCommaShown = author_has_next || authors?size gt maxAuthors />
-    ${author.surnames!}
+    ${author.surnames!}<#t/>
       <#if author.givenNames?has_content>
         <#if author.surnames?has_content>
+        &nbsp;<#t/>
           <@abbreviatedName>${author.givenNames}</@abbreviatedName><#t/>
         <#else>
         ${author.givenNames}<#t/>
         </#if>
       </#if>
-      <#if author.suffix?has_content> <#--space--> ${author.suffix?replace('.', '')}</#if><#t/>
-      <#if isCommaShown><#t/>,</#if>
+      <#if author.suffix?has_content>
+      &nbsp;<#t/>
+      ${author.suffix?replace('.', '')}<#t/>
+      </#if>
+    <#-- Show a comma if another author or "et al." will follow -->
+      <#if author_has_next || authors?size gt maxAuthors><#t/>,</#if>
     </#if>
   </#list>
 

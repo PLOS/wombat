@@ -13,6 +13,7 @@
 <@js src="resource/js/pages/article_sidebar.js"/>
 
 <@js src="resource/js/pages/article_references.js"/>
+<@js src="resource/js//vendor/foundation/foundation.dropdown.js" />
 
 
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>

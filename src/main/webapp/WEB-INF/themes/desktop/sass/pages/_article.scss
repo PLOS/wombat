@@ -249,6 +249,10 @@ $article-sidebar-width: 160;
       font-style: italic;
     }
   }
+  #revisionMenu {
+    display: inline-block;
+
+  }
   .date-doi {
     @include clearfix();
     @extend .text-article-intro;

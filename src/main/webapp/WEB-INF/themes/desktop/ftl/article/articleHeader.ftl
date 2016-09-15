@@ -7,17 +7,18 @@
 
     <#include "articleTitle.ftl" />
 
-        <ul class="date-doi">
+
+      <ul class="date-doi">
+        <li>    <#include "revisionMenu.ftl" />
+        </li>
             <li id="artPubDate">Published: <@formatJsonDate date="${article.publicationDate}" format="MMMM d, yyyy" /></li>
             <li id="artDoi">
               <#include "../macro/doiAsLink.ftl" />
               <@doiAsLink article.doi />
 
             </li>
-
         </ul>
 
-    <#include "revisionMenu.ftl" />
 
     </div>
 </header>

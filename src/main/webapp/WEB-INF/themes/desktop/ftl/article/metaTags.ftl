@@ -77,9 +77,10 @@
  break out of the head and input all of the citation data directly into the visible dom. To further optimize,
  consider using a macro or function instead of the regex replace used below, or try to clean the data in the controller
  layer.-->
-<#list references as reference>
-  <#if reference.title??>
-  <meta name="citation_reference" content="<#t>
+<#if references??><#-- 'references' should always be present for the main body tab, but not other tabs -->
+  <#list references as reference>
+    <#if reference.title??>
+    <meta name="citation_reference" content="<#t>
           <#if reference.chapterTitle??>citation_title=${reference.chapterTitle?replace('<.+?>',' ','r')?html};<#t>
             <#if reference.title??>citation_inbook_title=${reference.title?replace('<.+?>',' ','r')?html};</#if><#t>
           <#else>citation_title=${reference.title?replace('<.+?>',' ','r')?html};<#t>
@@ -95,7 +96,8 @@
           <#if reference.isbn??>citation_isbn=${reference.isbn?replace('<.+?>',' ','r')?html};</#if><#t>
           <#if reference.year??>citation_publication_date=${reference.year?string.computer};</#if><#t>
           <#if reference.publisherName??>citation_publisher=${reference.publisherName?replace('<.+?>',' ','r')?html}</#if><#t>"/>
-  <#elseif reference.unStructuredReference??>
-  <meta name="citation_reference" content="${reference.unStructuredReference?replace('<.+?>',' ','r')?html}<#t>"/>
-  </#if>
-</#list>
+    <#elseif reference.unStructuredReference??>
+    <meta name="citation_reference" content="${reference.unStructuredReference?replace('<.+?>',' ','r')?html}<#t>"/>
+    </#if>
+  </#list>
+</#if>

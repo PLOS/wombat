@@ -218,5 +218,6 @@ public class BrowseController extends WombatController {
     Map<String, ?> solrResult = (Map<String, ?>) solrSearchApi.lookupArticleByDoi((String) article.get("doi"));
     SolrArticleAdapter solrArticle = SolrArticleAdapter.unpackSolrQuery(solrResult).get(0);
     article.put("authors", solrArticle.getAuthors());
+    article.put("collaborativeAuthors", solrArticle.getCollabAuthors());
   }
 }

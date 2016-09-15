@@ -122,10 +122,7 @@
                                 <h2><a href="${articleUrl}" title="${article.title}" class="list-title">${article.title}</a></h2>
                                 <p class="authors">
                                     <#list article.authors as author>
-                                      <span class="author">${author.fullName}<#if author_has_next>,</#if></span>
-                                    </#list>
-                                    <#list article.collaborativeAuthors as author>
-                                      <span class="author">${author.fullName}<#if author_has_next>,</#if></span>
+                                        <span class="author">${author.fullName}<#if author_has_next>,</#if></span>
                                     </#list>
                                 </p>
                                 <p class="date"> published ${article.date?date("yyyy-MM-dd")?string("dd MMM yyyy")}</p>

@@ -82,6 +82,7 @@ import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -383,13 +384,15 @@ public class ArticleController extends WombatController {
                                                        String fileExtension,
                                                        Function<Map<String, ?>, String> serviceFunction)
       throws IOException {
-    Map<String, ?> articleMetadata = articleMetadataFactory.get(site, articleId)
-        .validateVisibility(handlerName)
-        .getIngestionMetadata();
+    ArticleMetadata articleMetadata = articleMetadataFactory.get(site, articleId)
+        .validateVisibility(handlerName);
+    Map<String, Object> combinedMetadata = new HashMap<>();
+    combinedMetadata.putAll(articleMetadata.getIngestionMetadata());
+    combinedMetadata.putAll(articleMetadata.getAuthors());
 
-    String citationBody = serviceFunction.apply(articleMetadata);
+    String citationBody = serviceFunction.apply(combinedMetadata);
     String contentDispositionValue = String.format("attachment; filename=\"%s.%s\"",
-        URLEncoder.encode((String) articleMetadata.get("doi"), Charsets.UTF_8.toString()),
+        URLEncoder.encode((String) combinedMetadata.get("doi"), Charsets.UTF_8.toString()),
         fileExtension);
 
     HttpHeaders headers = new HttpHeaders();

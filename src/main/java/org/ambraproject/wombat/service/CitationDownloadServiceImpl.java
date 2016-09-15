@@ -40,6 +40,11 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     return new SimpleDateFormat("YYYY/MM/dd").format(date.getTime());
   }
 
+  private static String extractJournalTitle(Map<String, ?> articleMetadata) {
+    Map<String, ?> journalMetadata = (Map<String, ?>) articleMetadata.get("journal");
+    return (String) journalMetadata.get("title");
+  }
+
   @Override
   public String buildRisCitation(Map<String, ?> articleMetadata) {
     StringBuilder citation = new StringBuilder();
@@ -51,10 +56,12 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
       appendRisCitationLine(citation, "A1", formatAuthorName(author, "surnames", "givenNames", "suffix"));
     }
 
+    String journalTitle = extractJournalTitle(articleMetadata);
+
     appendRisCitationLine(citation, "Y1", formatDateForRis(articleMetadata));
     appendRisCitationLine(citation, "N2", (String) articleMetadata.get("description"));
-    appendRisCitationLine(citation, "JF", (String) articleMetadata.get("journal"));
-    appendRisCitationLine(citation, "JA", (String) articleMetadata.get("journal"));
+    appendRisCitationLine(citation, "JF", journalTitle);
+    appendRisCitationLine(citation, "JA", journalTitle);
     appendRisCitationLine(citation, "VL", (String) articleMetadata.get("volume"));
     appendRisCitationLine(citation, "IS", (String) articleMetadata.get("issue"));
     appendRisCitationLine(citation, "UR", (String) articleMetadata.get("url"));
@@ -78,7 +85,12 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
             .collect(Collectors.joining(" AND "));
       }
     },
-    JOURNAL("journal", "journal"),
+    JOURNAL("journal", null) {
+      @Override
+      protected String extractValue(Map<String, ?> articleMetadata) {
+        return extractJournalTitle(articleMetadata);
+      }
+    },
     PUBLISHER("publisher", "publisherName"),
     TITLE("title", "title"),
     YEAR("year", null) {

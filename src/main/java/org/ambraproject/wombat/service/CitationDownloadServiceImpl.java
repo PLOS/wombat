@@ -50,10 +50,6 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     for (Map<String, String> author : authors) {
       appendRisCitationLine(citation, "A1", formatAuthorName(author, "surnames", "givenNames", "suffix"));
     }
-    List<String> collaborativeAuthors = (List<String>) articleMetadata.get("collaborativeAuthors");
-    for (String collaborativeAuthor : collaborativeAuthors) {
-      appendRisCitationLine(citation, "A1", collaborativeAuthor);
-    }
 
     appendRisCitationLine(citation, "Y1", formatDateForRis(articleMetadata));
     appendRisCitationLine(citation, "N2", (String) articleMetadata.get("description"));
@@ -77,10 +73,8 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
       @Override
       protected String extractValue(Map<String, ?> articleMetadata) {
         List<Map<String, String>> authors = (List<Map<String, String>>) articleMetadata.get("authors");
-        Stream<String> formattedAuthors = authors.stream().map(authorData ->
-            formatAuthorName(authorData, "surnames", "suffix", "givenNames"));
-        List<String> collaborativeAuthors = (List<String>) articleMetadata.get("collaborativeAuthors");
-        return Stream.concat(formattedAuthors, collaborativeAuthors.stream())
+        return authors.stream()
+            .map(authorData -> formatAuthorName(authorData, "surnames", "suffix", "givenNames"))
             .collect(Collectors.joining(" AND "));
       }
     },

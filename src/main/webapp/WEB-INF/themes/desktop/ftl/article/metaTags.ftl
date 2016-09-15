@@ -1,5 +1,4 @@
 <#include "../common/twitterConfig.ftl" />
-<#include "../common/pubUrlPrefix.ftl" />
 <#include "../macro/doiResolverLink.ftl" />
 
 <#--//analytics related meta tags - description and keywords-->

@@ -12,26 +12,25 @@
 
   <#list authors as author>
     <#if author_index lt maxAuthors>
-      <#assign isCommaShown =
-      author_has_next ||
-      (authors?size lt maxAuthors         <#-- Show a comma before "et al."     -->
-      && citation.collaborativeAuthors?size gt 0)  <#-- or if collab authors will follow -->
-      />
-    ${author.surnames!}
-      <#if author.givenNames?has_content><@abbreviatedName>${author.givenNames}</@abbreviatedName></#if><#t/>
-      <#if author.suffix?has_content> <#--space--> ${author.suffix?replace('.', '')}</#if><#t/>
-      <#if isCommaShown><#t/>,</#if>
-    </#if>
-  </#list>
-  <#assign maxCollabAuthors = maxAuthors - authors?size />
-  <#list citation.collaborativeAuthors as author>
-    <#if author_index lt maxCollabAuthors>
-      <#assign isCommaShown = author_has_next || citation.collaborativeAuthors?size gt maxCollabAuthors />
-    ${author}<#if isCommaShown>,</#if>
+    ${author.surnames!}<#t/>
+      <#if author.givenNames?has_content>
+        <#if author.surnames?has_content>
+        &nbsp;<#t/>
+          <@abbreviatedName>${author.givenNames}</@abbreviatedName><#t/>
+        <#else>
+        ${author.givenNames}<#t/>
+        </#if>
+      </#if>
+      <#if author.suffix?has_content>
+      &nbsp;<#t/>
+      ${author.suffix?replace('.', '')}<#t/>
+      </#if>
+    <#-- Show a comma if another author or "et al." will follow -->
+      <#if author_has_next || authors?size gt maxAuthors><#t/>,</#if>
     </#if>
   </#list>
 
-  <#if authors?size + citation.collaborativeAuthors?size gt maxAuthors>
+  <#if authors?size gt maxAuthors>
   et al.
   </#if>
 

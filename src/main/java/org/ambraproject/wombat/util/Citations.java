@@ -68,18 +68,13 @@ public class Citations {
     StringBuilder citation = new StringBuilder();
 
     List<String> authorNames = Lists.newArrayListWithCapacity(MAX_AUTHORS);
-    List<String> collaborativeAuthors = (List<String>) articleMetadata.get("collaborativeAuthors");
     for (Map<String, ?> author : authors) {
       if (authorNames.size() >= MAX_AUTHORS) break;
       authorNames.add(getAbbreviatedName(author));
     }
-    for (String collaborativeAuthor : collaborativeAuthors) {
-      if (authorNames.size() >= MAX_AUTHORS) break;
-      authorNames.add(collaborativeAuthor);
-    }
 
     COMMA_JOINER.appendTo(citation, authorNames);
-    if (authors.size() + collaborativeAuthors.size() > MAX_AUTHORS) {
+    if (authors.size() > MAX_AUTHORS) {
       citation.append(", et al.");
     }
 

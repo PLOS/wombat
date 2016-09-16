@@ -40,6 +40,11 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     return new SimpleDateFormat("YYYY/MM/dd").format(date.getTime());
   }
 
+  private static String extractJournalTitle(Map<String, ?> articleMetadata) {
+    Map<String, ?> journalMetadata = (Map<String, ?>) articleMetadata.get("journal");
+    return (String) journalMetadata.get("title");
+  }
+
   @Override
   public String buildRisCitation(Map<String, ?> articleMetadata) {
     StringBuilder citation = new StringBuilder();
@@ -50,15 +55,13 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     for (Map<String, String> author : authors) {
       appendRisCitationLine(citation, "A1", formatAuthorName(author, "surnames", "givenNames", "suffix"));
     }
-    List<String> collaborativeAuthors = (List<String>) articleMetadata.get("collaborativeAuthors");
-    for (String collaborativeAuthor : collaborativeAuthors) {
-      appendRisCitationLine(citation, "A1", collaborativeAuthor);
-    }
+
+    String journalTitle = extractJournalTitle(articleMetadata);
 
     appendRisCitationLine(citation, "Y1", formatDateForRis(articleMetadata));
     appendRisCitationLine(citation, "N2", (String) articleMetadata.get("description"));
-    appendRisCitationLine(citation, "JF", (String) articleMetadata.get("journal"));
-    appendRisCitationLine(citation, "JA", (String) articleMetadata.get("journal"));
+    appendRisCitationLine(citation, "JF", journalTitle);
+    appendRisCitationLine(citation, "JA", journalTitle);
     appendRisCitationLine(citation, "VL", (String) articleMetadata.get("volume"));
     appendRisCitationLine(citation, "IS", (String) articleMetadata.get("issue"));
     appendRisCitationLine(citation, "UR", (String) articleMetadata.get("url"));
@@ -77,14 +80,17 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
       @Override
       protected String extractValue(Map<String, ?> articleMetadata) {
         List<Map<String, String>> authors = (List<Map<String, String>>) articleMetadata.get("authors");
-        Stream<String> formattedAuthors = authors.stream().map(authorData ->
-            formatAuthorName(authorData, "surnames", "suffix", "givenNames"));
-        List<String> collaborativeAuthors = (List<String>) articleMetadata.get("collaborativeAuthors");
-        return Stream.concat(formattedAuthors, collaborativeAuthors.stream())
+        return authors.stream()
+            .map(authorData -> formatAuthorName(authorData, "surnames", "suffix", "givenNames"))
             .collect(Collectors.joining(" AND "));
       }
     },
-    JOURNAL("journal", "journal"),
+    JOURNAL("journal", null) {
+      @Override
+      protected String extractValue(Map<String, ?> articleMetadata) {
+        return extractJournalTitle(articleMetadata);
+      }
+    },
     PUBLISHER("publisher", "publisherName"),
     TITLE("title", "title"),
     YEAR("year", null) {

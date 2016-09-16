@@ -16,13 +16,11 @@
   <li>
     <a href="<@siteLink handlerName="downloadRisCitation" queryParameters={'id': article.doi} />"
        title="RIS Citation">
-      RIS
-    </a> (compatible with EndNote, Reference Manager, ProCite, RefWorks)
+      RIS</a> (compatible with EndNote, Reference Manager, ProCite, RefWorks)
   </li>
   <li>
     <a href="<@siteLink handlerName="downloadBibtexCitation" queryParameters={'id': article.doi} />"
        title="BibTex Citation">
-      BibTex
-    </a> (compatible with BibDesk, LaTeX)
+      BibTex</a> (compatible with BibDesk, LaTeX)
   </li>
 </ul>

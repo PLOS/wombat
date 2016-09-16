@@ -54,7 +54,7 @@ public class FigureImageController extends WombatController {
       }
     },
 
-    FIGURE("figure", "table") {
+    FIGURE("figure", "table", "standaloneStrikingImage") {
       private final ImmutableSortedMap<String, String> extensions = ImmutableSortedMap
           .<String, String>orderedBy(String.CASE_INSENSITIVE_ORDER)
           .put("TIF", "original").put("TIFF", "original").put("GIF", "original")
@@ -87,13 +87,6 @@ public class FigureImageController extends WombatController {
       @Override
       protected String resolveToFileType(String fileExtension) {
         return "supplementary";
-      }
-    },
-
-    STANDALONE_STRIKING_IMAGE("standaloneStrikingImage") {
-      @Override
-      protected String resolveToFileType(String fileExtension) {
-        return "strikingImage";
       }
     };
 

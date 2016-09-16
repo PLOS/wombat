@@ -49,7 +49,7 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
   public String buildRisCitation(Map<String, ?> articleMetadata) {
     StringBuilder citation = new StringBuilder();
     appendRisCitationLine(citation, "TY", "JOUR");
-    appendRisCitationLine(citation, "T1", (String) articleMetadata.get("title"));
+    appendRisCitationLine(citation, "T1", XmlUtil.extractText((String) articleMetadata.get("title")));
 
     List<Map<String, String>> authors = (List<Map<String, String>>) articleMetadata.get("authors");
     for (Map<String, String> author : authors) {
@@ -59,7 +59,7 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     String journalTitle = extractJournalTitle(articleMetadata);
 
     appendRisCitationLine(citation, "Y1", formatDateForRis(articleMetadata));
-    appendRisCitationLine(citation, "N2", (String) articleMetadata.get("description"));
+    appendRisCitationLine(citation, "N2", XmlUtil.extractText((String) articleMetadata.get("description")));
     appendRisCitationLine(citation, "JF", journalTitle);
     appendRisCitationLine(citation, "JA", journalTitle);
     appendRisCitationLine(citation, "VL", (String) articleMetadata.get("volume"));
@@ -92,7 +92,12 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
       }
     },
     PUBLISHER("publisher", "publisherName"),
-    TITLE("title", "title"),
+    TITLE("title", "title") {
+      @Override
+      protected String extractValue(Map<String, ?> articleMetadata) {
+        return XmlUtil.extractText(super.extractValue(articleMetadata));
+      }
+    },
     YEAR("year", null) {
       @Override
       protected String extractValue(Map<String, ?> articleMetadata) {
@@ -109,7 +114,12 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     VOLUME("volume", "volume"),
     URL("url", "url"),
     PAGES("pages", "pages"),
-    ABSTRACT("abstract", "description"),
+    ABSTRACT("abstract", "description") {
+      @Override
+      protected String extractValue(Map<String, ?> articleMetadata) {
+        return XmlUtil.extractText(super.extractValue(articleMetadata));
+      }
+    },
     NUMBER("number", "issue"),
     DOI("doi", "doi");
 

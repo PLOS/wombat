@@ -902,11 +902,13 @@ nav.footer-secondary-menu li a {
 
 /* Article Item */
 
-.article-item .lead-in {
+.article-item .lead-in{
   margin-top: 20px;
 }
 
-.article-item .article-title {
+.article-item .article-title,
+.article-item #revisionMenu
+{
   margin-top: 10px;
 }
 

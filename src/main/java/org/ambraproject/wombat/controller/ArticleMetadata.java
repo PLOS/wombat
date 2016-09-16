@@ -139,7 +139,7 @@ public class ArticleMetadata {
     Map<String, ?> revisionMap = (Map<String, ?>) articleOverview.get("revisions");
     return revisionMap.keySet().stream()
         .map(Integer::valueOf)
-        .sorted()
+        .sorted(Comparator.<Integer>naturalOrder().reversed())
         .collect(Collectors.toList());
   }
 

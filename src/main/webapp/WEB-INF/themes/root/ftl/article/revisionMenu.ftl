@@ -1,13 +1,16 @@
+
 <div id="revisionMenu">
-  <ul>
-  <#list revisionMenu as revisionNumber>
-    <li>
-      <@siteLink handlerName="article"
+  <form>
+   <select name="revisionLink" id="revisionLink">
+     <#list revisionMenu as revisionNumber>
+       <@siteLink handlerName="article"
                  queryParameters={"id": article.doi, "rev": revisionNumber?c}
           ; href>
-        <a href="${href}">Revision ${revisionNumber}</a>
+        <option value="${href}" <#if articlePtr.rev?? && revisionNumber?c == articlePtr.rev>selected</#if>>
+          Version ${revisionNumber}
+        </option>
       </@siteLink>
-    </li>
   </#list>
-  </ul>
+    </select>
+  </form>
 </div>

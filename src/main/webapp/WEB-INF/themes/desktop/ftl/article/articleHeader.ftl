@@ -4,18 +4,21 @@
     <#include "articleClassifications.ftl" />
     </div>
     <div class="article-title-etc">
+
     <#include "articleTitle.ftl" />
 
-        <ul class="date-doi">
-            <li id="artPubDate">Published: <@formatJsonDate date="${article.publicationDate}" format="MMMM d, yyyy" /></li>
-            <li id="artDoi">
+      <ul class="date-doi">
+        <#if revisionMenu?size gt 1>
+          <li class="revisionList">
+            <#include "revisionMenu.ftl" />
+          </li>
+        </#if>
+        <li id="artPubDate">Published: <@formatJsonDate date="${article.publicationDate}" format="MMMM d, yyyy" /></li>
+        <li id="artDoi">
               <#include "../macro/doiAsLink.ftl" />
               <@doiAsLink article.doi />
             </li>
-
-        </ul>
-
-    <#include "revisionMenu.ftl" />
+      </ul>
 
     </div>
 </header>

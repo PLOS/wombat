@@ -119,7 +119,7 @@ public class FigureImageController extends WombatController {
     public static String resolveToFileType(String itemType, String fileExtension) {
       LegacyFileExtensionRedirectStrategy strategy = STRATEGIES.get(Objects.requireNonNull(itemType));
       if (strategy == null) {
-        // Not NotFoundException; we expect to recognize any work type that the service returns.
+        // Not NotFoundException; we expect to recognize any item type that the service returns.
         throw new RuntimeException("Unrecognized item type: " + itemType);
       }
       return strategy.resolveToFileType(Objects.requireNonNull(fileExtension));

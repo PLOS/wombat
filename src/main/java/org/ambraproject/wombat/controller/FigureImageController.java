@@ -153,8 +153,8 @@ public class FigureImageController extends WombatController {
       assetDoi = (extensionIndex < 0) ? rawId : rawId.substring(0, extensionIndex);
     }
 
-    Map<String, Object> workMetadata = generalDoiController.getWorkMetadata(RequestedDoiVersion.of(assetDoi));
-    Map<String, ?> itemMetadata = getItemMetadata(workMetadata);
+    Map<String, Object> assetMetadata = generalDoiController.getMetadataForDoi(RequestedDoiVersion.of(assetDoi));
+    Map<String, ?> itemMetadata = getItemMetadata(assetMetadata);
 
     final String fileType;
     if (fileExtension.isPresent()) {
@@ -211,8 +211,8 @@ public class FigureImageController extends WombatController {
                                  @RequestParam(value = "download", required = false) String download)
       throws IOException {
     requireNonemptyParameter(figureId);
-    Map<String, Object> workMetadata = generalDoiController.getWorkMetadata(RequestedDoiVersion.of(figureId));
-    Set<String> fileTypes = ((Map<String, ?>) workMetadata.get("files")).keySet();
+    Map<String, Object> assetMetadata = generalDoiController.getMetadataForDoi(RequestedDoiVersion.of(figureId));
+    Set<String> fileTypes = ((Map<String, ?>) assetMetadata.get("files")).keySet();
     if (fileTypes.contains(figureSize)) {
       return redirectToAssetFile(request, site, figureId, figureSize, booleanParameter(download));
     } else {

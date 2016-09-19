@@ -27,8 +27,11 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Mappings for requests for DOIs that belong to works of unknown type.
+ */
 @Controller
-public class ScholarlyWorkController extends WombatController {
+public class GeneralDoiController extends WombatController {
 
   @Autowired
   private ArticleApi articleApi;
@@ -41,7 +44,7 @@ public class ScholarlyWorkController extends WombatController {
   @Autowired
   private ArticleService articleService;
 
-  @RequestMapping(name = "work", value = "/work")
+  @RequestMapping(name = "doi", value = "/doi")
   public String redirectToWork(HttpServletRequest request,
                                @SiteParam Site site,
                                RequestedDoiVersion id)
@@ -50,7 +53,7 @@ public class ScholarlyWorkController extends WombatController {
   }
 
   Map<String, Object> getWorkMetadata(RequestedDoiVersion id) throws IOException {
-    ApiAddress address = ApiAddress.builder("works").embedDoi(id.getDoi()).build(); // TODO: Update to service
+    ApiAddress address = ApiAddress.builder("dois").embedDoi(id.getDoi()).build();
     try {
       return articleApi.requestObject(address, Map.class);
     } catch (EntityNotFoundException e) {

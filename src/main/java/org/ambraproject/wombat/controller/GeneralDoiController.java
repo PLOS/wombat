@@ -52,7 +52,7 @@ public class GeneralDoiController extends WombatController {
     return getRedirectFor(site, id).getRedirect(request);
   }
 
-  Map<String, Object> getWorkMetadata(RequestedDoiVersion id) throws IOException {
+  Map<String, Object> getMetadataForDoi(RequestedDoiVersion id) throws IOException {
     ApiAddress address = ApiAddress.builder("dois").embedDoi(id.getDoi()).build();
     try {
       return articleApi.requestObject(address, Map.class);
@@ -62,7 +62,7 @@ public class GeneralDoiController extends WombatController {
   }
 
   private String getTypeOf(RequestedDoiVersion id) throws IOException {
-    return (String) getWorkMetadata(id).get("type");
+    return (String) getMetadataForDoi(id).get("type");
   }
 
   private static final ImmutableMap<String, String> REDIRECT_HANDLERS = ImmutableMap.<String, String>builder()

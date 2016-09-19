@@ -45,9 +45,9 @@ public class GeneralDoiController extends WombatController {
   private ArticleService articleService;
 
   @RequestMapping(name = "doi", value = "/doi")
-  public String redirectToWork(HttpServletRequest request,
-                               @SiteParam Site site,
-                               RequestedDoiVersion id)
+  public String redirectFromDoi(HttpServletRequest request,
+                                @SiteParam Site site,
+                                RequestedDoiVersion id)
       throws IOException {
     return getRedirectFor(site, id).getRedirect(request);
   }
@@ -57,7 +57,7 @@ public class GeneralDoiController extends WombatController {
     try {
       return articleApi.requestObject(address, Map.class);
     } catch (EntityNotFoundException e) {
-      throw new NotFoundException("No work exists with ID: " + id, e);
+      throw new NotFoundException("DOI not found: " + id, e);
     }
   }
 
@@ -79,10 +79,10 @@ public class GeneralDoiController extends WombatController {
     }
     Link.Factory.PatternBuilder handlerLink = Link.toLocalSite(site)
         .toPattern(requestMappingContextDictionary, handlerName);
-    return pointLinkToWork(handlerLink, id);
+    return pointLinkToDoi(handlerLink, id);
   }
 
-  private static Link pointLinkToWork(Link.Factory.PatternBuilder link, RequestedDoiVersion id) {
+  private static Link pointLinkToDoi(Link.Factory.PatternBuilder link, RequestedDoiVersion id) {
     link.addQueryParameter("id", id.getDoi());
     id.getRevisionNumber().ifPresent(revisionNumber ->
         link.addQueryParameter("rev", revisionNumber));

@@ -84,7 +84,7 @@
   <meta property="og:description" content="${articleDescription}" />
 </#if>
 <#if hasStrkImgUri >
-  <@siteLink handlerName="figureImage" queryParameters={"id" : article.strkImgURI, "size": "inline"} ; href>
+  <@siteLink handlerName="figureImage" absoluteLink=true queryParameters={"id" : article.strkImgURI, "size": "inline"} ; href>
   <meta property="og:image" content="${href}" />
   </@siteLink>
 </#if>

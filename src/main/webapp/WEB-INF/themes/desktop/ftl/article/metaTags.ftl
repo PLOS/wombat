@@ -26,6 +26,7 @@
       </#list>
   </#list>
 </#if>
+
 <#assign hasStrkImgUri=article.strkImgURI?? && (article.strkImgURI?length > 0) />
 
 <#include "./alterJournalTitle.ftl">
@@ -66,7 +67,7 @@
     <meta property="twitter:description" content="${articleDescription}" />
   </#if>
   <#if hasStrkImgUri >
-    <@siteLink handlerName="figureImage" queryParameters={"id" : article.strkImgURI, "size": "inline"} ; href>
+    <@siteLink handlerName="figureImage" absoluteLink=true queryParameters={"id" : article.strkImgURI, "size": "inline"} ; href>
     <meta property="twitter:image" content="${href}" />
     </@siteLink>
   </#if>

@@ -153,8 +153,7 @@ public class FigureImageController extends WombatController {
       assetDoi = (extensionIndex < 0) ? rawId : rawId.substring(0, extensionIndex);
     }
 
-    Map<String, Object> assetMetadata = generalDoiController.getMetadataForDoi(RequestedDoiVersion.of(assetDoi));
-    Map<String, ?> itemMetadata = getItemMetadata(assetMetadata);
+    Map<String, ?> itemMetadata = getItemMetadata(assetDoi);
 
     final String fileType;
     if (fileExtension.isPresent()) {
@@ -179,7 +178,8 @@ public class FigureImageController extends WombatController {
     return redirectToAssetFile(request, site, assetDoi, fileType, booleanParameter(download));
   }
 
-  private Map<String, ?> getItemMetadata(Map<String, Object> assetMetadata) throws IOException {
+  private Map<String, ?> getItemMetadata(String rawAssetDoi) throws IOException {
+    Map<String, Object> assetMetadata = generalDoiController.getMetadataForDoi(RequestedDoiVersion.of(rawAssetDoi));
     Map<String, ?> article = (Map<String, ?>) assetMetadata.get("article");
     String articleDoi = (String) article.get("doi");
 
@@ -196,8 +196,8 @@ public class FigureImageController extends WombatController {
         Map.class);
     Map<String, ?> itemTable = (Map<String, ?>) itemResponse.get("items");
 
-    String assetDoi = (String) assetMetadata.get("doi");
-    return (Map<String, ?>) Objects.requireNonNull(itemTable.get(assetDoi));
+    String canonicalAssetDoi = (String) assetMetadata.get("doi");
+    return (Map<String, ?>) Objects.requireNonNull(itemTable.get(canonicalAssetDoi));
   }
 
   /**
@@ -211,8 +211,7 @@ public class FigureImageController extends WombatController {
                                  @RequestParam(value = "download", required = false) String download)
       throws IOException {
     requireNonemptyParameter(figureId);
-    Map<String, Object> assetMetadata = generalDoiController.getMetadataForDoi(RequestedDoiVersion.of(figureId));
-    Map<String, ?> itemMetadata = getItemMetadata(assetMetadata);
+    Map<String, ?> itemMetadata = getItemMetadata(figureId);
     Set<String> fileTypes = ((Map<String, ?>) itemMetadata.get("files")).keySet();
     if (fileTypes.contains(figureSize)) {
       return redirectToAssetFile(request, site, figureId, figureSize, booleanParameter(download));

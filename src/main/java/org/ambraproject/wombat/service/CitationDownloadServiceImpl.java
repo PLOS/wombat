@@ -111,7 +111,13 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     },
     VOLUME("volume", "volume"),
     URL("url", "url"),
-    PAGES("pages", "pages"),
+    PAGES("pages", null) {
+      @Override
+      protected String extractValue(Map<String, ?> articleMetadata) {
+        Number pageCount = (Number) articleMetadata.get("pageCount");
+        return (pageCount == null) ? null : ("1-" + pageCount.intValue());
+      }
+    },
     ABSTRACT("abstract", "description") {
       @Override
       protected String extractValue(Map<String, ?> articleMetadata) {

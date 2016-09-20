@@ -129,6 +129,23 @@ var SearchResult;
       var urlVars = this.getJsonFromUrl();
       this.currentSearchParams = _.mapObject(this.currentSearchParams, function (item, key) {
         var urlVar = urlVars[key];
+
+        if (key == 'filterSubjects' && _.has(urlVars, 'subject')) {
+          var subjectParam = urlVars['subject'];
+
+          if(!_.isEmpty(urlVar)) {
+            if(_.isArray(urlVar)) {
+              urlVar = urlVar.push(subjectParam);
+            }
+            else {
+              urlVar = [urlVar, subjectParam];
+            }
+          }
+          else {
+            urlVar = [subjectParam];
+          }
+        }
+
         if (!_.isEmpty(urlVar)) {
           return urlVar;
         }
@@ -195,6 +212,10 @@ var SearchResult;
 
         that.processRequest();
       });
+
+      if(!_.isNull(that.currentSearchParams.sortOrder)) {
+        this.$orderByEl.find('option[value="'+that.currentSearchParams.sortOrder+'"]').prop('selected', 'selected');
+      }
 
       this.$orderByEl.on('change', function (e) {
         e.preventDefault();

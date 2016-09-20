@@ -212,7 +212,8 @@ public class FigureImageController extends WombatController {
       throws IOException {
     requireNonemptyParameter(figureId);
     Map<String, Object> assetMetadata = generalDoiController.getMetadataForDoi(RequestedDoiVersion.of(figureId));
-    Set<String> fileTypes = ((Map<String, ?>) assetMetadata.get("files")).keySet();
+    Map<String, ?> itemMetadata = getItemMetadata(assetMetadata);
+    Set<String> fileTypes = ((Map<String, ?>) itemMetadata.get("files")).keySet();
     if (fileTypes.contains(figureSize)) {
       return redirectToAssetFile(request, site, figureId, figureSize, booleanParameter(download));
     } else {

@@ -120,7 +120,7 @@ $line-height-small: ($line-height * .5);
     }
   }
 
-  .amendment-eoc, .amendment-retraction {
+  .amendment-eoc, .amendment-retraction, .amendment-uncorrected-proof{
     @extend .callout-alert;
     h2 {
       color: $clr-warning;

@@ -1,5 +1,5 @@
 <#function showLaterExistsNotice>
-  <#return revisionMenu?size?number gt articlePtr.rev?number />
+  <#return !revisionMenu['isDisplayingLatestRevision'] />
 </#function>
 
 <#macro laterExistsNotice>

@@ -1,4 +1,6 @@
 <#include "revisionLabel.ftl"/>
+
+<!-- make ascending order in the FTL -->
 <div id="revisionMenu">
   <form>
    <select name="revisionLink" id="revisionLink">

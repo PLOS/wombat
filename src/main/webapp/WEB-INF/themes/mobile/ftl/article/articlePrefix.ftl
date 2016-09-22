@@ -47,7 +47,7 @@
 
       </p><#-- end p.author-list -->
       <#if revisionMenu?size gt 1>
-        <#include "revisionMenu.ftl" />
+        <#include "revision/revisionMenu.ftl" />
       </#if>
     <#-- Render the hidden divs that display author affiliation (and other) info.
          These are displayed when clicking on an author's name.  We do this after

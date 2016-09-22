@@ -30,6 +30,8 @@
 
       <div class="article-content">
 
+
+      <#include "revision/revisionNotice.ftl" />
       <#include "amendment.ftl" />
 
       <#-- Figure carousel is placed here, then inserted midway through article text by JavaScript -->

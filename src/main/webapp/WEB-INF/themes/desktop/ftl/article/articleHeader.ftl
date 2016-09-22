@@ -10,7 +10,7 @@
       <ul class="date-doi">
         <#if revisionMenu?size gt 1>
           <li class="revisionList">
-            <#include "revisionMenu.ftl" />
+            <#include "revision/revisionMenu.ftl" />
           </li>
         </#if>
         <li id="artPubDate">Published: <@formatJsonDate date="${article.publicationDate}" format="MMMM d, yyyy" /></li>
@@ -21,4 +21,8 @@
       </ul>
 
     </div>
+  <div>
+
+  </div>
 </header>
+

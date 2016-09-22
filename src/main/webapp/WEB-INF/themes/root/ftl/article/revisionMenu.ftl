@@ -1,13 +1,16 @@
+<#include "revisionLabel.ftl" />
 
 <div id="revisionMenu">
   <form>
    <select name="revisionLink" id="revisionLink">
-     <#list revisionMenu as revisionNumber>
+     <#list revisionMenu as revision>
        <@siteLink handlerName="article"
-                 queryParameters={"id": article.doi, "rev": revisionNumber?c}
+                 queryParameters={"id": article.doi, "rev": revision.revisionNumber?c}
           ; href>
-        <option value="${href}" <#if articlePtr.rev?? && revisionNumber?c == articlePtr.rev>selected</#if>>
-          Version ${revisionNumber}
+        <option value="${href}" <#if articlePtr.rev?? && revision.revisionNumber?c == articlePtr.rev>selected</#if>>
+          Version ${revision.revisionNumber}
+          <@revisionLabel revision />
+
         </option>
       </@siteLink>
   </#list>

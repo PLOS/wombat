@@ -126,20 +126,17 @@ public class ArticleMetadata {
     model.addAttribute("relatedArticles", getRelatedArticles());
     populateAuthors(model);
 
-    model.addAttribute("revisionMenu", getRevisionList());
+    model.addAttribute("revisionMenu", getRevisionMenu());
 
     return this;
   }
 
-  private List<Integer> getRevisionList() throws IOException {
-    // TODO: Unify with the same API call that we already did in articleService.requestArticleMetadata
-    Map<String, ?> articleOverview = factory.articleApi.requestObject(
-        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).build(),
-        Map.class);
-    Map<String, ?> revisionMap = (Map<String, ?>) articleOverview.get("revisions");
-    return revisionMap.keySet().stream()
-        .map(Integer::valueOf)
-        .sorted(Comparator.<Integer>naturalOrder().reversed())
+  private List<Map<String, ?>> getRevisionMenu() throws IOException {
+    List<Map<String, ?>> revisionList = factory.articleApi.requestObject(
+        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addToken("revisions").build(),
+        List.class);
+    return revisionList.stream()
+        .sorted(Comparator.comparing((Map<String, ?> revision) -> ((Number) revision.get("revisionNumber")).intValue()).reversed())
         .collect(Collectors.toList());
   }
 

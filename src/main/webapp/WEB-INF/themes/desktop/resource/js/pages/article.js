@@ -75,9 +75,8 @@
  $( document ).ready(function() {
 
    $('select[name="revisionLink"]').change( function(){
-        var revisionLink = $(this).val();
-       console.log(revisionLink);
-       window.location.href = revisionLink;
+      var revisionLink = $(this).val();
+      window.location.href = revisionLink;
    });
 
     $('.preventDefault').on('click', function (e) {

@@ -2,10 +2,8 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Strings;
 
-import javax.xml.bind.DatatypeConverter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
@@ -33,32 +31,36 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     return builder.append(Objects.requireNonNull(key)).append("  - ").append(Strings.nullToEmpty(value)).append('\n');
   }
 
-  private static String formatDateForRis(Map<String, ?> articleMetadata) {
-    String dateString = (String) articleMetadata.get("date");
-    if (dateString == null) return "0000";
-    Calendar date = DatatypeConverter.parseDateTime(dateString);
-    return new SimpleDateFormat("YYYY/MM/dd").format(date.getTime());
+  private static String formatPublicationDate(Map<String, ?> articleMetadata, DateTimeFormatter formatter) {
+    String dateString = (String) articleMetadata.get("publicationDate");
+    LocalDate date = LocalDate.parse(dateString);
+    return formatter.format(date);
   }
+
+  private static String extractJournalTitle(Map<String, ?> articleMetadata) {
+    Map<String, ?> journalMetadata = (Map<String, ?>) articleMetadata.get("journal");
+    return (String) journalMetadata.get("title");
+  }
+
+  private static final DateTimeFormatter RIS_DATE_FORMAT = DateTimeFormatter.ofPattern("YYYY/MM/dd");
 
   @Override
   public String buildRisCitation(Map<String, ?> articleMetadata) {
     StringBuilder citation = new StringBuilder();
     appendRisCitationLine(citation, "TY", "JOUR");
-    appendRisCitationLine(citation, "T1", (String) articleMetadata.get("title"));
+    appendRisCitationLine(citation, "T1", XmlUtil.extractText((String) articleMetadata.get("title")));
 
     List<Map<String, String>> authors = (List<Map<String, String>>) articleMetadata.get("authors");
     for (Map<String, String> author : authors) {
       appendRisCitationLine(citation, "A1", formatAuthorName(author, "surnames", "givenNames", "suffix"));
     }
-    List<String> collaborativeAuthors = (List<String>) articleMetadata.get("collaborativeAuthors");
-    for (String collaborativeAuthor : collaborativeAuthors) {
-      appendRisCitationLine(citation, "A1", collaborativeAuthor);
-    }
 
-    appendRisCitationLine(citation, "Y1", formatDateForRis(articleMetadata));
-    appendRisCitationLine(citation, "N2", (String) articleMetadata.get("description"));
-    appendRisCitationLine(citation, "JF", (String) articleMetadata.get("journal"));
-    appendRisCitationLine(citation, "JA", (String) articleMetadata.get("journal"));
+    String journalTitle = extractJournalTitle(articleMetadata);
+
+    appendRisCitationLine(citation, "Y1", formatPublicationDate(articleMetadata, RIS_DATE_FORMAT));
+    appendRisCitationLine(citation, "N2", XmlUtil.extractText((String) articleMetadata.get("description")));
+    appendRisCitationLine(citation, "JF", journalTitle);
+    appendRisCitationLine(citation, "JA", journalTitle);
     appendRisCitationLine(citation, "VL", (String) articleMetadata.get("volume"));
     appendRisCitationLine(citation, "IS", (String) articleMetadata.get("issue"));
     appendRisCitationLine(citation, "UR", (String) articleMetadata.get("url"));
@@ -77,35 +79,56 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
       @Override
       protected String extractValue(Map<String, ?> articleMetadata) {
         List<Map<String, String>> authors = (List<Map<String, String>>) articleMetadata.get("authors");
-        Stream<String> formattedAuthors = authors.stream().map(authorData ->
-            formatAuthorName(authorData, "surnames", "suffix", "givenNames"));
-        List<String> collaborativeAuthors = (List<String>) articleMetadata.get("collaborativeAuthors");
-        return Stream.concat(formattedAuthors, collaborativeAuthors.stream())
+        return authors.stream()
+            .map(authorData -> formatAuthorName(authorData, "surnames", "suffix", "givenNames"))
             .collect(Collectors.joining(" AND "));
       }
     },
-    JOURNAL("journal", "journal"),
+    JOURNAL("journal", null) {
+      @Override
+      protected String extractValue(Map<String, ?> articleMetadata) {
+        return extractJournalTitle(articleMetadata);
+      }
+    },
     PUBLISHER("publisher", "publisherName"),
-    TITLE("title", "title"),
+    TITLE("title", "title") {
+      @Override
+      protected String extractValue(Map<String, ?> articleMetadata) {
+        return XmlUtil.extractText(super.extractValue(articleMetadata));
+      }
+    },
     YEAR("year", null) {
       @Override
       protected String extractValue(Map<String, ?> articleMetadata) {
-        String formattedYear = extractFromDate(articleMetadata, new SimpleDateFormat("YYYY"));
-        return (formattedYear == null) ? "0000" : formattedYear;
+        return formatPublicationDate(articleMetadata, YEAR_FORMAT);
       }
     },
     MONTH("month", null) {
       @Override
       protected String extractValue(Map<String, ?> articleMetadata) {
-        return extractFromDate(articleMetadata, new SimpleDateFormat("MM"));
+        return formatPublicationDate(articleMetadata, MONTH_FORMAT);
       }
     },
     VOLUME("volume", "volume"),
     URL("url", "url"),
-    PAGES("pages", "pages"),
-    ABSTRACT("abstract", "description"),
+    PAGES("pages", null) {
+      @Override
+      protected String extractValue(Map<String, ?> articleMetadata) {
+        Number pageCount = (Number) articleMetadata.get("pageCount");
+        return (pageCount == null) ? null : ("1-" + pageCount.intValue());
+      }
+    },
+    ABSTRACT("abstract", "description") {
+      @Override
+      protected String extractValue(Map<String, ?> articleMetadata) {
+        return XmlUtil.extractText(super.extractValue(articleMetadata));
+      }
+    },
     NUMBER("number", "issue"),
     DOI("doi", "doi");
+
+    private static final DateTimeFormatter YEAR_FORMAT = DateTimeFormatter.ofPattern("YYYY");
+    private static final DateTimeFormatter MONTH_FORMAT = DateTimeFormatter.ofPattern("MM");
 
     private final String citationKey;
     private final String metadataKey;
@@ -117,13 +140,6 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
 
     protected String extractValue(Map<String, ?> articleMetadata) {
       return (String) articleMetadata.get(Objects.requireNonNull(metadataKey));
-    }
-
-    private static String extractFromDate(Map<String, ?> articleMetadata, DateFormat dateFormat) {
-      String dateString = (String) articleMetadata.get("date");
-      if (dateString == null) return null;
-      Calendar date = DatatypeConverter.parseDateTime(dateString);
-      return dateFormat.format(date.getTime());
     }
   }
 

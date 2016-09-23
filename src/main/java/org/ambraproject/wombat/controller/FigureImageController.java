@@ -10,6 +10,8 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
+import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.Map;
 import java.util.Objects;
@@ -33,7 +36,9 @@ public class FigureImageController extends WombatController {
   @Autowired
   private RequestMappingContextDictionary requestMappingContextDictionary;
   @Autowired
-  private ScholarlyWorkController scholarlyWorkController;
+  private GeneralDoiController generalDoiController;
+  @Autowired
+  private ArticleApi articleApi;
 
   private static enum LegacyFileExtensionRedirectStrategy {
     ARTICLE("article") {
@@ -49,7 +54,7 @@ public class FigureImageController extends WombatController {
       }
     },
 
-    FIGURE("figure", "table") {
+    FIGURE("figure", "table", "standaloneStrikingImage") {
       private final ImmutableSortedMap<String, String> extensions = ImmutableSortedMap
           .<String, String>orderedBy(String.CASE_INSENSITIVE_ORDER)
           .put("TIF", "original").put("TIFF", "original").put("GIF", "original")
@@ -83,13 +88,6 @@ public class FigureImageController extends WombatController {
       protected String resolveToFileType(String fileExtension) {
         return "supplementary";
       }
-    },
-
-    STANDALONE_STRIKING_IMAGE("standaloneStrikingImage") {
-      @Override
-      protected String resolveToFileType(String fileExtension) {
-        return "strikingImage";
-      }
     };
 
     private static String resolveFromMap(Map<String, String> map, String fileExtension) {
@@ -118,11 +116,11 @@ public class FigureImageController extends WombatController {
                 .map((String associatedType) -> Maps.immutableEntry(associatedType, strategy)))
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
 
-    public static String resolveToFileType(String workType, String fileExtension) {
-      LegacyFileExtensionRedirectStrategy strategy = STRATEGIES.get(Objects.requireNonNull(workType));
+    public static String resolveToFileType(String itemType, String fileExtension) {
+      LegacyFileExtensionRedirectStrategy strategy = STRATEGIES.get(Objects.requireNonNull(itemType));
       if (strategy == null) {
-        // Not NotFoundException; we expect to recognize any work type that the service returns.
-        throw new RuntimeException("Unrecognized work type: " + workType);
+        // Not NotFoundException; we expect to recognize any item type that the service returns.
+        throw new RuntimeException("Unrecognized item type: " + itemType);
       }
       return strategy.resolveToFileType(Objects.requireNonNull(fileExtension));
     }
@@ -155,14 +153,15 @@ public class FigureImageController extends WombatController {
       assetDoi = (extensionIndex < 0) ? rawId : rawId.substring(0, extensionIndex);
     }
 
-    Map<String, Object> workMetadata = scholarlyWorkController.getWorkMetadata(RequestedDoiVersion.of(assetDoi));
-    Set<String> fileTypes = ((Map<String, ?>) workMetadata.get("files")).keySet();
+    Map<String, ?> itemMetadata = getItemMetadata(assetDoi);
 
     final String fileType;
     if (fileExtension.isPresent()) {
-      String workType = (String) workMetadata.get("type");
-      fileType = LegacyFileExtensionRedirectStrategy.resolveToFileType(workType, fileExtension.get());
+      String itemType = (String) itemMetadata.get("itemType");
+      fileType = LegacyFileExtensionRedirectStrategy.resolveToFileType(itemType, fileExtension.get());
     } else {
+      Map<String, ?> itemFiles = (Map<String, ?>) itemMetadata.get("files");
+      Set<String> fileTypes = itemFiles.keySet();
       if (fileTypes.size() == 1) {
         fileType = Iterables.getOnlyElement(fileTypes);
       } else {
@@ -179,6 +178,28 @@ public class FigureImageController extends WombatController {
     return redirectToAssetFile(request, site, assetDoi, fileType, booleanParameter(download));
   }
 
+  private Map<String, ?> getItemMetadata(String rawAssetDoi) throws IOException {
+    Map<String, Object> assetMetadata = generalDoiController.getMetadataForDoi(RequestedDoiVersion.of(rawAssetDoi));
+    Map<String, ?> article = (Map<String, ?>) assetMetadata.get("article");
+    String articleDoi = (String) article.get("doi");
+
+    Map<String, ?> revisions = (Map<String, ?>) article.get("revisions");
+    Map.Entry<String, ?> latestRevisionEntry = revisions.entrySet().stream()
+        .max(Comparator.comparing(entry -> Integer.valueOf(entry.getKey())))
+        .orElseThrow(() -> new NotFoundException("Article is not published: " + articleDoi));
+    int ingestionNumber = ((Number) latestRevisionEntry.getValue()).intValue();
+
+    Map<String, ?> itemResponse = articleApi.requestObject(
+        ApiAddress.builder("articles").embedDoi(articleDoi)
+            .addToken("ingestions").addToken(Integer.toString(ingestionNumber))
+            .addToken("items").build(),
+        Map.class);
+    Map<String, ?> itemTable = (Map<String, ?>) itemResponse.get("items");
+
+    String canonicalAssetDoi = (String) assetMetadata.get("doi");
+    return (Map<String, ?>) Objects.requireNonNull(itemTable.get(canonicalAssetDoi));
+  }
+
   /**
    * Serve the asset file for an identified figure thumbnail.
    */
@@ -190,8 +211,8 @@ public class FigureImageController extends WombatController {
                                  @RequestParam(value = "download", required = false) String download)
       throws IOException {
     requireNonemptyParameter(figureId);
-    Map<String, Object> workMetadata = scholarlyWorkController.getWorkMetadata(RequestedDoiVersion.of(figureId));
-    Set<String> fileTypes = ((Map<String, ?>) workMetadata.get("files")).keySet();
+    Map<String, ?> itemMetadata = getItemMetadata(figureId);
+    Set<String> fileTypes = ((Map<String, ?>) itemMetadata.get("files")).keySet();
     if (fileTypes.contains(figureSize)) {
       return redirectToAssetFile(request, site, figureId, figureSize, booleanParameter(download));
     } else {
@@ -200,11 +221,11 @@ public class FigureImageController extends WombatController {
   }
 
   private String redirectToAssetFile(HttpServletRequest request, Site site,
-                                    String id, String fileType, boolean isDownload) {
+                                     String id, String fileType, boolean isDownload) {
     Link.Factory.PatternBuilder link = Link.toLocalSite(site)
         .toPattern(requestMappingContextDictionary, "assetFile")
         .addQueryParameter("id", id)
-        .addQueryParameter("fileType", fileType);
+        .addQueryParameter("type", fileType);
     if (isDownload) {
       link = link.addQueryParameter("download", "");
     }

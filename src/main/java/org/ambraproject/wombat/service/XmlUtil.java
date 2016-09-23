@@ -52,9 +52,14 @@ public class XmlUtil {
     }
   }
 
-  public static String extractText(String xml) throws IOException {
+  public static String extractText(String xml) {
     InputSource xmlSource = new InputSource(new StringReader(xml));
-    Node rootNode = createXmlDocument(xmlSource).getFirstChild();
+    Node rootNode;
+    try {
+      rootNode = createXmlDocument(xmlSource).getFirstChild();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
     return rootNode.getTextContent().trim();
   }
 

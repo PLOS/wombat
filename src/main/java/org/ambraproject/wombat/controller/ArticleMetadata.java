@@ -44,6 +44,7 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class ArticleMetadata {
@@ -126,21 +127,54 @@ public class ArticleMetadata {
     model.addAttribute("relatedArticles", getRelatedArticles());
     populateAuthors(model);
 
-    model.addAttribute("revisionMenu", getRevisionList());
+    model.addAttribute("revisionMenu", getRevisionMenu());
 
     return this;
   }
 
-  private List<Integer> getRevisionList() throws IOException {
-    // TODO: Unify with the same API call that we already did in articleService.requestArticleMetadata
-    Map<String, ?> articleOverview = factory.articleApi.requestObject(
-        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).build(),
-        Map.class);
-    Map<String, ?> revisionMap = (Map<String, ?>) articleOverview.get("revisions");
-    return revisionMap.keySet().stream()
-        .map(Integer::valueOf)
-        .sorted(Comparator.<Integer>naturalOrder().reversed())
+  public static class RevisionMenu {
+    private final ImmutableList<Map<String, ?>> revisions;
+    private final boolean isDisplayingLatestRevision;
+
+    private RevisionMenu(Collection<Map<String, ?>> revisions, boolean isDisplayingLatestRevision) {
+      this.revisions = ImmutableList.copyOf(revisions);
+      this.isDisplayingLatestRevision = isDisplayingLatestRevision;
+    }
+
+    public ImmutableList<Map<String, ?>> getRevisions() {
+      return revisions;
+    }
+
+    // Named for FreeMarker
+    public boolean getIsDisplayingLatestRevision() {
+      return isDisplayingLatestRevision;
+    }
+  }
+
+  private static int getRevisionNumber(Map<String, ?> revisionMetadata) {
+    return ((Number) revisionMetadata.get("revisionNumber")).intValue();
+  }
+
+  private RevisionMenu getRevisionMenu() throws IOException {
+    List<Map<String, ?>> revisionList = factory.articleApi.requestObject(
+        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addToken("revisions").build(),
+        List.class);
+    OptionalInt displayedNumber = articlePointer.getRevisionNumber();
+    revisionList = revisionList.stream()
+        .map((Map<String, ?> revision) -> {
+          boolean isDisplayedRevision = displayedNumber.isPresent() && getRevisionNumber(revision) == displayedNumber.getAsInt();
+          return ImmutableMap.<String, Object>builder()
+              .putAll(revision)
+              .put("isDisplayed", isDisplayedRevision)
+              .build();
+        })
+        .sorted(Comparator.comparing(ArticleMetadata::getRevisionNumber))
         .collect(Collectors.toList());
+
+    boolean isDisplayingLatestRevision = !revisionList.isEmpty() &&
+        (Boolean) Iterables.getLast(revisionList).get("isDisplayed");
+
+    return new RevisionMenu(revisionList, isDisplayingLatestRevision);
   }
 
   /**

@@ -27,8 +27,11 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Mappings for requests for DOIs that belong to works of unknown type.
+ */
 @Controller
-public class ScholarlyWorkController extends WombatController {
+public class GeneralDoiController extends WombatController {
 
   @Autowired
   private ArticleApi articleApi;
@@ -41,25 +44,25 @@ public class ScholarlyWorkController extends WombatController {
   @Autowired
   private ArticleService articleService;
 
-  @RequestMapping(name = "work", value = "/work")
-  public String redirectToWork(HttpServletRequest request,
-                               @SiteParam Site site,
-                               RequestedDoiVersion id)
+  @RequestMapping(name = "doi", value = "/doi")
+  public String redirectFromDoi(HttpServletRequest request,
+                                @SiteParam Site site,
+                                RequestedDoiVersion id)
       throws IOException {
     return getRedirectFor(site, id).getRedirect(request);
   }
 
-  Map<String, Object> getWorkMetadata(RequestedDoiVersion id) throws IOException {
-    ApiAddress address = ApiAddress.builder("works").embedDoi(id.getDoi()).build(); // TODO: Update to service
+  Map<String, Object> getMetadataForDoi(RequestedDoiVersion id) throws IOException {
+    ApiAddress address = ApiAddress.builder("dois").embedDoi(id.getDoi()).build();
     try {
       return articleApi.requestObject(address, Map.class);
     } catch (EntityNotFoundException e) {
-      throw new NotFoundException("No work exists with ID: " + id, e);
+      throw new NotFoundException("DOI not found: " + id, e);
     }
   }
 
   private String getTypeOf(RequestedDoiVersion id) throws IOException {
-    return (String) getWorkMetadata(id).get("type");
+    return (String) getMetadataForDoi(id).get("type");
   }
 
   private static final ImmutableMap<String, String> REDIRECT_HANDLERS = ImmutableMap.<String, String>builder()
@@ -76,10 +79,10 @@ public class ScholarlyWorkController extends WombatController {
     }
     Link.Factory.PatternBuilder handlerLink = Link.toLocalSite(site)
         .toPattern(requestMappingContextDictionary, handlerName);
-    return pointLinkToWork(handlerLink, id);
+    return pointLinkToDoi(handlerLink, id);
   }
 
-  private static Link pointLinkToWork(Link.Factory.PatternBuilder link, RequestedDoiVersion id) {
+  private static Link pointLinkToDoi(Link.Factory.PatternBuilder link, RequestedDoiVersion id) {
     link.addQueryParameter("id", id.getDoi());
     id.getRevisionNumber().ifPresent(revisionNumber ->
         link.addQueryParameter("rev", revisionNumber));

@@ -73,7 +73,7 @@
       <div class="search-results-select">
         <label for="sortOrder">
           <select name="sortOrder" id="sortOrder">
-            <option value="RELEVANCE" selected="selected">Relevance</option>
+            <option value="RELEVANCE">Relevance</option>
             <option value="DATE_NEWEST_FIRST">Date, newest first</option>
             <option value="DATE_OLDEST_FIRST">Date, oldest first</option>
             <option value="MOST_VIEWS_30_DAYS">Most views, last 30 days</option>

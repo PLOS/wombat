@@ -8,7 +8,7 @@
     <#include "articleTitle.ftl" />
 
       <ul class="date-doi">
-        <#if revisionMenu?size gt 1>
+      <#if revisionMenu.revisions?size gt 1>
           <li class="revisionList">
             <#include "revision/revisionMenu.ftl" />
           </li>

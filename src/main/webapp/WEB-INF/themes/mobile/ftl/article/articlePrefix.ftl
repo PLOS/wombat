@@ -46,7 +46,7 @@
       </#if>
 
       </p><#-- end p.author-list -->
-      <#if revisionMenu?size gt 1>
+    <#if revisionMenu.revisions?size gt 1>
         <#include "revision/revisionMenu.ftl" />
       </#if>
     <#-- Render the hidden divs that display author affiliation (and other) info.

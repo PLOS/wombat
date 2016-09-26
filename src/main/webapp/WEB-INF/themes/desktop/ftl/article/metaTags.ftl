@@ -2,6 +2,12 @@
 <#include "../macro/doiResolverLink.ftl" />
 
 <#--//analytics related meta tags - description and keywords-->
+<#if article.doi??>
+<#-- Provide an evergreen URL (not articlePtr) for the canonical article URL. -->
+  <@siteLink handlerName="article" absoluteLink=true queryParameters={"id" : article.doi} ; articleUrl>
+  <link rel="canonical" href="${articleUrl}" />
+  </@siteLink>
+</#if>
 <#if article.description??>
   <#assign articleDescription><@xform xml=article.description textOnly=true/></#assign>
   <meta name="description" content="${articleDescription}" />
@@ -11,6 +17,7 @@
 <#if categoryTerms??>
   <meta name="keywords" content="<#list categoryTerms as categoryTerm>${categoryTerm}<#if categoryTerm_has_next>,</#if></#list>" />
 </#if>
+
 
 <meta name="citation_doi" content="${article.doi}"/>
 <#list authors as author>
@@ -37,6 +44,7 @@
   <meta name="citation_pdf_url" content="${citationPdfUrl}">
   </@siteLink>
 </#if>
+
 
 <#--//crossmark identifier-->
 <meta name="dc.identifier" content="${article.doi}" />

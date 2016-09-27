@@ -32,21 +32,16 @@ import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.util.HttpMessageUtil;
-import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.commons.validator.routines.UrlValidator;
-import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.methods.RequestBuilder;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,7 +71,6 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Serializable;
 import java.io.StringWriter;
-import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.time.LocalDate;
@@ -104,8 +98,6 @@ public class ArticleController extends WombatController {
    */
   private static final int XFORM_BUFFER_SIZE = 0x8000;
   private static final int MAX_TO_EMAILS = 5;
-
-  private static final String COMMENT_NAMESPACE = "comments";
 
   @Autowired
   private Charset charset;
@@ -141,6 +133,8 @@ public class ArticleController extends WombatController {
   private RequestMappingContextDictionary requestMappingContextDictionary;
   @Autowired
   private ParseXmlService parseXmlService;
+  @Autowired
+  private Gson gson;
 
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
@@ -202,23 +196,39 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comment/newComment";
   }
 
+  /**
+   * @param comment Json representing a comment
+   * @return the parent article's doi (latest revision)
+   */
+  private String getParentArticleDoiFromComment(Map<String, Object> comment) {
+    return (String) ((Map<String, Object>) ((Map<String, Object>) comment.get("parentArticle")).get("doi")).get("doiName");
+  }
+
+  /**
+   * @param commentDoi
+   * @return Json representing a comment (no user data included)
+   * @throws IOException
+   */
+  private Map<String, Object> getComment(String commentDoi) throws IOException {
+    return articleApi.requestObject(ApiAddress.builder("comments").embedDoi(commentDoi).build(), Map.class);
+  }
 
   /**
    * Serves a request for an expanded view of a single comment and any replies.
    *
    * @param model     data to pass to the view
    * @param site      current site
-   * @param commentId specifies the comment
+   * @param commentDoi specifies the comment
    * @return path to the template
    * @throws IOException
    */
   @RequestMapping(name = "articleCommentTree", value = "/article/comment")
   public String renderArticleCommentTree(HttpServletRequest request, Model model, @SiteParam Site site,
-                                         @RequestParam("id") String commentId) throws IOException {
-    requireNonemptyParameter(commentId);
+                                         @RequestParam("id") String commentDoi) throws IOException {
+    requireNonemptyParameter(commentDoi);
     Map<String, Object> comment;
     try {
-      comment = commentService.getComment(commentId);
+      comment = commentService.getComment(commentDoi);
     } catch (CommentService.CommentNotFoundException e) {
       throw new NotFoundException(e);
     } catch (UserApi.UserApiException e) {
@@ -228,26 +238,17 @@ public class ArticleController extends WombatController {
       // Get a copy of the comment that is not populated with userApi data.
       // This articleApi call is redundant to one that commentService.getComment would have made before throwing.
       // TODO: Prevent extra articleApi call
-      comment = articleApi.requestObject(ApiAddress.builder("comments").addToken(commentId).build(), Map.class);
+      comment = getComment(commentDoi);
     }
 
-    Map<?, ?> parentArticleStub = (Map<?, ?>) comment.get("parentArticle");
-    RequestedDoiVersion articleId = RequestedDoiVersion.of((String) parentArticleStub.get("doi")); // latest revision
+    RequestedDoiVersion doi = RequestedDoiVersion.of(getParentArticleDoiFromComment(comment));
 
-    articleMetadataFactory.get(site, articleId)
-        .validateVisibility("articleCommentTree")
+    articleMetadataFactory.get(site, doi).validateVisibility("articleCommentTree")
         .populate(request, model);
 
     model.addAttribute("comment", comment);
     model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
     return site + "/ftl/article/comment/comment";
-  }
-
-  private static HttpUriRequest createJsonPostRequest(URI target, Object body) {
-    String json = new Gson().toJson(body);
-    HttpEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
-    RequestBuilder reqBuilder = RequestBuilder.create("POST").setUri(target).setEntity(entity);
-    return reqBuilder.build();
   }
 
   /**
@@ -282,40 +283,46 @@ public class ArticleController extends WombatController {
       return ImmutableMap.of("validationErrors", validationErrors);
     }
 
-    URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(), COMMENT_NAMESPACE);
+    if (parentArticleDoi == null) {
+      Map<String, Object> comment = getComment(parentCommentUri);
+      parentArticleDoi = getParentArticleDoiFromComment(comment);
+    }
+
+    ApiAddress address = ApiAddress.builder("articles").embedDoi(parentArticleDoi).addToken("comments").build();
 
     String authId = request.getRemoteUser();
     ArticleComment comment = new ArticleComment(parentArticleDoi, userApi.getUserIdFromAuthId(authId),
         parentCommentUri, commentTitle, commentBody, ciStatement);
 
-    HttpUriRequest commentPostRequest = createJsonPostRequest(forwardedUrl, comment);
-    try (CloseableHttpResponse response = articleApi.getResponse(commentPostRequest)) {
-      String createdCommentUri = HttpMessageUtil.readResponse(response);
-      return ImmutableMap.of("createdCommentUri", createdCommentUri);
-    }
+    HttpResponse response = articleApi.postObject(address, comment);
+    String responseJson = HttpMessageUtil.readResponse(response);
+    Map<String, Object> commentJson = gson.fromJson(responseJson, HashMap.class);
+    return ImmutableMap.of("createdCommentUri", commentJson.get("commentUri"));
   }
 
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
   @ResponseBody
-  public Object receiveCommentFlag(HttpServletRequest request, @SiteParam Site site,
+  public Object receiveCommentFlag(HttpServletRequest request,
                                    @RequestParam("reasonCode") String reasonCode,
                                    @RequestParam("comment") String flagCommentBody,
-                                   @RequestParam("target") String targetComment)
+                                   @RequestParam("target") String targetCommentDoi)
       throws IOException {
     Map<String, Object> validationErrors = commentValidationService.validateFlag(flagCommentBody);
     if (!validationErrors.isEmpty()) {
       return ImmutableMap.of("validationErrors", validationErrors);
     }
 
-    URI forwardedUrl = UriUtil.concatenate(articleApi.getServerUrl(),
-        String.format("%s/%s?flags", COMMENT_NAMESPACE, targetComment));
     String authId = request.getRemoteUser();
     ArticleCommentFlag flag = new ArticleCommentFlag(userApi.getUserIdFromAuthId(authId), flagCommentBody, reasonCode);
 
-    HttpUriRequest commentPostRequest = createJsonPostRequest(forwardedUrl, flag);
-    try (CloseableHttpResponse response = articleApi.getResponse(commentPostRequest)) {
-      return ImmutableMap.of(); // the "201 CREATED" status is all the AJAX client needs
-    }
+    Map<String, Object> comment = getComment(targetCommentDoi);
+    String parentArticleDoi = getParentArticleDoiFromComment(comment);
+
+    ApiAddress address = ApiAddress.builder("articles").embedDoi(parentArticleDoi).addToken("comments")
+        .embedDoi(targetCommentDoi).addToken("flags").build();
+
+    articleApi.postObject(address, flag);
+    return ImmutableMap.of(); // the "201 CREATED" status is all the AJAX client needs
   }
 
 

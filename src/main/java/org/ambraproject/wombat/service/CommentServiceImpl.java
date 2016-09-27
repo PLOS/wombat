@@ -105,12 +105,12 @@ public class CommentServiceImpl implements CommentService {
   }
 
   @Override
-  public Map<String, Object> getComment(String commentId) throws IOException {
+  public Map<String, Object> getComment(String commentDoi) throws IOException {
     Map<String, Object> comment;
     try {
-      comment = articleApi.requestObject(ApiAddress.builder("comments").addToken(commentId).build(), Map.class);
+      comment = articleApi.requestObject(ApiAddress.builder("comments").embedDoi(commentDoi).build(), Map.class);
     } catch (EntityNotFoundException enfe) {
-      throw new CommentNotFoundException(commentId, enfe);
+      throw new CommentNotFoundException(commentDoi, enfe);
     }
 
     modifyCommentTree(comment, CommentFormatting::addFormattingFields);

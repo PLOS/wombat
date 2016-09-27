@@ -20,7 +20,7 @@ import freemarker.template.TemplateModelException;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
@@ -50,7 +50,7 @@ public class Iso8601DateDirective implements TemplateDirectiveModel {
 
     String formattedDate = (jsonDate.length() <= 10)
         ? LocalDate.parse(jsonDate).format(format)
-        : OffsetDateTime.parse(jsonDate).format(format);
+        : ZonedDateTime.parse(jsonDate).format(format); //todo: convert 'Z' to GMT time
     environment.getOut().write(formattedDate);
   }
 }

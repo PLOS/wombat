@@ -44,7 +44,7 @@
               <span>Most Recent</span>
             </div>
             <div class="title">
-              <a href="<@siteLink handlerName="articleCommentTree" queryParameters={"id": comment.annotationUri} />">
+              <a href="<@siteLink handlerName="articleCommentTree" queryParameters={"id": comment.commentUri} />">
               ${comment.title}
               </a>
             <span>

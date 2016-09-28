@@ -3,7 +3,7 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
-import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.controller.NotFoundException;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.StatusLine;
@@ -65,7 +65,7 @@ abstract class AbstractRemoteService<S extends Closeable> implements RemoteServi
           address += "?" + targetUri.getQuery();
         }
         if (statusCode == HttpStatus.NOT_FOUND.value()) {
-          throw new EntityNotFoundException(address);
+          throw new NotFoundException(address);
         } else {
           String responseBody = IOUtils.toString(response.getEntity().getContent());
           String message = String.format("Request to \"%s\" failed (%d): %s.",

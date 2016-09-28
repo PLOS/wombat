@@ -266,7 +266,7 @@ public class ParseReferenceService {
   private List<String> parseCollabAuthors(Element citationElement) {
     List<Node> collabNodes = NodeListAdapter.wrap(citationElement.getElementsByTagName("collab"));
     return collabNodes.stream()
-        .map(collabNode -> collabNode.getFirstChild().getTextContent())
+        .map(collabNode -> collabNode.getFirstChild() != null ? collabNode.getFirstChild().getTextContent() : "")
         .collect(Collectors.toList());
   }
 

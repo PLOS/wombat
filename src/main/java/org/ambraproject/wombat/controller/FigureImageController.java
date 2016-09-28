@@ -231,7 +231,7 @@ public class FigureImageController extends WombatController {
     if (isDownload) {
       link = link.addQueryParameter("download", "");
     }
-    RedirectView redirectView = new RedirectView(link.build().getRedirect(request));
+    RedirectView redirectView = link.build().getRedirect(request);
     redirectView.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
     return new ModelAndView(redirectView);
   }

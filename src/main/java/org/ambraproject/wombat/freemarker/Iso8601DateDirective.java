@@ -50,7 +50,7 @@ public class Iso8601DateDirective implements TemplateDirectiveModel {
 
     String formattedDate = (jsonDate.length() <= 10)
         ? LocalDate.parse(jsonDate).format(format)
-        : ZonedDateTime.parse(jsonDate).format(format); //todo: convert 'Z' to GMT time
+        : ZonedDateTime.parse(jsonDate).format(format);
     environment.getOut().write(formattedDate);
   }
 }

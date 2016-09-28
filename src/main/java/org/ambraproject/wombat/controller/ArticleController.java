@@ -201,7 +201,7 @@ public class ArticleController extends WombatController {
    * @return the parent article's doi (latest revision)
    */
   private static String getParentArticleDoiFromComment(Map<String, Object> comment) {
-    return (String) ((Map<String, Object>) comment.get("article")).get("doi");
+    return (String) ((Map<String, Object>) comment.get("parentArticle")).get("doi");
   }
 
   /**

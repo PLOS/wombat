@@ -221,9 +221,14 @@ public class ArticleMetadata {
     List<Map<String, ?>> assetsLinkedFromManuscript = (List<Map<String, ?>>) ingestionMetadata.get("assetsLinkedFromManuscript");
     return assetsLinkedFromManuscript.stream()
         .map((Map<String, ?> asset) -> {
-          Map<String, ?> item = (Map<String, ?>) itemTable.get((String) asset.get("doi"));
+          String assetDoi = (String) asset.get("doi");
+          Map<String, ?> item = (Map<String, ?>) itemTable.get(assetDoi);
+          if (item == null) {
+            log.error(String.format("Asset %s is referenced in the manuscript but absent from the database.", assetDoi));
+            return null; // log error for any missing assets, but don't block article rendering
+          }
           String type = (String) item.get("itemType");
-          if (!FIGURE_TYPES.contains(type)) return null;
+          if (!FIGURE_TYPES.contains(type)) return null; // filter out non-figure assets
 
           Map<String, Object> view = new HashMap<>(asset);
           view.put("type", type);

@@ -200,8 +200,8 @@ public class ArticleController extends WombatController {
    * @param comment Json representing a comment
    * @return the parent article's doi (latest revision)
    */
-  private String getParentArticleDoiFromComment(Map<String, Object> comment) {
-    return (String) ((Map<String, Object>) ((Map<String, Object>) comment.get("parentArticle")).get("doi")).get("doiName");
+  private static String getParentArticleDoiFromComment(Map<String, Object> comment) {
+    return (String) ((Map<String, Object>) comment.get("article")).get("doi");
   }
 
   /**
@@ -216,8 +216,8 @@ public class ArticleController extends WombatController {
   /**
    * Serves a request for an expanded view of a single comment and any replies.
    *
-   * @param model     data to pass to the view
-   * @param site      current site
+   * @param model      data to pass to the view
+   * @param site       current site
    * @param commentDoi specifies the comment
    * @return path to the template
    * @throws IOException

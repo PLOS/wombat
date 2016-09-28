@@ -115,7 +115,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
     request.addHeader(HttpHeaders.CONTENT_TYPE, APPLICATION_JSON_CONTENT_TYPE);
 
     try (CloseableHttpResponse response = cachedRemoteReader.getResponse(request)) {
-      response.close();
+      //return closed response
       return response;
     }
   }

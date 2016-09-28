@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -128,17 +129,16 @@ public class FigureImageController extends WombatController {
 
   /**
    * Serve the identified asset file.
-   *
-   * @param rawId    an ID for an asset (if {@code unique} is present) or an asset file (if {@code unique} is absent)
+   *  @param rawId    an ID for an asset (if {@code unique} is present) or an asset file (if {@code unique} is absent)
    * @param unique   if present, assume the asset has a single file and serve that file; else, serve an identified file
    * @param download forward Content-Disposition headers with "attachment" value only if {@code true}
    */
   @RequestMapping(name = "asset", value = "/article/asset")
-  public String serveAsset(HttpServletRequest request,
-                           @SiteParam Site site,
-                           @RequestParam(value = "id", required = true) String rawId,
-                           @RequestParam(value = "unique", required = false) String unique,
-                           @RequestParam(value = "download", required = false) String download)
+  public ModelAndView serveAsset(HttpServletRequest request,
+                                 @SiteParam Site site,
+                                 @RequestParam(value = "id", required = true) String rawId,
+                                 @RequestParam(value = "unique", required = false) String unique,
+                                 @RequestParam(value = "download", required = false) String download)
       throws IOException {
     requireNonemptyParameter(rawId);
 
@@ -204,11 +204,11 @@ public class FigureImageController extends WombatController {
    * Serve the asset file for an identified figure thumbnail.
    */
   @RequestMapping(name = "figureImage", value = "/article/figure/image")
-  public String serveFigureImage(HttpServletRequest request,
-                                 @SiteParam Site site,
-                                 @RequestParam("id") String figureId,
-                                 @RequestParam("size") String figureSize,
-                                 @RequestParam(value = "download", required = false) String download)
+  public ModelAndView serveFigureImage(HttpServletRequest request,
+                                       @SiteParam Site site,
+                                       @RequestParam("id") String figureId,
+                                       @RequestParam("size") String figureSize,
+                                       @RequestParam(value = "download", required = false) String download)
       throws IOException {
     requireNonemptyParameter(figureId);
     Map<String, ?> itemMetadata = getItemMetadata(figureId);
@@ -220,8 +220,8 @@ public class FigureImageController extends WombatController {
     }
   }
 
-  private String redirectToAssetFile(HttpServletRequest request, Site site,
-                                     String id, String fileType, boolean isDownload) {
+  private ModelAndView redirectToAssetFile(HttpServletRequest request, Site site,
+                                           String id, String fileType, boolean isDownload) {
     Link.Factory.PatternBuilder link = Link.toLocalSite(site)
         .toPattern(requestMappingContextDictionary, "assetFile")
         .addQueryParameter("id", id)
@@ -229,7 +229,7 @@ public class FigureImageController extends WombatController {
     if (isDownload) {
       link = link.addQueryParameter("download", "");
     }
-    return link.build().getRedirect(request);
+    return new ModelAndView(link.build().getRedirect(request));
   }
 
 }

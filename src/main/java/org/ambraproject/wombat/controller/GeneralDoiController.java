@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,9 +46,9 @@ public class GeneralDoiController extends WombatController {
   private ArticleService articleService;
 
   @RequestMapping(name = "doi", value = "/doi")
-  public String redirectFromDoi(HttpServletRequest request,
-                                @SiteParam Site site,
-                                RequestedDoiVersion id)
+  public RedirectView redirectFromDoi(HttpServletRequest request,
+                                      @SiteParam Site site,
+                                      RequestedDoiVersion id)
       throws IOException {
     return getRedirectFor(site, id).getRedirect(request);
   }

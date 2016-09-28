@@ -9,7 +9,9 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.ClientEndpoint;
 import org.ambraproject.wombat.util.UrlParamBuilder;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -340,8 +342,10 @@ public class Link {
    * @param request the originating request of the page from which to link
    * @return a Spring redirect string
    */
-  public String getRedirect(HttpServletRequest request) {
-    return "redirect:" + get(request, !isAbsolute);
+  public RedirectView getRedirect(HttpServletRequest request) {
+    RedirectView redirectView = new RedirectView(get(request, !isAbsolute));
+    redirectView.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
+    return redirectView;
   }
 
   /**

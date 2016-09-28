@@ -15,12 +15,10 @@ import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -231,9 +229,7 @@ public class FigureImageController extends WombatController {
     if (isDownload) {
       link = link.addQueryParameter("download", "");
     }
-    RedirectView redirectView = link.build().getRedirect(request);
-    redirectView.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
-    return new ModelAndView(redirectView);
+    return new ModelAndView(link.build().getRedirect(request));
   }
 
 }

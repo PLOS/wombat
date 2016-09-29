@@ -205,7 +205,7 @@ public class ArticleMetadata {
 
   private Link buildCrossSiteRedirect(String targetJournal, String handlerName) {
     Site targetSite = this.site.getTheme().resolveForeignJournalKey(factory.siteSet, targetJournal);
-    return Link.toForeignSite(site, targetSite)
+    return Link.toAbsoluteAddress(targetSite)
         .toPattern(factory.requestMappingContextDictionary, handlerName)
         .addQueryParameters(articlePointer.asParameterMap())
         .build();

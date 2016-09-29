@@ -20,6 +20,7 @@ import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.XmlUtil;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
@@ -92,13 +93,18 @@ public class ArticleMetadata {
     }
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id, ArticlePointer articlePointer) throws IOException {
-      Map<String, Object> ingestionMetadata = (Map<String, Object>) articleApi.requestObject(
-          articlePointer.asApiAddress().build(), Map.class);
+      Map<String, Object> ingestionMetadata;
+      try {
+        ingestionMetadata = (Map<String, Object>) articleApi.requestObject(
+            articlePointer.asApiAddress().build(), Map.class);
+      } catch (EntityNotFoundException e) {
+        throw new NotFoundException(e);
+      }
       Map<String, ?> itemTable = articleService.getItemTable(articlePointer);
-      Map<String, List<Map<String, ?>>> relationships = articleApi.requestObject(
-          ApiAddress.builder("articles").embedDoi(articlePointer.getDoi()).addToken("relationships").build(),
-          Map.class);
-
+      ApiAddress relationshipsApiAddress = ApiAddress.builder("articles")
+          .embedDoi(articlePointer.getDoi()).addToken("relationships").build();
+      Map<String, List<Map<String, ?>>> relationships
+          = articleApi.requestObject(relationshipsApiAddress, Map.class);
       return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata, itemTable, relationships);
     }
   }
@@ -536,6 +542,7 @@ public class ArticleMetadata {
     public ImmutableList<Map<String, Object>> getAmendments() {
       return amendments;
     }
+
   }
 
   /**

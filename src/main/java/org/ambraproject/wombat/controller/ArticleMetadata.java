@@ -93,18 +93,19 @@ public class ArticleMetadata {
     }
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id, ArticlePointer articlePointer) throws IOException {
+      Map<String, Object> ingestionMetadata;
       try {
-        Map<String, Object> ingestionMetadata = (Map<String, Object>) articleApi.requestObject(
+        ingestionMetadata = (Map<String, Object>) articleApi.requestObject(
             articlePointer.asApiAddress().build(), Map.class);
-        Map<String, ?> itemTable = articleService.getItemTable(articlePointer);
-        ApiAddress relationshipsApiAddress = ApiAddress.builder("articles")
-            .embedDoi(articlePointer.getDoi()).addToken("relationships").build();
-        Map<String, List<Map<String, ?>>> relationships
-            = articleApi.requestObject(relationshipsApiAddress, Map.class);
-        return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata, itemTable, relationships);
       } catch (EntityNotFoundException e) {
         throw new NotFoundException(e);
       }
+      Map<String, ?> itemTable = articleService.getItemTable(articlePointer);
+      ApiAddress relationshipsApiAddress = ApiAddress.builder("articles")
+          .embedDoi(articlePointer.getDoi()).addToken("relationships").build();
+      Map<String, List<Map<String, ?>>> relationships
+          = articleApi.requestObject(relationshipsApiAddress, Map.class);
+      return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata, itemTable, relationships);
     }
   }
 
@@ -541,6 +542,7 @@ public class ArticleMetadata {
     public ImmutableList<Map<String, Object>> getAmendments() {
       return amendments;
     }
+
   }
 
   /**

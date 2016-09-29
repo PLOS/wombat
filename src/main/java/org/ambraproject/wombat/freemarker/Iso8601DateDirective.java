@@ -34,6 +34,8 @@ import java.util.Map;
  */
 public class Iso8601DateDirective implements TemplateDirectiveModel {
 
+  public static final ZoneId GMT = ZoneId.of("GMT");
+
   /**
    * {@inheritDoc}
    */
@@ -51,7 +53,7 @@ public class Iso8601DateDirective implements TemplateDirectiveModel {
 
     String formattedDate = (jsonDate.length() <= 10)
         ? LocalDate.parse(jsonDate).format(format)
-        : Instant.parse(jsonDate).atZone(ZoneId.of("GMT")).format(format);
+        : Instant.parse(jsonDate).atZone(GMT).format(format);
     environment.getOut().write(formattedDate);
   }
 }

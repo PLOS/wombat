@@ -19,19 +19,22 @@ import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 /**
  * FreeMarker custom directive that parses a ISO 8601 date representation and formats it appropriately.
- *
+ * <p>
  * This directive accepts the following parameters:
- *   - date (required): a date string in the ISO 8601 format
- *   - format (required): format string to use for output
+ * - date (required): a date string in the ISO 8601 format
+ * - format (required): format string to use for output
  */
 public class Iso8601DateDirective implements TemplateDirectiveModel {
+
+  public static final ZoneId GMT = ZoneId.of("GMT");
 
   /**
    * {@inheritDoc}
@@ -50,7 +53,7 @@ public class Iso8601DateDirective implements TemplateDirectiveModel {
 
     String formattedDate = (jsonDate.length() <= 10)
         ? LocalDate.parse(jsonDate).format(format)
-        : OffsetDateTime.parse(jsonDate).format(format);
+        : Instant.parse(jsonDate).atZone(GMT).format(format);
     environment.getOut().write(formattedDate);
   }
 }

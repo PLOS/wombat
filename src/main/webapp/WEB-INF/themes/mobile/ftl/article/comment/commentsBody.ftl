@@ -7,7 +7,7 @@
       <#if mode?? && mode = "corrections">
         <#assign reqPath = "correction" />
       </#if>
-      <a href="${reqPath}?id=${comment.annotationUri}" class="expand">${comment.title}</a>
+      <a href="${reqPath}?id=${comment.commentUri}" class="expand">${comment.title}</a>
 
       <p class="details">
         <#include "userInfoLink.ftl" />

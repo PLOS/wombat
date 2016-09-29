@@ -11,12 +11,12 @@ public interface CommentService {
   /**
    * Retrieve a comment and wire in additional data needed for display.
    *
-   * @param commentId the ID of a comment
+   * @param commentDoi the ID of a comment
    * @return a representation of the comment's content and metadata
    * @throws IOException
    * @throws CommentNotFoundException if the comment does not exist
    */
-  Map<String, Object> getComment(String commentId) throws IOException;
+  Map<String, Object> getComment(String commentDoi) throws IOException;
 
   /**
    * Retrieve all comments belonging to a single parent article and wire in additional data needed for display.

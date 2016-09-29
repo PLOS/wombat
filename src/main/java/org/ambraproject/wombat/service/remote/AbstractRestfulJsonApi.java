@@ -6,6 +6,7 @@ import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.Header;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpHeaders;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
@@ -98,7 +99,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   private static final String APPLICATION_JSON_CONTENT_TYPE = ContentType.APPLICATION_JSON.toString();
 
   private <R extends HttpUriRequest & HttpEntityEnclosingRequest>
-  void uploadObject(ApiAddress address, Object object, Function<URI, R> requestConstructor)
+  HttpResponse uploadObject(ApiAddress address, Object object, Function<URI, R> requestConstructor)
       throws IOException {
     R request = buildRequest(address, requestConstructor);
 
@@ -113,15 +114,16 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
 
     request.addHeader(HttpHeaders.CONTENT_TYPE, APPLICATION_JSON_CONTENT_TYPE);
 
-    try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(request)) {
-      ignored.close();
+    try (CloseableHttpResponse response = cachedRemoteReader.getResponse(request)) {
+      //return closed response
+      return response;
     }
   }
 
 
   @Override
-  public final void postObject(ApiAddress address, Object object) throws IOException {
-    uploadObject(address, object, HttpPost::new);
+  public final HttpResponse postObject(ApiAddress address, Object object) throws IOException {
+    return uploadObject(address, object, HttpPost::new);
   }
 
   @Override

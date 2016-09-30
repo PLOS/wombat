@@ -16,6 +16,7 @@ import javax.xml.parsers.DocumentBuilder;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -53,28 +54,24 @@ public class ParseXmlServiceImpl implements ParseXmlService {
       return references;
     }
 
-    if (refListNodes.size() > 1) {
-      throw new XmlContentException("More than one <ref-list> element was found in the xml.");
+    for (Node refListNode : refListNodes) {
+      if (refListNode.getNodeType() != Node.ELEMENT_NODE) {
+        throw new XmlContentException("<ref-list> is not an element.");
+      }
+
+      Element refListElement = (Element) refListNode;
+
+      List<Node> refNodes = NodeListAdapter.wrap(refListElement.getElementsByTagName("ref"));
+      references.addAll(refNodes.stream()
+          .map(ref -> {
+            try {
+              return parseReferenceService.buildReferences((Element) ref);
+            } catch (XMLParseException e) {
+              throw new RuntimeException(e);
+            }
+          }) // Stream<List<Reference>>
+          .flatMap(Collection::stream).collect(Collectors.toList()));
     }
-
-    Node refListNode = refListNodes.get(0);
-    if (refListNode.getNodeType() != Node.ELEMENT_NODE) {
-      throw new XmlContentException("<ref-list> is not an element.");
-    }
-
-    Element refListElement = (Element) refListNode;
-
-    List<Node> refNodes = NodeListAdapter.wrap(refListElement.getElementsByTagName("ref"));
-    references = refNodes.stream()
-        .map(ref -> {
-          try {
-            return parseReferenceService.buildReferences((Element) ref);
-          } catch (XMLParseException e) {
-            throw new RuntimeException(e);
-          }
-        }) // Stream<List<Reference>>
-        .flatMap(r -> r.stream()).collect(Collectors.toList());
-
     return references;
   }
 }

@@ -322,6 +322,19 @@ public class Link {
 
 
   /**
+   * Build a Spring view string that which, if returned from a Spring {@code RequestMapping} method, will redirect to
+   * the linked address.
+   *
+   * @param request the originating request of the page from which to link
+   * @return a Spring redirect string
+   */
+  public RedirectView getRedirect(HttpServletRequest request) {
+    RedirectView redirectView = new RedirectView(get(request));
+    redirectView.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
+    return redirectView;
+  }
+
+  /**
    * Build a link from this object. The returned value may be either an absolute link (full URL) or a relative link
    * (path beginning with "/") depending on the sites used to set up this object.
    * <p>
@@ -332,37 +345,11 @@ public class Link {
    * @return a page that links from the originating page to the target page
    */
   public String get(HttpServletRequest request) {
-    return get(request, false);
-  }
-
-  /**
-   * Build a Spring view string that which, if returned from a Spring {@code RequestMapping} method, will redirect to
-   * the linked address.
-   *
-   * @param request the originating request of the page from which to link
-   * @return a Spring redirect string
-   */
-  public RedirectView getRedirect(HttpServletRequest request) {
-    RedirectView redirectView = new RedirectView(get(request, false));
-    redirectView.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
-    return redirectView;
-  }
-
-  /**
-   * @param request     an originating request
-   * @param isInContext {@code true} if the output should be relative to the application context; {@code false} if the
-   *                    output should contain the application context path
-   * @return the linked address
-   */
-  private String get(HttpServletRequest request, boolean isInContext) {
     StringBuilder sb = new StringBuilder();
     if (isAbsolute) {
       appendPrefix(sb, request);
     }
-    if (!isInContext) {
-      sb.append(request.getContextPath());
-    }
-    sb.append('/');
+    sb.append(request.getContextPath()).append('/');
 
     Optional<String> pathToken = site.flatMap(s -> s.getRequestScheme().getPathToken());
     if (pathToken.isPresent()) {

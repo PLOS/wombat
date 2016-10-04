@@ -64,13 +64,13 @@
 
   <!-- 1/4/12: Ambra modifications -->
   <xsl:template name="version-notes">
-    <div class="amendment-correction">
+    <div class="amendment-retraction">
     <xsl:choose>
       <xsl:when test="front/notes[@notes-type='version-unavailable']">
-          <h2> Version no longer available</h2>
+          <h2> Version no longer available.</h2>
       </xsl:when>
       <xsl:when test="front/notes[@notes-type='article-temporarily-unavailable']">
-          <h2> Article temporarily unavailable</h2>
+          <h2> Article temporarily unavailable.</h2>
       </xsl:when>
       <xsl:when test="front/notes[@notes-type='custom']">
           <xsl:apply-templates select="front/notes/title"/>

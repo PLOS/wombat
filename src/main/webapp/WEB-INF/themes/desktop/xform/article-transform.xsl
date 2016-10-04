@@ -63,11 +63,34 @@
   <!-- ============================================================= -->
 
   <!-- 1/4/12: Ambra modifications -->
+  <xsl:template name="version-notes">
+    <div class="amendment-correction">
+    <xsl:choose>
+      <xsl:when test="front/notes[@notes-type='version-unavailable']">
+          <h2> Version no longer available</h2>
+      </xsl:when>
+      <xsl:when test="front/notes[@notes-type='article-temporarily-unavailable']">
+          <h2> Article temporarily unavailable</h2>
+      </xsl:when>
+      <xsl:when test="front/notes[@notes-type='custom']">
+          <xsl:apply-templates select="front/notes/title"/>
+      </xsl:when>
+
+    </xsl:choose>
+      <xsl:apply-templates select="front/notes/p" />
+      <xsl:apply-templates select="front/notes/ext-link"/>
+    </div>
+  </xsl:template>
+
+
   <xsl:template name="make-article">
     <xsl:call-template name="newline2"/>
     <xsl:call-template name="newline1"/>
     <xsl:call-template name="make-front"/>
     <xsl:call-template name="newline1"/>
+    <xsl:if test="front/notes">
+      <xsl:call-template name="version-notes"/>
+    </xsl:if>
     <xsl:if
       test="not((@article-type='correction') or (@article-type='retraction') or (@article-type='expression-of-concern'))">
       <div class="articleinfo">

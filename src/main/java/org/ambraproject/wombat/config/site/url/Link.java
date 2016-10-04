@@ -343,7 +343,7 @@ public class Link {
    * @return a Spring redirect string
    */
   public RedirectView getRedirect(HttpServletRequest request) {
-    RedirectView redirectView = new RedirectView(get(request, !isAbsolute));
+    RedirectView redirectView = new RedirectView(get(request, false));
     redirectView.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
     return redirectView;
   }

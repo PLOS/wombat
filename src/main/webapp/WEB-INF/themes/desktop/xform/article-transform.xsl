@@ -904,7 +904,6 @@
               <!-- remove any HTML tags from title (e.g. italics) and encode author and title for url-->
               <xsl:variable name="title" select="encode-for-uri(replace($title, '&lt;/?\w+?&gt;', ''))"/>
               <xsl:variable name="author" select="encode-for-uri($author)"/>
-              <xsl:variable name="citEncoded" select="encode-for-uri(replace($cit, '&lt;/?\w+?&gt;', ''))"/>
               <xsl:element name="ul">
                 <xsl:attribute name="class">reflinks</xsl:attribute>
                 <xsl:if test="$doi">
@@ -943,7 +942,10 @@
                           </xsl:when>
                           <xsl:otherwise>
                             <!-- build link and use + for spaces for consistency with Ambra -->
-                            <xsl:value-of select="$citEncoded"/>
+                            <!-- There are rare cases of two mixed-citation elements within a single ref tag -->
+                            <xsl:if test="count($cit) = 1">
+                              <xsl:value-of select="encode-for-uri(replace($cit, '&lt;/?\w+?&gt;', ''))"/>
+                            </xsl:if>
                           </xsl:otherwise>
                         </xsl:choose>
                       </xsl:attribute>

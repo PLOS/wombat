@@ -13,6 +13,7 @@ import org.ambraproject.wombat.feed.FeedMetadataField;
 import org.ambraproject.wombat.feed.FeedType;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.CommentService;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -85,7 +86,7 @@ public class HomeController extends WombatController {
                 .addToken("keys").addToken(section.curatedListName)
                 .build(),
             Map.class);
-        List<Map<String,Object>> articles = (List<Map<String, Object>>) curatedList.get("articles");
+        List<Map<String, Object>> articles = (List<Map<String, Object>>) curatedList.get("articles");
 
         List<String> dois = articles.stream()
             .map(article -> (String) article.get("doi"))
@@ -277,7 +278,7 @@ public class HomeController extends WombatController {
 
     if ((Boolean) homepageConfig.get("showsIssue")) {
       try {
-        populateCurrentIssue(model, site);
+        model.addAttribute("currentIssue", fetchCurrentIssue(site));
       } catch (IOException e) {
         log.error("Could not retrieve current issue for: " + site.getJournalKey(), e);
       }
@@ -288,24 +289,24 @@ public class HomeController extends WombatController {
     return site.getKey() + "/ftl/home/home";
   }
 
-  private void populateCurrentIssue(Model model, Site site) throws IOException {
-    ApiAddress journalAddress = ApiAddress.builder("journals").addToken(site.getJournalKey()).build();
-    Map<String, Object> journal = articleApi.requestObject(journalAddress, Map.class);
-    Map<String, Object> currentIssue = (Map<String, Object>) journal.get("currentIssue");
-    if (currentIssue == null) {
-      throw new RuntimeException("Current issue is not set for " + site.getJournalKey());
+  private Map<String, Object> fetchCurrentIssue(Site site) throws IOException {
+    try {
+      return articleApi.requestObject(ApiAddress.builder("journals")
+              .addToken(site.getJournalKey()).addToken("currentIssue").build(),
+          Map.class);
+    } catch (EntityNotFoundException e) {
+      throw new RuntimeException("Current issue is not set for " + site.getJournalKey(), e);
     }
-    model.addAttribute("currentIssue", currentIssue);
   }
 
   /**
    * Serves recent journal articles as XML to be read by an RSS reader
    *
-   * @param site    site the request originates from
+   * @param site site the request originates from
    * @return RSS view of recent articles for the specified site
    * @throws IOException
    */
-  @RequestMapping(name ="homepageFeed", value="/feed/{feedType:atom|rss}", method = RequestMethod.GET)
+  @RequestMapping(name = "homepageFeed", value = "/feed/{feedType:atom|rss}", method = RequestMethod.GET)
   public ModelAndView getRssFeedView(@SiteParam Site site, @PathVariable String feedType)
       throws IOException {
 

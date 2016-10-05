@@ -96,6 +96,14 @@ $line-height-small: ($line-height * .5);
 
   .amendment {
     margin-bottom: $line-height-medium;
+    position: relative;
+
+    a.info-link{
+      @extend .icon-question;
+      position: absolute;
+      top: $pad-small;
+      right: $pad-small;
+    }
 
     h2 {
       margin-top: 0;

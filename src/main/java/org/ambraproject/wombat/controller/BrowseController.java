@@ -47,6 +47,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -69,16 +70,44 @@ public class BrowseController extends WombatController {
 
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
-    Map<String, ?> currentIssue = getCurrentIssue(site);
+    Map<String, ?> currentIssue = getCurrentIssue(site).orElse(null);
     if (currentIssue != null) {
       Map<String, ?> imageArticle = (Map<String, ?>) currentIssue.get("imageArticle");
       if (imageArticle != null) {
         String imageArticleDoi = (String) imageArticle.get("doi");
         transformIssueImageMetadata(model, site, imageArticleDoi);
       }
+      model.addAttribute("currentIssue", currentIssue);
     }
 
+    String journalKey = site.getJournalKey();
+    List<Map<String, ?>> volumes = articleApi.requestObject(
+        ApiAddress.builder("journals").addToken(journalKey).addToken("volumes").build(),
+        List.class);
+    List<Map<String, ?>> populatedVolumes = volumes.parallelStream()
+        .map(volume -> populateVolumeWithIssues(journalKey, volume))
+        .collect(Collectors.toList());
+    model.addAttribute("volumes", populatedVolumes);
+
     return site.getKey() + "/ftl/browse/volumes";
+  }
+
+  private Map<String, ?> populateVolumeWithIssues(String journalKey, Map<String, ?> volume) {
+    Map<String, Object> populatedVolume = new HashMap<>(volume);
+
+    List<Map<String, ?>> issues;
+    try {
+      issues = articleApi.requestObject(
+          ApiAddress.builder("journals").addToken(journalKey)
+              .addToken("volumes").embedDoi((String) volume.get("doi"))
+              .addToken("issues").build(),
+          List.class);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+    populatedVolume.put("issues", issues);
+
+    return populatedVolume;
   }
 
   @RequestMapping(name = "browseIssues", value = "/issue")
@@ -86,7 +115,9 @@ public class BrowseController extends WombatController {
                             @RequestParam(value = "id", required = false) String issueId) throws IOException {
     model.addAttribute("journal", fetchJournalMetadata(site));
 
-    Map<String, ?> issueMetadata = (issueId == null) ? getCurrentIssue(site) : getIssue(issueId);
+    Map<String, ?> issueMetadata = (issueId == null)
+        ? getCurrentIssue(site).orElseThrow(() -> new RuntimeException("Current issue is not set for " + site.getJournalKey()))
+        : getIssue(issueId);
     issueId = (String) issueMetadata.get("doi");
     model.addAttribute("issue", issueMetadata);
 
@@ -110,13 +141,14 @@ public class BrowseController extends WombatController {
         Map.class);
   }
 
-  private Map<String, ?> getCurrentIssue(Site site) throws IOException {
+  private Optional<Map<String, ?>> getCurrentIssue(Site site) throws IOException {
     try {
-      return articleApi.requestObject(ApiAddress.builder("journals")
+      Map<String, ?> currentIssue = articleApi.requestObject(ApiAddress.builder("journals")
               .addToken(site.getJournalKey()).addToken("currentIssue").build(),
           Map.class);
+      return Optional.of(currentIssue);
     } catch (EntityNotFoundException e) {
-      throw new RuntimeException("Current issue is not set for " + site.getJournalKey(), e);
+      return Optional.empty();
     }
   }
 
@@ -131,7 +163,12 @@ public class BrowseController extends WombatController {
 
   private void transformIssueImageMetadata(Model model, Site site, String imageArticleDoi) throws IOException {
     RequestedDoiVersion requestedDoiVersion = RequestedDoiVersion.of(imageArticleDoi);
-    ArticleMetadata imageArticleMetadata = articleMetadataFactory.get(site, requestedDoiVersion);
+    ArticleMetadata imageArticleMetadata;
+    try {
+      imageArticleMetadata = articleMetadataFactory.get(site, requestedDoiVersion);
+    } catch (NotFoundException e) {
+      throw new RuntimeException("Issue's image article not found: " + requestedDoiVersion, e);
+    }
     ArticlePointer issueImageArticleId = imageArticleMetadata.getArticlePointer();
     String issueDesc = (String) imageArticleMetadata.getIngestionMetadata().get("description");
 

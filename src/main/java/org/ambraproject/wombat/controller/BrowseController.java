@@ -43,9 +43,11 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -68,26 +70,55 @@ public class BrowseController extends WombatController {
 
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
-    Map<String, ?> journalMetadata = modelJournalMetadata(model, site);
-    Map<String, ?> currentIssue = (Map<String, ?>) journalMetadata.get("currentIssue");
+    Map<String, ?> currentIssue = getCurrentIssue(site).orElse(null);
     if (currentIssue != null) {
       Map<String, ?> imageArticle = (Map<String, ?>) currentIssue.get("imageArticle");
       if (imageArticle != null) {
         String imageArticleDoi = (String) imageArticle.get("doi");
         transformIssueImageMetadata(model, site, imageArticleDoi);
       }
+      model.addAttribute("currentIssue", currentIssue);
     }
 
+    String journalKey = site.getJournalKey();
+    List<Map<String, ?>> volumes = articleApi.requestObject(
+        ApiAddress.builder("journals").addToken(journalKey).addToken("volumes").build(),
+        List.class);
+    List<Map<String, ?>> populatedVolumes = volumes.parallelStream()
+        .map(volume -> populateVolumeWithIssues(journalKey, volume))
+        .collect(Collectors.toList());
+    model.addAttribute("volumes", populatedVolumes);
+
     return site.getKey() + "/ftl/browse/volumes";
+  }
+
+  private Map<String, ?> populateVolumeWithIssues(String journalKey, Map<String, ?> volume) {
+    Map<String, Object> populatedVolume = new HashMap<>(volume);
+
+    List<Map<String, ?>> issues;
+    try {
+      issues = articleApi.requestObject(
+          ApiAddress.builder("journals").addToken(journalKey)
+              .addToken("volumes").embedDoi((String) volume.get("doi"))
+              .addToken("issues").build(),
+          List.class);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+    populatedVolume.put("issues", issues);
+
+    return populatedVolume;
   }
 
   @RequestMapping(name = "browseIssues", value = "/issue")
   public String browseIssue(Model model, @SiteParam Site site,
                             @RequestParam(value = "id", required = false) String issueId) throws IOException {
+    model.addAttribute("journal", fetchJournalMetadata(site));
 
-    Map<String, Object> journalMetadata = modelJournalMetadata(model, site);
-
-    Map<String, ?> issueMetadata = getCurrentIssue(site, issueId, journalMetadata);
+    Map<String, ?> issueMetadata = (issueId == null)
+        ? getCurrentIssue(site).orElseThrow(() -> new RuntimeException("Current issue is not set for " + site.getJournalKey()))
+        : getIssue(issueId);
+    issueId = (String) issueMetadata.get("doi");
     model.addAttribute("issue", issueMetadata);
 
     Map<String, ?> imageArticle = (Map<String, ?>) issueMetadata.get("imageArticle");
@@ -96,40 +127,48 @@ public class BrowseController extends WombatController {
       transformIssueImageMetadata(model, site, imageArticleDoi);
     }
 
-    model.addAttribute("articleGroups", buildArticleGroups(site, issueMetadata));
+    List<Map<String, ?>> articlesInIssue = articleApi.requestObject(
+        ApiAddress.builder("issues").embedDoi(issueId).addToken("contents").build(),
+        List.class);
+    model.addAttribute("articleGroups", buildArticleGroups(site, issueId, articlesInIssue));
 
     return site.getKey() + "/ftl/browse/issues";
   }
 
-  private Map<String, Object> modelJournalMetadata(Model model, @SiteParam Site site) throws IOException {
-    Map<String, Object> journalMetadata = articleApi.requestObject(
+  private Map<String, Object> fetchJournalMetadata(@SiteParam Site site) throws IOException {
+    return articleApi.requestObject(
         ApiAddress.builder("journals").addToken(site.getJournalKey()).build(),
         Map.class);
-    model.addAttribute("journal", journalMetadata);
-    return journalMetadata;
   }
 
-  private Map<String, ?> getCurrentIssue(Site site, String issueId,
-                                         Map<String, Object> journalMetadata) throws IOException {
-    if (issueId == null) {
-      Map<String, ?> issueMetadata = (Map<String, ?>) journalMetadata.get("currentIssue");
-      if (issueMetadata == null) {
-        throw new RuntimeException("Current issue is not set for " + site.getJournalKey());
-      }
-      return issueMetadata;
-    } else {
-      ApiAddress issueAddress = ApiAddress.builder("issues").embedDoi(issueId).build();
-      try {
-        return articleApi.requestObject(issueAddress, Map.class);
-      } catch (EntityNotFoundException e) {
-        throw new NotFoundException(e);
-      }
+  private Optional<Map<String, ?>> getCurrentIssue(Site site) throws IOException {
+    try {
+      Map<String, ?> currentIssue = articleApi.requestObject(ApiAddress.builder("journals")
+              .addToken(site.getJournalKey()).addToken("currentIssue").build(),
+          Map.class);
+      return Optional.of(currentIssue);
+    } catch (EntityNotFoundException e) {
+      return Optional.empty();
+    }
+  }
+
+  private Map<String, ?> getIssue(String issueId) throws IOException {
+    ApiAddress issueAddress = ApiAddress.builder("issues").embedDoi(issueId).build();
+    try {
+      return articleApi.requestObject(issueAddress, Map.class);
+    } catch (EntityNotFoundException e) {
+      throw new NotFoundException(e);
     }
   }
 
   private void transformIssueImageMetadata(Model model, Site site, String imageArticleDoi) throws IOException {
     RequestedDoiVersion requestedDoiVersion = RequestedDoiVersion.of(imageArticleDoi);
-    ArticleMetadata imageArticleMetadata = articleMetadataFactory.get(site, requestedDoiVersion);
+    ArticleMetadata imageArticleMetadata;
+    try {
+      imageArticleMetadata = articleMetadataFactory.get(site, requestedDoiVersion);
+    } catch (NotFoundException e) {
+      throw new RuntimeException("Issue's image article not found: " + requestedDoiVersion, e);
+    }
     ArticlePointer issueImageArticleId = imageArticleMetadata.getArticlePointer();
     String issueDesc = (String) imageArticleMetadata.getIngestionMetadata().get("description");
 
@@ -157,24 +196,24 @@ public class BrowseController extends WombatController {
     }
   }
 
-  private List<TypedArticleGroup> buildArticleGroups(Site site, Map<String, ?> issueMetadata) throws IOException {
-    // Ordered list of all articles in the issue.
-    List<Map<String, Object>> articles = (List<Map<String, Object>>) issueMetadata.get("articles");
-
+  private List<TypedArticleGroup> buildArticleGroups(Site site, String issueId, List<Map<String, ?>> articles)
+      throws IOException {
     // Articles grouped by their type. Order within the value lists is significant.
     ArticleType.Dictionary typeDictionary = ArticleType.getDictionary(site.getTheme());
     ListMultimap<ArticleType, Map<String, Object>> groupedArticles = LinkedListMultimap.create();
-    for (Map<String, Object> article : articles) {
+    for (Map<String, ?> article : articles) {
       if (!article.containsKey("revisionNumber")) continue; // Omit unpublished articles
+
+      Map<String, Object> populatedArticle = new HashMap<>(article);
 
       Map<String, ?> ingestion = (Map<String, ?>) article.get("ingestion");
       ArticleType articleType = typeDictionary.lookUp((String) ingestion.get("articleType"));
 
-      populateRelatedArticles(article);
+      populateRelatedArticles(populatedArticle);
 
-      populateAuthors(article);
+      populateAuthors(populatedArticle);
 
-      groupedArticles.put(articleType, article);
+      groupedArticles.put(articleType, populatedArticle);
     }
 
     // The article types supported by this site, in the order in which they are supposed to appear.
@@ -196,7 +235,7 @@ public class BrowseController extends WombatController {
       articleGroups.add(group);
 
       log.warn(String.format("Issue %s has articles of type \"%s\", which is not configured for %s: %s",
-          issueMetadata.get("doi"), type.getName(), site.getKey(),
+          issueId, type.getName(), site.getKey(),
           Lists.transform(group.articles, article -> article.get("doi"))));
     }
 

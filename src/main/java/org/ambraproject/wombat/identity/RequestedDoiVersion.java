@@ -85,4 +85,14 @@ public class RequestedDoiVersion {
     result = 31 * result + ingestionNumber.hashCode();
     return result;
   }
+
+  @Override
+  public String toString() {
+    final StringBuilder sb = new StringBuilder("RequestedDoiVersion{");
+    sb.append("doi='").append(doi).append('\'');
+    revisionNumber.ifPresent(rev -> sb.append(", revisionNumber=").append(rev));
+    ingestionNumber.ifPresent(ing -> sb.append(", ingestionNumber=").append(ing));
+    sb.append('}');
+    return sb.toString();
+  }
 }

@@ -17,8 +17,6 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 public class ArticleExcerptTransformDirective extends VariableLookupDirective<String> {
@@ -28,30 +26,6 @@ public class ArticleExcerptTransformDirective extends VariableLookupDirective<St
 
   private static final SiteTransformerFactory SITE_TRANSFORMER_FACTORY = new SiteTransformerFactory(
       "xform/", "light.xsl");
-
-
-  /**
-   * Cache of built {@link Transformer} objects.
-   * <p>
-   * Although the {@code Transformer} class is documented as being non-thread-safe, we expect there to be no harmful
-   * race conditions because we never call any methods that change the state of the {@code Transformer} (such as {@link
-   * Transformer#setParameter}); we only call {@link Transformer#transform}. (Note that {@link #getTransformer} might
-   * occasionally create two {@code Transformer} objects for the same {@code Site} concurrently, but this is harmless.)
-   * <p>
-   * This cache has no expiration because the values never change (assuming that theme content isn't swapped) and the
-   * number of entries can't ever exceed the number of {@link Site} objects.
-   */
-  private final Map<Site, Transformer> transformerCache = Collections.synchronizedMap(new HashMap<>());
-
-  private Transformer getTransformer(Site site) throws IOException {
-    Transformer transformer = transformerCache.get(site);
-    if (transformer == null) {
-      transformer = SITE_TRANSFORMER_FACTORY.build(site);
-      transformerCache.put(site, transformer);
-    }
-    return transformer;
-  }
-
 
   @Override
   protected String getValue(Environment env, Map params) throws TemplateModelException, IOException {
@@ -68,7 +42,7 @@ public class ArticleExcerptTransformDirective extends VariableLookupDirective<St
     }
 
     Site site = new SitePageContext(siteResolver, env).getSite();
-    Transformer transformer = getTransformer(site);
+    Transformer transformer = SITE_TRANSFORMER_FACTORY.build(site);
     StringWriter html = new StringWriter();
     try {
       transformer.transform(new StreamSource(new StringReader(xml)), new StreamResult(html));

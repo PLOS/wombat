@@ -128,7 +128,7 @@ public class BrowseController extends WombatController {
     }
 
     List<Map<String, ?>> articlesInIssue = articleApi.requestObject(
-        ApiAddress.builder("issues").embedDoi(issueId).addToken("articles").build(),
+        ApiAddress.builder("issues").embedDoi(issueId).addToken("contents").build(),
         List.class);
     model.addAttribute("articleGroups", buildArticleGroups(site, issueId, articlesInIssue));
 

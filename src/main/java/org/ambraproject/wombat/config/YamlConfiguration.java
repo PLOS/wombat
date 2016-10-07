@@ -158,6 +158,10 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return casConfiguration;
   }
 
+  @Override
+  public boolean areCommentsDisabled() {
+    return (input.commentsDisabled != null) && input.commentsDisabled;
+  }
 
   /**
    * Validate values after deserializing.
@@ -229,6 +233,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private CacheConfigurationInput cache;
     private HttpConnectionPoolConfigurationInput httpConnectionPool;
     private CasConfigurationInput cas;
+
+    private Boolean commentsDisabled;
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -316,6 +322,13 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setCas(CasConfigurationInput cas) {
       this.cas = cas;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    public void setCommentsDisabled(Boolean commentsDisabled) {
+      this.commentsDisabled = commentsDisabled;
     }
   }
 

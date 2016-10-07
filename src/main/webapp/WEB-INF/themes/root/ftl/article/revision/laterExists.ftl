@@ -1,4 +1,4 @@
-<#function showLaterExistsNotice>
+<#function hasLaterVersion>
   <#return !revisionMenu['isDisplayingLatestRevision'] />
 </#function>
 

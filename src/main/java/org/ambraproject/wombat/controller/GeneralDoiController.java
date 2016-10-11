@@ -25,7 +25,10 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -53,7 +56,7 @@ public class GeneralDoiController extends WombatController {
     return getRedirectFor(site, id).getRedirect(request);
   }
 
-  Map<String, Object> getMetadataForDoi(RequestedDoiVersion id) throws IOException {
+  Map<String, ?> getMetadataForDoi(RequestedDoiVersion id) throws IOException {
     ApiAddress address = ApiAddress.builder("dois").embedDoi(id.getDoi()).build();
     try {
       return articleApi.requestObject(address, Map.class);
@@ -62,8 +65,38 @@ public class GeneralDoiController extends WombatController {
     }
   }
 
+  private static final String ARTICLE = "article";
+  private static final String ASSET = "asset";
+
   private String getTypeOf(RequestedDoiVersion id) throws IOException {
-    return (String) getMetadataForDoi(id).get("type");
+    Map<String, ?> metadata = getMetadataForDoi(id);
+    String doiType = (String) metadata.get("type");
+    if (doiType.equals(ARTICLE)) {
+      return ARTICLE;
+    } else if (!doiType.equals(ASSET)) {
+      return doiType;
+    }
+
+    // The DOI belongs to an article asset. If it has one or more revisions, request the latest one to get its itemType.
+    Map<String, ?> articleMetadata = (Map<String, ?>) metadata.get("article");
+    Map<String, ?> revisionTable = (Map<String, ?>) articleMetadata.get("revisions");
+    Optional<Integer> ingestionNumber = revisionTable.entrySet().stream()
+        .max(Comparator.comparing(entry -> Integer.valueOf(entry.getKey()))) // find the latest revision
+        .map(entry -> ((Number) entry.getValue()).intValue()); // extract its ingestion number
+    if (!ingestionNumber.isPresent()) {
+      // The article is unpublished. There is no particular ingestion whose itemType we should use.
+      throw new NotFoundException();
+    }
+    String articleDoi = (String) articleMetadata.get("doi");
+    Map<String, ?> itemView = articleApi.requestObject(
+        ApiAddress.builder("articles").embedDoi(articleDoi)
+            .addToken("ingestions").addToken(ingestionNumber.get().toString())
+            .addToken("items").build(),
+        Map.class);
+    Map<String, ?> itemTable = (Map<String, ?>) itemView.get("items");
+    String canonicalDoi = (String) metadata.get("doi");
+    Map<String, ?> itemMetadata = (Map<String, ?>) itemTable.get(canonicalDoi);
+    return Objects.requireNonNull((String) itemMetadata.get("itemType"));
   }
 
   private static final ImmutableMap<String, String> REDIRECT_HANDLERS = ImmutableMap.<String, String>builder()

@@ -179,7 +179,7 @@ public class FigureImageController extends WombatController {
   }
 
   private Map<String, ?> getItemMetadata(String rawAssetDoi) throws IOException {
-    Map<String, Object> assetMetadata = generalDoiController.getMetadataForDoi(RequestedDoiVersion.of(rawAssetDoi));
+    Map<String, ?> assetMetadata = generalDoiController.getMetadataForDoi(RequestedDoiVersion.of(rawAssetDoi));
     Map<String, ?> article = (Map<String, ?>) assetMetadata.get("article");
     String articleDoi = (String) article.get("doi");
 

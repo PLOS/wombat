@@ -14,6 +14,7 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
@@ -24,7 +25,6 @@ import org.ambraproject.wombat.service.ApiAddress;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URLEncodedUtils;
-import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -208,13 +208,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
 
   }
 
-  /**
-   * Specifies the article fields in the solr schema that we want returned in the results.
-   */
-  private static final String FL = "id,eissn,publication_date,title,cross_published_journal_name,author_display,"
-      + "article_type,counter_total_all,alm_scopusCiteCount,alm_citeulikeCount,alm_mendeleyCount,alm_twitterCount,"
-      + "alm_facebookCount,retraction,expression_of_concern";
-
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
@@ -224,35 +217,21 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   @Override
-  public Map<?, ?> searchVolume(ArticleSearchQuery query, int volumeNumber) throws IOException {
-    String volumeFilter = String.format("volume:%d", volumeNumber);
-    ArticleSearchQuery volumeQuery = query.copy()
-        .setFilterQueries(ImmutableList.of(volumeFilter))
-        .build();
-    return search(volumeQuery);
-  }
-
-  @Override
   public Map<?, ?> lookupArticleByDoi(String doi) throws IOException {
-    List<NameValuePair> params = new ArrayList<>();
-    params.add(new BasicNameValuePair("wt", "json"));
-    params.add(new BasicNameValuePair("fl", "id,eissn"));
-    params.add(new BasicNameValuePair("q", String.format("id:\"%s\"", doi)));
-    return executeQuery(params);
+    return lookupArticlesByDois(ImmutableList.of(doi));
   }
 
   @Override
-  public Map<?, ?> lookupArticleByELocationId(String eLocationId, String journalKey) throws IOException {
-    List<NameValuePair> params = new ArrayList<>();
-    params.add(new BasicNameValuePair("wt", "json"));
-    params.add(new BasicNameValuePair("fl", "id,eissn"));
+  public Map<?, ?> lookupArticlesByDois(List<String> dois) throws IOException {
+    List<String> solrDois = dois.stream().map(doi -> "id:" + doi).collect(Collectors.toList());
 
-    // Many eLocationIds may be associated with an article (for example, one for each section).  So
-    // we need to set this parameter to get at most one result.
-    params.add(new BasicNameValuePair("fq", "doc_type:full"));
-    params.add(new BasicNameValuePair("fq", "cross_published_journal_key:" + journalKey));
-    params.add(new BasicNameValuePair("q", "elocation_id:" + eLocationId));
-    return executeQuery(params);
+    String doiQueryString = Joiner.on(" OR ").join(solrDois);
+
+    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+        .setQuery(doiQueryString)
+        .setStart(0)
+        .setRows(dois.size());
+    return search(query.build());
   }
 
   @Override
@@ -371,6 +350,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
    */
   private Map<String, Map> getRawResults(List<NameValuePair> params) throws IOException {
     URI uri = getSolrUri(params);
+    log.debug("Solr request executing: " + uri);
     Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
     return (Map<String, Map>) rawResults;
   }

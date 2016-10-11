@@ -1,10 +1,10 @@
 <nav>
   <ul class="article-buttons">
-  <#if article.figures?? && article.figures?size &gt; 0 >
+  <#if figures?has_content>
     <li class="menuitem">
       <a class="btn-lg" href="<@siteLink handlerName="figuresPage" queryParameters={"id": article.doi} />">
         <span class="arrow">View</span>
-        Figures (${article.figures?size})
+        Figures (${figures?size})
       </a>
     </li>
   </#if>
@@ -47,9 +47,11 @@
   </div>
 </#macro>
 
-<@siteLink handlerName="asset" queryParameters={"id": "${article.doi}.PDF"} ; href>
-  <@articleSaveButton href>Download Article (PDF)</@articleSaveButton>
-</@siteLink>
+<#if articleItems[article.doi].files?keys?seq_contains("printable")>
+  <@siteLink handlerName="assetFile" queryParameters=(articlePtr + {"type": "printable"}) ; href>
+    <@articleSaveButton href>Download Article (PDF)</@articleSaveButton>
+  </@siteLink>
+</#if>
 
 <@siteLink handlerName="citationDownloadPage" queryParameters={"id": article.doi} ; href>
   <@articleSaveButton href>Download Citation</@articleSaveButton>

@@ -2,10 +2,10 @@ package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.util.CacheKey;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
@@ -47,9 +47,10 @@ public interface RestfulJsonApi {
    *
    * @param address the path to which to send the REST request
    * @param object  the object to serialize to product JSON
+   * @return HttpResponse
    * @throws IOException
    */
-  public abstract void postObject(ApiAddress address, Object object) throws IOException;
+  public abstract HttpResponse postObject(ApiAddress address, Object object) throws IOException;
 
   public abstract void putObject(ApiAddress address, Object object) throws IOException;
 
@@ -91,14 +92,5 @@ public interface RestfulJsonApi {
   public abstract <T> T requestCachedObject(CacheKey cacheKey, ApiAddress address, Class<T> responseClass) throws IOException;
 
   public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
-
-  /**
-   * Forward the remote service response from a given request to a client
-   *
-   * @return
-   * @throws IOException
-   */
-  public abstract void forwardResponse(HttpUriRequest requestToService,
-                                       HttpServletResponse responseToClient) throws IOException;
 
 }

@@ -12,7 +12,6 @@
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
-<#include "../common/article/articleType.ftl" />
 
 <body class="article ${journalStyle}">
 
@@ -31,6 +30,8 @@
 
       <div class="article-content">
 
+
+      <#include "revision/revisionNotice.ftl" />
       <#include "amendment.ftl" />
 
       <#-- Figure carousel is placed here, then inserted midway through article text by JavaScript -->
@@ -59,7 +60,9 @@
 
   <#include "articleJs.ftl" />
   <@js src="resource/js/components/table_open.js"/>
-  <@js src="resource/js/components/figshare.js"/>
+  <#if !hasLaterVersion()>
+    <@js src="resource/js/components/figshare.js"/>
+  </#if>
   <#--TODO: move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide -->
   <@js src="resource/js/vendor/jquery.panzoom.min.js"/>
   <@js src="resource/js/vendor/jquery.mousewheel.js"/>
@@ -71,18 +74,6 @@
   <#include "mathjax.ftl">
 
   <@renderJs />
-
-  <script type="text/javascript">
-
-    (function ($) {
-
-      /*filesizetable*/
-      $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
-
-    })(jQuery);
-
-  </script>
-
 
   <#include "aside/crossmarkIframe.ftl" />
 <#--

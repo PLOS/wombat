@@ -45,11 +45,7 @@ public class FeedbackController extends WombatController {
   private JavaMailSender javaMailSender; // TODO
 
   private static Map<String, Object> getFeedbackConfig(Site site) {
-    try {
-      return (Map<String, Object>) site.getTheme().getConfigMap("email").get("feedback");
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    return (Map<String, Object>) site.getTheme().getConfigMap("email").get("feedback");
   }
 
   private static void validateFeedbackConfig(Site site) {

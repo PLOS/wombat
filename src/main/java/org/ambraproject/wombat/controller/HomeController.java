@@ -4,18 +4,20 @@ import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.feed.FeedMetadataField;
 import org.ambraproject.wombat.feed.FeedType;
-import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.service.CommentService;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
-import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.slf4j.Logger;
@@ -35,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -46,19 +49,14 @@ public class HomeController extends WombatController {
 
   @Autowired
   private SolrSearchApi solrSearchApi;
-
   @Autowired
   private ArticleApi articleApi;
-
   @Autowired
   private RecentArticleService recentArticleService;
-
   @Autowired
   private ArticleFeedView articleFeedView;
-
   @Autowired
   private CommentFeedView commentFeedView;
-
   @Autowired
   private CommentService commentService;
 
@@ -82,11 +80,33 @@ public class HomeController extends WombatController {
       @Override
       public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
         String journalKey = site.getJournalKey();
-        String listId = String.format("%s/%s/%s", section.curatedListType, journalKey, section.curatedListName);
         Map<String, Object> curatedList = context.articleApi.requestObject(
-            ApiAddress.builder("lists").addToken(listId).build(), Map.class);
-        List<Map<String,Object>> articles = (List<Map<String, Object>>) curatedList.get("articles");
-        return articles.stream().map(SolrArticleAdapter::adaptFromRhino).collect(Collectors.toList());
+            ApiAddress.builder("lists").addToken(section.curatedListType)
+                .addToken("journals").addToken(journalKey)
+                .addToken("keys").addToken(section.curatedListName)
+                .build(),
+            Map.class);
+        List<Map<String, Object>> articles = (List<Map<String, Object>>) curatedList.get("articles");
+
+        List<String> dois = articles.stream()
+            .map(article -> (String) article.get("doi"))
+            .collect(Collectors.toList());
+
+        Map<String, Object> results = (Map<String, Object>) context.solrSearchApi.lookupArticlesByDois(dois);
+        List<SolrArticleAdapter> unpacked = SolrArticleAdapter.unpackSolrQuery(results);
+        validateSolrResultsFromList(section, dois, unpacked);
+        return Ordering.explicit(dois).onResultOf(SolrArticleAdapter::getDoi).sortedCopy(unpacked);
+      }
+
+      private void validateSolrResultsFromList(SectionSpec section, Collection<String> persistentListMembers, Collection<SolrArticleAdapter> solrResults) {
+        if (solrResults.size() < persistentListMembers.size()) {
+          Set<String> solrDois = solrResults.stream().map(SolrArticleAdapter::getDoi).collect(Collectors.toSet());
+          for (String doi : persistentListMembers) {
+            if (!solrDois.contains(doi)) {
+              log.error(String.format("Article from list \"%s\" not found in Solr: %s", section.curatedListName, doi));
+            }
+          }
+        }
       }
     };
 
@@ -155,9 +175,8 @@ public class HomeController extends WombatController {
     public List<SolrArticleAdapter> getArticles(Site site, int start) throws IOException {
       if (since != null) {
         if (type == SectionType.RECENT) {
-          List<Map<String, Object>> recentArticles = recentArticleService.getRecentArticles(site,
-              resultCount, since, shuffle, articleTypes, articleTypesToExclude, Optional.fromNullable(cacheTtl));
-          return recentArticles.stream().map(SolrArticleAdapter::adaptFromRhino).collect(Collectors.toList());
+          return recentArticleService.getRecentArticles(site, resultCount, since, shuffle,
+              articleTypes, articleTypesToExclude, Optional.fromNullable(cacheTtl));
         } else {
           throw new IllegalArgumentException("Shuffling is supported only on RECENT section"); // No plans to support
         }
@@ -259,7 +278,7 @@ public class HomeController extends WombatController {
 
     if ((Boolean) homepageConfig.get("showsIssue")) {
       try {
-        populateCurrentIssue(model, site);
+        model.addAttribute("currentIssue", fetchCurrentIssue(site));
       } catch (IOException e) {
         log.error("Could not retrieve current issue for: " + site.getJournalKey(), e);
       }
@@ -270,23 +289,24 @@ public class HomeController extends WombatController {
     return site.getKey() + "/ftl/home/home";
   }
 
-  private void populateCurrentIssue(Model model, Site site) throws IOException {
-    ApiAddress issueAddress = ApiAddress.builder("journals").addToken(site.getJournalKey()).addParameter("currentIssue").build();
-    Map<String, Object> currentIssue = articleApi.requestObject(issueAddress, Map.class);
-    model.addAttribute("currentIssue", currentIssue);
-    String imageUri = currentIssue.get("imageUri").toString();
-    Map<String, Object> issueImageMetadata = articleApi.requestObject(ApiAddress.builder("articles").addToken(imageUri).build(), Map.class);
-    model.addAttribute("issueImage", issueImageMetadata);
+  private Map<String, Object> fetchCurrentIssue(Site site) throws IOException {
+    try {
+      return articleApi.requestObject(ApiAddress.builder("journals")
+              .addToken(site.getJournalKey()).addToken("currentIssue").build(),
+          Map.class);
+    } catch (EntityNotFoundException e) {
+      throw new RuntimeException("Current issue is not set for " + site.getJournalKey(), e);
+    }
   }
 
   /**
    * Serves recent journal articles as XML to be read by an RSS reader
    *
-   * @param site    site the request originates from
+   * @param site site the request originates from
    * @return RSS view of recent articles for the specified site
    * @throws IOException
    */
-  @RequestMapping(name ="homepageFeed", value="/feed/{feedType:atom|rss}", method = RequestMethod.GET)
+  @RequestMapping(name = "homepageFeed", value = "/feed/{feedType:atom|rss}", method = RequestMethod.GET)
   public ModelAndView getRssFeedView(@SiteParam Site site, @PathVariable String feedType)
       throws IOException {
 

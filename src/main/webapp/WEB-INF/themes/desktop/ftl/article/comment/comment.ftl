@@ -10,7 +10,6 @@
 
 <#include "../../common/head.ftl" />
 <#include "../../common/journalStyle.ftl" />
-<#include "../../common/article/articleType.ftl" />
 
 <body class="article ${journalStyle}">
 
@@ -119,7 +118,7 @@
         <#assign commentId = commentId + 1 />
         <div id="reply-${commentId}"
              class="form-default response <#if depth==0>original</#if>"
-             data-uri="${comment.annotationUri}"
+             data-uri="${comment.commentUri}"
              data-depth="${depth?c}"
              style="margin-left: ${(depth * indentationWidth)?c}px"
             >

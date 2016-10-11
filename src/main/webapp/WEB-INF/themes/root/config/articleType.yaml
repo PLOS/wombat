@@ -1,0 +1,54 @@
+# The list of article types that are supported with metadata for a theme.
+#
+# Note that this file is a singleton map with the key "types". Child themes must override the entire "types" list at a
+# time, because its order is significant.
+#
+# This configuration currently controls two features. The first feature is the displayed type at the top of an article
+# (where child themes may provide a tooltip with a description blurb). The second feature is the list of articles on
+# the "browse issue" page, which is grouped by article type. The "browse issue" page shows article types in a curated
+# order, which is specified by the order of the types in this list.
+#
+# Each entry in the list may contain four fields:
+#
+#   * "name": This field is required, and must be unique for each entry. It is matched exactly to the article type
+#     field given in an article's XML manuscript, and will be used as the human-readable label for the article type.
+#
+#   * "plural": The plural form of the article type. It will be used for a section heading on the "browse issue" page
+#     if the section has more than one article. If no plural form is provided, the name will be reused.
+#
+#   * "code": If a child themes has a site content page that provides additional commentary on article types, the child
+#     theme may optionally use this to link to anchors within that page.
+#
+#   * "description": An optional paragraph of text that may be associated with the article type header.
+#
+# An example of a complete entry follows:
+#
+#   - name:   "Essay"
+#     plural: "Essays"
+#     code:   "essay"
+#     description: >
+#       Essays articulate a specific perspective on
+#       a topic of broad interest to scientists.
+
+types:
+
+  - name:   "Editorial"
+    plural: "Editorials"
+
+  - name:   "Book Review"
+    plural: "Book Reviews"
+
+  - name:   "Obituary"
+    plural: "Obituaries"
+
+  - name:   "Case Report"
+    plural: "Case Reports"
+
+  - name:   "Research Article"
+    plural: "Research Articles"
+
+  - name:   "Correction"
+    plural: "Corrections"
+
+  - name:   "Retraction"
+    plural: "Retractions"

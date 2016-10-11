@@ -119,8 +119,8 @@
         <@siteLink handlerName="article" queryParameters={"id": doc.id} ; href>
           <a href="${href}">Full text</a>
         </@siteLink>
-        <@siteLink handlerName="asset" queryParameters={"id": doc.id + ".PDF"} ; href>
-          <a href="${href}">PDF</a>
+        <@siteLink handlerName="assetFile" queryParameters={"type": "printable", "id": doc.id} ; href>
+          <a href="${href}">PDF</a> <#-- TODO: Not all articles have PDF files. May want to suppress if possible. -->
         </@siteLink>
       </nav><#--end article-options-menu-->
 

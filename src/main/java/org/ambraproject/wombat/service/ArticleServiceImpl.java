@@ -13,46 +13,59 @@
 
 package org.ambraproject.wombat.service;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
+import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.identity.AssetPointer;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.util.DoiSchemeStripper;
+import org.ambraproject.wombat.service.remote.ContentKey;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
 public class ArticleServiceImpl implements ArticleService {
 
   @Autowired
   private ArticleApi articleApi;
-
-  private static final ImmutableSet<String> FIGURE_TABLE_CONTEXT_ELEMENT =
-      new ImmutableSet.Builder<String>()
-      .add("fig").add("table-wrap").add("alternatives")
-      .build();
+  @Autowired
+  private ArticleResolutionService articleResolutionService;
 
   @Override
-  public Map<String, Object> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException {
-    Map<String, Object> map = (Map<String, Object>) articleApi.requestObject(
-        ApiAddress.builder("articles").addToken(articleId)
-            .addParameter("excludeCitations", Boolean.toString(excludeCitations))
-            .build(),
-        Map.class);
-    return DoiSchemeStripper.strip(map);
+  public Map<String, ?> requestArticleMetadata(RequestedDoiVersion articleId)
+      throws IOException {
+    return requestArticleMetadata(articleResolutionService.toIngestion(articleId));
   }
 
   @Override
-  public List<ImmutableMap<String, String>> getArticleFiguresAndTables(Map<?, ?> articleMetadata) {
-    List<Map<String, String>> assets = (List<Map<String, String>>) articleMetadata.get("figures");
-    List<ImmutableMap<String, String>> figsAndTables = assets.stream()
-        .filter(asset -> FIGURE_TABLE_CONTEXT_ELEMENT.contains(asset.get("contextElement")))
-        .map(asset -> ImmutableMap.<String, String>builder().put("title", asset.get("title"))
-            .put("doi", asset.get("doi"))
-            .build())
-        .collect(Collectors.toList());
-    return figsAndTables;
+  public Map<String, ?> requestArticleMetadata(ArticlePointer articleId) throws IOException {
+    return (Map<String, ?>) articleApi.requestObject(articleId.asApiAddress().build(), Map.class);
+  }
+
+  @Override
+  public Map<String, ?> getItemTable(ArticlePointer articleId) throws IOException {
+    ApiAddress itemAddress = articleId.asApiAddress().addToken("items").build();
+    Map<String, ?> itemResponse = articleApi.requestObject(itemAddress, Map.class);
+    return (Map<String, ?>) itemResponse.get("items");
+  }
+
+  @Override public Map<String, ?> getItemFiles(AssetPointer assetId) throws IOException {
+    Map<String, ?> itemTable = getItemTable(assetId.getParentArticle());
+    Map<String, ?> item = (Map<String, ?>) itemTable.get(assetId.getAssetDoi());
+    return (Map<String, ?>) item.get("files");
+  }
+
+  @Override
+  public ContentKey getManuscriptKey(ArticlePointer articleId) throws IOException {
+    Map<String, ?> itemTable = getItemTable(articleId);
+    Map<String, ?> articleItem = (Map<String, ?>) itemTable.values().stream()
+        .filter(itemObj -> ((Map<String, ?>) itemObj).get("itemType").equals("article"))
+        .findAny().orElseThrow(RuntimeException::new);
+    Map<String, ?> articleFiles = (Map<String, ?>) articleItem.get("files");
+    Map<String, ?> manuscriptPointer = (Map<String, ?>) articleFiles.get("manuscript");
+
+    String crepoKey = (String) manuscriptPointer.get("crepoKey");
+    UUID crepoUuid = UUID.fromString((String) manuscriptPointer.get("crepoUuid"));
+    return ContentKey.createForUuid(crepoKey, crepoUuid);
   }
 }

@@ -30,6 +30,9 @@
   <!-- Ambra-specific global param (pub config, passed into stylesheet from elsewhere in the pipeline) -->
   <xsl:param name="pubAppContext"/>
 
+  <xsl:param name="versionType"/>
+  <xsl:param name="versionNumber"/>
+
   <!-- ============================================================= -->
   <!--  ROOT TEMPLATE - HANDLES HTML FRAMEWORK                       -->
   <!-- ============================================================= -->
@@ -54,14 +57,49 @@
   <!-- ============================================================= -->
   <!--  "make-article" for the document architecture                 -->
   <!-- ============================================================= -->
+  <xsl:template name="version-notes">
+    <div class="retraction red-alert">
+      <p>
+      <xsl:choose>
+        <xsl:when test="front/notes[@notes-type='version-unavailable']">
+          <strong> Version no longer available.</strong><br/>
+        </xsl:when>
+        <xsl:when test="front/notes[@notes-type='article-temporarily-unavailable']">
+          <strong> Article temporarily unavailable.</strong><br/>
+        </xsl:when>
+        <xsl:when test="front/notes[@notes-type='custom']">
+          <strong> <xsl:value-of select="front/notes/title"/></strong><br />
+        </xsl:when>
+      </xsl:choose>
+
+    <xsl:apply-templates select="front/notes/p" mode="metadata"/>
+        <xsl:if test="front/notes/p/ext-link">
+          <xsl:variable name="citedArticleDoi">
+            <xsl:value-of select="front/notes/p/ext-link/@xlink:href"/>
+          </xsl:variable>
+          <xsl:element name="a">
+            <xsl:attribute name="href"><xsl:value-of select="$citedArticleDoi"/>
+            </xsl:attribute>
+        <xsl:value-of select="front/notes/p/ext-link"/>
+          </xsl:element>
+        </xsl:if>
+      </p>
+    </div>
+  </xsl:template>
 
   <!-- Ambra modifications -->
+
   <xsl:template name="make-article">
+
     <xsl:call-template name="newline2"/>
     <xsl:call-template name="newline1"/>
+
     <xsl:call-template name="make-front"/>
     <xsl:call-template name="newline1"/>
     <div class="articleinfo">
+      <xsl:if test="front/notes">
+        <xsl:call-template name="version-notes"/>
+      </xsl:if>
       <xsl:call-template name="make-article-meta"/>
     </div>
     <xsl:call-template name="make-editors-summary"/>
@@ -1157,12 +1195,12 @@
         </xsl:attribute>
         <a class="figure-link">
           <xsl:attribute name="href">
-            <xsl:value-of select="concat('article/figure?id=', $imageURI)"/>
+            <xsl:value-of select="concat('article/figure?id=', $imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
           </xsl:attribute>
           <span class="figure-expand">Expand</span>
           <img alt="thumbnail" class="figure-image">
             <xsl:attribute name="src">
-              <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/>
+              <xsl:value-of select="concat('article/file?type=medium&amp;id=', $imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
             </xsl:attribute>
           </img>
         </a>
@@ -1185,7 +1223,7 @@
           </div>
           <a>
             <xsl:attribute name="href">
-              <xsl:value-of select="concat('article/figure?id=', $imageURI)"/>
+              <xsl:value-of select="concat('article/figure?id=', $imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
             </xsl:attribute>
             More »
           </a>
@@ -1298,7 +1336,7 @@
           <xsl:value-of select="@xlink:href"/>
         </xsl:variable>
         <xsl:attribute name="src">
-          <xsl:value-of select="concat('article/figure/image?size=graphic&amp;id=', $graphicDOI)"/>
+          <xsl:value-of select="concat('article/file?type=thumbnail&amp;id=', $graphicDOI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">
@@ -2022,7 +2060,7 @@
       <strong>
         <xsl:element name="a">
           <xsl:attribute name="href">
-            <xsl:value-of select="concat('article/asset?unique&amp;id=', $objURI)"/>
+            <xsl:value-of select="concat('article/file?type=supplementary&amp;id=', $objURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
           </xsl:attribute>
           <xsl:apply-templates select="label"/>
         </xsl:element>
@@ -2183,12 +2221,6 @@
   <xsl:template match="uri | inline-supplementary-material"/>
 
   <!-- Ambra-specific template -->
-  <xsl:template match="ext-link">
-    <a>
-      <xsl:call-template name="assign-href"/>
-      <xsl:apply-templates/>
-    </a>
-  </xsl:template>
 
   <!-- suppress, we don't use  -->
   <xsl:template match="funding-source"/>

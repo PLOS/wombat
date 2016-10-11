@@ -30,7 +30,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,30 +53,6 @@ public abstract class WombatController {
   protected void enforceDevFeature(String feature) {
     if (!runtimeConfiguration.getEnabledDevFeatures().contains(feature)){
       throw new NotFoundException("Required dev feature is not enabled");
-    }
-  }
-
-  /**
-   * Validate that an article ought to be visible to the user. If not, throw an exception indicating that the user
-   * should see a 404.
-   * <p/>
-   * An article may be invisible if it is not in a published state, or if it has not been published in a journal
-   * corresponding to the site.
-   *
-   * @param site            the site on which the article was queried
-   * @param articleMetadata the article metadata, or a subset containing the {@code state} and {@code journals} fields
-   * @throws NotVisibleException if the article is not visible on the site
-   */
-  protected void validateArticleVisibility(Site site, Map<?, ?> articleMetadata) {
-    String state = (String) articleMetadata.get("state");
-    if (!"published".equals(state)) {
-      throw new NotVisibleException("Article is in unpublished state: " + state);
-    }
-
-    Set<String> articleJournalKeys = ((Map<String, ?>) articleMetadata.get("journals")).keySet();
-    String siteJournalKey = site.getJournalKey();
-    if (!articleJournalKeys.contains(siteJournalKey)) {
-      throw new NotVisibleException("Article is not published in: " + site);
     }
   }
 
@@ -141,10 +116,7 @@ public abstract class WombatController {
       }
       String value = header.getValue();
       if (name.equalsIgnoreCase(HttpHeaders.CONTENT_DISPOSITION)) {
-        if (!isDownloadRequest) {
-          value = setDispositionType(value, "inline");
-        }
-        return sanitizeAssetFilename(value);
+        return sanitizeAssetFilename(setDispositionType(value, isDownloadRequest ? "attachment" : "inline"));
       }
       return value;
     };

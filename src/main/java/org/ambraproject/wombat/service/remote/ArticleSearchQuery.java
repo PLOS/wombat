@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ArticleSearchQuery {
 
@@ -30,7 +31,6 @@ public class ArticleSearchQuery {
       "abstract", "abstract_primary_display"}));
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;
-
 
   private final Optional<String> query;
   private final boolean isSimple;
@@ -52,6 +52,7 @@ public class ArticleSearchQuery {
 
   private final ImmutableList<String> journalKeys;
   private final ImmutableList<String> articleTypes;
+  private final ImmutableList<String> articleTypesToExclude;
   private final ImmutableList<String> subjects;
   private final ImmutableList<String> authors;
   private final ImmutableList<String> sections;
@@ -77,6 +78,7 @@ public class ArticleSearchQuery {
     this.sortOrder = Optional.fromNullable(builder.sortOrder);
     this.journalKeys = ImmutableList.copyOf(builder.journalKeys);
     this.articleTypes = ImmutableList.copyOf(builder.articleTypes);
+    this.articleTypesToExclude = ImmutableList.copyOf(builder.articleTypesToExclude);
     this.subjects = ImmutableList.copyOf(builder.subjects);
     this.authors = ImmutableList.copyOf(builder.authors);
     this.sections = ImmutableList.copyOf(builder.sections);
@@ -161,19 +163,26 @@ public class ArticleSearchQuery {
       }
     }
     if (!ListUtil.isNullOrEmpty(journalKeys)) {
-      List<String> crossPublishedJournals = new ArrayList<>();
-      for (String journalKey : journalKeys) {
-        crossPublishedJournals.add("cross_published_journal_key:" + journalKey);
-      }
+      List<String> crossPublishedJournals = journalKeys.stream()
+          .map(journalKey -> "cross_published_journal_key:" + journalKey).collect(Collectors.toList());
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(crossPublishedJournals)));
     }
 
     if (!ListUtil.isNullOrEmpty(articleTypes)) {
-      List<String> articleTypeQueryList = new ArrayList<>();
-      for (String articleType : articleTypes) {
-        articleTypeQueryList.add("article_type_facet:\"" + articleType + "\"");
-      }
+      List<String> articleTypeQueryList = articleTypes.stream()
+          .map(articleType ->
+          {
+            String articleTypeStr = articleType.equals("*") ? articleType : "\"" + articleType + "\"";
+            return "article_type_facet:" + articleTypeStr;
+          })
+          .collect(Collectors.toList());
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(articleTypeQueryList)));
+    }
+
+    if (!ListUtil.isNullOrEmpty(articleTypesToExclude)) {
+      List<String> articleTypeToExcludeQueryList = articleTypesToExclude.stream()
+          .map(articleType -> "!article_type_facet:\"" + articleType + "\"").collect(Collectors.toList());
+      params.add(new BasicNameValuePair("fq", Joiner.on(" AND ").join(articleTypeToExcludeQueryList)));
     }
 
     if (!ListUtil.isNullOrEmpty(subjects)) {
@@ -385,6 +394,7 @@ public class ArticleSearchQuery {
 
     private List<String> journalKeys = ImmutableList.of();
     private List<String> articleTypes = ImmutableList.of();
+    private List<String> articleTypesToExclude = ImmutableList.of();
     private List<String> subjects = ImmutableList.of();
     private List<String> authors = ImmutableList.of();
     private List<String> sections = ImmutableList.of();
@@ -469,7 +479,7 @@ public class ArticleSearchQuery {
     }
 
     /**
-     * @param minFacetCount   minimum number of facets to use
+     * @param minFacetCount minimum number of facets to use
      */
     public Builder setMinFacetCount(int minFacetCount) {
       this.minFacetCount = minFacetCount;
@@ -513,6 +523,14 @@ public class ArticleSearchQuery {
      */
     public Builder setArticleTypes(List<String> articleTypes) {
       this.articleTypes = articleTypes;
+      return this;
+    }
+
+    /**
+     * @param articleTypesToExclude set the article types to exclude
+     */
+    public Builder setArticleTypesToExclude(List<String> articleTypesToExclude) {
+      this.articleTypesToExclude = articleTypesToExclude;
       return this;
     }
 

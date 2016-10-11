@@ -13,10 +13,12 @@
 
 package org.ambraproject.wombat.service;
 
-import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.identity.AssetPointer;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
+import org.ambraproject.wombat.service.remote.ContentKey;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,18 +29,16 @@ public interface ArticleService {
   /**
    * Requests metadata about an article.
    *
-   * @param articleId DOI string
-   * @param excludeCitations if true, citation data will not be returned (optimization param)
    * @return deserialized JSON data structure as returned by the SOA layer
    * @throws IOException
    */
-  Map<?, ?> requestArticleMetadata(String articleId, Boolean excludeCitations) throws IOException;
+  Map<String, ?> requestArticleMetadata(RequestedDoiVersion articleId) throws IOException;
 
-  /**
-   * Get the list of article figures and tables from the article meta data
-   *
-   * @param articleMetadata article metadata
-   * @return list of figures and tables
-   */
-  List<ImmutableMap<String, String>> getArticleFiguresAndTables(Map<?, ?> articleMetadata);
+  Map<String, ?> requestArticleMetadata(ArticlePointer articleId) throws IOException;
+
+  Map<String, ?> getItemTable(ArticlePointer articleId) throws IOException;
+
+  Map<String, ?> getItemFiles(AssetPointer assetId) throws IOException;
+
+  ContentKey getManuscriptKey(ArticlePointer articleId) throws IOException;
 }

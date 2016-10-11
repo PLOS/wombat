@@ -7,43 +7,41 @@
       useUrlDoiStyle - Boolean. True to format the DOI as a URL at http://dx.doi.org/; false to
                        just prefix it with "doi:".
   -->
-<#macro displayCitation citation useUrlDoiStyle>
+<#macro displayCitation citation useUrlDoiStyle authors=citation.authors>
   <#assign maxAuthors = 5 /><#-- May want this to be configurable in the future. -->
 
-  <#list citation.authors as author>
+  <#list authors as author>
     <#if author_index lt maxAuthors>
-      <#assign isCommaShown =
-      author_has_next ||
-      (citation.authors?size lt maxAuthors         <#-- Show a comma before "et al."     -->
-      && citation.collaborativeAuthors?size gt 0)  <#-- or if collab authors will follow -->
-      />
-    ${author.surnames!}
-      <#if author.givenNames?has_content><@abbreviatedName>${author.givenNames}</@abbreviatedName></#if><#t/>
-      <#if author.suffix?has_content> <#--space--> ${author.suffix?replace('.', '')}</#if><#t/>
-      <#if isCommaShown><#t/>,</#if>
+    ${author.surnames!}<#t/>
+      <#if author.givenNames?has_content>
+        <#if author.surnames?has_content>
+        &nbsp;<#t/>
+          <@abbreviatedName>${author.givenNames}</@abbreviatedName><#t/>
+        <#else>
+        ${author.givenNames}<#t/>
+        </#if>
+      </#if>
+      <#if author.suffix?has_content>
+      &nbsp;<#t/>
+      ${author.suffix?replace('.', '')}<#t/>
+      </#if>
+    <#-- Show a comma if another author or "et al." will follow -->
+      <#if author_has_next || authors?size gt maxAuthors><#t/>,</#if>
     </#if>
   </#list>
 
-  <#assign maxCollabAuthors = maxAuthors - citation.authors?size />
-  <#list citation.collaborativeAuthors as author>
-    <#if author_index lt maxCollabAuthors>
-      <#assign isCommaShown = author_has_next || citation.collaborativeAuthors?size gt maxCollabAuthors />
-    ${author}<#if isCommaShown>,</#if>
-    </#if>
-  </#list>
-
-  <#if citation.authors?size + citation.collaborativeAuthors?size gt maxAuthors>
+  <#if authors?size gt maxAuthors>
   et al.
   </#if>
 
-  <#if citation.date??>(<@formatJsonDate date="${citation.date}" format="yyyy" />)</#if>
+  <#if citation.publicationDate??>(<@formatJsonDate date="${citation.publicationDate}" format="yyyy" />)</#if>
 
   <#if citation.title??>
-  ${citation.title}<#if !citation.title?ends_with('?')>.</#if>
+    <@xform xml=citation.title/><#if !citation.title?ends_with('?')>.</#if>
   </#if>
 
   <#if citation.journal??>
-  ${citation.journal}<#t/>
+  ${citation.journal.title}<#t/>
     <#if citation.volume??> <#--space--> ${citation.volume}</#if><#if citation.issue??>(${citation.issue})</#if><#t/>
     <#if citation.eLocationId??><#t/>: ${citation.eLocationId}</#if>.
   </#if>

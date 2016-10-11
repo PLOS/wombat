@@ -100,10 +100,15 @@ public class GeneralDoiController extends WombatController {
   }
 
   private static final ImmutableMap<String, String> REDIRECT_HANDLERS = ImmutableMap.<String, String>builder()
+      .put("volume", "browseVolumes")
+      .put("issue", "browseIssues")
+      .put("comment", "articleCommentTree")
+
       .put("article", "article")
       .put("figure", "figurePage")
       .put("table", "figurePage")
       // TODO: supp info
+
       .build();
 
   private Link getRedirectFor(Site site, RequestedDoiVersion id) throws IOException {

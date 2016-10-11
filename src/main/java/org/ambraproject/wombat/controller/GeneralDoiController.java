@@ -99,33 +99,52 @@ public class GeneralDoiController extends WombatController {
     return Objects.requireNonNull((String) itemMetadata.get("itemType"));
   }
 
-  private static final ImmutableMap<String, String> REDIRECT_HANDLERS = ImmutableMap.<String, String>builder()
-      .put("volume", "browseVolumes")
-      .put("issue", "browseIssues")
-      .put("comment", "articleCommentTree")
+  @FunctionalInterface
+  private static interface RedirectFunction {
+    Link getLink(Site site, RequestedDoiVersion id);
+  }
 
-      .put("article", "article")
-      .put("figure", "figurePage")
-      .put("table", "figurePage")
+  private final ImmutableMap<String, RedirectFunction> redirectHandlers = ImmutableMap.<String, RedirectFunction>builder()
+      .put("volume", redirectToSinglePage("browseVolumes"))
+      .put("issue", redirectWithIdParameter("browseIssues"))
+      .put("comment", redirectWithIdParameter("articleCommentTree"))
+
+      .put("article", redirectWithIdParameter("article"))
+      .put("figure", redirectWithIdParameter("figurePage"))
+      .put("table", redirectWithIdParameter("figurePage"))
       // TODO: supp info
 
       .build();
 
-  private Link getRedirectFor(Site site, RequestedDoiVersion id) throws IOException {
-    String handlerName = REDIRECT_HANDLERS.get(getTypeOf(id));
-    if (handlerName == null) {
-      throw new RuntimeException("Unrecognized type: " + id);
-    }
-    Link.Factory.PatternBuilder handlerLink = Link.toLocalSite(site)
-        .toPattern(requestMappingContextDictionary, handlerName);
-    return pointLinkToDoi(handlerLink, id);
+  private RedirectFunction redirectWithIdParameter(String handlerName) {
+    Objects.requireNonNull(handlerName);
+    return (Site site, RequestedDoiVersion id) -> {
+      Link.Factory.PatternBuilder handlerLink = Link.toLocalSite(site)
+          .toPattern(requestMappingContextDictionary, handlerName)
+          .addQueryParameter("id", id.getDoi());
+      id.getRevisionNumber().ifPresent(revisionNumber ->
+          handlerLink.addQueryParameter("rev", revisionNumber));
+      return handlerLink.build();
+    };
   }
 
-  private static Link pointLinkToDoi(Link.Factory.PatternBuilder link, RequestedDoiVersion id) {
-    link.addQueryParameter("id", id.getDoi());
-    id.getRevisionNumber().ifPresent(revisionNumber ->
-        link.addQueryParameter("rev", revisionNumber));
-    return link.build();
+  /**
+   * @return a {@code RedirectFunction} that only goes to a handler and ignores the {@link RequestedDoiVersion}
+   */
+  private RedirectFunction redirectToSinglePage(String handlerName) {
+    Objects.requireNonNull(handlerName);
+    return (Site site, RequestedDoiVersion id) ->
+        Link.toLocalSite(site)
+            .toPattern(requestMappingContextDictionary, handlerName)
+            .build();
+  }
+
+  private Link getRedirectFor(Site site, RequestedDoiVersion id) throws IOException {
+    RedirectFunction redirectFunction = redirectHandlers.get(getTypeOf(id));
+    if (redirectFunction == null) {
+      throw new RuntimeException("Unrecognized type: " + id);
+    }
+    return redirectFunction.getLink(site, id);
   }
 
   @RequestMapping(name = "assetFile", value = "/article/file", params = {"type"})

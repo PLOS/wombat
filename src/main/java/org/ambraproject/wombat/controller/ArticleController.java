@@ -180,6 +180,10 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/article";
   }
 
+  private void addCommentAvailability(Model model) {
+    model.addAttribute("areCommentsDisabled", runtimeConfiguration.areCommentsDisabled());
+  }
+
   /**
    * Serves a request for a list of all the root-level comments associated with an article.
    *
@@ -203,6 +207,8 @@ public class ArticleController extends WombatController {
       model.addAttribute("userApiError", e);
     }
 
+    addCommentAvailability(model);
+
     return site + "/ftl/article/comment/comments";
   }
 
@@ -214,6 +220,7 @@ public class ArticleController extends WombatController {
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
     model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
+    addCommentAvailability(model);
     return site + "/ftl/article/comment/newComment";
   }
 
@@ -492,6 +499,7 @@ public class ArticleController extends WombatController {
 
     model.addAttribute("comment", comment);
     model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
+    addCommentAvailability(model);
     return site + "/ftl/article/comment/comment";
   }
 

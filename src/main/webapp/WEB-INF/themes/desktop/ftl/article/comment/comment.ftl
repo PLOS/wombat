@@ -178,6 +178,7 @@
             </#if>
           </div>
 
+          <#if areCommentsDisabled?? && !areCommentsDisabled>
           <div class="toolbar">
             <#assign userIsLoggedIn = isUserLoggedIn() />
             <@siteLink handlerName="userLogin" queryParameters={"page": getLinkToCurrentPage()
@@ -206,6 +207,7 @@
         <#-- Containers for drop-down boxes. JavaScript inserts a copy of a prototype div when the button is clicked. -->
           <div class="report_container" style="display:none;"></div>
           <div class="respond_container" style="display:none;"></div>
+          </#if>
         </div>
 
         <div class="replies">

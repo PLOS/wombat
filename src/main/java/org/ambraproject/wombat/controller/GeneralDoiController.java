@@ -138,7 +138,9 @@ public class GeneralDoiController extends WombatController {
       .put("figure", redirectWithIdParameter("figurePage"))
       .put("table", redirectWithIdParameter("figurePage"))
 
-      .put("supplementaryMaterial", this::linkToSupplementaryMaterialDownload)
+      .put("supplementaryMaterial", redirectToAssetFile("supplementary"))
+      .put("graphic", redirectToAssetFile("original"))
+      .put("standaloneStrikingImage", redirectToAssetFile("original"))
 
       .build();
 
@@ -166,11 +168,14 @@ public class GeneralDoiController extends WombatController {
         factory.toPattern(requestMappingContextDictionary, handlerName).build();
   }
 
-  private Link linkToSupplementaryMaterialDownload(Link.Factory factory, RequestedDoiVersion id) {
-    Link.Factory.PatternBuilder pattern = factory.toPattern(requestMappingContextDictionary, "assetFile");
-    Link.Factory.PatternBuilder builder = buildLinkToId(pattern, id);
-    builder.addQueryParameter("type", "supplementary");
-    return builder.build();
+  private RedirectFunction redirectToAssetFile(String fileType) {
+    Objects.requireNonNull(fileType);
+    return (Link.Factory factory, RequestedDoiVersion id) -> {
+      Link.Factory.PatternBuilder pattern = factory.toPattern(requestMappingContextDictionary, "assetFile");
+      Link.Factory.PatternBuilder builder = buildLinkToId(pattern, id);
+      builder.addQueryParameter("type", fileType);
+      return builder.build();
+    };
   }
 
   private Link getRedirectFor(Site site, RequestedDoiVersion id) throws IOException {

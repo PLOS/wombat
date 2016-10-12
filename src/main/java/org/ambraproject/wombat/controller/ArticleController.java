@@ -15,7 +15,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
 import com.google.gson.Gson;
-import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -155,7 +155,7 @@ public class ArticleController extends WombatController {
   @Autowired
   private CommentService commentService;
   @Autowired
-  private RequestMappingContextDictionary requestMappingContextDictionary;
+  private RuntimeConfiguration runtimeConfiguration;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -178,6 +178,10 @@ public class ArticleController extends WombatController {
     model.addAttribute("amendments", fillAmendments(site, articleMetaData));
 
     return site + "/ftl/article/article";
+  }
+
+  private void addCommentAvailability(Model model) {
+    model.addAttribute("areCommentsDisabled", runtimeConfiguration.areCommentsDisabled());
   }
 
   /**
@@ -203,6 +207,8 @@ public class ArticleController extends WombatController {
       model.addAttribute("userApiError", e);
     }
 
+    addCommentAvailability(model);
+
     return site + "/ftl/article/comment/comments";
   }
 
@@ -214,6 +220,7 @@ public class ArticleController extends WombatController {
     Map<?, ?> articleMetaData = addCommonModelAttributes(request, model, site, articleId);
     validateArticleVisibility(site, articleMetaData);
     model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
+    addCommentAvailability(model);
     return site + "/ftl/article/comment/newComment";
   }
 
@@ -492,6 +499,7 @@ public class ArticleController extends WombatController {
 
     model.addAttribute("comment", comment);
     model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
+    addCommentAvailability(model);
     return site + "/ftl/article/comment/comment";
   }
 
@@ -500,6 +508,13 @@ public class ArticleController extends WombatController {
     HttpEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
     RequestBuilder reqBuilder = RequestBuilder.create("POST").setUri(target).setEntity(entity);
     return reqBuilder.build();
+  }
+
+  private void checkCommentsAreEnabled() {
+    if (runtimeConfiguration.areCommentsDisabled()) {
+      // TODO: Need a special exception and handler to produce a 400-series response instead of 500?
+      throw new RuntimeException("Posting of comments is disabled");
+    }
   }
 
   /**
@@ -519,6 +534,8 @@ public class ArticleController extends WombatController {
                                   @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
                                   @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
       throws IOException {
+    checkCommentsAreEnabled();
+
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
 
@@ -554,6 +571,8 @@ public class ArticleController extends WombatController {
                                    @RequestParam("comment") String flagCommentBody,
                                    @RequestParam("target") String targetComment)
       throws IOException {
+    checkCommentsAreEnabled();
+
     Map<String, Object> validationErrors = commentValidationService.validateFlag(flagCommentBody);
     if (!validationErrors.isEmpty()) {
       return ImmutableMap.of("validationErrors", validationErrors);

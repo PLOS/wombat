@@ -26,6 +26,9 @@
     <div id="thread" class="startDiscussion">
       <div class="loader">  </div>
 
+    <#if areCommentsDisabled?? && areCommentsDisabled>
+      <#include "commentsDisabledMessage.ftl" />
+    <#else>
       <h2>Start a Discussion</h2>
 
       <div class="reply cf form-default" id="respond">
@@ -35,6 +38,7 @@
       <@newCommentForm true />
 
       </div>
+    </#if>
 
     </div>
 

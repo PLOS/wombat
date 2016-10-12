@@ -123,4 +123,6 @@ public interface RuntimeConfiguration {
 
   CasConfiguration getCasConfiguration();
 
+  boolean areCommentsDisabled();
+
 }

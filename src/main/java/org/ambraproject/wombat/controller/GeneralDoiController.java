@@ -126,7 +126,7 @@ public class GeneralDoiController extends WombatController {
 
   @FunctionalInterface
   private static interface RedirectFunction {
-    Link getLink(Link.Factory linkFactory, RequestedDoiVersion id);
+    Link getLink(Link.Factory factory, RequestedDoiVersion id);
   }
 
   private final ImmutableMap<String, RedirectFunction> redirectHandlers = ImmutableMap.<String, RedirectFunction>builder()
@@ -137,18 +137,23 @@ public class GeneralDoiController extends WombatController {
       .put("article", redirectWithIdParameter("article"))
       .put("figure", redirectWithIdParameter("figurePage"))
       .put("table", redirectWithIdParameter("figurePage"))
-      // TODO: supp info
+
+      .put("supplementaryMaterial", this::linkToSupplementaryMaterialDownload)
 
       .build();
 
+  private static Link.Factory.PatternBuilder buildLinkToId(Link.Factory.PatternBuilder builder, RequestedDoiVersion id) {
+    builder.addQueryParameter("id", id.getDoi());
+    id.getRevisionNumber().ifPresent(revisionNumber ->
+        builder.addQueryParameter("rev", revisionNumber));
+    return builder;
+  }
+
   private RedirectFunction redirectWithIdParameter(String handlerName) {
     Objects.requireNonNull(handlerName);
-    return (Link.Factory linkFactory, RequestedDoiVersion id) -> {
-      Link.Factory.PatternBuilder handlerLink = linkFactory.toPattern(requestMappingContextDictionary, handlerName)
-          .addQueryParameter("id", id.getDoi());
-      id.getRevisionNumber().ifPresent(revisionNumber ->
-          handlerLink.addQueryParameter("rev", revisionNumber));
-      return handlerLink.build();
+    return (Link.Factory factory, RequestedDoiVersion id) -> {
+      Link.Factory.PatternBuilder pattern = factory.toPattern(requestMappingContextDictionary, handlerName);
+      return buildLinkToId(pattern, id).build();
     };
   }
 
@@ -157,8 +162,15 @@ public class GeneralDoiController extends WombatController {
    */
   private RedirectFunction redirectToSinglePage(String handlerName) {
     Objects.requireNonNull(handlerName);
-    return (Link.Factory linkFactory, RequestedDoiVersion id) ->
-        linkFactory.toPattern(requestMappingContextDictionary, handlerName).build();
+    return (Link.Factory factory, RequestedDoiVersion id) ->
+        factory.toPattern(requestMappingContextDictionary, handlerName).build();
+  }
+
+  private Link linkToSupplementaryMaterialDownload(Link.Factory factory, RequestedDoiVersion id) {
+    Link.Factory.PatternBuilder pattern = factory.toPattern(requestMappingContextDictionary, "assetFile");
+    Link.Factory.PatternBuilder builder = buildLinkToId(pattern, id);
+    builder.addQueryParameter("type", "supplementary");
+    return builder.build();
   }
 
   private Link getRedirectFor(Site site, RequestedDoiVersion id) throws IOException {

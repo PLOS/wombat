@@ -144,7 +144,8 @@ public class GeneralDoiController extends WombatController {
 
       .build();
 
-  private static Link.Factory.PatternBuilder buildLinkToId(Link.Factory.PatternBuilder builder, RequestedDoiVersion id) {
+  private Link.Factory.PatternBuilder buildLinkToId(Link.Factory factory, RequestedDoiVersion id, String handlerName) {
+    Link.Factory.PatternBuilder builder = factory.toPattern(requestMappingContextDictionary, handlerName);
     builder.addQueryParameter("id", id.getDoi());
     id.getRevisionNumber().ifPresent(revisionNumber ->
         builder.addQueryParameter("rev", revisionNumber));
@@ -153,10 +154,8 @@ public class GeneralDoiController extends WombatController {
 
   private RedirectFunction redirectWithIdParameter(String handlerName) {
     Objects.requireNonNull(handlerName);
-    return (Link.Factory factory, RequestedDoiVersion id) -> {
-      Link.Factory.PatternBuilder pattern = factory.toPattern(requestMappingContextDictionary, handlerName);
-      return buildLinkToId(pattern, id).build();
-    };
+    return (Link.Factory factory, RequestedDoiVersion id) ->
+        buildLinkToId(factory, id, handlerName).build();
   }
 
   /**
@@ -170,12 +169,10 @@ public class GeneralDoiController extends WombatController {
 
   private RedirectFunction redirectToAssetFile(String fileType) {
     Objects.requireNonNull(fileType);
-    return (Link.Factory factory, RequestedDoiVersion id) -> {
-      Link.Factory.PatternBuilder pattern = factory.toPattern(requestMappingContextDictionary, "assetFile");
-      Link.Factory.PatternBuilder builder = buildLinkToId(pattern, id);
-      builder.addQueryParameter("type", fileType);
-      return builder.build();
-    };
+    return (Link.Factory factory, RequestedDoiVersion id) ->
+        buildLinkToId(factory, id, "assetFile")
+            .addQueryParameter("type", fileType)
+            .build();
   }
 
   private Link getRedirectFor(Site site, RequestedDoiVersion id) throws IOException {

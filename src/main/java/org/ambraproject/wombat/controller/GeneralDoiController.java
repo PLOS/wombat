@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
@@ -47,6 +48,8 @@ public class GeneralDoiController extends WombatController {
   private ArticleResolutionService articleResolutionService;
   @Autowired
   private ArticleService articleService;
+  @Autowired
+  private SiteSet siteSet;
 
   @RequestMapping(name = "doi", value = "/doi")
   public RedirectView redirectFromDoi(HttpServletRequest request,
@@ -65,19 +68,28 @@ public class GeneralDoiController extends WombatController {
     }
   }
 
-  private static final String ARTICLE = "article";
-  private static final String ASSET = "asset";
+  private static class DoiTypeInfo {
+    private final String typeKey;
+    private final String journalKey;
 
-  private String getTypeOf(RequestedDoiVersion id) throws IOException {
+    private DoiTypeInfo(String typeKey, String journalKey) {
+      this.typeKey = Objects.requireNonNull(typeKey);
+      this.journalKey = Objects.requireNonNull(journalKey);
+    }
+  }
+
+  private DoiTypeInfo getTypeOf(RequestedDoiVersion id) throws IOException {
     Map<String, ?> metadata = getMetadataForDoi(id);
     String doiType = (String) metadata.get("type");
-    if (doiType.equals(ARTICLE)) {
-      return ARTICLE;
-    } else if (!doiType.equals(ASSET)) {
-      return doiType;
+
+    if (!metadata.containsKey("article")) {
+      Map<String, ?> journal = (Map<String, ?>) metadata.get("journal");
+      String journalKey = (String) journal.get("journalKey");
+      return new DoiTypeInfo(doiType, journalKey);
     }
 
-    // The DOI belongs to an article asset. If it has one or more revisions, request the latest one to get its itemType.
+    // The DOI belongs to an article asset.
+    // Request its latest revision in order to get its journal and, if it is an asset, its itemType.
     Map<String, ?> articleMetadata = (Map<String, ?>) metadata.get("article");
     Map<String, ?> revisionTable = (Map<String, ?>) articleMetadata.get("revisions");
     Optional<Integer> ingestionNumber = revisionTable.entrySet().stream()
@@ -88,6 +100,17 @@ public class GeneralDoiController extends WombatController {
       throw new NotFoundException();
     }
     String articleDoi = (String) articleMetadata.get("doi");
+    Map<String, ?> ingestionMetadata = articleApi.requestObject(
+        ApiAddress.builder("articles").embedDoi(articleDoi)
+            .addToken("ingestions").addToken(ingestionNumber.get().toString()).build(),
+        Map.class);
+    Map<String, ?> journal = (Map<String, ?>) ingestionMetadata.get("journal");
+    String journalKey = (String) journal.get("journalKey");
+
+    if (!doiType.equals("asset")) {
+      return new DoiTypeInfo(doiType, journalKey);
+    }
+
     Map<String, ?> itemView = articleApi.requestObject(
         ApiAddress.builder("articles").embedDoi(articleDoi)
             .addToken("ingestions").addToken(ingestionNumber.get().toString())
@@ -96,12 +119,14 @@ public class GeneralDoiController extends WombatController {
     Map<String, ?> itemTable = (Map<String, ?>) itemView.get("items");
     String canonicalDoi = (String) metadata.get("doi");
     Map<String, ?> itemMetadata = (Map<String, ?>) itemTable.get(canonicalDoi);
-    return Objects.requireNonNull((String) itemMetadata.get("itemType"));
+    String itemType = (String) itemMetadata.get("itemType");
+
+    return new DoiTypeInfo(itemType, journalKey);
   }
 
   @FunctionalInterface
   private static interface RedirectFunction {
-    Link getLink(Site site, RequestedDoiVersion id);
+    Link getLink(Link.Factory linkFactory, RequestedDoiVersion id);
   }
 
   private final ImmutableMap<String, RedirectFunction> redirectHandlers = ImmutableMap.<String, RedirectFunction>builder()
@@ -118,9 +143,8 @@ public class GeneralDoiController extends WombatController {
 
   private RedirectFunction redirectWithIdParameter(String handlerName) {
     Objects.requireNonNull(handlerName);
-    return (Site site, RequestedDoiVersion id) -> {
-      Link.Factory.PatternBuilder handlerLink = Link.toLocalSite(site)
-          .toPattern(requestMappingContextDictionary, handlerName)
+    return (Link.Factory linkFactory, RequestedDoiVersion id) -> {
+      Link.Factory.PatternBuilder handlerLink = linkFactory.toPattern(requestMappingContextDictionary, handlerName)
           .addQueryParameter("id", id.getDoi());
       id.getRevisionNumber().ifPresent(revisionNumber ->
           handlerLink.addQueryParameter("rev", revisionNumber));
@@ -133,18 +157,18 @@ public class GeneralDoiController extends WombatController {
    */
   private RedirectFunction redirectToSinglePage(String handlerName) {
     Objects.requireNonNull(handlerName);
-    return (Site site, RequestedDoiVersion id) ->
-        Link.toLocalSite(site)
-            .toPattern(requestMappingContextDictionary, handlerName)
-            .build();
+    return (Link.Factory linkFactory, RequestedDoiVersion id) ->
+        linkFactory.toPattern(requestMappingContextDictionary, handlerName).build();
   }
 
   private Link getRedirectFor(Site site, RequestedDoiVersion id) throws IOException {
-    RedirectFunction redirectFunction = redirectHandlers.get(getTypeOf(id));
+    DoiTypeInfo typeInfo = getTypeOf(id);
+    RedirectFunction redirectFunction = redirectHandlers.get(typeInfo.typeKey);
     if (redirectFunction == null) {
       throw new RuntimeException("Unrecognized type: " + id);
     }
-    return redirectFunction.getLink(site, id);
+    Link.Factory factory = Link.toForeignSite(site, typeInfo.journalKey, siteSet);
+    return redirectFunction.getLink(factory, id);
   }
 
   @RequestMapping(name = "assetFile", value = "/article/file", params = {"type"})

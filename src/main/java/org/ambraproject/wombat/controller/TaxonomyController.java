@@ -15,7 +15,6 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.model.TaxonomyCountTable;
@@ -144,7 +143,7 @@ public class TaxonomyController extends WombatController {
 
   @RequestMapping(name = "taxonomyCategoryFlag", value = "" + TAXONOMY_NAMESPACE + "flag/{action:add|remove}", method = RequestMethod.POST)
   @ResponseBody
-  public Object setFlag(HttpServletRequest request, HttpServletResponse responseToClient,
+  public void setFlag(HttpServletRequest request, HttpServletResponse responseToClient,
                       @PathVariable(value = "action") String action,
                       @RequestParam(value = "categoryTerm", required = true) String categoryTerm,
                       @RequestParam(value = "articleDoi", required = true) String articleDoi)
@@ -160,7 +159,6 @@ public class TaxonomyController extends WombatController {
     }
 
     articleApi.postObject(address.build(), null);
-    return ImmutableMap.of();
   }
 
   /**

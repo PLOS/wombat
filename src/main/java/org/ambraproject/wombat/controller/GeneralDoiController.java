@@ -79,18 +79,18 @@ public class GeneralDoiController extends WombatController {
   }
 
   private DoiTypeInfo getTypeOf(RequestedDoiVersion id) throws IOException {
-    Map<String, ?> metadata = getMetadataForDoi(id);
-    String doiType = (String) metadata.get("type");
+    Map<String, ?> doiMetadata = getMetadataForDoi(id);
+    String doiType = (String) doiMetadata.get("type");
 
-    if (!metadata.containsKey("article")) {
-      Map<String, ?> journal = (Map<String, ?>) metadata.get("journal");
+    if (!doiMetadata.containsKey("article")) {
+      Map<String, ?> journal = (Map<String, ?>) doiMetadata.get("journal");
       String journalKey = (String) journal.get("journalKey");
       return new DoiTypeInfo(doiType, journalKey);
     }
 
     // The DOI belongs to an article asset.
     // Request its latest revision in order to get its journal and, if it is an asset, its itemType.
-    Map<String, ?> articleMetadata = (Map<String, ?>) metadata.get("article");
+    Map<String, ?> articleMetadata = (Map<String, ?>) doiMetadata.get("article");
     Map<String, ?> revisionTable = (Map<String, ?>) articleMetadata.get("revisions");
     Optional<Integer> ingestionNumber = revisionTable.entrySet().stream()
         .max(Comparator.comparing(entry -> Integer.valueOf(entry.getKey()))) // find the latest revision
@@ -117,7 +117,7 @@ public class GeneralDoiController extends WombatController {
             .addToken("items").build(),
         Map.class);
     Map<String, ?> itemTable = (Map<String, ?>) itemView.get("items");
-    String canonicalDoi = (String) metadata.get("doi");
+    String canonicalDoi = (String) doiMetadata.get("doi");
     Map<String, ?> itemMetadata = (Map<String, ?>) itemTable.get(canonicalDoi);
     String itemType = (String) itemMetadata.get("itemType");
 

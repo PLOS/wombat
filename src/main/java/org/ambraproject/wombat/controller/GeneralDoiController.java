@@ -124,8 +124,16 @@ public class GeneralDoiController extends WombatController {
     return new DoiTypeInfo(itemType, journalKey);
   }
 
+  /**
+   * A function that produces a redirect link for a type of DOI-identified content.
+   */
   @FunctionalInterface
   private static interface RedirectFunction {
+    /**
+     * @param factory a link factory set up to point at a particular site
+     * @param id      the requested DOI
+     * @return a link to the handler covered by this object, resolving to the given site and DOI
+     */
     Link getLink(Link.Factory factory, RequestedDoiVersion id);
   }
 

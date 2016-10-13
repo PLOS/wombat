@@ -155,10 +155,10 @@ public class LegacyArticleAssetController extends WombatController {
     }
 
     Map<String, ?> itemMetadata = getItemMetadata(assetDoi);
+    String itemType = (String) itemMetadata.get("itemType");
 
     final String fileType;
     if (fileExtension.isPresent()) {
-      String itemType = (String) itemMetadata.get("itemType");
       fileType = LegacyFileExtensionRedirectStrategy.resolveToFileType(itemType, fileExtension.get());
     } else {
       Map<String, ?> itemFiles = (Map<String, ?>) itemMetadata.get("files");
@@ -176,7 +176,10 @@ public class LegacyArticleAssetController extends WombatController {
       }
     }
 
-    return redirectToAssetFile(request, site, assetDoi, fileType, booleanParameter(download));
+    ArticleAssetController.AssetUrlStyle style = ArticleAssetController.AssetUrlStyle.findByItemType(itemType);
+    Link redirectLink = style.buildRedirectLink(requestMappingContextDictionary, site,
+        RequestedDoiVersion.of(assetDoi), fileType, booleanParameter(download));
+    return new ModelAndView(redirectLink.getRedirect(request));
   }
 
   private Map<String, ?> getItemMetadata(String rawAssetDoi) throws IOException {
@@ -199,18 +202,6 @@ public class LegacyArticleAssetController extends WombatController {
 
     String canonicalAssetDoi = (String) assetMetadata.get("doi");
     return (Map<String, ?>) Objects.requireNonNull(itemTable.get(canonicalAssetDoi));
-  }
-
-  private ModelAndView redirectToAssetFile(HttpServletRequest request, Site site,
-                                           String id, String fileType, boolean isDownload) {
-    Link.Factory.PatternBuilder link = Link.toLocalSite(site)
-        .toPattern(requestMappingContextDictionary, "assetFile")
-        .addQueryParameter("id", id)
-        .addQueryParameter("type", fileType);
-    if (isDownload) {
-      link = link.addQueryParameter("download", "");
-    }
-    return new ModelAndView(link.build().getRedirect(request));
   }
 
 }

@@ -46,7 +46,7 @@ public class ArticleAssetController extends WombatController {
   @Autowired
   private RequestMappingContextDictionary requestMappingContextDictionary;
 
-  private static enum AssetUrlStyle {
+  static enum AssetUrlStyle {
     FIGURE_IMAGE("figureImage", "size", new String[]{"figure", "table", "standaloneStrikingImage"}),
     ASSET_FILE("assetFile", "type", new String[]{"article", "supplementaryMaterial", "graphic"});
 
@@ -60,17 +60,31 @@ public class ArticleAssetController extends WombatController {
       this.itemTypes = ImmutableSet.copyOf(itemTypes);
     }
 
-    public static final ImmutableMap<String, AssetUrlStyle> BY_ITEM_TYPE = ImmutableMap.copyOf(
+    private static final ImmutableMap<String, AssetUrlStyle> BY_ITEM_TYPE = ImmutableMap.copyOf(
         EnumSet.allOf(AssetUrlStyle.class).stream()
             .flatMap((AssetUrlStyle s) -> s.itemTypes.stream()
                 .map((String itemType) -> Maps.immutableEntry(itemType, s)))
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
 
-    public Link buildRedirectLink(ArticleAssetController controller, Site site,
-                                  AssetPointer assetId, String fileType, boolean isDownload) {
-      Link.Factory.PatternBuilder builder = Link.toLocalSite(site)
-          .toPattern(controller.requestMappingContextDictionary, handlerName);
-      builder.addQueryParameters(assetId.asParameterMap());
+    static AssetUrlStyle findByItemType(String itemType) {
+      AssetUrlStyle style = BY_ITEM_TYPE.get(itemType);
+      if (style == null) throw new IllegalArgumentException("Unrecognized: " + itemType);
+      return style;
+    }
+
+    Link buildRedirectLink(RequestMappingContextDictionary rmcd,
+                           Site site, RequestedDoiVersion id,
+                           String fileType, boolean isDownload) {
+      Link.Factory.PatternBuilder builder = Link.toLocalSite(site).toPattern(rmcd, handlerName);
+
+      // It's better to use the RequestedDoiVersion than an AssetPointer because, if the user made a request with
+      // no revision information, we don't want to permanently redirect to a URL that has a revision number.
+      builder.addQueryParameter(DoiVersionArgumentResolver.ID_PARAMETER, id.getDoi());
+      id.getRevisionNumber().ifPresent(revisionNumber ->
+          builder.addQueryParameter(DoiVersionArgumentResolver.REVISION_PARAMETER, revisionNumber));
+      id.getIngestionNumber().ifPresent(ingestionNumber ->
+          builder.addQueryParameter(DoiVersionArgumentResolver.INGESTION_PARAMETER, ingestionNumber));
+
       builder.addQueryParameter(typeParameterName, fileType);
       if (isDownload) {
         builder.addQueryParameter("download", "");
@@ -88,9 +102,9 @@ public class ArticleAssetController extends WombatController {
 
     Map<String, ?> itemMetadata = articleService.getItemMetadata(asset);
     String itemType = (String) itemMetadata.get("itemType");
-    AssetUrlStyle itemStyle = Objects.requireNonNull(AssetUrlStyle.BY_ITEM_TYPE.get(itemType));
+    AssetUrlStyle itemStyle = AssetUrlStyle.findByItemType(itemType);
     if (requestedStyle != itemStyle) {
-      Link redirectLink = itemStyle.buildRedirectLink(this, site, asset, fileType, isDownload);
+      Link redirectLink = itemStyle.buildRedirectLink(requestMappingContextDictionary, site, id, fileType, isDownload);
       String location = redirectLink.get(requestFromClient);
       log.warn(String.format("Redirecting %s request for %s to <%s>. Bad link?",
           requestedStyle, asset.asParameterMap(), location));

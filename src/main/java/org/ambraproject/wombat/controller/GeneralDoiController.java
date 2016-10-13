@@ -26,7 +26,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -91,10 +90,9 @@ public class GeneralDoiController extends WombatController {
     // The DOI belongs to an article asset.
     // Request its latest revision in order to get its journal and, if it is an asset, its itemType.
     Map<String, ?> articleMetadata = (Map<String, ?>) doiMetadata.get("article");
-    Map<String, ?> revisionTable = (Map<String, ?>) articleMetadata.get("revisions");
-    Optional<Integer> ingestionNumber = revisionTable.entrySet().stream()
-        .max(Comparator.comparing(entry -> Integer.valueOf(entry.getKey()))) // find the latest revision
-        .map(entry -> ((Number) entry.getValue()).intValue()); // extract its ingestion number
+    Map<String, Number> revisionTable = (Map<String, Number>) articleMetadata.get("revisions");
+    Optional<Integer> ingestionNumber = ArticleResolutionService.findLatestRevision(revisionTable)
+        .map(ArticleResolutionService.RevisionPointer::getIngestionNumber);
     if (!ingestionNumber.isPresent()) {
       // The article is unpublished. There is no particular ingestion whose itemType we should use.
       throw new NotFoundException();

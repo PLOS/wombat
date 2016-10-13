@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
 import org.ambraproject.wombat.controller.NotFoundException;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.AssetPointer;
@@ -13,6 +12,7 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.OptionalInt;
 
 public class ArticleResolutionService {
@@ -26,6 +26,53 @@ public class ArticleResolutionService {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  public static final class RevisionPointer {
+    private final int revisionNumber;
+    private final int ingestionNumber;
+
+    private RevisionPointer(int revisionNumber, int ingestionNumber) {
+      this.revisionNumber = revisionNumber;
+      this.ingestionNumber = ingestionNumber;
+    }
+
+    public int getRevisionNumber() {
+      return revisionNumber;
+    }
+
+    public int getIngestionNumber() {
+      return ingestionNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      return this == o || o != null && getClass() == o.getClass()
+          && revisionNumber == ((RevisionPointer) o).revisionNumber && ingestionNumber == ((RevisionPointer) o).ingestionNumber;
+    }
+
+    @Override
+    public int hashCode() {
+      return 31 * revisionNumber + ingestionNumber;
+    }
+  }
+
+  /**
+   * Find the latest revision from a table of revisions. The table generally comes from parsed JSON, which is why the
+   * keys are strings.
+   *
+   * @param revisionTable a table from revision numbers to their ingestion numbers
+   * @return the latest revision with the ingestion it points to, or empty if the the article is no revisions exist
+   * because the article is unpublished
+   */
+  public static Optional<RevisionPointer> findLatestRevision(Map<String, ? extends Number> revisionTable) {
+    return revisionTable.entrySet().stream()
+        .map((Map.Entry<String, ? extends Number> entry) -> {
+          int revisionNumber = Integer.parseInt(entry.getKey());
+          int ingestionNumber = entry.getValue().intValue();
+          return new RevisionPointer(revisionNumber, ingestionNumber);
+        })
+        .max(Comparator.comparing(RevisionPointer::getRevisionNumber));
   }
 
   private static ArticlePointer resolve(RequestedDoiVersion id, Map<String, ?> articleOverview) {
@@ -47,16 +94,12 @@ public class ArticleResolutionService {
       }
       return new ArticlePointer(canonicalDoi, ingestionForRevision.intValue(), OptionalInt.of(revisionValue));
     } else {
-      // Find the maximum revision number in the table
-      Map.Entry<Integer, Integer> maxRevisionEntry = revisionTable.entrySet().stream()
-          .map((Map.Entry<String, Number> entry) ->
-              Maps.immutableEntry(Integer.valueOf(entry.getKey()), entry.getValue().intValue()))
-          .max(Comparator.comparing(Map.Entry::getKey))
+      RevisionPointer latestRevision = findLatestRevision(revisionTable)
           .orElseThrow(() -> {
             String message = String.format("Article %s has no published revisions", id.getDoi());
             return new NotFoundException(message);
           });
-      return new ArticlePointer(canonicalDoi, maxRevisionEntry.getValue(), OptionalInt.of(maxRevisionEntry.getKey()));
+      return new ArticlePointer(canonicalDoi, latestRevision.getIngestionNumber(), OptionalInt.of(latestRevision.getRevisionNumber()));
     }
   }
 

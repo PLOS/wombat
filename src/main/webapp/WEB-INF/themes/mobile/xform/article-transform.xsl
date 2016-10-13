@@ -1200,7 +1200,7 @@
           <span class="figure-expand">Expand</span>
           <img alt="thumbnail" class="figure-image">
             <xsl:attribute name="src">
-              <xsl:value-of select="concat('article/file?type=medium&amp;id=', $imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
+              <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
             </xsl:attribute>
           </img>
         </a>

@@ -15,6 +15,8 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
@@ -32,6 +34,8 @@ import java.util.stream.Collectors;
 
 @Controller
 public class ArticleAssetController extends WombatController {
+
+  private static final Logger log = LoggerFactory.getLogger(ArticleAssetController.class);
 
   @Autowired
   private CorpusContentApi corpusContentApi;
@@ -87,7 +91,10 @@ public class ArticleAssetController extends WombatController {
     AssetUrlStyle itemStyle = Objects.requireNonNull(AssetUrlStyle.BY_ITEM_TYPE.get(itemType));
     if (requestedStyle != itemStyle) {
       Link redirectLink = itemStyle.buildRedirectLink(this, site, asset, fileType, isDownload);
-      redirectTo(requestFromClient, responseToClient, redirectLink);
+      String location = redirectLink.get(requestFromClient);
+      log.warn(String.format("Redirecting %s request for %s to <%s>. Bad link?",
+          requestedStyle, asset.asParameterMap(), location));
+      redirectTo(responseToClient, location);
       return;
     }
 
@@ -110,9 +117,9 @@ public class ArticleAssetController extends WombatController {
    * Redirect to a given link. (We can't just return a {@link org.springframework.web.servlet.view.RedirectView} because
    * we ordinarily want to pass the raw response to {@link #forwardAssetResponse}. So we mess around with it directly.)
    */
-  private void redirectTo(HttpServletRequest request, HttpServletResponse response, Link redirectLink) {
+  private void redirectTo(HttpServletResponse response, String location) {
     response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-    response.setHeader(HttpHeaders.LOCATION, redirectLink.get(request));
+    response.setHeader(HttpHeaders.LOCATION, location);
   }
 
   @RequestMapping(name = "assetFile", value = "/article/file", params = {"type"})

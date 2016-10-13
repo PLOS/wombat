@@ -7,6 +7,7 @@ import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ArticleResolutionService;
@@ -15,6 +16,7 @@ import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,12 +43,16 @@ public class ArticleAssetController extends WombatController {
   private RequestMappingContextDictionary requestMappingContextDictionary;
 
   private static enum AssetUrlStyle {
-    FIGURE_IMAGE("figure", "table", "standaloneStrikingImage"),
-    ASSET_FILE("article", "supplementaryMaterial", "graphic");
+    FIGURE_IMAGE("figureImage", "size", new String[]{"figure", "table", "standaloneStrikingImage"}),
+    ASSET_FILE("assetFile", "type", new String[]{"article", "supplementaryMaterial", "graphic"});
 
+    private final String handlerName;
+    private final String typeParameterName;
     private final ImmutableSet<String> itemTypes;
 
-    private AssetUrlStyle(String... itemTypes) {
+    private AssetUrlStyle(String handlerName, String typeParameterName, String[] itemTypes) {
+      this.handlerName = Objects.requireNonNull(handlerName);
+      this.typeParameterName = Objects.requireNonNull(typeParameterName);
       this.itemTypes = ImmutableSet.copyOf(itemTypes);
     }
 
@@ -55,6 +61,18 @@ public class ArticleAssetController extends WombatController {
             .flatMap((AssetUrlStyle s) -> s.itemTypes.stream()
                 .map((String itemType) -> Maps.immutableEntry(itemType, s)))
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+
+    public Link buildRedirectLink(ArticleAssetController controller, Site site,
+                                  AssetPointer assetId, String fileType, boolean isDownload) {
+      Link.Factory.PatternBuilder builder = Link.toLocalSite(site)
+          .toPattern(controller.requestMappingContextDictionary, handlerName);
+      builder.addQueryParameters(assetId.asParameterMap());
+      builder.addQueryParameter(typeParameterName, fileType);
+      if (isDownload) {
+        builder.addQueryParameter("download", "");
+      }
+      return builder.build();
+    }
   }
 
 
@@ -68,7 +86,9 @@ public class ArticleAssetController extends WombatController {
     String itemType = (String) itemMetadata.get("itemType");
     AssetUrlStyle itemStyle = Objects.requireNonNull(AssetUrlStyle.BY_ITEM_TYPE.get(itemType));
     if (requestedStyle != itemStyle) {
-      throw new NotFoundException();
+      Link redirectLink = itemStyle.buildRedirectLink(this, site, asset, fileType, isDownload);
+      redirectTo(requestFromClient, responseToClient, redirectLink);
+      return;
     }
 
     Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
@@ -84,6 +104,15 @@ public class ArticleAssetController extends WombatController {
     try (CloseableHttpResponse responseFromApi = corpusContentApi.request(contentKey, ImmutableList.of())) {
       forwardAssetResponse(responseFromApi, responseToClient, isDownload);
     }
+  }
+
+  /**
+   * Redirect to a given link. (We can't just return a {@link org.springframework.web.servlet.view.RedirectView} because
+   * we ordinarily want to pass the raw response to {@link #forwardAssetResponse}. So we mess around with it directly.)
+   */
+  private void redirectTo(HttpServletRequest request, HttpServletResponse response, Link redirectLink) {
+    response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+    response.setHeader(HttpHeaders.LOCATION, redirectLink.get(request));
   }
 
   @RequestMapping(name = "assetFile", value = "/article/file", params = {"type"})

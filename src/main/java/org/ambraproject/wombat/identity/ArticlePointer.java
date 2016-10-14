@@ -65,12 +65,18 @@ public final class ArticlePointer {
     return originalRequest.getRevisionNumber().isPresent() || originalRequest.getIngestionNumber().isPresent();
   }
 
+  /**
+   * @return the URL parameter that should be used in outgoing links to DOIs of the same version as this article
+   */
   public ImmutableMap<String, String> getVersionParameter() {
-    return revisionNumber.isPresent()
-        ? ImmutableMap.of(DoiVersionArgumentResolver.REVISION_PARAMETER, Integer.toString(revisionNumber.getAsInt()))
+    return !isOriginalRequestVersioned() ? ImmutableMap.of()
+        : revisionNumber.isPresent() ? ImmutableMap.of(DoiVersionArgumentResolver.REVISION_PARAMETER, Integer.toString(revisionNumber.getAsInt()))
         : ImmutableMap.of(DoiVersionArgumentResolver.INGESTION_PARAMETER, Integer.toString(ingestionNumber));
   }
 
+  /**
+   * @return the URL parameters that should be used in outgoing links to the same version and DOI of this article
+   */
   public ImmutableMap<String, String> asParameterMap() {
     return ImmutableMap.<String, String>builder()
         .put(DoiVersionArgumentResolver.ID_PARAMETER, doi)

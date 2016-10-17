@@ -14,7 +14,7 @@
         <p>
           <a href="${issueLink}" class="">
             <img
-                src="<@siteLink handlerName="assetFile" queryParameters={"type": "small", "id": currentIssue.imageArticle.figureImageDoi}/>"
+                src="<@siteLink handlerName="figureImage" queryParameters={"size": "small", "id": currentIssue.imageArticle.figureImageDoi}/>"
                 class="center-block" alt="Current Issue"/>
           </a>
         </p>

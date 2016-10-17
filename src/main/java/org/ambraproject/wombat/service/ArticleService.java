@@ -38,6 +38,8 @@ public interface ArticleService {
 
   Map<String, ?> getItemTable(ArticlePointer articleId) throws IOException;
 
+  Map<String, ?> getItemMetadata(AssetPointer assetId) throws IOException;
+
   Map<String, ?> getItemFiles(AssetPointer assetId) throws IOException;
 
   ContentKey getManuscriptKey(ArticlePointer articleId) throws IOException;

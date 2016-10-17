@@ -51,7 +51,7 @@
 
 <#if article.strikingImage??>
 <#-- Provide an evergreen URL (not articlePtr) for striking image. Assumes striking image DOI will not change between revisions. -->
-  <#assign strikingImageUrl><@siteLink handlerName="assetFile" absoluteLink=true queryParameters={"id" : article.strikingImage.doi, "type": "inline"}/></#assign>
+  <#assign strikingImageUrl><@siteLink handlerName="figureImage" absoluteLink=true queryParameters={"id" : article.strikingImage.doi, "size": "inline"}/></#assign>
 </#if>
 
 <#if twitterUsername?has_content>

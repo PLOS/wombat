@@ -56,8 +56,7 @@
 
 <#if article??>
 <#-- // citation meta tags -->
-<#include "../article/metaTags.ftl" />
-
+<#--<#include "../article/metaTags.ftl" />-->
 </#if>
 <#include "doubleClickAdHead.ftl" />
 <#include "header/doubleClickAdHeadSetup.ftl" />

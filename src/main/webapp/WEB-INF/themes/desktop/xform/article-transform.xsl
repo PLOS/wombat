@@ -34,8 +34,7 @@
                  used to provide DOIs and author/title overrides for reference links -->
   <xsl:param name="refs"/>
 
-  <xsl:param name="versionType"/>
-  <xsl:param name="versionNumber"/>
+  <xsl:param name="versionLinkParameter"/>
 
   <!-- ============================================================= -->
   <!--  ROOT TEMPLATE - HANDLES HTML FRAMEWORK                       -->
@@ -1279,19 +1278,19 @@
         <xsl:value-of select="(./graphic|./alternatives/graphic)/@xlink:href"/>
       </xsl:variable>
       <xsl:variable name="slideshowURL">
-        <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=',$imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=',$imageURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="pptURL">
-        <xsl:value-of select="concat('article/figure/powerpoint?id=',$imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/figure/powerpoint?id=',$imageURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="bigImgURL">
-        <xsl:value-of select="concat('article/figure/image?download&amp;size=large&amp;id=',$imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/figure/image?download&amp;size=large&amp;id=',$imageURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="origImgURL">
-        <xsl:value-of select="concat('article/figure/image?download&amp;size=original&amp;id=',$imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/figure/image?download&amp;size=original&amp;id=',$imageURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="targetURI">
@@ -1341,7 +1340,7 @@
             <xsl:element name="img">
               <xsl:attribute name="src">
                 <xsl:value-of
-                  select="concat('article/figure/image?size=inline&amp;id=',$imageURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
+                  select="concat('article/figure/image?size=inline&amp;id=',$imageURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
               </xsl:attribute>
               <xsl:attribute name="alt">thumbnail</xsl:attribute>
               <xsl:attribute name="class">thumbnail</xsl:attribute>
@@ -1552,7 +1551,7 @@
           <xsl:value-of select="@xlink:href"/>
         </xsl:variable>
         <xsl:attribute name="src">
-          <xsl:value-of select="concat('article/file?type=thumbnail&amp;id=',$graphicDOI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
+          <xsl:value-of select="concat('article/file?type=thumbnail&amp;id=',$graphicDOI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">
@@ -2247,7 +2246,7 @@
 
         <xsl:element name="a">
           <xsl:attribute name="href">
-            <xsl:value-of select="concat('article/file?type=supplementary&amp;id=', $objURI,'&amp;',$versionType,'=',$versionNumber)"/><!-- TODO: Avoid relative path -->
+            <xsl:value-of select="concat('article/file?type=supplementary&amp;id=', $objURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
           </xsl:attribute>
           <xsl:apply-templates select="label"/>
         </xsl:element>

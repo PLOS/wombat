@@ -127,20 +127,29 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   }
 
   private void setVersionLink(ArticlePointer articleId, Transformer transformer) {
-    final String parameterName;
-    final int parameterValue;
+    final String versionLinkParameter;
+    if (articleId.isOriginalRequestVersioned()) {
+      final String versionType;
+      final int versionNumber;
 
-    OptionalInt revisionNumber = articleId.getRevisionNumber();
-    if (revisionNumber.isPresent()) {
-      parameterName = DoiVersionArgumentResolver.REVISION_PARAMETER;
-      parameterValue = revisionNumber.getAsInt();
+      OptionalInt revisionNumber = articleId.getRevisionNumber();
+      if (revisionNumber.isPresent()) {
+        versionType = DoiVersionArgumentResolver.REVISION_PARAMETER;
+        versionNumber = revisionNumber.getAsInt();
+      } else {
+        versionType = DoiVersionArgumentResolver.INGESTION_PARAMETER;
+        versionNumber = articleId.getIngestionNumber();
+      }
+
+      // Pre-build a snippet of a URL, meant to be concatenated onto a link in an HTML attribute.
+      // Assumes that it will always be preceded by at least one other parameter,
+      // else we would need a question mark instead of an ampersand.
+      // TODO: Build the URL syntax in XSLT instead
+      versionLinkParameter = "&amp;" + versionType + "=" + versionNumber;
     } else {
-      parameterName = DoiVersionArgumentResolver.INGESTION_PARAMETER;
-      parameterValue = articleId.getIngestionNumber();
+      versionLinkParameter = "";
     }
-
-    transformer.setParameter("versionType", parameterName);
-    transformer.setParameter("versionNumber", parameterValue);
+    transformer.setParameter("versionLinkParameter", versionLinkParameter);
   }
 
   private void transform(Site site, InputStream xml, OutputStream html, TransformerInitializer initialization)

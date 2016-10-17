@@ -1,11 +1,9 @@
 package org.ambraproject.wombat.identity;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
 import org.ambraproject.wombat.service.ApiAddress;
 
-import java.util.Map;
 import java.util.Objects;
 import java.util.OptionalInt;
 
@@ -17,7 +15,13 @@ import java.util.OptionalInt;
 public final class ArticlePointer {
 
   /**
-   * The DOI in its canonical form.
+   * An object describing the original request from the client.
+   */
+  private final RequestedDoiVersion originalRequest;
+
+  /**
+   * The DOI in its canonical form. It should be a structurally equal DOI to {@code originalRequest.getDoi()}, but is
+   * not necessarily equal character-for-character, due to case insensitivity and URI prefixes.
    */
   private final String doi;
 
@@ -37,10 +41,12 @@ public final class ArticlePointer {
    */
   private final OptionalInt revisionNumber;
 
-  public ArticlePointer(String doi, int ingestionNumber, OptionalInt revisionNumber) {
+  public ArticlePointer(RequestedDoiVersion originalRequest, String doi,
+                        int ingestionNumber, OptionalInt revisionNumber) {
+    this.originalRequest = Objects.requireNonNull(originalRequest);
     this.doi = Objects.requireNonNull(doi);
     this.ingestionNumber = ingestionNumber;
-    this.revisionNumber = revisionNumber;
+    this.revisionNumber = Objects.requireNonNull(revisionNumber);
   }
 
   public String getDoi() {
@@ -55,12 +61,22 @@ public final class ArticlePointer {
     return revisionNumber;
   }
 
+  public boolean isOriginalRequestVersioned() {
+    return originalRequest.getRevisionNumber().isPresent() || originalRequest.getIngestionNumber().isPresent();
+  }
+
+  /**
+   * @return the URL parameter that should be used in outgoing links to DOIs of the same version as this article
+   */
   public ImmutableMap<String, String> getVersionParameter() {
-    return revisionNumber.isPresent()
-        ? ImmutableMap.of(DoiVersionArgumentResolver.REVISION_PARAMETER, Integer.toString(revisionNumber.getAsInt()))
+    return !isOriginalRequestVersioned() ? ImmutableMap.of()
+        : revisionNumber.isPresent() ? ImmutableMap.of(DoiVersionArgumentResolver.REVISION_PARAMETER, Integer.toString(revisionNumber.getAsInt()))
         : ImmutableMap.of(DoiVersionArgumentResolver.INGESTION_PARAMETER, Integer.toString(ingestionNumber));
   }
 
+  /**
+   * @return the URL parameters that should be used in outgoing links to the same version and DOI of this article
+   */
   public ImmutableMap<String, String> asParameterMap() {
     return ImmutableMap.<String, String>builder()
         .put(DoiVersionArgumentResolver.ID_PARAMETER, doi)
@@ -80,13 +96,15 @@ public final class ArticlePointer {
 
     ArticlePointer that = (ArticlePointer) o;
     if (ingestionNumber != that.ingestionNumber) return false;
+    if (!originalRequest.equals(that.originalRequest)) return false;
     if (!doi.equals(that.doi)) return false;
     return revisionNumber.equals(that.revisionNumber);
   }
 
   @Override
   public int hashCode() {
-    int result = doi.hashCode();
+    int result = originalRequest.hashCode();
+    result = 31 * result + doi.hashCode();
     result = 31 * result + ingestionNumber;
     result = 31 * result + revisionNumber.hashCode();
     return result;

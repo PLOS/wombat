@@ -34,7 +34,7 @@ public class ArticleResolutionService {
 
     OptionalInt ingestionNumber = id.getIngestionNumber();
     if (ingestionNumber.isPresent()) {
-      return new ArticlePointer(canonicalDoi, ingestionNumber.getAsInt(), OptionalInt.empty());
+      return new ArticlePointer(id, canonicalDoi, ingestionNumber.getAsInt(), OptionalInt.empty());
     }
 
     OptionalInt revisionNumber = id.getRevisionNumber();
@@ -45,7 +45,7 @@ public class ArticleResolutionService {
         String message = String.format("Article %s has no revision %d", id.getDoi(), revisionValue);
         throw new NotFoundException(message);
       }
-      return new ArticlePointer(canonicalDoi, ingestionForRevision.intValue(), OptionalInt.of(revisionValue));
+      return new ArticlePointer(id, canonicalDoi, ingestionForRevision.intValue(), OptionalInt.of(revisionValue));
     } else {
       // Find the maximum revision number in the table
       Map.Entry<Integer, Integer> maxRevisionEntry = revisionTable.entrySet().stream()
@@ -56,7 +56,7 @@ public class ArticleResolutionService {
             String message = String.format("Article %s has no published revisions", id.getDoi());
             return new NotFoundException(message);
           });
-      return new ArticlePointer(canonicalDoi, maxRevisionEntry.getValue(), OptionalInt.of(maxRevisionEntry.getKey()));
+      return new ArticlePointer(id, canonicalDoi, maxRevisionEntry.getValue(), OptionalInt.of(maxRevisionEntry.getKey()));
     }
   }
 

@@ -1,6 +1,6 @@
 <#if currentIssue?? && currentIssue.imageArticle??>
   <a href="<@siteLink handlerName="browseIssues"/>">
-  <@siteLink handlerName="assetFile" queryParameters={"type": "medium", "id": currentIssue.imageArticle.figureImageDoi} ; src>
+  <@siteLink handlerName="figureImage" queryParameters={"size": "medium", "id": currentIssue.imageArticle.figureImageDoi} ; src>
     <img src="${src}" class="current-img" alt="Current Issue"/>
   </@siteLink>
   </a>

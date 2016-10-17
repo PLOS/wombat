@@ -14,28 +14,36 @@
 <#include "../common/journalStyle.ftl" />
 
 <body class="article ${journalStyle}">
-n
+<#assign title = figure.title />
+
 <#include "../common/header/headerContainer.ftl" />
 <div class="set-grid">
-<#--<#include "articleHeader.ftl" />-->
-  <section class="article-body">
 
-  <#--<#include "tabs.ftl" />-->
+  <section class="article-body">
+    <a class="back" href="<@siteLink path="article?id=${article.doi}" />">Back to Article</a>
+
+    <h1 id="artTitle"><@xform xml=article.title/></h1>
+
+
 
     <div class="article-container">
 
-      <div class="article-content">
 
-      <#-- Figure carousel is placed here, then inserted midway through article text by JavaScript -->
+        <h2>${figure.title}</h2>
 
-        <div class="article-text" id="artText">
+          <img class="figure-img"
+               src="<@siteLink handlerName="assetFile" queryParameters=(figurePtr + {'type': 'large'}) />"
+               alt="${figure.title}">
 
+            <p class="article-id">${figure.doi}</p>
+
+            <div class="figure-description">
+            ${descriptionHtml}
+            </div>
 
         </div>
-      </div>
     </div>
 
-  </section>
 
 </div>
 
@@ -43,8 +51,6 @@ n
 
 <#include "articleJs.ftl" />
 
-
-<@js src="resource/js/pages/article_body.js"/>
 
 
 <@renderJs />

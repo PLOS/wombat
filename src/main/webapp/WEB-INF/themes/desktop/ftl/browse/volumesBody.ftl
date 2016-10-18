@@ -9,7 +9,7 @@
         <@siteLink handlerName="browseIssues" queryParameters={"id": currentIssue.doi}; issueLink>
           <a href="${issueLink}">
             <img
-                src="<@siteLink handlerName="assetFile" queryParameters={"type": "small", "id": currentIssue.imageArticle.figureImageDoi}/>"
+                src="<@siteLink handlerName="figureImage" queryParameters={"size": "small", "id": currentIssue.imageArticle.figureImageDoi}/>"
                 class="current-img" alt="Current Issue"/>
             <span>${currentIssue.displayName}</span>
           </a>
@@ -47,7 +47,7 @@
               <@siteLink handlerName="browseIssues" queryParameters={"id": "${issue.doi}"}; issueLink>
                 <a href="${issueLink}">
                   <#if issue.imageArticle??>
-                    <@siteLink handlerName="assetFile" queryParameters={"type": "small", "id": issue.imageArticle.figureImageDoi}; issueImgURL>
+                    <@siteLink handlerName="figureImage" queryParameters={"size": "small", "id": issue.imageArticle.figureImageDoi}; issueImgURL>
                       <img src="${issueImgURL}" alt="${issue.displayName} Journal Cover"/>
                     </@siteLink>
                   </#if>

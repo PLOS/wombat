@@ -49,10 +49,15 @@ public class ArticleServiceImpl implements ArticleService {
     return (Map<String, ?>) itemResponse.get("items");
   }
 
-  @Override public Map<String, ?> getItemFiles(AssetPointer assetId) throws IOException {
+  @Override
+  public Map<String, ?> getItemMetadata(AssetPointer assetId) throws IOException {
     Map<String, ?> itemTable = getItemTable(assetId.getParentArticle());
-    Map<String, ?> item = (Map<String, ?>) itemTable.get(assetId.getAssetDoi());
-    return (Map<String, ?>) item.get("files");
+    return (Map<String, ?>) itemTable.get(assetId.getAssetDoi());
+  }
+
+  @Override
+  public Map<String, ?> getItemFiles(AssetPointer assetId) throws IOException {
+    return (Map<String, ?>) getItemMetadata(assetId).get("files");
   }
 
   @Override

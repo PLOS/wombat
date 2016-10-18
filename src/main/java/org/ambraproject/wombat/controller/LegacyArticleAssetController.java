@@ -31,8 +31,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
-public class FigureImageController extends WombatController {
-  private static final Logger log = LoggerFactory.getLogger(FigureImageController.class);
+public class LegacyArticleAssetController extends WombatController {
+  private static final Logger log = LoggerFactory.getLogger(LegacyArticleAssetController.class);
 
   @Autowired
   private RequestMappingContextDictionary requestMappingContextDictionary;
@@ -129,7 +129,8 @@ public class FigureImageController extends WombatController {
 
   /**
    * Serve the identified asset file.
-   *  @param rawId    an ID for an asset (if {@code unique} is present) or an asset file (if {@code unique} is absent)
+   *
+   * @param rawId    an ID for an asset (if {@code unique} is present) or an asset file (if {@code unique} is absent)
    * @param unique   if present, assume the asset has a single file and serve that file; else, serve an identified file
    * @param download forward Content-Disposition headers with "attachment" value only if {@code true}
    */
@@ -154,10 +155,10 @@ public class FigureImageController extends WombatController {
     }
 
     Map<String, ?> itemMetadata = getItemMetadata(assetDoi);
+    String itemType = (String) itemMetadata.get("itemType");
 
     final String fileType;
     if (fileExtension.isPresent()) {
-      String itemType = (String) itemMetadata.get("itemType");
       fileType = LegacyFileExtensionRedirectStrategy.resolveToFileType(itemType, fileExtension.get());
     } else {
       Map<String, ?> itemFiles = (Map<String, ?>) itemMetadata.get("files");
@@ -175,11 +176,14 @@ public class FigureImageController extends WombatController {
       }
     }
 
-    return redirectToAssetFile(request, site, assetDoi, fileType, booleanParameter(download));
+    ArticleAssetController.AssetUrlStyle style = ArticleAssetController.AssetUrlStyle.findByItemType(itemType);
+    Link redirectLink = style.buildRedirectLink(requestMappingContextDictionary, site,
+        RequestedDoiVersion.of(assetDoi), fileType, booleanParameter(download));
+    return new ModelAndView(redirectLink.getRedirect(request));
   }
 
   private Map<String, ?> getItemMetadata(String rawAssetDoi) throws IOException {
-    Map<String, Object> assetMetadata = generalDoiController.getMetadataForDoi(RequestedDoiVersion.of(rawAssetDoi));
+    Map<String, ?> assetMetadata = generalDoiController.getMetadataForDoi(RequestedDoiVersion.of(rawAssetDoi));
     Map<String, ?> article = (Map<String, ?>) assetMetadata.get("article");
     String articleDoi = (String) article.get("doi");
 
@@ -198,38 +202,6 @@ public class FigureImageController extends WombatController {
 
     String canonicalAssetDoi = (String) assetMetadata.get("doi");
     return (Map<String, ?>) Objects.requireNonNull(itemTable.get(canonicalAssetDoi));
-  }
-
-  /**
-   * Serve the asset file for an identified figure thumbnail.
-   */
-  @RequestMapping(name = "figureImage", value = "/article/figure/image")
-  public ModelAndView serveFigureImage(HttpServletRequest request,
-                                       @SiteParam Site site,
-                                       @RequestParam("id") String figureId,
-                                       @RequestParam("size") String figureSize,
-                                       @RequestParam(value = "download", required = false) String download)
-      throws IOException {
-    requireNonemptyParameter(figureId);
-    Map<String, ?> itemMetadata = getItemMetadata(figureId);
-    Set<String> fileTypes = ((Map<String, ?>) itemMetadata.get("files")).keySet();
-    if (fileTypes.contains(figureSize)) {
-      return redirectToAssetFile(request, site, figureId, figureSize, booleanParameter(download));
-    } else {
-      throw new NotFoundException("Not a valid size: " + figureSize);
-    }
-  }
-
-  private ModelAndView redirectToAssetFile(HttpServletRequest request, Site site,
-                                           String id, String fileType, boolean isDownload) {
-    Link.Factory.PatternBuilder link = Link.toLocalSite(site)
-        .toPattern(requestMappingContextDictionary, "assetFile")
-        .addQueryParameter("id", id)
-        .addQueryParameter("type", fileType);
-    if (isDownload) {
-      link = link.addQueryParameter("download", "");
-    }
-    return new ModelAndView(link.build().getRedirect(request));
   }
 
 }

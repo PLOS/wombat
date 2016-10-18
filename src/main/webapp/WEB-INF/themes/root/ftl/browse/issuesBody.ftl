@@ -31,7 +31,7 @@
       <div class="img">
         <a href="<@siteLink handlerName="article" queryParameters={"id": issue.imageArticle.doi} />">
           <img
-              src="<@siteLink handlerName="assetFile" queryParameters={"type": "inline", "id": issue.imageArticle.figureImageDoi} />"
+              src="<@siteLink handlerName="figureImage" queryParameters={"size": "inline", "id": issue.imageArticle.figureImageDoi} />"
               alt="Issue Image" data-doi="${issue.imageArticle.doi}">
         </a>
       </div>

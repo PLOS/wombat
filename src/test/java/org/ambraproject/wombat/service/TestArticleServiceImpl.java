@@ -39,6 +39,11 @@ public class TestArticleServiceImpl implements ArticleService {
   }
 
   @Override
+  public Map<String, ?> getItemMetadata(AssetPointer assetId) throws IOException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
   public Map<String, ?> getItemFiles(AssetPointer assetId) throws IOException {
     throw new UnsupportedOperationException();
   }

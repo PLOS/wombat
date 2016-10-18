@@ -4,7 +4,7 @@
 
 <@page_header />
 <img class="figure-img"
-     src="<@siteLink handlerName="assetFile" queryParameters=(figurePtr + {'type': 'large'}) />"
+     src="<@siteLink handlerName="figureImage" queryParameters=(figurePtr + {'size': 'large'}) />"
      alt="${figure.title}">
 
 </div><#--end container main-->

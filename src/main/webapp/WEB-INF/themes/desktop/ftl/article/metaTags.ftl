@@ -20,12 +20,14 @@
 
 
 <meta name="citation_doi" content="${article.doi}"/>
+<#if authors??>
 <#list authors as author>
 <meta name="citation_author" content="${author.fullName}"/>
   <#list author.affiliations as affiliation>
   <meta name="citation_author_institution" content="${affiliation?trim}"/>
   </#list>
 </#list>
+</#if>
 
 <meta name="citation_title" content="${articleTitle}"/>
 <meta itemprop="name" content="${articleTitle}"/>
@@ -38,7 +40,7 @@
 <#if article.eIssn?has_content><meta name="citation_issn" content="${article.eIssn}"/></#if>
 <#if article.publisherName?has_content><meta name="citation_publisher" content="${article.publisherName}"/></#if>
 
-<#if articleItems[article.doi].files?keys?seq_contains("printable")>
+<#if articleItems?? && articleItems[article.doi].files?keys?seq_contains("printable")>
 <#-- Uses articlePtr to point to the PDF for this particular revision. -->
   <@siteLink handlerName="assetFile" queryParameters=(articlePtr + {"type": "printable"}) absoluteLink=true ; citationPdfUrl>
   <meta name="citation_pdf_url" content="${citationPdfUrl}">

@@ -3,6 +3,7 @@ package org.ambraproject.wombat.freemarker;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
+import freemarker.template.TemplateBooleanModel;
 import freemarker.template.TemplateHashModelEx;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
@@ -64,6 +65,14 @@ class TemplateModelUtil {
       return builder.build();
     }
     throw new TemplateModelException("Hash type expected");
+  }
+
+  static boolean getBooleanValue(TemplateModel value) throws TemplateModelException {
+    if (value == null) return false;
+    if (value instanceof TemplateBooleanModel) {
+      return ((TemplateBooleanModel) value).getAsBoolean();
+    }
+    throw new TemplateModelException("Boolean type expected");
   }
 
 }

@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * controller to rethrow {@code NotFoundException}.
  */
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-class NotFoundException extends RuntimeException {
-
-  NotFoundException(Throwable cause) {
-    super(cause);
-  }
+public class NotFoundException extends RuntimeException {
 
   NotFoundException() {
   }
 
-  NotFoundException(String message) {
+  public NotFoundException(Throwable cause) {
+    super(cause);
+  }
+
+  public NotFoundException(String message) {
     super(message);
   }
 
-  NotFoundException(String message, Throwable cause) {
+  public NotFoundException(String message, Throwable cause) {
     super(message, cause);
   }
 

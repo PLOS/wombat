@@ -1,9 +1,8 @@
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.service.remote.ArticleApi;
+import com.google.common.io.ByteSource;
 import org.ambraproject.wombat.util.Citations;
 import org.ambraproject.wombat.util.TextUtil;
-import org.apache.commons.io.IOUtils;
 import org.apache.poi.hslf.model.Hyperlink;
 import org.apache.poi.hslf.model.Picture;
 import org.apache.poi.hslf.model.Slide;
@@ -12,7 +11,6 @@ import org.apache.poi.hslf.usermodel.RichTextRun;
 import org.apache.poi.hslf.usermodel.SlideShow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
@@ -20,23 +18,60 @@ import javax.imageio.stream.ImageInputStream;
 import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PowerPointServiceImpl implements PowerPointService {
-  private static final Logger log = LoggerFactory.getLogger(PowerPointServiceImpl.class);
+public class PowerPointDownload {
+  private static final Logger log = LoggerFactory.getLogger(PowerPointDownload.class);
 
-  @Autowired
-  private ArticleApi articleApi;
+  /**
+   * Indicate that a journal's theme does not provide a logo file. In this case, it is best for the callback to log a
+   * warning that describes the file missing from the theme, because the invoker won't know anything about the theme
+   * backing this callback object.
+   *
+   * @return the input stream, or {@code null} if no logo is available for the journal
+   * @throws IOException
+   */
+  public static class JournalHasNoLogoException extends RuntimeException {
+    public JournalHasNoLogoException(String message) {
+      super(message);
+    }
+  }
 
-  @Override
-  public SlideShow createPowerPointFile(Map<String, Object> figureMetadata,
-                                        URL downloadLink,
-                                        JournalLogoCallback logoCallback)
+  private final Map<String, ?> parentArticleMetadata;
+  private final List<Map<String, ?>> parentArticleAuthors;
+  private final URL downloadLink;
+  private final String figureTitle;
+  private final String figureDescription;
+  private final ByteSource figureImageSource;
+  private final ByteSource journalLogoSource;
+
+  public PowerPointDownload(Map<String, ?> parentArticleMetadata, List<Map<String, ?>> parentArticleAuthors,
+                            URL downloadLink,
+                            String figureTitle, String figureDescription,
+                            ByteSource figureImageSource, ByteSource journalLogoSource) {
+    this.parentArticleMetadata = Collections.unmodifiableMap(parentArticleMetadata);
+    this.parentArticleAuthors = Collections.unmodifiableList(parentArticleAuthors);
+    this.downloadLink = Objects.requireNonNull(downloadLink);
+    this.figureTitle = TextUtil.sanitizeWhitespace(figureTitle);
+    this.figureDescription = TextUtil.sanitizeWhitespace(figureDescription);
+    this.figureImageSource = Objects.requireNonNull(figureImageSource);
+    this.journalLogoSource = Objects.requireNonNull(journalLogoSource);
+  }
+
+  /**
+   * Create a Microsoft PowerPoint slide show object that presents a figure.
+   *
+   * @return the slide show object
+   * @throws IOException
+   */
+  public SlideShow createPowerPointFile()
       throws IOException {
     //make the new slide
     SlideShow slideShow = new SlideShow();
@@ -44,16 +79,16 @@ public class PowerPointServiceImpl implements PowerPointService {
     Slide slide = slideShow.createSlide();
 
     //set the picture box on particular location
-    byte[] image = readFigureImage(figureMetadata);
+    byte[] image = figureImageSource.read();
     Picture picture = setPictureBox(image, slideShow);
     slide.addShape(picture);
 
-    addTitle(figureMetadata, slide);
+    addTitle(slide);
 
-    TextBox pptCitationText = buildCitation(figureMetadata, downloadLink, slideShow);
+    TextBox pptCitationText = buildCitation(slideShow);
     slide.addShape(pptCitationText);
 
-    Picture logo = buildLogo(logoCallback, slideShow);
+    Picture logo = buildLogo(slideShow);
     if (logo != null) {
       slide.addShape(logo);
     }
@@ -67,15 +102,6 @@ public class PowerPointServiceImpl implements PowerPointService {
 
   private static Dimension constructLetterSizeDimension() {
     return new Dimension(LETTER_SIZE_WIDTH, LETTER_SIZE_HEIGHT);
-  }
-
-  private byte[] readFigureImage(Map<String, Object> figureMetadata) throws IOException {
-    Map<String, Object> thumbnails = (Map<String, Object>) figureMetadata.get("thumbnails");
-    Map<String, Object> medium = (Map<String, Object>) thumbnails.get("medium");
-    String file = (String) medium.get("file");
-    try (InputStream stream = articleApi.requestStream(ApiAddress.builder("assetfiles").addToken(file).build())) {
-      return IOUtils.toByteArray(stream);
-    }
   }
 
   /**
@@ -128,9 +154,9 @@ public class PowerPointServiceImpl implements PowerPointService {
     return picture;
   }
 
-  private static void addTitle(Map<String, Object> figureMetadata, Slide slide) {
+  private void addTitle(Slide slide) {
     //add the title to slide
-    String title = getTitleText(figureMetadata);
+    String title = getTitleText();
     if (!title.isEmpty()) {
       TextBox pptTitle = slide.addTitle();
       pptTitle.setText(title);
@@ -144,10 +170,7 @@ public class PowerPointServiceImpl implements PowerPointService {
 
   private static final Pattern TITLE_EXTRACTOR = Pattern.compile("<title[^>]*?>(.*?)</title\\s*>");
 
-  private static String getTitleText(Map<String, Object> figureMetadata) {
-    String title = TextUtil.sanitizeWhitespace((String) figureMetadata.get("title"));
-    String description = TextUtil.sanitizeWhitespace((String) figureMetadata.get("description"));
-
+  private String getTitleText() {
     /*
      * The description is an excerpt of article XML. Use quick-and-dirty regexes to get the text of the <title> element
      * with internal markup removed. We expect there never to be another nested pair of <title> tags, so we should be
@@ -157,21 +180,21 @@ public class PowerPointServiceImpl implements PowerPointService {
      */
 
     // Extract title from description
-    Matcher titleElement = TITLE_EXTRACTOR.matcher(description);
+    Matcher titleElement = TITLE_EXTRACTOR.matcher(figureDescription);
     if (!titleElement.find()) {
-      return title.isEmpty() ? "" : (title + ".");
+      return figureTitle.isEmpty() ? "" : (figureTitle + ".");
     }
     String descriptionTitleText = titleElement.group(1);
     descriptionTitleText = TextUtil.removeMarkup(descriptionTitleText);
 
-    return String.format("%s. %s", title, descriptionTitleText);
+    return String.format("%s. %s", figureTitle, descriptionTitleText);
   }
 
-  private TextBox buildCitation(Map<String, Object> figureMetadata, URL articleLink, SlideShow slideShow) {
-    String pptUrl = articleLink.toString();
+  private TextBox buildCitation(SlideShow slideShow) {
+    String pptUrl = downloadLink.toString();
     TextBox pptCitationText = new TextBox();
 
-    String citation = getCitationText(figureMetadata);
+    String citation = Citations.buildCitation(parentArticleMetadata, parentArticleAuthors);
     pptCitationText.setText(citation + "\n" + pptUrl);
     pptCitationText.setAnchor(new Rectangle(35, 513, 723, 26));
 
@@ -188,32 +211,15 @@ public class PowerPointServiceImpl implements PowerPointService {
     return pptCitationText;
   }
 
-  private String getCitationText(Map<String, Object> figureMetadata) {
-    Map<String, Object> parentArticle = getParentArticleMetadata(figureMetadata);
-    return Citations.buildCitation(parentArticle);
-  }
-
-  private Map<String, Object> getParentArticleMetadata(Map<String, Object> figureMetadata) {
-    Map<String, Object> parentArticleSummary = (Map<String, Object>) figureMetadata.get("parentArticle");
-    String parentArticleDoi = (String) parentArticleSummary.get("doi");
-    try {
-      return articleApi.requestObject(ApiAddress.builder("articles").addToken(parentArticleDoi).build(), Map.class);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  private static Picture buildLogo(JournalLogoCallback logoCallback, SlideShow slideShow) throws IOException {
+  private Picture buildLogo(SlideShow slideShow) throws IOException {
     byte[] logoImage;
-    try (InputStream logoStream = logoCallback.openLogoStream()) {
-      if (logoStream == null) {
-        // Assume logoCallback logged a warning. It has more info than we do about how the logo should have been found.
-        return null;
-      }
-
+    try {
       // Dump to memory. This is the only way that SlideShow can consume it (other than a java.io.File object),
       // and anyway we would have to read it twice in order to get the dimensions.
-      logoImage = IOUtils.toByteArray(logoStream);
+      logoImage = journalLogoSource.read();
+    } catch (JournalHasNoLogoException e) {
+      log.warn(e.getMessage());
+      return null;
     }
 
     int logoIdx = slideShow.addPicture(logoImage, Picture.PNG);

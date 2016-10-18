@@ -13,6 +13,11 @@ var SiteContent = function () {
     self.windowHeight = self.$modalInfoWindow.height();
     self.modalPosition = self.windowHeight;
 
+    $('select[name="revisionLink"]').change( function(){
+      var revisionLink = $(this).val();
+      window.location.href = revisionLink;
+    });
+
     //events
     $('#article-type-menu').find('li').click(function (e) {
       var $currentButton = $(this);

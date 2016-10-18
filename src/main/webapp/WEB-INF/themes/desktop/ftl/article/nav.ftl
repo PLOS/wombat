@@ -11,7 +11,7 @@
       </a>
     </li>
 
-  <#if article.figures?? && article.figures?size &gt; 0 >
+  <#if figures?has_content>
     <li id="nav-figures"><a href="#" data-doi="${article.doi}">Figures</a></li>
   </#if>
   </ul>

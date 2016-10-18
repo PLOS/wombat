@@ -4,19 +4,19 @@
 </style>
 <![endif]-->
 <div class="dload-menu">
-  <div class="dload-pdf <#if !article.articlePdf??>no-pdf</#if>">
-  <#if article.articlePdf??>
-    <a href="<@siteLink handlerName="asset" queryParameters={"id": article.articlePdf.file} />"
+<#if articleItems[article.doi].files?keys?seq_contains("printable")>
+  <div class="dload-pdf">
+    <a href="<@siteLink handlerName="assetFile" queryParameters=(articlePtr + {"type": "printable"}) />"
        id="downloadPdf" target="_blank">Download PDF</a>
-  <#else>
-    Download
-  </#if>
   </div>
+<#else>
+  <div class="dload-pdf no-pdf">Download</div>
+</#if>
   <div data-js-tooltip-hover="trigger" class="dload-hover">&nbsp;
     <ul class="dload-xml" data-js-tooltip-hover="target">
       <li><a href="<@siteLink handlerName="citationDownloadPage" queryParameters={'id': article.doi} />"
              id="downloadCitation">Citation</a></li>
-      <li><a href="<@siteLink handlerName="asset" queryParameters={"id": article.doi + ".XML", "download": ""} />"
+      <li><a href="<@siteLink handlerName="assetFile" queryParameters=(articlePtr + {"type": "manuscript"}) />"
              id="downloadXml">XML</a>
       </li>
     </ul>

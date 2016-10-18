@@ -1,77 +1,63 @@
-<#assign thumbnail_suffix = ".g001.PNG_S"/>
-
 <h1>Journal Archive</h1>
-<#if journal??>
-  <#if journal.currentIssue??>
-  <div class="journal_current">
-    <h2>Current Issue</h2>
+<#if currentIssue??>
+<div class="journal_current">
+  <h2>Current Issue</h2>
 
+  <#if currentIssue.imageArticle??>
     <div class="issue_container">
-      <#if journal.currentIssue.imageUri??>
-        <div class="journal_thumb">
-          <@siteLink
-          handlerName="browseIssues"
-          queryParameters={"id": journal.currentIssue.issueUri}; issueLink>
-            <a href="${issueLink}"/>
-            <#assign issueImageFileId = journal.currentIssue.imageUri + thumbnail_suffix/>
-            <img src="<@siteLink handlerName="asset" queryParameters={"id": issueImageFileId}/>"
-                 class="current-img" alt="Current Issue"/>
-            <span>${journal.currentIssue.displayName}</span>
-            </a>
-          </@siteLink>
-        </div>
-      </#if>
+      <div class="journal_thumb">
+        <@siteLink handlerName="browseIssues" queryParameters={"id": currentIssue.doi}; issueLink>
+          <a href="${issueLink}">
+            <img
+                src="<@siteLink handlerName="figureImage" queryParameters={"size": "small", "id": currentIssue.imageArticle.figureImageDoi}/>"
+                class="current-img" alt="Current Issue"/>
+            <span>${currentIssue.displayName}</span>
+          </a>
+        </@siteLink>
+      </div>
 
       <div class="journal_description">
         <p class="tag">ABOUT THIS IMAGE</p>
-        ${currentIssueDescription}
+      ${issueTitle}
+      ${issueDescription}
       </div>
-    </div> <!--  issue_container -->
-  </div><!-- journal_current -->
+    </div> <#--  issue_container -->
   </#if>
-
-  <#if journal.volumes??>
-  <div class="journal_issues">
-
-    <h3>All Issues</h3>
-
-    <ul id="journal_years">
-      <#list journal.volumes?reverse as volume>
-        <li class="btn primary"><a href="#${volume.displayName}">
-        ${volume.displayName}</a>
-        </li>
-      </#list>
-    </ul>
-
-    <ul id="journal_slides">
-      <#list journal.volumes?reverse as volume>
-        <li id="${volume.displayName}" class="slide">
-          <ul>
-            <#assign issues = volume.issues />
-            <#list issues as issue>
-              <li<#if ((issue_index + 1) % 6) = 0> class="endrow"</#if>>
-                <@siteLink
-                handlerName="browseIssues"
-                queryParameters={"id": "${issue.issueUri}"}; issueLink>
-                  <a href="${issueLink}">
-                    <#if issue.imageUri??>
-                      <#assign issueImageFileId = issue.imageUri + thumbnail_suffix/>
-                      <@siteLink handlerName="asset" queryParameters={"id": issueImageFileId}; issueImgURL>
-                        <img src="${issueImgURL}"
-                             alt="${issue.displayName} Journal Cover"/>
-                      </@siteLink>
-                    </#if>
-                    <span>${issue.displayName}</span>
-                  </a>
-                </@siteLink>
-              </li>
-
-            </#list>
-          </ul>
-        </li>
-      </#list>
-    </ul>
-  </div><#-- journal_issues -->
-  </#if>
-
+</div><#-- journal_current -->
 </#if>
+
+<div class="journal_issues">
+
+  <h3>All Issues</h3>
+
+  <ul id="journal_years">
+    <#list volumes?reverse as volume>
+      <li class="btn primary"><a href="#${volume.displayName}">
+      ${volume.displayName}</a>
+      </li>
+    </#list>
+  </ul>
+
+  <ul id="journal_slides">
+    <#list volumes?reverse as volume>
+      <li id="${volume.displayName}" class="slide">
+        <ul>
+          <#list volume.issues as issue>
+            <li<#if ((issue_index + 1) % 6) = 0> class="endrow"</#if>>
+              <@siteLink handlerName="browseIssues" queryParameters={"id": "${issue.doi}"}; issueLink>
+                <a href="${issueLink}">
+                  <#if issue.imageArticle??>
+                    <@siteLink handlerName="figureImage" queryParameters={"size": "small", "id": issue.imageArticle.figureImageDoi}; issueImgURL>
+                      <img src="${issueImgURL}" alt="${issue.displayName} Journal Cover"/>
+                    </@siteLink>
+                  </#if>
+                  <span>${issue.displayName}</span>
+                </a>
+              </@siteLink>
+            </li>
+          </#list>
+        </ul>
+      </li>
+    </#list>
+  </ul>
+</div><#-- journal_issues -->

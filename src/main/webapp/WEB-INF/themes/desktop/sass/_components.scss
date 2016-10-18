@@ -85,6 +85,7 @@ category: components
   background: $background;
   border-radius: ($circumference/2)+px;
   text-align: center;
+  line-height: $circumference+px;
 }
 /*doc
 ---

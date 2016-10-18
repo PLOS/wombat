@@ -4,6 +4,7 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -11,18 +12,16 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * Translates a Solr query result, representing an article's metadata, to have a common interface with article metadata
- * provided by Rhino.
+ * Translates a Solr query result, representing an article's metadata
  */
-public class SolrArticleAdapter {
+public class SolrArticleAdapter implements Serializable {
 
   /**
    * An object representing one article author.
    * <p>
-   * Solr provides bare strings for author names, which we represent here as the {@code fullName} field of Rhino's
-   * author object. Because no other data is available from Solr, {@code fullName} is the only field.
+   * Solr provides bare strings for author names - {@code fullName} is the only field.
    */
-  public static class Author {
+  public static class Author implements Serializable {
     private final String fullName;
 
     private Author(String fullName) {
@@ -41,9 +40,10 @@ public class SolrArticleAdapter {
   private final String strkImgURI; // nullable (forego Optional because we want it to be clean as an FTL model)
   private final boolean hasFigures;
   private final ImmutableList<Author> authors; // non-null
+  private final String articleType; // non-null
 
   private SolrArticleAdapter(String doi, String title, String eIssn, String date, String strkImgURI,
-                             boolean hasFigures, List<Author> authors) {
+                             boolean hasFigures, List<Author> authors, String articleType) {
     this.doi = Objects.requireNonNull(doi);
     this.title = Objects.requireNonNull(title);
     this.eIssn = Objects.requireNonNull(eIssn);
@@ -51,6 +51,7 @@ public class SolrArticleAdapter {
     this.strkImgURI = strkImgURI;
     this.hasFigures = hasFigures;
     this.authors = ImmutableList.copyOf(authors);
+    this.articleType = Objects.requireNonNull(articleType);
   }
 
   /**
@@ -80,37 +81,9 @@ public class SolrArticleAdapter {
 
     List<String> solrAuthors = (List<String>) solrArticle.get("author_display");
     List<Author> authors = (solrAuthors != null) ? Lists.transform(solrAuthors, Author::new) : ImmutableList.of();
+    String articleType = (String) solrArticle.get("article_type");
 
-    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors);
-  }
-
-  /**
-   * Adapt article metadata from Rhino with the common interface used for Solr queries.
-   * <p>
-   * This is useful in contexts where data from Solr is being merged with data from Rhino, so that all data can be
-   * represented with {@code SolrArticleAdapter} objects regardless of their source. Why do this, instead of leaving the
-   * Rhino data alone? If code depends on data that only comes from Rhino, then it will break unexpectedly if it
-   * consumes data from Solr instead. Adapting the Rhino data will remove the fields that we can't expect Solr to
-   * provide, causing code to fail early if it depends on those fields.
-   *
-   * @param rhinoArticle a map of article metadata fields from Rhino
-   * @return the extracted fields
-   */
-  public static SolrArticleAdapter adaptFromRhino(Map<String, ?> rhinoArticle) {
-    String doi = (String) rhinoArticle.get("doi");
-    String title = (String) rhinoArticle.get("title");
-    String eIssn = (String) rhinoArticle.get("eIssn");
-    String date = (String) rhinoArticle.get("date");
-    String strkImgURI = (String) rhinoArticle.get("strkImgURI");
-
-    Collection<?> figures = (Collection<?>) rhinoArticle.get("figures");
-    boolean hasFigures = !figures.isEmpty();
-
-    List<Map<String, ?>> rhinoAuthors = (List<Map<String, ?>>) rhinoArticle.get("authors");
-    List<Author> authors = Lists.transform(rhinoAuthors,
-        (Map<String, ?> author) -> new Author((String) author.get("fullName")));
-
-    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors);
+    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors, articleType);
   }
 
   public String getDoi() {
@@ -141,5 +114,8 @@ public class SolrArticleAdapter {
     return authors;
   }
 
+  public String getArticleType() {
+    return articleType;
+  }
 }
 

@@ -2,13 +2,11 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.service.ApiAddress;
-import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.util.CacheKey;
-import org.ambraproject.wombat.util.HttpMessageUtil;
-import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.Header;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpHeaders;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
@@ -19,7 +17,6 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
@@ -102,26 +99,31 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   private static final String APPLICATION_JSON_CONTENT_TYPE = ContentType.APPLICATION_JSON.toString();
 
   private <R extends HttpUriRequest & HttpEntityEnclosingRequest>
-  void uploadObject(ApiAddress address, Object object, Function<URI, R> requestConstructor)
+  HttpResponse uploadObject(ApiAddress address, Object object, Function<URI, R> requestConstructor)
       throws IOException {
-    String json = jsonService.serialize(object);
     R request = buildRequest(address, requestConstructor);
-    try {
-      request.setEntity(new StringEntity(json));
-    } catch (UnsupportedEncodingException e) {
-      throw new RuntimeException(e);
+
+    if (object != null) {
+      String json = jsonService.serialize(object);
+      try {
+        request.setEntity(new StringEntity(json));
+      } catch (UnsupportedEncodingException e) {
+        throw new RuntimeException(e);
+      }
     }
+
     request.addHeader(HttpHeaders.CONTENT_TYPE, APPLICATION_JSON_CONTENT_TYPE);
 
-    try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(request)) {
-      ignored.close();
+    try (CloseableHttpResponse response = cachedRemoteReader.getResponse(request)) {
+      //return closed response
+      return response;
     }
   }
 
 
   @Override
-  public final void postObject(ApiAddress address, Object object) throws IOException {
-    uploadObject(address, object, HttpPost::new);
+  public final HttpResponse postObject(ApiAddress address, Object object) throws IOException {
+    return uploadObject(address, object, HttpPost::new);
   }
 
   @Override
@@ -138,17 +140,6 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
     }
   }
 
-
-  @Override
-  public final void forwardResponse(HttpUriRequest requestToService, HttpServletResponse responseToClient) throws IOException {
-    try (CloseableHttpResponse responseFromService = this.getResponse(requestToService)) {
-      HttpMessageUtil.copyResponse(responseFromService, responseToClient);
-    } catch (EntityNotFoundException e) {
-      responseToClient.setStatus(HttpServletResponse.SC_NOT_FOUND);
-    } catch (Exception e) {
-      responseToClient.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-    }
-  }
 
   @Override
   public final CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException {

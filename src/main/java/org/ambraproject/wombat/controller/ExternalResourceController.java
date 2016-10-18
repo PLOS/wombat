@@ -1,10 +1,10 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Optional;
 import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.HttpMessageUtil;
@@ -45,7 +45,7 @@ public class ExternalResourceController extends WombatController {
                     @SiteParam Site site,
                     @PathVariable("key") String key)
       throws IOException {
-    serve(response, request, key, Optional.<Integer>absent());
+    serve(response, request, ContentKey.createForLatestVersion(key));
   }
 
   @RequestMapping(name = "versionedRepoObject", value = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/{key}/{version}")
@@ -61,7 +61,7 @@ public class ExternalResourceController extends WombatController {
     } catch (NumberFormatException e) {
       throw new NotFoundException("Not a valid version integer: " + version, e);
     }
-    serve(response, request, key, Optional.of(versionInt));
+    serve(response, request, ContentKey.createForVersion(key, versionInt));
   }
 
   @RequestMapping(name = "repoObjectUsingPublicUrl", value = "/s/file")
@@ -70,23 +70,22 @@ public class ExternalResourceController extends WombatController {
                                  @SiteParam Site site,
                                  @RequestParam(value = "id", required = true) String key)
           throws IOException {
-    serve(response, request, key, Optional.<Integer>absent());
+    serve(response, request, ContentKey.createForLatestVersion(key));
   }
 
   private static final int REPROXY_CACHE_FOR = 6 * 60 * 60; // 6 hours
 
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
-                     String key, Optional<Integer> version)
+                     ContentKey key)
       throws IOException {
-    CacheKey cacheKey = CacheKey.create("indirect", key, String.valueOf(version.orNull()));
+    CacheKey cacheKey = key.asCacheKey("indirect");
     Map<String, Object> fileMetadata;
 
     try {
-      fileMetadata = editorialContentApi.requestMetadata(cacheKey, key, version);
-        } catch (EntityNotFoundException e) {
-    String message = String.format("Not found in repo: [key: %s, version: %s]",
-            key, version.orNull());
-    throw new NotFoundException(message, e);
+      fileMetadata = editorialContentApi.requestMetadata(cacheKey, key);
+    } catch (EntityNotFoundException e) {
+      String message = String.format("Not found in repo: %s", key.toString());
+      throw new NotFoundException(message, e);
     }
 
     String contentType = (String) fileMetadata.get("contentType");
@@ -105,12 +104,10 @@ public class ExternalResourceController extends WombatController {
     }
 
     Collection<Header> assetHeaders = HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST);
-    try (CloseableHttpResponse repoResponse = editorialContentApi.request(key, version, assetHeaders)) {
+    try (CloseableHttpResponse repoResponse = editorialContentApi.request(key, assetHeaders)) {
       forwardAssetResponse(repoResponse, responseToClient, false);
     } catch (EntityNotFoundException e) {
-      String message = String.format("Not found in repo: [key: %s, version: %s]",
-          key, version.orNull());
-      throw new NotFoundException(message, e);
+      throw new NotFoundException("File not found in repo: " + key, e);
     }
   }
 

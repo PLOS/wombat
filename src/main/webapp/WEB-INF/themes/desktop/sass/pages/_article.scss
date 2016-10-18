@@ -249,6 +249,10 @@ $article-sidebar-width: 160;
       font-style: italic;
     }
   }
+  #revisionMenu {
+    display: inline-block;
+
+  }
   .date-doi {
     @include clearfix();
     @extend .text-article-intro;
@@ -259,7 +263,8 @@ $article-sidebar-width: 160;
       float: left;
       margin: 0 $pad-small;
 
-      &:first-child {
+      &.revisionList+li, &:first-child
+      {
         margin: 0 $pad-small 0 0;
         padding-left: 0;
         list-style-type: none;

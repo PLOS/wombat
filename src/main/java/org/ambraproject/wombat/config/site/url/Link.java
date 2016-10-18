@@ -9,12 +9,13 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.ClientEndpoint;
 import org.ambraproject.wombat.util.UrlParamBuilder;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -111,12 +112,7 @@ public class Link {
    * @param siteSet           the global site set
    */
   public static Factory toForeignSite(Site localSite, String foreignJournalKey, SiteSet siteSet) {
-    Site foreignSite;
-    try {
-      foreignSite = localSite.getTheme().resolveForeignJournalKey(siteSet, foreignJournalKey);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    Site foreignSite = localSite.getTheme().resolveForeignJournalKey(siteSet, foreignJournalKey);
     return toForeignSite(localSite, foreignSite);
   }
 
@@ -198,6 +194,11 @@ public class Link {
 
       public PatternBuilder addPathVariable(String key, Object value) {
         this.pathVariables.put(key, value);
+        return this;
+      }
+
+      public PatternBuilder addQueryParameters(Map<String, ?> queryParameters) {
+        queryParameters.forEach(this.queryParameters::put);
         return this;
       }
 
@@ -319,6 +320,19 @@ public class Link {
     return path;
   }
 
+
+  /**
+   * Build a Spring view string that which, if returned from a Spring {@code RequestMapping} method, will redirect to
+   * the linked address.
+   *
+   * @param request the originating request of the page from which to link
+   * @return a Spring redirect string
+   */
+  public RedirectView getRedirect(HttpServletRequest request) {
+    RedirectView redirectView = new RedirectView(get(request));
+    redirectView.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
+    return redirectView;
+  }
 
   /**
    * Build a link from this object. The returned value may be either an absolute link (full URL) or a relative link

@@ -96,6 +96,14 @@ $line-height-small: ($line-height * .5);
 
   .amendment {
     margin-bottom: $line-height-medium;
+    position: relative;
+
+    a.info-link{
+      @extend .icon-question;
+      position: absolute;
+      top: $pad-small;
+      right: $pad-small;
+    }
 
     h2 {
       margin-top: 0;
@@ -120,7 +128,7 @@ $line-height-small: ($line-height * .5);
     }
   }
 
-  .amendment-eoc, .amendment-retraction {
+  .amendment-eoc, .amendment-retraction, .amendment-uncorrected-proof{
     @extend .callout-alert;
     h2 {
       color: $clr-warning;
@@ -170,15 +178,6 @@ $line-height-small: ($line-height * .5);
       font-weight: bold;
     }
 
-  }
-  span.underline{ text-decoration: underline;}
-
-  span.small-caps {
-    @extend %small-caps;
-  }
-
-  .monospace {
-    @extend %monospace;
   }
 
   // supplementary materials - need to have no margin between paragraphs just below the box

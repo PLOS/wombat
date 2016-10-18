@@ -11,7 +11,6 @@
 
 <#include "../../common/head.ftl" />
 <#include "../../common/journalStyle.ftl" />
-<#include "../../common/article/articleType.ftl" />
 
 <body class="article ${journalStyle}">
 
@@ -45,7 +44,7 @@
               <span>Most Recent</span>
             </div>
             <div class="title">
-              <a href="<@siteLink handlerName="articleCommentTree" queryParameters={"id": comment.annotationUri} />">
+              <a href="<@siteLink handlerName="articleCommentTree" queryParameters={"id": comment.commentUri} />">
               ${comment.title}
               </a>
             <span>

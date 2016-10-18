@@ -54,16 +54,6 @@ public interface SolrSearchApi {
    */
   public Map<String, ?> search(ArticleSearchQuery query) throws IOException;
 
-  /**
-   * Perform a search, modifying the query with an additional filter by volume number.
-   *
-   * @param query        the base query
-   * @param volumeNumber the volume number to filter by
-   * @return deserialized JSON returned by the search server
-   * @throws IOException
-   */
-  Map<?, ?> searchVolume(ArticleSearchQuery query, int volumeNumber) throws IOException;
-
 
   /**
    * Attempts to retrieve information about an article based on the DOI.
@@ -74,15 +64,7 @@ public interface SolrSearchApi {
    */
   public Map<?, ?> lookupArticleByDoi(String doi) throws IOException;
 
-  /**
-   * Attempts to retrieve information about an article based on the journal key and eLocationId.
-   *
-   * @param eLocationId identifies the article within a journal
-   * @param journalKey  the journal in which to search
-   * @return information about the article, if it exists; otherwise an empty result set
-   * @throws IOException
-   */
-  public Map<?, ?> lookupArticleByELocationId(String eLocationId, String journalKey) throws IOException;
+  public Map<?, ?> lookupArticlesByDois(List<String> dois) throws IOException;
 
   /**
    * Adds a new property, link, to each search result passed in.  The value of this property is the correct URL to the

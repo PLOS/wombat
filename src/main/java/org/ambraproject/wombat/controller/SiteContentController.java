@@ -13,12 +13,12 @@
 
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.util.CacheKey;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,14 +51,14 @@ public class SiteContentController extends WombatController {
     if (repoKeyPrefix == null) {
       throw new RuntimeConfigurationException("Content repo prefix not configured for theme " + theme.toString());
     }
-    String repoKey = repoKeyPrefix.concat(".").concat(pageName);
+    String repoKey = repoKeyPrefix + "." + pageName;
 
     CacheKey cacheKey = CacheKey.create("siteContent_meta", repoKey);
 
-    Optional<Integer> version = Optional.absent(); // versioning is not supported for site content
+    ContentKey version = ContentKey.createForLatestVersion(repoKey); // versioning is not supported for site content
     try {
       // Check for validity of the content repo key prior to rendering page. Return a 404 if no object found.
-      editorialContentApi.requestMetadata(cacheKey, repoKey, version);
+      editorialContentApi.requestMetadata(cacheKey, version);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }

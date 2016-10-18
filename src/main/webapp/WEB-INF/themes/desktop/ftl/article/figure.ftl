@@ -19,38 +19,30 @@
 <#include "../common/header/headerContainer.ftl" />
 <div class="set-grid">
 
-  <section class="article-body">
-    <a class="back" href="<@siteLink path="article?id=${article.doi}" />">Back to Article</a>
+  <section class="body-section">
+
+    <p><a class="back" href="<@siteLink handlerName="article" queryParameters={"id":article.doi} />" >< Back to Article</a></p>
 
     <h1 id="artTitle"><@xform xml=article.title/></h1>
 
+    <h2>${figure.title}</h2>
 
+    <p>
+    ${descriptionHtml}
+    </p>
 
-    <div class="article-container">
-
-
-        <h2>${figure.title}</h2>
-
-          <img class="figure-img"
-               src="<@siteLink handlerName="assetFile" queryParameters=(figurePtr + {'type': 'large'}) />"
-               alt="${figure.title}">
-
-            <p class="article-id">${figure.doi}</p>
-
-            <div class="figure-description">
-            ${descriptionHtml}
-            </div>
-
-        </div>
+    <div>
+      <img class="figure-img"
+           src="<@siteLink handlerName="assetFile" queryParameters=(figurePtr + {'type': 'large'}) />"
+           alt="${figure.title}">
     </div>
+    <p class="article-id">doi: ${figure.doi}</p>
 
 
 </div>
 
+</section>
 <#include "../common/footer/footer.ftl" />
-
-<#include "articleJs.ftl" />
-
 
 
 <@renderJs />

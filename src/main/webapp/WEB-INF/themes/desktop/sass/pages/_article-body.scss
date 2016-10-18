@@ -54,6 +54,8 @@ $line-height-small: ($line-height * .5);
   margin-bottom: $line-height-medium;
 }
 
+
+
 .article-content {
 
  .section > div {
@@ -677,4 +679,9 @@ ol.references {
   .article-content {
     width: 100%;
   }
+}
+//figure page
+
+.article-id{
+  @extend .pad-default-y;
 }

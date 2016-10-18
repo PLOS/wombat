@@ -36,7 +36,10 @@
            src="<@siteLink handlerName="assetFile" queryParameters=(figurePtr + {'type': 'large'}) />"
            alt="${figure.title}">
     </div>
-    <p class="article-id">doi: ${figure.doi}</p>
+    <#include "../macro/doiAsLink.ftl" />
+    <p class="article-id">
+     doi:  <@doiAsLink figure.doi />
+    </p>
 
 
 </div>

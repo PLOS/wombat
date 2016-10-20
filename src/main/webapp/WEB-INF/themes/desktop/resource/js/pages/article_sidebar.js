@@ -76,7 +76,6 @@
                 type:     'POST',
                 url:      siteUrlPrefix + 'taxonomy/flag/' + action,
                 data:     {'categoryTerm': categoryTerm, 'articleDoi': article_doi},
-                dataType: 'json',
                 error:    function (errorThrown) {
                   $('#subjectErrors').append(errorThrown);
                 },

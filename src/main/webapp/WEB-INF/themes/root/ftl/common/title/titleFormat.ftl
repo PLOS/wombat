@@ -7,9 +7,9 @@
   <#include "siteTitle.ftl" />
   <#include "defaultPageTitle.ftl" />
   <#if pageTitle?length gt 0>
-  ${pageTitle}<#t>
+    <#if !article??>${siteTitle}: </#if>${pageTitle}<#t>
   <#elseif (defaultPageTitle?length > 0) >
-  ${defaultPageTitle}<#t>
+    <#if !article??>${siteTitle}: </#if>${defaultPageTitle}<#t>
   <#else>
   ${siteTitle}<#t>
   </#if>

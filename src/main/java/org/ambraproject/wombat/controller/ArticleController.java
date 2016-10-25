@@ -153,7 +153,6 @@ public class ArticleController extends WombatController {
     XmlContent xmlContent = getXmlContent(site, articlePointer);
     model.addAttribute("articleText", xmlContent.html);
     model.addAttribute("references", xmlContent.references);
-    model.addAttribute("isArticlePage", true);
 
     return site + "/ftl/article/article";
   }

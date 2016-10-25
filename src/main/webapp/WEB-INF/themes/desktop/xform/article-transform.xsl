@@ -1143,7 +1143,7 @@
 
   <!-- 1/4/12: suppress, we don't use -->
   <xsl:template name="subsection-title"
-                match="abstract/*/*/title | back[title]/*/*/title | back[not(title)]/*/*/*/title"/>
+                match="abstract/*/*/title | back[title]/*/*/title | back[not(title) and not(ack)]/*/*/*/title"/>
 
   <!-- 1/4/12: Ambra-specific template (creates article third-level heading) -->
   <xsl:template match="body/sec/sec/sec/title">
@@ -1167,6 +1167,23 @@
     </h3>
     <xsl:call-template name="newline1"/>
   </xsl:template>
+
+  <xsl:template match="ack/sec/sec/title">
+    <xsl:call-template name="newline1"/>
+    <h4>
+      <xsl:apply-templates/>
+    </h4>
+    <xsl:call-template name="newline1"/>
+  </xsl:template>
+
+  <xsl:template match="ack/sec/sec/sec/title">
+    <xsl:call-template name="newline1"/>
+    <h5>
+      <xsl:apply-templates/>
+    </h5>
+    <xsl:call-template name="newline1"/>
+  </xsl:template>
+
 
   <!-- 1/4/12: Ambra-specific template -->
   <xsl:template match="ref-list[not(ancestor::back)]/title">
@@ -2667,10 +2684,10 @@
       <hr class="section-rule"/>
     </xsl:if>
     <xsl:call-template name="newline1"/>
-    <div class="toc-section">
+    <div class="section toc-section">
       <xsl:call-template name="assign-id"/>
+      <a id="ack" name="ack" data-toc="ack" title="Acknowledgments" class="link-target"/>
       <xsl:if test="not(title)">
-        <a id="ack" name="ack" data-toc="ack" title="Acknowledgments"/>
         <h2>Acknowledgments</h2>
         <xsl:call-template name="newline1"/>
       </xsl:if>

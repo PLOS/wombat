@@ -184,6 +184,13 @@ $line-height-small: ($line-height * .5);
 
   }
 
+  .attrib {
+    text-align: right;
+  }
+  .figure .attrib {
+    text-align: left;
+  }
+
   // supplementary materials - need to have no margin between paragraphs just below the box
   .supplementary-material{
     margin-bottom: $line-height;

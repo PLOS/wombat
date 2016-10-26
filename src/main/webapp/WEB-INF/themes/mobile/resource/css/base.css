@@ -205,6 +205,13 @@ h1, h2, h3, h4, h5 {
   font-weight: normal;
 }
 
+.attrib {
+  text-align: right;
+}
+figure .attrib {
+  text-align: left;
+}
+
 /* Global text styles */
 
 ol.alpha-lower {

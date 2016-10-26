@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
+
+  <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i">
 <#if article??>
   <#if article.date??>
     <meta name="citation_date" content="${article.date?date("yyyy-MM-dd")}"/>

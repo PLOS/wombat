@@ -7,9 +7,7 @@ category: Files
  type styles including sizes and vertical spacing
 */
 
-@include font-face("albert", font-files("fs_albert.ttf", "fs_albert.otf", "fs_albert.svg", "fs_albert.woff"));
-
-@include font-face("albert-bold", font-files("fs_albert-bold-webfont.ttf", "fs_albert-bold-webfont.otf", "fs_albert-bold-webfont.svg", "fs_albert-bold-webfont.woff"));
+//@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i';
 
 @include font-face("FontAwesome", font-files("fontawesome-webfont.ttf", "FontAwesome.otf", "fontawesome-webfont.svg", "fontawesome-webfont.woff"));
 

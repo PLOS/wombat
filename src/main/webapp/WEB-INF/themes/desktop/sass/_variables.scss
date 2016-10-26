@@ -157,8 +157,7 @@ $pad-inbetween: 8px;
 
 // typography
 $font-face-plain: "arial";
-$font-face-fancy: "Open Sans";
-$font-face-fancy-bold: "Open Sans";
+$font-face-fancy: "Open Sans", Arial, sans-serif;
 $font-face-icons: "icons-fawesome";
 
 $font-face-copy: $font-face-plain;

@@ -1159,14 +1159,6 @@
   <xsl:template name="block-title" priority="2"
                 match="list/title | def-list/title | boxed-text/title | verse-group/title | glossary/title | kwd-group/title"/>
 
-  <!-- 1/12/12: Ambra-specific template -->
-  <!--<xsl:template match="ack/sec/title">-->
-    <!--<xsl:call-template name="newline1"/>-->
-    <!--<h3>-->
-      <!--<xsl:apply-templates/>-->
-    <!--</h3>-->
-    <!--<xsl:call-template name="newline1"/>-->
-  <!--</xsl:template>-->
 
   <xsl:template match="ack//sec/title">
     <xsl:call-template name="newline1"/>
@@ -1175,14 +1167,6 @@
     </xsl:element>
     <xsl:call-template name="newline1"/>
   </xsl:template>
-
-  <!--<xsl:template match="ack/sec/sec/sec/title">-->
-    <!--<xsl:call-template name="newline1"/>-->
-    <!--<h5>-->
-      <!--<xsl:apply-templates/>-->
-    <!--</h5>-->
-    <!--<xsl:call-template name="newline1"/>-->
-  <!--</xsl:template>-->
 
   <!-- 1/4/12: Ambra-specific template -->
   <xsl:template match="ref-list[not(ancestor::back)]/title">

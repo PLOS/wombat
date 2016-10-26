@@ -7,7 +7,7 @@
 <#include "title/titleFormat.ftl" />
 
   <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i">
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i">
 <#if article??>
   <#if article.date??>
     <meta name="citation_date" content="${article.date?date("yyyy-MM-dd")}"/>

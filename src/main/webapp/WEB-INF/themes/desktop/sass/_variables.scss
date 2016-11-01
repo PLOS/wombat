@@ -165,14 +165,14 @@ $font-face-navigation: $font-face-fancy;
 $font-face-headings: $font-face-fancy;
 // special fonts for article display
 $font-face-roman: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
-$font-face-sans-serif: Arial Narrow", Arial, sans-serif;";
+$font-face-sans-serif: "Arial Narrow", Arial, sans-serif;
 $font-face-monospace: "monospace";
 
 //Type Sizes
-$txt-size-giant: 36px;
+$txt-size-giant: 32px;
+// TODO - remove this it seems to only be in volumes and issues
 $txt-size-xxxxlarge: 28px;
-// TODO - put the outliers in Homepage
-$txt-size-xxxlarge: 27px;
+$txt-size-xxxlarge: 26px;
 $txt-size-xxlarge: 22px;
 $txt-size-xlarge: 20px;
 $txt-size-large: 18px;

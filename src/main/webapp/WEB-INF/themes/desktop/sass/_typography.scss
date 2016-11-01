@@ -249,8 +249,9 @@ blockquote, .pullquote, .block-quote {
   color: $clr-highlight-text;
   padding: 0 $pad-default;
   font-family: $font-face-fancy;
-  font-size: rem-calc($txt-size-medium-large);
+  font-size: rem-calc($txt-size-medium);
   line-height: $pad-large;
+  height: $pad-large;
 }
 
 /*doc
@@ -496,7 +497,7 @@ table.table-zebra-stripes {
 }
 
 %header-allcaps {
-  font-size: rem-calc($txt-size-medium);
+  font-size: rem-calc($txt-size-small);
   font-family: $font-face-fancy;
   @extend %txt-transform;
 }
@@ -523,8 +524,13 @@ table.table-zebra-stripes {
   font-family: $font-face-fancy;
 }
 
-%header-xxlarge {
-  font-size: rem-calc($txt-size-xxlarge);
+%header-xlarge {
+  font-size: rem-calc($txt-size-xlarge);
+  font-family: $font-face-fancy;
+}
+
+%header-large {
+  font-size: rem-calc($txt-size-large);
   font-family: $font-face-fancy;
 }
 

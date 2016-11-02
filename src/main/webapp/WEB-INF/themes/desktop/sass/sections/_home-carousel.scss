@@ -1,0 +1,98 @@
+// jcarousel styles - from jquery -
+/*
+This is the visible area of you carousel.
+Set a width here to define how much items are visible.
+The width can be either fixed in px or flexible in %.
+Position must be relative!
+*/
+.jcarousel {
+  position: relative;
+  overflow: hidden;
+}
+
+/*
+This is the container of the carousel items.
+You must ensure that the position is relative or absolute and
+that the width is big enough to contain all items.
+*/
+.jcarousel ul {
+  width: 20000em;
+  position: relative;
+
+  /* Optional, required in this case since it's a <ul> element */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+These are the item elements. jCarousel works best, if the items
+have a fixed width and height (but it's not required).
+*/
+.jcarousel li {
+  /* Required only for block elements like <li>'s */
+  float: left;
+}
+
+// small carousel
+.carousel-wrap.small {
+  $icon-height: rem-calc(30);
+  $carousel-width: rem-calc(306);
+  // TODO PG-width is set in home.scss
+  @extend %brand-shading;
+  @extend .block-card;
+  margin-right: $pad-default;
+  position: relative;
+  .block-header {
+    @extend %brand-header;
+  }
+  .carousel {  //TODO: do we move this into home?
+    li {
+      width: $carousel-width;
+      padding: $pad-default;
+      height: 145px;
+      h3 {
+        @extend %home-subheader;
+        @extend  %header-large;
+      }
+      p {
+        font-size: rem-calc($txt-size-medium);
+      }
+    }
+  }
+  .carousel-control {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 120px;
+    margin-left: -50px;
+    .jcarousel-prev,
+    .jcarousel-next {
+      @extend .fa;
+      font-size: $icon-height;
+      &:hover {
+        @extend .fa-inverse;
+        text-decoration: none;
+      }
+    }
+    .jcarousel-prev {
+      @extend .fa-chevron-circle-left;
+    }
+    .jcarousel-next {
+      @extend .fa-chevron-circle-right;
+    }
+    .numbers {
+      @extend %small-italic;
+      color: $grey-med-dark;
+      display: inline-block;
+      padding: 0 $pad-xsmall;
+      vertical-align: top;
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: $icon-height;
+        height: $icon-height;
+      }
+    }
+  }
+}

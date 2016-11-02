@@ -212,7 +212,7 @@ $image-container: ($image-width + $pad-small);
     margin-bottom: $pad-xsmall;
     }
   .title {
-    @extend %header-xxlarge;
+    @extend %header-xlarge;
     margin-bottom: $pad-xsmall;
     @extend %link-text-body;
 
@@ -313,7 +313,7 @@ $image-container: ($image-width + $pad-small);
     color: $white;
     }
   h3 {
-    font-size: rem-calc($txt-size-xxlarge);
+    font-size: rem-calc($txt-size-xlarge);
     }
   h4 {
     font-family: $font-face-plain;

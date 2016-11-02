@@ -7,8 +7,8 @@
       class="no-js">
 <#assign title = article.title, articleDoi = article.doi />
 <#assign tabPage="Article"/>
-
 <#assign adPage="Article"/>
+<#assign isArticlePage = true />
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />

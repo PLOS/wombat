@@ -19,7 +19,7 @@
   <#if author.corresponding??><p id="authCorresponding-${author_index?c}"> ${author.corresponding}</p></#if>
   <#if author.currentAddresses?? && author.currentAddresses?size gt 0>
   <p id="authCurrentAddress-${author_index?c}">
-    <span class="type">Address</span><#list author.currentAddresses as address>
+    <#list author.currentAddresses as address>
     ${address}<#if address_has_next>; </#if>
     </#list>
   </p>

@@ -3,6 +3,8 @@ package org.ambraproject.wombat.controller;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSetMultimap;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
@@ -115,8 +117,7 @@ public class ArticleAssetController extends WombatController {
     Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
     Map<String, ?> fileRepoKey = (Map<String, ?>) files.get(fileType);
     if (fileRepoKey == null) {
-      String message = String.format("Unrecognized file type (\"%s\") for id: %s", fileType, id);
-      throw new NotFoundException(message);
+      fileRepoKey = handleUnmatchedFileType(id, itemType, fileType, files);
     }
 
     // TODO: Check visibility against site?
@@ -125,6 +126,42 @@ public class ArticleAssetController extends WombatController {
     try (CloseableHttpResponse responseFromApi = corpusContentApi.request(contentKey, ImmutableList.of())) {
       forwardAssetResponse(responseFromApi, responseToClient, isDownload);
     }
+  }
+
+  /**
+   * The keys are item types where, if at item of that type has only one file and get a request for an missing file
+   * type, we prefer to serve the one file and log a warning rather than serve a 404 response. The values are file types
+   * expected to exist, to ensure that we still serve 404s on URLs that are total nonsense.
+   * <p>
+   * This is a kludge over a data condition in PLOS's corpus where some items were not ingested with reformatted images
+   * as expected. We assume that it is safe to recover gracefully for certain item types because there is generally
+   * little difference in image resizing.
+   * <p>
+   * The main omission is {@code itemType="supplementaryMaterial"}, where we still want to be strict about the {@code
+   * fileType="supplementary"}. Also, a hit on {@code itemType="figure"} or {@code itemType="table"} is bigger trouble
+   * because the image resizing can be very significant, so we want a hard failure in that case.
+   */
+  // TODO: Get values from a Rhino API library, if and when such a thing exists
+  private static final ImmutableSetMultimap<String, String> ITEM_TYPES_TO_TOLERATE = ImmutableSetMultimap.<String, String>builder()
+      .putAll("graphic", "original", "thumbnail")
+      .putAll("standaloneStrikingImage", "original", "small", "inline", "medium", "large")
+      .build();
+
+  /**
+   * Handle a file request where the supplied file type could not be matched to any files for an existing item. If
+   * possible, resolve to another file to serve instead. Else, throw an appropriate exception.
+   */
+  private static Map<String, ?> handleUnmatchedFileType(RequestedDoiVersion id,
+                                                        String itemType, String fileType,
+                                                        Map<String, ?> files) {
+    if (files.size() == 1 && ITEM_TYPES_TO_TOLERATE.containsEntry(itemType, fileType)) {
+      Map.Entry<String, ?> onlyEntry = Iterables.getOnlyElement(files.entrySet());
+      log.warn(String.format("On %s (%s), received request for %s; only available file is %s",
+          id, itemType, fileType, onlyEntry.getKey()));
+      return (Map<String, ?>) onlyEntry.getValue();
+    }
+    String message = String.format("Unrecognized file type (\"%s\") for id: %s", fileType, id);
+    throw new NotFoundException(message);
   }
 
   /**

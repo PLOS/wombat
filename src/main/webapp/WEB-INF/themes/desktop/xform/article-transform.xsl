@@ -1261,7 +1261,12 @@
   <!-- 1/4/12: suppress, we don't use -->
   <xsl:template
     match="array | disp-formula-group | fig-group | fn-group | license | long-desc | open-access | sig-block | table-wrap-foot | table-wrap-group"/>
-  <xsl:template match="attrib"/>
+
+  <xsl:template match="attrib">
+    <p class="attrib">
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
 
   <!-- 1/4/12: suppress, we don't use (removed fig, table-wrap, and boxed-text here, process them independently) -->
   <xsl:template match="chem-struct-wrap"/>

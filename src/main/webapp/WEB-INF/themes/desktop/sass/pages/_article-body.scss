@@ -49,11 +49,15 @@ $line-height-small: ($line-height * .5);
   }
 }
 
+.body-section{
+  margin-top: $line-height-medium;
+  margin-bottom: $line-height-medium;
+}
+
+
+
 .article-content {
- .body-section{
-   margin-top: $line-height-medium;
-   margin-bottom: $line-height-medium;
- }
+
  .section > div {
     margin-bottom: $line-height;
   }
@@ -178,6 +182,13 @@ $line-height-small: ($line-height * .5);
       font-weight: bold;
     }
 
+  }
+
+  .attrib {
+    text-align: right;
+  }
+  .figure .attrib {
+    text-align: left;
   }
 
   // supplementary materials - need to have no margin between paragraphs just below the box
@@ -675,4 +686,9 @@ ol.references {
   .article-content {
     width: 100%;
   }
+}
+//figure page
+
+.article-id{
+  @extend .pad-default-y;
 }

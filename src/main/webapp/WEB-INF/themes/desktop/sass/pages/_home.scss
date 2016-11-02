@@ -295,7 +295,8 @@ $image-container: ($image-width + $pad-small);
     .title {
       margin-top: $small-block-spacing;
       a {
-        font-family: $font-face-fancy-bold;
+        font-family: $font-face-fancy;
+        font-weight: bold;
         font-size: rem-calc($txt-size-medium);
         @include link-text($color: $grey-med-dark);
         }

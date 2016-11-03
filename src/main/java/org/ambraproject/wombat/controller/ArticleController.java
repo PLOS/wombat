@@ -9,8 +9,11 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleComment;
@@ -22,6 +25,7 @@ import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
+import org.ambraproject.wombat.service.DoiToJournalResolutionService;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.ParseXmlService;
@@ -135,6 +139,12 @@ public class ArticleController extends WombatController {
   private Gson gson;
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
+  @Autowired
+  private SiteSet siteSet;
+  @Autowired
+  private RequestMappingContextDictionary requestMappingContextDictionary;
+  @Autowired
+  private DoiToJournalResolutionService doiToJournalResolutionService;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -150,7 +160,7 @@ public class ArticleController extends WombatController {
         .fillAmendments(model)
         .getArticlePointer();
 
-    XmlContent xmlContent = getXmlContent(site, articlePointer);
+    XmlContent xmlContent = getXmlContent(site, articlePointer, request);
     model.addAttribute("articleText", xmlContent.html);
     model.addAttribute("references", xmlContent.references);
 
@@ -724,13 +734,26 @@ public class ArticleController extends WombatController {
    * references and does html transform
    *
    * @param articlePointer
+   * @param request
    * @return an XmlContent containing the list of references and article html
    * @throws IOException
    */
-  private XmlContent getXmlContent(Site site, ArticlePointer articlePointer) throws IOException {
+  private XmlContent getXmlContent(Site site, ArticlePointer articlePointer, HttpServletRequest request) throws IOException {
     return corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
       byte[] xml = ByteStreams.toByteArray(stream);
-      List<Reference> references = parseXmlService.parseArticleReferences(new ByteArrayInputStream(xml));
+      List<Reference> references = parseXmlService.parseArticleReferences(
+          new ByteArrayInputStream(xml), doi -> {
+            String citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi, site);
+            String linkText = null;
+            if (citationJournalKey != null) {
+              linkText = Link.toForeignSite(site, citationJournalKey, siteSet)
+                  .toPattern(requestMappingContextDictionary, "article")
+                  .addQueryParameter("id", doi)
+                  .build()
+                  .get(request);
+            }
+            return linkText;
+          });
 
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
       try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
@@ -741,5 +764,4 @@ public class ArticleController extends WombatController {
       return new XmlContent(articleHtml.toString(), references);
     });
   }
-
 }

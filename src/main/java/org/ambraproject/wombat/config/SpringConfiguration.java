@@ -76,6 +76,7 @@ import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentServiceImpl;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.CommentValidationServiceImpl;
+import org.ambraproject.wombat.service.DoiToJournalResolutionService;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.FreemarkerMailServiceImpl;
 import org.ambraproject.wombat.service.ParseReferenceService;
@@ -384,6 +385,11 @@ public class SpringConfiguration {
   @Bean
   public ParseReferenceService parseReferenceService() {
     return new ParseReferenceService();
+  }
+
+  @Bean
+  public DoiToJournalResolutionService doiToJournalResolutionService() {
+    return new DoiToJournalResolutionService();
   }
 
 }

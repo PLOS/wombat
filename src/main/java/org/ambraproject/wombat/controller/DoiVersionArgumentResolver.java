@@ -25,7 +25,7 @@ public class DoiVersionArgumentResolver implements HandlerMethodArgumentResolver
    * @return {@code true} if the user is authorized to view unpublished content
    */
   private boolean canViewUnpublishedIngestion(NativeWebRequest webRequest) {
-    return true;
+    return false;
   }
 
   @Override

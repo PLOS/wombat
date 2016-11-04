@@ -1,26 +1,26 @@
-/**
- * Created by pgrinbaum on 11/13/14.
- * coppied from ambra, global.js
- */
-;(function ($) {
+window.figshare.load("plos", function(Widget) {
 
-  figshareWidget = function () {
-  if (typeof figshare_widget_load == "undefined") {
-  function add_widget_css() {
-    var headtg = document.getElementsByTagName('head')[0];
-    if (!headtg) {
-      return;
-    }
-    var linktg = document.createElement('link');
-    linktg.type = 'text/css';
-    linktg.rel = 'stylesheet';
-    linktg.href = 'http://wl.figshare.com/static/css/p_widget.css?v=8';
-    headtg.appendChild(linktg);
+  // Select all tags defined in your page. In  these tags we will place the widget.
+  var containers = document.querySelectorAll(".figshare_widget");
+  var loadedWidgets = [];
+
+  for(var i = 0, n = containers.length; i < n; i += 1) {
+
+    var doi = containers[i].getAttribute("doi");
+    var groupStringId = doi.split(".")[2];
+
+    var widget = new Widget({
+      doi: doi,
+      extraClass: groupStringId
+    });
+
+    widget.initialize(); // initialize the widget
+    widget.mount(containers[i]); // mount it in a tag that's on your page
+    loadedWidgets.push(widget);
   }
-  add_widget_css();
-}
-$.getScript("http://wl.figshare.com/static/plos_widget.js?v=10");
-$.getScript("http://wl.figshare.com/static/jmvc/main_app/resources/jwplayer/jwplayer.js");
-figshare_widget_load = true;
-  };
-})(jQuery);
+
+  // this will save the widget on the global scope for later use from
+  // your JS scripts. This line is optional.
+  window.loadedWidgets = loadedWidgets;
+
+});

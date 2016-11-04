@@ -47,8 +47,13 @@ public class ParseReferenceService {
   /**
    * Helper interface to build journal links from citation DOIs.
    */
+  @FunctionalInterface
   public interface DoiToJournalLinkService {
 
+    /**
+     * @param doi
+     * @return a fully qualified link to an internal journal article page, or null if an external doi
+     */
     public String getLink(String doi);
 
   }

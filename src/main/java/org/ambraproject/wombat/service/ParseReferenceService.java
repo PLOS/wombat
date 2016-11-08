@@ -45,12 +45,26 @@ public class ParseReferenceService {
   }
 
   /**
+   * Helper interface to build journal links from citation DOIs.
+   */
+  @FunctionalInterface
+  public interface DoiToJournalLinkService {
+
+    /**
+     * @param doi
+     * @return a fully qualified link to an internal journal article page, or null if an external doi
+     */
+    public String getLink(String doi);
+
+  }
+
+  /**
    * Builds a list of Reference objects for each <ref></ref> element
    *
    * @param refElement a <ref></ref> node which can contain (label?, (element-citation | mixed-citation | nlm-citation)+)
    * @return list of Reference objects
    */
-  public List<Reference> buildReferences(Element refElement) throws XMLParseException {
+  public List<Reference> buildReferences(Element refElement, DoiToJournalLinkService linkService) throws XMLParseException {
     List<Node> citationElements = null;
     for (CitationElement elementType : CitationElement.values()) {
       NodeList nodes = refElement.getElementsByTagName(elementType.getValue());
@@ -91,8 +105,14 @@ public class ParseReferenceService {
       }
       PageRange pages = buildPages(element);
 
-      Reference reference  = Reference.build()
+      String fullArticleLink = null;
+      if (doi != null) {
+        fullArticleLink = linkService.getLink(doi);
+      }
+
+      Reference reference = Reference.build()
           .setJournal(parseJournal(element))
+          .setFullArticleLink(fullArticleLink)
           .setTitle(title)
           .setChapterTitle(buildChapterTitle(element))
           .setUnStructuredReference(unstructuredReference)
@@ -154,7 +174,6 @@ public class ParseReferenceService {
   }
 
   /**
-   *
    * @return the text within <mixed-citation></mixed-citation> with no structure
    */
   private String getUnstructuredCitation(Element citationElement) {
@@ -202,7 +221,7 @@ public class ParseReferenceService {
       List<Node> nameNodes = NodeListAdapter.wrap(citationElement.getElementsByTagName("name"));
       int editorStartIndex = getEditorStartIndex(nameNodes);
 
-      List<Node> authorNodes = editorStartIndex == -1 ? nameNodes: nameNodes.subList(0, editorStartIndex);
+      List<Node> authorNodes = editorStartIndex == -1 ? nameNodes : nameNodes.subList(0, editorStartIndex);
       personGroup = authorNodes.stream()
           .map(node -> parsePersonName((Element) node))
           .collect(Collectors.toList());

@@ -738,7 +738,8 @@ public class ArticleController extends WombatController {
    * @return an XmlContent containing the list of references and article html
    * @throws IOException
    */
-  private XmlContent getXmlContent(Site site, ArticlePointer articlePointer, HttpServletRequest request) throws IOException {
+  private XmlContent getXmlContent(Site site, ArticlePointer articlePointer,
+                                   HttpServletRequest request) throws IOException {
     return corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
       byte[] xml = ByteStreams.toByteArray(stream);
       List<Reference> references = parseXmlService.parseArticleReferences(

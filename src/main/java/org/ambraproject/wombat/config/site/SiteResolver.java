@@ -25,11 +25,11 @@ public class SiteResolver implements HandlerMethodArgumentResolver {
   private SiteSet siteSet;
 
   /**
-   * Apply to every controller parameter annotated with {@code @SiteParam}, which should be of type {@link Site}.
+   * Apply to every controller parameter of type {@link Site}.
    */
   @Override
   public boolean supportsParameter(MethodParameter parameter) {
-    return parameter.getParameterAnnotation(SiteParam.class) != null;
+    return Site.class.isAssignableFrom(parameter.getParameterType());
   }
 
   /**

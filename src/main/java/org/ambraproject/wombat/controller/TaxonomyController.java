@@ -15,8 +15,7 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.JournalSite;
 import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.model.TaxonomyGraph.CategoryView;
@@ -64,7 +63,7 @@ public class TaxonomyController extends WombatController {
 
   @RequestMapping(name = "taxonomy", value = TAXONOMY_TEMPLATE, method = RequestMethod.GET)
   @ResponseBody
-  public List<SubjectData> read(@SiteParam Site site,
+  public List<SubjectData> read(JournalSite site,
       @RequestParam MultiValueMap<String, String> params)
       throws IOException {
     Map<String, Object> taxonomyBrowserConfig = site.getTheme().getConfigMap("taxonomyBrowser");

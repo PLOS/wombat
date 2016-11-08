@@ -2,7 +2,6 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
@@ -42,7 +41,7 @@ public class ExternalResourceController extends WombatController {
   @RequestMapping(name = "repoObject", value = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/{key}")
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
-                    @SiteParam Site site,
+                    Site site,
                     @PathVariable("key") String key)
       throws IOException {
     serve(response, request, ContentKey.createForLatestVersion(key));
@@ -51,7 +50,7 @@ public class ExternalResourceController extends WombatController {
   @RequestMapping(name = "versionedRepoObject", value = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/{key}/{version}")
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
-                    @SiteParam Site site,
+                    Site site,
                     @PathVariable("key") String key,
                     @PathVariable("version") String version)
       throws IOException {
@@ -67,7 +66,7 @@ public class ExternalResourceController extends WombatController {
   @RequestMapping(name = "repoObjectUsingPublicUrl", value = "/s/file")
   public void serveWithPublicUrl(HttpServletResponse response,
                                  HttpServletRequest request,
-                                 @SiteParam Site site,
+                                 Site site,
                                  @RequestParam(value = "id", required = true) String key)
           throws IOException {
     serve(response, request, ContentKey.createForLatestVersion(key));

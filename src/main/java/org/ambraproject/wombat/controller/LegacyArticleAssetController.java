@@ -7,7 +7,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ApiAddress;
@@ -136,7 +135,7 @@ public class LegacyArticleAssetController extends WombatController {
    */
   @RequestMapping(name = "asset", value = "/article/asset")
   public ModelAndView serveAsset(HttpServletRequest request,
-                                 @SiteParam Site site,
+                                 Site site,
                                  @RequestParam(value = "id", required = true) String rawId,
                                  @RequestParam(value = "unique", required = false) String unique,
                                  @RequestParam(value = "download", required = false) String download)

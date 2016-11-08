@@ -15,8 +15,7 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.JournalSite;
 import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.slf4j.Logger;
@@ -46,7 +45,7 @@ public class AlertController extends WombatController {
 
   @RequestMapping(name = "addSubjectAlert", value = "/subjectalert/add", method = RequestMethod.POST)
   @ResponseBody
-  public Map<String, Object> addSubjectAlert(HttpServletRequest request, @SiteParam Site site,
+  public Map<String, Object> addSubjectAlert(HttpServletRequest request, JournalSite site,
                                              @RequestParam("subject") String subject)
       throws IOException {
     return changeAlert(request, site, subject, alertService::addSubjectAlert);
@@ -54,7 +53,7 @@ public class AlertController extends WombatController {
 
   @RequestMapping(name = "removeSubjectAlert", value = "/subjectalert/remove", method = RequestMethod.POST)
   @ResponseBody
-  public Map<String, Object> removeSubjectAlert(HttpServletRequest request, @SiteParam Site site,
+  public Map<String, Object> removeSubjectAlert(HttpServletRequest request, JournalSite site,
                                                 @RequestParam("subject") String subject)
       throws IOException {
     return changeAlert(request, site, subject, alertService::removeSubjectAlert);
@@ -62,7 +61,7 @@ public class AlertController extends WombatController {
 
   @RequestMapping(name = "addSearchAlert", value = "/searchalert/add", method = RequestMethod.POST)
   @ResponseBody
-  public Map<String, Object> addSearchAlert(HttpServletRequest request, @SiteParam Site site,
+  public Map<String, Object> addSearchAlert(HttpServletRequest request, JournalSite site,
                                             @RequestParam("name") String name,
                                             @RequestParam("query") String query,
                                             @RequestParam("frequency") List<String> frequency)
@@ -113,7 +112,7 @@ public class AlertController extends WombatController {
    * @return Map converted to JSON with "result" of "success" or "failed" and optional "error" attributes.
    * @throws IOException
    */
-  private Map<String, Object> changeAlert(HttpServletRequest request, Site site,
+  private Map<String, Object> changeAlert(HttpServletRequest request, JournalSite site,
                                                  String subject, SubjectAlertAction action)
       throws IOException {
     if (subject.isEmpty()) {

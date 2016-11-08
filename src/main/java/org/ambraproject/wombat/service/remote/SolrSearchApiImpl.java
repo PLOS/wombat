@@ -18,6 +18,7 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.site.JournalSite;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
@@ -261,7 +262,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   protected synchronized void initializeEIssnToJournalKeyMap(SiteSet siteSet, Site currentSite) throws IOException {
     if (eIssnToJournalKey == null) {
       Map<String, String> mutable = new HashMap<>();
-      for (Site site : siteSet.getSites()) {
+      for (JournalSite site : siteSet.getJournalSites()) {
         Map<String, String> rhinoResult = (Map<String, String>) articleApi.requestObject(
             ApiAddress.builder("journals").addToken(site.getJournalKey()).build(), Map.class);
         mutable.put(rhinoResult.get("eIssn"), site.getJournalKey());

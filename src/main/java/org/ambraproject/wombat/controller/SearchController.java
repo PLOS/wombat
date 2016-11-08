@@ -19,8 +19,8 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
+import org.ambraproject.wombat.config.site.JournalSite;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.FeedMetadataField;
@@ -527,7 +527,7 @@ public class SearchController extends WombatController {
   }
 
   private CommonParams modelCommonParams(HttpServletRequest request, Model model,
-      @SiteParam Site site, @RequestParam MultiValueMap<String, String> params) throws IOException {
+      Site site, @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
@@ -549,7 +549,7 @@ public class SearchController extends WombatController {
    */
   @RequestMapping(name = "searchFeed", value = "/search/feed/{feedType:atom|rss}",
       params = {"q"}, method = RequestMethod.GET)
-  public ModelAndView getSearchRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
+  public ModelAndView getSearchRssFeedView(HttpServletRequest request, Model model, Site site,
       @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = modelCommonParams(request, model, site, params);
 
@@ -579,7 +579,7 @@ public class SearchController extends WombatController {
    */
   @RequestMapping(name = "advancedSearchFeed", value = "/search/feed/{feedType:atom|rss}",
       params = {"unformattedQuery"}, method = RequestMethod.GET)
-  public ModelAndView getAdvancedSearchRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
+  public ModelAndView getAdvancedSearchRssFeedView(HttpServletRequest request, Model model, Site site,
       @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
     String queryString = params.getFirst("unformattedQuery");
     params.remove("unformattedQuery");
@@ -622,7 +622,7 @@ public class SearchController extends WombatController {
    */
 
   @RequestMapping(name = "simpleSearch", value = "/search")
-  public String search(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String search(HttpServletRequest request, Model model, Site site,
                        @RequestParam MultiValueMap<String, String> params) throws IOException {
     if (!performValidSearch(request, model, site, params)) {
       return advancedSearchAjax(model, site);
@@ -644,13 +644,13 @@ public class SearchController extends WombatController {
    */
   @RequestMapping(name = "dynamicSearch", value = "/dynamicSearch", params = {"q"})
   @ResponseBody
-  public Object dynamicSearch(HttpServletRequest request, Model model, @SiteParam Site site,
+  public Object dynamicSearch(HttpServletRequest request, Model model, Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     performValidSearch(request, model, site, params);
     return gson.toJson(model);
   }
 
-  private boolean performValidSearch(HttpServletRequest request, Model model, @SiteParam Site site,
+  private boolean performValidSearch(HttpServletRequest request, Model model, Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     CommonParams commonParams = modelCommonParams(request, model, site, params);
 
@@ -708,7 +708,7 @@ public class SearchController extends WombatController {
    * todo: remove this method and direct all advancedSearch requests to the simple search method
    */
   @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!q"})
-  public String advancedSearch(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String advancedSearch(HttpServletRequest request, Model model, Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     String queryString = params.getFirst("unformattedQuery");
     params.remove("unformattedQuery");
@@ -717,7 +717,7 @@ public class SearchController extends WombatController {
   }
 
   @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!q"})
-  public String advancedSearchAjax(Model model, @SiteParam Site site) throws IOException {
+  public String advancedSearchAjax(Model model, Site site) throws IOException {
     model.addAttribute("isNewSearch", true);
     return site.getKey() + "/ftl/search/searchResults";
   }
@@ -727,7 +727,7 @@ public class SearchController extends WombatController {
    *
    */
   @RequestMapping(name = "mobileSubjectAreaBrowser", value = "/subjectAreaBrowse")
-  public String mobileSubjectAreaBrowser(@SiteParam Site site) {
+  public String mobileSubjectAreaBrowser(Site site) {
     return site.getKey() + "/ftl/mobileSubjectAreaBrowser";
   }
 
@@ -743,7 +743,7 @@ public class SearchController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "browse", value = "/browse")
-  public String browseAll(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String browseAll(HttpServletRequest request, Model model, JournalSite site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
     subjectAreaSearch(request, model, site, params, "");
     return site.getKey() + "/ftl/browse/subjectArea/browseSubjectArea";
@@ -762,7 +762,7 @@ public class SearchController extends WombatController {
    * @throws IOException
    */
   @RequestMapping(name = "browseSubjectArea", value = "/browse/{subject}")
-  public String browseSubjectArea(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String browseSubjectArea(HttpServletRequest request, Model model, JournalSite site,
       @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)
       throws IOException {
     subjectAreaSearch(request, model, site, params, subject);
@@ -779,7 +779,7 @@ public class SearchController extends WombatController {
    * @param subject the subject area to be search; return all articles if no subject area is provided
    * @throws IOException
    */
-  private void subjectAreaSearch(HttpServletRequest request, Model model, Site site,
+  private void subjectAreaSearch(HttpServletRequest request, Model model, JournalSite site,
       MultiValueMap<String, String> params, String subject) throws IOException {
 
     TaxonomyGraph taxonomyGraph = modelSubjectHierarchy(model, site, subject);
@@ -832,7 +832,7 @@ public class SearchController extends WombatController {
     model.addAttribute("subscribed", subscribed);
   }
 
-  private TaxonomyGraph modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
+  private TaxonomyGraph modelSubjectHierarchy(Model model, JournalSite site, String subject) throws IOException {
     TaxonomyGraph fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey());
 
     Collection<String> subjectParents;

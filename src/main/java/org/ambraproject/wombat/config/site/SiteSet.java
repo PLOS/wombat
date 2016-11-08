@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.config.site;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Strings;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.ImmutableBiMap;
@@ -27,23 +28,30 @@ import java.util.Set;
 public class SiteSet {
 
   private final ImmutableBiMap<String, Site> sites;
+  private final ImmutableBiMap<String, JournalSite> journalSites;
 
   private final ImmutableBiMap<String, String> journalKeysToNames;
 
   @VisibleForTesting // otherwise use SiteSet.create
-  public SiteSet(Iterable<Site> sites) {
-    ImmutableBiMap.Builder<String, Site> map = ImmutableBiMap.builder();
-    for (Site site : sites) {
-      map.put(site.getKey(), site);
+  public SiteSet(Iterable<Site> siteObjs) {
+    ImmutableBiMap.Builder<String, Site> sites = ImmutableBiMap.builder();
+    ImmutableBiMap.Builder<String, JournalSite> journalSites = ImmutableBiMap.builder();
+    for (Site site : siteObjs) {
+      String siteKey = site.getKey();
+      sites.put(siteKey, site);
+      if (site instanceof JournalSite) {
+        journalSites.put(siteKey, (JournalSite) site);
+      }
     }
-    this.sites = map.build();
+    this.sites = sites.build();
+    this.journalSites = journalSites.build();
 
-    this.journalKeysToNames = buildJournalKeysToNames(this.sites.values());
+    this.journalKeysToNames = buildJournalKeysToNames(this.journalSites.values());
   }
 
-  private static ImmutableMultimap<String, Site> groupByJournalKey(Set<Site> sites) {
-    ImmutableMultimap.Builder<String, Site> builder = ImmutableMultimap.builder();
-    for (Site site : sites) {
+  private static ImmutableMultimap<String, JournalSite> groupByJournalKey(Set<JournalSite> sites) {
+    ImmutableMultimap.Builder<String, JournalSite> builder = ImmutableMultimap.builder();
+    for (JournalSite site : sites) {
       builder.put(site.getJournalKey(), site);
     }
     return builder.build();
@@ -62,12 +70,12 @@ public class SiteSet {
    * @throws IllegalArgumentException if two sites with the same journal key have unequal journal names or if two sites
    *                                  with the same journal name have unequal journal keys
    */
-  private static ImmutableBiMap<String, String> buildJournalKeysToNames(Set<Site> sites) {
-    Multimap<String, Site> keysToSites = groupByJournalKey(sites);
+  private static ImmutableBiMap<String, String> buildJournalKeysToNames(Set<JournalSite> sites) {
+    Multimap<String, JournalSite> keysToSites = groupByJournalKey(sites);
     BiMap<String, String> keysToNames = HashBiMap.create(keysToSites.keySet().size());
-    for (Map.Entry<String, Collection<Site>> entry : keysToSites.asMap().entrySet()) {
+    for (Map.Entry<String, Collection<JournalSite>> entry : keysToSites.asMap().entrySet()) {
       String journalKey = entry.getKey();
-      Iterator<Site> siteIterator = entry.getValue().iterator();
+      Iterator<JournalSite> siteIterator = entry.getValue().iterator();
       String journalName = siteIterator.next().getJournalName();
       while (siteIterator.hasNext()) {
         String nextJournalName = siteIterator.next().getJournalName();
@@ -88,6 +96,30 @@ public class SiteSet {
     return ImmutableBiMap.copyOf(keysToNames);
   }
 
+  @VisibleForTesting
+  public static final String JOURNAL_KEY_PATH = "journal";
+  @VisibleForTesting
+  public static final String CONFIG_KEY_FOR_JOURNAL = "journalKey";
+  @VisibleForTesting
+  public static final String JOURNAL_NAME = "journalName";
+
+
+  private static Site buildSite(String key, Theme theme, SiteRequestScheme requestScheme) {
+    Map<String, Object> journalMap = theme.getConfigMap(JOURNAL_KEY_PATH);
+
+    String journalKey = (String) journalMap.get(CONFIG_KEY_FOR_JOURNAL);
+    String journalName = (String) journalMap.get(JOURNAL_NAME);
+
+    if (Strings.isNullOrEmpty(journalKey) != Strings.isNullOrEmpty(journalName)) {
+      String message = String.format("TODO", theme.getKey());
+      throw new RuntimeException(message);
+    }
+
+    return Strings.isNullOrEmpty(journalKey)
+        ? new JournalNeutralSite(key, theme, requestScheme)
+        : new JournalSite(key, theme, requestScheme, journalKey, journalName);
+  }
+
   public static SiteSet create(List<Map<String, ?>> siteSpecifications, ThemeTree themeTree) {
     List<Site> sites = Lists.newArrayListWithCapacity(siteSpecifications.size());
     for (Map<String, ?> siteSpec : siteSpecifications) {
@@ -98,7 +130,7 @@ public class SiteSet {
       SiteRequestScheme requestScheme = resolveDefinition != null ? parseRequestScheme(resolveDefinition)
           : SiteRequestScheme.builder().setPathToken(key).build();
 
-      sites.add(new Site(key, theme, requestScheme));
+      sites.add(buildSite(key, theme, requestScheme));
     }
     validateSchemes(sites);
     return new SiteSet(sites);
@@ -177,8 +209,22 @@ public class SiteSet {
     return site;
   }
 
+  public JournalSite getJournalSite(String key) throws UnmatchedSiteException {
+    JournalSite site = journalSites.get(key);
+    if (site == null) {
+      throw sites.containsKey(key)
+          ? new UnmatchedSiteException("Key is for a journal-neutral site: " + key)
+          : new UnmatchedSiteException("Key not matched to site: " + key);
+    }
+    return site;
+  }
+
   public ImmutableSet<Site> getSites() {
     return sites.values();
+  }
+
+  public ImmutableSet<JournalSite> getJournalSites() {
+    return journalSites.values();
   }
 
   /**
@@ -205,8 +251,8 @@ public class SiteSet {
   }
 
   /**
-   * @return a set of all journal keys for this SiteSet.  Note that there may be fewer of
-   *     these than siteKeys, since a journal can have multiple sites.
+   * @return a set of all journal keys for this SiteSet.  Note that there may be fewer of these than siteKeys, since a
+   * journal can have multiple sites.
    */
   public ImmutableSet<String> getJournalKeys() {
     return journalKeysToNames.keySet();

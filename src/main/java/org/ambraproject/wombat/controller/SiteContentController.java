@@ -15,7 +15,6 @@ package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ContentKey;
@@ -41,7 +40,7 @@ public class SiteContentController extends WombatController {
   private EditorialContentApi editorialContentApi;
 
   @RequestMapping(name="siteContent", value="/s/{pageName}")
-  public String renderSiteContent(Model model, @SiteParam Site site, @PathVariable String pageName)
+  public String renderSiteContent(Model model, Site site, @PathVariable String pageName)
           throws IOException {
 
     Theme theme = site.getTheme();
@@ -70,7 +69,7 @@ public class SiteContentController extends WombatController {
    * controller for site content home pages
    */
   @RequestMapping(name = "siteContentHome", value = "/s", method = RequestMethod.GET)
-  public String siteContentHomePage(Model model, @SiteParam Site site) throws IOException {
+  public String siteContentHomePage(Model model, Site site) throws IOException {
 
     Theme theme = site.getTheme();
     Map<String, Object> pageConfig = theme.getConfigMap("siteContent");

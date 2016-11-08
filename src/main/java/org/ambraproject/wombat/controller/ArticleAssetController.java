@@ -8,7 +8,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
@@ -175,7 +174,7 @@ public class ArticleAssetController extends WombatController {
 
   @RequestMapping(name = "assetFile", value = "/article/file", params = {"type"})
   public void serveAssetFile(HttpServletRequest request, HttpServletResponse response,
-                             @SiteParam Site site,
+                             Site site,
                              RequestedDoiVersion id,
                              @RequestParam(value = "type", required = true) String fileType,
                              @RequestParam(value = "download", required = false) String isDownload)
@@ -185,7 +184,7 @@ public class ArticleAssetController extends WombatController {
 
   @RequestMapping(name = "figureImage", value = "/article/figure/image")
   public void serveFigureImage(HttpServletRequest request, HttpServletResponse response,
-                               @SiteParam Site site,
+                               Site site,
                                RequestedDoiVersion id,
                                @RequestParam(value = "size", required = true) String figureSize,
                                @RequestParam(value = "download", required = false) String isDownload)

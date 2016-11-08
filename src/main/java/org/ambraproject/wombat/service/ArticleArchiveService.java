@@ -1,6 +1,6 @@
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.JournalSite;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -19,7 +19,7 @@ public interface ArticleArchiveService {
    * @throws IOException
    * @throws ParseException
    */
-  public abstract Map<?, ?> getYearsForJournal(Site site) throws IOException, ParseException;
+  public abstract Map<?, ?> getYearsForJournal(JournalSite site) throws IOException, ParseException;
 
   /**
    * Returns all of the months for the requested year. If it's the current year,
@@ -40,6 +40,6 @@ public interface ArticleArchiveService {
    * @return list of articles published in a given year and month in a journal
    * @throws IOException
    */
-  public abstract Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month) throws IOException;
+  public abstract Map<?, ?> getArticleDoisPerMonth(JournalSite site, String year, String month) throws IOException;
 
 }

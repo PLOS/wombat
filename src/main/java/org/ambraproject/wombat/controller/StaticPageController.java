@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,7 @@ import java.io.InputStream;
 public class StaticPageController extends WombatController {
 
   @RequestMapping(name = "staticPage", value = "/static/{pageName}")
-  public String renderStaticPage(@SiteParam Site site, @PathVariable String pageName) {
+  public String renderStaticPage(Site site, @PathVariable String pageName) {
     if (!doesStaticPageExist(site, pageName)) {
       throw new NotFoundException();
     }

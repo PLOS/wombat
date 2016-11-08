@@ -13,6 +13,7 @@ import com.google.common.collect.SetMultimap;
 import com.google.common.collect.Sets;
 import com.google.common.io.Files;
 import freemarker.cache.TemplateLoader;
+import org.ambraproject.wombat.config.site.JournalSite;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
@@ -282,7 +283,7 @@ public abstract class Theme {
     }
 
     // No site name was explicitly given for the journal key, so just search siteSet for it.
-    for (Site candidateSite : siteSet.getSites()) {
+    for (JournalSite candidateSite : siteSet.getJournalSites()) {
       if (candidateSite.getJournalKey().equals(journalKey)) {
         return candidateSite;
       }

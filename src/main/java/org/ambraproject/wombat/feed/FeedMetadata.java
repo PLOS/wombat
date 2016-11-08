@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.feed;
 
 import com.google.common.base.Strings;
+import org.ambraproject.wombat.config.site.JournalSite;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.util.ClientEndpoint;
@@ -15,13 +16,13 @@ import java.util.function.Function;
 class FeedMetadata {
   private final Map<String, Object> model;
   private final HttpServletRequest request;
-  private final Site site;
+  private final JournalSite site;
   private final Map<String, Object> feedConfig;
 
   FeedMetadata(Map<String, Object> model, HttpServletRequest request) {
     this.model = Objects.requireNonNull(model);
     this.request = Objects.requireNonNull(request);
-    this.site = Objects.requireNonNull((Site) FeedMetadataField.SITE.getFrom(model));
+    this.site = Objects.requireNonNull((JournalSite) FeedMetadataField.SITE.getFrom(model));
     this.feedConfig = Collections.unmodifiableMap(site.getTheme().getConfigMap("feed"));
   }
 

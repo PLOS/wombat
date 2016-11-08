@@ -1,82 +1,54 @@
 package org.ambraproject.wombat.service;
 
+import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.site.Site;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class DoiToJournalResolutionService {
 
-  private List<Map<Site, Pattern>> patternCache = new ArrayList<>();
+  private final Map<Site, ImmutableList<DoiJournalRegex>> patternCache = new ConcurrentHashMap<>();
+
+  private class DoiJournalRegex {
+    private final String journalKey;
+    private final Pattern pattern;
+
+    public DoiJournalRegex(String journalKey, Pattern pattern) {
+      this.journalKey = Objects.requireNonNull(journalKey);
+      this.pattern = Objects.requireNonNull(pattern);
+    }
+  }
 
   public String getJournalKeyFromDoi(String doi, Site site) {
-    Map<Site, Pattern> journalDoiMap;
-    if (siteIsInCache(site)) {
-      journalDoiMap = getFromCache(site);
-    } else {
-      journalDoiMap = getFromConfig(site);
-    }
+    ImmutableList<DoiJournalRegex> doiJournalRegices
+        = patternCache.computeIfAbsent(site, this::getFromConfig);
 
-    if (journalDoiMap != null) {
-      Pattern doiPattern = journalDoiMap.get(site);
-      Matcher doiMatcher = doiPattern.matcher(doi);
-      if (doiMatcher.find()) {
-        return journalDoiMap.keySet().iterator().next().getJournalKey();
+    for (DoiJournalRegex doiJournalRegex : doiJournalRegices) {
+      Pattern pattern = doiJournalRegex.pattern;
+      Matcher matcher = pattern.matcher(doi);
+      if (matcher.matches()) {
+        return doiJournalRegex.journalKey;
       }
     }
     return null;
   }
 
-  private boolean siteIsInCache(Site site) {
-    boolean siteIsInCache = false;
-    for (Map<Site, Pattern> patternCacheEntry : patternCache) {
-      if (patternCacheEntry.containsKey(site)) {
-        siteIsInCache = true;
-        break;
-      }
-    }
-    return siteIsInCache;
-  }
 
-  private Map<Site, Pattern> getFromConfig(Site site) {
+  private ImmutableList<DoiJournalRegex> getFromConfig(Site site) {
     List<Map<String, String>> patternMaps = (List<Map<String, String>>) site.getTheme()
         .getConfigMap("journalDoiRegex").get("regexList");
-    String journalKey = site.getJournalKey();
-    for (Map<String, String> patternMap : patternMaps) {
-      String journalKeyFromConfig = patternMap.values().iterator().next();
-      if (journalKey.equals(journalKeyFromConfig)) {
-        putIntoCache(site, Pattern.compile(patternMap.get("pattern")));
-        return getFromCache(site);
-      }
-    }
-    return null;
-  }
-
-  private Map<Site, Pattern> getFromCache(Site site) {
-    Map<Site, Pattern> patternMap = null;
-    for (Map<Site, Pattern> patternCacheEntry : patternCache) {
-      if (patternCacheEntry.containsKey(site)) {
-        patternMap = patternCacheEntry;
-        break;
-      }
-    }
-    return patternMap;
-  }
-
-  private void putIntoCache(Site site, Pattern pattern) {
-    if (!siteIsInCache(site)) {
-      HashMap<Site, Pattern> patternMap = new HashMap<>();
-      patternMap.put(site, pattern);
-      getPatternCache().add(patternMap);
-    }
-  }
-
-  private List<Map<Site, Pattern>> getPatternCache() {
-    return patternCache;
+    List<DoiJournalRegex> regices = patternMaps.stream().map(regexMap -> {
+      String journalKey = regexMap.get("journalKey");
+      String pattern = regexMap.get("pattern");
+      return new DoiJournalRegex(journalKey, Pattern.compile(pattern));
+    }).collect(Collectors.toList());
+    return ImmutableList.copyOf(regices);
   }
 }
 

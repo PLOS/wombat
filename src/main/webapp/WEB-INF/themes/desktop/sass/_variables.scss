@@ -157,7 +157,7 @@ $pad-inbetween: 8px;
 
 // typography
 $font-face-plain: "arial";
-$font-face-fancy: "Open Sans", Arial, sans-serif;
+$font-face-fancy: "Open Sans", Arial, Helvetica, sans-serif;
 $font-face-icons: "icons-fawesome";
 
 $font-face-copy: $font-face-plain;
@@ -165,7 +165,7 @@ $font-face-navigation: $font-face-fancy;
 $font-face-headings: $font-face-fancy;
 // special fonts for article display
 $font-face-roman: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
-$font-face-sans-serif: "Arial Narrow", Arial, sans-serif;
+$font-face-sans-serif: "Arial Narrow", Arial, Helvetica, sans-serif;
 $font-face-monospace: "monospace";
 
 //Type Sizes
@@ -201,12 +201,12 @@ $txt-margin-top-h3: 24px;
 $sub-alignment: .5ex; //controls sub text
 $sup-alignment: 1ex; //controls super text
 
-$line-height: 18px; // applies to parapgraphs and lists by default
-$line-height-large: ($line-height * 2);
-$line-height-medium: ($line-height * 1.5);
-$line-height-small: ($line-height * .5);
+$line-height: 18px; // applies to paragraphs and lists by default
+$line-height-large: ($line-height * 2); //36px
+$line-height-medium: ($line-height * 1.5); //27px
+$line-height-small: ($line-height * .5); //9px
 $line-height-xsmall: 3px;
-$line-height-large-text: 1.2;
+$line-height-large-text: 1.25;
 $paragraph-spacing: ($line-height * .5);
 
 $list-spacing: $paragraph-spacing;

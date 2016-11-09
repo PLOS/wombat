@@ -15,12 +15,13 @@ public interface ParseXmlService {
   /**
    * Parses the references in the article xml
    *
-   * @param xml article xml
+   * @param xml  article xml
    * @return list of Reference objects
    * @throws ParserConfigurationException
    * @throws IOException
    * @throws SAXException
    * @throws XmlContentException
    */
-  List<Reference> parseArticleReferences(InputStream xml) throws IOException;
+  List<Reference> parseArticleReferences(InputStream xml,
+                                         ParseReferenceService.DoiToJournalLinkService linkService) throws IOException;
 }

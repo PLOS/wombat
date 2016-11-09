@@ -37,6 +37,7 @@ public class Reference implements Serializable {
   private String chapterTitle;
   private Integer year;
   private String journal;
+  private String fullArticleLink;
   private String volume;
   private Integer volumeNumber;
   private String issue;
@@ -76,6 +77,7 @@ public class Reference implements Serializable {
     this.chapterTitle = builder.chapterTitle;
     this.year = builder.year;
     this.journal = builder.journal;
+    this.fullArticleLink = builder.fullArticleLink;
     this.volume = builder.volume;
     this.volumeNumber = builder.volumeNumber;
     this.issue = builder.issue;
@@ -104,6 +106,10 @@ public class Reference implements Serializable {
 
   public String getJournal() {
     return journal;
+  }
+
+  public String getFullArticleLink() {
+    return fullArticleLink;
   }
 
   public String getVolume() {
@@ -163,6 +169,7 @@ public class Reference implements Serializable {
     private String chapterTitle;
     private Integer year;
     private String journal;
+    private String fullArticleLink;
     private String volume;
     private Integer volumeNumber;
     private String issue;
@@ -197,6 +204,11 @@ public class Reference implements Serializable {
 
     public Builder setJournal(String journal) {
       this.journal = journal;
+      return this;
+    }
+
+    public Builder setFullArticleLink(String fullArticleLink) {
+      this.fullArticleLink = fullArticleLink;
       return this;
     }
 

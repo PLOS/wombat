@@ -935,8 +935,12 @@
                 </xsl:if>
                   <xsl:element name="li">
                     <xsl:element name="a">
+                      <xsl:variable name="fullArticleLink" select="$dbCit/fullArticleLink"/>
                       <xsl:attribute name="href">
                         <xsl:choose>
+                          <xsl:when test="$fullArticleLink">
+                            <xsl:value-of select="$fullArticleLink"/>
+                          </xsl:when>
                           <xsl:when test="$doi">
                             <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
                           </xsl:when>
@@ -983,7 +987,14 @@
                         </xsl:choose>
                       </xsl:attribute>
                       <xsl:attribute name="target">_new</xsl:attribute>
-                      <xsl:attribute name="title">Go to article in CrossRef</xsl:attribute>
+                      <xsl:choose>
+                        <xsl:when test="$fullArticleLink or $doi">
+                          <xsl:attribute name="title">Go to article</xsl:attribute>
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <xsl:attribute name="title">Go to article in CrossRef</xsl:attribute>
+                        </xsl:otherwise>
+                      </xsl:choose>
                       View Article
                     </xsl:element>
                   </xsl:element>
@@ -1143,7 +1154,7 @@
 
   <!-- 1/4/12: suppress, we don't use -->
   <xsl:template name="subsection-title"
-                match="abstract/*/*/title | back[title]/*/*/title | back[not(title)]/*/*/*/title"/>
+                match="abstract/*/*/title | back[title]/*/*/title | back[not(title) and not(ack)]/*/*/*/title"/>
 
   <!-- 1/4/12: Ambra-specific template (creates article third-level heading) -->
   <xsl:template match="body/sec/sec/sec/title">
@@ -1159,12 +1170,12 @@
   <xsl:template name="block-title" priority="2"
                 match="list/title | def-list/title | boxed-text/title | verse-group/title | glossary/title | kwd-group/title"/>
 
-  <!-- 1/12/12: Ambra-specific template -->
-  <xsl:template match="ack/sec/title">
+
+  <xsl:template match="ack//sec/title">
     <xsl:call-template name="newline1"/>
-    <h3>
+    <xsl:element name="h{count(ancestor::sec) + 2}">
       <xsl:apply-templates/>
-    </h3>
+    </xsl:element>
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
@@ -2672,10 +2683,10 @@
       <hr class="section-rule"/>
     </xsl:if>
     <xsl:call-template name="newline1"/>
-    <div class="toc-section">
+    <div class="section toc-section">
       <xsl:call-template name="assign-id"/>
+      <a id="ack" name="ack" data-toc="ack" title="Acknowledgments" class="link-target"/>
       <xsl:if test="not(title)">
-        <a id="ack" name="ack" data-toc="ack" title="Acknowledgments"/>
         <h2>Acknowledgments</h2>
         <xsl:call-template name="newline1"/>
       </xsl:if>

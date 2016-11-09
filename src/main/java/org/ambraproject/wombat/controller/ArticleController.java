@@ -268,6 +268,7 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comment/comment";
   }
 
+
   private void checkCommentsAreEnabled() {
     if (runtimeConfiguration.areCommentsDisabled()) {
       // TODO: Need a special exception and handler to produce a 400-series response instead of 500?

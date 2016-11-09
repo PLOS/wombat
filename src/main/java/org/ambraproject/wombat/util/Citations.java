@@ -85,7 +85,7 @@ public class Citations {
     title = TextUtil.removeMarkup(title);
     citation.append(' ').append(title).append('.');
 
-    String journal = (String) articleMetadata.get("journal");
+    String journal = (String) ((Map<String, ?>) articleMetadata.get("journal")).get("title");
     String volume = (String) articleMetadata.get("volume");
     String issue = (String) articleMetadata.get("issue");
     String eLocationId = (String) articleMetadata.get("eLocationId");

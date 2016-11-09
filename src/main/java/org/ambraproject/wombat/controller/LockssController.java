@@ -1,5 +1,7 @@
 package org.ambraproject.wombat.controller;
 
+import org.ambraproject.wombat.config.site.JournalNeutral;
+import org.ambraproject.wombat.config.site.JournalNeutralSite;
 import org.ambraproject.wombat.config.site.JournalSite;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.ArticleArchiveService;
@@ -27,6 +29,12 @@ public class LockssController extends WombatController {
   @RequestMapping(name = "lockssPermission", value = "/lockss.txt", method = RequestMethod.GET)
   public String getLockssPermission(Site site) {
     return site + "/ftl/lockss/permission";
+  }
+
+  @RequestMapping(value = "/lockss-manifest", method = RequestMethod.GET)
+  @JournalNeutral
+  public String getYearsForJournal(JournalNeutralSite site, Model model) {
+    return "";
   }
 
   @RequestMapping(value = "/lockss-manifest", method = RequestMethod.GET)

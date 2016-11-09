@@ -2,11 +2,15 @@ package org.ambraproject.wombat.config.site;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -20,26 +24,49 @@ import java.util.Set;
  */
 public class RequestMappingContext {
 
-  private final RequestMapping annotation; // the raw, application-provided request mapping
-  private final String pattern; // the mapping pattern, which may have been overridden by the context
-  private final boolean isSiteless; // true if this object maps requests with no site resolution
-  private final boolean hasSiteToken; // true if the pattern has been modified by adding a site token to the beginning
+  /**
+   * Application-defined annotation types that can be applied to a request-mapped handler method.
+   */
+  private static enum CustomAnnotation {
+    SITELESS(Siteless.class), JOURNAL_NEUTRAL(JournalNeutral.class);
 
-  private RequestMappingContext(RequestMapping annotation, String pattern, boolean isSiteless, boolean hasSiteToken) {
-    this.annotation = Objects.requireNonNull(annotation);
+    private final Class<? extends Annotation> type;
+
+    private CustomAnnotation(Class<? extends Annotation> type) {
+      this.type = type;
+    }
+
+    private static Set<CustomAnnotation> findOn(Method method) {
+      Set<CustomAnnotation> annotationReprs = EnumSet.allOf(CustomAnnotation.class);
+      for (Iterator<CustomAnnotation> iterator = annotationReprs.iterator(); iterator.hasNext(); ) {
+        if (AnnotationUtils.findAnnotation(method, iterator.next().type) == null) {
+          iterator.remove();
+        }
+      }
+      return annotationReprs;
+    }
+  }
+
+  private final RequestMapping mapping; // the raw, application-provided request mapping
+  private final String pattern; // the mapping pattern, which may have been overridden by the context
+  private final boolean hasSiteToken; // true if the pattern has been modified by adding a site token to the beginning
+  private final ImmutableSet<CustomAnnotation> annotations; // annotations other than RequestMapping on the handler
+
+  private RequestMappingContext(RequestMapping mapping, String pattern, boolean hasSiteToken, Set<CustomAnnotation> annotations) {
+    this.mapping = Objects.requireNonNull(mapping);
     this.pattern = Objects.requireNonNull(pattern);
-    this.isSiteless = isSiteless;
+    this.annotations = Sets.immutableEnumSet(annotations);
     this.hasSiteToken = hasSiteToken;
   }
 
-  private static String extractPattern(RequestMapping annotation) {
-    String[] valueArray = annotation.value();
+  private static String extractPattern(RequestMapping mapping) {
+    String[] valueArray = mapping.value();
     if (valueArray.length == 0) {
-      String message = String.format("@RequestMapping (name=%s) must have value", annotation.name());
+      String message = String.format("@RequestMapping (name=%s) must have value", mapping.name());
       throw new IllegalArgumentException(message);
     } else if (valueArray.length > 1) {
       String message = String.format("@RequestMapping (name=%s) must not have more than one value (value=%s)",
-          annotation.name(), Arrays.toString(valueArray));
+          mapping.name(), Arrays.toString(valueArray));
       throw new IllegalArgumentException(message);
     } else {
       return valueArray[0];
@@ -56,8 +83,9 @@ public class RequestMappingContext {
   public static RequestMappingContext create(Method controllerMethod) {
     RequestMapping requestMapping = AnnotationUtils.findAnnotation(controllerMethod, RequestMapping.class);
     if (requestMapping == null) return null;
-    boolean isSiteless = AnnotationUtils.findAnnotation(controllerMethod, Siteless.class) != null;
-    return new RequestMappingContext(requestMapping, extractPattern(requestMapping), isSiteless, false);
+    String pattern = extractPattern(requestMapping);
+    Set<CustomAnnotation> customAnnotations = CustomAnnotation.findOn(controllerMethod);
+    return new RequestMappingContext(requestMapping, pattern, false, customAnnotations);
   }
 
   /**
@@ -67,7 +95,7 @@ public class RequestMappingContext {
    * @return a copy whose pattern is overridden
    */
   public RequestMappingContext override(String newPattern) {
-    return new RequestMappingContext(annotation, newPattern, isSiteless, false);
+    return new RequestMappingContext(mapping, newPattern, false, annotations);
   }
 
   /**
@@ -77,20 +105,20 @@ public class RequestMappingContext {
    * @throws java.lang.IllegalArgumentException if this object is siteless or already captures a site token
    */
   public RequestMappingContext addSiteToken() {
-    Preconditions.checkState(!isSiteless, "Cannot add site token to a siteless mapping");
+    Preconditions.checkState(!isSiteless(), "Cannot add site token to a siteless mapping");
     Preconditions.checkState(!hasSiteToken, "Mapping already has site token");
 
     String prefix = (pattern.isEmpty() || pattern.startsWith("/")) ? "/*" : "/*/";
     String modified = prefix + pattern;
-    return new RequestMappingContext(annotation, modified, false, true);
+    return new RequestMappingContext(mapping, modified, true, annotations);
   }
 
 
   /**
-   * @return the raw annotation object that supplies default values for this mapping
+   * @return the raw mapping object that supplies default values for this mapping
    */
   public RequestMapping getAnnotation() {
-    return annotation;
+    return mapping;
   }
 
   /**
@@ -107,7 +135,7 @@ public class RequestMappingContext {
    * @see {@link org.ambraproject.wombat.config.site.Siteless}
    */
   public boolean isSiteless() {
-    return isSiteless;
+    return annotations.contains(CustomAnnotation.SITELESS);
   }
 
 
@@ -120,7 +148,7 @@ public class RequestMappingContext {
   public Set<String> getRequiredParams() {
     if (requiredParams != null) return requiredParams;
     ImmutableSet.Builder<String> builder = ImmutableSet.builder();
-    for (String param : annotation.params()) {
+    for (String param : mapping.params()) {
       if (!param.startsWith("!")) {
         builder.add(param);
       }
@@ -134,7 +162,7 @@ public class RequestMappingContext {
   public Set<String> getForbiddenParams() {
     if (forbiddenParams != null) return forbiddenParams;
     ImmutableSet.Builder<String> builder = ImmutableSet.builder();
-    for (String param : annotation.params()) {
+    for (String param : mapping.params()) {
       if (param.startsWith("!")) {
         builder.add(param.substring(1));
       }
@@ -146,24 +174,23 @@ public class RequestMappingContext {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (!(o instanceof RequestMappingContext)) return false;
+    if (o == null || getClass() != o.getClass()) return false;
 
     RequestMappingContext that = (RequestMappingContext) o;
 
     if (hasSiteToken != that.hasSiteToken) return false;
-    if (isSiteless != that.isSiteless) return false;
-    if (!annotation.equals(that.annotation)) return false;
+    if (!mapping.equals(that.mapping)) return false;
     if (!pattern.equals(that.pattern)) return false;
+    return annotations.equals(that.annotations);
 
-    return true;
   }
 
   @Override
   public int hashCode() {
-    int result = annotation.hashCode();
+    int result = mapping.hashCode();
     result = 31 * result + pattern.hashCode();
-    result = 31 * result + (isSiteless ? 1 : 0);
     result = 31 * result + (hasSiteToken ? 1 : 0);
+    result = 31 * result + annotations.hashCode();
     return result;
   }
 }

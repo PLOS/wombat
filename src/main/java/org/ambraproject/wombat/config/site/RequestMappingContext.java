@@ -138,6 +138,10 @@ public class RequestMappingContext {
     return annotations.contains(CustomAnnotation.SITELESS);
   }
 
+  public boolean isJournalNeutral() {
+    return annotations.contains(CustomAnnotation.JOURNAL_NEUTRAL);
+  }
+
 
   private transient ImmutableSet<String> requiredParams;
   private transient ImmutableSet<String> forbiddenParams;

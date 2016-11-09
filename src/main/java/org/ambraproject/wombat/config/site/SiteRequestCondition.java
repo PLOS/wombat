@@ -175,18 +175,23 @@ public abstract class SiteRequestCondition implements RequestCondition<SiteReque
   }
 
   /**
-   * Get the pattern that is mapped to a request handler for a given site. Return {@code null} if the handler is
-   * disabled on that site.
+   * Get the pattern that is mapped to a request handler for a given site. Return {@code null} if the handler should not
+   * be mapped to a pattern on that site. May return {@code null} because the handler is disabled on that site by
+   * configuration, or if the site is for a specific journal and the handler is journal-neutral or vice versa.
    * <p>
    * Looks up the configured value from the site's theme, or gets the default value from the mapping annotation if it is
    * not configured in the theme.
    *
    * @param mapping the request handler's mapping
    * @param site    the site
-   * @return the pattern mapped to that handler on that site, or {@code null} if the handler is disabled on the site
+   * @return the pattern mapped to that handler on that site, or {@code null} to map no patterns
    */
   private static RequestMappingContext getMappingForSite(RequestMappingContext mapping, Site site) {
     Map<String, Object> mappingsConfig = site.getTheme().getConfigMap("mappings");
+
+    if (mapping.isJournalNeutral() != (site instanceof JournalNeutralSite)) {
+      return null;
+    }
 
     Map<String, Object> override = (Map<String, Object>) mappingsConfig.get(mapping.getAnnotation().name());
     if (override != null) {

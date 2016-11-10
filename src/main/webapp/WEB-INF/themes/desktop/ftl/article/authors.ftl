@@ -19,7 +19,7 @@
 
 <#include "articleHeader.ftl" />
 
-  <section class="article-body content authors">
+  <section class="article-body content authors article-tabs">
 
     <#include "tabs.ftl" />
     <@displayTabList 'Authors' />

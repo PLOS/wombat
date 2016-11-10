@@ -142,6 +142,8 @@ h2 {
   font-weight: normal;
 }
 
+
+
 h3 {
   margin-bottom: rem-calc($txt-margin-bottom-h3);
   margin-top: rem-calc($txt-margin-top-h3);
@@ -151,12 +153,27 @@ h4, h5 {
   margin-top: rem-calc($line-height-small);
 }
 
-//special styles
+//special title styles
 
 .title-small {
   font-size: $txt-size-default;
   font-weight: bold;
 }
+
+.title-primary{
+    font-family: $font-face-fancy;
+    font-size: $txt-size-xxxlarge;
+    line-height: $line-height-large-text;
+}
+
+.title-secondary{
+  font-family: $font-face-fancy;
+  font-size: $txt-size-xxlarge;
+  line-height: $line-height-large-text;
+  margin-bottom: $line-height-medium;
+}
+
+
 
 //callout styles
 

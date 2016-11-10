@@ -3,7 +3,9 @@
 <script src="//code.jquery.com/jquery-2.1.4.min.js" ></script>
 <script>window.jQuery || document.write('<script src="<@siteLink path="resource/js/vendor/jquery-2.1.4.min.js" />""><\/script>')</script>
 
-<script src="https://widgets.figshare.com/static/figshare.js"></script>
+<#if article??>
+    <@js src="resource/js/vendor/figshare.js" />
+</#if>
 
 <#--//
 fast click is required for mobile interactions for foundation.

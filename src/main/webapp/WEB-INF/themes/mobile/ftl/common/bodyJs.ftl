@@ -1,6 +1,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
-<script src="https://widgets.figshare.com/static/figshare.js"></script>
+<#if article??>
+    <@js src="resource/js/vendor/figshare.js" />
+</#if>
 
 <#--<script src="//code.jquery.com/jquery-2.1.4.min.js" ></script>-->
 

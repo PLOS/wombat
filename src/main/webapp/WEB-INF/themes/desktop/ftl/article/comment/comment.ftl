@@ -238,10 +238,6 @@
 
 
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
-
-<#include "../aside/crossmarkIframe.ftl" />
 
 </body>
 </html>

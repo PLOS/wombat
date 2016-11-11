@@ -13,6 +13,7 @@ import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * The values for a request mapping, with modifications taken in from application context.
@@ -27,8 +28,10 @@ public class RequestMappingContext {
   /**
    * Application-defined annotation types that can be applied to a request-mapped handler method.
    */
-  private static enum CustomAnnotation {
-    SITELESS(Siteless.class), JOURNAL_NEUTRAL(JournalNeutral.class);
+  public static enum CustomAnnotation {
+    SITELESS(Siteless.class),
+    JOURNAL_SPECIFIC(JournalSpecific.class),
+    JOURNAL_NEUTRAL(JournalNeutral.class);
 
     private final Class<? extends Annotation> type;
 
@@ -47,6 +50,7 @@ public class RequestMappingContext {
     }
   }
 
+
   private final RequestMapping mapping; // the raw, application-provided request mapping
   private final String pattern; // the mapping pattern, which may have been overridden by the context
   private final boolean hasSiteToken; // true if the pattern has been modified by adding a site token to the beginning
@@ -57,6 +61,8 @@ public class RequestMappingContext {
     this.pattern = Objects.requireNonNull(pattern);
     this.annotations = Sets.immutableEnumSet(annotations);
     this.hasSiteToken = hasSiteToken;
+
+    Preconditions.checkArgument(!this.annotations.isEmpty());
   }
 
   private static String extractPattern(RequestMapping mapping) {
@@ -85,6 +91,14 @@ public class RequestMappingContext {
     if (requestMapping == null) return null;
     String pattern = extractPattern(requestMapping);
     Set<CustomAnnotation> customAnnotations = CustomAnnotation.findOn(controllerMethod);
+    if (customAnnotations.isEmpty()) {
+      throw new RuntimeException(String.format(
+          "Cannot map methods without an annotation for site scope. %s must have at least one of: %s",
+          controllerMethod.getName(),
+          EnumSet.allOf(CustomAnnotation.class).stream()
+              .map(a -> "@" + a.type.getSimpleName())
+              .collect(Collectors.joining(", "))));
+    }
     return new RequestMappingContext(requestMapping, pattern, false, customAnnotations);
   }
 
@@ -105,7 +119,7 @@ public class RequestMappingContext {
    * @throws java.lang.IllegalArgumentException if this object is siteless or already captures a site token
    */
   public RequestMappingContext addSiteToken() {
-    Preconditions.checkState(!isSiteless(), "Cannot add site token to a siteless mapping");
+    Preconditions.checkState(!isAnnotated(CustomAnnotation.SITELESS), "Cannot add site token to a siteless mapping");
     Preconditions.checkState(!hasSiteToken, "Mapping already has site token");
 
     String prefix = (pattern.isEmpty() || pattern.startsWith("/")) ? "/*" : "/*/";
@@ -128,18 +142,8 @@ public class RequestMappingContext {
     return pattern;
   }
 
-  /**
-   * @return {@code false} if requests mapped by this object should apply {@link org.ambraproject.wombat.config.site.Site}
-   * resolution rules; {@code true} if requests should always be mapped by this object the same way, independently of
-   * sites
-   * @see {@link org.ambraproject.wombat.config.site.Siteless}
-   */
-  public boolean isSiteless() {
-    return annotations.contains(CustomAnnotation.SITELESS);
-  }
-
-  public boolean isJournalNeutral() {
-    return annotations.contains(CustomAnnotation.JOURNAL_NEUTRAL);
+  public boolean isAnnotated(CustomAnnotation annotation) {
+    return annotations.contains(Objects.requireNonNull(annotation));
   }
 
 

@@ -5,6 +5,7 @@ import com.google.common.io.ByteSource;
 import com.google.common.net.HttpHeaders;
 import com.google.common.net.MediaType;
 import org.ambraproject.wombat.config.site.JournalSite;
+import org.ambraproject.wombat.config.site.JournalSpecific;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.url.Link;
@@ -55,6 +56,7 @@ public class PowerPointController extends WombatController {
   @Autowired
   private CorpusContentApi corpusContentApi;
 
+  @JournalSpecific
   @RequestMapping(name = "powerPoint", value = "/article/figure/powerpoint")
   public void download(HttpServletRequest request, HttpServletResponse response,
                        JournalSite site,

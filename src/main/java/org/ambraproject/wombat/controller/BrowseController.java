@@ -19,6 +19,7 @@ import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimaps;
 import org.ambraproject.wombat.config.site.JournalSite;
+import org.ambraproject.wombat.config.site.JournalSpecific;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
@@ -68,6 +69,7 @@ public class BrowseController extends WombatController {
   @Autowired
   private SolrSearchApi solrSearchApi;
 
+  @JournalSpecific
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, JournalSite site) throws IOException {
     Map<String, ?> currentIssue = getCurrentIssue(site).orElse(null);
@@ -110,6 +112,7 @@ public class BrowseController extends WombatController {
     return populatedVolume;
   }
 
+  @JournalSpecific
   @RequestMapping(name = "browseIssues", value = "/issue")
   public String browseIssue(Model model, JournalSite site,
                             @RequestParam(value = "id", required = false) String issueId) throws IOException {

@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.config.site.JournalSpecific;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -34,6 +35,7 @@ public class GeneralDoiController extends WombatController {
   @Autowired
   private SiteSet siteSet;
 
+  @JournalSpecific
   @RequestMapping(name = "doi", value = "/doi")
   public RedirectView redirectFromDoi(HttpServletRequest request,
                                       Site site,

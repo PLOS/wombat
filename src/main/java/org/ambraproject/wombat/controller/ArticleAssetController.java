@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSetMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
+import org.ambraproject.wombat.config.site.JournalSpecific;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.url.Link;
@@ -172,6 +173,7 @@ public class ArticleAssetController extends WombatController {
     response.setHeader(HttpHeaders.LOCATION, location);
   }
 
+  @JournalSpecific
   @RequestMapping(name = "assetFile", value = "/article/file", params = {"type"})
   public void serveAssetFile(HttpServletRequest request, HttpServletResponse response,
                              Site site,
@@ -182,6 +184,7 @@ public class ArticleAssetController extends WombatController {
     serve(request, response, AssetUrlStyle.ASSET_FILE, site, id, fileType, booleanParameter(isDownload));
   }
 
+  @JournalSpecific
   @RequestMapping(name = "figureImage", value = "/article/figure/image")
   public void serveFigureImage(HttpServletRequest request, HttpServletResponse response,
                                Site site,

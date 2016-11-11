@@ -50,7 +50,7 @@ class ExceptionHandlerAdvisor {
     Site site = siteResolver.resolveSite(request);
 
     // For some reason, methods decorated with @ExceptionHandler cannot accept Model parameters,
-    // unlike @RequestMapping methods.  So this is a little different...
+    // unlike @RequestMappingmethods.  So this is a little different...
     String viewName = chooseExceptionView(site, exception);
     ModelAndView mav = new ModelAndView(viewName);
 

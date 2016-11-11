@@ -157,7 +157,7 @@ public class Link {
       }
 
       final Optional<Site> linkSite;
-      if (mapping.isSiteless()) {
+      if (mapping.isAnnotated(RequestMappingContext.CustomAnnotation.SITELESS)) {
         linkSite = Optional.empty();
       } else if (site.isPresent()) {
         linkSite = site;

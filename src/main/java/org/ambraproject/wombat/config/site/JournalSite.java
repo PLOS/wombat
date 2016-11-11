@@ -24,4 +24,9 @@ public class JournalSite extends Site {
     return journalName;
   }
 
+  @Override
+  public boolean isJournalSpecific() {
+    return true;
+  }
+
 }

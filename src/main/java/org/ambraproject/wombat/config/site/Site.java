@@ -6,7 +6,7 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class Site {
+public class Site {
 
   private final String key;
   private final Theme theme;
@@ -30,6 +30,10 @@ public abstract class Site {
 
   public SiteRequestScheme getRequestScheme() {
     return requestScheme;
+  }
+
+  public boolean isJournalSpecific() {
+    return false;
   }
 
   @Override

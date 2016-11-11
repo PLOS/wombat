@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.controller;
 
+import org.ambraproject.wombat.config.site.JournalSpecific;
 import org.ambraproject.wombat.config.site.Siteless;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.slf4j.Logger;
@@ -23,6 +24,7 @@ public class UserController extends WombatController {
   @Autowired
   private ArticleApi articleApi;
 
+  @JournalSpecific
   @RequestMapping(name = "userLogin", value = "/user/secure/login")
   public ModelAndView redirectToOriginalLink(HttpServletRequest request, @RequestParam("page") String page) {
     // page param should contain the url to the location we want to send the user to

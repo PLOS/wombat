@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
+import org.ambraproject.wombat.config.site.JournalSpecific;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.url.Link;
@@ -133,6 +134,7 @@ public class LegacyArticleAssetController extends WombatController {
    * @param unique   if present, assume the asset has a single file and serve that file; else, serve an identified file
    * @param download forward Content-Disposition headers with "attachment" value only if {@code true}
    */
+  @JournalSpecific
   @RequestMapping(name = "asset", value = "/article/asset")
   public ModelAndView serveAsset(HttpServletRequest request,
                                  Site site,

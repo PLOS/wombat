@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 import org.ambraproject.wombat.config.site.JournalSite;
+import org.ambraproject.wombat.config.site.JournalSpecific;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.CommentFeedView;
@@ -233,6 +234,7 @@ public class HomeController extends WombatController {
     }
   }
 
+  @JournalSpecific
   @RequestMapping(name = "homePage", value = "", method = RequestMethod.GET)
   public String serveHomepage(HttpServletRequest request, Model model, JournalSite site,
                               @RequestParam(value = "section", required = false) String sectionParam,
@@ -306,6 +308,7 @@ public class HomeController extends WombatController {
    * @return RSS view of recent articles for the specified site
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "homepageFeed", value = "/feed/{feedType:atom|rss}", method = RequestMethod.GET)
   public ModelAndView getRssFeedView(JournalSite site, @PathVariable String feedType)
       throws IOException {
@@ -326,6 +329,7 @@ public class HomeController extends WombatController {
     return mav;
   }
 
+  @JournalSpecific
   @RequestMapping(name = "commentFeed", value = "/feed/comments/{feedType:atom|rss}", method = RequestMethod.GET)
   public ModelAndView getCommentFeed(JournalSite site, @PathVariable String feedType)
       throws IOException {

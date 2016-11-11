@@ -20,6 +20,7 @@ import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.JournalSite;
+import org.ambraproject.wombat.config.site.JournalSpecific;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.feed.ArticleFeedView;
@@ -547,6 +548,7 @@ public class SearchController extends WombatController {
    * @return RSS view of articles returned by the search
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "searchFeed", value = "/search/feed/{feedType:atom|rss}",
       params = {"q"}, method = RequestMethod.GET)
   public ModelAndView getSearchRssFeedView(HttpServletRequest request, Model model, Site site,
@@ -577,6 +579,7 @@ public class SearchController extends WombatController {
    * @return RSS view of articles returned by the search
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "advancedSearchFeed", value = "/search/feed/{feedType:atom|rss}",
       params = {"unformattedQuery"}, method = RequestMethod.GET)
   public ModelAndView getAdvancedSearchRssFeedView(HttpServletRequest request, Model model, Site site,
@@ -621,6 +624,7 @@ public class SearchController extends WombatController {
    * @throws IOException
    */
 
+  @JournalSpecific
   @RequestMapping(name = "simpleSearch", value = "/search")
   public String search(HttpServletRequest request, Model model, Site site,
                        @RequestParam MultiValueMap<String, String> params) throws IOException {
@@ -642,6 +646,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "dynamicSearch", value = "/dynamicSearch", params = {"q"})
   @ResponseBody
   public Object dynamicSearch(HttpServletRequest request, Model model, Site site,
@@ -707,6 +712,7 @@ public class SearchController extends WombatController {
    * "unformattedQuery" param into "q" which is used by Wombat's new search.
    * todo: remove this method and direct all advancedSearch requests to the simple search method
    */
+  @JournalSpecific
   @RequestMapping(name = "advancedSearch", value = "/search", params = {"unformattedQuery", "!q"})
   public String advancedSearch(HttpServletRequest request, Model model, Site site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
@@ -716,6 +722,7 @@ public class SearchController extends WombatController {
     return search(request, model, site, params);
   }
 
+  @JournalSpecific
   @RequestMapping(name = "newAdvancedSearch", value = "/search", params = {"!unformattedQuery", "!q"})
   public String advancedSearchAjax(Model model, Site site) throws IOException {
     model.addAttribute("isNewSearch", true);
@@ -726,6 +733,7 @@ public class SearchController extends WombatController {
    * Endpoint to render the subject area browser in mobile
    *
    */
+  @JournalSpecific
   @RequestMapping(name = "mobileSubjectAreaBrowser", value = "/subjectAreaBrowse")
   public String mobileSubjectAreaBrowser(Site site) {
     return site.getKey() + "/ftl/mobileSubjectAreaBrowser";
@@ -742,6 +750,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "browse", value = "/browse")
   public String browseAll(HttpServletRequest request, Model model, JournalSite site,
       @RequestParam MultiValueMap<String, String> params) throws IOException {
@@ -761,6 +770,7 @@ public class SearchController extends WombatController {
    * @return String indicating template location
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "browseSubjectArea", value = "/browse/{subject}")
   public String browseSubjectArea(HttpServletRequest request, Model model, JournalSite site,
       @PathVariable String subject, @RequestParam MultiValueMap<String, String> params)

@@ -13,6 +13,7 @@
 
 package org.ambraproject.wombat.controller;
 
+import org.ambraproject.wombat.config.site.JournalSpecific;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
@@ -35,6 +36,7 @@ public class ExternalContentController extends WombatController {
 
   private final String REPO_KEY_PREFIX = "c";
 
+  @JournalSpecific
   @RequestMapping(name = "externalContent", value = "/external/{pageName}")
   public String renderExternalContent(Model model, Site site, @PathVariable String pageName)
           throws IOException {

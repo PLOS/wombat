@@ -116,7 +116,7 @@ public class SiteSet {
     }
 
     return Strings.isNullOrEmpty(journalKey)
-        ? new JournalNeutralSite(key, theme, requestScheme)
+        ? new Site(key, theme, requestScheme)
         : new JournalSite(key, theme, requestScheme, journalKey, journalName);
   }
 

@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.controller;
 
+import org.ambraproject.wombat.config.site.JournalSpecific;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.EmailMessage;
@@ -53,6 +54,7 @@ public class FeedbackController extends WombatController {
     }
   }
 
+  @JournalSpecific
   @RequestMapping(name = "feedback", value = "/feedback", method = RequestMethod.GET)
   public String serveFeedbackPage(Model model, Site site) throws IOException {
     validateFeedbackConfig(site);
@@ -60,6 +62,7 @@ public class FeedbackController extends WombatController {
     return site + "/ftl/feedback/feedback";
   }
 
+  @JournalSpecific
   @RequestMapping(name = "feedbackPost", value = "/feedback", method = RequestMethod.POST)
   public String receiveFeedback(HttpServletRequest request, HttpServletResponse response,
                                 Model model, Site site,

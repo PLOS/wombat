@@ -1,6 +1,8 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.net.HttpHeaders;
+import org.ambraproject.wombat.config.site.JournalNeutral;
+import org.ambraproject.wombat.config.site.JournalSpecific;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.AssetService;
@@ -53,6 +55,8 @@ public class StaticResourceController extends WombatController {
     return PathUtil.JOINER.join(targetTokens);
   }
 
+  @JournalSpecific
+  @JournalNeutral
   @RequestMapping(name = "staticResource", value = "/" + AssetUrls.RESOURCE_NAMESPACE + "/**")
   public void serveResource(HttpServletRequest request, HttpServletResponse response,
                             HttpSession session, Site site)

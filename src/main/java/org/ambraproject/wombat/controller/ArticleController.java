@@ -10,6 +10,7 @@ import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.JournalSite;
+import org.ambraproject.wombat.config.site.JournalSpecific;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -148,6 +149,7 @@ public class ArticleController extends WombatController {
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
+  @JournalSpecific
   @RequestMapping(name = "article", value = "/article")
   public String renderArticle(HttpServletRequest request,
                               Model model,
@@ -180,6 +182,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "articleComments", value = "/article/comments")
   public String renderArticleComments(HttpServletRequest request, Model model, JournalSite site,
                                       RequestedDoiVersion articleId) throws IOException {
@@ -199,6 +202,7 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comment/comments";
   }
 
+  @JournalSpecific
   @RequestMapping(name = "articleCommentForm", value = "/article/comments/new")
   public String renderNewCommentForm(HttpServletRequest request, Model model, JournalSite site,
                                      RequestedDoiVersion articleId)
@@ -238,6 +242,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "articleCommentTree", value = "/article/comment")
   public String renderArticleCommentTree(HttpServletRequest request, Model model, JournalSite site,
                                          @RequestParam("id") String commentDoi) throws IOException {
@@ -280,6 +285,7 @@ public class ArticleController extends WombatController {
    * @param parentArticleDoi null if a reply to another comment
    * @param parentCommentUri null if a direct reply to an article
    */
+  @JournalSpecific
   @RequestMapping(name = "postComment", method = RequestMethod.POST, value = "/article/comments/new")
   @ResponseBody
   public Object receiveNewComment(HttpServletRequest request,
@@ -327,6 +333,7 @@ public class ArticleController extends WombatController {
     return ImmutableMap.of("createdCommentUri", commentJson.get("commentUri"));
   }
 
+  @JournalSpecific
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
   @ResponseBody
   public Object receiveCommentFlag(HttpServletRequest request,
@@ -364,6 +371,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "articleAuthors", value = "/article/authors")
   public String renderArticleAuthors(HttpServletRequest request, Model model, JournalSite site,
                                      RequestedDoiVersion articleId) throws IOException {
@@ -382,6 +390,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "articleMetrics", value = "/article/metrics")
   public String renderArticleMetrics(HttpServletRequest request, Model model, JournalSite site,
                                      RequestedDoiVersion articleId) throws IOException {
@@ -391,6 +400,7 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/metrics";
   }
 
+  @JournalSpecific
   @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
   public String renderCitationDownloadPage(HttpServletRequest request, Model model, JournalSite site,
                                            RequestedDoiVersion articleId)
@@ -401,6 +411,7 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/citationDownload";
   }
 
+  @JournalSpecific
   @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris", produces = "application/x-research-info-systems;charset=UTF-8")
   public ResponseEntity<String> serveRisCitationDownload(JournalSite site, RequestedDoiVersion articleId)
       throws IOException {
@@ -408,6 +419,7 @@ public class ArticleController extends WombatController {
         citationDownloadService::buildRisCitation);
   }
 
+  @JournalSpecific
   @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex", produces = "application/x-bibtex;charset=UTF-8")
   public ResponseEntity<String> serveBibtexCitationDownload(JournalSite site, RequestedDoiVersion articleId)
       throws IOException {
@@ -446,6 +458,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "articleRelatedContent", value = "/article/related")
   public String renderArticleRelatedContent(HttpServletRequest request, Model model, JournalSite site,
                                             RequestedDoiVersion articleId) throws IOException {
@@ -465,6 +478,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "submitMediaCurationRequest", value = "/article/submitMediaCurationRequest", method = RequestMethod.POST)
   @ResponseBody
   public String submitMediaCurationRequest(HttpServletRequest request, Model model, JournalSite site,
@@ -604,6 +618,7 @@ public class ArticleController extends WombatController {
    * @return a list of figures and tables of a given article
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "articleFigsAndTables", value = "/article/assets/figsAndTables")
   public ResponseEntity<List> listArticleFiguresAndTables(JournalSite site,
                                                           RequestedDoiVersion articleId) throws IOException {
@@ -616,6 +631,7 @@ public class ArticleController extends WombatController {
     return new ResponseEntity<>(figureView, headers, HttpStatus.OK);
   }
 
+  @JournalSpecific
   @RequestMapping(name = "email", value = "/article/email")
   public String renderEmailThisArticle(HttpServletRequest request, Model model, JournalSite site,
                                        RequestedDoiVersion articleId) throws IOException {
@@ -633,6 +649,7 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @JournalSpecific
   @RequestMapping(name = "emailPost", value = "/article/email", method = RequestMethod.POST)
   public String emailArticle(HttpServletRequest request, HttpServletResponse response, Model model,
                              JournalSite site,

@@ -480,7 +480,7 @@ public class ArticleController extends WombatController {
       throws IOException {
     requireNonemptyParameter(doi);
 
-    if (!link.matches("^https?://.*")) {
+    if (!link.matches("^\\w+://.*")) {
       link = "http://" + link;
     }
 

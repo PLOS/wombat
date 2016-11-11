@@ -45,7 +45,7 @@ table#mini td {
 
 table#mini th.header1 {
   color: #fff;
-  background-color: #3c63af;
+  background-color: $clr-highlight;
 }
 
 table#mini th.header2 {
@@ -56,7 +56,7 @@ table#mini th.header2 {
 table#mini td.data1 {
   color: #fff;
   font-weight: bold;
-  background-color: #3c63af;
+  background-color: $clr-highlight;
 }
 
 table#mini td.data2 {
@@ -110,7 +110,7 @@ table.tile_mini td {
 table.tile_mini th.header1 {
   text-align: center;
   color: #fff;
-  background-color: #3c63af;
+  background-color: $clr-highlight;
 }
 
 table.tile_mini th.header2 {
@@ -122,7 +122,7 @@ table.tile_mini th.header2 {
 table.tile_mini td.data1 {
   color: #fff;
   font-weight: bold;
-  background-color: #3c63af;
+  background-color: $clr-highlight;
 }
 
 table.tile_mini td.data2 {
@@ -218,7 +218,7 @@ table#pageViewsTable td {
 }
 
 table#pageViewsTable td.source1 {
-  background-color: #3c63af;
+  background-color: $clr-highlight;
   font-weight: bold;
   color: #fff;
 }

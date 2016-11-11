@@ -45,8 +45,7 @@
 }
 
 .article-block .details h2 {
-  font-size: 18px;
-  line-height: 19px;
+  @extend .title-medium;
   margin: 0 0 14px;
 }
 
@@ -121,7 +120,7 @@
 
 .article-block .actions li a:hover {
   color: #fff;
-  background: #3c63af;
+  background: $clr-highlight;
 }
 
 .articles-list {
@@ -203,7 +202,7 @@
 }
 
 #search-results .article a:hover {
-  color: #3c63af;
+  color: $clr-highlight;
 }
 
 #search-results .authors {
@@ -233,7 +232,6 @@
 
 
 /* LISTINGS */
-
 .subject-listing {
   #search-results {
     margin: 0;
@@ -244,8 +242,7 @@
   }
 
   #search-results h2 {
-    font-family: $font-face-fancy;
-    font-size: 18px;
+    font-size: $txt-size-large;
     font-weight: normal;
     line-height: 22px;
     margin: 0 0 6px;
@@ -288,7 +285,7 @@
   }
 
   #search-results p.actions a {
-    color: #3c63af;
+    color: $clr-highlight;
   }
 }
 

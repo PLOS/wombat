@@ -480,6 +480,10 @@ public class ArticleController extends WombatController {
       throws IOException {
     requireNonemptyParameter(doi);
 
+    if (!link.matches("^\\w+://.*")) {
+      link = "http://" + link;
+    }
+
     if (!validateMediaCurationInput(model, link, name, email, title, publishedOn, captchaChallenge,
         captchaResponse, site, request)) {
       model.addAttribute("formError", "Invalid values have been submitted.");
@@ -508,7 +512,7 @@ public class ArticleController extends WombatController {
         statusLine = response.getStatusLine();
       } catch (ServiceRequestException e) {
         //This exception is thrown when the submitted link is already present for the article.
-        if (e.getStatusCode() == HttpStatus.BAD_REQUEST.value()
+        if (e.getStatusCode() == HttpStatus.CONFLICT.value()
             && e.getResponseBody().equals("The link already exists")) {
           model.addAttribute("formError", "This link has already been submitted. Please submit a different link");
           model.addAttribute("isValid", false);

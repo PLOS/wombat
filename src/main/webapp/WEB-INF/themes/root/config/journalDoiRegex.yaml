@@ -1,3 +1,0 @@
-#Override this file in themes. Contains a list of journal keys and a doi regex.
-#Journal key should match spelling and case to the journalKey field on the Journal table in the ambra DB
-regexList: []

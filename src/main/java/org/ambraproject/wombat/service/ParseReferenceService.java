@@ -14,6 +14,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.management.modelmbean.XMLParseException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -54,7 +55,7 @@ public class ParseReferenceService {
      * @param doi
      * @return a fully qualified link to an internal journal article page, or null if an external doi
      */
-    public String getLink(String doi);
+    public String getLink(String doi) throws IOException;
 
   }
 
@@ -64,7 +65,8 @@ public class ParseReferenceService {
    * @param refElement a <ref></ref> node which can contain (label?, (element-citation | mixed-citation | nlm-citation)+)
    * @return list of Reference objects
    */
-  public List<Reference> buildReferences(Element refElement, DoiToJournalLinkService linkService) throws XMLParseException {
+  public List<Reference> buildReferences(Element refElement, DoiToJournalLinkService linkService)
+      throws XMLParseException, IOException {
     List<Node> citationElements = null;
     for (CitationElement elementType : CitationElement.values()) {
       NodeList nodes = refElement.getElementsByTagName(elementType.getValue());

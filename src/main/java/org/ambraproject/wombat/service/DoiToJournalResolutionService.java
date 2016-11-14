@@ -1,54 +1,32 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.collect.ImmutableList;
-import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class DoiToJournalResolutionService {
 
-  private final Map<Site, ImmutableList<DoiJournalRegex>> patternCache = new ConcurrentHashMap<>();
+  @Autowired
+  private SolrSearchApi solrSearchApi;
 
-  private class DoiJournalRegex {
-    private final String journalKey;
-    private final Pattern pattern;
+  public String getJournalKeyFromDoi(String doi) throws IOException {
+    ArticleSearchQuery explicitDoiSearchQuery = ArticleSearchQuery.builder()
+        .setSimple(false)
+        .setRows(1)
+        .setQuery("id:\"" + doi + "\"")
+        .build();
 
-    public DoiJournalRegex(String journalKey, Pattern pattern) {
-      this.journalKey = Objects.requireNonNull(journalKey);
-      this.pattern = Objects.requireNonNull(pattern);
+    Map<String, ?> results = solrSearchApi.search(explicitDoiSearchQuery);
+    List<SolrArticleAdapter> solrArticleAdapters = SolrArticleAdapter.unpackSolrQuery(results);
+    String journalKey = null;
+    if (solrArticleAdapters.size() == 1) {
+      journalKey = solrArticleAdapters.get(0).getJournalKey();
     }
-  }
-
-  public String getJournalKeyFromDoi(String doi, Site site) {
-    ImmutableList<DoiJournalRegex> doiJournalRegices
-        = patternCache.computeIfAbsent(site, this::getFromConfig);
-
-    for (DoiJournalRegex doiJournalRegex : doiJournalRegices) {
-      Pattern pattern = doiJournalRegex.pattern;
-      Matcher matcher = pattern.matcher(doi);
-      if (matcher.matches()) {
-        return doiJournalRegex.journalKey;
-      }
-    }
-    return null;
-  }
-
-
-  private ImmutableList<DoiJournalRegex> getFromConfig(Site site) {
-    List<Map<String, String>> patternMaps = (List<Map<String, String>>) site.getTheme()
-        .getConfigMap("journalDoiRegex").get("regexList");
-    List<DoiJournalRegex> regices = patternMaps.stream().map(regexMap -> {
-      String journalKey = regexMap.get("journalKey");
-      String pattern = regexMap.get("pattern");
-      return new DoiJournalRegex(journalKey, Pattern.compile(pattern));
-    }).collect(Collectors.toList());
-    return ImmutableList.copyOf(regices);
+    return journalKey;
   }
 }
 

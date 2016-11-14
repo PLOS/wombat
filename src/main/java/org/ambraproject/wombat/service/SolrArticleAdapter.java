@@ -41,9 +41,11 @@ public class SolrArticleAdapter implements Serializable {
   private final boolean hasFigures;
   private final ImmutableList<Author> authors; // non-null
   private final String articleType; // non-null
+  private final String journalKey; // non-null
 
   private SolrArticleAdapter(String doi, String title, String eIssn, String date, String strkImgURI,
-                             boolean hasFigures, List<Author> authors, String articleType) {
+                             boolean hasFigures, List<Author> authors, String articleType,
+                             String journalKey) {
     this.doi = Objects.requireNonNull(doi);
     this.title = Objects.requireNonNull(title);
     this.eIssn = Objects.requireNonNull(eIssn);
@@ -52,6 +54,7 @@ public class SolrArticleAdapter implements Serializable {
     this.hasFigures = hasFigures;
     this.authors = ImmutableList.copyOf(authors);
     this.articleType = Objects.requireNonNull(articleType);
+    this.journalKey = Objects.requireNonNull(journalKey);
   }
 
   /**
@@ -82,8 +85,12 @@ public class SolrArticleAdapter implements Serializable {
     List<String> solrAuthors = (List<String>) solrArticle.get("author_display");
     List<Author> authors = (solrAuthors != null) ? Lists.transform(solrAuthors, Author::new) : ImmutableList.of();
     String articleType = (String) solrArticle.get("article_type");
+    List<String> journalKeys = (List<String>) solrArticle.get("cross_published_journal_key");
+    //todo: change Solr schema so that journal key is a single value, not a list
+    String journalKey = journalKeys.get(0);
 
-    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors, articleType);
+    return new SolrArticleAdapter(doi, title, eIssn, date, strkImgURI, hasFigures, authors,
+        articleType, journalKey);
   }
 
   public String getDoi() {
@@ -116,6 +123,10 @@ public class SolrArticleAdapter implements Serializable {
 
   public String getArticleType() {
     return articleType;
+  }
+
+  public String getJournalKey() {
+    return journalKey;
   }
 }
 

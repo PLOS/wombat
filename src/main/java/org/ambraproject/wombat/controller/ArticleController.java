@@ -550,7 +550,7 @@ public class ArticleController extends WombatController {
 
     boolean isValid = true;
 
-    UrlValidator urlValidator = new UrlValidator();
+    UrlValidator urlValidator = new UrlValidator(new String[]{"http","https"});
 
     if (StringUtils.isBlank(link)) {
       model.addAttribute("linkError", "This field is required.");

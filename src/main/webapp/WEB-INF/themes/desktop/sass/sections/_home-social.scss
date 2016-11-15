@@ -1,0 +1,44 @@
+
+
+#social-links {
+  @include blocks($color: #04417d, $radius: all, $padding: $pad-xsmall, $shadow: none);
+
+  h3 {
+    @extend %header-xlarge-light;
+    text-indent: $pad-small;
+    margin-bottom: $pad-small;
+    margin-top: $pad-small;
+    font-weight: normal;
+  }
+  ul {
+    list-style: none;
+    margin: 0 0 0 rem-calc(-4);
+    > li {
+      float: left;
+      margin: 0 0 0 rem-calc(4);
+      > a {
+        background: $plos-default;
+        border-radius: $border-radius-default;
+        display: inline-block;
+        height: ($txt-size-xxlarge * 2);
+        text-align: center;
+        color: $clr-light-text;
+        &:hover {
+          background: $grey-dark;
+        }
+      }
+      .social {
+        width: ($txt-size-xxlarge * 2);
+      }
+      .icon-text {
+        @extend .aria-text;
+      }
+    }
+    .social-blogs {
+      width: rem-calc(104);
+      line-height: ($txt-size-xxlarge * 2);
+      font-size: rem-calc($txt-size-medium-large);
+      font-family: $font-face-fancy;
+    }
+  }
+}

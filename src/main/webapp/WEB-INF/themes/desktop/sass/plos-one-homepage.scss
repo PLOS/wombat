@@ -4,13 +4,19 @@
 @charset "UTF-8";
 @import "global-library-imports";
 @import "global-section-imports";
-@import "pages/home";
 @import "sections/plos-one/nav-bar";
+@import "sections/home-social";
+
 @import "sections/plos-one/article-list";
 @import "sections/plos-one/rectangle-ad";
 @import "sections/plos-one/social";
 @import "sections/plos-one/ad-slot-bottom";
 @import "sections/plos-one/sticky-footer";
 @import "sections/plos-one/greyscale";
+
+body.home{
+  background: $clr-header;
+}
+
 
 

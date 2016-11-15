@@ -46,6 +46,7 @@
 
 .article-block .details h2 {
   @extend .title-medium;
+  line-height: rem-calc(19);
   margin: 0 0 14px;
 }
 
@@ -54,7 +55,6 @@
 }
 
 .article-block .details p {
-  font: 82%/1.375 arial, sans-serif;
   color: #fff;
   margin: 0;
 }
@@ -77,7 +77,6 @@
 
 .article-block:hover .actions {
   display: block;
-  font-family: $font-face-fancy;
 }
 
 .article-block .actions li {

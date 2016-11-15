@@ -125,12 +125,11 @@ var SearchResult;
       this.$loadingEl.hide();
     },
     loadUrlParams: function () {
-      var that = this;
       var urlVars = this.getJsonFromUrl();
-      this.currentSearchParams = _.mapObject(this.currentSearchParams, function (item, key) {
-        var urlVar = urlVars[key];
+      this.currentSearchParams = _.mapObject(this.currentSearchParams, function (paramValue, paramName) {
+        var urlVar = urlVars[paramName];
 
-        if (key == 'filterSubjects' && _.has(urlVars, 'subject')) {
+        if (paramName == 'filterSubjects' && _.has(urlVars, 'subject')) {
           var subjectParam = urlVars['subject'];
 
           if(!_.isEmpty(urlVar)) {
@@ -177,15 +176,15 @@ var SearchResult;
       if (this.currentSearchParams.q == null && this.checkFilters()) {
         this.currentSearchParams.q = "";
       }
-      _.each(this.currentSearchParams, function (item, key) {
-        if (item != null) {
-          if (_.isArray(item)) {
-            _.each(item, function (item) {
-              urlParams = urlParams + key + '=' + encodeURIComponent(item) + '&';
+      _.each(this.currentSearchParams, function (paramValue, paramName) {
+        if (paramValue != null) {
+          if (_.isArray(paramValue)) {
+            _.each(paramValue, function (value) {
+              urlParams = urlParams + paramName + '=' + encodeURIComponent(value) + '&';
             });
           }
           else {
-            urlParams = urlParams + key + '=' + encodeURIComponent(item) + '&';
+            urlParams = urlParams + paramName + '=' + encodeURIComponent(paramValue) + '&';
           }
         }
       });
@@ -235,37 +234,37 @@ var SearchResult;
       $('body').on('click', '[data-filter-param-name]', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        var param = $(this).data('filter-param-name');
-        var value = $(this).data('filter-value');
+        var paramName = $(this).data('filter-param-name');
+        var paramValue = $(this).data('filter-value');
 
-        if (param == 'filterDates') {
+        if (paramName == 'filterDates') {
           that.currentSearchParams.filterStartDate = null;
           that.currentSearchParams.filterEndDate = null;
           that.searchDateFilters.start = that.currentSearchParams.filterStartDate;
           that.searchDateFilters.end = that.currentSearchParams.filterEndDate;
         }
         else {
-          var currentValue = that.currentSearchParams[param];
+          var currentValue = that.currentSearchParams[paramName];
 
           if (_.isArray(currentValue)) {
-            var index = _.indexOf(currentValue, value);
+            var index = _.indexOf(currentValue, paramValue);
 
             if (index == -1) {
-              that.currentSearchParams[param].push(value);
+              that.currentSearchParams[paramName].push(paramValue);
             }
             else {
-              that.currentSearchParams[param].splice(index, 1);
+              that.currentSearchParams[paramName].splice(index, 1);
             }
           }
           else {
-            if (currentValue == value) {
-              that.currentSearchParams[param] = [];
+            if (currentValue == paramValue) {
+              that.currentSearchParams[paramName] = [];
             }
             else if (currentValue != null) {
-              that.currentSearchParams[param] = [currentValue, value];
+              that.currentSearchParams[paramName] = [currentValue, paramValue];
             }
             else {
-              that.currentSearchParams[param] = [value];
+              that.currentSearchParams[paramName] = [paramValue];
             }
           }
         }
@@ -332,7 +331,7 @@ var SearchResult;
         $('#simpleSearchLink, .edit-query').show();
         $('#advancedSearchLink').hide();
 
-        AdvancedSearch.init('.advanced-search-container', function (err) {
+        AdvancedSearch.init('.advanced-search-container', function () {
           // Only show after it has been initialized
           $('.advanced-search-container').show();
           $('.advanced-search-inputs-container input[type=text]').first().focus();
@@ -415,37 +414,6 @@ var SearchResult;
     },
 
     mapActiveFilters: function (response) {
-      var types = {
-        "filterJournals": response.filterJournals,
-        "filterSubjects": response.filterSubjects,
-        "filterArticleTypes": response.filterArticleTypes,
-        "filterAuthors": response.filterAuthors,
-        "filterSections": response.filterSections
-      };
-
-      var activeFilters = [];
-      _.each(types, function (value, type) {
-        if(type == 'filterJournals') {
-          var filters = _.map(value, function (filterValue, key) {
-            return {
-              displayName: response.filterJournalNames[key],
-              filterParamName: type,
-              filterValue: filterValue
-            }
-          });
-        }
-        else {
-          var filters = _.map(value, function (filterValue, key) {
-            return {
-              displayName: filterValue,
-              filterParamName: type,
-              filterValue: filterValue
-            }
-          });
-
-        }
-        activeFilters = activeFilters.concat(filters);
-      });
 
       if (!_.isEmpty(response.filterStartDate)) {
         this.searchDateFilters['start'] = response.filterStartDate;
@@ -454,7 +422,7 @@ var SearchResult;
         this.searchDateFilters['end'] = response.filterEndDate;
       }
 
-      this.searchActiveFilters = activeFilters;
+      this.searchActiveFilters = response.activeFilterItems;
     },
 
     updateAlertQueryInput: function (alertQuery) {

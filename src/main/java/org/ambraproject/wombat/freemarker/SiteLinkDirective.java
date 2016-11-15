@@ -2,6 +2,7 @@ package org.ambraproject.wombat.freemarker;
 
 import com.google.common.collect.ListMultimap;
 import freemarker.core.Environment;
+import freemarker.template.TemplateBooleanModel;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
 import freemarker.template.TemplateScalarModel;
@@ -98,16 +99,8 @@ public class SiteLinkDirective extends VariableLookupDirective<String> {
       Map<String, ?> variables = TemplateModelUtil.getAsMap((TemplateModel) params.get("pathVariables"));
       ListMultimap<String, ?> queryParameters = TemplateModelUtil.getAsMultimap((TemplateModel) params.get("queryParameters"));
       List<?> wildcardValues = TemplateModelUtil.getAsList((TemplateModel) params.get("wildcardValues"));
-      try {
-        link = linkFactory.toPattern(requestMappingContextDictionary, handlerName,
-            variables, queryParameters, wildcardValues);
-      } catch (Link.PatternNotFoundException e) {
-        if (TemplateModelUtil.getBooleanValue((TemplateModel) params.get("failQuietly"))) {
-          return null;
-        } else {
-          throw new RuntimeException(e);
-        }
-      }
+      link = linkFactory.toPattern(requestMappingContextDictionary, handlerName,
+          variables, queryParameters, wildcardValues);
     } else if (path != null) {
       link = linkFactory.toPath(path);
     } else {

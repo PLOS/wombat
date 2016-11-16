@@ -33,7 +33,7 @@
     width: 690px;
     text-align: center;
     a {
-      color: #f8af2d;
+      @extend %brand-color;
     }
   }
 

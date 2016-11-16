@@ -1,4 +1,4 @@
-.home {
+
 
   %rectangular-slots {
     width: 306px;
@@ -72,15 +72,14 @@
     margin: 3px 15px 3px 3px;
 
     h2, h3 {
-      font-family: $font-face-fancy;
-      font-size: 18px;
+      @extend .title-medium;
+      font-weight: normal;
       line-height: 40px;
       padding: 0;
       margin: 0;
     }
 
     h2 {
-      font-weight: normal;
       color: #fff;
       margin: 0 0 9px;
     }
@@ -97,9 +96,9 @@
     }
 
     h3 a {
-      color: #f8af2d;
+      @extend %brand-color;
     }
   }
-}
+
 
 /* END COLLECTIONS */

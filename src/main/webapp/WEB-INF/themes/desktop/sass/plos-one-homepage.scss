@@ -7,6 +7,8 @@
 @import "sections/plos-one/nav-bar";
 @import "sections/home-social";
 
+@include brandcolor;
+
 @import "sections/plos-one/article-list";
 @import "sections/plos-one/rectangle-ad";
 @import "sections/plos-one/social";
@@ -14,7 +16,7 @@
 @import "sections/plos-one/sticky-footer";
 @import "sections/plos-one/greyscale";
 
-body.home{
+body{
   background: $clr-header;
 }
 

@@ -261,7 +261,7 @@
 .hdr-results.subject p.sort span.active {
   text-decoration: none;
   color: #333;
-  background: #f8af2d;
+  @extend %brand-background;
   cursor: default;
 }
 

@@ -36,7 +36,7 @@
   width: 245px;
   height: 176px;
   padding: 27px 20px 0;
-  background: #f8af2d;
+  @extend %brand-background;
   position: absolute;
   right: 0;
   bottom: 40px;
@@ -149,7 +149,7 @@
 
 .articles-list .pagination .more:hover {
   color: #333;
-  background: #f8af2d;
+  @extend %brand-background;
 }
 
 .articles-list .loader {
@@ -164,7 +164,6 @@
 
 /* SEARCH RESULTS */
 #search-results-block {
-  font: 81.25%/1.385 arial, sans-serif;
 }
 
 #search-results-block .sidebar {
@@ -241,9 +240,7 @@
   }
 
   #search-results h2 {
-    font-size: $txt-size-large;
-    font-weight: normal;
-    line-height: 22px;
+    @extend .title-medium;
     margin: 0 0 6px;
   }
 

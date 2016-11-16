@@ -55,7 +55,7 @@
 }
 
 .filter-bar ul li a.active {
-  color: #f8af2d;
+  @extend %brand-color;
 }
 
 .filter-bar ul li a:hover {

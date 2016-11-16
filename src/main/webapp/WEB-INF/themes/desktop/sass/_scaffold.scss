@@ -230,6 +230,13 @@ category: Scaffold
     }
   }
 
+@mixin dark-background {
+  body {
+    background: $clr-header;
+  }
+
+}
+
 /*doc
 
 ---

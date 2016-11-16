@@ -24,8 +24,9 @@
     <div class="header">
       <p class="kicker">COVER</p>
       <@siteLink handlerName="browseIssues" queryParameters={"id": issue.doi}; issueLink>
-        <h2><a href="${issueLink}">${issueTitle}</a></h2>
+        <a href="${issueLink}" class="title">${issueTitle}</a>
       </@siteLink>
+
     </div>
     <div class="detail-container">
       <div class="img">

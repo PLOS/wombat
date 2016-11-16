@@ -33,10 +33,10 @@
 }
 
 .article-block .details {
+  @extend %brand-background;
   width: 245px;
   height: 176px;
   padding: 27px 20px 0;
-  background: #f8af2d;
   position: absolute;
   right: 0;
   bottom: 40px;
@@ -45,8 +45,8 @@
 }
 
 .article-block .details h2 {
-  font-size: 18px;
-  line-height: 19px;
+  @extend .title-medium;
+  line-height: rem-calc(19);
   margin: 0 0 14px;
 }
 
@@ -55,7 +55,6 @@
 }
 
 .article-block .details p {
-  font: 82%/1.375 arial, sans-serif;
   color: #fff;
   margin: 0;
 }
@@ -78,7 +77,6 @@
 
 .article-block:hover .actions {
   display: block;
-  font-family: $font-face-fancy;
 }
 
 .article-block .actions li {
@@ -121,7 +119,7 @@
 
 .article-block .actions li a:hover {
   color: #fff;
-  background: #3c63af;
+  background: $clr-highlight;
 }
 
 .articles-list {
@@ -150,8 +148,7 @@
 }
 
 .articles-list .pagination .more:hover {
-  color: #333;
-  background: #f8af2d;
+  @extend %brand-background;
 }
 
 .articles-list .loader {
@@ -166,7 +163,6 @@
 
 /* SEARCH RESULTS */
 #search-results-block {
-  font: 81.25%/1.385 arial, sans-serif;
 }
 
 #search-results-block .sidebar {
@@ -203,12 +199,12 @@
 }
 
 #search-results .article a:hover {
-  color: #3c63af;
+  color: $clr-highlight;
 }
 
 #search-results .authors {
   display: block;
-  color: #666;
+  color: $clr-muted;
 }
 
 #search-results .metrics {
@@ -233,7 +229,6 @@
 
 
 /* LISTINGS */
-
 .subject-listing {
   #search-results {
     margin: 0;
@@ -244,10 +239,7 @@
   }
 
   #search-results h2 {
-    font-family: $font-face-fancy;
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 22px;
+    @extend .title-medium;
     margin: 0 0 6px;
   }
 
@@ -288,7 +280,7 @@
   }
 
   #search-results p.actions a {
-    color: #3c63af;
+    color: $clr-highlight;
   }
 }
 

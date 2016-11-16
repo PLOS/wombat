@@ -205,7 +205,7 @@ $line-height-medium: ($line-height * 1.5); //27px
 $line-height-small: ($line-height * .5); //9px
 $line-height-xsmall: 3px;
 $line-height-large-text: 1.25;
-$paragraph-spacing: ($line-height * .5);
+$paragraph-spacing: $line-height-small;
 
 $list-spacing: $paragraph-spacing;
 $line-height-icon: rem-calc(35);

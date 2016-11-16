@@ -160,6 +160,11 @@ h4, h5 {
   font-weight: bold;
 }
 
+.title-medium {
+  font-family: $font-face-fancy;
+  font-size: $txt-size-large;
+}
+
 .title-small-sans{
   @extend .title-small;
   font-family: $font-face-plain;

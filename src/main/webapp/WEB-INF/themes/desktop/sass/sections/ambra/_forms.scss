@@ -72,7 +72,7 @@ form.standard input[type="button"]:hover,
 form.standard input[type="submit"]:hover,
 form.standard .button:hover,
 .ui-dialog .ui-dialog-buttonset .ui-button:hover{
-  background: #3c63af !important;
+  background: $clr-highlight !important;
   color: #fff !important;
 }
 
@@ -184,7 +184,7 @@ a#media-coverage-form-link {
   .btn.primary.active,
   .btn.active,
   .btn:hover{
-    background: #3c63af;
+    background: $clr-highlight;
     color: #fff;
     text-decoration: none;
   }

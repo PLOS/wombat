@@ -71,7 +71,7 @@
 <#include "../articleJs.ftl" />
 
 <@js src="resource/js/components/table_open.js"/>
-<@js src="resource/js/components/figshare.js"/>
+<#include "../common/figshareJs.ftl" />
 <@js src="resource/js/components/tooltip_hover.js"/>
 
 <@js src="resource/js/vendor/jquery.jsonp-2.4.0.js"/>

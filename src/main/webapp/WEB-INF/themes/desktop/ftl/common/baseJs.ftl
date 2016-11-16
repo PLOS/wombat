@@ -4,7 +4,11 @@
 <script>window.jQuery || document.write('<script src="<@siteLink path="resource/js/vendor/jquery-2.1.4.min.js" />""><\/script>')</script>
 
 <#if article??>
-    <@js src="resource/js/vendor/figshare.js" />
+    <@themeConfig map="article" value="showFigShare" ; showFigShare>
+        <#if !(showFigShare?? && showFigShare.disabled?? && showFigShare.disabled)>
+            <@js src="resource/js/vendor/figshare.js" />
+        </#if>
+    </@themeConfig>
 </#if>
 
 <#--//

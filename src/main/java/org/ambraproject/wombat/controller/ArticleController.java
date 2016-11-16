@@ -749,7 +749,7 @@ public class ArticleController extends WombatController {
       byte[] xml = ByteStreams.toByteArray(stream);
       List<Reference> references = parseXmlService.parseArticleReferences(
           new ByteArrayInputStream(xml), doi -> {
-            String citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi, site);
+            String citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi);
             String linkText = null;
             if (citationJournalKey != null) {
               linkText = Link.toForeignSite(site, citationJournalKey, siteSet)

@@ -5,7 +5,7 @@
 
 <#if article??>
     <@themeConfig map="article" value="showFigShare" ; showFigShare>
-        <#if !(showFigShare?? && showFigShare.disabled?? && showFigShare.disabled)>
+        <#if (showFigShare?? && showFigShare)>
             <@js src="resource/js/vendor/figshare.js" />
         </#if>
     </@themeConfig>

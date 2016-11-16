@@ -2,7 +2,7 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
 <#if article??>
     <@themeConfig map="article" value="showFigShare" ; showFigShare>
-        <#if !(showFigShare?? && showFigShare.disabled?? && showFigShare.disabled)>
+        <#if (showFigShare?? && showFigShare)>
             <@js src="resource/js/vendor/figshare.js" />
         </#if>
     </@themeConfig>

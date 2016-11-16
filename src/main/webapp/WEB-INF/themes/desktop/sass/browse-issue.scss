@@ -1,23 +1,18 @@
 @charset "UTF-8";
 @import "site-content";
 
-body {
-  background: $clr-header;
-}
+@include dark-background;
 
 main {
   margin-top: 0;
 }
 
 h1 {
-  font-family: $font-face-fancy;
-  font-size: $txt-size-giant;;
+  @extend .title-primary-large;
 }
 
 h2 {
-  font-family: $font-face-fancy;
-  font-size: $txt-size-xxxxlarge;
-  font-weight: normal;
+  @extend .title-primary;
 }
 
 .section:not(.cover) {
@@ -44,20 +39,22 @@ h2 {
     @extend .note;
     font-size: $txt-size-xxsmall;
   }
+  .title:hover {
+    @extend %brand-color;
+    text-decoration: none;
+  }
   h2 {
     display: block;
     text-align: center;
     font-weight: normal;
-    font-family: $font-face-fancy;
-    font-size: $txt-size-xxxlarge;
     margin: 0 0 $pad-xsmall 0;
     @extend %link-text-white;
     &:hover {
       text-decoration: none;
     }
-    a:hover {
-      @extend %brand-color;
-      text-decoration: none;
+
+    strong {
+      font-weight: normal;
     }
   }
   .kicker {
@@ -83,25 +80,18 @@ h2 {
 }
 
 .section h2 {
-  font-size: $txt-size-xxxlarge;
   margin: $pad-small 0;
 }
 
 .item {
-  font-size: $txt-size-default;
   padding: $line-height-small 0;
   h3 {
-    font-size: 16px;
     margin-bottom: $line-height-small;
 
     a {
-      color: #333;
+      @extend %link-text-body
     }
 
-    a:hover {
-      color: $clr-brand;
-      text-decoration: none;
-    }
   }
 
   .authors {
@@ -137,7 +127,6 @@ h2 {
     cursor: pointer;
   }
 }
-
 
 /* Right Navbar */
 #nav-toc {

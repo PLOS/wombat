@@ -33,10 +33,10 @@
 }
 
 .article-block .details {
+  @extend %brand-background;
   width: 245px;
   height: 176px;
   padding: 27px 20px 0;
-  @extend %brand-background;
   position: absolute;
   right: 0;
   bottom: 40px;
@@ -148,7 +148,6 @@
 }
 
 .articles-list .pagination .more:hover {
-  color: #333;
   @extend %brand-background;
 }
 
@@ -205,7 +204,7 @@
 
 #search-results .authors {
   display: block;
-  color: #666;
+  color: $clr-muted;
 }
 
 #search-results .metrics {

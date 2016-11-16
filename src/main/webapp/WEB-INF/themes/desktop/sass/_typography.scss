@@ -165,6 +165,17 @@ h4, h5 {
   font-size: $txt-size-large;
 }
 
+.title-small-sans{
+  @extend .title-small;
+  font-family: $font-face-plain;
+}
+
+.title-primary-large {
+  font-family: $font-face-fancy;
+  font-size: $txt-size-giant;
+  line-height: $line-height-large-text;
+}
+
 .title-primary{
     font-family: $font-face-fancy;
     font-size: $txt-size-xxxlarge;

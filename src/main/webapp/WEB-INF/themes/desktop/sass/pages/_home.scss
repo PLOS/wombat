@@ -54,7 +54,6 @@ $image-container: ($image-width + $pad-small);
 ////////////
 
 .home main {
-  color: $clr-header;
   h1, h2, h3, h5, h6 {
     font-family: $font-face-fancy;
     line-height: 1;
@@ -404,7 +403,6 @@ $image-container: ($image-width + $pad-small);
       @extend %condense;
       display: block;
       margin-bottom: rem-calc(5);
-      font-weight: 900;
       }
     .subhead {
       font-face: $font-face-plain;

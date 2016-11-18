@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URL;
@@ -95,24 +94,18 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
     return requestObject(address, (Type) responseClass);
   }
 
-
-  private static final String APPLICATION_JSON_CONTENT_TYPE = ContentType.APPLICATION_JSON.toString();
-
   private <R extends HttpUriRequest & HttpEntityEnclosingRequest>
   HttpResponse uploadObject(ApiAddress address, Object object, Function<URI, R> requestConstructor)
       throws IOException {
     R request = buildRequest(address, requestConstructor);
 
+    ContentType contentType = ContentType.APPLICATION_JSON;
     if (object != null) {
       String json = jsonService.serialize(object);
-      try {
-        request.setEntity(new StringEntity(json));
-      } catch (UnsupportedEncodingException e) {
-        throw new RuntimeException(e);
-      }
+      request.setEntity(new StringEntity(json, contentType));
     }
 
-    request.addHeader(HttpHeaders.CONTENT_TYPE, APPLICATION_JSON_CONTENT_TYPE);
+    request.addHeader(HttpHeaders.CONTENT_TYPE, contentType.toString());
 
     try (CloseableHttpResponse response = cachedRemoteReader.getResponse(request)) {
       //return closed response

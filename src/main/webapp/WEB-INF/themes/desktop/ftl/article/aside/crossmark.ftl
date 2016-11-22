@@ -1,7 +1,8 @@
-<!-- Start CrossMark Snippet v1.4 -->
-<div class="crossmark-container">
-  <a id="open-crossmark" href="#"><img id="crossmark-icon" src="<@siteLink path="resource/img/logo-crossmark-bw.png"/>" /></a>
-</div>
-
-
-<!-- End CrossMark Snippet -->
+ <@themeConfig map="article" value="showCrossMarkWidget" ; showCrossMarkWidget>
+    <#if showCrossMarkWidget>
+<!-- Crossmark 2.0 widget -->
+<script src="http://crossmark-cdn.crossref.org/widget/v2.0/widget.js"></script>
+<a data-target="crossmark"><img width="150" src="http://crossmark-cdn.crossref.org/widget/v2.0/logos/CROSSMARK_BW_horizontal.svg"></a>
+<!-- End Crossmark 2.0 widget -->
+    </#if>
+</@themeConfig>

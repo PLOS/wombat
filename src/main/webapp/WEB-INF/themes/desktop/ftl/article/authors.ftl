@@ -37,8 +37,6 @@
 <#include "articleJs.ftl" />
 <@renderJs />
 
-<#include "aside/crossmarkIframe.ftl" />
-
 </body>
 </html>
 

@@ -34,10 +34,6 @@ public class Site {
     return requestScheme;
   }
 
-  public boolean isJournalSpecific() {
-    return false;
-  }
-
   @Override
   public String toString() {
     return getKey();

@@ -192,7 +192,7 @@ public abstract class SiteRequestCondition implements RequestCondition<SiteReque
   private static RequestMappingContext getMappingForSite(RequestMappingContext mapping, Site site) {
     Map<String, Object> mappingsConfig = site.getTheme().getConfigMap("mappings");
 
-    if (!mapping.hasScope(site.isJournalSpecific() ? JOURNAL_SPECIFIC : JOURNAL_NEUTRAL)) {
+    if (!mapping.hasScope((site instanceof JournalSite) ? JOURNAL_SPECIFIC : JOURNAL_NEUTRAL)) {
       return null;
     }
 

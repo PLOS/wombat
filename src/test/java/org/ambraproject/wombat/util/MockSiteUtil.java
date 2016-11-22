@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.util;
 
+import org.ambraproject.wombat.config.site.JournalSite;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
@@ -25,7 +26,7 @@ public class MockSiteUtil {
   public static Site getByUniqueJournalKey(SiteSet siteSet, String journalKey) {
     Site matched = null;
     for (Site candidate : siteSet.getSites()) {
-      if (candidate.getJournalKey().equals(journalKey)) {
+      if ((candidate instanceof JournalSite) && ((JournalSite) candidate).getJournalKey().equals(journalKey)) {
         if (matched == null) {
           matched = candidate;
         } else {

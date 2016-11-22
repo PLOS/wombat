@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.config.site;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
 import org.ambraproject.wombat.config.theme.Theme;
@@ -12,7 +13,8 @@ public class Site {
   private final Theme theme;
   private final SiteRequestScheme requestScheme;
 
-  Site(String key, Theme theme, SiteRequestScheme requestScheme) {
+  @VisibleForTesting
+  public Site(String key, Theme theme, SiteRequestScheme requestScheme) {
     this.key = Preconditions.checkNotNull(key);
     this.theme = Preconditions.checkNotNull(theme);
     this.requestScheme = Preconditions.checkNotNull(requestScheme);

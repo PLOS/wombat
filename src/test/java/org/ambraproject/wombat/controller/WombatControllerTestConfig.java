@@ -122,7 +122,6 @@ public class WombatControllerTestConfig extends WebMvcConfigurerAdapter {
 
     Site mockSite = mock(Site.class);
     ImmutableSet<Site> sitesSet = new ImmutableSet.Builder<Site>().add(mockSite).build();
-    when(mockSite.getJournalKey()).thenReturn("daJournalKey");
 
     SiteRequestScheme mockRequestScheme = mock(SiteRequestScheme.class);
     when(mockRequestScheme.isForSite(any(HttpServletRequest.class))).thenReturn(true);

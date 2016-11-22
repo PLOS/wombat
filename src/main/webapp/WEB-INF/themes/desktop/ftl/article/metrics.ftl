@@ -42,9 +42,5 @@
 
 <@renderJs />
 
-
-
-<#include "aside/crossmarkIframe.ftl" />
-
 </body>
 </html>

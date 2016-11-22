@@ -68,7 +68,7 @@ public class ParseXmlServiceImpl implements ParseXmlService {
           .map(ref -> {
             try {
               return parseReferenceService.buildReferences((Element) ref, linkService);
-            } catch (XMLParseException e) {
+            } catch (XMLParseException | IOException e) {
               throw new RuntimeException(e);
             }
           }) // Stream<List<Reference>>

@@ -1,7 +1,8 @@
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.config.site.JournalSpecific;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,7 @@ import java.io.InputStream;
 @Controller
 public class TemplatePageController extends WombatController {
 
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "templatePage", value = "/page/{pageName}")
   public String servePage(Site site,
                           @PathVariable("pageName") String pageName)

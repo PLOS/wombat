@@ -1,8 +1,9 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.net.HttpHeaders;
-import org.ambraproject.wombat.config.site.JournalSpecific;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
@@ -39,7 +40,7 @@ public class ExternalResourceController extends WombatController {
   @Autowired
   private EditorialContentApi editorialContentApi;
 
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "repoObject", value = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/{key}")
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
@@ -49,7 +50,7 @@ public class ExternalResourceController extends WombatController {
     serve(response, request, ContentKey.createForLatestVersion(key));
   }
 
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "versionedRepoObject", value = "/" + EXTERNAL_RESOURCE_NAMESPACE + "/{key}/{version}")
   public void serve(HttpServletResponse response,
                     HttpServletRequest request,
@@ -66,7 +67,7 @@ public class ExternalResourceController extends WombatController {
     serve(response, request, ContentKey.createForVersion(key, versionInt));
   }
 
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "repoObjectUsingPublicUrl", value = "/s/file")
   public void serveWithPublicUrl(HttpServletResponse response,
                                  HttpServletRequest request,

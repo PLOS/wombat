@@ -1,7 +1,8 @@
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.config.site.JournalSpecific;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import java.io.InputStream;
 @Controller
 public class StaticPageController extends WombatController {
 
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "staticPage", value = "/static/{pageName}")
   public String renderStaticPage(Site site, @PathVariable String pageName) {
     if (!doesStaticPageExist(site, pageName)) {

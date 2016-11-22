@@ -16,7 +16,8 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.JournalSite;
-import org.ambraproject.wombat.config.site.JournalSpecific;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.slf4j.Logger;
@@ -44,7 +45,7 @@ public class AlertController extends WombatController {
   @Autowired
   private AlertService alertService;
 
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "addSubjectAlert", value = "/subjectalert/add", method = RequestMethod.POST)
   @ResponseBody
   public Map<String, Object> addSubjectAlert(HttpServletRequest request, JournalSite site,
@@ -53,7 +54,7 @@ public class AlertController extends WombatController {
     return changeAlert(request, site, subject, alertService::addSubjectAlert);
   }
 
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "removeSubjectAlert", value = "/subjectalert/remove", method = RequestMethod.POST)
   @ResponseBody
   public Map<String, Object> removeSubjectAlert(HttpServletRequest request, JournalSite site,
@@ -62,7 +63,7 @@ public class AlertController extends WombatController {
     return changeAlert(request, site, subject, alertService::removeSubjectAlert);
   }
 
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "addSearchAlert", value = "/searchalert/add", method = RequestMethod.POST)
   @ResponseBody
   public Map<String, Object> addSearchAlert(HttpServletRequest request, JournalSite site,

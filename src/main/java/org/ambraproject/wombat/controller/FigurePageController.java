@@ -2,8 +2,9 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.site.JournalSite;
-import org.ambraproject.wombat.config.site.JournalSpecific;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
@@ -38,7 +39,7 @@ public class FigurePageController extends WombatController {
   /**
    * Serve a page listing all figures for an article.
    */
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "figuresPage", value = "/article/figures")
   public String renderFiguresPage(Model model, JournalSite site,
                                   RequestedDoiVersion articleId)
@@ -66,7 +67,7 @@ public class FigurePageController extends WombatController {
   /**
    * Serve a page displaying a single figure.
    */
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "figurePage", value = "/article/figure")
   public String renderFigurePage(Model model, JournalSite site,
                                  RequestedDoiVersion figureId)
@@ -95,7 +96,7 @@ public class FigurePageController extends WombatController {
   /**
    * Figure lightbox
    */
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "lightbox", value = "/article/lightbox")
   public String renderLightbox(Model model, Site site) throws IOException {
     return site + "/ftl/article/articleLightbox";

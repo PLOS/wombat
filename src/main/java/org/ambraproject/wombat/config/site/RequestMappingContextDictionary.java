@@ -90,7 +90,7 @@ public final class RequestMappingContextDictionary {
    */
   public void registerSiteMapping(RequestMappingContext mapping, Site site) {
     Preconditions.checkNotNull(site);
-    Preconditions.checkArgument(!mapping.isAnnotated(RequestMappingContext.CustomAnnotation.SITELESS));
+    Preconditions.checkArgument(!mapping.hasScope(SiteScope.SITELESS));
     String handlerName = getHandlerName(mapping);
 
     insertMapping(mapping, m -> siteTableBuilder.put(handlerName, site, m));
@@ -105,7 +105,7 @@ public final class RequestMappingContextDictionary {
    * @throws IllegalStateException if {@link #getPattern} has been called once or more on this object
    */
   public void registerGlobalMapping(RequestMappingContext mapping) {
-    Preconditions.checkArgument(mapping.isAnnotated(RequestMappingContext.CustomAnnotation.SITELESS));
+    Preconditions.checkArgument(mapping.hasScope(SiteScope.SITELESS));
     String handlerName = getHandlerName(mapping);
 
     insertMapping(mapping, m -> globalTableBuilder.put(handlerName, m));

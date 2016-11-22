@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.config.site.JournalSpecific;
-import org.ambraproject.wombat.config.site.Siteless;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ public class UserController extends WombatController {
   @Autowired
   private ArticleApi articleApi;
 
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "userLogin", value = "/user/secure/login")
   public ModelAndView redirectToOriginalLink(HttpServletRequest request, @RequestParam("page") String page) {
     // page param should contain the url to the location we want to send the user to
@@ -37,7 +37,7 @@ public class UserController extends WombatController {
     return new ModelAndView("redirect:" + page);
   }
 
-  @Siteless
+  @MappingSiteScope(SiteScope.SITELESS)
   @RequestMapping(name = "userLogout", value = "/user/logout")
   public ModelAndView redirectToSignOut(@RequestHeader(value = "Referer", required = false) String referrer) {
     if (referrer == null) {

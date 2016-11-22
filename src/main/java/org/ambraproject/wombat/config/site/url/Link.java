@@ -6,6 +6,7 @@ import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.site.RequestMappingContext;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.ClientEndpoint;
 import org.ambraproject.wombat.util.UrlParamBuilder;
@@ -157,7 +158,7 @@ public class Link {
       }
 
       final Optional<Site> linkSite;
-      if (mapping.isAnnotated(RequestMappingContext.CustomAnnotation.SITELESS)) {
+      if (mapping.hasScope(SiteScope.SITELESS)) {
         linkSite = Optional.empty();
       } else if (site.isPresent()) {
         linkSite = site;

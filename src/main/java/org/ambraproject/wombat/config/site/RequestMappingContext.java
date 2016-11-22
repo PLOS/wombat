@@ -6,14 +6,11 @@ import com.google.common.collect.Sets;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.EnumSet;
-import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * The values for a request mapping, with modifications taken in from application context.
@@ -25,44 +22,18 @@ import java.util.stream.Collectors;
  */
 public class RequestMappingContext {
 
-  /**
-   * Application-defined annotation types that can be applied to a request-mapped handler method.
-   */
-  public static enum CustomAnnotation {
-    SITELESS(Siteless.class),
-    JOURNAL_SPECIFIC(JournalSpecific.class),
-    JOURNAL_NEUTRAL(JournalNeutral.class);
-
-    private final Class<? extends Annotation> type;
-
-    private CustomAnnotation(Class<? extends Annotation> type) {
-      this.type = type;
-    }
-
-    private static Set<CustomAnnotation> findOn(Method method) {
-      Set<CustomAnnotation> annotationReprs = EnumSet.allOf(CustomAnnotation.class);
-      for (Iterator<CustomAnnotation> iterator = annotationReprs.iterator(); iterator.hasNext(); ) {
-        if (AnnotationUtils.findAnnotation(method, iterator.next().type) == null) {
-          iterator.remove();
-        }
-      }
-      return annotationReprs;
-    }
-  }
-
-
   private final RequestMapping mapping; // the raw, application-provided request mapping
   private final String pattern; // the mapping pattern, which may have been overridden by the context
   private final boolean hasSiteToken; // true if the pattern has been modified by adding a site token to the beginning
-  private final ImmutableSet<CustomAnnotation> annotations; // annotations other than RequestMapping on the handler
+  private final ImmutableSet<SiteScope> scope; // scope given by @MappingSiteScope annotation
 
-  private RequestMappingContext(RequestMapping mapping, String pattern, boolean hasSiteToken, Set<CustomAnnotation> annotations) {
+  private RequestMappingContext(RequestMapping mapping, String pattern, boolean hasSiteToken, Set<SiteScope> scope) {
     this.mapping = Objects.requireNonNull(mapping);
     this.pattern = Objects.requireNonNull(pattern);
-    this.annotations = Sets.immutableEnumSet(annotations);
+    this.scope = Sets.immutableEnumSet(scope);
     this.hasSiteToken = hasSiteToken;
 
-    Preconditions.checkArgument(!this.annotations.isEmpty());
+    Preconditions.checkArgument(!this.scope.isEmpty());
   }
 
   private static String extractPattern(RequestMapping mapping) {
@@ -79,6 +50,23 @@ public class RequestMappingContext {
     }
   }
 
+  private static Set<SiteScope> findScope(Method controllerMethod) {
+    MappingSiteScope scopeAnnotation = AnnotationUtils.findAnnotation(controllerMethod, MappingSiteScope.class);
+    if (scopeAnnotation == null) {
+      throw new RuntimeException(String.format(
+          "Cannot map methods without an annotation for site scope. %s must be annotated with @%s",
+          controllerMethod.getName(), MappingSiteScope.class.getSimpleName()));
+    }
+    Set<SiteScope> scopeValues = ImmutableSet.copyOf(scopeAnnotation.value());
+    if (scopeValues.isEmpty()) {
+      throw new RuntimeException(String.format(
+          "Cannot map methods without an annotation for site scope. @%s() %s must contain at least one of: %s",
+          MappingSiteScope.class.getSimpleName(), controllerMethod.getName(),
+          EnumSet.allOf(SiteScope.class).toString()));
+    }
+    return scopeValues;
+  }
+
   /**
    * Wrap a raw {@link RequestMapping} object, which supplies the default mapping settings that are supplied by the
    * application.
@@ -90,16 +78,8 @@ public class RequestMappingContext {
     RequestMapping requestMapping = AnnotationUtils.findAnnotation(controllerMethod, RequestMapping.class);
     if (requestMapping == null) return null;
     String pattern = extractPattern(requestMapping);
-    Set<CustomAnnotation> customAnnotations = CustomAnnotation.findOn(controllerMethod);
-    if (customAnnotations.isEmpty()) {
-      throw new RuntimeException(String.format(
-          "Cannot map methods without an annotation for site scope. %s must have at least one of: %s",
-          controllerMethod.getName(),
-          EnumSet.allOf(CustomAnnotation.class).stream()
-              .map(a -> "@" + a.type.getSimpleName())
-              .collect(Collectors.joining(", "))));
-    }
-    return new RequestMappingContext(requestMapping, pattern, false, customAnnotations);
+    Set<SiteScope> scope = findScope(controllerMethod);
+    return new RequestMappingContext(requestMapping, pattern, false, scope);
   }
 
   /**
@@ -109,7 +89,7 @@ public class RequestMappingContext {
    * @return a copy whose pattern is overridden
    */
   public RequestMappingContext override(String newPattern) {
-    return new RequestMappingContext(mapping, newPattern, false, annotations);
+    return new RequestMappingContext(mapping, newPattern, false, scope);
   }
 
   /**
@@ -119,12 +99,12 @@ public class RequestMappingContext {
    * @throws java.lang.IllegalArgumentException if this object is siteless or already captures a site token
    */
   public RequestMappingContext addSiteToken() {
-    Preconditions.checkState(!isAnnotated(CustomAnnotation.SITELESS), "Cannot add site token to a siteless mapping");
+    Preconditions.checkState(!hasScope(SiteScope.SITELESS), "Cannot add site token to a siteless mapping");
     Preconditions.checkState(!hasSiteToken, "Mapping already has site token");
 
     String prefix = (pattern.isEmpty() || pattern.startsWith("/")) ? "/*" : "/*/";
     String modified = prefix + pattern;
-    return new RequestMappingContext(mapping, modified, true, annotations);
+    return new RequestMappingContext(mapping, modified, true, scope);
   }
 
 
@@ -142,8 +122,8 @@ public class RequestMappingContext {
     return pattern;
   }
 
-  public boolean isAnnotated(CustomAnnotation annotation) {
-    return annotations.contains(Objects.requireNonNull(annotation));
+  public boolean hasScope(SiteScope annotation) {
+    return scope.contains(Objects.requireNonNull(annotation));
   }
 
 
@@ -189,7 +169,7 @@ public class RequestMappingContext {
     if (hasSiteToken != that.hasSiteToken) return false;
     if (!mapping.equals(that.mapping)) return false;
     if (!pattern.equals(that.pattern)) return false;
-    return annotations.equals(that.annotations);
+    return scope.equals(that.scope);
 
   }
 
@@ -198,7 +178,7 @@ public class RequestMappingContext {
     int result = mapping.hashCode();
     result = 31 * result + pattern.hashCode();
     result = 31 * result + (hasSiteToken ? 1 : 0);
-    result = 31 * result + annotations.hashCode();
+    result = 31 * result + scope.hashCode();
     return result;
   }
 }

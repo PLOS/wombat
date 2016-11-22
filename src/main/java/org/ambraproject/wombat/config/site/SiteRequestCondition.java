@@ -16,8 +16,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-import static org.ambraproject.wombat.config.site.RequestMappingContext.CustomAnnotation.JOURNAL_NEUTRAL;
-import static org.ambraproject.wombat.config.site.RequestMappingContext.CustomAnnotation.JOURNAL_SPECIFIC;
+import static org.ambraproject.wombat.config.site.SiteScope.JOURNAL_NEUTRAL;
+import static org.ambraproject.wombat.config.site.SiteScope.JOURNAL_SPECIFIC;
 
 /**
  * One instance of this class encapsulates, for one request mapping, the pattern conditions for all applicable sites. It
@@ -110,7 +110,7 @@ public abstract class SiteRequestCondition implements RequestCondition<SiteReque
    * @return all patterns that are mapped to the request handler for any site in the set
    */
   public static Set<String> getAllPatterns(SiteSet siteSet, RequestMappingContext baseMapping) {
-    if (baseMapping.isAnnotated(RequestMappingContext.CustomAnnotation.SITELESS)) {
+    if (baseMapping.hasScope(SiteScope.SITELESS)) {
       return ImmutableSet.of(baseMapping.getPattern());
     }
     Set<RequestMappingContext> mappings = buildPatternMap(siteSet, baseMapping).keySet();
@@ -137,7 +137,7 @@ public abstract class SiteRequestCondition implements RequestCondition<SiteReque
                                             Method controllerMethod,
                                             RequestMappingContextDictionary requestMappingContextDictionary) {
     RequestMappingContext baseMapping = RequestMappingContext.create(controllerMethod);
-    if (baseMapping.isAnnotated(RequestMappingContext.CustomAnnotation.SITELESS)) {
+    if (baseMapping.hasScope(SiteScope.SITELESS)) {
       PatternsRequestCondition patternsRequestCondition = new PatternsRequestCondition(baseMapping.getPattern());
       requestMappingContextDictionary.registerGlobalMapping(baseMapping);
       return forSiteless(patternsRequestCondition);
@@ -166,7 +166,7 @@ public abstract class SiteRequestCondition implements RequestCondition<SiteReque
    * Construct a map from each pattern to the sites that use that pattern.
    */
   private static Multimap<RequestMappingContext, Site> buildPatternMap(SiteSet siteSet, RequestMappingContext baseMapping) {
-    Preconditions.checkArgument(!baseMapping.isAnnotated(RequestMappingContext.CustomAnnotation.SITELESS));
+    Preconditions.checkArgument(!baseMapping.hasScope(SiteScope.SITELESS));
     Multimap<RequestMappingContext, Site> patterns = LinkedListMultimap.create();
     for (Site site : siteSet.getSites()) {
       RequestMappingContext mapping = getMappingForSite(baseMapping, site);
@@ -192,7 +192,7 @@ public abstract class SiteRequestCondition implements RequestCondition<SiteReque
   private static RequestMappingContext getMappingForSite(RequestMappingContext mapping, Site site) {
     Map<String, Object> mappingsConfig = site.getTheme().getConfigMap("mappings");
 
-    if (!mapping.isAnnotated(site.isJournalSpecific() ? JOURNAL_SPECIFIC : JOURNAL_NEUTRAL)) {
+    if (!mapping.hasScope(site.isJournalSpecific() ? JOURNAL_SPECIFIC : JOURNAL_NEUTRAL)) {
       return null;
     }
 

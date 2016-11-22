@@ -13,8 +13,9 @@
 
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.config.site.JournalSpecific;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,7 @@ import java.io.IOException;
 @Controller
 public class RedirectController extends WombatController {
 
-  @JournalSpecific
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "redirect", value = "/redirect/{sourcePage}")
   public String render(Model model, Site site,
                        @PathVariable String sourcePage,

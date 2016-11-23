@@ -84,6 +84,7 @@ import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.ParseXmlServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
+import org.ambraproject.wombat.service.TopLevelLockssManifestService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
@@ -390,6 +391,11 @@ public class SpringConfiguration {
   @Bean
   public DoiToJournalResolutionService doiToJournalResolutionService() {
     return new DoiToJournalResolutionService();
+  }
+
+  @Bean
+  public TopLevelLockssManifestService topLevelLockssManifestService() {
+    return new TopLevelLockssManifestService();
   }
 
 }

@@ -28,7 +28,7 @@
 #issue-articles-container #issue-title {
   display: block;
   font-weight: normal;
-  font-family: 'fs_albertregular', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 27px;
   margin: 12px 0;
 }
@@ -75,7 +75,7 @@
 }
 
 #issue-articles-container .section h2 {
-  font-family: 'fs_albertregular', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 27px;
   margin: 0;
 }

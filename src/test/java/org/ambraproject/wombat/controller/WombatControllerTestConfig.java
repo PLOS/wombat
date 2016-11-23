@@ -127,7 +127,6 @@ public class WombatControllerTestConfig extends WebMvcConfigurerAdapter {
     when(mockRequestScheme.isForSite(any(HttpServletRequest.class))).thenReturn(true);
 
     when(mockSite.getRequestScheme()).thenReturn(mockRequestScheme);
-    when(mockSite.toString()).thenReturn(MOCK_SITE_URL);
 
     SiteSet mockSet = mock(SiteSet.class);
     when(mockSet.getSites()).thenReturn(sitesSet);

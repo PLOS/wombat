@@ -2,6 +2,7 @@ package org.ambraproject.wombat.config.theme;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.config.site.JournalSite;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
@@ -37,7 +38,7 @@ public class TestTheme {
     Site homeSite = new Site("homeSite", homeTheme, dummyScheme);
 
     Theme targetTheme = new StubTheme("targetTheme", "targetJournal");
-    Site targetSite = new Site("targetSite", targetTheme, dummyScheme);
+    JournalSite targetSite = new JournalSite("targetSite", targetTheme, dummyScheme, "targetJournal", "");
 
     SiteSet siteSet = new SiteSet(ImmutableList.of(homeSite, targetSite));
     Site resolved = homeTheme.resolveForeignJournalKey(siteSet, "targetJournal");

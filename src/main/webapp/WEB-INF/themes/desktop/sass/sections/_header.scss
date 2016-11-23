@@ -105,7 +105,15 @@ $width-nav: $block-grid-elements - $width-logo;
     }
   }
 
-
+// Anniversary logo height and position override
+.plosone {
+  header {
+    .logo {
+      margin-top: rem-calc(-9);
+      height: rem-calc(58);
+    }
+  }
+}
 
 /* using Foundation Top Bar
  all @extend .class are Foundation

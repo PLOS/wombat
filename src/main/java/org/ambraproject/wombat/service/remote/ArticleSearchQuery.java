@@ -25,7 +25,7 @@ public class ArticleSearchQuery {
       "id", "eissn", "publication_date", "title", "title_display", "cross_published_journal_name",
       "author_display", "article_type", "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount",
       "alm_mendeleyCount", "alm_twitterCount", "alm_facebookCount", "retraction", "expression_of_concern",
-      "striking_image", "figure_table_caption"}));
+      "striking_image", "figure_table_caption", "cross_published_journal_key",}));
   private static final String RSS_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
       "id", "publication_date", "title", "title_display", "cross_published_journal_name", "author_display",
       "abstract", "abstract_primary_display"}));

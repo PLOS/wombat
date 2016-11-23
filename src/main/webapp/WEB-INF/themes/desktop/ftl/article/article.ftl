@@ -7,8 +7,8 @@
       class="no-js">
 <#assign title = article.title, articleDoi = article.doi />
 <#assign tabPage="Article"/>
-
 <#assign adPage="Article"/>
+<#assign isArticlePage = true />
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
@@ -74,8 +74,6 @@
   <#include "mathjax.ftl">
 
   <@renderJs />
-
-  <#include "aside/crossmarkIframe.ftl" />
 <#--
 TODO: move reveal mode & fig-viewer divs to global location when the new lightbox is implemented sitewide
 -->

@@ -32,7 +32,9 @@ public class ParseXmlServiceImpl implements ParseXmlService {
    * {@inheritDoc}
    */
   @Override
-  public List<Reference> parseArticleReferences(InputStream xml) throws IOException {
+  public List<Reference> parseArticleReferences(InputStream xml,
+                                                ParseReferenceService.DoiToJournalLinkService linkService)
+      throws IOException {
     Objects.requireNonNull(xml);
 
     Document doc;
@@ -65,8 +67,8 @@ public class ParseXmlServiceImpl implements ParseXmlService {
       references.addAll(refNodes.stream()
           .map(ref -> {
             try {
-              return parseReferenceService.buildReferences((Element) ref);
-            } catch (XMLParseException e) {
+              return parseReferenceService.buildReferences((Element) ref, linkService);
+            } catch (XMLParseException | IOException e) {
               throw new RuntimeException(e);
             }
           }) // Stream<List<Reference>>

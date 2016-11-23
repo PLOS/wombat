@@ -935,8 +935,12 @@
                 </xsl:if>
                   <xsl:element name="li">
                     <xsl:element name="a">
+                      <xsl:variable name="fullArticleLink" select="$dbCit/fullArticleLink"/>
                       <xsl:attribute name="href">
                         <xsl:choose>
+                          <xsl:when test="$fullArticleLink">
+                            <xsl:value-of select="$fullArticleLink"/>
+                          </xsl:when>
                           <xsl:when test="$doi">
                             <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
                           </xsl:when>
@@ -983,7 +987,14 @@
                         </xsl:choose>
                       </xsl:attribute>
                       <xsl:attribute name="target">_new</xsl:attribute>
-                      <xsl:attribute name="title">Go to article in CrossRef</xsl:attribute>
+                      <xsl:choose>
+                        <xsl:when test="$fullArticleLink or $doi">
+                          <xsl:attribute name="title">Go to article</xsl:attribute>
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <xsl:attribute name="title">Go to article in CrossRef</xsl:attribute>
+                        </xsl:otherwise>
+                      </xsl:choose>
                       View Article
                     </xsl:element>
                   </xsl:element>

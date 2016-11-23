@@ -433,7 +433,7 @@ $image-container: ($image-width + $pad-small);
       @extend %link-text-body;
       a {
         font-family: $font-face-fancy;
-        font-size: rem-calc($txt-size-medium-large);
+        font-size: rem-calc($txt-size-medium);
         }
       }
     }

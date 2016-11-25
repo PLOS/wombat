@@ -61,7 +61,7 @@
   <#include "articleJs.ftl" />
   <@js src="resource/js/components/table_open.js"/>
   <#if !hasLaterVersion()>
-    <@js src="resource/js/components/figshare.js"/>
+    <#include "../common/figshareJs.ftl" />
   </#if>
   <#--TODO: move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide -->
   <@js src="resource/js/vendor/jquery.panzoom.min.js"/>

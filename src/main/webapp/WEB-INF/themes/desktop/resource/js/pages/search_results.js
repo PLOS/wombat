@@ -125,11 +125,12 @@ var SearchResult;
       this.$loadingEl.hide();
     },
     loadUrlParams: function () {
+      var that = this;
       var urlVars = this.getJsonFromUrl();
-      this.currentSearchParams = _.mapObject(this.currentSearchParams, function (paramValue, paramName) {
-        var urlVar = urlVars[paramName];
+      this.currentSearchParams = _.mapObject(this.currentSearchParams, function (item, key) {
+        var urlVar = urlVars[key];
 
-        if (paramName == 'filterSubjects' && _.has(urlVars, 'subject')) {
+        if (key == 'filterSubjects' && _.has(urlVars, 'subject')) {
           var subjectParam = urlVars['subject'];
 
           if(!_.isEmpty(urlVar)) {
@@ -176,15 +177,15 @@ var SearchResult;
       if (this.currentSearchParams.q == null && this.checkFilters()) {
         this.currentSearchParams.q = "";
       }
-      _.each(this.currentSearchParams, function (paramValue, paramName) {
-        if (paramValue != null) {
-          if (_.isArray(paramValue)) {
-            _.each(paramValue, function (value) {
-              urlParams = urlParams + paramName + '=' + encodeURIComponent(value) + '&';
+      _.each(this.currentSearchParams, function (item, key) {
+        if (item != null) {
+          if (_.isArray(item)) {
+            _.each(item, function (item) {
+              urlParams = urlParams + key + '=' + encodeURIComponent(item) + '&';
             });
           }
           else {
-            urlParams = urlParams + paramName + '=' + encodeURIComponent(paramValue) + '&';
+            urlParams = urlParams + key + '=' + encodeURIComponent(item) + '&';
           }
         }
       });
@@ -234,37 +235,37 @@ var SearchResult;
       $('body').on('click', '[data-filter-param-name]', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        var paramName = $(this).data('filter-param-name');
-        var paramValue = $(this).data('filter-value');
+        var param = $(this).data('filter-param-name');
+        var value = $(this).data('filter-value');
 
-        if (paramName == 'filterDates') {
+        if (param == 'filterDates') {
           that.currentSearchParams.filterStartDate = null;
           that.currentSearchParams.filterEndDate = null;
           that.searchDateFilters.start = that.currentSearchParams.filterStartDate;
           that.searchDateFilters.end = that.currentSearchParams.filterEndDate;
         }
         else {
-          var currentValue = that.currentSearchParams[paramName];
+          var currentValue = that.currentSearchParams[param];
 
           if (_.isArray(currentValue)) {
-            var index = _.indexOf(currentValue, paramValue);
+            var index = _.indexOf(currentValue, value);
 
             if (index == -1) {
-              that.currentSearchParams[paramName].push(paramValue);
+              that.currentSearchParams[param].push(value);
             }
             else {
-              that.currentSearchParams[paramName].splice(index, 1);
+              that.currentSearchParams[param].splice(index, 1);
             }
           }
           else {
-            if (currentValue == paramValue) {
-              that.currentSearchParams[paramName] = [];
+            if (currentValue == value) {
+              that.currentSearchParams[param] = [];
             }
             else if (currentValue != null) {
-              that.currentSearchParams[paramName] = [currentValue, paramValue];
+              that.currentSearchParams[param] = [currentValue, value];
             }
             else {
-              that.currentSearchParams[paramName] = [paramValue];
+              that.currentSearchParams[param] = [value];
             }
           }
         }
@@ -331,7 +332,7 @@ var SearchResult;
         $('#simpleSearchLink, .edit-query').show();
         $('#advancedSearchLink').hide();
 
-        AdvancedSearch.init('.advanced-search-container', function () {
+        AdvancedSearch.init('.advanced-search-container', function (err) {
           // Only show after it has been initialized
           $('.advanced-search-container').show();
           $('.advanced-search-inputs-container input[type=text]').first().focus();
@@ -415,6 +416,8 @@ var SearchResult;
 
     mapActiveFilters: function (response) {
 
+      this.searchActiveFilters = response.activeFilterItems;
+
       if (!_.isEmpty(response.filterStartDate)) {
         this.searchDateFilters['start'] = response.filterStartDate;
       }
@@ -422,7 +425,7 @@ var SearchResult;
         this.searchDateFilters['end'] = response.filterEndDate;
       }
 
-      this.searchActiveFilters = response.activeFilterItems;
+      this.searchActiveFilters = activeFilters;
     },
 
     updateAlertQueryInput: function (alertQuery) {

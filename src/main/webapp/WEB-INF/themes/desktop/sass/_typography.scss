@@ -7,9 +7,6 @@ category: Files
  type styles including sizes and vertical spacing
 */
 
-@include font-face("albert", font-files("fs_albert.ttf", "fs_albert.otf", "fs_albert.svg", "fs_albert.woff"));
-
-@include font-face("albert-bold", font-files("fs_albert-bold-webfont.ttf", "fs_albert-bold-webfont.otf", "fs_albert-bold-webfont.svg", "fs_albert-bold-webfont.woff"));
 
 @include font-face("FontAwesome", font-files("fontawesome-webfont.ttf", "FontAwesome.otf", "fontawesome-webfont.svg", "fontawesome-webfont.woff"));
 
@@ -145,6 +142,8 @@ h2 {
   font-weight: normal;
 }
 
+
+
 h3 {
   margin-bottom: rem-calc($txt-margin-bottom-h3);
   margin-top: rem-calc($txt-margin-top-h3);
@@ -154,12 +153,43 @@ h4, h5 {
   margin-top: rem-calc($line-height-small);
 }
 
-//special styles
+//special title styles
 
 .title-small {
   font-size: $txt-size-default;
   font-weight: bold;
 }
+
+.title-medium {
+  font-family: $font-face-fancy;
+  font-size: $txt-size-large;
+}
+
+.title-small-sans{
+  @extend .title-small;
+  font-family: $font-face-plain;
+}
+
+.title-primary-large {
+  font-family: $font-face-fancy;
+  font-size: $txt-size-giant;
+  line-height: $line-height-large-text;
+}
+
+.title-primary{
+    font-family: $font-face-fancy;
+    font-size: $txt-size-xxxlarge;
+    line-height: $line-height-large-text;
+}
+
+.title-secondary{
+  font-family: $font-face-fancy;
+  font-size: $txt-size-xxlarge;
+  line-height: $line-height-large-text;
+  margin-bottom: $line-height-medium;
+}
+
+
 
 //callout styles
 
@@ -251,8 +281,9 @@ blockquote, .pullquote, .block-quote {
   color: $clr-highlight-text;
   padding: 0 $pad-default;
   font-family: $font-face-fancy;
-  font-size: rem-calc($txt-size-medium-large);
+  font-size: rem-calc($txt-size-medium);
   line-height: $pad-large;
+  height: $pad-large;
 }
 
 /*doc
@@ -498,7 +529,7 @@ table.table-zebra-stripes {
 }
 
 %header-allcaps {
-  font-size: rem-calc($txt-size-medium);
+  font-size: rem-calc($txt-size-small);
   font-family: $font-face-fancy;
   @extend %txt-transform;
 }
@@ -525,8 +556,13 @@ table.table-zebra-stripes {
   font-family: $font-face-fancy;
 }
 
-%header-xxlarge {
-  font-size: rem-calc($txt-size-xxlarge);
+%header-xlarge {
+  font-size: rem-calc($txt-size-xlarge);
+  font-family: $font-face-fancy;
+}
+
+%header-large {
+  font-size: rem-calc($txt-size-large);
   font-family: $font-face-fancy;
 }
 

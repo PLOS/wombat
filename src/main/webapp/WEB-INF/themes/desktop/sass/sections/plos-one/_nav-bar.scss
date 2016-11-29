@@ -55,12 +55,12 @@
 }
 
 .filter-bar ul li a.active {
-  color: #f8af2d;
+  @extend %brand-color;
 }
 
 .filter-bar ul li a:hover {
   color: #fff;
-  background: #3c63af;
+  background: $clr-highlight;
 }
 
 /* END FILTER BAR */

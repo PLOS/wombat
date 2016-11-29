@@ -329,7 +329,7 @@ var MetricsViewedSection;
           title: {
             text: "Months",
             style: {
-              fontFamily: "'FS Albert Web Regular', Verdana, sans-serif",
+              fontFamily: "'Open Sans', Verdana, sans-serif",
               fontWeight: "normal",
               color: "#000"
             },
@@ -348,7 +348,7 @@ var MetricsViewedSection;
             title: {
               text: "Cumulative Views",
               style: {
-                fontFamily: "'FS Albert Web Regular', Verdana, sans-serif",
+                fontFamily: "'Open Sans', Verdana, sans-serif",
                 fontWeight: "normal",
                 color: "#000",
                 height: "50px"

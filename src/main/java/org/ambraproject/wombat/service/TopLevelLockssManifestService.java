@@ -77,7 +77,13 @@ public class TopLevelLockssManifestService {
 
     for (Site site : getSitesByDistinctJournalKey()) {
       String journalName = site.getJournalName();
-      Link manifestLink = Link.toAbsoluteAddress(site).toPattern(requestMappingContextDictionary, "lockssYears").build();
+      Link.Factory.PatternBuilder pattern = Link.toAbsoluteAddress(site).toPattern(requestMappingContextDictionary, "lockssYears");
+      Link manifestLink;
+      try {
+        manifestLink = pattern.build();
+      } catch (Link.PatternNotFoundException e) {
+        continue; // omit link for this site
+      }
       String manifestUrl = manifestLink.get(request);
       writer.println(String.format("        <li><a href=\"%s\">%s</a></li>", manifestUrl, journalName));
     }

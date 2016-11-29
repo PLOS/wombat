@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.StringWriter;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
@@ -77,22 +76,6 @@ public class HttpMessageUtil {
          OutputStream streamToClient = responseTo.getOutputStream()) {
       IOUtils.copy(streamFromService, streamToClient);
     }
-  }
-
-  /**
-   * Read content from a response
-   *
-   * @param response incoming HttpResponse to be read
-   * @throws IOException
-   */
-  public static String readResponse(HttpResponse response) throws IOException {
-
-    StringWriter writer = new StringWriter();
-    try (InputStream streamFromService = response.getEntity().getContent())
-    {
-      IOUtils.copy(streamFromService, writer);
-    }
-    return writer.toString();
   }
 
   /**

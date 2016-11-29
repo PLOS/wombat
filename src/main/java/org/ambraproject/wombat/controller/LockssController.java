@@ -36,8 +36,15 @@ public class LockssController extends WombatController {
     return site + "/ftl/lockss/permission";
   }
 
+  /*
+   * Note that this mapping value ("/lockss-manifest") is the same as for the "lockssYears" handler, which causes weird
+   * conflicts on certain sites. Specifically, "lockssYears" must be disabled for any site that is configured without a
+   * PathTokenPredicate. This is fine for PLOS's use case but breaks the feature for the general case.
+   *
+   * TODO: Improve. See comments in TopLevelLockssManifestService for further details.
+   */
   @Siteless
-  @RequestMapping(value = "/lockss-manifest", method = RequestMethod.GET) // TODO: Resolve conflicts with getLockssPermission
+  @RequestMapping(value = "/lockss-manifest", method = RequestMethod.GET)
   public ResponseEntity<?> getSiteManifestLinks(HttpServletRequest request) {
     return ResponseEntity.status(HttpStatus.OK)
         .contentType(MediaType.TEXT_HTML)

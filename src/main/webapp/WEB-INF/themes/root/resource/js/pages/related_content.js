@@ -70,8 +70,7 @@ var ArticleRelatedContent;
           return typeValidation &&
             (item.link_state = "APPROVED") &&
             !_.isEmpty(item.title) &&
-            !_.isEmpty(item.publication) &&
-            !_.isEmpty(item.published_on);
+            !_.isEmpty(item.publication);
         });
 
         if(items.length) {

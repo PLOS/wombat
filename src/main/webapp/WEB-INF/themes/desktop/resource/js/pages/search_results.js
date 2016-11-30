@@ -415,37 +415,8 @@ var SearchResult;
     },
 
     mapActiveFilters: function (response) {
-      var types = {
-        "filterJournals": response.filterJournals,
-        "filterSubjects": response.filterSubjects,
-        "filterArticleTypes": response.filterArticleTypes,
-        "filterAuthors": response.filterAuthors,
-        "filterSections": response.filterSections
-      };
 
-      var activeFilters = [];
-      _.each(types, function (value, type) {
-        if(type == 'filterJournals') {
-          var filters = _.map(value, function (filterValue, key) {
-            return {
-              displayName: response.filterJournalNames[key],
-              filterParamName: type,
-              filterValue: filterValue
-            }
-          });
-        }
-        else {
-          var filters = _.map(value, function (filterValue, key) {
-            return {
-              displayName: filterValue,
-              filterParamName: type,
-              filterValue: filterValue
-            }
-          });
-
-        }
-        activeFilters = activeFilters.concat(filters);
-      });
+      this.searchActiveFilters = response.activeFilterItems;
 
       if (!_.isEmpty(response.filterStartDate)) {
         this.searchDateFilters['start'] = response.filterStartDate;

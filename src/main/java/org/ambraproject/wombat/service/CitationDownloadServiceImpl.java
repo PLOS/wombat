@@ -55,10 +55,12 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
       appendRisCitationLine(citation, "A1", formatAuthorName(author, "surnames", "givenNames", "suffix"));
     }
 
+    String descriptionXml = (String) articleMetadata.get("description");
+    String descriptionText = (descriptionXml == null) ? null : XmlUtil.extractText(descriptionXml);
     String journalTitle = extractJournalTitle(articleMetadata);
 
     appendRisCitationLine(citation, "Y1", formatPublicationDate(articleMetadata, RIS_DATE_FORMAT));
-    appendRisCitationLine(citation, "N2", XmlUtil.extractText((String) articleMetadata.get("description")));
+    appendRisCitationLine(citation, "N2", descriptionText);
     appendRisCitationLine(citation, "JF", journalTitle);
     appendRisCitationLine(citation, "JA", journalTitle);
     appendRisCitationLine(citation, "VL", (String) articleMetadata.get("volume"));
@@ -121,7 +123,8 @@ public class CitationDownloadServiceImpl implements CitationDownloadService {
     ABSTRACT("abstract", "description") {
       @Override
       protected String extractValue(Map<String, ?> articleMetadata) {
-        return XmlUtil.extractText(super.extractValue(articleMetadata));
+        String value = super.extractValue(articleMetadata);
+        return (value == null) ? null : XmlUtil.extractText(value);
       }
     },
     NUMBER("number", "issue"),

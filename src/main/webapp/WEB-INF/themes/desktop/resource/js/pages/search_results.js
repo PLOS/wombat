@@ -4,7 +4,7 @@ var SearchResult;
   SearchResult = Class.extend({
     isInitialized: false,
 
-    $resultListEl: $('.searchResults'),
+    $resultListEl: $('#search-results'),
     $filtersEl: $('#searchFilters'),
     $filterHeaderEl: $('.header-filter'),
     $searchHeaderEl: $('.search-results-header'),
@@ -23,6 +23,7 @@ var SearchResult;
     dateFilterFormClass: '.date-filter-form',
     dateFilterEndElId: '#dateFilterEndDate',
     dateFilterStartElId: '#dateFilterStartDate',
+    searchLoadingSpin: new Spinner().spin(),
 
     currentSearchParams: {
       "filterJournals": null,
@@ -86,6 +87,7 @@ var SearchResult;
 
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
+      this.$loadingEl.append(this.searchLoadingSpin.el);
 
       if (this.currentSearchParams.unformattedQuery != null) {
         this.currentSearchParams.q = this.currentSearchParams.unformattedQuery;
@@ -120,9 +122,11 @@ var SearchResult;
     },
     showLoading: function () {
       this.$loadingEl.show();
+      this.$resultListEl.hide();
     },
     hideLoading: function () {
       this.$loadingEl.hide();
+      this.$resultListEl.show();
     },
     loadUrlParams: function () {
       var that = this;
@@ -424,8 +428,6 @@ var SearchResult;
       if (!_.isEmpty(response.filterEndDate)) {
         this.searchDateFilters['end'] = response.filterEndDate;
       }
-
-      this.searchActiveFilters = activeFilters;
     },
 
     updateAlertQueryInput: function (alertQuery) {

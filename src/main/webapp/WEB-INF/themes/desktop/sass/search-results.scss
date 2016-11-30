@@ -13,8 +13,13 @@
       margin: 0 auto;
       @extend .plos-row;
     }
-    article {
+    .searchResults, #search-loading {
       @include plos-grid-column($pixelwidth: 760, $gutter: left);
+    }
+
+    #search-loading {
+      height: rem-calc(100);
+      position: relative;
     }
 
     aside {

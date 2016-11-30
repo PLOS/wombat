@@ -424,8 +424,6 @@ var SearchResult;
       if (!_.isEmpty(response.filterEndDate)) {
         this.searchDateFilters['end'] = response.filterEndDate;
       }
-
-      this.searchActiveFilters = activeFilters;
     },
 
     updateAlertQueryInput: function (alertQuery) {

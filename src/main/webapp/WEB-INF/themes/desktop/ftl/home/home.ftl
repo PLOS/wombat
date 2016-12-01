@@ -18,6 +18,7 @@
 <#include "body.ftl" />
 <#include "cmsJS.ftl" />
 
+<#include "emailSubscriptionBox.ftl" />
 <div class="spotlight">
 <#include "adSlotBottom.ftl" />
 </div>

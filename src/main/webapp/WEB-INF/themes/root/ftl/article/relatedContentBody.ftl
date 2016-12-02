@@ -7,7 +7,7 @@
     <li>
       <b><%= item.publication %></b>:
       "<a href="<%= item.referral %>"><%= item.title %></a>"
-      <% if (item.published_on !== "") { %>
+      <% if (!_.isEmpty(item.published_on)) { %>
         &nbsp;&nbsp;
         <%= moment(item.published_on).format("DD MMM YYYY") %>
       <% } %>

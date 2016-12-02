@@ -160,6 +160,17 @@ $line-height-small: ($line-height * .5);
 
   //  SPECIAL HANDLING FOR XML TRANSFORM
 
+  span.underline {
+    text-decoration: underline;
+  }
+
+  span.overline {
+    text-decoration: overline;
+  }
+
+  span.strike {
+    text-decoration: line-through;
+  }
 
   span.gene {
     word-break: break-all;
@@ -692,3 +703,4 @@ ol.references {
 .article-id{
   @extend .pad-default-y;
 }
+

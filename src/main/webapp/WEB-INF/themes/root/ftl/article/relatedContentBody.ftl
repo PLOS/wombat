@@ -7,8 +7,10 @@
     <li>
       <b><%= item.publication %></b>:
       "<a href="<%= item.referral %>"><%= item.title %></a>"
-      &nbsp;&nbsp;
-      <%= moment(item.published_on).format("DD MMM YYYY") %>
+      <% if (!_.isEmpty(item.published_on)) { %>
+        &nbsp;&nbsp;
+        <%= moment(item.published_on).format("DD MMM YYYY") %>
+      <% } %>
     </li>
     <% }); %>
   </ul>

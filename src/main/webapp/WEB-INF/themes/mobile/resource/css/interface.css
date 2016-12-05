@@ -843,6 +843,14 @@ nav.footer-secondary-menu li a {
   color: #fff;
 }
 
+.footer-non-profit-statement {
+  width: 100%;
+  color: white;
+  font-size: .9em;
+  text-align: center;
+  margin: 5px 0;
+}
+
 /* Search */
 .search-expanded {
   position: absolute;

@@ -10,5 +10,6 @@
   <nav class="footer-secondary-menu">
   <#include "footerSecondaryMenu.ftl" />
   </nav>
+<#include "nonProfitStatement.ftl" />
 
 </footer>

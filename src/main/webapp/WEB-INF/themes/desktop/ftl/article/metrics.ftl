@@ -18,7 +18,7 @@
 <#include "../common/header/headerContainer.ftl" />
 <div class="set-grid">
 <#include "articleHeader.ftl" />
-    <section class="article-tabs metrics-body">
+    <section class="metrics-body">
     <#include "tabs.ftl" />
     <@displayTabList 'Metrics' />
     <#include "metricsBody.ftl" />

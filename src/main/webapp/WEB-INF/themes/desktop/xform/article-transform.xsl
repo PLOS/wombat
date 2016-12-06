@@ -813,7 +813,7 @@
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
-  <xsl:template match="body/sec|body/sec/sec">
+  <xsl:template match="*/sec">
     <xsl:call-template name="newline1"/>
     <div>
       <xsl:call-template name="make-section-id"/>

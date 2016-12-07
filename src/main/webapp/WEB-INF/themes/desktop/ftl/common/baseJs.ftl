@@ -20,6 +20,12 @@ fast click is required for mobile interactions for foundation.
 <@js src="resource/js/vendor/underscore.string.min.js"/>
 <@js src="resource/js/vendor/moment.js" />
 
+
+<#--//
+The jQuery UI effects core is needed for some components
+-->
+<@js src="resource/js/vendor/jquery-ui-effects.min.js" />
+
 <#--//include foundation js widgets here *
 * unless you are absolutely sure they will only be in one scenario - then you
 should include it in the ftl file that needs it. -->

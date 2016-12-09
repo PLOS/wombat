@@ -1,3 +1,11 @@
 showsCitedArticles: true
 # If true, load citation data into the "citedArticles" parameter of the transformer when producing article HTML.
 # Set to false only on themes whose 'article-transform.xml' file does not reference the "citedArticles" parameter.
+
+showFigShare: false
+# If true, it will load the FigShare widget JS and the loader
+figShareInstitutionString: ""
+# The institution string needed to load FigShare Widget (Used only if showFigShare = true)
+
+showCrossMarkWidget: false
+# If true it will display the CrossMark widget on the sidenav of the article.

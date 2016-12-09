@@ -3,6 +3,14 @@
 <script src="//code.jquery.com/jquery-2.1.4.min.js" ></script>
 <script>window.jQuery || document.write('<script src="<@siteLink path="resource/js/vendor/jquery-2.1.4.min.js" />""><\/script>')</script>
 
+<#if article??>
+    <@themeConfig map="article" value="showFigShare" ; showFigShare>
+        <#if (showFigShare?? && showFigShare)>
+            <@js src="resource/js/vendor/figshare.js" />
+        </#if>
+    </@themeConfig>
+</#if>
+
 <#--//
 fast click is required for mobile interactions for foundation.
 -->
@@ -11,6 +19,12 @@ fast click is required for mobile interactions for foundation.
 <@js src="resource/js/vendor/underscore-min.js"/>
 <@js src="resource/js/vendor/underscore.string.min.js"/>
 <@js src="resource/js/vendor/moment.js" />
+
+
+<#--//
+The jQuery UI effects core is needed for some components
+-->
+<@js src="resource/js/vendor/jquery-ui-effects.min.js" />
 
 <#--//include foundation js widgets here *
 * unless you are absolutely sure they will only be in one scenario - then you

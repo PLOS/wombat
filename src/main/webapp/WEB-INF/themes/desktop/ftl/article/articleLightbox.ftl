@@ -20,7 +20,7 @@
       <aside id="figures-list">
         <% figureList.each(function (ix, figure) { %>
         <div class="change-img" data-doi="<%= figure.getAttribute('data-doi') %>">
-          <img class="aside-figure" src="<@siteLink handlerName="figureImage" queryParameters={"size": "inline"}/>&id=<%= figure.getAttribute('data-doi') %>" />
+          <img class="aside-figure" src="<@siteLink handlerName="figureImage" queryParameters=(versionPtr + {"size": "inline"})/>&id=<%= figure.getAttribute('data-doi') %>" />
         </div>
         <% }) %>
         <div class="dummy-figure">
@@ -84,13 +84,13 @@
   <div id="download-buttons">
     <h3>Download:</h3>
     <div class="item">
-      <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "original", "download": ""}/>&id=<%= doi %>" title="original image">
+      <a href="<@siteLink handlerName="figureImage" queryParameters=(versionPtr + {"size": "original", "download": ""})/>&id=<%= doi %>" title="original image">
         <span class="download-btn">TIFF</span>
       </a>
       <span class="file-size"><%= fileSizes.original %></span>
     </div>
     <div class="item">
-      <a href="<@siteLink handlerName="figureImage" queryParameters={"size": "large", "download": ""}/>&id=<%= doi %>" title="large image">
+      <a href="<@siteLink handlerName="figureImage" queryParameters=(versionPtr + {"size": "large", "download": ""})/>&id=<%= doi %>" title="large image">
         <span class="download-btn">PNG</span>
       </a>
       <span class="file-size"><%= fileSizes.large %></span>

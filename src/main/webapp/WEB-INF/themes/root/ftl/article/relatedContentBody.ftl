@@ -7,8 +7,10 @@
     <li>
       <b><%= item.publication %></b>:
       "<a href="<%= item.referral %>"><%= item.title %></a>"
-      &nbsp;&nbsp;
-      <%= moment(item.published_on).format("DD MMM YYYY") %>
+      <% if (!_.isEmpty(item.published_on)) { %>
+        &nbsp;&nbsp;
+        <%= moment(item.published_on).format("DD MMM YYYY") %>
+      <% } %>
     </li>
     <% }); %>
   </ul>
@@ -47,8 +49,18 @@
             <input type="text" name="link" id="mcform-link" placeholder="e.g. http://www...." maxlength="1000">
             <span class="form-error"></span>
           </li>
+          <li class="cf">
+            <label for="mcform-title">Article Title</label>
+            <input type="text" name="title" id="mcform-title" placeholder="" maxlength="1000">
+            <span class="form-error"></span>
+          </li>
+          <li class="cf">
+            <label for="mcform-publishedOn">Published on</label>
+            <input type="text" name="publishedOn" id="mcform-publishedOn" placeholder="YYYY-MM-DD" maxlength="1000">
+            <span class="form-error"></span>
+          </li>
           <li><label for="mcform-comment">Comments:</label>
-            <textarea rows="4" cols="50" name="comment" id="mcform-comment" maxlength="1000"></textarea>
+            <textarea rows="3" cols="50" name="comment" id="mcform-comment" maxlength="1000"></textarea>
           </li>
           <li><label>Security Check:</label>
 

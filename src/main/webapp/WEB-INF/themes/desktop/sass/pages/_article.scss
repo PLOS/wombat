@@ -6,6 +6,14 @@ $temp-pad-tabs: rem-calc(8) rem-calc(9);// TEMP-PROD: remove this line. set padd
 $article-body-width: 755;
 $article-sidebar-width: 160;
 
+//shared article Styles
+
+.article-tabs{
+  h1{@extend .title-primary;}
+  h2{@extend .title-secondary;}
+
+}
+
 // extensible layout styles
 
 .text-article-intro {
@@ -241,13 +249,15 @@ $article-sidebar-width: 160;
   margin-top: $pad-small;
 
   h1 {
-    font-size: $txt-size-xxxlarge; // TEMP-PROD: needs to be 26px or 28px
-    line-height: normal;
+    @extend .title-primary;
     margin-bottom: $pad-small;
-
     i, italic, named-content {
       font-style: italic;
     }
+  }
+  #revisionMenu {
+    display: inline-block;
+
   }
   .date-doi {
     @include clearfix();
@@ -259,7 +269,8 @@ $article-sidebar-width: 160;
       float: left;
       margin: 0 $pad-small;
 
-      &:first-child {
+      &.revisionList+li, &:first-child
+      {
         margin: 0 $pad-small 0 0;
         padding-left: 0;
         list-style-type: none;

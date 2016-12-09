@@ -5,6 +5,8 @@
 			class="no-js">
 <#assign title = '' />
 <#assign adPage="Homepage"/>
+<#assign cssFile="home.css"/>
+
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
 <body class="home ${journalStyle}">
@@ -16,6 +18,7 @@
 <#include "body.ftl" />
 <#include "cmsJS.ftl" />
 
+<#include "emailSubscriptionBox.ftl" />
 <div class="spotlight">
 <#include "adSlotBottom.ftl" />
 </div>

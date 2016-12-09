@@ -11,7 +11,6 @@
 
 <#include "../../common/head.ftl" />
 <#include "../../common/journalStyle.ftl" />
-<#include "../../common/article/articleType.ftl" />
 
 <body class="article ${journalStyle}">
 
@@ -45,7 +44,7 @@
               <span>Most Recent</span>
             </div>
             <div class="title">
-              <a href="<@siteLink handlerName="articleCommentTree" queryParameters={"id": comment.annotationUri} />">
+              <a href="<@siteLink handlerName="articleCommentTree" queryParameters={"id": comment.commentUri} />">
               ${comment.title}
               </a>
             <span>
@@ -72,7 +71,6 @@
 <#include "../articleJs.ftl" />
 
 <@js src="resource/js/components/table_open.js"/>
-<@js src="resource/js/components/figshare.js"/>
 <@js src="resource/js/components/tooltip_hover.js"/>
 
 <@js src="resource/js/vendor/jquery.jsonp-2.4.0.js"/>
@@ -83,8 +81,6 @@
 <@js src="resource/js/components/floating_nav.js"/>
 
 <@renderJs />
-
-<#include "../aside/crossmarkIframe.ftl" />
 
 </body>
 </html>

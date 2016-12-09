@@ -1,139 +1,30 @@
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.base.Optional;
-import com.google.common.base.Preconditions;
-import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.SitePageContext;
-import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.util.CacheKey;
-import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.Header;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringReader;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-public class EditorialContentApiImpl implements EditorialContentApi {
+public class EditorialContentApiImpl extends AbstractContentApi implements EditorialContentApi {
 
-  @Autowired
-  private ArticleApi articleApi;
-  @Autowired
-  private CachedRemoteService<InputStream> cachedRemoteStreamer;
-  @Autowired
-  private CachedRemoteService<Reader> cachedRemoteReader;
-  @Autowired
-  private Gson gson;
   @Autowired
   private SiteSet siteSet;
 
-  private URI contentRepoAddress;
-  private String repoBucketName;
-
-  private void setRepoConfig() throws IOException {
-    Map<String, Object> repoConfig = (Map<String, Object>) articleApi.requestObject(
-        ApiAddress.builder("config").addParameter("type", "repo").build(),
-        Map.class);
-    Map<String, Object> editorialConfig = (Map<String, Object>) repoConfig.get("editorial");
-    if (editorialConfig == null) throw new RuntimeException("config?type=repo did not provide \"editorial\" config");
-    String address = (String) editorialConfig.get("address");
-    if (address == null) throw new RuntimeException("config?type=repo did not provide \"editorial.address\"");
-    String bucket = (String) editorialConfig.get("bucket");
-    if (bucket == null) throw new RuntimeException("config?type=repo did not provide \"editorial.bucket\"");
-
-    try {
-      contentRepoAddress = new URI(address);
-    } catch (URISyntaxException e) {
-      throw new RuntimeException("Invalid content repo URI returned from service", e);
-    }
-    repoBucketName = bucket;
-  }
-
-  private URI getContentRepoAddress() throws IOException {
-    if (contentRepoAddress == null) {
-      setRepoConfig();
-    }
-    return Preconditions.checkNotNull(contentRepoAddress);
-  }
-
-  private String getRepoBucketName() throws IOException {
-    if (repoBucketName == null) {
-      setRepoConfig();
-      if (repoBucketName == null) {
-        throw new RuntimeException("No repository bucket name returned from service");
-      }
-    }
-    return Preconditions.checkNotNull(repoBucketName);
-  }
-
-
   @Override
-  public CloseableHttpResponse request(String key, Optional<Integer> version, Collection<? extends Header> headers)
-      throws IOException {
-    URI requestAddress = buildUri(key, version, RequestMode.OBJECT);
-    HttpGet get = new HttpGet(requestAddress);
-    get.setHeaders(headers.toArray(new Header[headers.size()]));
-    return cachedRemoteStreamer.getResponse(get);
-  }
-
-  private static enum RequestMode {
-    OBJECT, METADATA;
-
-    private String getPathComponent() {
-      switch (this) {
-        case OBJECT:
-          return "objects";
-        case METADATA:
-          return "objects/meta";
-        default:
-          throw new AssertionError();
-      }
-    }
-  }
-
-  private URI buildUri(String key, Optional<Integer> version, RequestMode mode) throws IOException {
-    String contentRepoAddressStr = getContentRepoAddress().toString();
-    if (contentRepoAddressStr.endsWith("/")) {
-      contentRepoAddressStr = contentRepoAddressStr.substring(0, contentRepoAddressStr.length() - 1);
-    }
-    UrlParamBuilder requestParams = UrlParamBuilder.params().add("key", key);
-    if (version.isPresent()) {
-      requestParams.add("version", version.get().toString());
-    }
-    String repoBucketName = getRepoBucketName();
-    return URI.create(String.format("%s/%s/%s?%s",
-        contentRepoAddressStr, mode.getPathComponent(), repoBucketName, requestParams.format()));
-  }
-
-  @Override
-  public <T> T requestCachedReader(CacheKey cacheKey, String key, Optional<Integer> version, CacheDeserializer<Reader, T> callback) throws IOException {
-    Preconditions.checkNotNull(callback);
-    return cachedRemoteReader.requestCached(cacheKey, new HttpGet(buildUri(key, version, RequestMode.OBJECT)), callback);
-  }
-
-  @Override
-  public Map<String, Object> requestMetadata(CacheKey cacheKey, String key, Optional<Integer> version) throws IOException {
-    return cachedRemoteReader.requestCached(cacheKey, new HttpGet(buildUri(key, version, RequestMode.METADATA)),
-        new CacheDeserializer<Reader, Map<String, Object>>() {
-          @Override
-          public Map<String, Object> read(Reader stream) throws IOException {
-            return gson.fromJson(stream, Map.class);
-          }
-        });
+  protected String getRepoConfigKey() {
+    return "editorial";
   }
 
   /**
@@ -147,14 +38,14 @@ public class EditorialContentApiImpl implements EditorialContentApi {
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
     Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);
+    ContentKey version = ContentKey.createForLatestVersion(key); // TODO May want to support page versioning at some point using fetchHtmlDirective
     CacheKey cacheKey = CacheKey.create(pageType, key);
     Number cacheTtl = (Number) pageConfig.get("cacheTtl");
     if (cacheTtl != null) {
       cacheKey = cacheKey.addTimeToLive(cacheTtl.intValue());
     }
-    Optional<Integer> version = Optional.absent();     // TODO May want to support page versioning at some point using fetchHtmlDirective
 
-    String transformedHtml = requestCachedReader(cacheKey, key, version, new CacheDeserializer<Reader, String>() {
+    String transformedHtml = requestCachedReader(cacheKey, version, new CacheDeserializer<Reader, String>() {
       @Override
       public String read(Reader htmlReader) throws IOException {
         // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
@@ -185,13 +76,7 @@ public class EditorialContentApiImpl implements EditorialContentApi {
   @Override
   public Object getJson(String pageType, String key) throws IOException {
     CacheKey cacheKey = CacheKey.create(pageType, key);
-    Optional<Integer> version = Optional.absent();
-    Object jsonObj = requestCachedReader(cacheKey, key, version, new CacheDeserializer<Reader, Object>() {
-      @Override
-      public Object read(Reader jsonReader) throws IOException {
-        return gson.fromJson(jsonReader, Object.class);
-      }
-    });
-    return jsonObj;
+    ContentKey version = ContentKey.createForLatestVersion(key);
+    return requestCachedReader(cacheKey, version, jsonReader -> gson.fromJson(jsonReader, Object.class));
   }
 }

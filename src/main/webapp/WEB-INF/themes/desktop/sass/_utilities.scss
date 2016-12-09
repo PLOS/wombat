@@ -305,13 +305,16 @@ example | extension
 
 */
 
-
 .center-simple {
   margin: 0 auto;
 }
 
 .pad-xsmall-x{
   padding: 0 $pad-default;
+}
+
+.pad-default-y{
+  padding: $line-height 0;
 }
 
 .margins-reset{

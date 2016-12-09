@@ -29,9 +29,13 @@ import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.AppRootPage;
+import org.ambraproject.wombat.controller.ArticleMetadata;
+import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
+import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.freemarker.AbbreviatedNameDirective;
 import org.ambraproject.wombat.freemarker.AppLinkDirective;
+import org.ambraproject.wombat.freemarker.ArticleExcerptTransformDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
 import org.ambraproject.wombat.freemarker.IsDevFeatureEnabledDirective;
@@ -49,8 +53,9 @@ import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.ambraproject.wombat.model.SearchFilterType;
 import org.ambraproject.wombat.model.SearchFilterTypeMap;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
-import org.ambraproject.wombat.feed.ArticleFeedView;
+import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.service.ArticleArchiveServiceImpl;
+import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -71,18 +76,19 @@ import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentServiceImpl;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.CommentValidationServiceImpl;
+import org.ambraproject.wombat.service.DoiToJournalResolutionService;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.FreemarkerMailServiceImpl;
-import org.ambraproject.wombat.service.PowerPointService;
-import org.ambraproject.wombat.service.PowerPointServiceImpl;
+import org.ambraproject.wombat.service.ParseReferenceService;
+import org.ambraproject.wombat.service.ParseXmlService;
+import org.ambraproject.wombat.service.ParseXmlServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
-import org.ambraproject.wombat.service.XmlService;
-import org.ambraproject.wombat.service.XmlServiceImpl;
+import org.ambraproject.wombat.service.TopLevelLockssManifestService;
+import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
 import org.ambraproject.wombat.service.remote.SearchFilterService;
-import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.ambraproject.wombat.util.NullJavaMailSender;
 import org.springframework.context.annotation.Bean;
@@ -128,6 +134,11 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public DoiVersionArgumentResolver doiVersionArgumentResolver() {
+    return new DoiVersionArgumentResolver();
+  }
+
+  @Bean
   public RequestMappingContextDictionary handlerDirectory() {
     return new RequestMappingContextDictionary();
   }
@@ -163,6 +174,11 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public ArticleExcerptTransformDirective articleExcerptTransformDirective() {
+    return new ArticleExcerptTransformDirective();
+  }
+
+  @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            IsDevFeatureEnabledDirective isDevFeatureEnabledDirective,
                                            SiteLinkDirective siteLinkDirective,
@@ -171,7 +187,8 @@ public class SpringConfiguration {
                                            BuildInfoDirective buildInfoDirective,
                                            FetchHtmlDirective fetchHtmlDirective,
                                            ThemeConfigDirective themeConfigDirective,
-                                           AppLinkDirective appLinkDirective)
+                                           AppLinkDirective appLinkDirective,
+                                           ArticleExcerptTransformDirective articleExcerptTransformDirective)
       throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
@@ -195,6 +212,7 @@ public class SpringConfiguration {
     variables.put("themeConfig", themeConfigDirective);
     variables.put("appLink", appLinkDirective);
     variables.put("abbreviatedName", new AbbreviatedNameDirective());
+    variables.put("xform", articleExcerptTransformDirective);
     config.setFreemarkerVariables(variables.build());
     return config;
   }
@@ -266,12 +284,14 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public ArticleTransformService articleTransformService() {
-    return new ArticleTransformServiceImpl();
+  public ArticleResolutionService articleResolutionService() {
+    return new ArticleResolutionService();
   }
 
   @Bean
-  public XmlService xmlService() { return new XmlServiceImpl(); }
+  public ArticleTransformService articleTransformService() {
+    return new ArticleTransformServiceImpl();
+  }
 
   @Bean
   public AssetService assetService() {
@@ -304,8 +324,8 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public PowerPointService powerPointService() {
-    return new PowerPointServiceImpl();
+  public CorpusContentApi corpusContentApi() {
+    return new CorpusContentApi();
   }
 
   @Bean
@@ -351,6 +371,31 @@ public class SpringConfiguration {
   @Bean
   public CommentFeedView commentFeedView() {
     return new CommentFeedView();
+  }
+
+  @Bean
+  public ArticleMetadata.Factory articleMetadataFactory() {
+    return new ArticleMetadata.Factory();
+  }
+
+  @Bean
+  public ParseXmlService parseXmlService() {
+    return new ParseXmlServiceImpl();
+  }
+
+  @Bean
+  public ParseReferenceService parseReferenceService() {
+    return new ParseReferenceService();
+  }
+
+  @Bean
+  public DoiToJournalResolutionService doiToJournalResolutionService() {
+    return new DoiToJournalResolutionService();
+  }
+
+  @Bean
+  public TopLevelLockssManifestService topLevelLockssManifestService() {
+    return new TopLevelLockssManifestService();
   }
 
 }

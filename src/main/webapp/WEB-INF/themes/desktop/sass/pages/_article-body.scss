@@ -49,11 +49,15 @@ $line-height-small: ($line-height * .5);
   }
 }
 
+.body-section{
+  margin-top: $line-height-medium;
+  margin-bottom: $line-height-medium;
+}
+
+
+
 .article-content {
- .body-section{
-   margin-top: $line-height-medium;
-   margin-bottom: $line-height-medium;
- }
+
  .section > div {
     margin-bottom: $line-height;
   }
@@ -96,6 +100,14 @@ $line-height-small: ($line-height * .5);
 
   .amendment {
     margin-bottom: $line-height-medium;
+    position: relative;
+
+    a.info-link{
+      @extend .icon-question;
+      position: absolute;
+      top: $pad-small;
+      right: $pad-small;
+    }
 
     h2 {
       margin-top: 0;
@@ -120,7 +132,7 @@ $line-height-small: ($line-height * .5);
     }
   }
 
-  .amendment-eoc, .amendment-retraction {
+  .amendment-eoc, .amendment-retraction, .amendment-uncorrected-proof{
     @extend .callout-alert;
     h2 {
       color: $clr-warning;
@@ -147,7 +159,17 @@ $line-height-small: ($line-height * .5);
   }
 
   //  SPECIAL HANDLING FOR XML TRANSFORM
+  span.underline {
+    text-decoration: underline;
+  }
 
+  span.overline {
+    text-decoration: overline;
+  }
+
+  span.strike {
+    text-decoration: line-through;
+  }
 
   span.gene {
     word-break: break-all;
@@ -171,14 +193,12 @@ $line-height-small: ($line-height * .5);
     }
 
   }
-  span.underline{ text-decoration: underline;}
 
-  span.small-caps {
-    @extend %small-caps;
+  .attrib {
+    text-align: right;
   }
-
-  .monospace {
-    @extend %monospace;
+  .figure .attrib {
+    text-align: left;
   }
 
   // supplementary materials - need to have no margin between paragraphs just below the box
@@ -676,4 +696,9 @@ ol.references {
   .article-content {
     width: 100%;
   }
+}
+//figure page
+
+.article-id{
+  @extend .pad-default-y;
 }

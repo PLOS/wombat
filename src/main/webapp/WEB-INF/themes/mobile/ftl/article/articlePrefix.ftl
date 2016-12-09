@@ -1,4 +1,3 @@
-<#include "../common/article/articleType.ftl" />
 <div id="article-content" class="content" data-article-id="0059893">
     <article class="article-item">
 
@@ -6,9 +5,8 @@
     <a class="save-article circular coloration-text-color" data-list-type="individual">x</a>
     -->
 
-      <h5 class="item-title lead-in">${articleTypeHeading}</h5>
-
-      <h2 class="article-title">${article.title}</h2>
+      <h5 class="item-title lead-in">${articleType.name}</h5>
+      <h2 class="article-title"><@xform xml=article.title/></h2>
 
       <p class="author-list">
       <#include "maxAuthorsToShow.ftl" />
@@ -48,7 +46,9 @@
       </#if>
 
       </p><#-- end p.author-list -->
-
+    <#if revisionMenu.revisions?size gt 1>
+        <#include "revision/revisionMenu.ftl" />
+      </#if>
     <#-- Render the hidden divs that display author affiliation (and other) info.
          These are displayed when clicking on an author's name.  We do this after
          rendering the list of author links, since it messes up the formatting

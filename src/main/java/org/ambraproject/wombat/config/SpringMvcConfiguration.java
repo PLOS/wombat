@@ -3,6 +3,7 @@ package org.ambraproject.wombat.config;
 import org.ambraproject.wombat.config.site.SiteHandlerMapping;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
 import org.ambraproject.wombat.service.AssetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,10 +17,12 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import java.util.List;
 
 @Configuration
-public class SpringMvcConfiguration extends WebMvcConfigurationSupport{
+public class SpringMvcConfiguration extends WebMvcConfigurationSupport {
 
   @Autowired
   SiteResolver siteResolver;
+  @Autowired
+  DoiVersionArgumentResolver doiVersionArgumentResolver;
 
   @Autowired
   SiteSet siteSet;
@@ -36,6 +39,7 @@ public class SpringMvcConfiguration extends WebMvcConfigurationSupport{
   @Override
   protected void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
     argumentResolvers.add(siteResolver);
+    argumentResolvers.add(doiVersionArgumentResolver);
   }
 
   @Override

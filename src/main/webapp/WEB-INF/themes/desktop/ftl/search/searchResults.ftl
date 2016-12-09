@@ -15,6 +15,7 @@
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/components/pagination.js"/>
 <@js src="resource/js/components/range_datepicker.js"/>
+<@js src="resource/js/vendor/spin.js"/>
 <@js src="resource/js/vendor/foundation-datepicker.min.js"/>
 <@js src="resource/js/pages/advanced_search.js"/>
 <@js src="resource/js/components/search_results_alm_ajax.js"/>
@@ -73,7 +74,7 @@
       <div class="search-results-select">
         <label for="sortOrder">
           <select name="sortOrder" id="sortOrder">
-            <option value="RELEVANCE" selected="selected">Relevance</option>
+            <option value="RELEVANCE">Relevance</option>
             <option value="DATE_NEWEST_FIRST">Date, newest first</option>
             <option value="DATE_OLDEST_FIRST">Date, oldest first</option>
             <option value="MOST_VIEWS_30_DAYS">Most views, last 30 days</option>
@@ -112,14 +113,13 @@
 <#--PG-shoudl this be a header?-->
 <section class="results-container">
 
-  <aside class="search-filters" id="searchFilters">
+    <aside class="search-filters" id="searchFilters">
 
-  </aside>
-  <article class="searchResults">
-    <h2 class="no-term">Please enter your search term above.</h2>
-  </article>
-
-
+    </aside>
+    <article id="search-results" class="searchResults">
+      <h2 class="no-term">Please enter your search term above.</h2>
+    </article>
+    <div id="search-loading"></div>
 </section>
 
 <#include "../common/footer/footer.ftl" />

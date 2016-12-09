@@ -10,7 +10,6 @@
 
 <#include "../../common/head.ftl" />
 <#include "../../common/journalStyle.ftl" />
-<#include "../../common/article/articleType.ftl" />
 
 <body class="article ${journalStyle}">
 
@@ -119,7 +118,7 @@
         <#assign commentId = commentId + 1 />
         <div id="reply-${commentId}"
              class="form-default response <#if depth==0>original</#if>"
-             data-uri="${comment.annotationUri}"
+             data-uri="${comment.commentUri}"
              data-depth="${depth?c}"
              style="margin-left: ${(depth * indentationWidth)?c}px"
             >
@@ -178,6 +177,7 @@
             </#if>
           </div>
 
+          <#if areCommentsDisabled?? && !areCommentsDisabled>
           <div class="toolbar">
             <#assign userIsLoggedIn = isUserLoggedIn() />
             <@siteLink handlerName="userLogin" queryParameters={"page": getLinkToCurrentPage()
@@ -206,6 +206,7 @@
         <#-- Containers for drop-down boxes. JavaScript inserts a copy of a prototype div when the button is clicked. -->
           <div class="report_container" style="display:none;"></div>
           <div class="respond_container" style="display:none;"></div>
+          </#if>
         </div>
 
         <div class="replies">
@@ -237,10 +238,6 @@
 
 
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
-
-<#include "../aside/crossmarkIframe.ftl" />
 
 </body>
 </html>

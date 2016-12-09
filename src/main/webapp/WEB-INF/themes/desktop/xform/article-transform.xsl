@@ -30,9 +30,11 @@
   <!-- 1/4/12: Ambra-specific global param (pub config, passed into stylesheet from elsewhere in the pipeline) -->
   <xsl:param name="pubAppContext"/>
 
-  <!-- 11/26/14: Secondary XML data source generated from citedArticles article metadata
-                  used to provide DOIs and author/title overrides for reference links -->
-  <xsl:param name="citedArticles"/>
+  <!-- 11/26/14: Secondary XML data source generated from xml in wombat
+                 used to provide DOIs and author/title overrides for reference links -->
+  <xsl:param name="refs"/>
+
+  <xsl:param name="versionLinkParameter"/>
 
   <!-- ============================================================= -->
   <!--  ROOT TEMPLATE - HANDLES HTML FRAMEWORK                       -->
@@ -60,11 +62,34 @@
   <!-- ============================================================= -->
 
   <!-- 1/4/12: Ambra modifications -->
+  <xsl:template name="version-notes">
+    <div class="amendment-retraction">
+    <xsl:choose>
+      <xsl:when test="front/notes[@notes-type='version-unavailable']">
+          <h2> Version no longer available.</h2>
+      </xsl:when>
+      <xsl:when test="front/notes[@notes-type='article-temporarily-unavailable']">
+          <h2> Article temporarily unavailable.</h2>
+      </xsl:when>
+      <xsl:when test="front/notes[@notes-type='custom']">
+          <xsl:apply-templates select="front/notes/title"/>
+      </xsl:when>
+
+    </xsl:choose>
+      <xsl:apply-templates select="front/notes/p" />
+      <xsl:apply-templates select="front/notes/ext-link"/>
+    </div>
+  </xsl:template>
+
+
   <xsl:template name="make-article">
     <xsl:call-template name="newline2"/>
     <xsl:call-template name="newline1"/>
     <xsl:call-template name="make-front"/>
     <xsl:call-template name="newline1"/>
+    <xsl:if test="front/notes">
+      <xsl:call-template name="version-notes"/>
+    </xsl:if>
     <xsl:if
       test="not((@article-type='correction') or (@article-type='retraction') or (@article-type='expression-of-concern'))">
       <div class="articleinfo">
@@ -788,7 +813,7 @@
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
-  <xsl:template match="body/sec">
+  <xsl:template match="*/sec">
     <xsl:call-template name="newline1"/>
     <div>
       <xsl:call-template name="make-section-id"/>
@@ -801,9 +826,11 @@
           <xsl:attribute name="name">
             <xsl:value-of select="@id"/>
           </xsl:attribute>
-          <xsl:attribute name="data-toc">
-            <xsl:value-of select="@id"/>
-          </xsl:attribute>
+          <xsl:if test="parent::body">
+            <xsl:attribute name="data-toc">
+              <xsl:value-of select="@id"/>
+            </xsl:attribute>
+          </xsl:if>
           <xsl:attribute name="class">link-target</xsl:attribute>
           <xsl:attribute name="title">
             <xsl:value-of select="descendant::title[1]"/>
@@ -861,10 +888,10 @@
               <xsl:attribute name="class">link-target</xsl:attribute>
             </a>
 
-            <!-- retrieve extra citation data for the current reference node (sourced from the database and provided as
-            a secondary XML source via the citedArticles parameter) -->
+            <!-- retrieve extra citation data for the current reference node (sourced from the xml and provided as
+            a secondary XML source via the references parameter) -->
             <xsl:variable name="idx" as="xs:integer" select="position()"/>
-            <xsl:variable name="dbCit" select="if ($citedArticles) then $citedArticles/a/e[$idx] else node()"/>
+            <xsl:variable name="dbCit" select="if ($refs) then $refs/references/reference[$idx] else node()"/>
             <xsl:variable name="doi" select="$dbCit/doi"/>
 
             <!-- build reference text, providing templates with doi when available -->
@@ -876,12 +903,12 @@
 
             <xsl:if test="$cit[@publication-type='journal']">
               <!-- create reference links -->
-              <!-- if citedArticles parameter has not been set, fail gracefully and use XML-based data for links -->
-              <!-- use author and title preferentially from database, then XML -->
+              <!-- if refs parameter has not been set, fail gracefully and use XML-based data for links -->
+              <!-- use author and title preferentially from refs, then original XML -->
               <xsl:variable name="author">
               <xsl:choose>
-                <xsl:when test="$dbCit/authors/e[1]/surnames">
-                  <xsl:value-of select="$dbCit/authors/e[1]/surnames"/>
+                <xsl:when test="$dbCit/authors[1]/surname">
+                  <xsl:value-of select="$dbCit/authors[1]/surname"/>
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:value-of select="$cit//name[1]/surname"/>
@@ -910,20 +937,66 @@
                 </xsl:if>
                   <xsl:element name="li">
                     <xsl:element name="a">
+                      <xsl:variable name="fullArticleLink" select="$dbCit/fullArticleLink"/>
                       <xsl:attribute name="href">
                         <xsl:choose>
+                          <xsl:when test="$fullArticleLink">
+                            <xsl:value-of select="$fullArticleLink"/>
+                          </xsl:when>
                           <xsl:when test="$doi">
                             <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
                           </xsl:when>
                           <xsl:otherwise>
                             <!-- build link and use + for spaces for consistency with Ambra -->
-                            <xsl:value-of select="replace(concat('http://www.crossref.org/guestquery?auth2=', $author,
-                            '&amp;atitle2=', $title, '&amp;auth=', $author, '&amp;atitle=', $title),'%20','+')"/>
+                            <xsl:value-of select="'#'"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:attribute>
+                      <xsl:attribute name="data-author">
+                        <xsl:choose>
+                          <xsl:when test="$doi">
+                            <xsl:value-of select="'doi-provided'"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <!-- build link and use + for spaces for consistency with Ambra -->
+                            <xsl:value-of select="$author"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:attribute>
+                      <xsl:attribute name="data-cit">
+                        <xsl:choose>
+                          <xsl:when test="$doi">
+                            <xsl:value-of select="'doi-provided'"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <!-- build link and use + for spaces for consistency with Ambra -->
+                            <!-- There are rare cases of two mixed-citation elements within a single ref tag -->
+                            <xsl:if test="count($cit) = 1">
+                              <xsl:value-of select="encode-for-uri(replace($cit, '&lt;/?\w+?&gt;', ''))"/>
+                            </xsl:if>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:attribute>
+                      <xsl:attribute name="data-title">
+                        <xsl:choose>
+                          <xsl:when test="$doi">
+                            <xsl:value-of select="'doi-provided'"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <!-- build link and use + for spaces for consistency with Ambra -->
+                            <xsl:value-of select="$title"/>
                           </xsl:otherwise>
                         </xsl:choose>
                       </xsl:attribute>
                       <xsl:attribute name="target">_new</xsl:attribute>
-                      <xsl:attribute name="title">Go to article in CrossRef</xsl:attribute>
+                      <xsl:choose>
+                        <xsl:when test="$fullArticleLink or $doi">
+                          <xsl:attribute name="title">Go to article</xsl:attribute>
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <xsl:attribute name="title">Go to article in CrossRef</xsl:attribute>
+                        </xsl:otherwise>
+                      </xsl:choose>
                       View Article
                     </xsl:element>
                   </xsl:element>
@@ -1083,7 +1156,7 @@
 
   <!-- 1/4/12: suppress, we don't use -->
   <xsl:template name="subsection-title"
-                match="abstract/*/*/title | back[title]/*/*/title | back[not(title)]/*/*/*/title"/>
+                match="abstract/*/*/title | back[title]/*/*/title | back[not(title) and not(ack)]/*/*/*/title"/>
 
   <!-- 1/4/12: Ambra-specific template (creates article third-level heading) -->
   <xsl:template match="body/sec/sec/sec/title">
@@ -1099,12 +1172,12 @@
   <xsl:template name="block-title" priority="2"
                 match="list/title | def-list/title | boxed-text/title | verse-group/title | glossary/title | kwd-group/title"/>
 
-  <!-- 1/12/12: Ambra-specific template -->
-  <xsl:template match="ack/sec/title">
+
+  <xsl:template match="ack//sec/title">
     <xsl:call-template name="newline1"/>
-    <h3>
+    <xsl:element name="h{count(ancestor::sec) + 2}">
       <xsl:apply-templates/>
-    </h3>
+    </xsl:element>
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
@@ -1201,7 +1274,12 @@
   <!-- 1/4/12: suppress, we don't use -->
   <xsl:template
     match="array | disp-formula-group | fig-group | fn-group | license | long-desc | open-access | sig-block | table-wrap-foot | table-wrap-group"/>
-  <xsl:template match="attrib"/>
+
+  <xsl:template match="attrib">
+    <p class="attrib">
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
 
   <!-- 1/4/12: suppress, we don't use (removed fig, table-wrap, and boxed-text here, process them independently) -->
   <xsl:template match="chem-struct-wrap"/>
@@ -1218,19 +1296,19 @@
         <xsl:value-of select="(./graphic|./alternatives/graphic)/@xlink:href"/>
       </xsl:variable>
       <xsl:variable name="slideshowURL">
-        <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/figure/image?size=medium&amp;id=',$imageURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="pptURL">
-        <xsl:value-of select="concat('article/figure/powerpoint?id=',$imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/figure/powerpoint?id=',$imageURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="bigImgURL">
-        <xsl:value-of select="concat('article/figure/image?download&amp;size=large&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/figure/image?download&amp;size=large&amp;id=',$imageURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="origImgURL">
-        <xsl:value-of select="concat('article/figure/image?download&amp;size=original&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+        <xsl:value-of select="concat('article/figure/image?download&amp;size=original&amp;id=',$imageURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
       </xsl:variable>
 
       <xsl:variable name="targetURI">
@@ -1280,7 +1358,7 @@
             <xsl:element name="img">
               <xsl:attribute name="src">
                 <xsl:value-of
-                  select="concat('article/figure/image?size=inline&amp;id=', $imageURI)"/><!-- TODO: Avoid relative path -->
+                  select="concat('article/figure/image?size=inline&amp;id=',$imageURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
               </xsl:attribute>
               <xsl:attribute name="alt">thumbnail</xsl:attribute>
               <xsl:attribute name="class">thumbnail</xsl:attribute>
@@ -1322,14 +1400,6 @@
                   <xsl:value-of select="$bigImgURL"/>
                 </xsl:attribute>
                 larger image
-                <xsl:element name="span">
-                  <xsl:attribute name="class">file-size</xsl:attribute>
-                  <xsl:attribute name="data-size">large</xsl:attribute>
-                  <xsl:attribute name="data-doi">
-                    <xsl:value-of select="$imageURI"/>
-                  </xsl:attribute>
-                  ()
-                </xsl:element>
               </xsl:element>
             </li>
             <li>
@@ -1346,14 +1416,6 @@
                   <xsl:value-of select="$origImgURL"/>
                 </xsl:attribute>
                 original image
-                <xsl:element name="span">
-                  <xsl:attribute name="class">file-size</xsl:attribute>
-                  <xsl:attribute name="data-size">original</xsl:attribute>
-                  <xsl:attribute name="data-doi">
-                    <xsl:value-of select="$imageURI"/>
-                  </xsl:attribute>
-                  ()
-                </xsl:element>
               </xsl:element>
             </li>
           </ul>
@@ -1507,8 +1569,7 @@
           <xsl:value-of select="@xlink:href"/>
         </xsl:variable>
         <xsl:attribute name="src">
-          <xsl:value-of
-            select="concat('article/asset?id=',$graphicDOI,'.PNG')"/><!-- TODO: Avoid hard-coding 'PNG' -->
+          <xsl:value-of select="concat('article/file?type=thumbnail&amp;id=',$graphicDOI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">
@@ -2203,7 +2264,7 @@
 
         <xsl:element name="a">
           <xsl:attribute name="href">
-            <xsl:value-of select="concat('article/asset?unique&amp;id=', $objURI)"/>
+            <xsl:value-of select="concat('article/file?type=supplementary&amp;id=', $objURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
           </xsl:attribute>
           <xsl:apply-templates select="label"/>
         </xsl:element>
@@ -2624,10 +2685,10 @@
       <hr class="section-rule"/>
     </xsl:if>
     <xsl:call-template name="newline1"/>
-    <div class="toc-section">
+    <div class="section toc-section">
       <xsl:call-template name="assign-id"/>
+      <a id="ack" name="ack" data-toc="ack" title="Acknowledgments" class="link-target"/>
       <xsl:if test="not(title)">
-        <a id="ack" name="ack" data-toc="ack" title="Acknowledgments"/>
         <h2>Acknowledgments</h2>
         <xsl:call-template name="newline1"/>
       </xsl:if>

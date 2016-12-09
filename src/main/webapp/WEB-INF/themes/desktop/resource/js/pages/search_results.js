@@ -4,7 +4,7 @@ var SearchResult;
   SearchResult = Class.extend({
     isInitialized: false,
 
-    $resultListEl: $('.searchResults'),
+    $resultListEl: $('#search-results'),
     $filtersEl: $('#searchFilters'),
     $filterHeaderEl: $('.header-filter'),
     $searchHeaderEl: $('.search-results-header'),
@@ -23,6 +23,7 @@ var SearchResult;
     dateFilterFormClass: '.date-filter-form',
     dateFilterEndElId: '#dateFilterEndDate',
     dateFilterStartElId: '#dateFilterStartDate',
+    searchLoadingSpin: new Spinner().spin(),
 
     currentSearchParams: {
       "filterJournals": null,
@@ -86,7 +87,11 @@ var SearchResult;
 
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
+      this.$loadingEl.append(this.searchLoadingSpin.el);
 
+      if (this.currentSearchParams.unformattedQuery != null) {
+        this.currentSearchParams.q = this.currentSearchParams.unformattedQuery;
+      }
       if (this.currentSearchParams.q != null || this.checkFilters()) {
         this.processRequest();
       }
@@ -117,15 +122,34 @@ var SearchResult;
     },
     showLoading: function () {
       this.$loadingEl.show();
+      this.$resultListEl.hide();
     },
     hideLoading: function () {
       this.$loadingEl.hide();
+      this.$resultListEl.show();
     },
     loadUrlParams: function () {
       var that = this;
       var urlVars = this.getJsonFromUrl();
       this.currentSearchParams = _.mapObject(this.currentSearchParams, function (item, key) {
         var urlVar = urlVars[key];
+
+        if (key == 'filterSubjects' && _.has(urlVars, 'subject')) {
+          var subjectParam = urlVars['subject'];
+
+          if(!_.isEmpty(urlVar)) {
+            if(_.isArray(urlVar)) {
+              urlVar = urlVar.push(subjectParam);
+            }
+            else {
+              urlVar = [urlVar, subjectParam];
+            }
+          }
+          else {
+            urlVar = [subjectParam];
+          }
+        }
+
         if (!_.isEmpty(urlVar)) {
           return urlVar;
         }
@@ -192,6 +216,10 @@ var SearchResult;
 
         that.processRequest();
       });
+
+      if(!_.isNull(that.currentSearchParams.sortOrder)) {
+        this.$orderByEl.find('option[value="'+that.currentSearchParams.sortOrder+'"]').prop('selected', 'selected');
+      }
 
       this.$orderByEl.on('change', function (e) {
         e.preventDefault();
@@ -391,37 +419,8 @@ var SearchResult;
     },
 
     mapActiveFilters: function (response) {
-      var types = {
-        "filterJournals": response.filterJournals,
-        "filterSubjects": response.filterSubjects,
-        "filterArticleTypes": response.filterArticleTypes,
-        "filterAuthors": response.filterAuthors,
-        "filterSections": response.filterSections
-      };
 
-      var activeFilters = [];
-      _.each(types, function (value, type) {
-        if(type == 'filterJournals') {
-          var filters = _.map(value, function (filterValue, key) {
-            return {
-              displayName: response.filterJournalNames[key],
-              filterParamName: type,
-              filterValue: filterValue
-            }
-          });
-        }
-        else {
-          var filters = _.map(value, function (filterValue, key) {
-            return {
-              displayName: filterValue,
-              filterParamName: type,
-              filterValue: filterValue
-            }
-          });
-
-        }
-        activeFilters = activeFilters.concat(filters);
-      });
+      this.searchActiveFilters = response.activeFilterItems;
 
       if (!_.isEmpty(response.filterStartDate)) {
         this.searchDateFilters['start'] = response.filterStartDate;
@@ -429,8 +428,6 @@ var SearchResult;
       if (!_.isEmpty(response.filterEndDate)) {
         this.searchDateFilters['end'] = response.filterEndDate;
       }
-
-      this.searchActiveFilters = activeFilters;
     },
 
     updateAlertQueryInput: function (alertQuery) {

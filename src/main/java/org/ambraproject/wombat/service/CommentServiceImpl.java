@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.plos.ned_client.model.IndividualComposite;
@@ -104,12 +105,12 @@ public class CommentServiceImpl implements CommentService {
   }
 
   @Override
-  public Map<String, Object> getComment(String commentId) throws IOException {
+  public Map<String, Object> getComment(String commentDoi) throws IOException {
     Map<String, Object> comment;
     try {
-      comment = articleApi.requestObject(ApiAddress.builder("comments").addToken(commentId).build(), Map.class);
+      comment = articleApi.requestObject(ApiAddress.builder("comments").embedDoi(commentDoi).build(), Map.class);
     } catch (EntityNotFoundException enfe) {
-      throw new CommentNotFoundException(commentId, enfe);
+      throw new CommentNotFoundException(commentDoi, enfe);
     }
 
     modifyCommentTree(comment, CommentFormatting::addFormattingFields);
@@ -118,9 +119,9 @@ public class CommentServiceImpl implements CommentService {
   }
 
   @Override
-  public List<Map<String, Object>> getArticleComments(String articleDoi) throws IOException {
+  public List<Map<String, Object>> getArticleComments(RequestedDoiVersion articleId) throws IOException {
     List<Map<String, Object>> comments = articleApi.requestObject(
-        ApiAddress.builder("articles").addToken(articleDoi).addParameter("comments").build(),
+        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addToken("comments").build(),
         List.class);
     comments.forEach(comment -> modifyCommentTree(comment, CommentFormatting::addFormattingFields));
     addCreatorData(comments);

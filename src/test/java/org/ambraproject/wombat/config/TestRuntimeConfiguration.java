@@ -145,4 +145,9 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
 
     };
   }
+
+  @Override
+  public boolean areCommentsDisabled() {
+    return false;
+  }
 }

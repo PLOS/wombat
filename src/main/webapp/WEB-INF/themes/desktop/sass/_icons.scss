@@ -198,6 +198,17 @@ Example of hiding the text normally shown in a <a> and replacing it with an icon
   line-height: $line-height-icon;
 }
 
+.icon-question, .icon-question:hover{
+  @include circle;
+  background-color: $clr-brand;
+  color: $white;
+  display: inline-block;
+  font-size: $txt-size-xxsmall;
+  font-weight:bold;
+  line-height: 18px;
+  text-decoration: none;
+}
+
 .icon-times-circle {
   @extend .icon-fa;
   @extend .fa-times-circle;

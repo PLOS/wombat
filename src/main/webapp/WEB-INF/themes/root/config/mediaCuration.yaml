@@ -1,2 +1,2 @@
-mediaCurationUrl: null
+mediaCurationUrl: http://mediacuration.plos.org/api/v1
 # If not null, the URL of the API for which the media curation controller will post.

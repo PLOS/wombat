@@ -3,8 +3,9 @@
 <#assign title = figure.title />
 
 <@page_header />
-<#assign imageToShow = figure.thumbnails.large />
-<img class="figure-img" src="asset?id=${imageToShow.file}" alt="${figure.title}">
+<img class="figure-img"
+     src="<@siteLink handlerName="figureImage" queryParameters=(figurePtr + {'size': 'large'}) />"
+     alt="${figure.title}">
 
 </div><#--end container main-->
 
@@ -24,7 +25,7 @@
     <p class="article-id">${figure.doi}</p>
 
     <div class="figure-description">
-    ${figure.descriptionHtml}
+    ${descriptionHtml}
     </div>
   </div>
 

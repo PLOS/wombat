@@ -6,7 +6,6 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.util.ClientEndpoint;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
@@ -23,12 +22,7 @@ class FeedMetadata {
     this.model = Objects.requireNonNull(model);
     this.request = Objects.requireNonNull(request);
     this.site = Objects.requireNonNull((Site) FeedMetadataField.SITE.getFrom(model));
-
-    try {
-      this.feedConfig = Collections.unmodifiableMap(site.getTheme().getConfigMap("feed"));
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    this.feedConfig = Collections.unmodifiableMap(site.getTheme().getConfigMap("feed"));
   }
 
   public String buildLink(Function<Link.Factory, Link> linkFunction) {

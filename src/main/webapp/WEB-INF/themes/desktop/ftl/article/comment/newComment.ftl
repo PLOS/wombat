@@ -11,7 +11,6 @@
 
 <#include "../../common/head.ftl" />
 <#include "../../common/journalStyle.ftl" />
-<#include "../../common/article/articleType.ftl" />
 
 <body class="article ${journalStyle}">
 
@@ -26,6 +25,9 @@
     <div id="thread" class="startDiscussion">
       <div class="loader">  </div>
 
+    <#if areCommentsDisabled?? && areCommentsDisabled>
+      <#include "commentsDisabledMessage.ftl" />
+    <#else>
       <h2>Start a Discussion</h2>
 
       <div class="reply cf form-default" id="respond">
@@ -35,6 +37,7 @@
       <@newCommentForm true />
 
       </div>
+    </#if>
 
     </div>
 
@@ -53,10 +56,6 @@
 
 
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://crossmark.crossref.org/javascripts/v1.4/crossmark.min.js"></script>
-
-<#include "../aside/crossmarkIframe.ftl" />
 
 </body>
 </html>

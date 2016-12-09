@@ -7,12 +7,11 @@
       class="no-js">
 <#assign title = article.title, articleDoi = article.doi />
 <#assign tabPage="Article"/>
-
 <#assign adPage="Article"/>
+<#assign isArticlePage = true />
 
 <#include "../common/head.ftl" />
 <#include "../common/journalStyle.ftl" />
-<#include "../common/article/articleType.ftl" />
 
 <body class="article ${journalStyle}">
 
@@ -31,6 +30,8 @@
 
       <div class="article-content">
 
+
+      <#include "revision/revisionNotice.ftl" />
       <#include "amendment.ftl" />
 
       <#-- Figure carousel is placed here, then inserted midway through article text by JavaScript -->
@@ -59,7 +60,9 @@
 
   <#include "articleJs.ftl" />
   <@js src="resource/js/components/table_open.js"/>
-  <@js src="resource/js/components/figshare.js"/>
+  <#if !hasLaterVersion()>
+    <#include "../common/figshareJs.ftl" />
+  </#if>
   <#--TODO: move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide -->
   <@js src="resource/js/vendor/jquery.panzoom.min.js"/>
   <@js src="resource/js/vendor/jquery.mousewheel.js"/>
@@ -71,20 +74,6 @@
   <#include "mathjax.ftl">
 
   <@renderJs />
-
-  <script type="text/javascript">
-
-    (function ($) {
-
-      /*filesizetable*/
-      $('#artText').populateFileSizes(<#include "fileSizeTable.ftl"/>);
-
-    })(jQuery);
-
-  </script>
-
-
-  <#include "aside/crossmarkIframe.ftl" />
 <#--
 TODO: move reveal mode & fig-viewer divs to global location when the new lightbox is implemented sitewide
 -->

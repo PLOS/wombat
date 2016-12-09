@@ -11,7 +11,7 @@
 
 <div class="set-grid">
 <#include "articleHeader.ftl" />
-  <section class="article-body article-tabs">
+  <section class="article-body">
 
   <#include "tabs.ftl" />
 

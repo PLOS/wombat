@@ -77,26 +77,25 @@ public class BrowseController extends WombatController {
   private RequestMappingContextDictionary requestMappingContextDictionary;
 
   /**
-   * Validate that an issue or volume belongs to the current site. If not, throw an exception
+   * Validate that an issue belongs to the current site. If not, throw an exception
    * indicating that the user should be redirected to the appropriate site
    */
-  public void validateSite(String handlerName, Site site, Map<String, ?> issueMetadata) throws IOException {
+  private void validateIssueSite(Site site, Map<String, ?> issueMetadata) throws IOException {
     String issueId = (String) issueMetadata.get("doi");
     Map<String, String> parentVolumeMetadata = (Map<String, String>) issueMetadata.get("parentVolume");
     String publishedJournalKey = parentVolumeMetadata.get("journalKey");
     String siteJournalKey = site.getJournalKey();
     if (!publishedJournalKey.equals(siteJournalKey)) {
-      Link link = buildCrossSiteRedirect(publishedJournalKey, handlerName, site, issueId);
+      Link link = buildCrossSiteRedirectToIssue(publishedJournalKey, site, issueId);
       throw new InternalRedirectException(link);
     }
   }
 
-  private Link buildCrossSiteRedirect(String targetJournal, String handlerName, Site site,
-                                      String issueId) {
+  private Link buildCrossSiteRedirectToIssue(String targetJournal, Site site, String id) {
     Site targetSite = site.getTheme().resolveForeignJournalKey(siteSet, targetJournal);
     return Link.toForeignSite(site, targetSite)
-        .toPattern(requestMappingContextDictionary, handlerName)
-        .addQueryParameters(ImmutableMap.of("id", issueId))
+        .toPattern(requestMappingContextDictionary, "browseIssues")
+        .addQueryParameters(ImmutableMap.of("id", id))
         .build();
   }
 
@@ -152,7 +151,7 @@ public class BrowseController extends WombatController {
         : getIssue(issueId);
     issueId = (String) issueMetadata.get("doi");
 
-    validateSite("browseIssues", site, issueMetadata);
+    validateIssueSite(site, issueMetadata);
 
     model.addAttribute("issue", issueMetadata);
 

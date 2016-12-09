@@ -11,7 +11,7 @@
     getJSON: function () {
       that = this;
 
-      $('.references li').one('click', 'ul.reflinks li:first-child a', function (event) {
+      $('.references li').on('click', 'ul.reflinks li:first-child a', function (event) {
 
         var queryStringAuthor = $(this).attr('data-author');
         var queryStringTitle = $(this).attr('data-title');

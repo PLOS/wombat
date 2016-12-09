@@ -813,7 +813,7 @@
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
-  <xsl:template match="body/sec">
+  <xsl:template match="*/sec">
     <xsl:call-template name="newline1"/>
     <div>
       <xsl:call-template name="make-section-id"/>
@@ -826,9 +826,11 @@
           <xsl:attribute name="name">
             <xsl:value-of select="@id"/>
           </xsl:attribute>
-          <xsl:attribute name="data-toc">
-            <xsl:value-of select="@id"/>
-          </xsl:attribute>
+          <xsl:if test="parent::body">
+            <xsl:attribute name="data-toc">
+              <xsl:value-of select="@id"/>
+            </xsl:attribute>
+          </xsl:if>
           <xsl:attribute name="class">link-target</xsl:attribute>
           <xsl:attribute name="title">
             <xsl:value-of select="descendant::title[1]"/>

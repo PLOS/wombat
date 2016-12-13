@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -8,19 +9,18 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class CommentCensorServiceImpl implements CommentCensorService {
 
   @Autowired
-  private SiteSet siteSet;
+  @VisibleForTesting
+  SiteSet siteSet;
 
   private transient Compiled compiled;
 

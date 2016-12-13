@@ -5,6 +5,8 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import freemarker.cache.TemplateLoader;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
 import org.apache.commons.io.input.ReaderInputStream;
 
 import java.io.ByteArrayInputStream;
@@ -94,8 +96,8 @@ public class StubTheme extends Theme {
   }
 
 
-  public static Builder builder(String themeKey) {
-    return new Builder(themeKey);
+  public Site wrapInStubSite(String siteKey) {
+    return new Site(siteKey, this, SiteRequestScheme.builder().build());
   }
 
   public static class Builder {
@@ -105,8 +107,14 @@ public class StubTheme extends Theme {
     private final Map<String, String> templates = new HashMap<>();
     private final Map<String, Map<String, Object>> configMaps = new HashMap<>();
 
-    private Builder(String themeKey) {
+    public Builder(String themeKey, String journalKey, String journalName) {
       this.themeKey = themeKey;
+      initializeJournalConfig(journalKey, journalName);
+    }
+
+    private void initializeJournalConfig(String journalKey, String journalName) {
+      addConfigValue(Site.JOURNAL_KEY_PATH, Site.CONFIG_KEY_FOR_JOURNAL, journalKey);
+      addConfigValue(Site.JOURNAL_KEY_PATH, Site.JOURNAL_NAME, journalName);
     }
 
     public Builder addStaticResource(String name, byte[] content) {

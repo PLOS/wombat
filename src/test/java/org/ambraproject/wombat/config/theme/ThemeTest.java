@@ -12,7 +12,7 @@ import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 
-public class TestTheme {
+public class ThemeTest {
 
   @DataProvider
   public Object[][] booleans() {
@@ -23,7 +23,7 @@ public class TestTheme {
   public void testResolveForeignJournalKey(final boolean useJournalKeyMap) throws Exception {
     SiteRequestScheme dummyScheme = SiteRequestScheme.builder().build();
 
-    Theme homeTheme = new StubTheme("homeTheme", "homeJournal") {
+    Theme homeTheme = new SimpleStubTheme("homeTheme", "homeJournal") {
       @Override
       protected Map<String, Object> getJournalConfigMap() {
         Map<String, Object> map = super.getJournalConfigMap();
@@ -36,7 +36,7 @@ public class TestTheme {
     };
     Site homeSite = new Site("homeSite", homeTheme, dummyScheme);
 
-    Theme targetTheme = new StubTheme("targetTheme", "targetJournal");
+    Theme targetTheme = new SimpleStubTheme("targetTheme", "targetJournal");
     Site targetSite = new Site("targetSite", targetTheme, dummyScheme);
 
     SiteSet siteSet = new SiteSet(ImmutableList.of(homeSite, targetSite));

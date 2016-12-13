@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.config.site.url;
 
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.theme.StubTheme;
+import org.ambraproject.wombat.config.theme.SimpleStubTheme;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,7 +14,7 @@ import static org.testng.Assert.assertEquals;
 public class LinkTest {
 
   private static Site dummySite(String siteName, SiteRequestScheme scheme) {
-    return new Site(siteName, new StubTheme(siteName, siteName), scheme);
+    return new Site(siteName, new SimpleStubTheme(siteName, siteName), scheme);
   }
 
   private static final Site TOKEN_1 = dummySite("token1",

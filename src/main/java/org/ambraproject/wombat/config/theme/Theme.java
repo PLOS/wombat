@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.config.theme;
 
+import com.google.common.base.Charsets;
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
@@ -260,6 +262,8 @@ public abstract class Theme {
       return yaml.loadAs(new InputStreamReader(streamToUse), Map.class);
     }
   }
+
+  protected static final Charset YAML_CONFIG_CHARSET = Charsets.UTF_8;
 
 
   /**

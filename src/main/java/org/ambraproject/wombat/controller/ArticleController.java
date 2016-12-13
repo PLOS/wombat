@@ -35,7 +35,6 @@ import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
@@ -47,6 +46,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -322,7 +322,7 @@ public class ArticleController extends WombatController {
         parentCommentUri, commentTitle, commentBody, ciStatement);
 
     HttpResponse response = articleApi.postObject(address, comment);
-    String responseJson = HttpMessageUtil.readResponse(response);
+    String responseJson = EntityUtils.toString(response.getEntity());
     Map<String, Object> commentJson = gson.fromJson(responseJson, HashMap.class);
     return ImmutableMap.of("createdCommentUri", commentJson.get("commentUri"));
   }

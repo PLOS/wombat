@@ -99,6 +99,9 @@ $clr-input-disabled: $grey-light;
 
 $clr-aperta: #8ecb87;
 
+$clr-home-subscription-bg: #7f8b91;
+$clr-home-subscription-button: #1d877f;
+
 $modal-close-btn-width: rem-calc(46);
 $modal-close-btn-height: $modal-close-btn-width;
 $modal-overlay-bg-color: rgba(0,0,0,0.5);
@@ -157,8 +160,7 @@ $pad-inbetween: 8px;
 
 // typography
 $font-face-plain: "arial";
-$font-face-fancy: "albert";
-$font-face-fancy-bold: "albert-bold";
+$font-face-fancy: "Open Sans", Arial, Helvetica, sans-serif;
 $font-face-icons: "icons-fawesome";
 
 $font-face-copy: $font-face-plain;
@@ -166,14 +168,12 @@ $font-face-navigation: $font-face-fancy;
 $font-face-headings: $font-face-fancy;
 // special fonts for article display
 $font-face-roman: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
-$font-face-sans-serif: Arial Narrow", Arial, sans-serif;";
+$font-face-sans-serif: "Arial Narrow", Arial, Helvetica, sans-serif;
 $font-face-monospace: "monospace";
 
 //Type Sizes
-$txt-size-giant: 36px;
-$txt-size-xxxxlarge: 28px;
-// TODO - put the outliers in Homepage
-$txt-size-xxxlarge: 27px;
+$txt-size-giant: 32px;
+$txt-size-xxxlarge: 26px;
 $txt-size-xxlarge: 22px;
 $txt-size-xlarge: 20px;
 $txt-size-large: 18px;
@@ -202,13 +202,13 @@ $txt-margin-top-h3: 24px;
 $sub-alignment: .5ex; //controls sub text
 $sup-alignment: 1ex; //controls super text
 
-$line-height: 18px; // applies to parapgraphs and lists by default
-$line-height-large: ($line-height * 2);
-$line-height-medium: ($line-height * 1.5);
-$line-height-small: ($line-height * .5);
+$line-height: 18px; // applies to paragraphs and lists by default
+$line-height-large: ($line-height * 2); //36px
+$line-height-medium: ($line-height * 1.5); //27px
+$line-height-small: ($line-height * .5); //9px
 $line-height-xsmall: 3px;
-$line-height-large-text: 1.2;
-$paragraph-spacing: ($line-height * .5);
+$line-height-large-text: 1.25;
+$paragraph-spacing: $line-height-small;
 
 $list-spacing: $paragraph-spacing;
 $line-height-icon: rem-calc(35);
@@ -262,7 +262,7 @@ option          | result
 `$pad-default`| 20px
 `$pad-medium`|  30px
 `$pad-large`| 40px
-`$font-face-fancy`| Albert font
+`$font-face-fancy`| Open Sans font
 `$font-face-plain` | arial font
 `$clr-brand`| sets the journal color
 `$clr-highlight`| sets the plos-default color

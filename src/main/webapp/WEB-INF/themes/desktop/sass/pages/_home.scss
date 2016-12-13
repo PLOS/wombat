@@ -54,7 +54,6 @@ $image-container: ($image-width + $pad-small);
 ////////////
 
 .home main {
-  color: $grey-dark;
   h1, h2, h3, h5, h6 {
     font-family: $font-face-fancy;
     line-height: 1;
@@ -212,7 +211,7 @@ $image-container: ($image-width + $pad-small);
     margin-bottom: $pad-xsmall;
     }
   .title {
-    @extend %header-xxlarge;
+    @extend %header-xlarge;
     margin-bottom: $pad-xsmall;
     @extend %link-text-body;
 
@@ -295,7 +294,8 @@ $image-container: ($image-width + $pad-small);
     .title {
       margin-top: $small-block-spacing;
       a {
-        font-family: $font-face-fancy-bold;
+        font-family: $font-face-fancy;
+        font-weight: bold;
         font-size: rem-calc($txt-size-medium);
         @include link-text($color: $grey-med-dark);
         }
@@ -312,7 +312,7 @@ $image-container: ($image-width + $pad-small);
     color: $white;
     }
   h3 {
-    font-size: rem-calc($txt-size-xxlarge);
+    font-size: rem-calc($txt-size-xlarge);
     }
   h4 {
     font-family: $font-face-plain;
@@ -403,7 +403,6 @@ $image-container: ($image-width + $pad-small);
       @extend %condense;
       display: block;
       margin-bottom: rem-calc(5);
-      font-weight: 900;
       }
     .subhead {
       font-face: $font-face-plain;
@@ -434,7 +433,7 @@ $image-container: ($image-width + $pad-small);
       @extend %link-text-body;
       a {
         font-family: $font-face-fancy;
-        font-size: rem-calc($txt-size-medium-large);
+        font-size: rem-calc($txt-size-medium);
         }
       }
     }
@@ -588,5 +587,3 @@ $image-container: ($image-width + $pad-small);
 
     }
   }
-
-

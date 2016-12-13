@@ -1,17 +1,11 @@
-//
-body {
-  background: $clr-header;
-}
+@include dark-background;
 
 h1 {
-  font-family: $font-face-fancy;
-  font-size: $txt-size-giant;;
+  @extend .title-primary-large;
 }
 
 h2 {
-  font-family: $font-face-fancy;
-  font-size: $txt-size-xxxxlarge;
-  font-weight: normal;
+  @extend .title-primary;
 }
 
 //THIS IS AMBRA CODE
@@ -19,11 +13,11 @@ h2 {
 
 %button.primary {
   display: block;
-  background: #333;
+  background: $clr-body-text;
   font-size: 15px;
   line-height: 35px;
   font-weight: bold;
-  color: #FFF;
+  color: $white;
   text-align: center;
   padding: 0 10px;
   display: inline-block;
@@ -41,7 +35,7 @@ h2 {
 }
 
 .journal_current .journal_thumb {
-  background: #363636;
+  background: $grey-dark;
   display: inline-block;
   zoom: 1;
   padding: 10px;
@@ -51,123 +45,123 @@ h2 {
 
 /* .journal_current .journal_thumb a:hover { text-decoration: none; }*/
 
-.journal_current .journal_thumb img {
-  display: block;
-  margin-bottom: 10px;
-}
+.journal_current {
 
-.journal_current .journal_thumb span {
-  color: #FFF;
-  display: block;
-  text-align: center;
-}
+  .journal_thumb {
+    img {
+      display: block;
+      margin-bottom: 10px;
+    }
 
-.journal_current .journal_description {
-  display: inline-block;
-  width: 60%;
-  padding: 0 30px;
-}
+    span {
+      color: $white;
+      display: block;
+      text-align: center;
+    }
+  }
 
+  .journal_description {
+    display: inline-block;
+    width: 60%;
+    padding: 0 30px;
 
-.journal_current .journal_description h2 {
-  font-family: $body-font-family;
-  font-size: $txt-size-default;
-  margin-top: 0;
-}
+    h2 {
+      @extend .title-small-sans;
+      margin-top: 0;
+    }
 
-.journal_current .journal_description span.tag {
-  font-size: 0.769em;
-  text-transform: uppercase;
-  margin-bottom: -2px;
-  display: block;
-}
+    span.tag {
+      margin-bottom: -2px;
+      display: block;
+    }
 
-.journal_current .issue_container {
-  overflow: auto;
+  }
+
+  .issue_container {
+    overflow: auto;
+  }
+
 }
 
 .journal_issues {
-  background: #FFF;
+  background: $white;
   padding: 20px 30px;
 }
 
-.journal_issues h3 {
-}
-
-.journal_issues ul#journal_years {
+ul#journal_years {
   list-style: none;
   margin: 0 0 34px 0;
   padding: 0;
+
+  li {
+    display: inline-block;
+    zoom: 1;
+    a {
+      @extend %button.primary;
+    }
+    a:hover,
+    .btn.primary:hover {
+      text-decoration: none;
+    }
+
+    &.selected a {
+      @extend %brand-background;
+    }
+  }
 }
 
-.journal_issues ul#journal_years li {
-  display: inline-block;
-  zoom: 1;
-}
-
-.journal_issues ul#journal_years li a {
-  @extend %button.primary;
-
-}
-
-.journal_issues ul#journal_years li a:hover,
-.journal_issues ul#journal_years li.btn.primary:hover {
-  text-decoration: none;
-}
-
-.journal_issues ul#journal_years li.selected a {
-  @extend %brand-background;
-}
-
-.journal_issues ul#journal_slides {
+ul#journal_slides {
   list-style: none;
   margin: 0;
   padding: 0;
   position: relative;
   overflow: hidden;
+
+  li.slide {
+    position: absolute;
+    display: none;
+    z-index: 0;
+
+    &.selected {
+      z-index: 99999;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: inline-block;
+        margin-right: 32px;
+        margin-bottom: 32px;
+        zoom: 1;
+
+        a {
+          color: $clr-body-text;
+        }
+
+        &.endrow {
+          margin-right: 0;
+        }
+
+        img {
+          display: block;
+          margin-bottom: 10px;
+        }
+
+        span {
+          display: block;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
 
-.journal_issues ul#journal_slides li.slide {
-  position: absolute;
-  display: none;
-  z-index: 0;
-}
 
-.journal_issues ul#journal_slides li.slide.selected {
-  z-index: 99999;
-}
 
-.journal_issues ul#journal_slides li.slide ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
 
-.journal_issues ul#journal_slides li.slide ul li {
-  display: inline-block;
-  margin-right: 32px;
-  margin-bottom: 32px;
-  zoom: 1;
-}
-
-.journal_issues ul#journal_slides li.slide ul li a {
-  color: #333;
-}
-
-.journal_issues ul#journal_slides li.slide ul li.endrow {
-  margin-right: 0;
-}
-
-.journal_issues ul#journal_slides li.slide ul li img {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.journal_issues ul#journal_slides li.slide ul li span {
-  display: block;
-  text-align: center;
-  font-weight: bold;
-
-}
 
 

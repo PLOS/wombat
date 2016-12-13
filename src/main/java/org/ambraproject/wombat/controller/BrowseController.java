@@ -14,12 +14,16 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimaps;
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleType;
@@ -67,6 +71,33 @@ public class BrowseController extends WombatController {
   private ArticleMetadata.Factory articleMetadataFactory;
   @Autowired
   private SolrSearchApi solrSearchApi;
+  @Autowired
+  private SiteSet siteSet;
+  @Autowired
+  private RequestMappingContextDictionary requestMappingContextDictionary;
+
+  /**
+   * Validate that an issue belongs to the current site. If not, throw an exception
+   * indicating that the user should be redirected to the appropriate site
+   */
+  private void validateIssueSite(Site site, Map<String, ?> issueMetadata) throws IOException {
+    String issueId = (String) issueMetadata.get("doi");
+    Map<String, String> parentVolumeMetadata = (Map<String, String>) issueMetadata.get("parentVolume");
+    String publishedJournalKey = parentVolumeMetadata.get("journalKey");
+    String siteJournalKey = site.getJournalKey();
+    if (!publishedJournalKey.equals(siteJournalKey)) {
+      Link link = buildCrossSiteRedirectToIssue(publishedJournalKey, site, issueId);
+      throw new InternalRedirectException(link);
+    }
+  }
+
+  private Link buildCrossSiteRedirectToIssue(String targetJournal, Site site, String id) {
+    Site targetSite = site.getTheme().resolveForeignJournalKey(siteSet, targetJournal);
+    return Link.toForeignSite(site, targetSite)
+        .toPattern(requestMappingContextDictionary, "browseIssues")
+        .addQueryParameters(ImmutableMap.of("id", id))
+        .build();
+  }
 
   @RequestMapping(name = "browseVolumes", value = "/volume")
   public String browseVolume(Model model, @SiteParam Site site) throws IOException {
@@ -119,6 +150,9 @@ public class BrowseController extends WombatController {
         ? getCurrentIssue(site).orElseThrow(() -> new RuntimeException("Current issue is not set for " + site.getJournalKey()))
         : getIssue(issueId);
     issueId = (String) issueMetadata.get("doi");
+
+    validateIssueSite(site, issueMetadata);
+
     model.addAttribute("issue", issueMetadata);
 
     Map<String, ?> imageArticle = (Map<String, ?>) issueMetadata.get("imageArticle");

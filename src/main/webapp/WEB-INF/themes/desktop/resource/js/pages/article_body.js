@@ -38,7 +38,6 @@ var tooltip_references, initReferenceTooltip;
   });
 
   addMediaCoverageLink();
-  figshareWidget();
 
   var hasFigures = $('#artText .figure').length;
 

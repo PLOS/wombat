@@ -153,7 +153,7 @@ public class Link {
         String message = site.isPresent()
             ? String.format("No handler with name=\"%s\" exists for site: %s", handlerName, site.get().getKey())
             : String.format("No siteless handler with name=\"%s\" exists", handlerName);
-        throw new IllegalArgumentException(message);
+        throw new PatternNotFoundException(message);
       }
 
       final Optional<Site> linkSite;
@@ -227,6 +227,13 @@ public class Link {
       }
     }
   }
+
+  public static class PatternNotFoundException extends RuntimeException {
+    private PatternNotFoundException(String message) {
+      super(message);
+    }
+  }
+
 
   // Match path wildcards of one or two asterisks
   private static final Pattern WILDCARD = Pattern.compile("\\*\\*?");

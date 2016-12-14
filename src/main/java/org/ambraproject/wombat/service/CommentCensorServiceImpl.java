@@ -51,7 +51,7 @@ public class CommentCensorServiceImpl implements CommentCensorService {
   private static final Pattern WHITESPACE = Pattern.compile("\\s+");
 
   private static Pattern compileForWord(String word) {
-    word = WHITESPACE.matcher(word.trim()).replaceAll(WHITESPACE.pattern());
+    word = WHITESPACE.matcher(word.trim()).replaceAll("\\\\s+");
     return Pattern.compile("\\b" + word + "\\b", Pattern.CASE_INSENSITIVE);
   }
 

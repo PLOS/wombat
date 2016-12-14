@@ -32,6 +32,10 @@ public class CommentCensorServiceImplTest {
         {"bar", new String[]{"foo"}, new String[]{}},
         {"foo", new String[]{"foo"}, new String[]{"foo"}},
         {"a b c d e", new String[]{"b", "d", "f"}, new String[]{"b", "d"}},
+
+        // Should be caught despite extra whitespace in the middle of a censored phrase
+        {"a foo bar b", new String[]{"foo bar"}, new String[]{"foo bar"}},
+        {"a foo \t bar b", new String[]{"foo bar"}, new String[]{"foo bar"}},
     };
     return Stream.of(cases).map(c -> {
       String text = (String) c[0];

@@ -8,20 +8,19 @@ import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.MemcacheClient;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
-import org.ambraproject.wombat.service.remote.CachedRemoteService;
-import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.UserApi;
-import org.ambraproject.wombat.service.remote.UserApiImpl;
-import org.ambraproject.wombat.service.remote.ReaderService;
-import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleApiImpl;
+import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.ReaderService;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.StreamService;
+import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.service.remote.UserApiImpl;
 import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.joda.time.LocalDate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.yaml.snakeyaml.Yaml;
@@ -42,9 +41,22 @@ public class RootConfiguration {
     return new Yaml();
   }
 
+  private static final String CONFIG_DIR_PROPERTY_NAME = "wombat.configDir";
+
+  private static File getConfigDirectory() {
+    String property = System.getProperty(CONFIG_DIR_PROPERTY_NAME);
+    if (!Strings.isNullOrEmpty(property)) {
+      return new File(property);
+    } else {
+      throw new RuntimeException("Config directory not found. " + CONFIG_DIR_PROPERTY_NAME + " must be defined.");
+    }
+  }
+
   @Bean
-  public RuntimeConfiguration runtimeConfiguration(Yaml yaml) throws IOException {
-    final File configPath = new File("/etc/ambra/wombat.yaml"); // TODO Descriptive file name
+  public RuntimeConfiguration runtimeConfiguration(Yaml yaml)
+      throws IOException {
+    File configDirectory = getConfigDirectory();
+    File configPath = new File(configDirectory, "wombat.yaml");
     if (!configPath.exists()) {
       throw new RuntimeConfigurationException(configPath.getPath() + " not found");
     }

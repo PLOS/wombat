@@ -456,38 +456,21 @@
       </plugin>
 
       <plugin>
-        <artifactId>sass-maven-plugin</artifactId>
-
-        <!--
-          Use our special fork to enable sassConfigFile and ensure version compatibility with Sass and Compass.
-          The root project has <groupId>org.jasig.maven</groupId> and is at https://github.com/Jasig/sass-maven-plugin/
-          -->
-        <groupId>org.ambraproject</groupId>
-        <version>1.1.3.ambra</version>
-
+        <groupId>com.github.warmuuh</groupId>
+        <artifactId>libsass-maven-plugin</artifactId>
+        <version>0.2.5-libsass_3.3.6</version>
         <executions>
           <execution>
-            <id>package</id>
-            <phase>prepare-package</phase>
+            <phase>generate-resources</phase>
             <goals>
-              <goal>update-stylesheets</goal>
+              <goal>compile</goal>
             </goals>
           </execution>
         </executions>
         <configuration>
-          <useCompass>true</useCompass>
-
-          <!-- TODO: Set up for all internal themes; figure out how to have multiple sassConfigFiles -->
-          <sassConfigFile>src/main/webapp/WEB-INF/themes/desktop/config.rb</sassConfigFile>
-          <resources>
-            <resource>
-              <source>
-                <directory>src/main/webapp/WEB-INF/themes/desktop/sass</directory>
-              </source>
-              <destination>src/main/webapp/WEB-INF/themes/desktop/resource/css</destination>
-            </resource>
-          </resources>
-
+          <inputPath>${basedir}/src/main/webapp/WEB-INF/themes/desktop/sass/</inputPath>
+          <outputPath>${basedir}/src/main/webapp/WEB-INF/themes/desktop/resource/css/</outputPath>
+          <outputStyle>compressed</outputStyle>
         </configuration>
       </plugin>
 

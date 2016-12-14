@@ -228,12 +228,21 @@ ul.results li:last-child {
 }
 
 /* Alerts */
-.red-alert {
+.red-alert, .amendment-uncorrected-proof {
   background: #fce2e5;
 }
 
-.red-alert h3 {
+.red-alert h3, .amendment-uncorrected-proof h2 {
   color: #e53350;
+}
+
+.amendment-uncorrected-proof {
+  padding: 10px;
+  margin-top: 1em;
+}
+
+.amendment-uncorrected-proof h2 {
+  margin-top: 0 !important;
 }
 
 /* Tweets */

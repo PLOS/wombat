@@ -98,6 +98,8 @@
       </#if>
     </#list>
 
+    <#include "revision/revisionNotice.ftl" />
+
     <#macro amendment amendmentObjects amendmentType>
       <div class="retraction red-alert">
         <span><h3>

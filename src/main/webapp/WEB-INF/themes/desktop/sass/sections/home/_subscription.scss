@@ -13,11 +13,12 @@
   h2 {
     font-family: $font-face-fancy;
     color: white !important;
-    margin-top: rem-calc(4);
-    margin-bottom: 0;
+    margin-top: rem-calc(4) !important;
+    margin-bottom: 0 !important;
+    line-height: $line-height-medium !important;
 
     &.multiline {
-      margin-top: rem-calc(-5);
+      margin-top: rem-calc(-5) !important;
     }
   }
 

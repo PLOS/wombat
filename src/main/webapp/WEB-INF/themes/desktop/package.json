@@ -1,0 +1,14 @@
+{
+  "name": "wombat-frontend",
+  "version": "1.0.0",
+  "description": "Wombat Frontend assets pipeline",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PLOS",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.0.0"
+  }
+}

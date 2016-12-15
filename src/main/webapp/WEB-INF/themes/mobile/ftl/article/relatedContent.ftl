@@ -12,6 +12,7 @@
 
 <#include "articleData.ftl" />
 <#include "../common/almQueryJs.ftl" />
+<#include "../common/configJs.ftl" />
 
 <@js src="resource/js/pages/related_content.js"/>
 <@page_footer />

@@ -172,7 +172,8 @@ public class GeneralDoiController extends WombatController {
     if (redirectFunction == null) {
       throw new RuntimeException(String.format("Unrecognized type (%s) for: %s", typeInfo.typeKey, id));
     }
-    Link.Factory factory = Link.toForeignSite(site, typeInfo.journalKey, siteSet);
+    Site targetSite = site.getTheme().resolveForeignJournalKey(siteSet, typeInfo.journalKey);
+    Link.Factory factory = Link.toAbsoluteAddress(targetSite);
     return redirectFunction.getLink(factory, id);
   }
 

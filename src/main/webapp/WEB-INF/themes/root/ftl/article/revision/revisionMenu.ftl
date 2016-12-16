@@ -1,4 +1,6 @@
 <#include "revisionLabel.ftl"/>
+<@js src="resource/js/components/article_version_dropdown.js"/>
+
 
 <!-- make ascending order in the FTL -->
 <div id="revisionMenu">
@@ -16,3 +18,4 @@
     </select>
   </form>
 </div>
+

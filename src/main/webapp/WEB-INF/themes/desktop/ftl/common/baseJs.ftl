@@ -6,7 +6,7 @@
 <#if article??>
     <@themeConfig map="article" value="showFigShare" ; showFigShare>
         <#if (showFigShare?? && showFigShare)>
-            <@js src="resource/js/vendor/figshare.js" />
+          <script type="text/javascript" src="https://widgets.figshare.com/static/figshare.js"></script>
         </#if>
     </@themeConfig>
 </#if>

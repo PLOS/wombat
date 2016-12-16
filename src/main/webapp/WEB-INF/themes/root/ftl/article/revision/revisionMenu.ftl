@@ -1,5 +1,5 @@
 <#include "revisionLabel.ftl"/>
-<@js src="resource/js/components/article_version_dropdown.js"/>
+<@js src="resource/js/components/revision_menu.js"/>
 
 
 <!-- make ascending order in the FTL -->

@@ -1,103 +1,110 @@
- .home-email-subscription {
-  @extend %width-full;
-  @extend .block-card;
+.home {
+  main {
+    .plos-row {
+      .home-email-subscription {
+        @extend %width-full;
+        @extend .block-card;
 
-  background-color: $clr-home-subscription-bg !important;
-  padding: $pad-large $pad-default !important;
-  transition: background-color 500ms linear;
+        background-color: $clr-home-subscription-bg;
+        padding: $pad-large $pad-default;
+        transition: background-color 500ms linear;
 
-  h2, .input-group, button {
-    float: left;
-  }
+        h2, .input-group, button {
+          float: left;
+        }
 
-  h2 {
-    font-family: $font-face-fancy;
-    color: white !important;
-    margin-top: rem-calc(4);
-    margin-bottom: 0;
+        h2 {
+          font-family: $font-face-fancy;
+          color: white;
+          margin-top: rem-calc(4);
+          margin-bottom: 0;
+          line-height: $line-height-medium;
 
-    &.multiline {
-      margin-top: rem-calc(-5);
-    }
-  }
+          &.multiline {
+            margin-top: rem-calc(-5);
+          }
+        }
 
-  h2, .input-group {
-    margin-right: $pad-default;
-  }
+        h2, .input-group {
+          margin-right: $pad-default;
+        }
 
-  .button-default {
-    border: 0 solid transparent;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: $txt-size-large;
-    background-color: $clr-home-subscription-button;
-    color: white;
-  }
+        .button-default {
+          border: 0 solid transparent;
+          text-transform: uppercase;
+          font-weight: bold;
+          font-size: $txt-size-large;
+          background-color: $clr-home-subscription-button;
+          color: white;
+        }
 
-  form {
-    h2 {
-      max-width: rem-calc(525);
-    }
-    .input-group {
-      width: rem-calc(250);
+        form {
+          h2 {
+            max-width: rem-calc(525);
+          }
+          .input-group {
+            width: rem-calc(250);
 
-      input {
-        @include border-radius();
-        line-height: rem-calc(33);
-        border: 0 solid transparent;
-        text-align: center;
-        font-size: $txt-size-large;
-        width: 100%;
-        float: left;
+            input {
+              @include border-radius();
+              line-height: rem-calc(33);
+              border: 0 solid transparent;
+              text-align: center;
+              font-size: $txt-size-large;
+              width: 100%;
+              float: left;
+            }
+
+            label.error {
+              display: none;
+              float: left;
+              width: 100%;
+              margin-top: rem-calc(5);
+              color: white;
+            }
+          }
+        }
+
+        .error-message, .success-message {
+          display: none;
+        }
+
+        &.error {
+          background-color: $clr-warning !important;
+          .error-message {
+            display: block;
+          }
+
+          .success-message, form {
+            display: none;
+          }
+
+          a {
+
+          }
+        }
+
+        &.success {
+          background-color: $clr-success !important;
+          .success-message {
+            display: block;
+            h2 {
+              margin-top: 0;
+              width: 100%;
+            }
+
+            p {
+              margin-top: $list-nested-margin;
+              color: white;
+              float: left;
+            }
+          }
+
+          .error-message, form {
+            display: none;
+          }
+        }
       }
-
-      label.error {
-        display: none;
-        float: left;
-        width: 100%;
-        margin-top: rem-calc(5);
-        color: white;
-      }
-    }
-  }
-
-  .error-message, .success-message {
-    display: none;
-  }
-
-  &.error {
-    background-color: $clr-warning !important;
-    .error-message {
-      display: block;
-    }
-
-    .success-message, form {
-      display: none;
-    }
-
-    a {
-
-    }
-  }
-
-  &.success {
-    background-color: $clr-success !important;
-    .success-message {
-      display: block;
-      h2 {
-        margin-top: 0;
-        width: 100%;
-      }
-
-      p {
-        margin-top: $list-nested-margin;
-        color: white;
-        float: left;
-      }
-    }
-
-    .error-message, form {
-      display: none;
     }
   }
 }

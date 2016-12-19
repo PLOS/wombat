@@ -526,7 +526,8 @@ var SearchResult;
     },
     showNoResults: function () {
       var noResultsTemplate = _.template($('#searchNoResultsTemplate').html());
-
+      
+      this.hideLoading();
       this.$resultListEl.html(noResultsTemplate(this.currentSearchParams));
       this.createFilterHeader();
       this.$searchHeaderEl.hide();

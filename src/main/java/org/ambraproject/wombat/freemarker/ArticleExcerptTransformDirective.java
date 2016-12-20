@@ -8,6 +8,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.service.SiteTransformerFactory;
 import org.ambraproject.wombat.service.XmlUtil;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.transform.Transformer;
@@ -36,20 +37,23 @@ public class ArticleExcerptTransformDirective extends VariableLookupDirective<St
     }
     String xml = ((TemplateScalarModel) xmlParam).getAsString();
 
+    String returnValue;
     boolean isTextOnly = TemplateModelUtil.getBooleanValue((TemplateModel) params.get("textOnly"));
     if (isTextOnly) {
-      return XmlUtil.extractText(xml);
+      returnValue = XmlUtil.extractText(xml);
+    } else {
+      Site site = new SitePageContext(siteResolver, env).getSite();
+      Transformer transformer = SITE_TRANSFORMER_FACTORY.build(site);
+      StringWriter html = new StringWriter();
+      try {
+        transformer.transform(new StreamSource(new StringReader(xml)), new StreamResult(html));
+      } catch (TransformerException e) {
+        throw new RuntimeException(e);
+      }
+      returnValue = html.toString();
     }
 
-    Site site = new SitePageContext(siteResolver, env).getSite();
-    Transformer transformer = SITE_TRANSFORMER_FACTORY.build(site);
-    StringWriter html = new StringWriter();
-    try {
-      transformer.transform(new StreamSource(new StringReader(xml)), new StreamResult(html));
-    } catch (TransformerException e) {
-      throw new RuntimeException(e);
-    }
-    return html.toString();
+    return StringEscapeUtils.escapeHtml(returnValue);
   }
 
 }

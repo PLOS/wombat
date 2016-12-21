@@ -8,6 +8,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.service.SiteTransformerFactory;
 import org.ambraproject.wombat.service.XmlUtil;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.transform.Transformer;
@@ -38,7 +39,7 @@ public class ArticleExcerptTransformDirective extends VariableLookupDirective<St
 
     boolean isTextOnly = TemplateModelUtil.getBooleanValue((TemplateModel) params.get("textOnly"));
     if (isTextOnly) {
-      return XmlUtil.extractText(xml);
+      return StringEscapeUtils.escapeHtml(XmlUtil.extractText(xml));
     }
 
     Site site = new SitePageContext(siteResolver, env).getSite();

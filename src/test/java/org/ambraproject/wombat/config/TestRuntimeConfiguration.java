@@ -150,4 +150,9 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public boolean areCommentsDisabled() {
     return false;
   }
+
+  @Override
+  public boolean isInQcMode() {
+    return false;
+  }
 }

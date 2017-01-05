@@ -125,4 +125,6 @@ public interface RuntimeConfiguration {
 
   boolean areCommentsDisabled();
 
+  boolean isInQcMode();
+
 }

@@ -528,7 +528,7 @@ var FigureLightbox = {};
       size: 'large'
     };
     options = _.extend(defaultOptions, options);
-    return options.path + '&type=' + options.size + '&id=' + imgDoi;
+    return options.path + '&size=' + options.size + '&id=' + imgDoi;
   };
 
   FigureLightbox.destroy = function () {

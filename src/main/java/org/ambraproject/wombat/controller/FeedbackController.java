@@ -1,7 +1,8 @@
 package org.ambraproject.wombat.controller;
 
+import org.ambraproject.wombat.config.site.MappingSiteScope;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
@@ -54,16 +55,18 @@ public class FeedbackController extends WombatController {
     }
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "feedback", value = "/feedback", method = RequestMethod.GET)
-  public String serveFeedbackPage(Model model, @SiteParam Site site) throws IOException {
+  public String serveFeedbackPage(Model model, Site site) throws IOException {
     validateFeedbackConfig(site);
     model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.empty()));
     return site + "/ftl/feedback/feedback";
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "feedbackPost", value = "/feedback", method = RequestMethod.POST)
   public String receiveFeedback(HttpServletRequest request, HttpServletResponse response,
-                                Model model, @SiteParam Site site,
+                                Model model, Site site,
                                 @RequestParam("fromEmailAddress") String fromEmailAddress,
                                 @RequestParam("note") String note,
                                 @RequestParam("subject") String subject,

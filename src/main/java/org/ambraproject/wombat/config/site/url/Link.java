@@ -6,6 +6,7 @@ import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.site.RequestMappingContext;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.ClientEndpoint;
 import org.ambraproject.wombat.util.UrlParamBuilder;
@@ -153,11 +154,11 @@ public class Link {
         String message = site.isPresent()
             ? String.format("No handler with name=\"%s\" exists for site: %s", handlerName, site.get().getKey())
             : String.format("No siteless handler with name=\"%s\" exists", handlerName);
-        throw new IllegalArgumentException(message);
+        throw new PatternNotFoundException(message);
       }
 
       final Optional<Site> linkSite;
-      if (mapping.isSiteless()) {
+      if (mapping.hasScope(SiteScope.SITELESS)) {
         linkSite = Optional.empty();
       } else if (site.isPresent()) {
         linkSite = site;
@@ -227,6 +228,13 @@ public class Link {
       }
     }
   }
+
+  public static class PatternNotFoundException extends RuntimeException {
+    private PatternNotFoundException(String message) {
+      super(message);
+    }
+  }
+
 
   // Match path wildcards of one or two asterisks
   private static final Pattern WILDCARD = Pattern.compile("\\*\\*?");

@@ -1,8 +1,10 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.config.site.JournalSite;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
@@ -37,8 +39,9 @@ public class FigurePageController extends WombatController {
   /**
    * Serve a page listing all figures for an article.
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "figuresPage", value = "/article/figures")
-  public String renderFiguresPage(Model model, @SiteParam Site site,
+  public String renderFiguresPage(Model model, JournalSite site,
                                   RequestedDoiVersion articleId)
       throws IOException {
     ArticleMetadata articleMetadata = articleMetadataFactory.get(site, articleId)
@@ -64,8 +67,9 @@ public class FigurePageController extends WombatController {
   /**
    * Serve a page displaying a single figure.
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "figurePage", value = "/article/figure")
-  public String renderFigurePage(Model model, @SiteParam Site site,
+  public String renderFigurePage(Model model, JournalSite site,
                                  RequestedDoiVersion figureId)
       throws IOException {
     AssetPointer assetPointer = articleResolutionService.toParentIngestion(figureId);
@@ -92,8 +96,9 @@ public class FigurePageController extends WombatController {
   /**
    * Figure lightbox
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "lightbox", value = "/article/lightbox")
-  public String renderLightbox(Model model, @SiteParam Site site) throws IOException {
+  public String renderLightbox(Model model, Site site) throws IOException {
     return site + "/ftl/article/articleLightbox";
   }
 

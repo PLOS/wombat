@@ -4,6 +4,7 @@ import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.rhombat.cache.Cache;
+import org.ambraproject.wombat.config.site.JournalSite;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
@@ -64,7 +65,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   }
 
   @Override
-  public List<SolrArticleAdapter> getRecentArticles(Site site,
+  public List<SolrArticleAdapter> getRecentArticles(JournalSite site,
                                                     int articleCount,
                                                     double numberOfDaysAgo,
                                                     boolean shuffle,

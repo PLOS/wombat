@@ -9,9 +9,11 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.site.JournalSite;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.ArticlePointer;
@@ -148,10 +150,11 @@ public class ArticleController extends WombatController {
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "article", value = "/article")
   public String renderArticle(HttpServletRequest request,
                               Model model,
-                              @SiteParam Site site,
+                              JournalSite site,
                               RequestedDoiVersion articleId)
       throws IOException {
     ArticlePointer articlePointer = articleMetadataFactory.get(site, articleId)
@@ -180,8 +183,9 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "articleComments", value = "/article/comments")
-  public String renderArticleComments(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String renderArticleComments(HttpServletRequest request, Model model, JournalSite site,
                                       RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility("articleComments")
@@ -199,8 +203,9 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/comment/comments";
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "articleCommentForm", value = "/article/comments/new")
-  public String renderNewCommentForm(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String renderNewCommentForm(HttpServletRequest request, Model model, JournalSite site,
                                      RequestedDoiVersion articleId)
       throws IOException {
     articleMetadataFactory.get(site, articleId)
@@ -238,8 +243,9 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "articleCommentTree", value = "/article/comment")
-  public String renderArticleCommentTree(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String renderArticleCommentTree(HttpServletRequest request, Model model, JournalSite site,
                                          @RequestParam("id") String commentDoi) throws IOException {
     requireNonemptyParameter(commentDoi);
     Map<String, Object> comment;
@@ -280,10 +286,11 @@ public class ArticleController extends WombatController {
    * @param parentArticleDoi null if a reply to another comment
    * @param parentCommentUri null if a direct reply to an article
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "postComment", method = RequestMethod.POST, value = "/article/comments/new")
   @ResponseBody
   public Object receiveNewComment(HttpServletRequest request,
-                                  @SiteParam Site site,
+                                  JournalSite site,
                                   @RequestParam("commentTitle") String commentTitle,
                                   @RequestParam("comment") String commentBody,
                                   @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
@@ -327,6 +334,7 @@ public class ArticleController extends WombatController {
     return ImmutableMap.of("createdCommentUri", commentJson.get("commentUri"));
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "postCommentFlag", method = RequestMethod.POST, value = "/article/comments/flag")
   @ResponseBody
   public Object receiveCommentFlag(HttpServletRequest request,
@@ -364,8 +372,9 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "articleAuthors", value = "/article/authors")
-  public String renderArticleAuthors(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String renderArticleAuthors(HttpServletRequest request, Model model, JournalSite site,
                                      RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility("articleAuthors")
@@ -382,8 +391,9 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "articleMetrics", value = "/article/metrics")
-  public String renderArticleMetrics(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String renderArticleMetrics(HttpServletRequest request, Model model, JournalSite site,
                                      RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility("articleMetrics")
@@ -391,8 +401,9 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/metrics";
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
-  public String renderCitationDownloadPage(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String renderCitationDownloadPage(HttpServletRequest request, Model model, JournalSite site,
                                            RequestedDoiVersion articleId)
       throws IOException {
     articleMetadataFactory.get(site, articleId)
@@ -401,21 +412,23 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/citationDownload";
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris", produces = "application/x-research-info-systems;charset=UTF-8")
-  public ResponseEntity<String> serveRisCitationDownload(@SiteParam Site site, RequestedDoiVersion articleId)
+  public ResponseEntity<String> serveRisCitationDownload(JournalSite site, RequestedDoiVersion articleId)
       throws IOException {
     return serveCitationDownload(site, "downloadRisCitation", articleId, "ris",
         citationDownloadService::buildRisCitation);
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex", produces = "application/x-bibtex;charset=UTF-8")
-  public ResponseEntity<String> serveBibtexCitationDownload(@SiteParam Site site, RequestedDoiVersion articleId)
+  public ResponseEntity<String> serveBibtexCitationDownload(JournalSite site, RequestedDoiVersion articleId)
       throws IOException {
     return serveCitationDownload(site, "downloadBibtexCitation", articleId, "bib",
         citationDownloadService::buildBibtexCitation);
   }
 
-  private ResponseEntity<String> serveCitationDownload(Site site, String handlerName,
+  private ResponseEntity<String> serveCitationDownload(JournalSite site, String handlerName,
                                                        RequestedDoiVersion articleId,
                                                        String fileExtension,
                                                        Function<Map<String, ?>, String> serviceFunction)
@@ -446,8 +459,9 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "articleRelatedContent", value = "/article/related")
-  public String renderArticleRelatedContent(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String renderArticleRelatedContent(HttpServletRequest request, Model model, JournalSite site,
                                             RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility("articleRelatedContent")
@@ -465,9 +479,10 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "submitMediaCurationRequest", value = "/article/submitMediaCurationRequest", method = RequestMethod.POST)
   @ResponseBody
-  public String submitMediaCurationRequest(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String submitMediaCurationRequest(HttpServletRequest request, Model model, JournalSite site,
                                            @RequestParam("doi") String doi,
                                            @RequestParam("link") String link,
                                            @RequestParam("comment") String comment,
@@ -608,8 +623,9 @@ public class ArticleController extends WombatController {
    * @return a list of figures and tables of a given article
    * @throws IOException
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "articleFigsAndTables", value = "/article/assets/figsAndTables")
-  public ResponseEntity<List> listArticleFiguresAndTables(@SiteParam Site site,
+  public ResponseEntity<List> listArticleFiguresAndTables(JournalSite site,
                                                           RequestedDoiVersion articleId) throws IOException {
     List<Map<String, ?>> figureView = articleMetadataFactory.get(site, articleId)
         .validateVisibility("articleFigsAndTables")
@@ -620,8 +636,9 @@ public class ArticleController extends WombatController {
     return new ResponseEntity<>(figureView, headers, HttpStatus.OK);
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "email", value = "/article/email")
-  public String renderEmailThisArticle(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String renderEmailThisArticle(HttpServletRequest request, Model model, JournalSite site,
                                        RequestedDoiVersion articleId) throws IOException {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility("email")
@@ -637,9 +654,10 @@ public class ArticleController extends WombatController {
    * @return path to the template
    * @throws IOException
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "emailPost", value = "/article/email", method = RequestMethod.POST)
   public String emailArticle(HttpServletRequest request, HttpServletResponse response, Model model,
-                             @SiteParam Site site,
+                             JournalSite site,
                              RequestedDoiVersion articleId,
                              @RequestParam("articleUri") String articleUri,
                              @RequestParam("emailToAddresses") String emailToAddresses,

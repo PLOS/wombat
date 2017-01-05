@@ -18,8 +18,10 @@ import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimaps;
+import org.ambraproject.wombat.config.site.JournalSite;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleType;
@@ -68,8 +70,9 @@ public class BrowseController extends WombatController {
   @Autowired
   private SolrSearchApi solrSearchApi;
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "browseVolumes", value = "/volume")
-  public String browseVolume(Model model, @SiteParam Site site) throws IOException {
+  public String browseVolume(Model model, JournalSite site) throws IOException {
     Map<String, ?> currentIssue = getCurrentIssue(site).orElse(null);
     if (currentIssue != null) {
       Map<String, ?> imageArticle = (Map<String, ?>) currentIssue.get("imageArticle");
@@ -110,8 +113,9 @@ public class BrowseController extends WombatController {
     return populatedVolume;
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "browseIssues", value = "/issue")
-  public String browseIssue(Model model, @SiteParam Site site,
+  public String browseIssue(Model model, JournalSite site,
                             @RequestParam(value = "id", required = false) String issueId) throws IOException {
     model.addAttribute("journal", fetchJournalMetadata(site));
 
@@ -135,13 +139,13 @@ public class BrowseController extends WombatController {
     return site.getKey() + "/ftl/browse/issues";
   }
 
-  private Map<String, Object> fetchJournalMetadata(@SiteParam Site site) throws IOException {
+  private Map<String, Object> fetchJournalMetadata(JournalSite site) throws IOException {
     return articleApi.requestObject(
         ApiAddress.builder("journals").addToken(site.getJournalKey()).build(),
         Map.class);
   }
 
-  private Optional<Map<String, ?>> getCurrentIssue(Site site) throws IOException {
+  private Optional<Map<String, ?>> getCurrentIssue(JournalSite site) throws IOException {
     try {
       Map<String, ?> currentIssue = articleApi.requestObject(ApiAddress.builder("journals")
               .addToken(site.getJournalKey()).addToken("currentIssue").build(),
@@ -161,7 +165,7 @@ public class BrowseController extends WombatController {
     }
   }
 
-  private void transformIssueImageMetadata(Model model, Site site, String imageArticleDoi) throws IOException {
+  private void transformIssueImageMetadata(Model model, JournalSite site, String imageArticleDoi) throws IOException {
     RequestedDoiVersion requestedDoiVersion = RequestedDoiVersion.of(imageArticleDoi);
     ArticleMetadata imageArticleMetadata;
     try {

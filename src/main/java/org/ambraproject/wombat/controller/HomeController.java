@@ -5,8 +5,9 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.JournalSite;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.feed.FeedMetadataField;
@@ -66,19 +67,19 @@ public class HomeController extends WombatController {
   private static enum SectionType {
     RECENT {
       @Override
-      public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
+      public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, JournalSite site, int start) throws IOException {
         return getArticlesFromSolr(context, section, site, start, SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST);
       }
     },
     POPULAR {
       @Override
-      public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
+      public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, JournalSite site, int start) throws IOException {
         return getArticlesFromSolr(context, section, site, start, SolrSearchApiImpl.SolrSortOrder.MOST_VIEWS_30_DAYS);
       }
     },
     CURATED {
       @Override
-      public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
+      public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, JournalSite site, int start) throws IOException {
         String journalKey = site.getJournalKey();
         Map<String, Object> curatedList = context.articleApi.requestObject(
             ApiAddress.builder("lists").addToken(section.curatedListType)
@@ -110,7 +111,7 @@ public class HomeController extends WombatController {
       }
     };
 
-    private static List<SolrArticleAdapter> getArticlesFromSolr(HomeController context, SectionSpec section, Site site, int start,
+    private static List<SolrArticleAdapter> getArticlesFromSolr(HomeController context, SectionSpec section, JournalSite site, int start,
                                                                 SolrSearchApiImpl.SolrSortOrder order)
         throws IOException {
       ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
@@ -130,7 +131,7 @@ public class HomeController extends WombatController {
       return SectionType.valueOf(name.toUpperCase());
     }
 
-    public abstract List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException;
+    public abstract List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, JournalSite site, int start) throws IOException;
   }
 
   private class SectionSpec {
@@ -172,7 +173,7 @@ public class HomeController extends WombatController {
       return (type == SectionType.CURATED) ? curatedListName : type.name().toLowerCase();
     }
 
-    public List<SolrArticleAdapter> getArticles(Site site, int start) throws IOException {
+    public List<SolrArticleAdapter> getArticles(JournalSite site, int start) throws IOException {
       if (since != null) {
         if (type == SectionType.RECENT) {
           return recentArticleService.getRecentArticles(site, resultCount, since, shuffle,
@@ -233,8 +234,9 @@ public class HomeController extends WombatController {
     }
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "homePage", value = "", method = RequestMethod.GET)
-  public String serveHomepage(HttpServletRequest request, Model model, @SiteParam Site site,
+  public String serveHomepage(HttpServletRequest request, Model model, JournalSite site,
                               @RequestParam(value = "section", required = false) String sectionParam,
                               @RequestParam(value = "page", required = false) String pageParam)
       throws IOException {
@@ -289,7 +291,7 @@ public class HomeController extends WombatController {
     return site.getKey() + "/ftl/home/home";
   }
 
-  private Map<String, Object> fetchCurrentIssue(Site site) throws IOException {
+  private Map<String, Object> fetchCurrentIssue(JournalSite site) throws IOException {
     try {
       return articleApi.requestObject(ApiAddress.builder("journals")
               .addToken(site.getJournalKey()).addToken("currentIssue").build(),
@@ -306,8 +308,9 @@ public class HomeController extends WombatController {
    * @return RSS view of recent articles for the specified site
    * @throws IOException
    */
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "homepageFeed", value = "/feed/{feedType:atom|rss}", method = RequestMethod.GET)
-  public ModelAndView getRssFeedView(@SiteParam Site site, @PathVariable String feedType)
+  public ModelAndView getRssFeedView(JournalSite site, @PathVariable String feedType)
       throws IOException {
 
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
@@ -326,8 +329,9 @@ public class HomeController extends WombatController {
     return mav;
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "commentFeed", value = "/feed/comments/{feedType:atom|rss}", method = RequestMethod.GET)
-  public ModelAndView getCommentFeed(@SiteParam Site site, @PathVariable String feedType)
+  public ModelAndView getCommentFeed(JournalSite site, @PathVariable String feedType)
       throws IOException {
     List<Map<String, Object>> comments = commentService.getRecentJournalComments(site.getJournalKey(), getFeedLength(site));
 

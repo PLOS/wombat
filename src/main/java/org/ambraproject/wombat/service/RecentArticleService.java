@@ -1,7 +1,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Optional;
-import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.JournalSite;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,7 +39,7 @@ public interface RecentArticleService {
    *                              to the cache and always check for new recent articles.  @return the list of results
    * @throws IOException
    */
-  public abstract List<SolrArticleAdapter> getRecentArticles(Site site,
+  public abstract List<SolrArticleAdapter> getRecentArticles(JournalSite site,
                                                              int articleCount,
                                                              double numberOfDaysAgo,
                                                              boolean shuffle,

@@ -132,7 +132,6 @@ public class ArticleControllerTest extends ControllerTest {
         when(site.getTheme()).thenReturn(theme);
         when(site.getKey()).thenReturn(key);
         when(site.toString()).thenReturn(key);
-        when(site.getJournalKey()).thenReturn(SITE_CONFIG.get(key));
 
         when(siteSet.getSite(Matchers.matches(key))).thenReturn(site);
 

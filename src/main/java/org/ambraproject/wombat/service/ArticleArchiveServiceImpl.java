@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.config.site.JournalSite;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
@@ -22,7 +23,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
   SolrSearchApiImpl solrSearchApi;
 
   @Override
-  public Map<?, ?> getYearsForJournal(Site site) throws IOException, ParseException {
+  public Map<?, ?> getYearsForJournal(JournalSite site) throws IOException, ParseException {
     Map<String, String> yearRange = (Map<String, String>) solrSearchApi.getStats("publication_date",
         site.getJournalKey());
     return yearRange;
@@ -49,7 +50,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month) throws IOException {
+  public Map<?, ?> getArticleDoisPerMonth(JournalSite site, String year, String month) throws IOException {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     Calendar startDate = Calendar.getInstance();

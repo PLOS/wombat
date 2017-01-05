@@ -9,6 +9,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
+import org.ambraproject.wombat.config.site.JournalSite;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -52,14 +53,14 @@ public class ArticleMetadata {
   private static final Logger log = LoggerFactory.getLogger(ArticleMetadata.class);
 
   private final Factory factory; // for further service access
-  private final Site site;
+  private final JournalSite site;
   private final RequestedDoiVersion articleId;
   private final ArticlePointer articlePointer;
   private final Map<String, ?> ingestionMetadata;
   private final Map<String, ?> itemTable;
   private final Map<String, List<Map<String, ?>>> relationships;
 
-  private ArticleMetadata(Factory factory, Site site,
+  private ArticleMetadata(Factory factory, JournalSite site,
                           RequestedDoiVersion articleId, ArticlePointer articlePointer,
                           Map<String, ?> ingestionMetadata, Map<String, ?> itemTable,
                           Map<String, List<Map<String, ?>>> relationships) {
@@ -88,11 +89,11 @@ public class ArticleMetadata {
     @Autowired
     private RequestMappingContextDictionary requestMappingContextDictionary;
 
-    public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
+    public ArticleMetadata get(JournalSite site, RequestedDoiVersion id) throws IOException {
       return get(site, id, articleResolutionService.toIngestion(id));
     }
 
-    public ArticleMetadata get(Site site, RequestedDoiVersion id, ArticlePointer articlePointer) throws IOException {
+    public ArticleMetadata get(JournalSite site, RequestedDoiVersion id, ArticlePointer articlePointer) throws IOException {
       Map<String, Object> ingestionMetadata;
       try {
         ingestionMetadata = (Map<String, Object>) articleApi.requestObject(

@@ -1,7 +1,9 @@
 package org.ambraproject.wombat.controller;
 
+import org.ambraproject.wombat.config.site.JournalSite;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.service.ArticleArchiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,28 +26,38 @@ public class LockssController extends WombatController {
   @Autowired
   ArticleArchiveService articleArchiveServiceImpl;
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "lockssPermission", value = "/lockss.txt", method = RequestMethod.GET)
-  public String getLockssPermission(@SiteParam Site site) {
+  public String getLockssPermission(Site site) {
     return site + "/ftl/lockss/permission";
   }
 
   @RequestMapping(value = "/lockss-manifest", method = RequestMethod.GET)
-  public String getYearsForJournal(@SiteParam Site site, Model model) throws IOException, ParseException {
+  @MappingSiteScope(SiteScope.JOURNAL_NEUTRAL)
+  public String getYearsForJournal(Site site, Model model) {
+    return "";
+  }
+
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
+  @RequestMapping(value = "/lockss-manifest", method = RequestMethod.GET)
+  public String getYearsForJournal(JournalSite site, Model model) throws IOException, ParseException {
     Map<String, String> yearRange = (Map<String, String>) articleArchiveServiceImpl.getYearsForJournal(site);
     model.addAttribute("yearRange", yearRange);
     return site + "/ftl/lockss/years";
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(value = "/lockss-manifest/vol_{year}", method = RequestMethod.GET)
-  public String getMonthsForYear(@SiteParam Site site, @PathVariable String year, Model model) {
+  public String getMonthsForYear(Site site, @PathVariable String year, Model model) {
     String[] months = articleArchiveServiceImpl.getMonthsForYear(year);
     model.addAttribute("year", year);
     model.addAttribute("months", months);
     return site + "/ftl/lockss/months";
   }
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "lockssArticles", value = "/lockss-manifest/vol_{year}/{month}", method = RequestMethod.GET)
-  public String getArticlesPerMonth(@SiteParam Site site, @PathVariable String year,
+  public String getArticlesPerMonth(JournalSite site, @PathVariable String year,
                                     @PathVariable String month, Model model) throws IOException {
     Map<String, Map> searchResult = (Map<String, Map>) articleArchiveServiceImpl.getArticleDoisPerMonth(site,
         year, month);

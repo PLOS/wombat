@@ -1,8 +1,9 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.net.HttpHeaders;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetService.AssetUrls;
@@ -54,9 +55,10 @@ public class StaticResourceController extends WombatController {
     return PathUtil.JOINER.join(targetTokens);
   }
 
+  @MappingSiteScope(value = {SiteScope.JOURNAL_SPECIFIC, SiteScope.JOURNAL_NEUTRAL})
   @RequestMapping(name = "staticResource", value = "/" + AssetUrls.RESOURCE_NAMESPACE + "/**")
   public void serveResource(HttpServletRequest request, HttpServletResponse response,
-                            HttpSession session, @SiteParam Site site)
+                            HttpSession session, Site site)
       throws IOException {
     Theme theme = site.getTheme();
 

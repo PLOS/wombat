@@ -4,9 +4,11 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.io.ByteSource;
 import com.google.common.net.HttpHeaders;
 import com.google.common.net.MediaType;
+import org.ambraproject.wombat.config.site.JournalSite;
+import org.ambraproject.wombat.config.site.MappingSiteScope;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteParam;
+import org.ambraproject.wombat.config.site.SiteScope;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.identity.ArticlePointer;
@@ -55,9 +57,10 @@ public class PowerPointController extends WombatController {
   @Autowired
   private CorpusContentApi corpusContentApi;
 
+  @MappingSiteScope(SiteScope.JOURNAL_SPECIFIC)
   @RequestMapping(name = "powerPoint", value = "/article/figure/powerpoint")
   public void download(HttpServletRequest request, HttpServletResponse response,
-                       @SiteParam Site site,
+                       JournalSite site,
                        RequestedDoiVersion figureId)
       throws IOException {
     AssetPointer assetPointer = articleResolutionService.toParentIngestion(figureId);

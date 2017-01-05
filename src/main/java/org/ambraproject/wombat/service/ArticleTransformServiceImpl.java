@@ -145,7 +145,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
       // Assumes that it will always be preceded by at least one other parameter,
       // else we would need a question mark instead of an ampersand.
       // TODO: Build the URL syntax in XSLT instead
-      versionLinkParameter = "&amp;" + versionType + "=" + versionNumber;
+      versionLinkParameter = "&" + versionType + "=" + versionNumber;
     } else {
       versionLinkParameter = "";
     }

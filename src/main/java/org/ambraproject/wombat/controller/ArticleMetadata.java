@@ -174,7 +174,7 @@ public class ArticleMetadata {
         ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addToken("revisions").build(),
         List.class);
     OptionalInt displayedNumber = articlePointer.getRevisionNumber();
-    revisionList = revisionList.stream()
+    return revisionList.stream()
         .map((Map<String, ?> revision) -> {
           boolean isDisplayedRevision = displayedNumber.isPresent() && getRevisionNumber(revision) == displayedNumber.getAsInt();
           return ImmutableMap.<String, Object>builder()
@@ -184,7 +184,6 @@ public class ArticleMetadata {
         })
         .sorted(Comparator.comparing(ArticleMetadata::getRevisionNumber))
         .collect(Collectors.toList());
-    return revisionList;
   }
 
   private boolean isDisplayingLatestRevision(List<Map<String, ?>> revisionList) {

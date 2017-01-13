@@ -37,7 +37,7 @@
 <@js src="resource/js/vendor/hover-enhanced.js"/>
 <@js src="resource/js/highcharts.js"/>
 
-<#include "../common/article/metricsJs.ftl" />
+<#include "metricsJs.ftl" />
 <#include "../common/footer/footer.ftl" />
 
 <@renderJs />

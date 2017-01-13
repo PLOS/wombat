@@ -15,5 +15,5 @@
 <@js src="resource/js/vendor/hover-enhanced.js"/>
 <@js src="resource/js/highcharts.js"/>
 <#include "articleData.ftl" />
-<#include "../common/article/metricsJs.ftl" />
+<#include "metricsJs.ftl" />
 <@page_footer />

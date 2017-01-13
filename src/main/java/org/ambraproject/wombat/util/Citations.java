@@ -2,7 +2,6 @@ package org.ambraproject.wombat.util;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Joiner;
-import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
@@ -11,6 +10,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Utility methods for building article citations.
@@ -42,18 +43,18 @@ public class Citations {
   private static String getAbbreviatedName(Map<String, ?> author) {
     String surnames = (String) author.get("surnames");
     String givenNames = (String) author.get("givenNames");
-    String suffix = (String) author.get("suffix");
-
-    StringBuilder name = new StringBuilder();
-    name.append(Preconditions.checkNotNull(surnames));
-    if (!Strings.isNullOrEmpty(givenNames)) {
-      name.append(' ').append(abbreviateAuthorGivenNames(givenNames));
+    if (!Strings.isNullOrEmpty(surnames) && !Strings.isNullOrEmpty(givenNames)) {
+      givenNames = abbreviateAuthorGivenNames(givenNames);
     }
+
+    String suffix = (String) author.get("suffix");
     if (!Strings.isNullOrEmpty(suffix)) {
       suffix = suffix.replace(".", "");
-      name.append(' ').append(suffix);
     }
-    return name.toString();
+
+    return Stream.of(surnames, givenNames, suffix)
+        .filter(s -> !Strings.isNullOrEmpty(s))
+        .collect(Collectors.joining(" "));
   }
 
 

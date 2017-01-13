@@ -68,6 +68,7 @@ div#pageViewsSummary div.pubDates {
 
 table th,
 .card table td {
+  width: 50%;
   border-width: 0 0 1px 1px;
   border-color: #e5e4e4;
   border-style: solid;
@@ -89,20 +90,19 @@ table#pageViewsTable td {
   color: #999;
 }
 
-table#pageViewsTable td.source1 {
+table#pageViewsTable .source1 {
   background-color: #3c63af;
   font-weight: bold;
   color: #fff;
-  width: 20%;
 }
 
-table#pageViewsTable td.source2 {
+table#pageViewsTable .source2 {
   background-color: #6d84bf;
   font-weight: bold;
   color: #fff;
 }
 
-table#pageViewsTable td.total {
+table#pageViewsTable .total {
   font-weight: bold;
   color: black;
 }
@@ -169,7 +169,6 @@ div.metrics_tile {
 }
 
 img.metrics_tile_image {
-  border-bottom: 1px solid #CCCCCC;
 }
 
 div.metrics_tile_footer {
@@ -179,7 +178,7 @@ div.metrics_tile_footer {
 }
 
 div.metrics_tile_footer{
-  font-size: 1.3em;
+  font-size: 1em;
   text-decoration: none;
   font-weight: bold;
 }
@@ -187,7 +186,6 @@ div.metrics_tile_footer{
 div.metrics_tile_no_link {
   vertical-align: text-top;
   display: inline-block;
-  border: 1px solid #CCCCCC;
   margin-right: 12px;
   margin-bottom: 12px;
   /*background-color: #E5E4E4;*/
@@ -197,9 +195,8 @@ div.metrics_tile_no_link {
 
 div.metrics_tile_footer_no_link {
   line-height: 1.85em;
-  text-align: center;
   color: #999999;
-  font-size: 1.3em;
+  font-size: 1em;
   text-decoration: none;
   font-weight: bold;
 }

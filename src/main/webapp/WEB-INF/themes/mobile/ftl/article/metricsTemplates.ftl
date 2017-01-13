@@ -1,6 +1,6 @@
 <script type="text/template" id="metricsTileTemplate">
     <div id="<%=  source_name %>OnArticleMetricsTab" class="metrics_tile">
-        <a href="<%=  url %>"><%=  name %></a>
+        <h3><a href="<%=  url %>"><%=  name %></a></h3>
         <div class="metrics_tile_footer" onclick="location.href=<%=  url %>">
             <a href="<%=  url %>"><%= linkText %></a></div>
     </div>
@@ -8,7 +8,7 @@
 
 <script type="text/template" id="metricsTileTemplateNoLink">
     <div id="<%= source_name %>OnArticleMetricsTab" class="metrics_tile_no_link">
-      <%=  name %>
+     <h3><%=  name %></h3>
         <div class="metrics_tile_footer_no_link"><%= linkText %></div>
     </div>
 </script>
@@ -36,7 +36,7 @@
 
 <script type="text/template" id="metricsTileMendeleyTooltipTemplate">
     <div class="tileTooltipContainer">
-        <table class="tile_mini tileTooltip" data-js-tooltip-hover="target">
+        <table class="tile_mini tileTooltip">
             <thead>
             <tr>
                 <th>Individuals</th>
@@ -170,45 +170,87 @@
             </div>
         </div>
         <div id="right">
-            <table id="pageViewsTable">
-                <tbody>
-                <tr>
-                    <th></th>
-                    <th nowrap="">HTML Page Views</th>
-                    <th nowrap="">PDF Downloads</th>
-                    <th nowrap="">XML Downloads</th>
-                    <th>Totals</th>
-                </tr>
-                <tr>
-                    <td class="source1">PLOS</td>
-                    <td> <%= totalCounterHTML %></td>
-                    <td> <%= totalCounterPDF %></td>
-                    <td> <%= totalCounterXML %></td>
-                    <td class="total"> <%= totalCouterTotal %></td>
-                </tr>
-                <tr>
-                    <td class="source2">PMC</td>
-                    <td> <%= totalPMCHTML %></td>
-                    <td> <%= totalPMCPDF %></td>
-                    <td>n.a.</td>
-                    <td class="total"> <%= totalPMCTotal %></td>
-                </tr>
-                <tr>
-                    <td>Totals</td>
-                    <td class="total"> <%= totalHTML %></td>
-                    <td class="total"> <%= totalPDF %>
-                    </td>
-                    <td class="total"> <%= totalXML %>
-                    </td>
-                    <td class="total"> <%= total %></td>
-                </tr>
-                <tr class="percent">
-                    <td colspan="5"><b> <%= totalViewsPDFDownloads %>
-                        %</b> of article views led to PDF downloads
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+          <table id="pageViewsTable">
+            <tbody>
+            <tr>
+              <th class="source1" nowrap="">PLOS</th>
+              <th class="source1"></th>
+            </tr>
+            <tr>
+              <td>HTML Page View</td>
+              <td> <%= totalCounterHTML %></td>
+            </tr>
+            <tr>
+              <td>PDF Downloads</td>
+              <td> <%= totalCounterPDF %></td>
+            </tr>
+            <tr>
+              <td>XML Downloads</td>
+              <td> <%= totalCounterXML %></td>
+            </tr>
+            <tr>
+              <td class="total">Totals</td>
+              <td class="total"> <%= totalCouterTotal %></td>
+            </tr>
+            </tbody>
+          </table>
+
+          <table id="pageViewsTable">
+            <tbody>
+            <tr>
+              <th class="source2" nowrap="">PMC</th>
+              <th class="source2" nowrap=""></th>
+            </tr>
+            <tr>
+              <td>HTML Page View</td>
+              <td> <%= totalPMCHTML %></td>
+            </tr>
+            <tr>
+              <td>PDF Downloads</td>
+              <td> <%= totalPMCPDF %></td>
+            </tr>
+            <tr>
+              <td>XML Downloads</td>
+              <td>n.a.</td>
+            </tr>
+            <tr>
+              <td class="total">Totals</td>
+              <td class="total"> <%= totalPMCTotal %></td>
+            </tr>
+            </tbody>
+          </table>
+          <table id="pageViewsTable">
+            <tbody>
+            <tr>
+              <th nowrap="">Totals</th>
+              <th></th>
+            </tr>
+            <tr>
+              <td>HTML Page View</td>
+              <td> <%= totalHTML %></td>
+            </tr>
+            <tr>
+              <td>PDF Downloads</td>
+              <td> <%= totalPDF %></td>
+            </tr>
+            <tr>
+              <td>XML Downloads</td>
+              <td> <%= totalXML %></td>
+            </tr>
+            <tr>
+              <td class="total">Totals</td>
+              <td class="total"> <%= total %></td>
+            </tr>
+            <tr class="percent">
+              <td colspan="2">
+                <b> <%= totalViewsPDFDownloads %>
+                  %</b> of article views led to PDF downloads
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+
         </div>
     </div>
 

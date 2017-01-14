@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.config.site;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableMap;
@@ -12,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.UnaryOperator;
 
 /**
@@ -189,7 +189,7 @@ public final class RequestMappingContextDictionary {
 
               @Override
               public Optional<Site> getSite() {
-                return Optional.absent();
+                return Optional.empty();
               }
 
               @Override

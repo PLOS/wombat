@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
@@ -37,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -176,7 +176,7 @@ public class HomeController extends WombatController {
       if (since != null) {
         if (type == SectionType.RECENT) {
           return recentArticleService.getRecentArticles(site, resultCount, since, shuffle,
-              articleTypes, articleTypesToExclude, Optional.fromNullable(cacheTtl));
+              articleTypes, articleTypesToExclude, Optional.ofNullable(cacheTtl));
         } else {
           throw new IllegalArgumentException("Shuffling is supported only on RECENT section"); // No plans to support
         }

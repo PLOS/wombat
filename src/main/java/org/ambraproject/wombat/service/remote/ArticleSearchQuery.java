@@ -2,7 +2,6 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
-import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -14,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ArticleSearchQuery {
@@ -70,12 +70,12 @@ public class ArticleSearchQuery {
     this.isPartialSearch = builder.isPartialSearch;
     this.isRssSearch = builder.isRssSearch;
     this.filterQueries = ImmutableList.copyOf(builder.filterQueries);
-    this.facet = Optional.fromNullable(builder.facet);
+    this.facet = Optional.ofNullable(builder.facet);
     this.minFacetCount = builder.minFacetCount;
     this.maxFacetSize = builder.maxFacetSize;
     this.start = builder.start;
     this.rows = builder.rows;
-    this.sortOrder = Optional.fromNullable(builder.sortOrder);
+    this.sortOrder = Optional.ofNullable(builder.sortOrder);
     this.journalKeys = ImmutableList.copyOf(builder.journalKeys);
     this.articleTypes = ImmutableList.copyOf(builder.articleTypes);
     this.articleTypesToExclude = ImmutableList.copyOf(builder.articleTypesToExclude);
@@ -84,13 +84,13 @@ public class ArticleSearchQuery {
     this.sections = ImmutableList.copyOf(builder.sections);
     this.startDate = builder.startDate;
     this.endDate = builder.endDate;
-    this.dateRange = Optional.fromNullable(builder.dateRange);
+    this.dateRange = Optional.ofNullable(builder.dateRange);
     this.rawParameters = ImmutableMap.copyOf(builder.rawParameters);
   }
 
   private static Optional<String> getQueryString(String query) {
     // Treat empty string as absent query, which will be sent to Solr as "*:*"
-    return Strings.isNullOrEmpty(query) ? Optional.<String>absent() : Optional.of(query);
+    return Strings.isNullOrEmpty(query) ? Optional.empty() : Optional.of(query);
   }
 
   @VisibleForTesting
@@ -118,7 +118,7 @@ public class ArticleSearchQuery {
 
     params.add(new BasicNameValuePair("hl", "false"));
 
-    String queryString = query.or("*:*");
+    String queryString = query.orElse("*:*");
     params.add(new BasicNameValuePair("q", queryString));
     if (query.isPresent() && isSimple) {
       // Use the dismax query parser, recommended for all user-entered queries.
@@ -353,20 +353,20 @@ public class ArticleSearchQuery {
 
   public Builder copy() {
     Builder builder = builder();
-    builder.query = this.query.orNull();
+    builder.query = this.query.orElse(null);
     builder.isSimple = this.isSimple;
     builder.isForRawResults = this.isForRawResults;
     builder.filterQueries = this.filterQueries;
-    builder.facet = this.facet.orNull();
+    builder.facet = this.facet.orElse(null);
     builder.minFacetCount = this.minFacetCount;
     builder.maxFacetSize = this.maxFacetSize;
     builder.start = this.start;
     builder.rows = this.rows;
-    builder.sortOrder = this.sortOrder.orNull();
+    builder.sortOrder = this.sortOrder.orElse(null);
     builder.journalKeys = this.journalKeys;
     builder.articleTypes = this.articleTypes;
     builder.subjects = this.subjects;
-    builder.dateRange = this.dateRange.orNull();
+    builder.dateRange = this.dateRange.orElse(null);
     builder.authors = this.authors;
     builder.sections = this.sections;
     builder.rawParameters = this.rawParameters;

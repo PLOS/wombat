@@ -1,10 +1,10 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.base.Optional;
 import org.ambraproject.wombat.config.site.Site;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 public interface RecentArticleService {
 

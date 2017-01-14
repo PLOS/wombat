@@ -59,12 +59,12 @@ public class SearchFilterService {
 
     ArticleSearchQuery.Builder journalFacetQuery = ArticleSearchQuery.builder()
         .setFacet(JOURNAL_FACET_FIELD)
-        .setQuery(query.getQuery().orNull())
+        .setQuery(query.getQuery().orElse(null))
         .setSimple(query.isSimple())
         .setArticleTypes(query.getArticleTypes())
         .setSubjects(query.getSubjects())
         .setAuthors(query.getAuthors())
-        .setDateRange(query.getDateRange().orNull())
+        .setDateRange(query.getDateRange().orElse(null))
         .setSections(query.getSections());
 
     Map<?, ?> journalFacetResults = solrSearchApi.search(journalFacetQuery.build());
@@ -73,11 +73,11 @@ public class SearchFilterService {
 
     ArticleSearchQuery.Builder subjectAreaFacetQuery = ArticleSearchQuery.builder()
         .setFacet(SUBJECT_AREA_FACET_FIELD)
-        .setQuery(query.getQuery().orNull())
+        .setQuery(query.getQuery().orElse(null))
         .setSimple(query.isSimple())
         .setArticleTypes(query.getArticleTypes())
         .setAuthors(query.getAuthors())
-        .setDateRange(query.getDateRange().orNull())
+        .setDateRange(query.getDateRange().orElse(null))
         .setJournalKeys(query.getJournalKeys())
         .setSections(query.getSections())
         .setSubjects(query.getSubjects());  // pass the previously filtered subjects to narrow the results
@@ -88,11 +88,11 @@ public class SearchFilterService {
 
     ArticleSearchQuery.Builder authorFacetQuery = ArticleSearchQuery.builder()
         .setFacet(AUTHOR_FACET)
-        .setQuery(query.getQuery().orNull())
+        .setQuery(query.getQuery().orElse(null))
         .setSimple(query.isSimple())
         .setJournalKeys(query.getJournalKeys())
         .setArticleTypes(query.getArticleTypes())
-        .setDateRange(query.getDateRange().orNull())
+        .setDateRange(query.getDateRange().orElse(null))
         .setAuthors(query.getAuthors()) // pass the previously filtered authors to narrow the results
         .setSubjects(query.getSubjects())
         .setSections(query.getSections());
@@ -103,9 +103,9 @@ public class SearchFilterService {
 
     ArticleSearchQuery.Builder articleTypeFacetQuery = ArticleSearchQuery.builder()
         .setFacet(ARTICLE_TYPE_FACET)
-        .setQuery(query.getQuery().orNull())
+        .setQuery(query.getQuery().orElse(null))
         .setSimple(query.isSimple())
-        .setDateRange(query.getDateRange().orNull())
+        .setDateRange(query.getDateRange().orElse(null))
         .setJournalKeys(query.getJournalKeys())
         .setSubjects(query.getSubjects())
         .setAuthors(query.getAuthors())
@@ -118,9 +118,9 @@ public class SearchFilterService {
     ArticleSearchQuery.Builder sectionFacetQuery = ArticleSearchQuery.builder()
         .setFacet(SECTION_FACET)
         .setIsPartialSearch(true)
-        .setQuery(query.getQuery().orNull())
+        .setQuery(query.getQuery().orElse(null))
         .setSimple(query.isSimple())
-        .setDateRange(query.getDateRange().orNull())
+        .setDateRange(query.getDateRange().orElse(null))
         .setJournalKeys(query.getJournalKeys())
         .setSubjects(query.getSubjects())
         .setAuthors(query.getAuthors());

@@ -18,13 +18,11 @@
 
 package org.ambraproject.wombat.util;
 
-import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * An object encapsulating properties of a build of an application (either this one, or the service component).
@@ -85,7 +83,7 @@ public class BuildInfo {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this)
+    return MoreObjects.toStringHelper(this)
         .add("version", version)
         .add("date", date)
         .add("user", user)

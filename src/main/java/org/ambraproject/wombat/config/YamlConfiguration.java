@@ -11,7 +11,7 @@
 
 package org.ambraproject.wombat.config;
 
-import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.GsonBuilder;
@@ -78,7 +78,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
 
   @Override
   public ImmutableSet<String> getEnabledDevFeatures() {
-    return ImmutableSet.copyOf(Objects.firstNonNull(input.enableDevFeatures, ImmutableSet.<String>of()));
+    return ImmutableSet.copyOf(MoreObjects.firstNonNull(input.enableDevFeatures, ImmutableSet.<String>of()));
   }
 
   @Override

@@ -359,8 +359,8 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     URI uri;
     try {
       uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
-    } catch (MalformedURLException | URISyntaxException e) {
-      throw new IllegalArgumentException(e);
+    } catch (IllegalStateException | MalformedURLException | URISyntaxException e) {
+      throw new IllegalArgumentException("Solr server URI is null or malformed", e);
     }
     return uri;
   }

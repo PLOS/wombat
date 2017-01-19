@@ -32,7 +32,6 @@ import java.util.EnumSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Controller
 public class ArticleAssetController extends WombatController {
@@ -62,11 +61,11 @@ public class ArticleAssetController extends WombatController {
       this.itemTypes = ImmutableSet.copyOf(itemTypes);
     }
 
-    private static final ImmutableMap<String, AssetUrlStyle> BY_ITEM_TYPE = ImmutableMap.copyOf(
+    private static final ImmutableMap<String, AssetUrlStyle> BY_ITEM_TYPE =
         EnumSet.allOf(AssetUrlStyle.class).stream()
             .flatMap((AssetUrlStyle s) -> s.itemTypes.stream()
                 .map((String itemType) -> Maps.immutableEntry(itemType, s)))
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+            .collect(ImmutableMap.toImmutableMap(Map.Entry::getKey, Map.Entry::getValue));
 
     static AssetUrlStyle findByItemType(String itemType) {
       AssetUrlStyle style = BY_ITEM_TYPE.get(itemType);

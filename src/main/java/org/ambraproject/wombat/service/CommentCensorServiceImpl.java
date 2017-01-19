@@ -8,12 +8,10 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -37,9 +35,9 @@ public class CommentCensorServiceImpl implements CommentCensorService {
       }
       this.siteCensors = siteCensorBuilder.build();
 
-      this.patterns = ImmutableMap.copyOf(this.siteCensors
+      this.patterns = this.siteCensors
           .values().stream().distinct() // words from all sites, combined
-          .collect(Collectors.toMap(Function.identity(), CommentCensorServiceImpl::compileForWord)));
+          .collect(ImmutableMap.toImmutableMap(Function.identity(), CommentCensorServiceImpl::compileForWord));
     }
   }
 

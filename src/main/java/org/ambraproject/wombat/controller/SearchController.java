@@ -499,7 +499,7 @@ public class SearchController extends WombatController {
     Preconditions.checkArgument(!q.getFacet().isPresent());
 
     ImmutableListMultimap.Builder<String, String> builder = ImmutableListMultimap.builder();
-    builder.put(q.isSimple() ? "q" : "unformattedQuery", q.getQuery().or(""));
+    builder.put(q.isSimple() ? "q" : "unformattedQuery", q.getQuery().orElse(""));
 
     int rows = q.getRows();
     builder.put("resultsPerPage", Integer.toString(rows));

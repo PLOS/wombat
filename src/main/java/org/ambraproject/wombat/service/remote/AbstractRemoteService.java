@@ -1,6 +1,5 @@
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.service.EntityNotFoundException;
@@ -20,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import java.io.Closeable;
 import java.io.IOException;
 import java.net.URI;
+import java.util.Optional;
 
 /**
  * Superclass for service beans that make calls to remote APIs.
@@ -30,7 +30,7 @@ abstract class AbstractRemoteService<S extends Closeable> implements RemoteServi
   private final Optional<HttpClientConnectionManager> connectionManager;
 
   protected AbstractRemoteService(HttpClientConnectionManager connectionManager) {
-    this.connectionManager = Optional.fromNullable(connectionManager);
+    this.connectionManager = Optional.ofNullable(connectionManager);
   }
 
   private CloseableHttpClient createClient() {

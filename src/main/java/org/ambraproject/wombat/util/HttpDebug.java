@@ -1,6 +1,6 @@
 package org.ambraproject.wombat.util;
 
-import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
@@ -56,7 +56,7 @@ public class HttpDebug {
     }
     List<String> cookieStrings = Lists.newArrayListWithCapacity(cookies.length);
     for (Cookie cookie : cookies) {
-      cookieStrings.add(Objects.toStringHelper(Cookie.class)
+      cookieStrings.add(MoreObjects.toStringHelper(Cookie.class)
           .add("Comment", cookie.getComment())
           .add("Domain", cookie.getDomain())
           .add("MaxAge", cookie.getMaxAge())
@@ -77,7 +77,7 @@ public class HttpDebug {
    * @return the descriptive string
    */
   public static String dump(HttpServletRequest request) {
-    return Objects.toStringHelper(HttpServletRequest.class)
+    return MoreObjects.toStringHelper(HttpServletRequest.class)
 
         // ServletRequest methods
         .add("CharacterEncoding", request.getCharacterEncoding())

@@ -364,11 +364,10 @@ public class SolrSearchApiImpl implements SolrSearchApi {
           "in order to use solr features such as search, RSS, or listing recent articles on the homepage.");
     } else {
       try {
-        uri = new URL(solrServer.get(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
+        return new URL(solrServer.get(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
       } catch (MalformedURLException | URISyntaxException e) {
         throw new IllegalArgumentException(e);
       }
-      return uri;
     }
   }
 

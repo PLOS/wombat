@@ -18,6 +18,7 @@ import org.ambraproject.wombat.config.theme.ThemeTree;
 
 import java.net.URL;
 import java.util.Collection;
+import java.util.Optional;
 
 
 /**
@@ -77,7 +78,7 @@ public interface RuntimeConfiguration {
    *
    * @return the URL
    */
-  URL getSolrServer();
+  Optional<URL> getSolrServer();
 
   /**
    * Get the host name of the server to which to send SMTP messages;

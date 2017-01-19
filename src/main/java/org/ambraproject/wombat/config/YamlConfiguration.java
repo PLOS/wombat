@@ -24,6 +24,7 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Configuration for the webapp's runtime behavior as read from a YAML file.
@@ -67,8 +68,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public URL getSolrServer() {
-    return buildUrl(input.solrServer, "http://localhost:8983/solr/select/");
+  public Optional<URL> getSolrServer() {
+    return Optional.ofNullable(buildUrl(input.solrServer, null));
   }
 
   @Override

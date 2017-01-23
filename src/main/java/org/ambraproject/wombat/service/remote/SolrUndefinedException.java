@@ -24,8 +24,8 @@ package org.ambraproject.wombat.service.remote;
 
 import java.io.IOException;
 
-public class ServiceUndefinedException extends IOException {
-  ServiceUndefinedException(String message) {
+public class SolrUndefinedException extends IOException {
+  SolrUndefinedException(String message) {
     super(message);
   }
 }

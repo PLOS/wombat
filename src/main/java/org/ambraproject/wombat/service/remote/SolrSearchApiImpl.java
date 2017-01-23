@@ -47,7 +47,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
 import java.util.TimeZone;
 import java.util.stream.Collectors;
 
@@ -357,17 +356,14 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   private URI getSolrUri(List<NameValuePair> params) {
-    URI uri;
-    Optional<URL> solrServer = runtimeConfiguration.getSolrServer();
-    if (!solrServer.isPresent()) {
-      throw new IllegalArgumentException("Solr server URI must be defined in wombat.yaml " +
-          "in order to use solr features such as search, RSS, or listing recent articles on the homepage.");
-    } else {
-      try {
-        return new URL(solrServer.get(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
-      } catch (MalformedURLException | URISyntaxException e) {
-        throw new IllegalArgumentException(e);
-      }
+    try {
+      URL solrServer = runtimeConfiguration.getSolrServer()
+          .orElseThrow(() -> new ServiceUndefinedException("Solr server URI must be defined " +
+              "in wombat.yaml in order to use solr features such as search, RSS, or " +
+              "listing recent articles on the homepage."));
+      return new URL(solrServer, "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
+    } catch (MalformedURLException | URISyntaxException | ServiceUndefinedException e) {
+      throw new IllegalArgumentException(e);
     }
   }
 

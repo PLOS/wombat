@@ -364,14 +364,17 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     return (Map<String, Map>) rawResults;
   }
 
-  private URI getSolrUri(List<NameValuePair> params) {
-    URI uri;
+  private URI getSolrUri(List<NameValuePair> params) throws SolrUndefinedException {
     try {
-      uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
+      URL solrServer = runtimeConfiguration.getSolrServer()
+          .orElseThrow(() -> new SolrUndefinedException("Solr server URI must be defined " +
+              "in wombat.yaml in order to use solr features such as search, RSS, or " +
+              "listing recent articles on the homepage."));
+      return new URL(solrServer, "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
     } catch (MalformedURLException | URISyntaxException e) {
+      //Solr server has already been validated - any exception here must be invalid values in params
       throw new IllegalArgumentException(e);
     }
-    return uri;
   }
 
   private class FacetedQueryResponse {

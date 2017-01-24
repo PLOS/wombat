@@ -21,7 +21,7 @@
   -->
 
 <#include "../baseTemplates/articleSection.ftl" />
-<#assign title = 'PLOS - Author Info' />
+<#assign title = 'Author Info' />
 <#assign bodyId = 'page-authors' />
 <#assign mainId = "author-content" />
 <#assign mainClass = "content" />

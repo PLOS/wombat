@@ -20,4 +20,6 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-THIS IS THE BODY
+<#--
+  Subthemes may override this file to fill in the home page's body.
+  -->

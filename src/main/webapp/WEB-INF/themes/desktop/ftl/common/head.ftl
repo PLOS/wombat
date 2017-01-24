@@ -76,8 +76,7 @@
 <#-- // citation meta tags -->
 <#include "../article/metaTags.ftl" />
 </#if>
-<#include "doubleClickAdHead.ftl" />
-<#include "header/doubleClickAdHeadSetup.ftl" />
+<#include "header/adHead.ftl" />
 <#-- //references js that is foundational like jquery and foundation.js. JS output is printed at the bottom of the body.
 -->
 <#include "baseJs.ftl" />

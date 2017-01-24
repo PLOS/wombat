@@ -359,7 +359,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
    */
   private Map<String, Map> getRawResults(List<NameValuePair> params) throws IOException {
     URI uri = getSolrUri(params);
-    log.debug("Solr request executing: " + uri);
+    log.info("Solr request executing: " + uri);
     Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
     return (Map<String, Map>) rawResults;
   }

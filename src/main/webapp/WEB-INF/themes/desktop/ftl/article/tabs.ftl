@@ -20,14 +20,14 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<#include "tabSettings.ftl" />
+<#include "sectionLinkSettings.ftl" />
 
 <#--
   Defines a macro for printing the tab links at the top of an article page.
   The invoking page should call displayTabList, passing the current page. (tabyLink is private)
   -->
 <#macro tabyLink tabPage section handlerName usesRevision>
-  <#if tabDisplaySetting(section)>
+  <#if isSectionLinkDisplayed(section)>
     <@themeConfig map="mappings" value=handlerName ; mappingFlag>
       <#if !(mappingFlag?? && mappingFlag.disabled?? && mappingFlag.disabled)>
       <li class="tab-title <#if tabPage == section>active</#if>" id="tab${section}">

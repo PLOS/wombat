@@ -30,6 +30,7 @@
       </a>
     </li>
   </#macro>
+  <#include "sectionLinkSettings.ftl" />
 
   <#if figures?has_content>
     <@articleButton "figuresPage">
@@ -37,23 +38,29 @@
     </@articleButton>
   </#if>
 
-  <#if commentCount.root &gt; 0>
+  <#if commentCount.root &gt; 0 && isSectionLinkDisplayed("Comments")>
     <@articleButton "articleComments">
       Reader Comments (${commentCount.root})
     </@articleButton>
   </#if>
 
-  <@articleButton "articleAuthors">
-    About the Authors
-  </@articleButton>
+  <#if isSectionLinkDisplayed("Authors")>
+    <@articleButton "articleAuthors">
+      About the Authors
+    </@articleButton>
+  </#if>
 
-  <@articleButton "articleMetrics">
-    Metrics
-  </@articleButton>
+  <#if isSectionLinkDisplayed("Metrics")>
+    <@articleButton "articleMetrics">
+      Metrics
+    </@articleButton>
+  </#if>
 
-  <@articleButton "articleRelatedContent">
-    Related Content
-  </@articleButton>
+  <#if isSectionLinkDisplayed("Related")>
+    <@articleButton "articleRelatedContent">
+      Related Content
+    </@articleButton>
+  </#if>
 
   </ul>
 </nav><#--end article buttons-->

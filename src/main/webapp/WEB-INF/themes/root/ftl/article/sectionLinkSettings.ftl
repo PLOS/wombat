@@ -20,6 +20,7 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<#function tabDisplaySetting section>
-  <#return !["Metrics", "Related"]?seq_contains(section) />
+<#-- Indicates whether a link to an article subpage should be displayed. -->
+<#function isSectionLinkDisplayed sectionName>
+  <#return !["Metrics", "Related"]?seq_contains(sectionName) />
 </#function>

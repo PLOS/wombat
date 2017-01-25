@@ -265,7 +265,7 @@ public class ParseReferenceService {
     }
 
     String[] fullNameParts;
-    if (WESTERN_NAME_STYLE.equals(nameStyle)) {
+    if (WESTERN_NAME_STYLE.equals(nameStyle) || Strings.isNullOrEmpty(nameStyle)) {
       fullNameParts = new String[]{givenNames, surname, suffix};
     } else if (EASTERN_NAME_STYLE.equals(nameStyle)) {
       fullNameParts = new String[]{surname, givenNames, suffix};

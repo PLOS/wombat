@@ -23,6 +23,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Instance of {@link RuntimeConfiguration} suitable for tests.  Many of the return values here will be null or
@@ -45,7 +46,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public URL getSolrServer() {
+  public Optional<URL> getSolrServer() {
     return null;
   }
 

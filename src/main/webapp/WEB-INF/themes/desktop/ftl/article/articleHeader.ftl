@@ -21,7 +21,12 @@
   -->
 
 <header class="title-block">
-<#include "signposts.ftl" />
+
+<#include "sectionLinkSettings.ftl" />
+<#if isSectionLinkDisplayed("Metrics")>
+  <#include "signposts.ftl" />
+</#if>
+
     <div class="article-meta">
     <#include "articleClassifications.ftl" />
     </div>

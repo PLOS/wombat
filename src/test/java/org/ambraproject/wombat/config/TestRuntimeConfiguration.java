@@ -58,7 +58,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
 
   @Override
   public Optional<URL> getSolrServer() {
-    return null;
+    return Optional.empty();
   }
 
   @Override

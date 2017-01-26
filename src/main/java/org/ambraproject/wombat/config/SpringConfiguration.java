@@ -42,6 +42,7 @@ import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.ArticleExcerptTransformDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
+import org.ambraproject.wombat.freemarker.GlobalConfigDirective;
 import org.ambraproject.wombat.freemarker.IsDevFeatureEnabledDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
 import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
@@ -183,6 +184,11 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public GlobalConfigDirective globalConfigDirective() {
+    return new GlobalConfigDirective();
+  }
+
+  @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            IsDevFeatureEnabledDirective isDevFeatureEnabledDirective,
                                            SiteLinkDirective siteLinkDirective,
@@ -192,7 +198,8 @@ public class SpringConfiguration {
                                            FetchHtmlDirective fetchHtmlDirective,
                                            ThemeConfigDirective themeConfigDirective,
                                            AppLinkDirective appLinkDirective,
-                                           ArticleExcerptTransformDirective articleExcerptTransformDirective)
+                                           ArticleExcerptTransformDirective articleExcerptTransformDirective,
+                                           GlobalConfigDirective globalConfigDirective)
       throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
@@ -217,6 +224,7 @@ public class SpringConfiguration {
     variables.put("appLink", appLinkDirective);
     variables.put("abbreviatedName", new AbbreviatedNameDirective());
     variables.put("xform", articleExcerptTransformDirective);
+    variables.put("globalConfig", globalConfigDirective);
     config.setFreemarkerVariables(variables.build());
     return config;
   }

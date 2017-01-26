@@ -247,6 +247,8 @@ example | extension
 
 }
 
+
+
 // set the journal-specific colors - ps this is a good example of things that can be
 // pulled into themes or a separate scss file when the maven sass compiler is installed & working
 .plosbiology, .ploscompbiol, .plosgenetics {
@@ -258,6 +260,10 @@ example | extension
 
 .ploscollections, .plosclinicaltrials {
   @include brandcolor();
+}
+
+.generic {
+  @include brandcolor($setcolor: $generic-brand);
 }
 
 .plosone {

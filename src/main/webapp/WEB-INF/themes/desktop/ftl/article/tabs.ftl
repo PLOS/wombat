@@ -20,25 +20,30 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
+<#include "sectionLinkSettings.ftl" />
+
 <#--
   Defines a macro for printing the tab links at the top of an article page.
   The invoking page should call displayTabList, passing the current page. (tabyLink is private)
   -->
-
 <#macro tabyLink tabPage section handlerName usesRevision>
-  <@themeConfig map="mappings" value=handlerName ; mappingFlag><#if !(mappingFlag?? && mappingFlag.disabled?? && mappingFlag.disabled)>
-  <li class="tab-title <#if tabPage == section>active</#if>" id="tab${section}">
-    <#assign tabCounter = tabCounter + 1 />
-    <#if usesRevision>
-      <#assign linkParameters = articlePtr>
-    <#else>
-      <#assign linkParameters = {"id": article.doi}>
-    </#if>
-    <@siteLink handlerName=handlerName queryParameters=linkParameters ; href>
-      <a href="${href}" class="article-tab-${tabCounter?c}"><#nested/></a>
-    </@siteLink>
-  </li>
-  </#if></@themeConfig>
+  <#if isSectionLinkDisplayed(section)>
+    <@themeConfig map="mappings" value=handlerName ; mappingFlag>
+      <#if !(mappingFlag?? && mappingFlag.disabled?? && mappingFlag.disabled)>
+      <li class="tab-title <#if tabPage == section>active</#if>" id="tab${section}">
+        <#assign tabCounter = tabCounter + 1 />
+        <#if usesRevision>
+          <#assign linkParameters = articlePtr>
+        <#else>
+          <#assign linkParameters = {"id": article.doi}>
+        </#if>
+        <@siteLink handlerName=handlerName queryParameters=linkParameters ; href>
+          <a href="${href}" class="article-tab-${tabCounter?c}"><#nested/></a>
+        </@siteLink>
+      </li>
+      </#if>
+    </@themeConfig>
+  </#if>
 </#macro>
 
 <#macro displayTabList tabPage='Article'>

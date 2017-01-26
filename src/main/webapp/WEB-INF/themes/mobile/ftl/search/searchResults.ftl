@@ -21,7 +21,7 @@
   -->
 
 <#include '../baseTemplates/default.ftl' />
-<#assign title = 'PLOS - Results' />
+<#assign title = 'Results' />
 <#assign bodyId = 'page-results' />
 
 <@page_header />

@@ -22,40 +22,46 @@
 
 <nav>
   <ul class="article-buttons">
+  <#macro articleButton handlerName>
+    <li class="menuitem">
+      <a class="btn-lg" href="<@siteLink handlerName=handlerName queryParameters={"id": article.doi} />">
+        <span class="arrow">View</span>
+        <#nested/>
+      </a>
+    </li>
+  </#macro>
+  <#include "sectionLinkSettings.ftl" />
+
   <#if figures?has_content>
-    <li class="menuitem">
-      <a class="btn-lg" href="<@siteLink handlerName="figuresPage" queryParameters={"id": article.doi} />">
-        <span class="arrow">View</span>
-        Figures (${figures?size})
-      </a>
-    </li>
+    <@articleButton "figuresPage">
+      Figures (${figures?size})
+    </@articleButton>
   </#if>
-  <#if commentCount.root &gt; 0>
-    <li class="menuitem">
-      <a class="btn-lg" href="<@siteLink handlerName="articleComments" queryParameters={"id": article.doi} />">
-        <span class="arrow">View</span>
-        Reader Comments (${commentCount.root})
-      </a>
-    </li>
+
+  <#if commentCount.root &gt; 0 && isSectionLinkDisplayed("Comments")>
+    <@articleButton "articleComments">
+      Reader Comments (${commentCount.root})
+    </@articleButton>
   </#if>
-    <li class="menuitem">
-      <a class="btn-lg" href="<@siteLink handlerName="articleAuthors" queryParameters={"id": article.doi} />">
-        <span class="arrow">View</span>
-        About the Authors
-      </a>
-    </li>
-      <li class="menuitem">
-        <a class="btn-lg" href="<@siteLink handlerName="articleMetrics" queryParameters={"id": article.doi} />">
-          <span class="arrow">View</span>
-          Metrics
-        </a>
-      </li>
-  <li class="menuitem">
-    <a class="btn-lg" href="<@siteLink handlerName="articleRelatedContent" queryParameters={"id": article.doi} />">
-      <span class="arrow">View</span>
+
+  <#if isSectionLinkDisplayed("Authors")>
+    <@articleButton "articleAuthors">
+      About the Authors
+    </@articleButton>
+  </#if>
+
+  <#if isSectionLinkDisplayed("Metrics")>
+    <@articleButton "articleMetrics">
+      Metrics
+    </@articleButton>
+  </#if>
+
+  <#if isSectionLinkDisplayed("Related")>
+    <@articleButton "articleRelatedContent">
       Related Content
-    </a>
-  </li>
+    </@articleButton>
+  </#if>
+
   </ul>
 </nav><#--end article buttons-->
 

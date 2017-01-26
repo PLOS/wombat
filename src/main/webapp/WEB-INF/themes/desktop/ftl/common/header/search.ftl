@@ -24,16 +24,21 @@
 
 <#macro searchForm journal="">
 
-<li id="navsearch" class="head-search">
-  <form name="searchForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
-        <fieldset>
-            <legend>Search</legend>
-            <label for="search">Search</label>
-            <input id="search" type="text" name="q" placeholder="Search" required/>
-            <button id="headerSearchButton" type="submit"><span class="search-icon"></span></button>
+  <@globalConfig key="solrServer" ; solrServer>
+    <#assign isSolrServerConfigured = solrServer?? />
+  </@globalConfig>
+  <#if isSolrServerConfigured>
 
-        </fieldset>
-        <#if journal?has_content><input type="hidden" name="filterJournals" value="${journal}"/></#if>
+  <li id="navsearch" class="head-search">
+    <form name="searchForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
+      <fieldset>
+        <legend>Search</legend>
+        <label for="search">Search</label>
+        <input id="search" type="text" name="q" placeholder="Search" required/>
+        <button id="headerSearchButton" type="submit"><span class="search-icon"></span></button>
+
+      </fieldset>
+      <#if journal?has_content><input type="hidden" name="filterJournals" value="${journal}"/></#if>
     </form>
 
     <a id="advSearch"
@@ -42,6 +47,8 @@
     </a>
 
   </li>
+
+  </#if>
 
 </#macro>
 <#include "searchJournal.ftl"/>

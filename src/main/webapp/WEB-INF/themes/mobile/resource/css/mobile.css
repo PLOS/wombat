@@ -823,45 +823,45 @@ html:not(.positionfixed) #page-figure #site-header-container {
 
 /* taxonomy hierarchy colors */
 .grey-on-gold {
-  background: #4a0100;
+  background: #4A1010;
   color: #ffffff;
 }
 
 /* Journal-neutral coloring */
 body .coloration-white-on-color {
-  background: #4a0100;
+  background: #4A1010;
   color: #ffffff;
 }
 
 body .coloration-text-color {
-  color: #4a0100;
+  color: #4A1010;
 }
 
 body .coloration-light-text {
-  color: #4a0100;
+  color: #4A1010;
 }
 
 body .coloration-border-top {
-  border-top-color: #4a0100;
+  border-top-color: #4A1010;
 }
 
 body .active.color-active {
-  background: #4a0100;
+  background: #4A1010;
   color: #ffffff;
 }
 
 body .coloration-bg {
-  background: #4a0100;
+  background: #4A1010;
 }
 
 body .active.text-color {
-  color: #4a0100;
+  color: #4A1010;
 }
 
 #page-browse #menu-browse,
 #page-saved-items #menu-saved,
 #page-recent-history #menu-recent {
-  background: #4a0100;
+  background: #4A1010;
   color: #ffffff;
 }
 

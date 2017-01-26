@@ -474,7 +474,7 @@ public class ArticleController extends WombatController {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility("articleRelatedContent")
         .populate(request, model);
-    String recaptchaPublicKey = site.getTheme().getConfigMap("captcha").get("publicKey").toString();
+    String recaptchaPublicKey = (String) site.getTheme().getConfigMap("captcha").get("publicKey");
     model.addAttribute("recaptchaPublicKey", recaptchaPublicKey);
     return site + "/ftl/article/relatedContent";
   }

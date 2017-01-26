@@ -20,7 +20,7 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<input type="hidden" name="reCaptcha-info" id="reCaptcha-info" value='${recaptchaPublicKey}'/>
+<input type="hidden" name="reCaptcha-info" id="reCaptcha-info" value='${recaptchaPublicKey!''}'/>
 
 <script type="text/template" id="articleRelatedContentSectionTemplate">
   <h3><%= section.title %></h3>

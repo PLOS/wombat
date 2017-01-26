@@ -32,6 +32,6 @@
   <nav class="footer-secondary-menu">
   <#include "footerSecondaryMenu.ftl" />
   </nav>
-<#include "nonProfitStatement.ftl" />
+<#include "footerTertiaryLinks.ftl" />
 
 </footer>

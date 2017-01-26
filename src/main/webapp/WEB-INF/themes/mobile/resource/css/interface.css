@@ -79,7 +79,7 @@
 }
 
 .grey-on-gold {
-  background: #4a0100;
+  background: #4A1010;
   color: #ffffff;
 }
 
@@ -430,7 +430,7 @@ section.spotlight .spotlight-item .item-link {
 
 .two-btn-container a {
   width: 50%;
-  color: #4a0100;
+  color: #4A1010;
   display: inline-block;
   font-family: Verdana, 'Arial', sans-serif;
   font-size: 1.4em;
@@ -679,7 +679,7 @@ section.spotlight .spotlight-item .item-link {
 .full-menu-container .full-menu-tout h4 {
   font-family: Verdana, 'Arial', sans-serif;
   font-size: 1.5em;
-  color: #4a0100;
+  color: #4A1010;
   padding-bottom: 15px;
   background: url('../img/bg/full-menu-line.png') no-repeat left bottom;
 }
@@ -727,7 +727,7 @@ nav.menu-bar li a {
 }
 
 nav.menu-bar li.active {
-  background: #4a0100;
+  background: #4A1010;
 }
 
 nav.menu-bar li.active a {
@@ -778,7 +778,7 @@ nav.menu-rounded td {
 
 nav.menu-rounded li.active.coloration-white-on-color,
 nav.menu-rounded td.active.coloration-white-on-color {
-  background: #4a0100;
+  background: #4A1010;
   color: #333333;
 }
 
@@ -898,7 +898,7 @@ nav.footer-secondary-menu li a {
 }
 
 .search-expanded .search-form-container {
-  background: #4a0100;
+  background: #4A1010;
   padding: 10px;
 }
 
@@ -1044,7 +1044,7 @@ nav.footer-secondary-menu li a {
 
 /* Filter Box */
 .filter-box {
-  background: #4a0100;
+  background: #4A1010;
   color: #333333;
   padding: 20px 10px;
   width: 100%;
@@ -1232,7 +1232,8 @@ nav.footer-secondary-menu li a {
 }
 
 .main-accordion li.accordion-item.expanded > a {
-  background: #4a0100;
+  background: #4A1010;
+  color: #fff;
   -webkit-transition: background-color 100ms linear;
   -moz-transition: background-color 100ms linear;
   -o-transition: background-color 100ms linear;

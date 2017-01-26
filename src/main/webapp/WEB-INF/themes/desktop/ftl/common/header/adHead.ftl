@@ -20,36 +20,6 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<header class="title-block">
-
-<#include "sectionLinkSettings.ftl" />
-<#if isSectionLinkDisplayed("Metrics")>
-  <#include "signposts.ftl" />
-</#if>
-
-    <div class="article-meta">
-    <#include "articleClassifications.ftl" />
-    </div>
-    <div class="article-title-etc">
-
-    <#include "articleTitle.ftl" />
-
-      <ul class="date-doi">
-      <#if revisionMenu.revisions?size gt 1>
-          <li class="revisionList">
-            <#include "revision/revisionMenu.ftl" />
-          </li>
-        </#if>
-        <li id="artPubDate">Published: <@formatJsonDate date="${article.publicationDate}" format="MMMM d, yyyy" /></li>
-        <li id="artDoi">
-              <#include "../macro/doiAsLink.ftl" />
-              <@doiAsLink article.doi />
-            </li>
-      </ul>
-
-    </div>
-  <div>
-
-  </div>
-</header>
-
+<#--
+  Subthemes may override this file to insert code for ads into the head element.
+  -->

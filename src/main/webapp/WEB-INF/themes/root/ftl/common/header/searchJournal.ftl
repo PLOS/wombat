@@ -20,36 +20,10 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<header class="title-block">
-
-<#include "sectionLinkSettings.ftl" />
-<#if isSectionLinkDisplayed("Metrics")>
-  <#include "signposts.ftl" />
-</#if>
-
-    <div class="article-meta">
-    <#include "articleClassifications.ftl" />
-    </div>
-    <div class="article-title-etc">
-
-    <#include "articleTitle.ftl" />
-
-      <ul class="date-doi">
-      <#if revisionMenu.revisions?size gt 1>
-          <li class="revisionList">
-            <#include "revision/revisionMenu.ftl" />
-          </li>
-        </#if>
-        <li id="artPubDate">Published: <@formatJsonDate date="${article.publicationDate}" format="MMMM d, yyyy" /></li>
-        <li id="artDoi">
-              <#include "../macro/doiAsLink.ftl" />
-              <@doiAsLink article.doi />
-            </li>
-      </ul>
-
-    </div>
-  <div>
-
-  </div>
-</header>
-
+<#--
+  Default invocation to the searchForm macro. Subthemes may override to change it,
+  or override with a blank template to suppress the search form.
+  -->
+<@themeConfig map="journal" value="journalKey" ; journalKey>
+  <@searchForm journal="${journalKey}"></@searchForm>
+</@themeConfig>

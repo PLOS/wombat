@@ -21,7 +21,7 @@
   -->
 
 <#include 'baseTemplates/default.ftl'>
-<#assign title = 'PLOS - Browse' />
+<#assign title = 'Browse' />
 <#assign bodyId = 'page-browse' />
 
 <@themeConfig map="journal" value="journalKey" ; journalKey>

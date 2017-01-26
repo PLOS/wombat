@@ -113,14 +113,18 @@ public class SiteSet {
   public static SiteSet create(List<Map<String, ?>> siteSpecifications, ThemeTree themeTree) {
     List<Site> sites = Lists.newArrayListWithCapacity(siteSpecifications.size());
     for (Map<String, ?> siteSpec : siteSpecifications) {
-      String key = (String) siteSpec.get("key");
-      Theme theme = themeTree.getTheme((String) siteSpec.get("theme"));
+      String siteKey = (String) siteSpec.get("key");
+      String themeKey = (String) siteSpec.get("theme");
+      Theme theme = themeTree.getTheme(themeKey);
+      if (theme == null) {
+        throw new RuntimeException(String.format("No theme with key=\"%s\" found (for site: %s)", themeKey, siteKey));
+      }
 
       Map<String, ?> resolveDefinition = (Map<String, ?>) siteSpec.get("resolve");
       SiteRequestScheme requestScheme = resolveDefinition != null ? parseRequestScheme(resolveDefinition)
-          : SiteRequestScheme.builder().setPathToken(key).build();
+          : SiteRequestScheme.builder().setPathToken(siteKey).build();
 
-      sites.add(new Site(key, theme, requestScheme));
+      sites.add(new Site(siteKey, theme, requestScheme));
     }
     validateSchemes(sites);
     return new SiteSet(sites);

@@ -1,62 +1,84 @@
-sections:
-# A list of supported sections.
-# (Only one is present here, which is used as an example case to document everything.)
-# Subthemes may override "sections" with a variable-length list.
-# If this element is overridden, note that the entire "sections" list is overridden;
-# it is not possible to override individual fields of a section and inherit the rest.
-# The order is significant; it defines the order of the "supportedSections" model field,
-# which can build a section menu.
+sections: []
+# A list of supported sections. Subthemes may override "sections" with a variable-length list. Note that overrides can
+# only replace the entire list at once; it is not possible to override individual sections or their fields. The order
+# is significant; it defines the order of the "supportedSections" model field, which can build a section menu.
+#
+# You may leave it as an empty list, in which case you may set your homepage content by overriding /ftl/home/body.ftl.
+#
+# Each element of the "sections" list is an object representing a homepage section. An example of the syntax of a
+# complete list looks as follows:
+#
+#     sections:
+#       - name: recent
+#         resultCount: 7
+#         since: 7
+#         articleTypes:
+#           - "*"
+#         articleTypesToExclude:
+#           - "Correction"
+#           - "Retraction"
+#           - "Expression of Concern"
+#       - name: popular
+#         resultCount: 7
+#       - name: curated
+#         curatedListType: admin
+#         curatedListName: news
+#         resultCount: 7
+#
+# Documentation of each of the possible fields of a section object is below.
+#
+#   "name"
+#   Type: string. Example: "name: 'recent'"
+#     The section identifier. Valid values are "recent", "popular", and "curated" (see
+#     org.ambraproject.wombat.controller.HomeController.SectionType). Each name except for "curated" must be used at
+#     most once.
+#
+#   "resultCount"
+#   Type: integer. Example: "resultCount: 3"
+#     The number of articles to load into the model when this section is displayed.
+#
+#   "since"
+#   Type: integer. Example: "since: 3"
+#     If null, use the default query behavior for this section. Must be null on all sections other than "recent".
+#     If a non-null number on "recent", query the service API for articles published that number of days ago. Enables
+#     the "shuffle" and "articleTypes" special parameters.
+#
+#   "shuffle"
+#   Type: boolean. Example: "shuffle: true" or "shuffle: false"
+#   Ignored unless "name" is "recent" and "since" is non-null.
+#     If true, when the number of articles returned for the "since" threshold is greater than resultCount, select a
+#     random subset (of size equal to resultCount) and display them in a random order. Else, show them in chronological
+#     order, regardless of how old they are.
+#
+#   "articleTypes"
+#   Type: list of strings. Examples: "articleTypes: ['*']"; "articleTypes: ['Research Article', '*']"
+#   Ignored unless "name" is "recent" and "since" is non-null.
+#     Filter articles by these types. Sort articles with the same publication date by type, in this order.
+#
+#   "articleTypesToExclude"
+#   Type: list of strings. Example: "articleTypesToExclude: ['Correction', 'Retraction', 'Expression of Concern']"
+#   Ignored unless "name" is "recent" and "since" is non-null.
+#     Never show any articles with these types as recent articles, regardless of other criteria.
+#
+#   "curatedListName"
+#   Type: string. Example: "curatedListName: 'news'"
+#   Ignored unless "name" is "curated". Required if "name" is "curated".
+#     The name of an article list, in this site's journal, to use to populate the section. Must be unique among curated
+#     lists on this homepage (even if other lists have different "curatedListType" values).
+#
+#   "curatedListType"
+#   Type: string. Example: "curatedListType: 'admin'"
+#   Ignored unless "name" is "curated". Required if "name" is "curated".
+#     The type of the article list identified by "curatedListName". This is used to request the article list from the
+#     service tier, but unlike "curatedListName" it does not show up in page URLs.
+#
+#   "cacheTtl"
+#   Type: integer. Example: "cacheTtl: 1800"
+#   Ignored unless "name" is "recent" and "since" is non-null.
+#     Cache recent articles for this many seconds. If "shuffle" is true, articles are still shuffled every time the
+#     home page is loaded, but the set from which articles are randomly picked is cached.
 
-  - name: "recent"
-    # The section identifier.
-    # Must be one of the valid values defined by org.ambraproject.wombat.controller.HomeController.SectionType.
-    # Each name except for "curated" must be used at most once.
-
-    resultCount: 7
-    # The number of articles to load into the model when this section is displayed.
-
-    since: null
-    # If null, use the default query behavior for this section. Must be null on all sections other than "recent".
-    #
-    # If a non-null number on "recent", query the service API for articles published that number of days ago. Enables
-    # the "shuffle" and "articleTypes" special parameters.
-
-    shuffle: false
-    # Ignored unless "name" is "recent" and "since" is non-null.
-    #
-    # If true, when the number of articles returned for the "since" threshold is greater than resultCount, select a
-    # random subset (of size equal to resultCount) and display them in a random order. Else, show them in chronological
-    # order, regardless of how old they are.
-
-    articleTypes: null
-    # Ignored unless "name" is "recent" and "since" is non-null.
-    #
-    # Filter articles by these types. Sort articles with the same publication date by type, in this order.
-
-    articleTypesToExclude: null
-    # Ignored unless "name" is "recent" and "since" is non-null.
-    #
-    # Never show any articles with these types as recent articles, regardless of other criteria.
-
-    curatedListName: null
-    # Ignored unless "name" is "curated". Required if "name" is "curated".
-    #
-    # The name of an article list, in this site's journal, to use to populate the section. Must be unique among curated
-    # lists on this homepage (even if other lists have different "curatedListType" values).
-
-    curatedListType: null
-    # Ignored unless "name" is "curated". Required if "name" is "curated".
-    #
-    # The type of the article list identified by "curatedListName". This is used to request the article list from the
-    # service tier, but unlike "curatedListName" it does not show up in page URLs.
-
-    cacheTtl: null
-    # Ignored unless "name" is "recent" and "since" is non-null.
-    #
-    # Cache recent articles for this many seconds. If "shuffle" is true, articles are still shuffled every time the
-    # home page is loaded, but the set from which articles are randomly picked is cached.
-
-defaultSelection: "recent"
+defaultSelection: null
 # The value must be either null or equal to the "name" value of one of the entries under "section".
 # If null, the homepage takes no selection, and loads articles for every supported section into the model.
 # If non-null, then the homepage has one selected section, and this is the default is none is queried for.

@@ -21,7 +21,6 @@
   -->
 
 <#include "siteMenuFlag.ftl" />
-<#include "../siteContentLink.ftl" />
 <#if hasSiteMenu>
 
   <#macro siteMenuCalloutHeadline>

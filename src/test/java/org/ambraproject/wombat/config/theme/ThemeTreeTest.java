@@ -124,7 +124,7 @@ public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
     Site site = MockSiteUtil.getByUniqueJournalKey(siteSet, "journal1Key");
     Map<String, Object> journal = site.getTheme().getConfigMap("homepage");
     Object inheritedValue = journal.get("defaultSelection");
-    assertEquals(inheritedValue, "recent"); // expected to match src/main/webapp/WEB-INF/themes/root/config/homepage.yaml
+    assertEquals(inheritedValue, null); // expected to match src/main/webapp/WEB-INF/themes/root/config/homepage.yaml
   }
 
   @Test

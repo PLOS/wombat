@@ -107,7 +107,7 @@ public class SolrArticleAdapter implements Serializable {
     List<String> solrAuthors = (List<String>) solrArticle.get("author_display");
     List<Author> authors = (solrAuthors != null) ? Lists.transform(solrAuthors, Author::new) : ImmutableList.of();
     String articleType = (String) solrArticle.get("article_type");
-    List<String> journalKeys = (List<String>) solrArticle.get("cross_published_journal_key");
+    List<String> journalKeys = (List<String>) solrArticle.get("journal_key");
     //todo: change Solr schema so that journal key is a single value, not a list
     String journalKey = journalKeys.get(0);
 

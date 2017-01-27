@@ -162,7 +162,7 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
     actualMap = convertToMap(actual);
     assertEquals(actualMap.get("fq").size(), 2);
     for (String s : actualMap.get("fq")) {
-      if (!s.contains("publication_date:") && !s.contains("cross_published_journal_key:")) {
+      if (!s.contains("publication_date:") && !s.contains("journal_key:")) {
         fail(s);
       }
     }
@@ -348,7 +348,7 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
   private void assertJournals(Set<String> actualFq, String... expectedJournals) {
     String journals = null;
     for (String s : actualFq) {
-      if (s.startsWith("cross_published_journal_key:")) {
+      if (s.startsWith("journal_key:")) {
         journals = s;
         break;
       }
@@ -356,12 +356,12 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
     assertNotNull(journals);
 
     // For multiple journals, the expected format of the param is
-    // "cross_published_journal_key:PLoSBiology OR cross_published_journal_key:PLoSONE"
+    // "journal_key:PLoSBiology OR journal_key:PLoSONE"
     String[] parts = journals.split(" OR ");
     assertEquals(parts.length, expectedJournals.length);
     Set<String> actualJournals = new HashSet<>();
     for (String part : parts) {
-      actualJournals.add(part.substring("cross_published_journal_key:".length()));
+      actualJournals.add(part.substring("journal_key:".length()));
     }
     for (String expected : expectedJournals) {
       assertTrue(actualJournals.contains(expected));

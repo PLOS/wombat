@@ -20,4 +20,17 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<#-- Fill in the nav-top element with a list of invocations of the @navTopItem macro -->
+<@globalConfig key="isCasAvailable" ; isCasAvailable>
+  <#if isCasAvailable>
+    <#include "../../macro/userSession.ftl" />
+    <#if isUserLoggedIn()>
+      <@appLink path="j_spring_cas_security_logout" ; link>
+        <@navTopItem link true>sign out</@navTopItem>
+      </@appLink>
+    <#else>
+      <@siteLink path="user/secure/login?page=${getLinkToCurrentPage()?url('UTF-8')}" ; link>
+        <@navTopItem link true>sign in</@navTopItem>
+      </@siteLink>
+    </#if>
+  </#if>
+</@globalConfig>

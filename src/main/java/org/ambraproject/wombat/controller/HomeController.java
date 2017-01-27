@@ -220,14 +220,6 @@ public class HomeController extends WombatController {
     }
   }
 
-  private List<SectionSpec> parseSectionSpecs(List<Map<String, Object>> sectionSpecs) {
-    List<SectionSpec> sections = new ArrayList<>(sectionSpecs.size());
-    for (Map<String, Object> sectionSpec : sectionSpecs) {
-      sections.add(new SectionSpec(sectionSpec));
-    }
-    return sections;
-  }
-
   private static List<String> getSupportedSectionNames(List<SectionSpec> supportedSections) {
     List<String> supportedSectionNames = new ArrayList<>(supportedSections.size());
     for (SectionSpec sectionSpec : supportedSections) {
@@ -266,7 +258,8 @@ public class HomeController extends WombatController {
 
     Map<String, Object> homepageConfig = site.getTheme().getConfigMap("homepage");
 
-    List<SectionSpec> sectionSpecs = parseSectionSpecs((List<Map<String, Object>>) homepageConfig.get("sections"));
+    List<SectionSpec> sectionSpecs = ((List<Map<String, Object>>) homepageConfig.get("sections"))
+        .stream().map(SectionSpec::new).collect(Collectors.toList());
     model.addAttribute("supportedSections", getSupportedSectionNames(sectionSpecs));
     String defaultSection = (String) homepageConfig.get("defaultSelection");
 

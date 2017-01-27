@@ -133,7 +133,7 @@ public interface RuntimeConfiguration {
     String getLogoutUrl();
   }
 
-  CasConfiguration getCasConfiguration();
+  Optional<CasConfiguration> getCasConfiguration();
 
   boolean areCommentsDisabled();
 

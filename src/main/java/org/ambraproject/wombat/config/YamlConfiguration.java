@@ -151,23 +151,23 @@ public class YamlConfiguration implements RuntimeConfiguration {
   private final CasConfiguration casConfiguration = new CasConfiguration() {
     @Override
     public String getCasUrl() {
-      return (input.cas == null) ? null : input.cas.casUrl;
+      return input.cas.casUrl;
     }
 
     @Override
     public String getLoginUrl() {
-      return (input.cas == null) ? null : input.cas.loginUrl;
+      return input.cas.loginUrl;
     }
 
     @Override
-    public String getLogoutUrl()  {
-      return (input.cas == null) ? null : input.cas.logoutUrl;
+    public String getLogoutUrl() {
+      return input.cas.logoutUrl;
     }
   };
 
   @Override
-  public CasConfiguration getCasConfiguration() {
-    return casConfiguration;
+  public Optional<CasConfiguration> getCasConfiguration() {
+    return (input.cas == null) ? Optional.empty() : Optional.of(casConfiguration);
   }
 
   @Override

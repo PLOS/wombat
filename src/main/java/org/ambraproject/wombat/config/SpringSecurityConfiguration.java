@@ -54,6 +54,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.core.userdetails.User;
@@ -121,7 +122,9 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Bean
   public Cas20ServiceTicketValidator cas20ServiceTicketValidator() {
-    return new Cas20ServiceTicketValidator(runtimeConfiguration.getCasConfiguration().getCasUrl());
+    return runtimeConfiguration.getCasConfiguration()
+        .map(casConfiguration -> new Cas20ServiceTicketValidator(casConfiguration.getCasUrl()))
+        .orElse(null);
   }
 
   @Bean
@@ -183,25 +186,26 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Bean
   public LogoutSuccessHandler getLogoutSuccessHandler() {
-    return (httpServletRequest, httpServletResponse, authentication) -> {
-      if (authentication != null && authentication.getDetails() != null) {
-        try {
-          httpServletRequest.getSession().invalidate();
-        } catch (IllegalStateException e) {
-          // session is already invalid, so nothing to do, but log as error since it may indicate a config issue
-          log.error("Attempted to log out of an already logged out session");
-        }
-      }
+    return runtimeConfiguration.getCasConfiguration().map(casConfiguration ->
+        (LogoutSuccessHandler) (HttpServletRequest request, HttpServletResponse response, Authentication authentication) -> {
+          if (authentication != null && authentication.getDetails() != null) {
+            try {
+              request.getSession().invalidate();
+            } catch (IllegalStateException e) {
+              // session is already invalid, so nothing to do, but log as error since it may indicate a config issue
+              log.error("Attempted to log out of an already logged out session");
+            }
+          }
 
-      validateHostname(httpServletRequest);
-      String logoutServiceUrl = Link.toSitelessHandler()
-          .toPattern(requestMappingContextDictionary, LOGOUT_HANDLER_NAME).build()
-          .get(httpServletRequest);
+          validateHostname(request);
+          String logoutServiceUrl = Link.toSitelessHandler()
+              .toPattern(requestMappingContextDictionary, LOGOUT_HANDLER_NAME).build()
+              .get(request);
 
-      httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-      httpServletResponse.sendRedirect(runtimeConfiguration.getCasConfiguration().getLogoutUrl()
-          + "?service=" + URLEncoder.encode(logoutServiceUrl, Charsets.UTF_8.name()));
-    };
+          response.setStatus(HttpServletResponse.SC_OK);
+          response.sendRedirect(casConfiguration.getLogoutUrl()
+              + "?service=" + URLEncoder.encode(logoutServiceUrl, Charsets.UTF_8.name()));
+        }).orElse(null);
   }
 
   @Override
@@ -219,20 +223,23 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-
-    http.addFilter(casAuthenticationFilter())
-        .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
-        .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
-        .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
-        .and().authorizeRequests().antMatchers(NEW_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
-        .and().authorizeRequests().antMatchers(FLAG_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
-    http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
-    http.csrf().disable();
+    if (runtimeConfiguration.getCasConfiguration().isPresent()) {
+      http.addFilter(casAuthenticationFilter())
+          .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
+          .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
+          .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
+          .and().authorizeRequests().antMatchers(NEW_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
+          .and().authorizeRequests().antMatchers(FLAG_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
+      http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
+      http.csrf().disable();
+    }
   }
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.authenticationProvider(casAuthenticationProvider());
+    if (runtimeConfiguration.getCasConfiguration().isPresent()) {
+      auth.authenticationProvider(casAuthenticationProvider());
+    }
   }
 
   @Bean
@@ -243,16 +250,17 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Bean
   public CasAuthenticationEntryPoint casAuthenticationEntryPoint() {
-
-    CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint() {
-      @Override
-      protected String createServiceUrl(final HttpServletRequest request, final HttpServletResponse response) {
-        return getCasValidationPath(request);
-      }
-    };
-    casAuthenticationEntryPoint.setLoginUrl(runtimeConfiguration.getCasConfiguration().getLoginUrl());
-    casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
-    return casAuthenticationEntryPoint;
+    return runtimeConfiguration.getCasConfiguration().map(casConfiguration -> {
+      CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint() {
+        @Override
+        protected String createServiceUrl(final HttpServletRequest request, final HttpServletResponse response) {
+          return getCasValidationPath(request);
+        }
+      };
+      casAuthenticationEntryPoint.setLoginUrl(casConfiguration.getLoginUrl());
+      casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
+      return casAuthenticationEntryPoint;
+    }).orElse(null);
   }
 
   private String getCasValidationPath(HttpServletRequest request) {

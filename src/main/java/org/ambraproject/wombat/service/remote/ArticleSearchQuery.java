@@ -44,12 +44,12 @@ public class ArticleSearchQuery {
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
   private static final String ARTICLE_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
-      "id", "eissn", "publication_date", "title", "title_display", "cross_published_journal_name",
+      "id", "eissn", "publication_date", "title", "title_display", "journal_name",
       "author_display", "article_type", "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount",
       "alm_mendeleyCount", "alm_twitterCount", "alm_facebookCount", "retraction", "expression_of_concern",
-      "striking_image", "figure_table_caption", "cross_published_journal_key",}));
+      "striking_image", "figure_table_caption", "journal_key",}));
   private static final String RSS_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
-      "id", "publication_date", "title", "title_display", "cross_published_journal_name", "author_display",
+      "id", "publication_date", "title", "title_display", "journal_name", "author_display",
       "abstract", "abstract_primary_display"}));
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;
@@ -186,7 +186,7 @@ public class ArticleSearchQuery {
     }
     if (!ListUtil.isNullOrEmpty(journalKeys)) {
       List<String> crossPublishedJournals = journalKeys.stream()
-          .map(journalKey -> "cross_published_journal_key:" + journalKey).collect(Collectors.toList());
+          .map(journalKey -> "journal_key:" + journalKey).collect(Collectors.toList());
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(crossPublishedJournals)));
     }
 

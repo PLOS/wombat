@@ -41,9 +41,9 @@
                       <span id="article-result-<%= index %>-date">
                 published <%= moment.utc(item.publication_date).format("DD MMM YYYY") %>
               </span>
-        <% if(!_.isEmpty(item.cross_published_journal_name)) { %>
+        <% if(!_.isEmpty(item.journal_name)) { %>
                         <span id="article-result-<%= index %>-journal-name">
-                        <%= item.cross_published_journal_name[0] %>
+                        <%= item.journal_name[0] %>
                         </span>
         <% } %>
       </p>

@@ -116,7 +116,7 @@
       <p class="citation">
       ${doc.article_type}<br/>
         published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" />
-        | ${doc.cross_published_journal_name[0]}<br/>
+        | ${doc.journal_name[0]}<br/>
       ${doc.id}<br/>
 
         <#assign views = doc.counter_total_all!0 />

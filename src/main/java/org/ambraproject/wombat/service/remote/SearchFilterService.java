@@ -48,7 +48,7 @@ public class SearchFilterService {
 
   private final String JOURNAL = JournalFilterType.JOURNAL_FILTER_MAP_KEY;
 
-  private final String JOURNAL_FACET_FIELD = "cross_published_journal_name";
+  private final String JOURNAL_FACET_FIELD = "journal_name";
 
   private final String SUBJECT_AREA = SingletonSearchFilterType.SUBJECT_AREA.getFilterMapKey();
 

@@ -184,7 +184,7 @@
               -->
             <#else>
               <#assign hasCompetingInterest = comment.competingInterestStatement.hasCompetingInterests />
-              <div class="competing_interests <#if hasCompetingInterest>present<#else>absent</#if>">
+              <div id="competing_interests" class="competing_interests <#if hasCompetingInterest>present<#else>absent</#if>">
                 <strong>
                   <#if hasCompetingInterest>
                     Competing interests declared:

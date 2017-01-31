@@ -21,6 +21,6 @@
   -->
 
 <#-- An error message to be shown, in place of the body of a comments page, if the user API fails. -->
-<div>
+<div id="comments_temp_unavailable">
   Comments are temporarily unavailable.
 </div>

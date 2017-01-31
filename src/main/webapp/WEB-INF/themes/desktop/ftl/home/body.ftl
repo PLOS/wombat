@@ -24,8 +24,11 @@
   Subthemes may override this file to fill in the home page's body.
   -->
 
+
+
 <section class="block">
 <h1>Congratulations!</h1>
 
   <h2>You have setup Wombat correctly! </h2>
 </section>
+

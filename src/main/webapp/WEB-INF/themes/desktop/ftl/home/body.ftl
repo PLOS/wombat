@@ -23,3 +23,10 @@
 <#--
   Subthemes may override this file to fill in the home page's body.
   -->
+
+<section>
+
+</section>
+<aside>
+
+</aside>

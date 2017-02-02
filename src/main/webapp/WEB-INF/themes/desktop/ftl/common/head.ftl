@@ -57,13 +57,7 @@
   <@js src="resource/js/vendor/modernizr-v2.7.1.js" />
   <@js src="resource/js/vendor/detectizr.min.js" />
   <@renderJs />
-  <#-- //html5shiv. js and respond.js - enable the use of foundation's dropdowns to work in IE8 -->
-  <#-- //The rem  polyfill rewrites the rems in to pixels. I don't think we can call this using the asset manager. -->
-  <!--[if IE 8]>
-  <script src="<@siteLink path="resource/js/vendor/html5shiv.js"/>"></script>
-  <script src="<@siteLink path="resource/js/vendor/respond.min.js"/>"></script>
-  <script src="<@siteLink path="resource/js/vendor/rem.min.js"/>"></script>
-  <![endif]-->
+
   <link rel="shortcut icon" href="<@siteLink path="resource/img/favicon.ico"/>" type="image/x-icon"/>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 

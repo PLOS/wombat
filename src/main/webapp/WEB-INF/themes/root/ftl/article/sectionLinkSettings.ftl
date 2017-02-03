@@ -22,5 +22,11 @@
 
 <#-- Indicates whether a link to an article subpage should be displayed. -->
 <#function isSectionLinkDisplayed sectionName>
-  <#return !["Metrics", "Related"]?seq_contains(sectionName) />
+  <#if sectionName == "Comments">
+    <@globalConfig key="isCasAvailable" ; isCasAvailable>
+      <#return isCasAvailable />
+    </@globalConfig>
+  <#else>
+    <#return !["Metrics", "Related"]?seq_contains(sectionName) />
+  </#if>
 </#function>

@@ -138,24 +138,8 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public CasConfiguration getCasConfiguration() {
-    return new CasConfiguration() {
-      @Override
-      public String getCasUrl() {
-        return null;
-      }
-
-      @Override
-      public String getLoginUrl() {
-        return null;
-      }
-
-      @Override
-      public String getLogoutUrl() {
-        return null;
-      }
-
-    };
+  public Optional<CasConfiguration> getCasConfiguration() {
+    return Optional.empty();
   }
 
   @Override

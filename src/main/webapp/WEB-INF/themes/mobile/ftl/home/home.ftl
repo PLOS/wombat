@@ -51,38 +51,40 @@
   </form>
 </#if>
 
+<#if selectedSection??>
   <div id="article-results-container">
-  <#if sections[selectedSection]??>
-    <#assign articles = sections[selectedSection] />
-    <section>
-      <ul id="article-results" class="results">
-        <#list articles as article>
-          <li>
-            <a href="article?id=${article.doi}">${article.title}</a>
-          </li>
-        </#list>
-      </ul>
-    </section>
+    <#if sections[selectedSection]??>
+      <#assign articles = sections[selectedSection] />
+      <section>
+        <ul id="article-results" class="results">
+          <#list articles as article>
+            <li>
+              <a href="article?id=${article.doi}">${article.title}</a>
+            </li>
+          </#list>
+        </ul>
+      </section>
 
-    <#if selectedSection == "recent" || selectedSection == "popular">
-      <#assign numPages = (articles?size / resultsPerPage)?ceiling />
-      <#assign currentPage = (RequestParameters.page!1)?number />
-      <#assign path = "" />
-      <#include "../common/paging.ftl" />
-      <@paging numPages currentPage path parameterMap />
+      <#if selectedSection == "recent" || selectedSection == "popular">
+        <#assign numPages = (articles?size / resultsPerPage)?ceiling />
+        <#assign currentPage = (RequestParameters.page!1)?number />
+        <#assign path = "" />
+        <#include "../common/paging.ftl" />
+        <@paging numPages currentPage path parameterMap />
+      </#if>
+    <#else>
+      <section>
+        <ul id="article-results" class="results">
+          <li>
+            <div class="error">
+              Our system is having a bad day. Please check back later.
+            </div>
+          </li>
+        </ul>
+      </section>
     </#if>
-  <#else>
-    <section>
-      <ul id="article-results" class="results">
-        <li>
-          <div class="error">
-            Our system is having a bad day. Please check back later.
-          </div>
-        </li>
-      </ul>
-    </section>
-  </#if>
   </div><#-- end article-results-container -->
+</#if>
 
 </section><#-- end articles-container -->
 

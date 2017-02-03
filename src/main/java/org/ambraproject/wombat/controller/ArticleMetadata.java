@@ -31,6 +31,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -109,6 +110,8 @@ public class ArticleMetadata {
     private ArticleTransformService articleTransformService;
     @Autowired
     private RequestMappingContextDictionary requestMappingContextDictionary;
+    @Autowired
+    private RuntimeConfiguration runtimeConfiguration;
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
       return get(site, id, articleResolutionService.toIngestion(id));
@@ -184,11 +187,16 @@ public class ArticleMetadata {
   }
 
   private RevisionMenu getRevisionMenu() throws IOException {
+    List<Map<String, ?>> revisionList = getRevisionList();
+    return new RevisionMenu(revisionList, isDisplayingLatestRevision(revisionList));
+  }
+
+  private List<Map<String, ?>> getRevisionList() throws IOException {
     List<Map<String, ?>> revisionList = factory.articleApi.requestObject(
         ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addToken("revisions").build(),
         List.class);
     OptionalInt displayedNumber = articlePointer.getRevisionNumber();
-    revisionList = revisionList.stream()
+    return revisionList.stream()
         .map((Map<String, ?> revision) -> {
           boolean isDisplayedRevision = displayedNumber.isPresent() && getRevisionNumber(revision) == displayedNumber.getAsInt();
           return ImmutableMap.<String, Object>builder()
@@ -198,11 +206,11 @@ public class ArticleMetadata {
         })
         .sorted(Comparator.comparing(ArticleMetadata::getRevisionNumber))
         .collect(Collectors.toList());
+  }
 
-    boolean isDisplayingLatestRevision = !revisionList.isEmpty() &&
-        (Boolean) Iterables.getLast(revisionList).get("isDisplayed");
-
-    return new RevisionMenu(revisionList, isDisplayingLatestRevision);
+  private boolean isDisplayingLatestRevision(List<Map<String, ?>> revisionList) {
+    return (!revisionList.isEmpty() && (Boolean) Iterables.getLast(revisionList).get("isDisplayed"))
+        || (factory.runtimeConfiguration.isInQcMode() && !articlePointer.getRevisionNumber().isPresent());
   }
 
   /**

@@ -175,6 +175,12 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return (input.commentsDisabled != null) && input.commentsDisabled;
   }
 
+  @Override
+  public boolean isInQcMode() {
+    return (input.qcMode != null) && input.qcMode;
+  }
+
+
   /**
    * Validate values after deserializing.
    *
@@ -247,6 +253,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private CasConfigurationInput cas;
 
     private Boolean commentsDisabled;
+    private Boolean qcMode;
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -341,6 +348,13 @@ public class YamlConfiguration implements RuntimeConfiguration {
      */
     public void setCommentsDisabled(Boolean commentsDisabled) {
       this.commentsDisabled = commentsDisabled;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    public void setQcMode(Boolean qcMode) {
+      this.qcMode = qcMode;
     }
   }
 

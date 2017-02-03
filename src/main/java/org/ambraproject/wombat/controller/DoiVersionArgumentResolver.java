@@ -22,7 +22,9 @@
 
 package org.ambraproject.wombat.controller;
 
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -34,20 +36,23 @@ import java.util.OptionalInt;
 
 public class DoiVersionArgumentResolver implements HandlerMethodArgumentResolver {
 
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
+
   public static final String ID_PARAMETER = "id";
   public static final String REVISION_PARAMETER = "rev";
   public static final String INGESTION_PARAMETER = "ing";
 
   /**
    * Apply the policy on which users, if any, may view unpublished content.
-   * <p>
-   * TODO: Inject some configuration data, and/or a service for user profiles, into this resolver bean and apply it.
    *
    * @param webRequest the request from the user
    * @return {@code true} if the user is authorized to view unpublished content
    */
   private boolean canViewUnpublishedIngestion(NativeWebRequest webRequest) {
-    return false;
+    // For now, "QC mode" controls this globally per application instance.
+    // In the future, could be more finely configured or depend on user profile data from the web request.
+    return runtimeConfiguration.isInQcMode();
   }
 
   @Override

@@ -23,6 +23,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableSet;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.controller.NotFoundException;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.AssetPointer;
@@ -39,6 +40,8 @@ import java.util.OptionalInt;
 
 public class ArticleResolutionService {
 
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
   @Autowired
   private ArticleApi articleApi;
 
@@ -79,6 +82,11 @@ public class ArticleResolutionService {
     }
   }
 
+  private OptionalInt findLatestIngestion(Map<String, ?> articleOverview) {
+    Map<String, ?> ingestionMap = (Map<String, ?>) articleOverview.get("ingestions");
+    return ingestionMap.keySet().stream().mapToInt(Integer::parseInt).max();
+  }
+
   /**
    * Find the latest revision from a table of revisions. The table generally comes from parsed JSON, which is why the
    * keys are strings.
@@ -97,7 +105,7 @@ public class ArticleResolutionService {
         .max(Comparator.comparing(RevisionPointer::getRevisionNumber));
   }
 
-  private static ArticlePointer resolve(RequestedDoiVersion id, Map<String, ?> articleOverview) {
+  private ArticlePointer resolve(RequestedDoiVersion id, Map<String, ?> articleOverview) {
     final String canonicalDoi = (String) Objects.requireNonNull(articleOverview.get("doi"));
     final Map<String, Number> revisionTable = (Map<String, Number>) Objects.requireNonNull(articleOverview.get("revisions"));
 
@@ -115,14 +123,15 @@ public class ArticleResolutionService {
         throw new NotFoundException(message);
       }
       return new ArticlePointer(id, canonicalDoi, ingestionForRevision.intValue(), OptionalInt.of(revisionValue));
-    } else {
-      RevisionPointer latestRevision = findLatestRevision(revisionTable)
-          .orElseThrow(() -> {
-            String message = String.format("Article %s has no published revisions", id.getDoi());
-            return new NotFoundException(message);
-          });
-      return new ArticlePointer(id, canonicalDoi, latestRevision.getIngestionNumber(), OptionalInt.of(latestRevision.getRevisionNumber()));
     }
+    if (runtimeConfiguration.isInQcMode()) {
+      int latestIngestion = findLatestIngestion(articleOverview)
+          .orElseThrow(() -> new NotFoundException(String.format("Article %s not found", id.getDoi())));
+      return new ArticlePointer(id, canonicalDoi, latestIngestion, OptionalInt.empty());
+    }
+    RevisionPointer latestRevision = findLatestRevision(revisionTable)
+        .orElseThrow(() -> new NotFoundException(String.format("Article %s has no published revisions", id.getDoi())));
+    return new ArticlePointer(id, canonicalDoi, latestRevision.getIngestionNumber(), OptionalInt.of(latestRevision.getRevisionNumber()));
   }
 
   public ArticlePointer toIngestion(RequestedDoiVersion articleId) {

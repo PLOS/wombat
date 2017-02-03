@@ -88,7 +88,7 @@
 
 </section><#-- end articles-container -->
 
-<#include "homeContent.ftl" />
+<#include "body.ftl" />
 
 <@page_footer/>
 

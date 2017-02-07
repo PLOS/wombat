@@ -55,6 +55,7 @@ import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
+import org.ambraproject.wombat.service.remote.SolrUndefinedException;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
@@ -771,7 +772,13 @@ public class ArticleController extends WombatController {
       byte[] xml = ByteStreams.toByteArray(stream);
       List<Reference> references = parseXmlService.parseArticleReferences(
           new ByteArrayInputStream(xml), doi -> {
-            String citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi);
+            String citationJournalKey;
+            try {
+              citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi);
+            } catch (SolrUndefinedException e) {
+              // If we can't look it up in Solr, fail quietly, the same as though no match was found.
+              citationJournalKey = null;
+            }
             String linkText = null;
             if (citationJournalKey != null) {
               linkText = Link.toForeignSite(site, citationJournalKey, siteSet)

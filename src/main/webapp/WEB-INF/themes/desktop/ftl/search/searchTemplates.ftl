@@ -43,7 +43,7 @@
               </span>
         <% if(!_.isEmpty(item.journal_name)) { %>
                         <span id="article-result-<%= index %>-journal-name">
-                        <%= item.journal_name[0] %>
+                        <%= item.journal_name %>
                         </span>
         <% } %>
       </p>

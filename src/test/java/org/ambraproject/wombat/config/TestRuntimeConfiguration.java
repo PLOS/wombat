@@ -22,10 +22,12 @@
 
 package org.ambraproject.wombat.config;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 
 import java.net.URL;
@@ -75,6 +77,11 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public ImmutableSet<String> getEnabledDevFeatures() { return ImmutableSet.of(); }
 
   @Override
+  public ImmutableList<FilesystemThemeSource> getThemeSources() {
+    return null;
+  }
+
+  //  @Override
   public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException {
     Map<String, Theme> mutable = new HashMap<>();
     mutable.put("root", rootTheme);
@@ -88,7 +95,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
     return themeTree;
   }
 
-  @Override
+//  @Override
   public SiteSet getSites(ThemeTree themeTree) {
     List<Map<String, ?>> spec = new ArrayList<>();
     for (Theme theme : themeTree.getThemes()) {

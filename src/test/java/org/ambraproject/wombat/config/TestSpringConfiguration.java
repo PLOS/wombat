@@ -63,12 +63,12 @@ public class TestSpringConfiguration {
     themes.add(theme1);
     TestClasspathTheme theme2 = new TestClasspathTheme("site2", Collections.singletonList(rootTheme));
     themes.add(theme2);
-    return runtimeConfiguration.getThemes(themes, rootTheme);
+    return null;//runtimeConfiguration.getThemes(themes, rootTheme);
   }
 
   @Bean
   public SiteSet siteSet(RuntimeConfiguration runtimeConfiguration, ThemeTree themeTree) {
-    return runtimeConfiguration.getSites(themeTree);
+    return null;//runtimeConfiguration.getSites(themeTree);
   }
 
   @Bean

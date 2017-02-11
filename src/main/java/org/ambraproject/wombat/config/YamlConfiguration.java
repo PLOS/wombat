@@ -24,17 +24,15 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.GsonBuilder;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -99,13 +97,10 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException {
-    return ThemeTree.parse(input.themes, internalThemes, rootTheme);
-  }
-
-  @Override
-  public SiteSet getSites(ThemeTree themeTree) {
-    return SiteSet.create(input.sites, themeTree);
+  public ImmutableList<FilesystemThemeSource> getThemeSources() {
+    return input.themeSources.stream()
+        .map(File::new).map(FilesystemThemeSource::new)
+        .collect(ImmutableList.toImmutableList());
   }
 
   private final CacheConfiguration cacheConfiguration = new CacheConfiguration() {
@@ -229,7 +224,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * All such fields are immutable by convention. They should be set only by the YAML deserializer.
      * The intent of the @Deprecated annotation is to raise a warning in the IDE if a human refers
      * to them in code. (The reflective code in the library won't care at runtime of course.)
-
+     *
      * ---------------- Input fields (and boring boilerplate setters) are below this line ----------------
      */
 
@@ -239,8 +234,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String compiledAssetDir;
     private String rootPagePath;
     private List<String> enableDevFeatures;
-    private List<Map<String, ?>> themes;
-    private List<Map<String, ?>> sites;
+    private List<String> themeSources;
 
     private CacheConfigurationInput cache;
     private HttpConnectionPoolConfigurationInput httpConnectionPool;
@@ -300,16 +294,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setThemes(List<Map<String, ?>> themes) {
-      this.themes = themes;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setSites(List<Map<String, ?>> sites) {
-      this.sites = sites;
+    public void setThemeSources(List<String> themeSources) {
+      this.themeSources = themeSources;
     }
 
     /**

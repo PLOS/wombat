@@ -95,7 +95,7 @@ public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
   public void testParse() throws ThemeTree.ThemeConfigurationException {
     TestClasspathTheme testClasspathTheme = new TestClasspathTheme();
     String classpathThemeKey = testClasspathTheme.getKey();
-    ThemeTree themeTree = ThemeTree.parse(THEME_TREE_CASE, ImmutableList.of(testClasspathTheme), testClasspathTheme);
+    ThemeTree themeTree = null;//ThemeTree.parse(THEME_TREE_CASE, ImmutableList.of(testClasspathTheme), testClasspathTheme);
     assertEquals(themeTree.getThemes().size(), THEME_TREE_CASE.size() + 1);
 
     assertChainIs(themeTree, classpathThemeKey);
@@ -116,7 +116,7 @@ public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
   @Test(expectedExceptions = ThemeTree.ThemeConfigurationException.class)
   public void testParseCycle() throws ThemeTree.ThemeConfigurationException {
     TestClasspathTheme testClasspathTheme = new TestClasspathTheme();
-    ThemeTree.parse(THEME_TREE_CYCLE_CASE, ImmutableList.of(testClasspathTheme), testClasspathTheme);
+//    ThemeTree.parse(THEME_TREE_CYCLE_CASE, ImmutableList.of(testClasspathTheme), testClasspathTheme);
   }
 
   @Test

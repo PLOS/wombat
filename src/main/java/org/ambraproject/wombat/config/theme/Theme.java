@@ -63,7 +63,7 @@ public abstract class Theme {
     Preconditions.checkArgument(!key.isEmpty());
     Preconditions.checkArgument(key.startsWith(".") == (this instanceof InternalTheme));
     this.key = key;
-    this.parents = (parents == null) ? ImmutableList.<Theme>of() : ImmutableList.copyOf(parents);
+    this.parents = ImmutableList.copyOf(parents);
   }
 
   /**

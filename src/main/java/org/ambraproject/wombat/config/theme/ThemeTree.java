@@ -32,6 +32,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSetMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.MoreCollectors;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Sets;
 import org.ambraproject.wombat.config.site.Site;
@@ -60,14 +61,11 @@ import java.util.stream.Collectors;
  */
 public class ThemeTree {
 
-  private final Theme root;
   private final ImmutableBiMap<String, Theme> themes;
 
   @VisibleForTesting
-  public ThemeTree(Theme root, Map<String, Theme> themes) {
-    this.root = Objects.requireNonNull(root);
+  public ThemeTree(Map<String, Theme> themes) {
     this.themes = ImmutableBiMap.copyOf(themes);
-    Preconditions.checkArgument(this.themes.values().contains(this.root));
   }
 
   public Theme getTheme(String key) {
@@ -147,7 +145,7 @@ public class ThemeTree {
       sizeLastPass = created.size();
     }
 
-    return new ThemeTree(rootTheme, created);
+    return new ThemeTree(created);
   }
 
 
@@ -227,7 +225,16 @@ public class ThemeTree {
 
     private ThemeInfoIterator(SiteSet siteSet) {
       siteThemeMap = Multimaps.index(siteSet.getSites(), Site::getTheme);
-      queue.add(root);
+      queue.add(findRoot());
+    }
+
+    /**
+     * @return the unique theme that has no parents (expected to be .Root)
+     */
+    private Theme findRoot() {
+      return themes.values().stream()
+          .filter(t -> t.getParents().isEmpty())
+          .collect(MoreCollectors.onlyElement());
     }
 
     /**

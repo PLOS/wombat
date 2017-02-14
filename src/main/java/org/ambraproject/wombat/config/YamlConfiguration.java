@@ -28,11 +28,13 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.GsonBuilder;
 import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
+import org.ambraproject.wombat.config.theme.ThemeSource;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -96,10 +98,24 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return input.rootPagePath;
   }
 
+  private static ThemeSource parseThemeSource(Map<String, ?> map) {
+    String type = (String) map.get("type");
+    if (type == null) throw new RuntimeException("Theme source must have type");
+    // Type is a hook for other ThemeSource types that may exist in the future.
+    // Currently the only supported value is "filesystem".
+    if (type.equals("filesystem")) {
+      String path = (String) map.get("path");
+      if (path == null) throw new RuntimeException("Filesystem theme source must have path");
+      return new FilesystemThemeSource(new File(path));
+    } else {
+      throw new RuntimeException("Unrecognized theme source type: " + type);
+    }
+  }
+
   @Override
-  public ImmutableList<FilesystemThemeSource> getThemeSources() {
+  public ImmutableList<ThemeSource> getThemeSources() {
     return input.themeSources.stream()
-        .map(File::new).map(FilesystemThemeSource::new)
+        .map(YamlConfiguration::parseThemeSource)
         .collect(ImmutableList.toImmutableList());
   }
 
@@ -234,7 +250,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String compiledAssetDir;
     private String rootPagePath;
     private List<String> enableDevFeatures;
-    private List<String> themeSources;
+    private List<Map<String, ?>> themeSources;
 
     private CacheConfigurationInput cache;
     private HttpConnectionPoolConfigurationInput httpConnectionPool;
@@ -294,7 +310,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setThemeSources(List<String> themeSources) {
+    public void setThemeSources(List<Map<String, ?>> themeSources) {
       this.themeSources = themeSources;
     }
 

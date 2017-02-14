@@ -47,7 +47,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class FilesystemThemeSource {
+public final class FilesystemThemeSource implements ThemeSource<FileTheme> {
 
   private final File root;
 
@@ -64,6 +64,7 @@ public class FilesystemThemeSource {
     }
   }
 
+  @Override
   public List<Map<String, ?>> readSites() {
     File sitesFile = new File(root, "sites.yaml");
     if (!sitesFile.exists()) {
@@ -106,6 +107,7 @@ public class FilesystemThemeSource {
     return new ThemeBuilder<>(key, parentKeys, createConstructorFunction(file));
   }
 
+  @Override
   public Collection<ThemeBuilder<FileTheme>> readThemes() {
     Collection<File> directories;
     try {

@@ -28,6 +28,20 @@ import com.google.common.collect.ImmutableList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * An object that contains all the data necessary to construct a {@link Theme} object.
+ * <p>
+ * The purpose of this intermediate step is to allow a {@code Theme}'s parents to be constructed first. Because a {@code
+ * Theme} has immutable pointers to its parents, they must all be constructed in one pass while building a {@link
+ * ThemeTree}. Code that parses theme specifications can represent it as {@code ThemeBuilder} objects because a {@code
+ * ThemeBuilder} only needs to refer to parents by their key string, not as objects.
+ * <p>
+ * A {@link ConstructorFunction} object encapsulates whatever additional values are necessary to construct a theme of
+ * the particular subtype. For example, for a {@link FileTheme}, the {@code ConstructorFunction} would hold on to a
+ * pointer to a {@link java.io.File} object and pass it to the {@code FileTheme} constructor.
+ *
+ * @param <T> the type of theme constructed by this object
+ */
 public final class ThemeBuilder<T extends Theme> {
 
   @FunctionalInterface

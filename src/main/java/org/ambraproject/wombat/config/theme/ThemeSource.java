@@ -26,10 +26,27 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * An object that provides the input needed to construct any number of {@link org.ambraproject.wombat.config.site.Site}
+ * and {@link Theme} objects.
+ * <p>
+ * Multiple theme sources may be combined to create the total set of sites and themes to be used by this system.
+ * Although each of those total sets must eventually be non-empty, the collections returned by a single {@code
+ * ThemeSource} instance may be empty if they are intended to be combined with another {@code ThemeSource}.
+ *
+ * @param <T> the subtype of {@link Theme} that is provided by this object (may be equal to {@link Theme} if this object
+ *            provides no particular subtype)
+ */
 public interface ThemeSource<T extends Theme> {
 
+  /**
+   * @return a collection of specifications (deserialized JSON input) for sites to be built
+   */
   List<Map<String, ?>> readSites();
 
+  /**
+   * @return a collection of builders for the themes specified by this source
+   */
   Collection<ThemeBuilder<T>> readThemes();
 
 }

@@ -24,6 +24,7 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeSource;
 
 import java.net.URL;
@@ -103,7 +104,7 @@ public interface RuntimeConfiguration {
    */
   ImmutableSet<String> getEnabledDevFeatures();
 
-  ImmutableList<ThemeSource> getThemeSources();
+  ImmutableList<ThemeSource<?>> getThemeSources();
 
   interface CasConfiguration {
     String getCasUrl();

@@ -32,7 +32,9 @@ import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.FileTheme;
 import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
 import org.ambraproject.wombat.config.theme.InternalTheme;
+import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeBuilder;
+import org.ambraproject.wombat.config.theme.ThemeSource;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.AppRootPage;
 import org.ambraproject.wombat.controller.ArticleMetadata;
@@ -126,8 +128,8 @@ public class SpringConfiguration {
     InternalTheme mobile = new InternalTheme(".Mobile", ImmutableList.of(root), servletContext, path + "mobile/");
     Collection<InternalTheme> internalThemes = ImmutableList.of(root, desktop, mobile);
 
-    Collection<FilesystemThemeSource> themeSources = runtimeConfiguration.getThemeSources();
-    Collection<ThemeBuilder<FileTheme>> themeBuilders = themeSources.stream()
+    Collection<ThemeSource<?>> themeSources = runtimeConfiguration.getThemeSources();
+    Collection<ThemeBuilder<?>> themeBuilders = themeSources.stream()
         .flatMap(ts -> ts.readThemes().stream())
         .collect(Collectors.toList());
 
@@ -137,7 +139,7 @@ public class SpringConfiguration {
   @Bean
   public SiteSet siteSet(RuntimeConfiguration runtimeConfiguration,
                          ThemeTree themeTree) {
-    Collection<FilesystemThemeSource> themeSources = runtimeConfiguration.getThemeSources();
+    Collection<ThemeSource<?>> themeSources = runtimeConfiguration.getThemeSources();
     List<Map<String, ?>> siteSpecs = themeSources.stream()
         .flatMap(ts -> ts.readSites().stream())
         .collect(Collectors.toList());

@@ -28,6 +28,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.GsonBuilder;
 import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
+import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeSource;
 
 import java.io.File;
@@ -98,7 +99,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return input.rootPagePath;
   }
 
-  private static ThemeSource parseThemeSource(Map<String, ?> map) {
+  private static ThemeSource<?> parseThemeSource(Map<String, ?> map) {
     String type = (String) map.get("type");
     if (type == null) throw new RuntimeException("Theme source must have type");
     // Type is a hook for other ThemeSource types that may exist in the future.
@@ -113,7 +114,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public ImmutableList<ThemeSource> getThemeSources() {
+  public ImmutableList<ThemeSource<?>> getThemeSources() {
     return input.themeSources.stream()
         .map(YamlConfiguration::parseThemeSource)
         .collect(ImmutableList.toImmutableList());

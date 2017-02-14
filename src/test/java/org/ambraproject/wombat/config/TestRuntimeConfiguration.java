@@ -27,7 +27,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
+import org.ambraproject.wombat.config.theme.ThemeSource;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 
 import java.net.URL;
@@ -77,7 +77,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public ImmutableSet<String> getEnabledDevFeatures() { return ImmutableSet.of(); }
 
   @Override
-  public ImmutableList<FilesystemThemeSource> getThemeSources() {
+  public ImmutableList<ThemeSource<?>> getThemeSources() {
     return null;
   }
 

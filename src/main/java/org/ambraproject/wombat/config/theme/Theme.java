@@ -79,7 +79,7 @@ public abstract class Theme {
     return parents;
   }
 
-  private transient Iterable<Theme> iterableView;
+  private transient ImmutableList<Theme> iterableView;
 
   /**
    * Return the inheritance chain of themes, from leaf to root. The first element is guaranteed to be this object. Each
@@ -87,7 +87,7 @@ public abstract class Theme {
    *
    * @return the chain of themes
    */
-  public final Iterable<Theme> getChain() {
+  public final ImmutableList<Theme> getInheritanceChain() {
     return (iterableView != null) ? iterableView :
         (iterableView = ImmutableList.copyOf(new InheritanceChain()));
   }
@@ -112,7 +112,7 @@ public abstract class Theme {
    */
   public final InputStream getStaticResource(String path) throws IOException {
     Preconditions.checkNotNull(path);
-    for (Theme theme : getChain()) {
+    for (Theme theme : getInheritanceChain()) {
       InputStream stream = theme.fetchStaticResource(path);
       if (stream != null) {
         return stream;
@@ -156,7 +156,7 @@ public abstract class Theme {
    */
   public ResourceAttributes getResourceAttributes(String path) throws IOException {
     Preconditions.checkNotNull(path);
-    for (Theme theme : getChain()) {
+    for (Theme theme : getInheritanceChain()) {
       ResourceAttributes result = theme.fetchResourceAttributes(path);
       if (result != null) {
         return result;
@@ -181,7 +181,7 @@ public abstract class Theme {
       root += "/";
     }
     Set<String> paths = Sets.newTreeSet();
-    for (Theme theme : getChain()) {
+    for (Theme theme : getInheritanceChain()) {
       Collection<String> themePaths = theme.fetchStaticResourcePaths(root);
       if (themePaths != null) {
         paths.addAll(themePaths);
@@ -235,7 +235,7 @@ public abstract class Theme {
   public final Map<String, Object> getConfigMap(String path) {
     String configPath = "config/" + path;
     Map<String, Object> values = Maps.newLinkedHashMap();
-    for (Theme theme : getChain()) {
+    for (Theme theme : getInheritanceChain()) {
       Map<?, ?> valuesFromTheme;
       try {
         valuesFromTheme = readYamlConfigValues(theme, configPath);

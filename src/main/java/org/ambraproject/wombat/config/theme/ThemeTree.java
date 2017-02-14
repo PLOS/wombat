@@ -159,14 +159,16 @@ public class ThemeTree {
     private final String description;
     private final ImmutableList<String> parents;
     private final ImmutableList<String> children;
+    private final ImmutableList<String> inheritance;
     private final ImmutableList<String> sites;
 
     private ThemeInfo(String key, String description,
-                      List<String> parents, List<String> children, List<String> sites) {
+                      List<String> parents, List<String> children, List<String> inheritance, List<String> sites) {
       this.key = Objects.requireNonNull(key);
       this.description = Objects.requireNonNull(description);
       this.parents = ImmutableList.copyOf(parents);
       this.children = ImmutableList.copyOf(children);
+      this.inheritance = ImmutableList.copyOf(inheritance);
       this.sites = ImmutableList.copyOf(sites);
     }
 
@@ -186,6 +188,10 @@ public class ThemeTree {
       return children;
     }
 
+    public ImmutableList<String> getInheritance() {
+      return inheritance;
+    }
+
     public ImmutableList<String> getSites() {
       return sites;
     }
@@ -196,12 +202,14 @@ public class ThemeTree {
       if (o == null || getClass() != o.getClass()) return false;
       ThemeInfo themeInfo = (ThemeInfo) o;
       return key.equals(themeInfo.key) && description.equals(themeInfo.description)
-          && parents.equals(themeInfo.parents) && children.equals(themeInfo.children) && sites.equals(themeInfo.sites);
+          && parents.equals(themeInfo.parents) && children.equals(themeInfo.children)
+          && inheritance.equals(themeInfo.inheritance) && sites.equals(themeInfo.sites);
     }
 
     @Override
     public int hashCode() {
-      return 31 * (31 * (31 * (31 * key.hashCode() + description.hashCode()) + parents.hashCode()) + children.hashCode()) + sites.hashCode();
+      return 31 * (31 * (31 * (31 * (31 * key.hashCode() + description.hashCode())
+          + parents.hashCode()) + children.hashCode()) + inheritance.hashCode()) + sites.hashCode();
     }
   }
 
@@ -257,8 +265,9 @@ public class ThemeTree {
       String description = theme.describeSource();
       List<String> parentKeys = theme.getParents().stream().map(Theme::getKey).collect(ImmutableList.toImmutableList());
       List<String> childKeys = children.stream().map(Theme::getKey).collect(ImmutableList.toImmutableList());
+      List<String> inheritance = theme.getInheritanceChain().stream().map(Theme::getKey).collect(ImmutableList.toImmutableList());
       List<String> siteKeys = siteThemeMap.get(theme).stream().map(Site::getKey).collect(ImmutableList.toImmutableList());
-      return new ThemeInfo(key, description, parentKeys, childKeys, siteKeys);
+      return new ThemeInfo(key, description, parentKeys, childKeys, inheritance, siteKeys);
     }
   }
 

@@ -79,7 +79,7 @@ public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
       theme("node1", "node2"), theme("node2", "node1"));
 
   private static ImmutableList<Theme> getChain(ThemeTree themeTree, String themeKey) {
-    return ImmutableList.copyOf(themeTree.getTheme(themeKey).getChain());
+    return ImmutableList.copyOf(themeTree.getTheme(themeKey).getInheritanceChain());
   }
 
   private static void assertChainIs(ThemeTree themeTree, String themeKey, String... expectedParentKeys) {

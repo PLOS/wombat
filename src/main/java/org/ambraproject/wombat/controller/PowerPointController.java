@@ -23,6 +23,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.MoreCollectors;
 import com.google.common.io.ByteSource;
 import com.google.common.net.HttpHeaders;
 import com.google.common.net.MediaType;
@@ -119,7 +120,7 @@ public class PowerPointController extends WombatController {
           String figureDoi = (String) figure.get("doi");
           return figureDoi.equals(assetPointer.getAssetDoi());
         })
-        .findAny();
+        .collect(MoreCollectors.toOptional());
   }
 
   /**

@@ -24,16 +24,29 @@ package org.ambraproject.wombat.config.theme;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.AbstractIterator;
 import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSetMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multimaps;
+import com.google.common.collect.Sets;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.Deque;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -47,11 +60,14 @@ import java.util.stream.Collectors;
  */
 public class ThemeTree {
 
-  private ImmutableBiMap<String, Theme> themes;
+  private final Theme root;
+  private final ImmutableBiMap<String, Theme> themes;
 
   @VisibleForTesting
-  public ThemeTree(Map<String, Theme> themes) {
+  public ThemeTree(Theme root, Map<String, Theme> themes) {
+    this.root = Objects.requireNonNull(root);
     this.themes = ImmutableBiMap.copyOf(themes);
+    Preconditions.checkArgument(this.themes.values().contains(this.root));
   }
 
   public Theme getTheme(String key) {
@@ -131,7 +147,127 @@ public class ThemeTree {
       sizeLastPass = created.size();
     }
 
-    return new ThemeTree(created);
+    return new ThemeTree(rootTheme, created);
+  }
+
+
+  /**
+   * A human-readable digest of theme information, for logging and debugging purposes only.
+   */
+  public static final class ThemeInfo {
+    private final String key;
+    private final String description;
+    private final ImmutableList<String> parents;
+    private final ImmutableList<String> children;
+    private final ImmutableList<String> sites;
+
+    private ThemeInfo(String key, String description,
+                      List<String> parents, List<String> children, List<String> sites) {
+      this.key = Objects.requireNonNull(key);
+      this.description = Objects.requireNonNull(description);
+      this.parents = ImmutableList.copyOf(parents);
+      this.children = ImmutableList.copyOf(children);
+      this.sites = ImmutableList.copyOf(sites);
+    }
+
+    public String getKey() {
+      return key;
+    }
+
+    public String getDescription() {
+      return description;
+    }
+
+    public ImmutableList<String> getParents() {
+      return parents;
+    }
+
+    public ImmutableList<String> getChildren() {
+      return children;
+    }
+
+    public ImmutableList<String> getSites() {
+      return sites;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ThemeInfo themeInfo = (ThemeInfo) o;
+      return key.equals(themeInfo.key) && description.equals(themeInfo.description)
+          && parents.equals(themeInfo.parents) && children.equals(themeInfo.children) && sites.equals(themeInfo.sites);
+    }
+
+    @Override
+    public int hashCode() {
+      return 31 * (31 * (31 * (31 * key.hashCode() + description.hashCode()) + parents.hashCode()) + children.hashCode()) + sites.hashCode();
+    }
+  }
+
+  /**
+   * Iterate over all themes in the tree, in breadth-first order starting from the root.
+   * <p>
+   * The ordering is purely for human consumption from the {@link #describe} method. Because each theme only makes an
+   * ordered declaration of its parents, not its children, the encounter order of each node's children is arbitrary.
+   */
+  private class ThemeInfoIterator extends AbstractIterator<ThemeInfo> {
+    private final Deque<Theme> queue = new ArrayDeque<>();
+    private final Set<Theme> yielded = Sets.newHashSetWithExpectedSize(themes.size());
+    private final ImmutableMultimap<Theme, Theme> childMap = buildChildMap();
+    private final ImmutableMultimap<Theme, Site> siteThemeMap;
+
+    private ThemeInfoIterator(SiteSet siteSet) {
+      siteThemeMap = Multimaps.index(siteSet.getSites(), Site::getTheme);
+      queue.add(root);
+    }
+
+    /**
+     * Build a map from each theme to its children.
+     * <p>
+     * (Contrast to {@link Theme.InheritanceChain#buildChildMap(Theme)}, which explores only part of the total theme
+     * graph by starting at one node and exploring <em>up</em>. This method starts iterates over all themes.)
+     */
+    private ImmutableSetMultimap<Theme, Theme> buildChildMap() {
+      ImmutableSetMultimap.Builder<Theme, Theme> childMap = ImmutableSetMultimap.builder();
+      for (Theme child : themes.values()) {
+        for (Theme parent : child.getParents()) {
+          childMap.put(parent, child);
+        }
+      }
+      return childMap.build();
+    }
+
+    @Override
+    protected ThemeInfo computeNext() {
+      Theme theme;
+      do {
+        if (queue.isEmpty()) return endOfData();
+        theme = queue.remove();
+      } while (yielded.contains(theme));
+      yielded.add(theme);
+
+      List<Theme> children = new ArrayList<>(childMap.get(theme));
+      children.sort(Comparator
+          .<Theme, Boolean>comparing(t -> !(t instanceof InternalTheme)) // prioritize internal themes first
+          .thenComparing(Theme::getKey)); // then in alphabetical order
+      queue.addAll(children);
+
+      String key = theme.getKey();
+      String description = theme.describeSource();
+      List<String> parentKeys = theme.getParents().stream().map(Theme::getKey).collect(ImmutableList.toImmutableList());
+      List<String> childKeys = children.stream().map(Theme::getKey).collect(ImmutableList.toImmutableList());
+      List<String> siteKeys = siteThemeMap.get(theme).stream().map(Site::getKey).collect(ImmutableList.toImmutableList());
+      return new ThemeInfo(key, description, parentKeys, childKeys, siteKeys);
+    }
+  }
+
+  /**
+   * Dump a human-friendly description of all themes, starting at the root, for logging and debugging purposes only.
+   */
+  public Iterable<ThemeInfo> describe(SiteSet siteSet) {
+    Objects.requireNonNull(siteSet);
+    return () -> new ThemeInfoIterator(siteSet);
   }
 
 }

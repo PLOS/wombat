@@ -91,7 +91,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
       }
     }
     themeMap = ImmutableMap.copyOf(mutable);
-    themeTree = new ThemeTree(themeMap);
+    themeTree = new ThemeTree(rootTheme, themeMap);
     return themeTree;
   }
 

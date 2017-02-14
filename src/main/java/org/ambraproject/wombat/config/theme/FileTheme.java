@@ -111,6 +111,11 @@ public class FileTheme extends Theme {
   }
 
   @Override
+  public String describeSource() {
+    return "Directory: " + root;
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;

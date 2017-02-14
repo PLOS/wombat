@@ -75,6 +75,9 @@ public abstract class Theme {
     return key;
   }
 
+  ImmutableList<Theme> getParents() {
+    return parents;
+  }
 
   private transient Iterable<Theme> iterableView;
 
@@ -304,6 +307,14 @@ public abstract class Theme {
     throw new UnmatchedSiteException("Journal key not matched to site: " + journalKey);
   }
 
+  /**
+   * Provide a human-readable description of the data source behind the theme. The subclass determines the nature of the
+   * description, according to what kind of data source it uses.
+   * <p>
+   * For logging and debugging purposes only. Do not parse the return value for programmatic purposes.
+   */
+  public abstract String describeSource();
+
 
   /**
    * Iterate over this theme and its parents in topological sort order. This means, if two paths lead to a common
@@ -321,9 +332,13 @@ public abstract class Theme {
       stack.add(Theme.this);
     }
 
-    /*
+    /**
      * Set up links from parents to children, since Theme objects don't natively keep track of their children. Note that
      * this causes initialization of the iterator to take O(n) time, though the full trip is still only O(n).
+     * <p>
+     * (Contrast to {@link ThemeTree.ThemeInfoIterator#buildChildMap}, which has access to the entire graph of themes
+     * and iterates over all of them. Here, we want only the root's direct ancestors. The inheritance algorithm won't
+     * work if the return value contains any others.)
      */
     private SetMultimap<Theme, Theme> buildChildMap(Theme root) {
       SetMultimap<Theme, Theme> childMap = HashMultimap.create();

@@ -121,6 +121,11 @@ public class InternalTheme extends Theme {
   }
 
   @Override
+  public String describeSource() {
+    return "Built-in: " + resourceRoot;
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;

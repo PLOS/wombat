@@ -84,7 +84,10 @@ public final class FilesystemThemeSource implements ThemeSource<FileTheme> {
     return (List<Map<String, ?>>) map.get("sites");
   }
 
-  private Collection<File> findAllThemeDirectories() throws IOException {
+  /**
+   * @return a collection of all {@code theme.yaml} files found in this object's directory
+   */
+  private Collection<File> findAllThemeFiles() throws IOException {
     Collection<File> hits = Collections.synchronizedCollection(new ArrayList<>());
     Files.walkFileTree(root.toPath(), new SimpleFileVisitor<Path>() {
       @Override
@@ -99,31 +102,35 @@ public final class FilesystemThemeSource implements ThemeSource<FileTheme> {
   }
 
   private static ThemeBuilder.ConstructorFunction<FileTheme> createConstructorFunction(File themeFile) {
-    File themeRoot = Objects.requireNonNull(themeFile.getParentFile());
-    return (key, parentObjects) -> new FileTheme(key, parentObjects, themeRoot);
+    File themeDirectory = Objects.requireNonNull(themeFile.getParentFile());
+    return (key, parentObjects) -> new FileTheme(key, parentObjects, themeDirectory);
   }
 
-  private static ThemeBuilder<FileTheme> parseThemeDescription(File file) {
-    Map<?, ?> map = readConfigYamlMap(file);
+  /**
+   * @param themeFile one of the {@code theme.yaml} files found in this object's directory
+   * @return a builder for the theme specified by that {@code theme.yaml} file and its subdirectory
+   */
+  private static ThemeBuilder<FileTheme> parseThemeDescription(File themeFile) {
+    Map<?, ?> map = readConfigYamlMap(themeFile);
 
     String key = (String) map.get("key");
 
     List<String> parentKeys = Collections.checkedList(new ArrayList<>(), String.class);
     parentKeys.addAll((List<String>) map.get("parents"));
 
-    return new ThemeBuilder<>(key, parentKeys, createConstructorFunction(file));
+    return new ThemeBuilder<>(key, parentKeys, createConstructorFunction(themeFile));
   }
 
   @Override
   public Collection<ThemeBuilder<FileTheme>> readThemes() {
-    Collection<File> directories;
+    Collection<File> themeFiles;
     try {
-      directories = findAllThemeDirectories();
+      themeFiles = findAllThemeFiles();
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
 
-    return directories.stream()
+    return themeFiles.stream()
         .map(FilesystemThemeSource::parseThemeDescription)
         .sorted(Comparator.comparing(ThemeBuilder::getKey))
         .collect(Collectors.toList());

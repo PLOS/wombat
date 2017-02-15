@@ -23,6 +23,9 @@
 package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -39,8 +42,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.Reader;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Defines spring beans needed by tests.
@@ -54,21 +58,28 @@ public class TestSpringConfiguration {
   }
 
   @Bean
-  public ThemeTree themeTree(RuntimeConfiguration runtimeConfiguration)
+  public ThemeTree themeTree()
       throws ThemeTree.ThemeConfigurationException {
-    Set<Theme> themes = new HashSet<>();
     TestClasspathTheme rootTheme = new TestClasspathTheme("root", ImmutableList.of());
-    themes.add(rootTheme);
     TestClasspathTheme theme1 = new TestClasspathTheme("site1", ImmutableList.of(rootTheme));
-    themes.add(theme1);
     TestClasspathTheme theme2 = new TestClasspathTheme("site2", ImmutableList.of(rootTheme));
-    themes.add(theme2);
-    return null;//runtimeConfiguration.getThemes(themes, rootTheme);
+    Set<Theme> themes = ImmutableSet.of(rootTheme, theme1, theme2);
+    return new ThemeTree(Maps.uniqueIndex(themes, Theme::getKey));
   }
 
   @Bean
-  public SiteSet siteSet(RuntimeConfiguration runtimeConfiguration, ThemeTree themeTree) {
-    return null;//runtimeConfiguration.getSites(themeTree);
+  public SiteSet siteSet(ThemeTree themeTree) {
+    List<ImmutableMap<String, Object>> siteSpecifications = themeTree.getThemes().stream()
+        .filter((Theme theme) -> !theme.getKey().equals("root"))
+        .map((Theme theme) -> {
+          String key = theme.getKey();
+          return ImmutableMap.<String, Object>builder()
+              .put("key", key) // reuse theme key as site key
+              .put("theme", key) // specify that the site to be built will use this theme
+              .build();
+        })
+        .collect(Collectors.toList());
+    return SiteSet.create(siteSpecifications, themeTree);
   }
 
   @Bean

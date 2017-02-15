@@ -23,7 +23,6 @@
 package org.ambraproject.wombat.config.theme;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -48,19 +47,13 @@ public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
   /**
    * Create a dummy theme.
    */
-  private static ImmutableMap<String, Object> theme(String key, String... parentKeys) {
-    ImmutableMap.Builder<String, Object> builder = ImmutableMap.builder();
-    builder.put("path", ".");
-    builder.put("key", key);
-    if (parentKeys != null) {
-      builder.put("parent", ImmutableList.copyOf(parentKeys));
-    }
-    return builder.build();
+  private static ThemeBuilder<TestClasspathTheme> theme(String key, String... parentKeys) {
+    return new ThemeBuilder<>(key, ImmutableList.copyOf(parentKeys), TestClasspathTheme::new);
   }
 
-  private static final ImmutableList<ImmutableMap<String, Object>> THEME_TREE_CASE = ImmutableList.of(
-      theme("root1", null),
-      theme("root2", null),
+  private static final ImmutableList<ThemeBuilder<?>> THEME_TREE_CASE = ImmutableList.of(
+      theme("root1"),
+      theme("root2"),
       theme("child1-1", "root1"),
       theme("child1-2", "root1"),
       theme("child1-2-1", "child1-2"),
@@ -68,24 +61,21 @@ public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
 
       // Should be able to declare children before their parents
       theme("child3", "root3"),
-      theme("root3", null),
+      theme("root3"),
 
       theme("multichild1-1", "child1-1", "child1-2"),
       theme("multichild1-2", "root1", "child1-1", "child1-2"), // redundant parent should change nothing
       theme("multichild2", "child1-1", "child1-2", "child2-1")
   );
 
-  private static final ImmutableList<ImmutableMap<String, Object>> THEME_TREE_CYCLE_CASE = ImmutableList.of(
+  private static final ImmutableList<ThemeBuilder<?>> THEME_TREE_CYCLE_CASE = ImmutableList.of(
       theme("node1", "node2"), theme("node2", "node1"));
 
-  private static ImmutableList<Theme> getChain(ThemeTree themeTree, String themeKey) {
-    return ImmutableList.copyOf(themeTree.getTheme(themeKey).getInheritanceChain());
-  }
-
   private static void assertChainIs(ThemeTree themeTree, String themeKey, String... expectedParentKeys) {
-    ImmutableList<Theme> chain = getChain(themeTree, themeKey);
+    Theme themeUnderTest = themeTree.getTheme(themeKey);
+    ImmutableList<Theme> chain = themeUnderTest.getInheritanceChain();
     assertEquals(chain.size(), 1 + expectedParentKeys.length);
-    assertEquals(chain.get(0), themeTree.getTheme(themeKey));
+    assertEquals(chain.get(0), themeUnderTest);
     for (int i = 0; i < expectedParentKeys.length; i++) {
       assertEquals(chain.get(i + 1), themeTree.getTheme(expectedParentKeys[i]));
     }
@@ -95,7 +85,7 @@ public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
   public void testParse() throws ThemeTree.ThemeConfigurationException {
     TestClasspathTheme testClasspathTheme = new TestClasspathTheme();
     String classpathThemeKey = testClasspathTheme.getKey();
-    ThemeTree themeTree = null;//ThemeTree.parse(THEME_TREE_CASE, ImmutableList.of(testClasspathTheme), testClasspathTheme);
+    ThemeTree themeTree = ThemeTree.parse(testClasspathTheme, ImmutableList.of(testClasspathTheme), THEME_TREE_CASE);
     assertEquals(themeTree.getThemes().size(), THEME_TREE_CASE.size() + 1);
 
     assertChainIs(themeTree, classpathThemeKey);
@@ -116,7 +106,7 @@ public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
   @Test(expectedExceptions = ThemeTree.ThemeConfigurationException.class)
   public void testParseCycle() throws ThemeTree.ThemeConfigurationException {
     TestClasspathTheme testClasspathTheme = new TestClasspathTheme();
-//    ThemeTree.parse(THEME_TREE_CYCLE_CASE, ImmutableList.of(testClasspathTheme), testClasspathTheme);
+    ThemeTree.parse(testClasspathTheme, ImmutableList.of(testClasspathTheme), THEME_TREE_CYCLE_CASE);
   }
 
   @Test

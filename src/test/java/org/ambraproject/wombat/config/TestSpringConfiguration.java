@@ -22,6 +22,7 @@
 
 package org.ambraproject.wombat.config;
 
+import com.google.common.collect.ImmutableList;
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -30,15 +31,14 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.Reader;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -57,11 +57,11 @@ public class TestSpringConfiguration {
   public ThemeTree themeTree(RuntimeConfiguration runtimeConfiguration)
       throws ThemeTree.ThemeConfigurationException {
     Set<Theme> themes = new HashSet<>();
-    TestClasspathTheme rootTheme = new TestClasspathTheme("root", null);
+    TestClasspathTheme rootTheme = new TestClasspathTheme("root", ImmutableList.of());
     themes.add(rootTheme);
-    TestClasspathTheme theme1 = new TestClasspathTheme("site1", Collections.singletonList(rootTheme));
+    TestClasspathTheme theme1 = new TestClasspathTheme("site1", ImmutableList.of(rootTheme));
     themes.add(theme1);
-    TestClasspathTheme theme2 = new TestClasspathTheme("site2", Collections.singletonList(rootTheme));
+    TestClasspathTheme theme2 = new TestClasspathTheme("site2", ImmutableList.of(rootTheme));
     themes.add(theme2);
     return null;//runtimeConfiguration.getThemes(themes, rootTheme);
   }

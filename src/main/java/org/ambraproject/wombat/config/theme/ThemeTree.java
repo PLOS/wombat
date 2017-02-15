@@ -127,12 +127,8 @@ public class ThemeTree {
         }
 
         if (parentThemes != null) {
-          if (parentThemes.isEmpty()) {
-            parentThemes = ImmutableList.of(rootTheme);
-          }
-
           // All parents were found
-          Theme immutableNode = node.build(parentThemes);
+          Theme immutableNode = node.build(rootTheme, parentThemes);
           created.put(immutableNode.getKey(), immutableNode);
           iterator.remove(); // Remove this node from the to-be-created pool
         } // Else, leave this node in the pool and look for more matches

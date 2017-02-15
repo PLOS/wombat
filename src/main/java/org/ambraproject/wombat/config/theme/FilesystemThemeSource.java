@@ -114,9 +114,15 @@ public final class FilesystemThemeSource implements ThemeSource<FileTheme> {
     Map<?, ?> map = readConfigYamlMap(themeFile);
 
     String key = (String) map.get("key");
+    if (key == null) {
+      throw new RuntimeException("Each theme.yaml file must provide a key");
+    }
 
+    List<String> inputParentKeys = (List<String>) map.get("parents");
     List<String> parentKeys = Collections.checkedList(new ArrayList<>(), String.class);
-    parentKeys.addAll((List<String>) map.get("parents"));
+    if (inputParentKeys != null) {
+      parentKeys.addAll(inputParentKeys);
+    }
 
     return new ThemeBuilder<>(key, parentKeys, createConstructorFunction(themeFile));
   }

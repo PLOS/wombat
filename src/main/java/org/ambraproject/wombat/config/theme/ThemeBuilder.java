@@ -67,14 +67,27 @@ public final class ThemeBuilder<T extends Theme> {
     return parentKeys;
   }
 
-  public T build(List<Theme> parentObjects) {
-    parentObjects = ImmutableList.copyOf(parentObjects);
+  /**
+   * Construct a theme from this builder.
+   *
+   * @param rootTheme     the root theme to use as a default parent, in case this builder declares no parent keys
+   * @param parentObjects a list of the constructed theme objects that correspond to this builder's parent keys
+   * @return the constructed theme
+   * @throws IllegalArgumentException if {@code parentObjects} is inconsistent with {@code this.getParentKeys()}
+   */
+  public T build(Theme rootTheme, List<Theme> parentObjects) {
+    Objects.requireNonNull(rootTheme);
+    parentObjects = ImmutableList.copyOf(parentObjects); // defensive copy
     int length = parentObjects.size();
     Preconditions.checkArgument(length == parentKeys.size());
-    for (int i = 0; i < length; i++) {
-      if (!parentObjects.get(i).getKey().equals(parentKeys.get(i))) {
-        throw new IllegalArgumentException(String.format("Mismatched keys at index %d: %s; %s",
-            i, parentObjects.get(i).getKey(), parentKeys.get(i)));
+    if (length == 0) {
+      parentObjects = ImmutableList.of(rootTheme);
+    } else {
+      for (int i = 0; i < length; i++) {
+        if (!parentObjects.get(i).getKey().equals(parentKeys.get(i))) {
+          throw new IllegalArgumentException(String.format("Mismatched keys at index %d: %s; %s",
+              i, parentObjects.get(i).getKey(), parentKeys.get(i)));
+        }
       }
     }
 

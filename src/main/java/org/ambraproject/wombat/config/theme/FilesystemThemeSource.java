@@ -50,9 +50,9 @@ import java.util.stream.Collectors;
 /**
  * A theme source consisting of a directory on the server's local file system.
  * <p>
- * A file named {@code sites.yaml}, at the directory's root level, defines the sites. Any file {@code theme.yaml} that
- * appears in a subdirectory defines that subdirectory as a theme; the content of the YAML file indicates the theme's
- * key and its parents.
+ * A file named {@code sites.yaml}, at the directory's root level, defines the sites. Any file named {@code theme.yaml}
+ * that appears in a subdirectory defines that subdirectory as a theme; the content of the YAML file indicates the
+ * theme's key and its parents.
  */
 public final class FilesystemThemeSource implements ThemeSource<FileTheme> {
 

@@ -29,10 +29,7 @@ import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteTemplateLoader;
-import org.ambraproject.wombat.config.theme.FileTheme;
-import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
 import org.ambraproject.wombat.config.theme.InternalTheme;
-import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeBuilder;
 import org.ambraproject.wombat.config.theme.ThemeSource;
 import org.ambraproject.wombat.config.theme.ThemeTree;
@@ -133,7 +130,7 @@ public class SpringConfiguration {
         .flatMap(ts -> ts.readThemes().stream())
         .collect(Collectors.toList());
 
-    return ThemeTree.parse(root, internalThemes, themeBuilders);
+    return ThemeTree.create(root, internalThemes, themeBuilders);
   }
 
   @Bean

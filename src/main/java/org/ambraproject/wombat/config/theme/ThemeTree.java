@@ -92,9 +92,9 @@ public class ThemeTree {
   /**
    * Factory method for the tree.
    */
-  public static ThemeTree parse(Theme rootTheme,
-                                Collection<? extends Theme> internalThemes,
-                                Collection<? extends ThemeBuilder<?>> externalThemes)
+  public static ThemeTree create(Theme rootTheme,
+                                 Collection<? extends Theme> internalThemes,
+                                 Collection<? extends ThemeBuilder<?>> externalThemes)
       throws ThemeConfigurationException {
     Preconditions.checkArgument(internalThemes.contains(rootTheme));
 

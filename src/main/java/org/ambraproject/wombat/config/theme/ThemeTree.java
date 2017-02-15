@@ -264,7 +264,7 @@ public class ThemeTree {
 
       List<Theme> children = new ArrayList<>(childMap.get(theme));
       children.sort(Comparator
-          .<Theme, Boolean>comparing(t -> !(t instanceof InternalTheme)) // prioritize internal themes first
+          .comparing((Theme t) -> !(t instanceof InternalTheme)) // prioritize internal themes first
           .thenComparing(Theme::getKey)); // then in alphabetical order
       queue.addAll(children);
 

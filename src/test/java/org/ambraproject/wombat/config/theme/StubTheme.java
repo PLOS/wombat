@@ -45,6 +45,11 @@ public class StubTheme extends Theme {
   }
 
   @Override
+  public String describeSource() {
+    return "StubTheme for " + journalKey;
+  }
+
+  @Override
   public TemplateLoader getTemplateLoader() throws IOException {
     return null;
   }

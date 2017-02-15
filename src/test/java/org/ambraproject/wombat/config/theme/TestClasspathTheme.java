@@ -84,4 +84,9 @@ public class TestClasspathTheme extends Theme {
   protected ResourceAttributes fetchResourceAttributes(String path) throws IOException {
     throw new IllegalStateException("Not yet implemented for testing");
   }
+
+  @Override
+  public String describeSource() {
+    return getClass().getName();
+  }
 }

@@ -208,7 +208,8 @@ public class ThemeTree {
   }
 
   /**
-   * Iterate over all themes in the tree, in breadth-first order starting from the root.
+   * Iterate over all themes in the graph. Starting from the root, go in breadth-first order, but force each node to
+   * appear only after all its parents.
    * <p>
    * The ordering is purely for human consumption from the {@link #describe} method. Because each theme only makes an
    * ordered declaration of its parents, not its children, the encounter order of each node's children is arbitrary.
@@ -249,14 +250,24 @@ public class ThemeTree {
       return childMap.build();
     }
 
+    private Theme getNextTheme() {
+      for (Iterator<Theme> iterator = queue.iterator(); iterator.hasNext(); ) {
+        Theme theme = iterator.next();
+        if (yielded.containsAll(theme.getParents())) {
+          iterator.remove();
+          if (yielded.add(theme)) {
+            return theme;
+          } // else, we already yielded it (because one node can be put into the queue more than once by different parents)
+        } // else, it is not ready yet because we haven't yet encountered all its parents (leave in the queue for later)
+      }
+      if (!queue.isEmpty()) throw new AssertionError();
+      return null;
+    }
+
     @Override
     protected ThemeInfo computeNext() {
-      Theme theme;
-      do {
-        if (queue.isEmpty()) return endOfData();
-        theme = queue.remove();
-      } while (yielded.contains(theme));
-      yielded.add(theme);
+      Theme theme = getNextTheme();
+      if (theme == null) return endOfData();
 
       List<Theme> children = new ArrayList<>(childMap.get(theme));
       children.sort(Comparator

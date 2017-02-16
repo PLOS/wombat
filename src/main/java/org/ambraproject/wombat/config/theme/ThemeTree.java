@@ -38,15 +38,15 @@ import com.google.common.collect.Sets;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.Deque;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Queue;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.function.Function;
@@ -215,7 +215,7 @@ public class ThemeTree {
    * ordered declaration of its parents, not its children, the encounter order of each node's children is arbitrary.
    */
   private class ThemeInfoIterator extends AbstractIterator<ThemeInfo> {
-    private final Deque<Theme> queue = new ArrayDeque<>();
+    private final Queue<Theme> queue = new LinkedList<>();
     private final Set<Theme> yielded = Sets.newHashSetWithExpectedSize(themes.size());
     private final ImmutableMultimap<Theme, Theme> childMap = buildChildMap();
     private final ImmutableMultimap<Theme, Site> siteThemeMap;

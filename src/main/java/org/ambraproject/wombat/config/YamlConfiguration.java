@@ -25,15 +25,17 @@ package org.ambraproject.wombat.config;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
 import com.google.gson.GsonBuilder;
 import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
-import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeSource;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -99,18 +101,38 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return input.rootPagePath;
   }
 
-  private static ThemeSource<?> parseThemeSource(Map<String, ?> map) {
-    String type = (String) map.get("type");
-    if (type == null) throw new RuntimeException("Theme source must have type");
-    // Type is a hook for other ThemeSource types that may exist in the future.
-    // Currently the only supported value is "filesystem".
-    if (type.equals("filesystem")) {
-      String path = (String) map.get("path");
-      if (path == null) throw new RuntimeException("Filesystem theme source must have path");
-      return new FilesystemThemeSource(new File(path));
-    } else {
-      throw new RuntimeException("Unrecognized theme source type: " + type);
+  /**
+   * Future-proofing against the need for other ThemeSource types that may exist in the future (mainly, one that reads
+   * from a remote source, probably by URL). Currently, the only supported type reads from the local filesystem.
+   */
+  private static enum ThemeSourceType {
+    FILESYSTEM("filesystem") {
+      @Override
+      protected FilesystemThemeSource build(Map<String, ?> config) {
+        String path = (String) config.get("path");
+        if (path == null) throw new RuntimeException("Filesystem theme source must have path");
+        return new FilesystemThemeSource(new File(path));
+      }
+    };
+
+    private final String type;
+
+    private ThemeSourceType(String type) {
+      this.type = type;
     }
+
+    private static final ImmutableMap<String, ThemeSourceType> BY_TYPE = Maps.uniqueIndex(
+        EnumSet.allOf(ThemeSourceType.class), tst -> tst.type);
+
+    protected abstract ThemeSource<?> build(Map<String, ?> config);
+  }
+
+  private static ThemeSource<?> parseThemeSource(Map<String, ?> map) {
+    String typeStr = (String) map.get("type");
+    if (typeStr == null) throw new RuntimeException("Theme source must have type");
+    ThemeSourceType sourceType = ThemeSourceType.BY_TYPE.get(typeStr);
+    if (sourceType == null) throw new RuntimeException("Unrecognized theme source type: " + typeStr);
+    return sourceType.build(map);
   }
 
   @Override

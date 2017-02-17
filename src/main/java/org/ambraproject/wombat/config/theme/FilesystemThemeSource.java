@@ -56,11 +56,14 @@ import java.util.stream.Collectors;
  */
 public final class FilesystemThemeSource implements ThemeSource<FileTheme> {
 
-  private final File root;
+  /**
+   * The theme source directory, which has a {@code sites.yaml} file and whose subdirectories may be themes.
+   */
+  private final File directory;
 
-  public FilesystemThemeSource(File root) {
-    Preconditions.checkArgument(root.isDirectory());
-    this.root = root;
+  public FilesystemThemeSource(File directory) {
+    Preconditions.checkArgument(directory.isDirectory());
+    this.directory = directory;
   }
 
   private static Map<?, ?> readConfigYamlMap(File file) {
@@ -73,7 +76,7 @@ public final class FilesystemThemeSource implements ThemeSource<FileTheme> {
 
   @Override
   public List<Map<String, ?>> readSites() {
-    File sitesFile = new File(root, "sites.yaml");
+    File sitesFile = new File(directory, "sites.yaml");
     if (!sitesFile.exists()) {
       // To support multiple theme sources, of which only one has a sites.yaml file, return an empty list.
       // To check whether all sources are missing sites.yaml, we need to do it higher up.
@@ -89,7 +92,7 @@ public final class FilesystemThemeSource implements ThemeSource<FileTheme> {
    */
   private Collection<File> findAllThemeFiles() throws IOException {
     Collection<File> hits = Collections.synchronizedCollection(new ArrayList<>());
-    Files.walkFileTree(root.toPath(), new SimpleFileVisitor<Path>() {
+    Files.walkFileTree(directory.toPath(), new SimpleFileVisitor<Path>() {
       @Override
       public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
         if (file.getFileName().toString().equalsIgnoreCase("theme.yaml")) {
@@ -145,16 +148,16 @@ public final class FilesystemThemeSource implements ThemeSource<FileTheme> {
 
   @Override
   public String toString() {
-    return "FilesystemThemeSource{" + "root=" + root + '}';
+    return "FilesystemThemeSource{" + "directory=" + directory + '}';
   }
 
   @Override
   public boolean equals(Object o) {
-    return this == o || o != null && getClass() == o.getClass() && root.equals(((FilesystemThemeSource) o).root);
+    return this == o || o != null && getClass() == o.getClass() && directory.equals(((FilesystemThemeSource) o).directory);
   }
 
   @Override
   public int hashCode() {
-    return root.hashCode();
+    return directory.hashCode();
   }
 }

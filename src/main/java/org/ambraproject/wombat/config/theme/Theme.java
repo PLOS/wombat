@@ -336,7 +336,7 @@ public abstract class Theme {
      * Set up links from parents to children, since Theme objects don't natively keep track of their children. Note that
      * this causes initialization of the iterator to take O(n) time, though the full trip is still only O(n).
      * <p>
-     * (Contrast to {@link ThemeTree.ThemeInfoIterator#buildChildMap}, which has access to the entire graph of themes
+     * (Contrast to {@link ThemeGraph.ThemeInfoIterator#buildChildMap}, which has access to the entire graph of themes
      * and iterates over all of them. Here, we want only the root's direct ancestors. The inheritance algorithm won't
      * work if the return value contains any others.)
      */

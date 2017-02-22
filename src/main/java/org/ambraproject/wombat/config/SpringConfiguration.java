@@ -32,7 +32,7 @@ import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeBuilder;
 import org.ambraproject.wombat.config.theme.ThemeSource;
-import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.config.theme.ThemeGraph;
 import org.ambraproject.wombat.controller.AppRootPage;
 import org.ambraproject.wombat.controller.ArticleMetadata;
 import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
@@ -117,8 +117,8 @@ import java.util.stream.Collectors;
 public class SpringConfiguration {
 
   @Bean
-  public ThemeTree themeTree(ServletContext servletContext, RuntimeConfiguration runtimeConfiguration)
-      throws ThemeTree.ThemeConfigurationException, IOException {
+  public ThemeGraph themeGraph(ServletContext servletContext, RuntimeConfiguration runtimeConfiguration)
+      throws ThemeGraph.ThemeConfigurationException, IOException {
     String path = "/WEB-INF/themes/";
     InternalTheme root = new InternalTheme(".Root", ImmutableList.of(), servletContext, path + "root/");
     InternalTheme desktop = new InternalTheme(".Desktop", ImmutableList.of(root), servletContext, path + "desktop/");
@@ -130,12 +130,12 @@ public class SpringConfiguration {
         .flatMap(ts -> ts.readThemes().stream())
         .collect(Collectors.toList());
 
-    return ThemeTree.create(root, internalThemes, themeBuilders);
+    return ThemeGraph.create(root, internalThemes, themeBuilders);
   }
 
   @Bean
   public SiteSet siteSet(RuntimeConfiguration runtimeConfiguration,
-                         ThemeTree themeTree) {
+                         ThemeGraph themeGraph) {
     Collection<ThemeSource<?>> themeSources = runtimeConfiguration.getThemeSources();
     List<Map<String, ?>> siteSpecs = themeSources.stream()
         .flatMap(ts -> ts.readSites().stream())
@@ -144,7 +144,7 @@ public class SpringConfiguration {
       throw new RuntimeException("No sites found in sites.yaml files at: " +
           themeSources.stream().map(Object::toString).collect(Collectors.joining(", ")));
     }
-    return SiteSet.create(siteSpecs, themeTree);
+    return SiteSet.create(siteSpecs, themeGraph);
   }
 
   @Bean

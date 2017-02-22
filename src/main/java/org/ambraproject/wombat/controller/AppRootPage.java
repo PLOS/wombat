@@ -33,7 +33,7 @@ import org.ambraproject.wombat.config.site.RequestMappingContext;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.config.theme.ThemeGraph;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -91,7 +91,7 @@ public class AppRootPage {
   @Autowired
   private SiteSet siteSet;
   @Autowired
-  private ThemeTree themeTree;
+  private ThemeGraph themeGraph;
   @Autowired
   private ServletContext servletContext;
   @Autowired
@@ -115,7 +115,7 @@ public class AppRootPage {
     ModelAndView mav = new ModelAndView("//approot");
     mav.addObject("siteKeys", siteSet.getSiteKeys());
     mav.addObject("mappingTable", buildMappingTable());
-    mav.addObject("themeTable", ImmutableList.copyOf(themeTree.describe(siteSet)));
+    mav.addObject("themeTable", ImmutableList.copyOf(themeGraph.describe(siteSet)));
     try {
       mav.addObject("imageCode", getResourceAsBase64("/WEB-INF/themes/root/app/wombat.jpg"));
     } catch (IOException e) {

@@ -104,10 +104,10 @@ public final class ThemeDebugInfo {
   }
 
 
-  static Iterable<ThemeDebugInfo> describe(ThemeTree themeTree, SiteSet siteSet) {
-    Objects.requireNonNull(themeTree);
+  static Iterable<ThemeDebugInfo> describe(ThemeGraph themeGraph, SiteSet siteSet) {
+    Objects.requireNonNull(themeGraph);
     Objects.requireNonNull(siteSet);
-    return () -> new ThemeInfoIterator(themeTree, siteSet);
+    return () -> new ThemeInfoIterator(themeGraph, siteSet);
   }
 
   /**
@@ -123,17 +123,17 @@ public final class ThemeDebugInfo {
     private final ImmutableMultimap<Theme, Theme> childMap;
     private final ImmutableMultimap<Theme, Site> siteThemeMap;
 
-    private ThemeInfoIterator(ThemeTree themeTree, SiteSet siteSet) {
-      childMap = buildChildMap(themeTree);
+    private ThemeInfoIterator(ThemeGraph themeGraph, SiteSet siteSet) {
+      childMap = buildChildMap(themeGraph);
       siteThemeMap = Multimaps.index(siteSet.getSites(), Site::getTheme);
-      queue.add(findRoot(themeTree));
+      queue.add(findRoot(themeGraph));
     }
 
     /**
      * @return the unique theme that has no parents (expected to be .Root)
      */
-    private static Theme findRoot(ThemeTree themeTree) {
-      return themeTree.getThemes().stream()
+    private static Theme findRoot(ThemeGraph themeGraph) {
+      return themeGraph.getThemes().stream()
           .filter(t -> t.getParents().isEmpty())
           .collect(MoreCollectors.onlyElement());
     }
@@ -144,9 +144,9 @@ public final class ThemeDebugInfo {
      * (Contrast to {@link Theme.InheritanceChain#buildChildMap(Theme)}, which explores only part of the total theme
      * graph by starting at one node and exploring <em>up</em>. This method iterates over all themes.)
      */
-    private static ImmutableSetMultimap<Theme, Theme> buildChildMap(ThemeTree themeTree) {
+    private static ImmutableSetMultimap<Theme, Theme> buildChildMap(ThemeGraph themeGraph) {
       ImmutableSetMultimap.Builder<Theme, Theme> childMap = ImmutableSetMultimap.builder();
-      for (Theme child : themeTree.getThemes()) {
+      for (Theme child : themeGraph.getThemes()) {
         for (Theme parent : child.getParents()) {
           childMap.put(parent, child);
         }

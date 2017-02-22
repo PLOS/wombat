@@ -31,7 +31,7 @@ import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.TestClasspathTheme;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.config.theme.ThemeGraph;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -58,18 +58,18 @@ public class TestSpringConfiguration {
   }
 
   @Bean
-  public ThemeTree themeTree()
-      throws ThemeTree.ThemeConfigurationException {
+  public ThemeGraph themeGraph()
+      throws ThemeGraph.ThemeConfigurationException {
     TestClasspathTheme rootTheme = new TestClasspathTheme("root", ImmutableList.of());
     TestClasspathTheme theme1 = new TestClasspathTheme("site1", ImmutableList.of(rootTheme));
     TestClasspathTheme theme2 = new TestClasspathTheme("site2", ImmutableList.of(rootTheme));
     Set<Theme> themes = ImmutableSet.of(rootTheme, theme1, theme2);
-    return new ThemeTree(Maps.uniqueIndex(themes, Theme::getKey));
+    return new ThemeGraph(Maps.uniqueIndex(themes, Theme::getKey));
   }
 
   @Bean
-  public SiteSet siteSet(ThemeTree themeTree) {
-    List<ImmutableMap<String, Object>> siteSpecifications = themeTree.getThemes().stream()
+  public SiteSet siteSet(ThemeGraph themeGraph) {
+    List<ImmutableMap<String, Object>> siteSpecifications = themeGraph.getThemes().stream()
         .filter((Theme theme) -> !theme.getKey().equals("root"))
         .map((Theme theme) -> {
           String key = theme.getKey();
@@ -79,7 +79,7 @@ public class TestSpringConfiguration {
               .build();
         })
         .collect(Collectors.toList());
-    return SiteSet.create(siteSpecifications, themeTree);
+    return SiteSet.create(siteSpecifications, themeGraph);
   }
 
   @Bean

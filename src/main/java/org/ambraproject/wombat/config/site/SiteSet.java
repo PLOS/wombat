@@ -34,7 +34,7 @@ import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.config.theme.ThemeGraph;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 
 import java.util.Collection;
@@ -110,12 +110,12 @@ public class SiteSet {
     return ImmutableBiMap.copyOf(keysToNames);
   }
 
-  public static SiteSet create(List<? extends Map<String, ?>> siteSpecifications, ThemeTree themeTree) {
+  public static SiteSet create(List<? extends Map<String, ?>> siteSpecifications, ThemeGraph themeGraph) {
     List<Site> sites = Lists.newArrayListWithCapacity(siteSpecifications.size());
     for (Map<String, ?> siteSpec : siteSpecifications) {
       String siteKey = (String) siteSpec.get("key");
       String themeKey = (String) siteSpec.get("theme");
-      Theme theme = themeTree.getTheme(themeKey);
+      Theme theme = themeGraph.getTheme(themeKey);
       if (theme == null) {
         throw new RuntimeException(String.format("No theme with key=\"%s\" found (for site: %s)", themeKey, siteKey));
       }

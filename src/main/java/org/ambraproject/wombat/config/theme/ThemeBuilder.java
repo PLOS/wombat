@@ -33,7 +33,7 @@ import java.util.Objects;
  * <p>
  * The purpose of this intermediate step is to allow a {@code Theme}'s parents to be constructed first. Because a {@code
  * Theme} has immutable pointers to its parents, they must all be constructed in one pass while building a {@link
- * ThemeTree}. Code that parses theme specifications can represent it as {@code ThemeBuilder} objects because a {@code
+ * ThemeGraph}. Code that parses theme specifications can represent it as {@code ThemeBuilder} objects because a {@code
  * ThemeBuilder} only needs to refer to parents by their key string, not as objects.
  * <p>
  * A {@link ConstructorFunction} object encapsulates whatever additional values are necessary to construct a theme of

@@ -39,7 +39,7 @@ import java.util.Map;
 import static org.testng.Assert.assertEquals;
 
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
-public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
+public class ThemeGraphTest extends AbstractTestNGSpringContextTests {
 
   @Autowired
   private SiteSet siteSet;
@@ -51,7 +51,7 @@ public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
     return new ThemeBuilder<>(key, ImmutableList.copyOf(parentKeys), TestClasspathTheme::new);
   }
 
-  private static final ImmutableList<ThemeBuilder<?>> THEME_TREE_CASE = ImmutableList.of(
+  private static final ImmutableList<ThemeBuilder<?>> THEME_GRAPH_CASE = ImmutableList.of(
       theme("root1"),
       theme("root2"),
       theme("child1-1", "root1"),
@@ -68,45 +68,45 @@ public class ThemeTreeTest extends AbstractTestNGSpringContextTests {
       theme("multichild2", "child1-1", "child1-2", "child2-1")
   );
 
-  private static final ImmutableList<ThemeBuilder<?>> THEME_TREE_CYCLE_CASE = ImmutableList.of(
+  private static final ImmutableList<ThemeBuilder<?>> THEME_GRAPH_CYCLE_CASE = ImmutableList.of(
       theme("node1", "node2"), theme("node2", "node1"));
 
-  private static void assertChainIs(ThemeTree themeTree, String themeKey, String... expectedParentKeys) {
-    Theme themeUnderTest = themeTree.getTheme(themeKey);
+  private static void assertChainIs(ThemeGraph themeGraph, String themeKey, String... expectedParentKeys) {
+    Theme themeUnderTest = themeGraph.getTheme(themeKey);
     ImmutableList<Theme> chain = themeUnderTest.getInheritanceChain();
     assertEquals(chain.size(), 1 + expectedParentKeys.length);
     assertEquals(chain.get(0), themeUnderTest);
     for (int i = 0; i < expectedParentKeys.length; i++) {
-      assertEquals(chain.get(i + 1), themeTree.getTheme(expectedParentKeys[i]));
+      assertEquals(chain.get(i + 1), themeGraph.getTheme(expectedParentKeys[i]));
     }
   }
 
   @Test
-  public void testParse() throws ThemeTree.ThemeConfigurationException {
+  public void testParse() throws ThemeGraph.ThemeConfigurationException {
     TestClasspathTheme testClasspathTheme = new TestClasspathTheme();
     String classpathThemeKey = testClasspathTheme.getKey();
-    ThemeTree themeTree = ThemeTree.create(testClasspathTheme, ImmutableList.of(testClasspathTheme), THEME_TREE_CASE);
-    assertEquals(themeTree.getThemes().size(), THEME_TREE_CASE.size() + 1);
+    ThemeGraph themeGraph = ThemeGraph.create(testClasspathTheme, ImmutableList.of(testClasspathTheme), THEME_GRAPH_CASE);
+    assertEquals(themeGraph.getThemes().size(), THEME_GRAPH_CASE.size() + 1);
 
-    assertChainIs(themeTree, classpathThemeKey);
-    assertChainIs(themeTree, "root1", classpathThemeKey);
-    assertChainIs(themeTree, "root2", classpathThemeKey);
-    assertChainIs(themeTree, "child1-1", "root1", classpathThemeKey);
-    assertChainIs(themeTree, "child1-2", "root1", classpathThemeKey);
-    assertChainIs(themeTree, "child1-2-1", "child1-2", "root1", classpathThemeKey);
-    assertChainIs(themeTree, "child2-1", "root2", classpathThemeKey);
-    assertChainIs(themeTree, "root3", classpathThemeKey);
-    assertChainIs(themeTree, "child3", "root3", classpathThemeKey);
+    assertChainIs(themeGraph, classpathThemeKey);
+    assertChainIs(themeGraph, "root1", classpathThemeKey);
+    assertChainIs(themeGraph, "root2", classpathThemeKey);
+    assertChainIs(themeGraph, "child1-1", "root1", classpathThemeKey);
+    assertChainIs(themeGraph, "child1-2", "root1", classpathThemeKey);
+    assertChainIs(themeGraph, "child1-2-1", "child1-2", "root1", classpathThemeKey);
+    assertChainIs(themeGraph, "child2-1", "root2", classpathThemeKey);
+    assertChainIs(themeGraph, "root3", classpathThemeKey);
+    assertChainIs(themeGraph, "child3", "root3", classpathThemeKey);
 
-    assertChainIs(themeTree, "multichild1-1", "child1-1", "child1-2", "root1", classpathThemeKey);
-    assertChainIs(themeTree, "multichild1-2", "child1-1", "child1-2", "root1", classpathThemeKey);
-    assertChainIs(themeTree, "multichild2", "child1-1", "child1-2", "root1", "child2-1", "root2", classpathThemeKey);
+    assertChainIs(themeGraph, "multichild1-1", "child1-1", "child1-2", "root1", classpathThemeKey);
+    assertChainIs(themeGraph, "multichild1-2", "child1-1", "child1-2", "root1", classpathThemeKey);
+    assertChainIs(themeGraph, "multichild2", "child1-1", "child1-2", "root1", "child2-1", "root2", classpathThemeKey);
   }
 
-  @Test(expectedExceptions = ThemeTree.ThemeConfigurationException.class)
-  public void testParseCycle() throws ThemeTree.ThemeConfigurationException {
+  @Test(expectedExceptions = ThemeGraph.ThemeConfigurationException.class)
+  public void testParseCycle() throws ThemeGraph.ThemeConfigurationException {
     TestClasspathTheme testClasspathTheme = new TestClasspathTheme();
-    ThemeTree.create(testClasspathTheme, ImmutableList.of(testClasspathTheme), THEME_TREE_CYCLE_CASE);
+    ThemeGraph.create(testClasspathTheme, ImmutableList.of(testClasspathTheme), THEME_GRAPH_CYCLE_CASE);
   }
 
   @Test

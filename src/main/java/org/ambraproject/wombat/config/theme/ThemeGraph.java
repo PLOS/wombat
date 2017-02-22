@@ -41,16 +41,15 @@ import java.util.stream.Collectors;
 /**
  * Internal representation of the set of all themes.
  * <p/>
- * Note that, because a theme can have more than one parent, this is not actually a tree and should be renamed to
- * something like {@code ThemeGraph} or {@code ThemeDag}. However, to avoid causing conflicts between source branches,
- * we are putting off renaming it for later.
+ * The themes have the structure of a directed acyclic graph (DAG). If each theme declares no more than one parent, the
+ * graph will be a tree.
  */
-public class ThemeTree {
+public class ThemeGraph {
 
   private final ImmutableBiMap<String, Theme> themes;
 
   @VisibleForTesting
-  public ThemeTree(Map<String, Theme> themes) {
+  public ThemeGraph(Map<String, Theme> themes) {
     this.themes = ImmutableBiMap.copyOf(themes);
   }
 
@@ -76,11 +75,11 @@ public class ThemeTree {
 
 
   /**
-   * Factory method for the tree.
+   * Factory method for the graph.
    */
-  public static ThemeTree create(Theme rootTheme,
-                                 Collection<? extends Theme> internalThemes,
-                                 Collection<? extends ThemeBuilder<?>> externalThemes)
+  public static ThemeGraph create(Theme rootTheme,
+                                  Collection<? extends Theme> internalThemes,
+                                  Collection<? extends ThemeBuilder<?>> externalThemes)
       throws ThemeConfigurationException {
     Preconditions.checkArgument(internalThemes.contains(rootTheme));
 
@@ -127,7 +126,7 @@ public class ThemeTree {
       sizeLastPass = created.size();
     }
 
-    return new ThemeTree(created);
+    return new ThemeGraph(created);
   }
 
 

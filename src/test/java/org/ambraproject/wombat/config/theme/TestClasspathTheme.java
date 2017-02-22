@@ -23,6 +23,7 @@
 package org.ambraproject.wombat.config.theme;
 
 import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableList;
 import freemarker.cache.TemplateLoader;
 
 import java.io.BufferedInputStream;
@@ -44,8 +45,8 @@ public class TestClasspathTheme extends Theme {
   /**
    * Constructor intended for simple tests where a theme has no parent (or is the parent).
    */
-  public TestClasspathTheme() {
-    super("test", null);
+  TestClasspathTheme() {
+    super("test", ImmutableList.of());
   }
 
   public TestClasspathTheme(String key, List<? extends Theme> parents) {
@@ -83,5 +84,10 @@ public class TestClasspathTheme extends Theme {
   @Override
   protected ResourceAttributes fetchResourceAttributes(String path) throws IOException {
     throw new IllegalStateException("Not yet implemented for testing");
+  }
+
+  @Override
+  public String describeSource() {
+    return getClass().getName();
   }
 }

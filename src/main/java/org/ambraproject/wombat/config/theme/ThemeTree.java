@@ -25,21 +25,18 @@ package org.ambraproject.wombat.config.theme;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableBiMap;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
+import org.ambraproject.wombat.config.site.SiteSet;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * Internal representation of the set of all themes.
@@ -50,7 +47,7 @@ import java.util.SortedMap;
  */
 public class ThemeTree {
 
-  private ImmutableBiMap<String, Theme> themes;
+  private final ImmutableBiMap<String, Theme> themes;
 
   @VisibleForTesting
   public ThemeTree(Map<String, Theme> themes) {
@@ -67,26 +64,6 @@ public class ThemeTree {
   }
 
 
-  /**
-   * Mutable representation of a theme.
-   */
-  private static class Mutable {
-    private String key;
-    private String location;
-    private Object parentKeys;
-
-    public List<String> getParentKeys() {
-      if (parentKeys == null) return ImmutableList.of();
-      if (parentKeys instanceof String) return ImmutableList.of((String) parentKeys);
-
-      Collection<String> parentKeyStrings = (Collection<String>) parentKeys;
-      List<String> checked = Collections.checkedList(Lists.<String>newArrayListWithCapacity(parentKeyStrings.size()),
-          String.class);
-      checked.addAll(parentKeyStrings);
-      return checked;
-    }
-  }
-
   public static class ThemeConfigurationException extends Exception {
     private ThemeConfigurationException(String message) {
       super(message);
@@ -100,34 +77,24 @@ public class ThemeTree {
 
   /**
    * Factory method for the tree.
-   *
-   * @param themeConfigJson
-   * @param internalThemes
-   * @return
-   * @throws ThemeConfigurationException
    */
-  public static ThemeTree parse(List<? extends Map<String, ?>> themeConfigJson, Collection<? extends Theme> internalThemes, Theme rootTheme)
+  public static ThemeTree create(Theme rootTheme,
+                                 Collection<? extends Theme> internalThemes,
+                                 Collection<? extends ThemeBuilder<?>> externalThemes)
       throws ThemeConfigurationException {
     Preconditions.checkArgument(internalThemes.contains(rootTheme));
-    Map<String, ? extends Theme> internalThemeMap = Maps.uniqueIndex(internalThemes, Theme::getKey);
-    Map<String, Mutable> mutables = Maps.newLinkedHashMap();
 
-    // Make a pass over the JSON, creating mutable objects and mapping them by their keys
-    for (Map<String, ?> themeJsonObj : themeConfigJson) {
-      Mutable node = buildFromJson(themeJsonObj);
-      mutables.put(node.key, node);
-    }
-    Ordering<String> keyOrder = Ordering.explicit(ImmutableList.copyOf(
-        Iterables.concat(internalThemeMap.keySet(), mutables.keySet())));
+    Map<String, ThemeBuilder<?>> themeBuilderMap = externalThemes.stream()
+        .collect(Collectors.toMap(ThemeBuilder::getKey, Function.identity()));
 
-    SortedMap<String, Theme> created = Maps.newTreeMap(keyOrder);
-    created.putAll(internalThemeMap);
+    Map<String, Theme> created = new TreeMap<>(); // will eventually contain all themes
+    created.putAll(Maps.uniqueIndex(internalThemes, Theme::getKey)); // initialize with internal themes
 
     // Make repeated passes looking for nodes whose parents have all been created
     int sizeLastPass = 0;
-    while (!mutables.isEmpty()) {
-      for (Iterator<Mutable> iterator = mutables.values().iterator(); iterator.hasNext(); ) {
-        Mutable node = iterator.next();
+    while (!themeBuilderMap.isEmpty()) {
+      for (Iterator<ThemeBuilder<?>> iterator = themeBuilderMap.values().iterator(); iterator.hasNext(); ) {
+        ThemeBuilder<?> node = iterator.next();
 
         // Search for this node's parents in the map of already-created, immutable themes
         List<String> parentKeys = node.getParentKeys();
@@ -136,7 +103,7 @@ public class ThemeTree {
           Theme parentTheme = created.get(parentKey);
           if (parentTheme != null) {
             parentThemes.add(parentTheme);
-          } else if (!mutables.containsKey(parentKey)) {
+          } else if (!themeBuilderMap.containsKey(parentKey)) {
             throw new ThemeConfigurationException("Unrecognized theme key: " + parentKey);
           } else {
             // At least one parent has not been created yet
@@ -147,7 +114,7 @@ public class ThemeTree {
 
         if (parentThemes != null) {
           // All parents were found
-          Theme immutableNode = createImmutableNode(node, parentThemes, rootTheme);
+          Theme immutableNode = node.build(rootTheme, parentThemes);
           created.put(immutableNode.getKey(), immutableNode);
           iterator.remove(); // Remove this node from the to-be-created pool
         } // Else, leave this node in the pool and look for more matches
@@ -155,7 +122,7 @@ public class ThemeTree {
 
       // Check that the to-be-created pool shrank by at least 1, to prevent infinite looping
       if (created.size() <= sizeLastPass) {
-        throw new ThemeConfigurationException("A parentage cycle exists within: " + mutables.keySet());
+        throw new ThemeConfigurationException("A parentage cycle exists within: " + themeBuilderMap.keySet());
       }
       sizeLastPass = created.size();
     }
@@ -163,26 +130,12 @@ public class ThemeTree {
     return new ThemeTree(created);
   }
 
-  private static Mutable buildFromJson(Map<String, ?> themeJsonObj) {
-    Mutable m = new Mutable();
-    m.key = (String) themeJsonObj.get("key");
-    m.location = (String) themeJsonObj.get("path");
-    m.parentKeys = themeJsonObj.get("parent");
-    return m;
-  }
 
-  private static Theme createImmutableNode(Mutable toCreate, List<Theme> parents, Theme defaultTheme) throws ThemeConfigurationException {
-    if (parents.isEmpty()) {
-      parents = ImmutableList.of(defaultTheme);
-    }
-    File themeLocation = new File(toCreate.location);
-    Theme node;
-    try {
-      node = new FileTheme(toCreate.key, parents, themeLocation); // TODO Support other theme types
-    } catch (IOException e) {
-      throw new ThemeConfigurationException("Could not access: " + themeLocation, e);
-    }
-    return node;
+  /**
+   * Dump a human-friendly description of all themes, starting at the root, for logging and debugging purposes only.
+   */
+  public Iterable<ThemeDebugInfo> describe(SiteSet siteSet) {
+    return ThemeDebugInfo.describe(this, siteSet);
   }
 
 }

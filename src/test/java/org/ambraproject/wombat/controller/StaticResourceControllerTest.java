@@ -104,7 +104,7 @@ public class StaticResourceControllerTest extends ControllerTest {
 
   private static class MockTheme extends Theme {
     private MockTheme() {
-      super("mockTheme", ImmutableList.<Theme>of());
+      super("mockTheme", ImmutableList.of());
     }
 
     private static final ImmutableMap<String, Object> resourceConfig = ImmutableMap.<String, Object>builder()
@@ -147,6 +147,11 @@ public class StaticResourceControllerTest extends ControllerTest {
     @Override
     public TemplateLoader getTemplateLoader() throws IOException {
       throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public String describeSource() {
+      return getClass().getSimpleName();
     }
   }
 

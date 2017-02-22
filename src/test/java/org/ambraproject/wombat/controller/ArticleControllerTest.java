@@ -70,7 +70,7 @@ public class ArticleControllerTest extends ControllerTest {
   private static class MockTheme extends Theme {
 
     private MockTheme(String key) {
-      super(key, ImmutableList.<Theme>of());
+      super(key, ImmutableList.of());
     }
 
     @Override
@@ -99,7 +99,10 @@ public class ArticleControllerTest extends ControllerTest {
       throw new UnsupportedOperationException();
     }
 
-
+    @Override
+    public String describeSource() {
+      return getClass().getSimpleName();
+    }
   }
 
   @Configuration

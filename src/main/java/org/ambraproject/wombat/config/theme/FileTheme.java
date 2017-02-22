@@ -43,10 +43,14 @@ public class FileTheme extends Theme {
   private final File root;
   private final FileTemplateLoader templateLoader;
 
-  protected FileTheme(String key, List<Theme> parents, File root) throws IOException {
+  FileTheme(String key, List<Theme> parents, File root) {
     super(key, parents);
     this.root = root;
-    this.templateLoader = new FileTemplateLoader(root);
+    try {
+      this.templateLoader = new FileTemplateLoader(root);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Override
@@ -104,6 +108,11 @@ public class FileTheme extends Theme {
       }
     }
     return filePaths;
+  }
+
+  @Override
+  public String describeSource() {
+    return "Directory: " + root;
   }
 
   @Override

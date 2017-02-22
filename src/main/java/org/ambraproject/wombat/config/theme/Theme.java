@@ -63,7 +63,7 @@ public abstract class Theme {
     Preconditions.checkArgument(!key.isEmpty());
     Preconditions.checkArgument(key.startsWith(".") == (this instanceof InternalTheme));
     this.key = key;
-    this.parents = (parents == null) ? ImmutableList.<Theme>of() : ImmutableList.copyOf(parents);
+    this.parents = ImmutableList.copyOf(parents);
   }
 
   /**
@@ -75,8 +75,11 @@ public abstract class Theme {
     return key;
   }
 
+  ImmutableList<Theme> getParents() {
+    return parents;
+  }
 
-  private transient Iterable<Theme> iterableView;
+  private transient ImmutableList<Theme> iterableView;
 
   /**
    * Return the inheritance chain of themes, from leaf to root. The first element is guaranteed to be this object. Each
@@ -84,7 +87,7 @@ public abstract class Theme {
    *
    * @return the chain of themes
    */
-  public final Iterable<Theme> getChain() {
+  public final ImmutableList<Theme> getInheritanceChain() {
     return (iterableView != null) ? iterableView :
         (iterableView = ImmutableList.copyOf(new InheritanceChain()));
   }
@@ -109,7 +112,7 @@ public abstract class Theme {
    */
   public final InputStream getStaticResource(String path) throws IOException {
     Preconditions.checkNotNull(path);
-    for (Theme theme : getChain()) {
+    for (Theme theme : getInheritanceChain()) {
       InputStream stream = theme.fetchStaticResource(path);
       if (stream != null) {
         return stream;
@@ -153,7 +156,7 @@ public abstract class Theme {
    */
   public ResourceAttributes getResourceAttributes(String path) throws IOException {
     Preconditions.checkNotNull(path);
-    for (Theme theme : getChain()) {
+    for (Theme theme : getInheritanceChain()) {
       ResourceAttributes result = theme.fetchResourceAttributes(path);
       if (result != null) {
         return result;
@@ -178,7 +181,7 @@ public abstract class Theme {
       root += "/";
     }
     Set<String> paths = Sets.newTreeSet();
-    for (Theme theme : getChain()) {
+    for (Theme theme : getInheritanceChain()) {
       Collection<String> themePaths = theme.fetchStaticResourcePaths(root);
       if (themePaths != null) {
         paths.addAll(themePaths);
@@ -232,7 +235,7 @@ public abstract class Theme {
   public final Map<String, Object> getConfigMap(String path) {
     String configPath = "config/" + path;
     Map<String, Object> values = Maps.newLinkedHashMap();
-    for (Theme theme : getChain()) {
+    for (Theme theme : getInheritanceChain()) {
       Map<?, ?> valuesFromTheme;
       try {
         valuesFromTheme = readYamlConfigValues(theme, configPath);
@@ -304,6 +307,14 @@ public abstract class Theme {
     throw new UnmatchedSiteException("Journal key not matched to site: " + journalKey);
   }
 
+  /**
+   * Provide a human-readable description of the data source behind the theme. The subclass determines the nature of the
+   * description, according to what kind of data source it uses.
+   * <p>
+   * For logging and debugging purposes only. Do not parse the return value for programmatic purposes.
+   */
+  public abstract String describeSource();
+
 
   /**
    * Iterate over this theme and its parents in topological sort order. This means, if two paths lead to a common
@@ -321,9 +332,13 @@ public abstract class Theme {
       stack.add(Theme.this);
     }
 
-    /*
+    /**
      * Set up links from parents to children, since Theme objects don't natively keep track of their children. Note that
      * this causes initialization of the iterator to take O(n) time, though the full trip is still only O(n).
+     * <p>
+     * (Contrast to {@link ThemeTree.ThemeInfoIterator#buildChildMap}, which has access to the entire graph of themes
+     * and iterates over all of them. Here, we want only the root's direct ancestors. The inheritance algorithm won't
+     * work if the return value contains any others.)
      */
     private SetMultimap<Theme, Theme> buildChildMap(Theme root) {
       SetMultimap<Theme, Theme> childMap = HashMultimap.create();

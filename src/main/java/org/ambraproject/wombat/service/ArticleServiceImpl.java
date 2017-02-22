@@ -22,6 +22,7 @@
 
 package org.ambraproject.wombat.service;
 
+import com.google.common.collect.MoreCollectors;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
@@ -74,7 +75,7 @@ public class ArticleServiceImpl implements ArticleService {
     Map<String, ?> itemTable = getItemTable(articleId);
     Map<String, ?> articleItem = (Map<String, ?>) itemTable.values().stream()
         .filter(itemObj -> ((Map<String, ?>) itemObj).get("itemType").equals("article"))
-        .findAny().orElseThrow(RuntimeException::new);
+        .collect(MoreCollectors.onlyElement());
     Map<String, ?> articleFiles = (Map<String, ?>) articleItem.get("files");
     Map<String, ?> manuscriptPointer = (Map<String, ?>) articleFiles.get("manuscript");
 

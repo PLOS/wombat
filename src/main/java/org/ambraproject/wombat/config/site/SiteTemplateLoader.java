@@ -57,7 +57,7 @@ public class SiteTemplateLoader extends DelegatingTemplateLoader {
       Theme leaf = site.getTheme();
 
       List<TemplateLoader> loaders = Lists.newArrayList();
-      for (Theme theme : leaf.getChain()) {
+      for (Theme theme : leaf.getInheritanceChain()) {
         loaders.add(theme.getTemplateLoader());
       }
 

@@ -23,6 +23,7 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.MoreCollectors;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.identity.ArticlePointer;
@@ -101,7 +102,7 @@ public class FigurePageController extends WombatController {
 
     Map<String, ?> figureMetadata = articleMetadata.getFigureView().stream()
         .filter((Map<String, ?> fig) -> fig.get("doi").equals(assetPointer.getAssetDoi()))
-        .findAny().orElseThrow(RuntimeException::new);
+        .collect(MoreCollectors.onlyElement());
     model.addAttribute("figure", figureMetadata);
 
     String description = (String) figureMetadata.get("description");

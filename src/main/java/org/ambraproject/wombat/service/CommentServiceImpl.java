@@ -82,7 +82,7 @@ public class CommentServiceImpl implements CommentService {
   private static Individualprofile getAmbraProfile(IndividualComposite individualComposite) {
     return individualComposite.getIndividualprofiles().stream()
         .filter((Individualprofile profile) -> AMBRA_SOURCE.equals(profile.getSource()))
-        .findFirst()
+        .findFirst() // Multiple hits may be possible. Using the first is recommended for this API.
         .orElseThrow(() -> new RuntimeException(
             "An IndividualComposite does not have an Individualprofile with source named " + AMBRA_SOURCE));
   }

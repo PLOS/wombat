@@ -96,6 +96,29 @@
 <h2>Rhino</h2>
 <@buildInfoDisplay 'service' />
 
+<h1>Themes</h1>
+
+<#macro themeKeyList keys>
+  <#if keys?has_content>
+    <#list keys as key>
+    <code>${key}</code><#if key_has_next>, </#if>
+    </#list>
+  <#else>
+  (None)
+  </#if>
+</#macro>
+
+<#list themeTable as theme>
+<h2><code>${theme.key}</code></h2>
+<ul>
+  <li><strong>Source:</strong>      ${theme.description}               </li>
+  <li><strong>Parents:</strong>     <@themeKeyList theme.parents     /></li>
+  <li><strong>Children:</strong>    <@themeKeyList theme.children    /></li>
+  <li><strong>Inheritance:</strong> <@themeKeyList theme.inheritance /></li>
+  <li><strong>Sites:</strong>       <@themeKeyList theme.sites       /></li>
+</ul>
+</#list>
+
 <h1>Mappings</h1>
 <table id="mapping-table">
   <tr>

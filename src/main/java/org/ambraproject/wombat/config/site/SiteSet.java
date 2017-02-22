@@ -110,7 +110,7 @@ public class SiteSet {
     return ImmutableBiMap.copyOf(keysToNames);
   }
 
-  public static SiteSet create(List<Map<String, ?>> siteSpecifications, ThemeTree themeTree) {
+  public static SiteSet create(List<? extends Map<String, ?>> siteSpecifications, ThemeTree themeTree) {
     List<Site> sites = Lists.newArrayListWithCapacity(siteSpecifications.size());
     for (Map<String, ?> siteSpec : siteSpecifications) {
       String siteKey = (String) siteSpec.get("key");

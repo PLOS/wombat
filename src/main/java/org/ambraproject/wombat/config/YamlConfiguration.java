@@ -24,15 +24,18 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
 import com.google.gson.GsonBuilder;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
+import org.ambraproject.wombat.config.theme.ThemeSource;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Collection;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -98,14 +101,45 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return input.rootPagePath;
   }
 
-  @Override
-  public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException {
-    return ThemeTree.parse(input.themes, internalThemes, rootTheme);
+  /**
+   * Future-proofing against the need for other ThemeSource types that may exist in the future (mainly, one that reads
+   * from a remote source, probably by URL). Currently, the only supported type reads from the local filesystem.
+   */
+  private static enum ThemeSourceType {
+    FILESYSTEM("filesystem") {
+      @Override
+      protected FilesystemThemeSource build(Map<String, ?> config) {
+        String path = (String) config.get("path");
+        if (path == null) throw new RuntimeException("Filesystem theme source must have path");
+        return new FilesystemThemeSource(new File(path));
+      }
+    };
+
+    private final String type;
+
+    private ThemeSourceType(String type) {
+      this.type = type;
+    }
+
+    private static final ImmutableMap<String, ThemeSourceType> BY_TYPE = Maps.uniqueIndex(
+        EnumSet.allOf(ThemeSourceType.class), tst -> tst.type);
+
+    protected abstract ThemeSource<?> build(Map<String, ?> config);
+  }
+
+  private static ThemeSource<?> parseThemeSource(Map<String, ?> map) {
+    String typeStr = (String) map.get("type");
+    if (typeStr == null) throw new RuntimeException("Theme source must have type");
+    ThemeSourceType sourceType = ThemeSourceType.BY_TYPE.get(typeStr);
+    if (sourceType == null) throw new RuntimeException("Unrecognized theme source type: " + typeStr);
+    return sourceType.build(map);
   }
 
   @Override
-  public SiteSet getSites(ThemeTree themeTree) {
-    return SiteSet.create(input.sites, themeTree);
+  public ImmutableList<ThemeSource<?>> getThemeSources() {
+    return input.themeSources.stream()
+        .map(YamlConfiguration::parseThemeSource)
+        .collect(ImmutableList.toImmutableList());
   }
 
   private final CacheConfiguration cacheConfiguration = new CacheConfiguration() {
@@ -229,7 +263,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * All such fields are immutable by convention. They should be set only by the YAML deserializer.
      * The intent of the @Deprecated annotation is to raise a warning in the IDE if a human refers
      * to them in code. (The reflective code in the library won't care at runtime of course.)
-
+     *
      * ---------------- Input fields (and boring boilerplate setters) are below this line ----------------
      */
 
@@ -239,8 +273,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String compiledAssetDir;
     private String rootPagePath;
     private List<String> enableDevFeatures;
-    private List<Map<String, ?>> themes;
-    private List<Map<String, ?>> sites;
+    private List<Map<String, ?>> themeSources;
 
     private CacheConfigurationInput cache;
     private HttpConnectionPoolConfigurationInput httpConnectionPool;
@@ -300,16 +333,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setThemes(List<Map<String, ?>> themes) {
-      this.themes = themes;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setSites(List<Map<String, ?>> sites) {
-      this.sites = sites;
+    public void setThemeSources(List<Map<String, ?>> themeSources) {
+      this.themeSources = themeSources;
     }
 
     /**

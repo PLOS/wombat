@@ -25,12 +25,13 @@ package org.ambraproject.wombat.config;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
+import org.ambraproject.wombat.config.theme.ThemeBuilder;
+import org.ambraproject.wombat.config.theme.ThemeSource;
 import org.ambraproject.wombat.config.theme.ThemeTree;
 import org.ambraproject.wombat.controller.AppRootPage;
 import org.ambraproject.wombat.controller.ArticleMetadata;
@@ -107,25 +108,43 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Configuration
 public class SpringConfiguration {
 
   @Bean
   public ThemeTree themeTree(ServletContext servletContext, RuntimeConfiguration runtimeConfiguration)
-      throws ThemeTree.ThemeConfigurationException {
+      throws ThemeTree.ThemeConfigurationException, IOException {
     String path = "/WEB-INF/themes/";
-    InternalTheme root = new InternalTheme(".Root", null, servletContext, path + "root/");
-    ImmutableList<InternalTheme> listOfRoot = ImmutableList.of(root);
-    InternalTheme desktop = new InternalTheme(".Desktop", listOfRoot, servletContext, path + "desktop/");
-    InternalTheme mobile = new InternalTheme(".Mobile", listOfRoot, servletContext, path + "mobile/");
-    return runtimeConfiguration.getThemes(ImmutableSet.of(root, desktop, mobile), root);
+    InternalTheme root = new InternalTheme(".Root", ImmutableList.of(), servletContext, path + "root/");
+    InternalTheme desktop = new InternalTheme(".Desktop", ImmutableList.of(root), servletContext, path + "desktop/");
+    InternalTheme mobile = new InternalTheme(".Mobile", ImmutableList.of(root), servletContext, path + "mobile/");
+    Collection<InternalTheme> internalThemes = ImmutableList.of(root, desktop, mobile);
+
+    Collection<ThemeSource<?>> themeSources = runtimeConfiguration.getThemeSources();
+    Collection<ThemeBuilder<?>> themeBuilders = themeSources.stream()
+        .flatMap(ts -> ts.readThemes().stream())
+        .collect(Collectors.toList());
+
+    return ThemeTree.create(root, internalThemes, themeBuilders);
   }
 
   @Bean
   public SiteSet siteSet(RuntimeConfiguration runtimeConfiguration,
                          ThemeTree themeTree) {
-    return runtimeConfiguration.getSites(themeTree);
+    Collection<ThemeSource<?>> themeSources = runtimeConfiguration.getThemeSources();
+    List<Map<String, ?>> siteSpecs = themeSources.stream()
+        .flatMap(ts -> ts.readSites().stream())
+        .collect(Collectors.toList());
+    if (siteSpecs.isEmpty()) {
+      throw new RuntimeException("No sites found in sites.yaml files at: " +
+          themeSources.stream().map(Object::toString).collect(Collectors.joining(", ")));
+    }
+    return SiteSet.create(siteSpecs, themeTree);
   }
 
   @Bean
@@ -240,7 +259,9 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public JournalFilterType journalFilterType() { return new JournalFilterType(); }
+  public JournalFilterType journalFilterType() {
+    return new JournalFilterType();
+  }
 
   @Bean
   public AppRootPage appRootPage() {
@@ -268,7 +289,9 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public SearchFilterFactory searchFilterFactory() { return new SearchFilterFactory(); }
+  public SearchFilterFactory searchFilterFactory() {
+    return new SearchFilterFactory();
+  }
 
   @Bean
   public SearchFilterService searchFilterService() {
@@ -276,7 +299,9 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public AlertService alertService() { return new AlertService(); }
+  public AlertService alertService() {
+    return new AlertService();
+  }
 
 
   @Bean

@@ -45,7 +45,7 @@
     <maven.tomcat.uriEncoding>UTF-8</maven.tomcat.uriEncoding>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
-    <buildDate>${maven.build.timestamp}cd </buildDate>
+    <buildDate>${maven.build.timestamp}</buildDate>
   </properties>
   <repositories>
     <repository>

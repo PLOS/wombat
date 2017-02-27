@@ -1,0 +1,8 @@
+Package: [[artifactId]]
+Version: [[version]]
+Section: java
+Priority: optional
+Architecture: all
+Depends: default-jre | java8-runtime
+Maintainer: Ambra Project Dev Team <dev@ambraproject.org>
+Description: [[description]]

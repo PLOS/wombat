@@ -28,7 +28,7 @@
   <artifactId>wombat</artifactId>
   <name>wombat</name>
   <packaging>war</packaging>
-  <version>3.2.1</version>
+  <version>3.2.1-SNAPSHOT</version>
   <url>https://github.com/PLOS/wombat</url>
   <scm>
     <connection>scm:git:git@github.com:PLOS/wombat.git</connection>
@@ -511,6 +511,36 @@
           </resources>
 
         </configuration>
+      </plugin>
+
+      <plugin>
+        <!-- See src/deb/README.md -->
+        <artifactId>jdeb</artifactId>
+        <groupId>org.vafer</groupId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jdeb</goal>
+            </goals>
+            <configuration>
+              <deb>${project.build.directory}/${artifactId}_[[version]].deb</deb>
+              <snapshotExpand>true</snapshotExpand>
+              <dataSet>
+                <data>
+                  <src>${project.build.directory}/${project.build.finalName}.war</src>
+                  <type>file</type>
+                  <dst>ROOT.war</dst>
+                  <mapper>
+                    <type>perm</type>
+                    <prefix>${wombat.debInstallDir}</prefix>
+                  </mapper>
+                </data>
+              </dataSet>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
     </plugins>

@@ -45,7 +45,7 @@
     <maven.tomcat.uriEncoding>UTF-8</maven.tomcat.uriEncoding>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
-    <buildDate>${maven.build.timestamp}</buildDate>
+    <buildDate>${maven.build.timestamp}cd </buildDate>
   </properties>
   <repositories>
     <repository>
@@ -531,7 +531,7 @@
                 <data>
                   <src>${project.build.directory}/${project.build.finalName}.war</src>
                   <type>file</type>
-                  <dst>ROOT.war</dst>
+                  <dst>wombat.war</dst>
                   <mapper>
                     <type>perm</type>
                     <prefix>${wombat.debInstallDir}</prefix>

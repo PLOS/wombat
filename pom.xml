@@ -531,7 +531,7 @@
                 <data>
                   <src>${project.build.directory}/${project.build.finalName}.war</src>
                   <type>file</type>
-                  <dst>wombat.war</dst>
+                  <dst>ROOT.war</dst>
                   <mapper>
                     <type>perm</type>
                     <prefix>${wombat.debInstallDir}</prefix>

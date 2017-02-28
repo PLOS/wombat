@@ -30,6 +30,7 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.util.ListUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.lucene.queryparser.classic.QueryParser;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -112,7 +113,10 @@ public class ArticleSearchQuery {
 
   private static Optional<String> getQueryString(String query) {
     // Treat empty string as absent query, which will be sent to Solr as "*:*"
-    return Strings.isNullOrEmpty(query) ? Optional.empty() : Optional.of(query);
+    if (Strings.isNullOrEmpty(query)) {
+      return Optional.empty();
+    }
+    return Optional.of(QueryParser.escape(query));
   }
 
   @VisibleForTesting

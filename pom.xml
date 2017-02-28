@@ -358,6 +358,12 @@
       <version>2.2-promoted-b65</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-queryparser</artifactId>
+      <version>6.4.1</version>
+    </dependency>
+
   </dependencies>
   <build>
     <resources>

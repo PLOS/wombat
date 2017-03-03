@@ -26,6 +26,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -359,8 +360,9 @@ public class SolrSearchApiImpl implements SolrSearchApi {
    */
   private Map<String, Map> getRawResults(List<NameValuePair> params) throws IOException {
     URI uri = getSolrUri(params);
-    log.debug("Solr request executing: " + uri);
+    log.error("Solr request executing: " + uri); // TEMP DEBUGGING. TODO: Delete or downgrade from error
     Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
+    log.error("Solr result: " + new Gson().toJson(rawResults)); // TEMP DEBUGGING. TODO: Delete or downgrade from error
     return (Map<String, Map>) rawResults;
   }
 

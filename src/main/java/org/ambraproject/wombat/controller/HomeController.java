@@ -102,12 +102,12 @@ public class HomeController extends WombatController {
       @Override
       public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
         String journalKey = site.getJournalKey();
-        Map<String, Object> curatedList = context.articleApi.requestObject(
-            ApiAddress.builder("lists").addToken(section.curatedListType)
-                .addToken("journals").addToken(journalKey)
-                .addToken("keys").addToken(section.curatedListName)
-                .build(),
-            Map.class);
+        ApiAddress curatedListQuery = ApiAddress.builder("lists").addToken(section.curatedListType)
+            .addToken("journals").addToken(journalKey)
+            .addToken("keys").addToken(section.curatedListName)
+            .build();
+        log.error("Querying Rhino for article list: " + curatedListQuery);
+        Map<String, Object> curatedList = context.articleApi.requestObject(curatedListQuery, Map.class);
         List<Map<String, Object>> articles = (List<Map<String, Object>>) curatedList.get("articles");
 
         List<String> dois = articles.stream()
@@ -116,6 +116,7 @@ public class HomeController extends WombatController {
 
         Map<String, Object> results = (Map<String, Object>) context.solrSearchApi.lookupArticlesByDois(dois);
         List<SolrArticleAdapter> unpacked = SolrArticleAdapter.unpackSolrQuery(results);
+        log.error("Article list result set from Solr: " + unpacked.stream().map(SolrArticleAdapter::getDoi).collect(Collectors.toList()));
         validateSolrResultsFromList(section, dois, unpacked);
         return Ordering.explicit(dois).onResultOf(SolrArticleAdapter::getDoi).sortedCopy(unpacked);
       }

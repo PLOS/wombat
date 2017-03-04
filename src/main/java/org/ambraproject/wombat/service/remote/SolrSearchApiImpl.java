@@ -26,7 +26,6 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -233,9 +232,11 @@ public class SolrSearchApiImpl implements SolrSearchApi {
 
   @Override
   public Map<?, ?> lookupArticlesByDois(List<String> dois) throws IOException {
+    log.error("Performing article list query on DOIs: " + dois);
     List<String> solrDois = dois.stream().map(doi -> "id:" + doi).collect(Collectors.toList());
 
     String doiQueryString = Joiner.on(" OR ").join(solrDois);
+    log.error("doiQueryString = " + doiQueryString);
 
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery(doiQueryString)
@@ -362,7 +363,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     URI uri = getSolrUri(params);
     log.error("Solr request executing: " + uri); // TEMP DEBUGGING. TODO: Delete or downgrade from error
     Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
-    log.error("Solr result: " + new Gson().toJson(rawResults)); // TEMP DEBUGGING. TODO: Delete or downgrade from error
+//    log.error("Solr result: " + new Gson().toJson(rawResults)); // TEMP DEBUGGING. TODO: Delete or downgrade from error
     return (Map<String, Map>) rawResults;
   }
 

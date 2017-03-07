@@ -246,9 +246,15 @@ var AdvancedSearch = {};
       }
     }
 
-    query += queryValue;
+    query += escapeQuery(queryValue);
     return query;
   };
+
+  //Lucene requires escaping of the following characters with a backslash:
+  // + - && || ! ( ) { } [ ] ^ " ~ * ? : \ /
+  function escapeQuery(query) {
+    return query.replace(/([!*+&|()\[\]{}\^~?:"])/g, "\\$1");
+  }
 
   AdvancedSearch.processDateCondition = function (dates) {
     var processedDates = '';

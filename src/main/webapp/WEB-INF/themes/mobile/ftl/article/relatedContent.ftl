@@ -28,18 +28,17 @@
 <#assign cssFile = 'related-content.css' />
 
 <@page_header />
+
+<#include "../common/almQueryJs.ftl" />
+<#include "../common/configJs.ftl" />
+
 <article>
+
 <#include "relatedContentBody.ftl" />
 </article>
 
 <#include "articleData.ftl" />
-<#include "../common/almQueryJs.ftl" />
-<#include "../common/configJs.ftl" />
 
 
-<@js src="resource/js/vendor/foundation/foundation.js"/>
-<@js src="resource/js/vendor/foundation/foundation.reveal.js"/>
 
-
-<@js src="resource/js/pages/related_content.js"/>
 <@page_footer />

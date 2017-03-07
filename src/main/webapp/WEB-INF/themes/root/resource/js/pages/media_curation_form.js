@@ -1,28 +1,35 @@
-var ArticleRelatedContent;
+
+
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, t any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
+var mediaCurationCoverage;
 
 (function ($) {
 
-  ArticleRelatedContent = Class.extend({
+  mediaCurationCoverage = Class.extend({
 
     $mediaCoverageEl: $('#media-coverage-data'),
-    mediaCoverageData: null,
-    mediaCoverageSections: [
-      {
-        name: "News",
-        title: "News Media Coverage",
-        eventTypes: ['News']
-      },
-      {
-        name: "Blog",
-        title: "Blog Coverage",
-        eventTypes: ['Blog']
-      },
-      {
-        name: "Other",
-        title: "Related Resources",
-        eventTypes: []
-      },
-    ],
+
     modalFormEl: '#media-coverage-modal',
     modalErrorCloseTimeout: 3000,
     modalSuccessCloseTimeout: this.modalErrorCloseTimeout/2,
@@ -30,59 +37,12 @@ var ArticleRelatedContent;
     init: function () {
 
 
-      var query = new AlmQuery();
       var that = this;
 
-      query.getArticleDetail(ArticleData.doi)
-        .then(function (articleData) {
-          var data = articleData[0];
-          var mediaCoverageSource = _.findWhere(data.sources, {name: 'articlecoveragecurated'});
-
-          if(mediaCoverageSource && mediaCoverageSource.events.length) {
-            that.mediaCoverageData = _.map(mediaCoverageSource.events, function (item) { return item.event; });
-          }
-          else {
-            throw new ErrorFactory('NoRelatedContentError', '[ArticleRelatedContent::init] - The article has no related content.');
-          }
-
-          that.loadMediaCoverage();
-        })
-        .fail(function (error) {
-          console.log(error);
-        });
 
       this.modalFormBindings();
     },
 
-    loadMediaCoverage: function () {
-      var that = this;
-      var usedTypes = [];
-      var renderedSections = 0;
-      var sectionTemplate = _.template($('#articleRelatedContentSectionTemplate').html());
-      _.each(this.mediaCoverageSections, function (section) {
-        usedTypes = usedTypes.concat(section.eventTypes);
-
-        var items = _.filter(that.mediaCoverageData, function (item) {
-          var typeValidation = (_.indexOf(section.eventTypes, item.type) >= 0);
-          if(!section.eventTypes.length) {
-            typeValidation = (_.indexOf(usedTypes, item.type) < 0);
-          }
-          return typeValidation &&
-            (item.link_state = "APPROVED") &&
-            !_.isEmpty(item.title) &&
-            !_.isEmpty(item.publication);
-        });
-
-        if(items.length) {
-          that.$mediaCoverageEl.append(sectionTemplate({ section: section, items: items }));
-          renderedSections++;
-        }
-      });
-
-      if(!renderedSections) {
-        that.$mediaCoverageEl.append('<p><br>No media coverage found for this article.</p>');
-      }
-    },
 
     modalFormBindings: function () {
       var that = this;
@@ -224,6 +184,6 @@ var ArticleRelatedContent;
 
   });
 
-  new ArticleRelatedContent();
+  new mediaCurationCoverage();
 
 })(jQuery);

@@ -23,7 +23,6 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
@@ -34,6 +33,7 @@ import org.ambraproject.wombat.service.ApiAddress;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.lucene.queryparser.classic.QueryParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -232,9 +232,8 @@ public class SolrSearchApiImpl implements SolrSearchApi {
 
   @Override
   public Map<?, ?> lookupArticlesByDois(List<String> dois) throws IOException {
-    List<String> solrDois = dois.stream().map(doi -> "id:" + doi).collect(Collectors.toList());
-
-    String doiQueryString = Joiner.on(" OR ").join(solrDois);
+    String doiQueryString = dois.stream().map(doi -> "id:" + QueryParser.escape(doi))
+        .collect(Collectors.joining(" OR "));
 
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery(doiQueryString)

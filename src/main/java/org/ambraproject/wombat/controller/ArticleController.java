@@ -525,30 +525,31 @@ public class ArticleController extends WombatController {
 
     UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
 
-    String mediaCurationUrl = site.getTheme().getConfigMap("mediaCuration").get("mediaCurationUrl").toString();
+    String mediaCurationUrl = (String) site.getTheme().getConfigMap("mediaCuration").get("mediaCurationUrl");
+    if (mediaCurationUrl == null) {
+      throw new RuntimeException("Media curation URL is not configured");
+    }
 
-    if (mediaCurationUrl != null) {
-      HttpPost httpPost = new HttpPost(mediaCurationUrl);
-      httpPost.setEntity(entity);
-      StatusLine statusLine = null;
-      try (CloseableHttpResponse response = cachedRemoteReader.getResponse(httpPost)) {
-        statusLine = response.getStatusLine();
-      } catch (ServiceRequestException e) {
-        //This exception is thrown when the submitted link is already present for the article.
-        if (e.getStatusCode() == HttpStatus.CONFLICT.value()
-            && e.getResponseBody().equals("The link already exists")) {
-          model.addAttribute("formError", "This link has already been submitted. Please submit a different link");
-          model.addAttribute("isValid", false);
-        } else {
-          throw new RuntimeException(e);
-        }
-      } finally {
-        httpPost.releaseConnection();
+    HttpPost httpPost = new HttpPost(mediaCurationUrl);
+    httpPost.setEntity(entity);
+    StatusLine statusLine = null;
+    try (CloseableHttpResponse response = cachedRemoteReader.getResponse(httpPost)) {
+      statusLine = response.getStatusLine();
+    } catch (ServiceRequestException e) {
+      //This exception is thrown when the submitted link is already present for the article.
+      if (e.getStatusCode() == HttpStatus.CONFLICT.value()
+          && e.getResponseBody().equals("The link already exists")) {
+        model.addAttribute("formError", "This link has already been submitted. Please submit a different link");
+        model.addAttribute("isValid", false);
+      } else {
+        throw new RuntimeException(e);
       }
+    } finally {
+      httpPost.releaseConnection();
+    }
 
-      if (statusLine != null && statusLine.getStatusCode() != HttpStatus.CREATED.value()) {
-        throw new RuntimeException("bad response from media curation server: " + statusLine);
-      }
+    if (statusLine != null && statusLine.getStatusCode() != HttpStatus.CREATED.value()) {
+      throw new RuntimeException("bad response from media curation server: " + statusLine);
     }
 
     return jsonService.serialize(model);

@@ -239,7 +239,7 @@ var AdvancedSearch = {};
       /* Special treatement is required when inputs are datepickers */
       queryValue = this.processDateCondition(row.find('input'));
     } else {
-      queryValue = escapeQuery(row.find('input').val());
+      queryValue = row.find('input').val();
       if (queryValue.indexOf(' ') !== -1) {
         /* If there is a space in the value, add quotes */
         queryValue = '"' + queryValue + '"';
@@ -249,12 +249,6 @@ var AdvancedSearch = {};
     query += queryValue;
     return query;
   };
-
-  //Lucene requires escaping of the following characters with a backslash:
-  // + - && || ! ( ) { } [ ] ^ " ~ * ? : \ /
-  function escapeQuery(query) {
-    return query.replace(/([!*+\-=<>&|()\[\]{}\^~?:\\/"])/g, "\\$1");
-  }
 
   AdvancedSearch.processDateCondition = function (dates) {
     var processedDates = '';

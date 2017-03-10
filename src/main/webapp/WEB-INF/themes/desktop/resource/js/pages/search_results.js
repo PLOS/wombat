@@ -539,12 +539,14 @@ var SearchResult;
       this.$resultListEl.append(errorTemplate());
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
+      this.hideLoading();
     },
     showParseError: function () {
       var errorTemplate = _.template($('#searchParseErrorTemplate').html());
       this.$resultListEl.append(errorTemplate());
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
+      this.hideLoading();
     },
     showNoResults: function () {
       var noResultsTemplate = _.template($('#searchNoResultsTemplate').html());

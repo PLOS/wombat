@@ -1,5 +1,5 @@
 Package: [[artifactId]]
-Version: [[version]]
+Version: [[version]]+[[build.datestamp]]-plos[[build.counter]]
 Section: java
 Priority: optional
 Architecture: all

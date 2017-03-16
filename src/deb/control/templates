@@ -1,0 +1,19 @@
+Template: [[artifactId]]/tomcat_admin_user
+Type: string
+Default: [[artifactId]]
+Description: The Tomcat admin user name
+
+Template: [[artifactId]]/tomcat_admin_password
+Type: password
+Default:
+Description: The password for the Tomcat admin user
+
+Template: [[artifactId]]/wombat_port
+Type: string
+Default: 8006
+Description: The HTTP port you would like Wombat to be accessible from
+
+Template: [[artifactId]]/control_port
+Type: string
+Default: 8014
+Description: The TCP port to use for Tomcat shutdown control port

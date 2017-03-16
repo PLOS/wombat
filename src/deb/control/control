@@ -3,6 +3,6 @@ Version: [[version]]+[[build.datestamp]]-plos[[build.counter]]
 Section: java
 Priority: optional
 Architecture: all
-Depends: default-jre | java8-runtime
+Depends: default-jre | java8-runtime, tomcat7-common, debconf, adduser, bash
 Maintainer: Ambra Project Dev Team <dev@ambraproject.org>
 Description: [[description]]

@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Automatically added by dh_installdebconf
+if [ "$1" = purge ] && [ -e /usr/share/debconf/confmodule ]; then
+	. /usr/share/debconf/confmodule
+	db_purge
+fi
+# End automatically added section
+# Automatically added by dh_installinit
+if [ "$1" = "purge" ] ; then
+	update-rc.d [[artifactId]] remove >/dev/null
+fi
+
+
+# In case this system is running systemd, we make systemd reload the unit files
+# to pick up changes.
+if [ -d /run/systemd/system ] ; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+# End automatically added section
+
+TOMCAT7_USER=[[artifactId]]
+TOMCAT7_GROUP=[[artifactId]]
+HOME=[[rhino.debInstallDir]]
+#CONFFILE=/etc/default/[[artifactId]]
+#LR_CONFFILE=/etc/logrotate.d/tomcat7
+
+# Remove cached files and auto-generated catalina.policy
+#rm -rf /var/cache/tomcat7/*
+#rm -rf /var/lib/tomcat7/policy
+
+case "$1" in
+  remove)
+#    TODO: dont remove configs?
+  ;;
+
+  purge)
+      # ignore errors during purge
+      set +e
+
+      rm -rf $HOME
+
+      rm -f /etc/default/[[artifactId]]
+
+      deluser $TOMCAT7_USER
+      delgroup $TOMCAT7_GROUP
+
+      set -e
+  ;;
+
+  upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+      # Nothing to do here
+  ;;
+
+  *)
+      echo "$0 called with unknown argument \`$1'" >&2
+      exit 1
+  ;;
+esac

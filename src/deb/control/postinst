@@ -1,2 +1,68 @@
-#!/bin/sh
-echo "executing post-install code..."
+#!/usr/bin/env bash
+
+#set -x
+set -o errexit
+
+. /usr/share/debconf/confmodule
+
+TOMCAT7_USER=[[artifactId]]
+TOMCAT7_GROUP=[[artifactId]]
+HOME=[[rhino.debInstallDir]]
+
+function process_env_template {
+	CONTEXT_TEMPLATE=$1
+
+  ls -lh $CONTEXT_TEMPLATE
+
+	echo "Processing template $CONTEXT_TEMPLATE"
+
+  eval "cat <<EOF
+$(<$CONTEXT_TEMPLATE)
+EOF
+" > $CONTEXT_TEMPLATE
+}
+
+case "$1" in
+    configure)
+
+  # create user/group
+
+	if ! getent group "$TOMCAT7_GROUP" > /dev/null 2>&1 ; then
+	    addgroup --system "$TOMCAT7_GROUP" --quiet
+	fi
+	if ! id $TOMCAT7_USER > /dev/null 2>&1 ; then
+	    adduser --system --home $HOME --no-create-home \
+		--ingroup "$TOMCAT7_GROUP" --disabled-password --shell /bin/false \
+		"$TOMCAT7_USER"
+	fi
+
+  chmod +x $HOME/bin/*.sh
+  chown -Rh $TOMCAT7_USER:$TOMCAT7_GROUP $HOME
+
+  GET="db_get [[artifactId]]"
+
+
+########### BEGIN app-specific code ###########
+
+  # Fetching configuration from debconf
+
+  $GET/wombat_port && export WOMBAT_PORT=$RET
+  $GET/control_port && export CONTROL_PORT=$RET
+  $GET/tomcat_admin_user && export TOMCAT_ADMIN_USER=$RET
+  $GET/tomcat_admin_password && export TOMCAT_ADMIN_PASSWORD=$RET
+
+########### END app-specific code ###########
+
+
+  # removes the saved values, so they need to be re-entered the next time around
+  db_purge
+
+  # generate configs from templates
+  process_env_template $HOME/conf/context.xml
+  cat $HOME/conf/context.xml
+
+  process_env_template $HOME/conf/server.xml
+  cat $HOME/conf/server.xml
+
+esac
+

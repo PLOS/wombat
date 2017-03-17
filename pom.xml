@@ -536,15 +536,37 @@
             <configuration>
               <deb>${project.build.directory}/${project.artifactId}_[[version]]+${build.datestamp}-plos${build.counter}.deb</deb>
               <dataSet>
+
+                <!-- extract rendered tomcat7 files to install directory  -->
+                <data>
+                  <src>${project.basedir}/src/deb/tomcat7</src>
+                  <type>directory</type>
+                  <mapper>
+                      <type>perm</type>
+                      <prefix>${wombat.debInstallDir}</prefix>
+                  </mapper>
+                </data>
+                <!-- place built war file into webapps directory  -->
                 <data>
                   <src>${project.build.directory}/${project.build.finalName}.war</src>
                   <type>file</type>
-                  <dst>ROOT.war</dst>
+                  <dst>wombat.war</dst>
                   <mapper>
-                    <type>perm</type>
-                    <prefix>${wombat.debInstallDir}</prefix>
+                      <type>perm</type>
+                      <prefix>${wombat.debInstallDir}/webapps</prefix>
                   </mapper>
                 </data>
+                <!-- move the init script to /etc/init.d directory  -->
+                <data>
+                  <src>${project.basedir}/src/deb/${artifactId}.sysv</src>
+                  <type>file</type>
+                  <dst>/etc/init.d/${artifactId}</dst>
+                  <mapper>
+                      <type>perm</type>
+                      <filemode>755</filemode>
+                  </mapper>
+                </data>
+
               </dataSet>
             </configuration>
           </execution>

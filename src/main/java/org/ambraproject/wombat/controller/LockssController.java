@@ -59,11 +59,12 @@ public class LockssController extends WombatController {
   }
 
   /*
-   * Note that this mapping value ("/lockss-manifest") is the same as for the "lockssYears" handler, which causes weird
-   * conflicts on certain sites. Specifically, "lockssYears" must be disabled for any site that is configured without a
-   * PathTokenPredicate. This is fine for PLOS's use case but breaks the feature for the general case.
+   * Note that this mapping value ("/lockss-manifest") is the same as for the "lockssYears" handler, which causes
+   * mapping conflicts on any site that is configured without a PathTokenPredicate. For this reason, this handler is
+   * disabled by default in {@code WEB-INF/themes/root/config/mappings.yaml} and should be re-enabled in a site's theme
+   * only if that site is mapped to requests with a path token.
    *
-   * TODO: Improve. See comments in TopLevelLockssManifestService for further details.
+   * See comments in TopLevelLockssManifestService.
    */
   @Siteless
   @RequestMapping(value = "/lockss-manifest", method = RequestMethod.GET)

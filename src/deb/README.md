@@ -16,7 +16,7 @@ the `target/` directory. Unless you are a PLOS developer, ignore it and use the
 `*.war` file instead.
 
 
-# Overview of Debian packaging for Rhino (for PLOS-internal deployment only) #
+# Overview of Debian packaging for Wombat (for PLOS-internal deployment only) #
 
 ## jdeb Maven Plugin ##
 

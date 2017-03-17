@@ -23,7 +23,7 @@ fi
 
 TOMCAT7_USER=[[artifactId]]
 TOMCAT7_GROUP=[[artifactId]]
-HOME=[[rhino.debInstallDir]]
+HOME=[[wombat.debInstallDir]]
 #CONFFILE=/etc/default/[[artifactId]]
 #LR_CONFFILE=/etc/logrotate.d/tomcat7
 

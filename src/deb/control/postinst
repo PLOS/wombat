@@ -7,7 +7,7 @@ set -o errexit
 
 TOMCAT7_USER=[[artifactId]]
 TOMCAT7_GROUP=[[artifactId]]
-HOME=[[rhino.debInstallDir]]
+HOME=[[wombat.debInstallDir]]
 
 function process_env_template {
 	CONTEXT_TEMPLATE=$1

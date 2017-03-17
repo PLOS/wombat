@@ -10,7 +10,7 @@ Description: The password for the Tomcat admin user
 
 Template: [[artifactId]]/wombat_port
 Type: string
-Default: 8006
+Default: 8015
 Description: The HTTP port you would like Wombat to be accessible from
 
 Template: [[artifactId]]/control_port

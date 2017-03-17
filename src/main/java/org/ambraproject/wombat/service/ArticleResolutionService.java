@@ -84,8 +84,8 @@ public class ArticleResolutionService {
    * keys are strings.
    *
    * @param revisionTable a table from revision numbers to their ingestion numbers
-   * @return the latest revision with the ingestion it points to, or empty if the the article is no revisions exist
-   * because the article is unpublished
+   * @return the latest revision with the ingestion it points to, or empty if no revisions exist because the article is
+   * unpublished
    */
   public static Optional<RevisionPointer> findLatestRevision(Map<String, ? extends Number> revisionTable) {
     return revisionTable.entrySet().stream()

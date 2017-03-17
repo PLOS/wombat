@@ -22,11 +22,11 @@ the `target/` directory. Unless you are a PLOS developer, ignore it and use the
 
 The pom.xml file contains the configuration for the jdeb plugin, and controls the following packaging functions:
 * defining a name for the Debian package using the following format: [artifactId]_[version]+[datestamp]-plos[buildNumber].deb
-  (e.g. rhino_2.1.1+20170315-plos1234.deb). The build number defaults to 0 for local builds, but is otherwise passed as a mvn
+  (e.g. wombat_3.3.0+20170315-plos1234.deb). The build number defaults to 0 for local builds, but is otherwise passed as a mvn
   command line property by Team City.
 * extracting the tomcat7 config files (rendered with debconf-provided values as described below) into the install directory
-* placing the built rhino.war file into the webapps sub-folder within the install directory
-* moving the src/deb/tomcat7/rhino.sysv startup script into /etc/init.d/rhino
+* placing the built wombat.war file into the webapps sub-folder within the install directory
+* moving the src/deb/tomcat7/wombat.sysv startup script into /etc/init.d/wombat
 
 NOTE: for more configuration options, see https://github.com/tcurdt/jdeb/blob/master/docs/maven.md
 
@@ -37,7 +37,7 @@ control of the jdeb Maven plugin.
 * control:      package metadata including the version (which needs to match the version and suffix string format defined
                 in pom.xml) and any package dependencies (most notably, tomcat7-common and debconf)
 * preinst:      contains the input commands to use for the debconf wizard of format `dbinput [priority] [question]`
-                (e.g. `db_input high rhino/wombat_port`) where [question] is a reference to a template (see below)
+                (e.g. `db_input high wombat/wombat_port`) where [question] is a reference to a template (see below)
 * templates:    contains the questions for the debconf wizard to ask during the install, and default values
 * postinst:     retrieves the answers to the wizard questions and sets environment variables used for rendering the
                 tomcat config files (see below)

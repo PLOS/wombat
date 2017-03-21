@@ -47,7 +47,7 @@ import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.DoiToJournalResolutionService;
-import org.ambraproject.wombat.service.EmailMessage;
+import org.ambraproject.wombat.model.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;

@@ -43,7 +43,7 @@
           </span>
         </#if>
 
-        <@displayCitation amendment false />
+        <@displayCitation amendment />
 
         <#if amendment.doi??>
           <@siteLink path="article?id=" ; path>

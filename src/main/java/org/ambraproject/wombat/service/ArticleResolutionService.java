@@ -27,6 +27,7 @@ import org.ambraproject.wombat.controller.NotFoundException;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.springframework.beans.factory.annotation.Autowired;
 

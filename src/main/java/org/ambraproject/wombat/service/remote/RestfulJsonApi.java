@@ -22,7 +22,6 @@
 
 package org.ambraproject.wombat.service.remote;
 
-import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;

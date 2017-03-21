@@ -20,7 +20,7 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-package org.ambraproject.wombat.service;
+package org.ambraproject.wombat.service.remote;
 
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.util.UriUtil;

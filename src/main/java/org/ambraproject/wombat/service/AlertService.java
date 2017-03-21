@@ -27,6 +27,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.ambraproject.wombat.model.AlertQuery;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.plos.ned_client.model.Alert;
 import org.springframework.beans.factory.annotation.Autowired;

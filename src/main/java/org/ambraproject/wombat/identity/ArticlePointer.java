@@ -24,7 +24,7 @@ package org.ambraproject.wombat.identity;
 
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
-import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 
 import java.util.Objects;
 import java.util.OptionalInt;

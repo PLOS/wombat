@@ -40,7 +40,7 @@ import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
 import org.ambraproject.wombat.model.Reference;
-import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;

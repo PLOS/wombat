@@ -32,7 +32,7 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
-import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

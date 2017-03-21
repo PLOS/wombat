@@ -23,6 +23,7 @@
 package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.BuildInfo;
 import org.ambraproject.wombat.util.GitInfo;

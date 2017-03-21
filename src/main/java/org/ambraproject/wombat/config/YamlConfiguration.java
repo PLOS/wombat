@@ -1,29 +1,44 @@
 /*
- * Copyright (c) 2006-2013 by Public Library of Science http://plos.org http://ambraproject.org
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
  */
 
 package org.ambraproject.wombat.config;
 
-import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
 import com.google.gson.GsonBuilder;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
+import org.ambraproject.wombat.config.theme.ThemeSource;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Collection;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Configuration for the webapp's runtime behavior as read from a YAML file.
@@ -67,8 +82,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public URL getSolrServer() {
-    return buildUrl(input.solrServer, "http://localhost:8983/solr/select/");
+  public Optional<URL> getSolrServer() {
+    return Optional.ofNullable(buildUrl(input.solrServer, null));
   }
 
   @Override
@@ -78,7 +93,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
 
   @Override
   public ImmutableSet<String> getEnabledDevFeatures() {
-    return ImmutableSet.copyOf(Objects.firstNonNull(input.enableDevFeatures, ImmutableSet.<String>of()));
+    return ImmutableSet.copyOf(MoreObjects.firstNonNull(input.enableDevFeatures, ImmutableSet.<String>of()));
   }
 
   @Override
@@ -86,14 +101,45 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return input.rootPagePath;
   }
 
-  @Override
-  public ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException {
-    return ThemeTree.parse(input.themes, internalThemes, rootTheme);
+  /**
+   * Future-proofing against the need for other ThemeSource types that may exist in the future (mainly, one that reads
+   * from a remote source, probably by URL). Currently, the only supported type reads from the local filesystem.
+   */
+  private static enum ThemeSourceType {
+    FILESYSTEM("filesystem") {
+      @Override
+      protected FilesystemThemeSource build(Map<String, ?> config) {
+        String path = (String) config.get("path");
+        if (path == null) throw new RuntimeException("Filesystem theme source must have path");
+        return new FilesystemThemeSource(new File(path));
+      }
+    };
+
+    private final String type;
+
+    private ThemeSourceType(String type) {
+      this.type = type;
+    }
+
+    private static final ImmutableMap<String, ThemeSourceType> BY_TYPE = Maps.uniqueIndex(
+        EnumSet.allOf(ThemeSourceType.class), tst -> tst.type);
+
+    protected abstract ThemeSource<?> build(Map<String, ?> config);
+  }
+
+  private static ThemeSource<?> parseThemeSource(Map<String, ?> map) {
+    String typeStr = (String) map.get("type");
+    if (typeStr == null) throw new RuntimeException("Theme source must have type");
+    ThemeSourceType sourceType = ThemeSourceType.BY_TYPE.get(typeStr);
+    if (sourceType == null) throw new RuntimeException("Unrecognized theme source type: " + typeStr);
+    return sourceType.build(map);
   }
 
   @Override
-  public SiteSet getSites(ThemeTree themeTree) {
-    return SiteSet.create(input.sites, themeTree);
+  public ImmutableList<ThemeSource<?>> getThemeSources() {
+    return input.themeSources.stream()
+        .map(YamlConfiguration::parseThemeSource)
+        .collect(ImmutableList.toImmutableList());
   }
 
   private final CacheConfiguration cacheConfiguration = new CacheConfiguration() {
@@ -139,23 +185,23 @@ public class YamlConfiguration implements RuntimeConfiguration {
   private final CasConfiguration casConfiguration = new CasConfiguration() {
     @Override
     public String getCasUrl() {
-      return (input.cas == null) ? null : input.cas.casUrl;
+      return input.cas.casUrl;
     }
 
     @Override
     public String getLoginUrl() {
-      return (input.cas == null) ? null : input.cas.loginUrl;
+      return input.cas.loginUrl;
     }
 
     @Override
-    public String getLogoutUrl()  {
-      return (input.cas == null) ? null : input.cas.logoutUrl;
+    public String getLogoutUrl() {
+      return input.cas.logoutUrl;
     }
   };
 
   @Override
-  public CasConfiguration getCasConfiguration() {
-    return casConfiguration;
+  public Optional<CasConfiguration> getCasConfiguration() {
+    return (input.cas == null) ? Optional.empty() : Optional.of(casConfiguration);
   }
 
   @Override
@@ -217,7 +263,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * All such fields are immutable by convention. They should be set only by the YAML deserializer.
      * The intent of the @Deprecated annotation is to raise a warning in the IDE if a human refers
      * to them in code. (The reflective code in the library won't care at runtime of course.)
-
+     *
      * ---------------- Input fields (and boring boilerplate setters) are below this line ----------------
      */
 
@@ -227,8 +273,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String compiledAssetDir;
     private String rootPagePath;
     private List<String> enableDevFeatures;
-    private List<Map<String, ?>> themes;
-    private List<Map<String, ?>> sites;
+    private List<Map<String, ?>> themeSources;
 
     private CacheConfigurationInput cache;
     private HttpConnectionPoolConfigurationInput httpConnectionPool;
@@ -288,16 +333,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setThemes(List<Map<String, ?>> themes) {
-      this.themes = themes;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setSites(List<Map<String, ?>> sites) {
-      this.sites = sites;
+    public void setThemeSources(List<Map<String, ?>> themeSources) {
+      this.themeSources = themeSources;
     }
 
     /**

@@ -1,3 +1,25 @@
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableList;
@@ -32,7 +54,6 @@ import java.util.EnumSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Controller
 public class ArticleAssetController extends WombatController {
@@ -62,11 +83,11 @@ public class ArticleAssetController extends WombatController {
       this.itemTypes = ImmutableSet.copyOf(itemTypes);
     }
 
-    private static final ImmutableMap<String, AssetUrlStyle> BY_ITEM_TYPE = ImmutableMap.copyOf(
+    private static final ImmutableMap<String, AssetUrlStyle> BY_ITEM_TYPE =
         EnumSet.allOf(AssetUrlStyle.class).stream()
             .flatMap((AssetUrlStyle s) -> s.itemTypes.stream()
                 .map((String itemType) -> Maps.immutableEntry(itemType, s)))
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+            .collect(ImmutableMap.toImmutableMap(Map.Entry::getKey, Map.Entry::getValue));
 
     static AssetUrlStyle findByItemType(String itemType) {
       AssetUrlStyle style = BY_ITEM_TYPE.get(itemType);

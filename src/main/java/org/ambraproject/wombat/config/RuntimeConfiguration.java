@@ -1,23 +1,34 @@
 /*
- * Copyright (c) 2006-2013 by Public Library of Science http://plos.org http://ambraproject.org
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
  */
 
 package org.ambraproject.wombat.config;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.config.theme.ThemeSource;
 
 import java.net.URL;
-import java.util.Collection;
+import java.util.Optional;
 
 
 /**
@@ -77,7 +88,7 @@ public interface RuntimeConfiguration {
    *
    * @return the URL
    */
-  URL getSolrServer();
+  Optional<URL> getSolrServer();
 
   /**
    * Get the host name of the server to which to send SMTP messages;
@@ -93,25 +104,7 @@ public interface RuntimeConfiguration {
    */
   ImmutableSet<String> getEnabledDevFeatures();
 
-  /**
-   * Parse the user-defined themes.
-   *
-   * @param internalThemes constant themes provided by the webapp
-   * @param rootTheme      the default parent theme to be applied to any user-defined theme without an explicit parent
-   * @return the set of all available themes
-   * @throws org.ambraproject.wombat.config.theme.ThemeTree.ThemeConfigurationException
-   * @throws java.lang.IllegalArgumentException                                         if {@code internalThemes} does
-   *                                                                                    not contain {@code rootTheme}
-   */
-  ThemeTree getThemes(Collection<? extends Theme> internalThemes, Theme rootTheme) throws ThemeTree.ThemeConfigurationException;
-
-  /**
-   * Produce a map from site keys to each site's theme.
-   *
-   * @param themeTree the set of available themes
-   * @return map from site keys to each site's theme
-   */
-  SiteSet getSites(ThemeTree themeTree);
+  ImmutableList<ThemeSource<?>> getThemeSources();
 
   interface CasConfiguration {
     String getCasUrl();
@@ -121,7 +114,7 @@ public interface RuntimeConfiguration {
     String getLogoutUrl();
   }
 
-  CasConfiguration getCasConfiguration();
+  Optional<CasConfiguration> getCasConfiguration();
 
   boolean areCommentsDisabled();
 

@@ -1,8 +1,29 @@
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
 package org.ambraproject.wombat.util;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Joiner;
-import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
@@ -11,6 +32,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Utility methods for building article citations.
@@ -22,7 +45,7 @@ public class Citations {
     throw new AssertionError("Not instantiable");
   }
 
-  private static final Splitter WHITESPACE_SPLITTER = Splitter.on(CharMatcher.WHITESPACE);
+  private static final Splitter WHITESPACE_SPLITTER = Splitter.on(CharMatcher.whitespace());
   private static final Splitter DASH_SPLITTER = Splitter.on(Pattern.compile("\\p{Pd}")).omitEmptyStrings();
 
   public static String abbreviateAuthorGivenNames(String givenNames) {
@@ -42,18 +65,18 @@ public class Citations {
   private static String getAbbreviatedName(Map<String, ?> author) {
     String surnames = (String) author.get("surnames");
     String givenNames = (String) author.get("givenNames");
-    String suffix = (String) author.get("suffix");
-
-    StringBuilder name = new StringBuilder();
-    name.append(Preconditions.checkNotNull(surnames));
-    if (!Strings.isNullOrEmpty(givenNames)) {
-      name.append(' ').append(abbreviateAuthorGivenNames(givenNames));
+    if (!Strings.isNullOrEmpty(surnames) && !Strings.isNullOrEmpty(givenNames)) {
+      givenNames = abbreviateAuthorGivenNames(givenNames);
     }
+
+    String suffix = (String) author.get("suffix");
     if (!Strings.isNullOrEmpty(suffix)) {
       suffix = suffix.replace(".", "");
-      name.append(' ').append(suffix);
     }
-    return name.toString();
+
+    return Stream.of(surnames, givenNames, suffix)
+        .filter(s -> !Strings.isNullOrEmpty(s))
+        .collect(Collectors.joining(" "));
   }
 
 

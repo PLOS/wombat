@@ -1,19 +1,41 @@
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
-import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import org.ambraproject.wombat.util.ListUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ArticleSearchQuery {
@@ -22,12 +44,12 @@ public class ArticleSearchQuery {
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
   private static final String ARTICLE_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
-      "id", "eissn", "publication_date", "title", "title_display", "cross_published_journal_name",
+      "id", "eissn", "publication_date", "title", "title_display", "journal_name",
       "author_display", "article_type", "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount",
       "alm_mendeleyCount", "alm_twitterCount", "alm_facebookCount", "retraction", "expression_of_concern",
-      "striking_image", "figure_table_caption", "cross_published_journal_key",}));
+      "striking_image", "figure_table_caption", "journal_key",}));
   private static final String RSS_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
-      "id", "publication_date", "title", "title_display", "cross_published_journal_name", "author_display",
+      "id", "publication_date", "title", "title_display", "journal_name", "author_display",
       "abstract", "abstract_primary_display"}));
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;
@@ -70,12 +92,12 @@ public class ArticleSearchQuery {
     this.isPartialSearch = builder.isPartialSearch;
     this.isRssSearch = builder.isRssSearch;
     this.filterQueries = ImmutableList.copyOf(builder.filterQueries);
-    this.facet = Optional.fromNullable(builder.facet);
+    this.facet = Optional.ofNullable(builder.facet);
     this.minFacetCount = builder.minFacetCount;
     this.maxFacetSize = builder.maxFacetSize;
     this.start = builder.start;
     this.rows = builder.rows;
-    this.sortOrder = Optional.fromNullable(builder.sortOrder);
+    this.sortOrder = Optional.ofNullable(builder.sortOrder);
     this.journalKeys = ImmutableList.copyOf(builder.journalKeys);
     this.articleTypes = ImmutableList.copyOf(builder.articleTypes);
     this.articleTypesToExclude = ImmutableList.copyOf(builder.articleTypesToExclude);
@@ -84,13 +106,16 @@ public class ArticleSearchQuery {
     this.sections = ImmutableList.copyOf(builder.sections);
     this.startDate = builder.startDate;
     this.endDate = builder.endDate;
-    this.dateRange = Optional.fromNullable(builder.dateRange);
+    this.dateRange = Optional.ofNullable(builder.dateRange);
     this.rawParameters = ImmutableMap.copyOf(builder.rawParameters);
   }
 
   private static Optional<String> getQueryString(String query) {
     // Treat empty string as absent query, which will be sent to Solr as "*:*"
-    return Strings.isNullOrEmpty(query) ? Optional.<String>absent() : Optional.of(query);
+    if (Strings.isNullOrEmpty(query)) {
+      return Optional.empty();
+    }
+    return Optional.of(query);
   }
 
   @VisibleForTesting
@@ -118,7 +143,7 @@ public class ArticleSearchQuery {
 
     params.add(new BasicNameValuePair("hl", "false"));
 
-    String queryString = query.or("*:*");
+    String queryString = query.orElse("*:*");
     params.add(new BasicNameValuePair("q", queryString));
     if (query.isPresent() && isSimple) {
       // Use the dismax query parser, recommended for all user-entered queries.
@@ -149,6 +174,10 @@ public class ArticleSearchQuery {
     return params;
   }
 
+  private static boolean isNullOrEmpty(Collection<?> collection) {
+    return collection == null || collection.isEmpty();
+  }
+
   @VisibleForTesting
   void setQueryFilters(List<NameValuePair> params) {
     if (sortOrder.isPresent()) {
@@ -162,13 +191,13 @@ public class ArticleSearchQuery {
         params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
       }
     }
-    if (!ListUtil.isNullOrEmpty(journalKeys)) {
+    if (!isNullOrEmpty(journalKeys)) {
       List<String> crossPublishedJournals = journalKeys.stream()
-          .map(journalKey -> "cross_published_journal_key:" + journalKey).collect(Collectors.toList());
+          .map(journalKey -> "journal_key:" + journalKey).collect(Collectors.toList());
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(crossPublishedJournals)));
     }
 
-    if (!ListUtil.isNullOrEmpty(articleTypes)) {
+    if (!isNullOrEmpty(articleTypes)) {
       List<String> articleTypeQueryList = articleTypes.stream()
           .map(articleType ->
           {
@@ -179,21 +208,21 @@ public class ArticleSearchQuery {
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(articleTypeQueryList)));
     }
 
-    if (!ListUtil.isNullOrEmpty(articleTypesToExclude)) {
+    if (!isNullOrEmpty(articleTypesToExclude)) {
       List<String> articleTypeToExcludeQueryList = articleTypesToExclude.stream()
           .map(articleType -> "!article_type_facet:\"" + articleType + "\"").collect(Collectors.toList());
       params.add(new BasicNameValuePair("fq", Joiner.on(" AND ").join(articleTypeToExcludeQueryList)));
     }
 
-    if (!ListUtil.isNullOrEmpty(subjects)) {
+    if (!isNullOrEmpty(subjects)) {
       params.add(new BasicNameValuePair("fq", buildSubjectClause(subjects)));
     }
 
-    if (!ListUtil.isNullOrEmpty(authors)) {
+    if (!isNullOrEmpty(authors)) {
       params.add(new BasicNameValuePair("fq", buildAuthorClause(authors)));
     }
 
-    if (!ListUtil.isNullOrEmpty(sections)) {
+    if (!isNullOrEmpty(sections)) {
       List<String> sectionQueryList = new ArrayList<>();
       for (String section : sections) {
         //Convert friendly section name to Solr field name TODO:clean this up
@@ -353,20 +382,20 @@ public class ArticleSearchQuery {
 
   public Builder copy() {
     Builder builder = builder();
-    builder.query = this.query.orNull();
+    builder.query = this.query.orElse(null);
     builder.isSimple = this.isSimple;
     builder.isForRawResults = this.isForRawResults;
     builder.filterQueries = this.filterQueries;
-    builder.facet = this.facet.orNull();
+    builder.facet = this.facet.orElse(null);
     builder.minFacetCount = this.minFacetCount;
     builder.maxFacetSize = this.maxFacetSize;
     builder.start = this.start;
     builder.rows = this.rows;
-    builder.sortOrder = this.sortOrder.orNull();
+    builder.sortOrder = this.sortOrder.orElse(null);
     builder.journalKeys = this.journalKeys;
     builder.articleTypes = this.articleTypes;
     builder.subjects = this.subjects;
-    builder.dateRange = this.dateRange.orNull();
+    builder.dateRange = this.dateRange.orElse(null);
     builder.authors = this.authors;
     builder.sections = this.sections;
     builder.rawParameters = this.rawParameters;

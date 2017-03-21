@@ -1,14 +1,23 @@
 /*
- * $HeadURL$
- * $Id$
- * Copyright (c) 2006-2013 by Public Library of Science http://plos.org http://ambraproject.org
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
  */
 
 package org.ambraproject.wombat.controller;
@@ -35,11 +44,10 @@ import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
-import org.ambraproject.wombat.service.remote.SearchFilterService;
+import org.ambraproject.wombat.service.SearchFilterService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
-import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -234,7 +242,7 @@ public class SearchController extends WombatController {
       }
       dateRange = parseDateRange(getSingleParam(params, "dateRange", null),
           getDateParam(params, "filterStartDate"), getDateParam(params, "filterEndDate"));
-      List<String> allJournalKeys = ListUtil.isNullOrEmpty(params.get("filterJournals"))
+      List<String> allJournalKeys = isNullOrEmpty(params.get("filterJournals"))
           ? new ArrayList<>() : params.get("filterJournals");
 
       filterJournalNames = new HashSet<>();
@@ -261,9 +269,9 @@ public class SearchController extends WombatController {
       subjectList = parseSubjects(getSingleParam(params, "subject", null), params.get("filterSubjects"));
       articleTypes = params.get("filterArticleTypes");
       articleTypes = articleTypes == null ? new ArrayList<String>() : articleTypes;
-      authors = ListUtil.isNullOrEmpty(params.get("filterAuthors"))
+      authors = isNullOrEmpty(params.get("filterAuthors"))
           ? new ArrayList<String>() : params.get("filterAuthors");
-      sections = ListUtil.isNullOrEmpty(params.get("filterSections"))
+      sections = isNullOrEmpty(params.get("filterSections"))
           ? new ArrayList<String>() : params.get("filterSections");
 
       isFiltered = !filterJournalNames.isEmpty() || !subjectList.isEmpty() || !articleTypes.isEmpty()
@@ -486,6 +494,10 @@ public class SearchController extends WombatController {
       return Arrays.stream(AdvancedSearchTerms.values()).noneMatch(e -> query.contains(e.text));
     }
   }
+  
+  private static boolean isNullOrEmpty(Collection<?> collection) {
+    return collection == null || collection.isEmpty();
+  }
 
   /**
    * Examine the current @code{ArticleSearchQuery} object and build a single URL parameter
@@ -499,7 +511,7 @@ public class SearchController extends WombatController {
     Preconditions.checkArgument(!q.getFacet().isPresent());
 
     ImmutableListMultimap.Builder<String, String> builder = ImmutableListMultimap.builder();
-    builder.put(q.isSimple() ? "q" : "unformattedQuery", q.getQuery().or(""));
+    builder.put(q.isSimple() ? "q" : "unformattedQuery", q.getQuery().orElse(""));
 
     int rows = q.getRows();
     builder.put("resultsPerPage", Integer.toString(rows));
@@ -796,15 +808,15 @@ public class SearchController extends WombatController {
     model.addAttribute("subjectName", subjectName);
 
     // set defaults for subject area landing page
-    if (ListUtil.isNullOrEmpty(params.get("resultsPerPage"))) {
+    if (isNullOrEmpty(params.get("resultsPerPage"))) {
       params.add("resultsPerPage", BROWSE_RESULTS_PER_PAGE);
     }
 
-    if (ListUtil.isNullOrEmpty(params.get("sortOrder"))) {
+    if (isNullOrEmpty(params.get("sortOrder"))) {
       params.add("sortOrder", "DATE_NEWEST_FIRST");
     }
 
-    if (ListUtil.isNullOrEmpty(params.get("filterJournals"))) {
+    if (isNullOrEmpty(params.get("filterJournals"))) {
       params.add("filterJournals", site.getJournalKey());
     }
 

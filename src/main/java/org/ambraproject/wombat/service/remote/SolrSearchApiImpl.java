@@ -1,30 +1,38 @@
 /*
- * $HeadURL$
- * $Id$
- * Copyright (c) 2006-2013 by Public Library of Science http://plos.org http://ambraproject.org
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
  */
 
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
-import org.ambraproject.wombat.service.ApiAddress;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.lucene.queryparser.classic.QueryParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -223,9 +231,8 @@ public class SolrSearchApiImpl implements SolrSearchApi {
 
   @Override
   public Map<?, ?> lookupArticlesByDois(List<String> dois) throws IOException {
-    List<String> solrDois = dois.stream().map(doi -> "id:" + doi).collect(Collectors.toList());
-
-    String doiQueryString = Joiner.on(" OR ").join(solrDois);
+    String doiQueryString = dois.stream().map(doi -> "id:" + QueryParser.escape(doi))
+        .collect(Collectors.joining(" OR "));
 
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery(doiQueryString)
@@ -355,14 +362,17 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     return (Map<String, Map>) rawResults;
   }
 
-  private URI getSolrUri(List<NameValuePair> params) {
-    URI uri;
+  private URI getSolrUri(List<NameValuePair> params) throws SolrUndefinedException {
     try {
-      uri = new URL(runtimeConfiguration.getSolrServer(), "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
+      URL solrServer = runtimeConfiguration.getSolrServer()
+          .orElseThrow(() -> new SolrUndefinedException("Solr server URI must be defined " +
+              "in wombat.yaml in order to use solr features such as search, RSS, or " +
+              "listing recent articles on the homepage."));
+      return new URL(solrServer, "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
     } catch (MalformedURLException | URISyntaxException e) {
+      //Solr server has already been validated - any exception here must be invalid values in params
       throw new IllegalArgumentException(e);
     }
-    return uri;
   }
 
   private class FacetedQueryResponse {

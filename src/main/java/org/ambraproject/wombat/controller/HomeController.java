@@ -1,6 +1,27 @@
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
@@ -11,7 +32,7 @@ import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.feed.FeedMetadataField;
 import org.ambraproject.wombat.feed.FeedType;
-import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RecentArticleService;
@@ -37,6 +58,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -176,7 +198,7 @@ public class HomeController extends WombatController {
       if (since != null) {
         if (type == SectionType.RECENT) {
           return recentArticleService.getRecentArticles(site, resultCount, since, shuffle,
-              articleTypes, articleTypesToExclude, Optional.fromNullable(cacheTtl));
+              articleTypes, articleTypesToExclude, Optional.ofNullable(cacheTtl));
         } else {
           throw new IllegalArgumentException("Shuffling is supported only on RECENT section"); // No plans to support
         }
@@ -196,14 +218,6 @@ public class HomeController extends WombatController {
     } catch (NumberFormatException e) {
       return minValue;
     }
-  }
-
-  private List<SectionSpec> parseSectionSpecs(List<Map<String, Object>> sectionSpecs) {
-    List<SectionSpec> sections = new ArrayList<>(sectionSpecs.size());
-    for (Map<String, Object> sectionSpec : sectionSpecs) {
-      sections.add(new SectionSpec(sectionSpec));
-    }
-    return sections;
   }
 
   private static List<String> getSupportedSectionNames(List<SectionSpec> supportedSections) {
@@ -244,7 +258,8 @@ public class HomeController extends WombatController {
 
     Map<String, Object> homepageConfig = site.getTheme().getConfigMap("homepage");
 
-    List<SectionSpec> sectionSpecs = parseSectionSpecs((List<Map<String, Object>>) homepageConfig.get("sections"));
+    List<SectionSpec> sectionSpecs = ((List<Map<String, Object>>) homepageConfig.get("sections"))
+        .stream().map(SectionSpec::new).collect(Collectors.toList());
     model.addAttribute("supportedSections", getSupportedSectionNames(sectionSpecs));
     String defaultSection = (String) homepageConfig.get("defaultSelection");
 

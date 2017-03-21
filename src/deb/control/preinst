@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+#set -x
+#set -o errexit
+
+. /usr/share/debconf/confmodule
+
+INPUT="db_input high [[artifactId]]"
+
+########### BEGIN app-specific code ###########
+
+# parameters provided by the debconf wizard
+$INPUT/wombat_port || true
+$INPUT/control_port || true
+$INPUT/tomcat_admin_user || true
+$INPUT/tomcat_admin_password || true
+
+########### END app-specific code ###########
+
+db_go || true

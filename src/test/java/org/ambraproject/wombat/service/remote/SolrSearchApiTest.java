@@ -1,3 +1,25 @@
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Joiner;
@@ -140,7 +162,7 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
     actualMap = convertToMap(actual);
     assertEquals(actualMap.get("fq").size(), 2);
     for (String s : actualMap.get("fq")) {
-      if (!s.contains("publication_date:") && !s.contains("cross_published_journal_key:")) {
+      if (!s.contains("publication_date:") && !s.contains("journal_key:")) {
         fail(s);
       }
     }
@@ -326,7 +348,7 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
   private void assertJournals(Set<String> actualFq, String... expectedJournals) {
     String journals = null;
     for (String s : actualFq) {
-      if (s.startsWith("cross_published_journal_key:")) {
+      if (s.startsWith("journal_key:")) {
         journals = s;
         break;
       }
@@ -334,12 +356,12 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
     assertNotNull(journals);
 
     // For multiple journals, the expected format of the param is
-    // "cross_published_journal_key:PLoSBiology OR cross_published_journal_key:PLoSONE"
+    // "journal_key:PLoSBiology OR journal_key:PLoSONE"
     String[] parts = journals.split(" OR ");
     assertEquals(parts.length, expectedJournals.length);
     Set<String> actualJournals = new HashSet<>();
     for (String part : parts) {
-      actualJournals.add(part.substring("cross_published_journal_key:".length()));
+      actualJournals.add(part.substring("journal_key:".length()));
     }
     for (String expected : expectedJournals) {
       assertTrue(actualJournals.contains(expected));

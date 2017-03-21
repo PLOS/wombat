@@ -1,8 +1,29 @@
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
-import com.google.common.base.Function;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -19,14 +40,14 @@ import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
 import org.ambraproject.wombat.model.Reference;
-import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.DoiToJournalResolutionService;
-import org.ambraproject.wombat.service.EmailMessage;
+import org.ambraproject.wombat.model.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -34,6 +55,7 @@ import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
+import org.ambraproject.wombat.service.remote.SolrUndefinedException;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
@@ -87,6 +109,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -452,7 +475,7 @@ public class ArticleController extends WombatController {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility("articleRelatedContent")
         .populate(request, model);
-    String recaptchaPublicKey = site.getTheme().getConfigMap("captcha").get("publicKey").toString();
+    String recaptchaPublicKey = (String) site.getTheme().getConfigMap("captcha").get("publicKey");
     model.addAttribute("recaptchaPublicKey", recaptchaPublicKey);
     return site + "/ftl/article/relatedContent";
   }
@@ -502,30 +525,31 @@ public class ArticleController extends WombatController {
 
     UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
 
-    String mediaCurationUrl = site.getTheme().getConfigMap("mediaCuration").get("mediaCurationUrl").toString();
+    String mediaCurationUrl = (String) site.getTheme().getConfigMap("mediaCuration").get("mediaCurationUrl");
+    if (mediaCurationUrl == null) {
+      throw new RuntimeException("Media curation URL is not configured");
+    }
 
-    if (mediaCurationUrl != null) {
-      HttpPost httpPost = new HttpPost(mediaCurationUrl);
-      httpPost.setEntity(entity);
-      StatusLine statusLine = null;
-      try (CloseableHttpResponse response = cachedRemoteReader.getResponse(httpPost)) {
-        statusLine = response.getStatusLine();
-      } catch (ServiceRequestException e) {
-        //This exception is thrown when the submitted link is already present for the article.
-        if (e.getStatusCode() == HttpStatus.CONFLICT.value()
-            && e.getResponseBody().equals("The link already exists")) {
-          model.addAttribute("formError", "This link has already been submitted. Please submit a different link");
-          model.addAttribute("isValid", false);
-        } else {
-          throw new RuntimeException(e);
-        }
-      } finally {
-        httpPost.releaseConnection();
+    HttpPost httpPost = new HttpPost(mediaCurationUrl);
+    httpPost.setEntity(entity);
+    StatusLine statusLine = null;
+    try (CloseableHttpResponse response = cachedRemoteReader.getResponse(httpPost)) {
+      statusLine = response.getStatusLine();
+    } catch (ServiceRequestException e) {
+      //This exception is thrown when the submitted link is already present for the article.
+      if (e.getStatusCode() == HttpStatus.CONFLICT.value()
+          && e.getResponseBody().equals("The link already exists")) {
+        model.addAttribute("formError", "This link has already been submitted. Please submit a different link");
+        model.addAttribute("isValid", false);
+      } else {
+        throw new RuntimeException(e);
       }
+    } finally {
+      httpPost.releaseConnection();
+    }
 
-      if (statusLine != null && statusLine.getStatusCode() != HttpStatus.CREATED.value()) {
-        throw new RuntimeException("bad response from media curation server: " + statusLine);
-      }
+    if (statusLine != null && statusLine.getStatusCode() != HttpStatus.CREATED.value()) {
+      throw new RuntimeException("bad response from media curation server: " + statusLine);
     }
 
     return jsonService.serialize(model);
@@ -749,7 +773,13 @@ public class ArticleController extends WombatController {
       byte[] xml = ByteStreams.toByteArray(stream);
       List<Reference> references = parseXmlService.parseArticleReferences(
           new ByteArrayInputStream(xml), doi -> {
-            String citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi);
+            String citationJournalKey;
+            try {
+              citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi);
+            } catch (SolrUndefinedException e) {
+              // If we can't look it up in Solr, fail quietly, the same as though no match was found.
+              citationJournalKey = null;
+            }
             String linkText = null;
             if (citationJournalKey != null) {
               linkText = Link.toForeignSite(site, citationJournalKey, siteSet)

@@ -1,3 +1,25 @@
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
 package org.ambraproject.wombat.config.site;
 
 import com.google.common.annotations.VisibleForTesting;
@@ -12,7 +34,7 @@ import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.config.theme.ThemeGraph;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 
 import java.util.Collection;
@@ -88,17 +110,21 @@ public class SiteSet {
     return ImmutableBiMap.copyOf(keysToNames);
   }
 
-  public static SiteSet create(List<Map<String, ?>> siteSpecifications, ThemeTree themeTree) {
+  public static SiteSet create(List<? extends Map<String, ?>> siteSpecifications, ThemeGraph themeGraph) {
     List<Site> sites = Lists.newArrayListWithCapacity(siteSpecifications.size());
     for (Map<String, ?> siteSpec : siteSpecifications) {
-      String key = (String) siteSpec.get("key");
-      Theme theme = themeTree.getTheme((String) siteSpec.get("theme"));
+      String siteKey = (String) siteSpec.get("key");
+      String themeKey = (String) siteSpec.get("theme");
+      Theme theme = themeGraph.getTheme(themeKey);
+      if (theme == null) {
+        throw new RuntimeException(String.format("No theme with key=\"%s\" found (for site: %s)", themeKey, siteKey));
+      }
 
       Map<String, ?> resolveDefinition = (Map<String, ?>) siteSpec.get("resolve");
       SiteRequestScheme requestScheme = resolveDefinition != null ? parseRequestScheme(resolveDefinition)
-          : SiteRequestScheme.builder().setPathToken(key).build();
+          : SiteRequestScheme.builder().setPathToken(siteKey).build();
 
-      sites.add(new Site(key, theme, requestScheme));
+      sites.add(new Site(siteKey, theme, requestScheme));
     }
     validateSchemes(sites);
     return new SiteSet(sites);

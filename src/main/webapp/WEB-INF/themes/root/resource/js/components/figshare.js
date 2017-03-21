@@ -1,26 +1,50 @@
-window.figshare.load(window.WombatConfig.figShareInstitutionString, function(Widget) {
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
 
-  // Select all tags defined in your page. In  these tags we will place the widget.
-  var containers = document.querySelectorAll(".figshare_widget");
-  var loadedWidgets = [];
+if (window.figshare) {
+  window.figshare.load(window.WombatConfig.figShareInstitutionString, function (Widget) {
 
-  for(var i = 0, n = containers.length; i < n; i += 1) {
+    // Select all tags defined in your page. In  these tags we will place the widget.
+    var containers = document.querySelectorAll(".figshare_widget");
+    var loadedWidgets = [];
 
-    var doi = containers[i].getAttribute("doi");
-    var groupStringId = doi.split(".")[2];
+    for (var i = 0, n = containers.length; i < n; i += 1) {
 
-    var widget = new Widget({
-      doi: doi,
-      extraClass: groupStringId
-    });
+      var doi = containers[i].getAttribute("doi");
+      var groupStringId = doi.split(".")[2];
 
-    widget.initialize(); // initialize the widget
-    widget.mount(containers[i]); // mount it in a tag that's on your page
-    loadedWidgets.push(widget);
-  }
+      var widget = new Widget({
+        doi: doi,
+        extraClass: groupStringId
+      });
 
-  // this will save the widget on the global scope for later use from
-  // your JS scripts. This line is optional.
-  window.loadedWidgets = loadedWidgets;
+      widget.initialize(); // initialize the widget
+      widget.mount(containers[i]); // mount it in a tag that's on your page
+      loadedWidgets.push(widget);
+    }
 
-});
+    // this will save the widget on the global scope for later use from
+    // your JS scripts. This line is optional.
+    window.loadedWidgets = loadedWidgets;
+
+  });
+}

@@ -1,19 +1,23 @@
 /*
- * Copyright (c) 2006-2014 by Public Library of Science
- * http://plos.org
- * http://ambraproject.org
+ * Copyright (c) 2017 Public Library of Science
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
  */
 
 package org.ambraproject.wombat.config;
@@ -21,13 +25,14 @@ package org.ambraproject.wombat.config;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteTemplateLoader;
 import org.ambraproject.wombat.config.theme.InternalTheme;
-import org.ambraproject.wombat.config.theme.ThemeTree;
+import org.ambraproject.wombat.config.theme.ThemeBuilder;
+import org.ambraproject.wombat.config.theme.ThemeGraph;
+import org.ambraproject.wombat.config.theme.ThemeSource;
 import org.ambraproject.wombat.controller.AppRootPage;
 import org.ambraproject.wombat.controller.ArticleMetadata;
 import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
@@ -38,9 +43,9 @@ import org.ambraproject.wombat.freemarker.AppLinkDirective;
 import org.ambraproject.wombat.freemarker.ArticleExcerptTransformDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
+import org.ambraproject.wombat.freemarker.GlobalConfigDirective;
 import org.ambraproject.wombat.freemarker.IsDevFeatureEnabledDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
-import org.ambraproject.wombat.freemarker.RandomIntegerDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
 import org.ambraproject.wombat.freemarker.SiteLinkDirective;
 import org.ambraproject.wombat.freemarker.ThemeConfigDirective;
@@ -88,7 +93,7 @@ import org.ambraproject.wombat.service.TopLevelLockssManifestService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
-import org.ambraproject.wombat.service.remote.SearchFilterService;
+import org.ambraproject.wombat.service.SearchFilterService;
 import org.ambraproject.wombat.util.GitInfo;
 import org.ambraproject.wombat.util.NullJavaMailSender;
 import org.springframework.context.annotation.Bean;
@@ -102,25 +107,43 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Configuration
 public class SpringConfiguration {
 
   @Bean
-  public ThemeTree themeTree(ServletContext servletContext, RuntimeConfiguration runtimeConfiguration)
-      throws ThemeTree.ThemeConfigurationException {
+  public ThemeGraph themeGraph(ServletContext servletContext, RuntimeConfiguration runtimeConfiguration)
+      throws ThemeGraph.ThemeConfigurationException, IOException {
     String path = "/WEB-INF/themes/";
-    InternalTheme root = new InternalTheme(".Root", null, servletContext, path + "root/");
-    ImmutableList<InternalTheme> listOfRoot = ImmutableList.of(root);
-    InternalTheme desktop = new InternalTheme(".Desktop", listOfRoot, servletContext, path + "desktop/");
-    InternalTheme mobile = new InternalTheme(".Mobile", listOfRoot, servletContext, path + "mobile/");
-    return runtimeConfiguration.getThemes(ImmutableSet.of(root, desktop, mobile), root);
+    InternalTheme root = new InternalTheme(".Root", ImmutableList.of(), servletContext, path + "root/");
+    InternalTheme desktop = new InternalTheme(".Desktop", ImmutableList.of(root), servletContext, path + "desktop/");
+    InternalTheme mobile = new InternalTheme(".Mobile", ImmutableList.of(root), servletContext, path + "mobile/");
+    Collection<InternalTheme> internalThemes = ImmutableList.of(root, desktop, mobile);
+
+    Collection<ThemeSource<?>> themeSources = runtimeConfiguration.getThemeSources();
+    Collection<ThemeBuilder<?>> themeBuilders = themeSources.stream()
+        .flatMap(ts -> ts.readThemes().stream())
+        .collect(Collectors.toList());
+
+    return ThemeGraph.create(root, internalThemes, themeBuilders);
   }
 
   @Bean
   public SiteSet siteSet(RuntimeConfiguration runtimeConfiguration,
-                         ThemeTree themeTree) {
-    return runtimeConfiguration.getSites(themeTree);
+                         ThemeGraph themeGraph) {
+    Collection<ThemeSource<?>> themeSources = runtimeConfiguration.getThemeSources();
+    List<Map<String, ?>> siteSpecs = themeSources.stream()
+        .flatMap(ts -> ts.readSites().stream())
+        .collect(Collectors.toList());
+    if (siteSpecs.isEmpty()) {
+      throw new RuntimeException("No sites found in sites.yaml files at: " +
+          themeSources.stream().map(Object::toString).collect(Collectors.joining(", ")));
+    }
+    return SiteSet.create(siteSpecs, themeGraph);
   }
 
   @Bean
@@ -179,6 +202,11 @@ public class SpringConfiguration {
   }
 
   @Bean
+  public GlobalConfigDirective globalConfigDirective() {
+    return new GlobalConfigDirective();
+  }
+
+  @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            IsDevFeatureEnabledDirective isDevFeatureEnabledDirective,
                                            SiteLinkDirective siteLinkDirective,
@@ -188,7 +216,8 @@ public class SpringConfiguration {
                                            FetchHtmlDirective fetchHtmlDirective,
                                            ThemeConfigDirective themeConfigDirective,
                                            AppLinkDirective appLinkDirective,
-                                           ArticleExcerptTransformDirective articleExcerptTransformDirective)
+                                           ArticleExcerptTransformDirective articleExcerptTransformDirective,
+                                           GlobalConfigDirective globalConfigDirective)
       throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
@@ -200,7 +229,6 @@ public class SpringConfiguration {
     ImmutableMap.Builder<String, Object> variables = ImmutableMap.builder();
     variables.put("formatJsonDate", new Iso8601DateDirective());
     variables.put("replaceParams", new ReplaceParametersDirective());
-    variables.put("randomInteger", new RandomIntegerDirective());
     variables.put("siteLink", siteLinkDirective);
     variables.put("isDevFeatureEnabled", isDevFeatureEnabledDirective);
     variables.put("cssLink", new CssLinkDirective());
@@ -213,6 +241,7 @@ public class SpringConfiguration {
     variables.put("appLink", appLinkDirective);
     variables.put("abbreviatedName", new AbbreviatedNameDirective());
     variables.put("xform", articleExcerptTransformDirective);
+    variables.put("globalConfig", globalConfigDirective);
     config.setFreemarkerVariables(variables.build());
     return config;
   }
@@ -228,7 +257,9 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public JournalFilterType journalFilterType() { return new JournalFilterType(); }
+  public JournalFilterType journalFilterType() {
+    return new JournalFilterType();
+  }
 
   @Bean
   public AppRootPage appRootPage() {
@@ -256,7 +287,9 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public SearchFilterFactory searchFilterFactory() { return new SearchFilterFactory(); }
+  public SearchFilterFactory searchFilterFactory() {
+    return new SearchFilterFactory();
+  }
 
   @Bean
   public SearchFilterService searchFilterService() {
@@ -264,7 +297,9 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public AlertService alertService() { return new AlertService(); }
+  public AlertService alertService() {
+    return new AlertService();
+  }
 
 
   @Bean

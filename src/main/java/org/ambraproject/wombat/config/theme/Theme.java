@@ -1,6 +1,27 @@
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
 package org.ambraproject.wombat.config.theme;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.AbstractIterator;
@@ -42,7 +63,7 @@ public abstract class Theme {
     Preconditions.checkArgument(!key.isEmpty());
     Preconditions.checkArgument(key.startsWith(".") == (this instanceof InternalTheme));
     this.key = key;
-    this.parents = (parents == null) ? ImmutableList.<Theme>of() : ImmutableList.copyOf(parents);
+    this.parents = ImmutableList.copyOf(parents);
   }
 
   /**
@@ -54,15 +75,11 @@ public abstract class Theme {
     return key;
   }
 
-  static final Function<Theme, String> GET_KEY = new Function<Theme, String>() {
-    @Override
-    public String apply(Theme input) {
-      return input.getKey();
-    }
-  };
+  ImmutableList<Theme> getParents() {
+    return parents;
+  }
 
-
-  private transient Iterable<Theme> iterableView;
+  private transient ImmutableList<Theme> iterableView;
 
   /**
    * Return the inheritance chain of themes, from leaf to root. The first element is guaranteed to be this object. Each
@@ -70,7 +87,7 @@ public abstract class Theme {
    *
    * @return the chain of themes
    */
-  public final Iterable<Theme> getChain() {
+  public final ImmutableList<Theme> getInheritanceChain() {
     return (iterableView != null) ? iterableView :
         (iterableView = ImmutableList.copyOf(new InheritanceChain()));
   }
@@ -95,7 +112,7 @@ public abstract class Theme {
    */
   public final InputStream getStaticResource(String path) throws IOException {
     Preconditions.checkNotNull(path);
-    for (Theme theme : getChain()) {
+    for (Theme theme : getInheritanceChain()) {
       InputStream stream = theme.fetchStaticResource(path);
       if (stream != null) {
         return stream;
@@ -139,7 +156,7 @@ public abstract class Theme {
    */
   public ResourceAttributes getResourceAttributes(String path) throws IOException {
     Preconditions.checkNotNull(path);
-    for (Theme theme : getChain()) {
+    for (Theme theme : getInheritanceChain()) {
       ResourceAttributes result = theme.fetchResourceAttributes(path);
       if (result != null) {
         return result;
@@ -164,7 +181,7 @@ public abstract class Theme {
       root += "/";
     }
     Set<String> paths = Sets.newTreeSet();
-    for (Theme theme : getChain()) {
+    for (Theme theme : getInheritanceChain()) {
       Collection<String> themePaths = theme.fetchStaticResourcePaths(root);
       if (themePaths != null) {
         paths.addAll(themePaths);
@@ -218,7 +235,7 @@ public abstract class Theme {
   public final Map<String, Object> getConfigMap(String path) {
     String configPath = "config/" + path;
     Map<String, Object> values = Maps.newLinkedHashMap();
-    for (Theme theme : getChain()) {
+    for (Theme theme : getInheritanceChain()) {
       Map<?, ?> valuesFromTheme;
       try {
         valuesFromTheme = readYamlConfigValues(theme, configPath);
@@ -290,6 +307,14 @@ public abstract class Theme {
     throw new UnmatchedSiteException("Journal key not matched to site: " + journalKey);
   }
 
+  /**
+   * Provide a human-readable description of the data source behind the theme. The subclass determines the nature of the
+   * description, according to what kind of data source it uses.
+   * <p>
+   * For logging and debugging purposes only. Do not parse the return value for programmatic purposes.
+   */
+  public abstract String describeSource();
+
 
   /**
    * Iterate over this theme and its parents in topological sort order. This means, if two paths lead to a common
@@ -307,9 +332,13 @@ public abstract class Theme {
       stack.add(Theme.this);
     }
 
-    /*
+    /**
      * Set up links from parents to children, since Theme objects don't natively keep track of their children. Note that
      * this causes initialization of the iterator to take O(n) time, though the full trip is still only O(n).
+     * <p>
+     * (Contrast to {@link ThemeGraph.ThemeInfoIterator#buildChildMap}, which has access to the entire graph of themes
+     * and iterates over all of them. Here, we want only the root's direct ancestors. The inheritance algorithm won't
+     * work if the return value contains any others.)
      */
     private SetMultimap<Theme, Theme> buildChildMap(Theme root) {
       SetMultimap<Theme, Theme> childMap = HashMultimap.create();

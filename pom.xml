@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2017 Public Library of Science
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a
+  ~ copy of this software and associated documentation files (the "Software"),
+  ~ to deal in the Software without restriction, including without limitation
+  ~ the rights to use, copy, modify, merge, publish, distribute, sublicense,
+  ~ and/or sell copies of the Software, and to permit persons to whom the
+  ~ Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+  ~ THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  ~ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+  ~ DEALINGS IN THE SOFTWARE.
+  -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -6,7 +28,7 @@
   <artifactId>wombat</artifactId>
   <name>wombat</name>
   <packaging>war</packaging>
-  <version>3.1.1</version>
+  <version>3.3.1</version>
   <url>https://github.com/PLOS/wombat</url>
   <scm>
     <connection>scm:git:git@github.com:PLOS/wombat.git</connection>
@@ -24,6 +46,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
     <buildDate>${maven.build.timestamp}</buildDate>
+    <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+    <build.datestamp>${maven.build.timestamp}</build.datestamp>
+    <build.counter>0</build.counter>
   </properties>
   <repositories>
     <repository>
@@ -77,7 +102,7 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>15.0</version>
+      <version>21.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
@@ -336,6 +361,12 @@
       <version>2.2-promoted-b65</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-queryparser</artifactId>
+      <version>6.4.1</version>
+    </dependency>
+
   </dependencies>
   <build>
     <resources>
@@ -502,6 +533,57 @@
           <!-- Directory where the package.json lives -->
           <workingDirectory>src/main/webapp/WEB-INF/themes/desktop</workingDirectory>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <!-- See src/deb/README.md -->
+        <artifactId>jdeb</artifactId>
+        <groupId>org.vafer</groupId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jdeb</goal>
+            </goals>
+            <configuration>
+              <deb>${project.build.directory}/${project.artifactId}_[[version]]+${build.datestamp}-plos${build.counter}.deb</deb>
+              <dataSet>
+
+                <!-- extract rendered tomcat7 files to install directory  -->
+                <data>
+                  <src>${project.basedir}/src/deb/tomcat7</src>
+                  <type>directory</type>
+                  <mapper>
+                      <type>perm</type>
+                      <prefix>${wombat.debInstallDir}</prefix>
+                  </mapper>
+                </data>
+                <!-- place built war file into webapps directory  -->
+                <data>
+                  <src>${project.build.directory}/${project.build.finalName}.war</src>
+                  <type>file</type>
+                  <dst>wombat.war</dst>
+                  <mapper>
+                      <type>perm</type>
+                      <prefix>${wombat.debInstallDir}/webapps</prefix>
+                  </mapper>
+                </data>
+                <!-- move the init script to /etc/init.d directory  -->
+                <data>
+                  <src>${project.basedir}/src/deb/${artifactId}.sysv</src>
+                  <type>file</type>
+                  <dst>/etc/init.d/${artifactId}</dst>
+                  <mapper>
+                      <type>perm</type>
+                      <filemode>755</filemode>
+                  </mapper>
+                </data>
+
+              </dataSet>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
     </plugins>

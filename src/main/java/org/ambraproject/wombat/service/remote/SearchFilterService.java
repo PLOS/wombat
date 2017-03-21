@@ -163,10 +163,4 @@ public class SearchFilterService {
     return filters;
   }
 
-  public Map<String, SearchFilter> getVolumeSearchFilters(int volume, List<String> journalKeys, List<String> articleTypes,
-      SolrSearchApi.SearchCriterion dateRange) throws IOException {
-    Map<String, SearchFilter> filters = new HashMap<>();
-    // TODO: add other filters here (filter by journal is not applicable here)
-    return filters;
-  }
 }

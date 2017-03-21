@@ -22,6 +22,7 @@
 
 package org.ambraproject.wombat.service;
 
+import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
@@ -38,7 +39,7 @@ import java.util.Map;
 
 public class ArticleArchiveServiceImpl implements ArticleArchiveService {
 
-  private static final String MONTHS[] = new DateFormatSymbols().getMonths();
+  private static final ImmutableList<String> MONTHS = ImmutableList.copyOf(new DateFormatSymbols().getMonths());
 
   @Autowired
   SolrSearchApiImpl solrSearchApi;
@@ -54,15 +55,14 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
    * {@inheritDoc}
    */
   @Override
-  public String[] getMonthsForYear(String requestedYear) {
+  public ImmutableList<String> getMonthsForYear(String requestedYear) {
     int currentYear = Calendar.getInstance().get(Calendar.YEAR);
     if (Integer.parseInt(requestedYear) < currentYear) {
       return MONTHS;
     } else if (Integer.parseInt(requestedYear) == currentYear) {
       // Months are 0-based on Calendar
       int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
-      String[] months = Arrays.copyOf(MONTHS, currentMonth + 1);
-      return months;
+      return MONTHS.subList(0, currentMonth + 1);
     }
     return null;
   }

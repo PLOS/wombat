@@ -27,6 +27,7 @@
       citation - The article to be cited. Must be an object containing a subset of the normal article
                  metadata fields.
   -->
+<#include "../macro/doiResolverLink.ftl" />
 <#macro displayCitation citation authors=citation.authors>
   <#assign maxAuthors = 5 /><#-- May want this to be configurable in the future. -->
 
@@ -67,7 +68,7 @@
   </#if>
 
   <#if citation.doi??>
-    https://doi.org/${citation.doi}
+    ${doiResolverLink(citation.doi)}
   </#if>
 
 </#macro>

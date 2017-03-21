@@ -20,16 +20,7 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<#-- Create a URL to a DOI resolver using a given DOI.
-
-The domain used for the DOI resolver URL can be customized in themes via doiResolverDomain.ftl -->
-
-<#-- assign doiResolverDomain var -->
-<#include "../common/doiResolverDomain.ftl" />
-
+<#-- Create a URL to the global DOI resolver using a given DOI. -->
 <#function doiResolverLink doi>
-
-  <#assign doiNoScheme = doi?replace("info:doi/", "") />
-  <#return "http://" + doiResolverDomain + "/" + doiNoScheme />
-
+  <#return "https://doi.org/" + doi?replace("info:doi/", "") />
 </#function>

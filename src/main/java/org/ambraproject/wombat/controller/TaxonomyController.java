@@ -29,7 +29,7 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.model.TaxonomyGraph.CategoryView;
-import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.UserApi;

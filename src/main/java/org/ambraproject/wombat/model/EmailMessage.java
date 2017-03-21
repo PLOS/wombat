@@ -20,7 +20,7 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-package org.ambraproject.wombat.service;
+package org.ambraproject.wombat.model;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;

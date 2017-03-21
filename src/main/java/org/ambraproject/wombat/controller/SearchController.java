@@ -44,11 +44,10 @@ import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
-import org.ambraproject.wombat.service.remote.SearchFilterService;
+import org.ambraproject.wombat.service.SearchFilterService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
-import org.ambraproject.wombat.util.ListUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -243,7 +242,7 @@ public class SearchController extends WombatController {
       }
       dateRange = parseDateRange(getSingleParam(params, "dateRange", null),
           getDateParam(params, "filterStartDate"), getDateParam(params, "filterEndDate"));
-      List<String> allJournalKeys = ListUtil.isNullOrEmpty(params.get("filterJournals"))
+      List<String> allJournalKeys = isNullOrEmpty(params.get("filterJournals"))
           ? new ArrayList<>() : params.get("filterJournals");
 
       filterJournalNames = new HashSet<>();
@@ -270,9 +269,9 @@ public class SearchController extends WombatController {
       subjectList = parseSubjects(getSingleParam(params, "subject", null), params.get("filterSubjects"));
       articleTypes = params.get("filterArticleTypes");
       articleTypes = articleTypes == null ? new ArrayList<String>() : articleTypes;
-      authors = ListUtil.isNullOrEmpty(params.get("filterAuthors"))
+      authors = isNullOrEmpty(params.get("filterAuthors"))
           ? new ArrayList<String>() : params.get("filterAuthors");
-      sections = ListUtil.isNullOrEmpty(params.get("filterSections"))
+      sections = isNullOrEmpty(params.get("filterSections"))
           ? new ArrayList<String>() : params.get("filterSections");
 
       isFiltered = !filterJournalNames.isEmpty() || !subjectList.isEmpty() || !articleTypes.isEmpty()
@@ -494,6 +493,10 @@ public class SearchController extends WombatController {
     private boolean isSimpleSearch(String query) {
       return Arrays.stream(AdvancedSearchTerms.values()).noneMatch(e -> query.contains(e.text));
     }
+  }
+  
+  private static boolean isNullOrEmpty(Collection<?> collection) {
+    return collection == null || collection.isEmpty();
   }
 
   /**
@@ -805,15 +808,15 @@ public class SearchController extends WombatController {
     model.addAttribute("subjectName", subjectName);
 
     // set defaults for subject area landing page
-    if (ListUtil.isNullOrEmpty(params.get("resultsPerPage"))) {
+    if (isNullOrEmpty(params.get("resultsPerPage"))) {
       params.add("resultsPerPage", BROWSE_RESULTS_PER_PAGE);
     }
 
-    if (ListUtil.isNullOrEmpty(params.get("sortOrder"))) {
+    if (isNullOrEmpty(params.get("sortOrder"))) {
       params.add("sortOrder", "DATE_NEWEST_FIRST");
     }
 
-    if (ListUtil.isNullOrEmpty(params.get("filterJournals"))) {
+    if (isNullOrEmpty(params.get("filterJournals"))) {
       params.add("filterJournals", site.getJournalKey());
     }
 

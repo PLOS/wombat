@@ -29,7 +29,7 @@
 
   <body>
     <h1>vol_${year}</h1>
-    <#if months??>
+    <#if months?has_content>
       <ul>
         <#list months as month>
           <#if month?has_content>

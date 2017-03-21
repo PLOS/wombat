@@ -23,7 +23,6 @@
 package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.service.ApiAddress;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;

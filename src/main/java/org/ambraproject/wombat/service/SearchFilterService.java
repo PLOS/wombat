@@ -20,13 +20,15 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-package org.ambraproject.wombat.service.remote;
+package org.ambraproject.wombat.service;
 
 import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -163,10 +165,4 @@ public class SearchFilterService {
     return filters;
   }
 
-  public Map<String, SearchFilter> getVolumeSearchFilters(int volume, List<String> journalKeys, List<String> articleTypes,
-      SolrSearchApi.SearchCriterion dateRange) throws IOException {
-    Map<String, SearchFilter> filters = new HashMap<>();
-    // TODO: add other filters here (filter by journal is not applicable here)
-    return filters;
-  }
 }

@@ -25,6 +25,7 @@ package org.ambraproject.wombat.service;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.plos.ned_client.model.IndividualComposite;

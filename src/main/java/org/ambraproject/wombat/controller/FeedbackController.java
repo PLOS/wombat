@@ -25,7 +25,7 @@ package org.ambraproject.wombat.controller;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.service.CaptchaService;
-import org.ambraproject.wombat.service.EmailMessage;
+import org.ambraproject.wombat.model.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;

@@ -22,6 +22,7 @@
 
 package org.ambraproject.wombat.service;
 
+import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.site.Site;
 
 import java.io.IOException;
@@ -50,7 +51,7 @@ public interface ArticleArchiveService {
    * @param requestedYear the year for which the months are listed
    * @return list of months
    */
-  public abstract String[] getMonthsForYear(String requestedYear);
+  public abstract ImmutableList<String> getMonthsForYear(int requestedYear);
 
   /**
    * Returns all of the articles published for a given year and month per journal.

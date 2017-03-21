@@ -32,7 +32,7 @@ import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.CommentFeedView;
 import org.ambraproject.wombat.feed.FeedMetadataField;
 import org.ambraproject.wombat.feed.FeedType;
-import org.ambraproject.wombat.service.ApiAddress;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.RecentArticleService;

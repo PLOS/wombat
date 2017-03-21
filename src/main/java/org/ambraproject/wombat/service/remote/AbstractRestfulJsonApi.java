@@ -23,7 +23,6 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.common.collect.ImmutableList;
-import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.Header;
 import org.apache.http.HttpEntityEnclosingRequest;

@@ -110,7 +110,7 @@ public class ParseXmlUtil {
   }
 
   public static String standardizeWhitespace(CharSequence text) {
-    return (text == null) ? null : CharMatcher.WHITESPACE.trimAndCollapseFrom(text, ' ');
+    return (text == null) ? null : CharMatcher.whitespace().trimAndCollapseFrom(text, ' ');
   }
 
   public static boolean isNullOrEmpty(NodeList nodeList){

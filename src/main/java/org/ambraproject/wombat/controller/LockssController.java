@@ -40,6 +40,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -82,7 +83,14 @@ public class LockssController extends WombatController {
 
   @RequestMapping(name = "lockssMonths", value = "/lockss-manifest/vol_{year}", method = RequestMethod.GET)
   public String getMonthsForYear(@SiteParam Site site, @PathVariable String year, Model model) {
-    String[] months = articleArchiveServiceImpl.getMonthsForYear(year);
+    int yearValue;
+    try {
+      yearValue = Integer.parseInt(year);
+    } catch (NumberFormatException e) {
+      throw new NotFoundException(e);
+    }
+
+    List<String> months = articleArchiveServiceImpl.getMonthsForYear(yearValue);
     model.addAttribute("year", year);
     model.addAttribute("months", months);
     return site + "/ftl/lockss/months";

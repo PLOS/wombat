@@ -37,7 +37,7 @@ import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
-import org.ambraproject.wombat.service.PowerPointDownload;
+import org.ambraproject.wombat.model.PowerPointDownload;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.poi.hslf.usermodel.SlideShow;

@@ -27,12 +27,12 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import org.ambraproject.wombat.util.ListUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -174,6 +174,10 @@ public class ArticleSearchQuery {
     return params;
   }
 
+  private static boolean isNullOrEmpty(Collection<?> collection) {
+    return collection == null || collection.isEmpty();
+  }
+
   @VisibleForTesting
   void setQueryFilters(List<NameValuePair> params) {
     if (sortOrder.isPresent()) {
@@ -187,13 +191,13 @@ public class ArticleSearchQuery {
         params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
       }
     }
-    if (!ListUtil.isNullOrEmpty(journalKeys)) {
+    if (!isNullOrEmpty(journalKeys)) {
       List<String> crossPublishedJournals = journalKeys.stream()
           .map(journalKey -> "journal_key:" + journalKey).collect(Collectors.toList());
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(crossPublishedJournals)));
     }
 
-    if (!ListUtil.isNullOrEmpty(articleTypes)) {
+    if (!isNullOrEmpty(articleTypes)) {
       List<String> articleTypeQueryList = articleTypes.stream()
           .map(articleType ->
           {
@@ -204,21 +208,21 @@ public class ArticleSearchQuery {
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(articleTypeQueryList)));
     }
 
-    if (!ListUtil.isNullOrEmpty(articleTypesToExclude)) {
+    if (!isNullOrEmpty(articleTypesToExclude)) {
       List<String> articleTypeToExcludeQueryList = articleTypesToExclude.stream()
           .map(articleType -> "!article_type_facet:\"" + articleType + "\"").collect(Collectors.toList());
       params.add(new BasicNameValuePair("fq", Joiner.on(" AND ").join(articleTypeToExcludeQueryList)));
     }
 
-    if (!ListUtil.isNullOrEmpty(subjects)) {
+    if (!isNullOrEmpty(subjects)) {
       params.add(new BasicNameValuePair("fq", buildSubjectClause(subjects)));
     }
 
-    if (!ListUtil.isNullOrEmpty(authors)) {
+    if (!isNullOrEmpty(authors)) {
       params.add(new BasicNameValuePair("fq", buildAuthorClause(authors)));
     }
 
-    if (!ListUtil.isNullOrEmpty(sections)) {
+    if (!isNullOrEmpty(sections)) {
       List<String> sectionQueryList = new ArrayList<>();
       for (String section : sections) {
         //Convert friendly section name to Solr field name TODO:clean this up

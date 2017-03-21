@@ -23,7 +23,6 @@
 package org.ambraproject.wombat.service.remote;
 
 import com.google.gson.Gson;
-import org.ambraproject.wombat.service.ApiAddress;
 import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.http.Header;

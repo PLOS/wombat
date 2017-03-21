@@ -966,7 +966,7 @@
                             <xsl:value-of select="$fullArticleLink"/>
                           </xsl:when>
                           <xsl:when test="$doi">
-                            <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
+                            <xsl:value-of select="concat('https://doi.org/',$doi)"/>
                           </xsl:when>
                           <xsl:otherwise>
                             <!-- build link and use + for spaces for consistency with Ambra -->
@@ -1461,8 +1461,8 @@
         <xsl:if test="object-id[@pub-id-type='doi']">
           <p class="caption_object">
             <a>
-              <xsl:attribute name="href">http://dx.doi.org/<xsl:value-of select="object-id[@pub-id-type='doi']"/></xsl:attribute>
-              http://dx.doi.org/<xsl:value-of select="object-id[@pub-id-type='doi']"/>
+              <xsl:attribute name="href">https://doi.org/<xsl:value-of select="object-id[@pub-id-type='doi']"/></xsl:attribute>
+              https://doi.org/<xsl:value-of select="object-id[@pub-id-type='doi']"/>
             </a>
           </p>
         </xsl:if>

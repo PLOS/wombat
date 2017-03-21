@@ -1559,7 +1559,7 @@
       </xsl:variable>
       doi:
       <xsl:element name="a">
-        <xsl:attribute name="href">http://dx.doi.org/<xsl:value-of select="$citedArticleDoi"/>
+        <xsl:attribute name="href">https://doi.org/<xsl:value-of select="$citedArticleDoi"/>
         </xsl:attribute>
         <xsl:value-of select="$citedArticleDoi"/>
       </xsl:element>
@@ -1596,7 +1596,7 @@
       </xsl:variable>
       doi:
       <xsl:element name="a">
-        <xsl:attribute name="href">http://dx.doi.org/<xsl:value-of select="$citedArticleDoi"/>
+        <xsl:attribute name="href">https://doi.org/<xsl:value-of select="$citedArticleDoi"/>
         </xsl:attribute>
         <xsl:value-of select="$citedArticleDoi"/>
       </xsl:element>
@@ -1618,7 +1618,7 @@
       </xsl:variable>
       doi:
       <xsl:element name="a">
-        <xsl:attribute name="href">http://dx.doi.org/<xsl:value-of select="$citedArticleDoi"/>
+        <xsl:attribute name="href">https://doi.org/<xsl:value-of select="$citedArticleDoi"/>
         </xsl:attribute>
         <xsl:value-of select="$citedArticleDoi"/>
       </xsl:element>

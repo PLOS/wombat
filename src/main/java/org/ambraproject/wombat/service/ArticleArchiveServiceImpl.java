@@ -55,11 +55,11 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
    * {@inheritDoc}
    */
   @Override
-  public ImmutableList<String> getMonthsForYear(String requestedYear) {
+  public ImmutableList<String> getMonthsForYear(int requestedYear) {
     int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-    if (Integer.parseInt(requestedYear) < currentYear) {
+    if (requestedYear < currentYear) {
       return MONTHS;
-    } else if (Integer.parseInt(requestedYear) == currentYear) {
+    } else if (requestedYear == currentYear) {
       // Months are 0-based on Calendar
       int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
       return MONTHS.subList(0, currentMonth + 1);

@@ -51,7 +51,7 @@ public interface ArticleArchiveService {
    * @param requestedYear the year for which the months are listed
    * @return list of months
    */
-  public abstract ImmutableList<String> getMonthsForYear(String requestedYear);
+  public abstract ImmutableList<String> getMonthsForYear(int requestedYear);
 
   /**
    * Returns all of the articles published for a given year and month per journal.

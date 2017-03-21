@@ -64,7 +64,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
       int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
       return MONTHS.subList(0, currentMonth + 1);
     }
-    return null;
+    return ImmutableList.of();
   }
 
   /**

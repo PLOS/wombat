@@ -76,7 +76,7 @@ public class TextUtil {
    * @return the same text with whitespace trimmed and collapsed
    */
   public static String sanitizeWhitespace(String text) {
-    return CharMatcher.WHITESPACE.trimAndCollapseFrom(text, ' ');
+    return CharMatcher.whitespace().trimAndCollapseFrom(text, ' ');
   }
 
 }

@@ -28,5 +28,5 @@
 
 <#include "../common/doiResolverPrefix.ftl" />
 <#function doiResolverLink doiName>
-  <#return doiResolverPrefix + "/" + doiName?replace("info:doi/", "") />
+  <#return doiResolverPrefix + "/" + doiName?replace("^info:doi/", "", "r") />
 </#function>

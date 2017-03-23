@@ -25,7 +25,7 @@ var MetricsCitedSection;
 (function ($) {
 
   var doi = encodeURI(ArticleData.doi);
-  var docURL = "https://doi.org/" + doi.replace("info%3Adoi/", "");
+  var docURL = "http://dx.plos.org/" + doi.replace("info%3Adoi/", "");
   var googleCitationUrl = WombatConfig.metrics.googleScholarCitationUrl + docURL;
 
   MetricsCitedSection = MetricsTabComponent.extend({

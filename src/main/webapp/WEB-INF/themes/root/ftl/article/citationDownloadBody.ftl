@@ -30,7 +30,7 @@
   </a>
   <br/>
 <#include "citation.ftl" />
-<@displayCitation article authors/>
+<@displayCitation article false authors/>
 </p>
 
 <h2>Download the article citation in the following formats:</h2>

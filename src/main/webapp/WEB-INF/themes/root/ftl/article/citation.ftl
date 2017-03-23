@@ -26,9 +26,10 @@
     Parameters:
       citation - The article to be cited. Must be an object containing a subset of the normal article
                  metadata fields.
+      useUrlDoiStyle - Boolean. True to format the DOI as a URL at http://dx.doi.org/; false to
+                       just prefix it with "doi:".
   -->
-<#include "../macro/doiResolverLink.ftl" />
-<#macro displayCitation citation authors=citation.authors>
+<#macro displayCitation citation useUrlDoiStyle authors=citation.authors>
   <#assign maxAuthors = 5 /><#-- May want this to be configurable in the future. -->
 
   <#list authors as author>
@@ -68,7 +69,11 @@
   </#if>
 
   <#if citation.doi??>
-    ${doiResolverLink(citation.doi)}
+    <#if useUrlDoiStyle>
+    http://dx.doi.org/${citation.doi}
+    <#else>
+    doi: ${citation.doi}
+    </#if>
   </#if>
 
 </#macro>

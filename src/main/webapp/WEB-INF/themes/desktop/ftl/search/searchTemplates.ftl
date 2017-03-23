@@ -48,8 +48,7 @@
         <% } %>
       </p>
 
-    <#include "../macro/doiResolverLink.ftl" />
-      <p class="search-results-doi"><a href="${doiResolverRoot('<%= item.id %>')}">${doiResolverRoot('<%= item.id %>')}</a>
+      <p class="search-results-doi"><a href="http://dx.doi.org/<%= item.id %>">http://dx.doi.org/<%= item.id %></a>
       </p>
       <div class="search-results-alm-container" data-doi="<%= item.id %>" data-index="<%= index %>">
 

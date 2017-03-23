@@ -46,7 +46,7 @@
 
           var queryStringConcat = 'query.author=' + queryStringAuthor + '&query.title=' + queryStringTitle;
           var crossrefApi = "http://api.crossref.org/works?query=" + queryStringConcat + "&sort=score&rows=1";
-          var DOIResolver = 'https://doi.org/';
+          var DOIResolver = 'http://dx.doi.org/';
           var crossrefSearchString = 'http://search.crossref.org/?q=' + queryStringCit;
           var articleLink = null;
 

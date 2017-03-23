@@ -122,7 +122,7 @@ var MetricTile;
                 var events = {};
                 _.each(that.source.events, function (event) {
                   if(event.doi && _.isString(event.doi)) {
-                    var formattedDOI = event.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//, '');
+                    var formattedDOI = event.doi.replace('https://dx.doi.org/', '');
                     events[formattedDOI] = event;
                   }
                   else {

@@ -26,7 +26,7 @@
     Parameters:
       citation - The article to be cited. Must be an object containing a subset of the normal article
                  metadata fields.
-      useUrlDoiStyle - Boolean. True to format the DOI as a URL at http://dx.doi.org/; false to
+      useUrlDoiStyle - Boolean. True to format the DOI as a URL at https://doi.org/; false to
                        just prefix it with "doi:".
   -->
 <#macro displayCitation citation useUrlDoiStyle authors=citation.authors>
@@ -70,7 +70,7 @@
 
   <#if citation.doi??>
     <#if useUrlDoiStyle>
-    http://dx.doi.org/${citation.doi}
+    https://doi.org/${citation.doi}
     <#else>
     doi: ${citation.doi}
     </#if>

@@ -380,3 +380,49 @@ example | extension
 .dummy-anchor {
   visibility: hidden;
 }
+
+
+$timestamp:current-time('%Y%m%d%H%M%S');
+$cache-buster:'t='+$timestamp;
+$theme-path:'../../resource/';
+$image-path:$theme-path+'img/';
+$font-path:$theme-path+'fonts/';
+
+@function image-url($src,$prefixImagePath:true,$cacheBuster:false){
+
+  @if(type-of($src) == string){
+       $url:false; // must define
+    $src: #{$src};
+    @if($prefixImagePath == true){
+          $url: '#{$image-path}#{$src}';
+       }
+               @else
+        {
+            $url: '#{$src}';
+       }
+        @if($cacheBuster == true){
+           $url: '#{$url}#{$cache-buster}';
+       }
+        @return url($url);
+    }
+}
+
+
+@function font-files($src,$prefixImagePath:true,$cacheBuster:false){
+  $src: #{src};
+
+  @if(type-of($src) == string){
+    $url:false; // must define
+    @if($prefixImagePath == true){
+      $url: '#{$theme-path}/#{$src}';
+    }
+    @else
+    {
+      $url: '#{$src}';
+    }
+    @if($cacheBuster == true){
+      $url: '#{$url}#{$cache-buster}';
+    }
+    @return url($url);
+  }
+}

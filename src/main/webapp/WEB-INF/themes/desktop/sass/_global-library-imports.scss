@@ -45,6 +45,8 @@ These are the files that need to be on each stand alone stylesheet, this is the 
 @import "vendor/compass/compass";  //an external library of usefull mixins - reset
 @import "variables"; // basic settings for type, size and colors
 @import "foundation"; //using the foundation library
+
+
 @import "scaffold";  // grids and basic setup
 @import "vendor/font-awesome"; // icons
 @import "typography"; // type styles including sizes and vertical spacing

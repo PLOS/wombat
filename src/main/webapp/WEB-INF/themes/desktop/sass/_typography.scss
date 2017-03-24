@@ -338,6 +338,7 @@ example | extension
 @mixin link-text($color: $clr-body-text, $color-hover: none, $decoration-hover: none, $decoration-text: none) {
   color: $color;
   text-decoration: $decoration-text;
+  @content;
 
   &:hover, a:hover {
     @if $decoration-hover == none {

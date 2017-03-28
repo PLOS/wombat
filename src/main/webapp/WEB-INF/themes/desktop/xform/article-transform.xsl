@@ -222,7 +222,7 @@
         <xsl:text> </xsl:text>
         <xsl:value-of select="volume"/>(<xsl:value-of select="issue"/>):
         <xsl:value-of select="elocation-id"/>.
-        doi:<xsl:value-of select="article-id[@pub-id-type='doi']"/>
+        https://doi.org/<xsl:value-of select="article-id[@pub-id-type='doi']"/>
       </p>
       <!-- editors -->
       <xsl:for-each-group select="//contrib-group/contrib[@contrib-type='editor']" group-by="role">
@@ -1785,7 +1785,7 @@
     <xsl:param name="doi"/>
     <xsl:apply-templates/>
     <xsl:if test="$doi and not(ext-link) and not(comment/ext-link)">
-      doi:
+      https://doi.org/
       <xsl:value-of select="$doi"/>
     </xsl:if>
   </xsl:template>
@@ -2214,6 +2214,7 @@
 
   <!-- 6/8/12: Ambra-specific template -->
   <xsl:template match="comment">
+
     <xsl:if test="not(self::node()='.')">
       <xsl:text> </xsl:text>
       <xsl:apply-templates/>
@@ -2228,7 +2229,7 @@
     <!-- only output a single comment tag that appears as the very last child of the citation -->
     <xsl:variable name="x" select="child::comment[position()=last()]"/>
     <xsl:if test="not(starts-with($x,'p.')) and not(starts-with($x,'In:') and not(starts-with($x,'pp.')))">
-      <xsl:text> </xsl:text>
+      <xsl:text></xsl:text>
       <xsl:apply-templates select="$x"/>
     </xsl:if>
   </xsl:template>
@@ -2295,7 +2296,7 @@
 
     <!--here, we're appending SI DOI after the caption but before the file type-->
     <xsl:variable name="siDOI">
-      <xsl:value-of select="replace($objURI,'info:doi/','doi:')"/>
+      <xsl:value-of select="replace($objURI,'info:doi/','https://doi.org/')"/>
     </xsl:variable>
 
     <xsl:choose>
@@ -2454,10 +2455,7 @@
     </xsl:variable>
     <xsl:choose>
       <xsl:when test="not(ancestor::ref-list) or not(substring($previousText, string-length($previousText)-3)='doi:')">
-        <a>
-          <xsl:call-template name="assign-href"/>
-          <xsl:apply-templates/>
-        </a>
+
       </xsl:when>
       <xsl:otherwise>
         <xsl:apply-templates/>

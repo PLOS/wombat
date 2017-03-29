@@ -87,9 +87,7 @@
   <#if article.description??>
     <meta property="twitter:description" content="${articleDescription}" />
   </#if>
-  <#if strikingImageUrl??>
-    <meta property="twitter:image" content="${strikingImageUrl}" />
-  </#if>
+  <meta property="twitter:image" content="<@siteLink absoluteLink=true path="resource/img/plos_logo_twitter.png"/>"/>
 </#if>
 
 <meta property="og:type" content="article" />

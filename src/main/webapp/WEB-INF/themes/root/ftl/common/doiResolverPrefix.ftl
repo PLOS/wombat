@@ -20,6 +20,11 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<#-- provides a domain to be used with the doiResolverLink macro (in doiResolverLink.ftl) to create a doi resolver URL.
-Should be overridden in themes as necessary-->
-<#assign doiResolverDomain = 'dx.doi.org' />
+<#--
+  Defines a URI prefix (consisting of a protocol and URL hostname) to be used by the doiResolverLink macro
+  (in doiResolverLink.ftl) to render a DOI in the form of a link to a DOI resolver.
+
+  By default, it points to a global DOI resolver. Subthemes may override it to use a DOI resolver operated by a
+  particular publisher instead.
+  -->
+<#assign doiResolverPrefix = 'https://doi.org' />

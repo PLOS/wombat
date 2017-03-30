@@ -966,7 +966,7 @@
                             <xsl:value-of select="$fullArticleLink"/>
                           </xsl:when>
                           <xsl:when test="$doi">
-                            <xsl:value-of select="concat('https://doi.org/',$doi)"/>
+                            <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
                           </xsl:when>
                           <xsl:otherwise>
                             <!-- build link and use + for spaces for consistency with Ambra -->
@@ -2214,14 +2214,20 @@
 
   <!-- 6/8/12: Ambra-specific template -->
   <xsl:template match="comment">
-
-    <xsl:if test="not(self::node()='.')">
-      <xsl:text> </xsl:text>
-      <xsl:apply-templates/>
-      <xsl:if test="substring(.,string-length(.)) != '.' and not(ends-with(..,'.'))">
-        <xsl:text>. </xsl:text>
+    <xsl:choose>
+      <xsl:when test="'doi:'">
+        <!-- Do nothing -->
+      </xsl:when>
+      <xsl:otherwise>
+      <xsl:if test="not(self::node()='.')">
+        <xsl:text> </xsl:text>
+        <xsl:apply-templates/>
+        <xsl:if test="substring(.,string-length(.)) != '.' and not(ends-with(..,'.'))">
+          <xsl:text>. </xsl:text>
+        </xsl:if>
       </xsl:if>
-    </xsl:if>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
@@ -2229,7 +2235,7 @@
     <!-- only output a single comment tag that appears as the very last child of the citation -->
     <xsl:variable name="x" select="child::comment[position()=last()]"/>
     <xsl:if test="not(starts-with($x,'p.')) and not(starts-with($x,'In:') and not(starts-with($x,'pp.')))">
-      <xsl:text></xsl:text>
+      <xsl:text> </xsl:text>
       <xsl:apply-templates select="$x"/>
     </xsl:if>
   </xsl:template>
@@ -2453,10 +2459,16 @@
     <xsl:variable name="previousText">
       <xsl:value-of select="lower-case(normalize-space(preceding::text()[1]))"/>
     </xsl:variable>
+
     <xsl:choose>
       <xsl:when test="not(ancestor::ref-list) or not(substring($previousText, string-length($previousText)-3)='doi:')">
-
+        <a>
+          <xsl:call-template name="assign-href"/>
+          <xsl:apply-templates/>
+        </a>
       </xsl:when>
+      <xsl:when test="not(ancestor::ref-list) or substring($previousText, string-length($previousText)-3)='doi:'">
+        </xsl:when>
       <xsl:otherwise>
         <xsl:apply-templates/>
       </xsl:otherwise>

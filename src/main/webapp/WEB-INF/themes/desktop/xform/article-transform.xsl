@@ -2473,8 +2473,6 @@
           <xsl:apply-templates/>
         </a>
       </xsl:when>
-      <!--<xsl:when test="substring($previousText, string-length($previousText)-3)='doi:'">-->
-      <!--</xsl:when>-->
       <xsl:otherwise>
         <xsl:apply-templates/>
       </xsl:otherwise>

@@ -2214,24 +2214,29 @@
 
   <!-- 6/8/12: Ambra-specific template -->
   <xsl:template match="comment">
+    <xsl:variable name="totalText">
+      <xsl:value-of select="."/>
+    </xsl:variable>
     <xsl:choose>
-      <xsl:when test="'doi:'">
-        <!-- Do nothing -->
+      <xsl:when test="starts-with($totalText,'doi')">
+      <!-- do nothing -->
       </xsl:when>
+
       <xsl:otherwise>
-      <xsl:if test="not(self::node()='.')">
-        <xsl:text> </xsl:text>
+        <xsl:if test="not(self::node()='.')">
         <xsl:apply-templates/>
-        <xsl:if test="substring(.,string-length(.)) != '.' and not(ends-with(..,'.'))">
+          <xsl:if test="substring(.,string-length(.)) != '.' and not(ends-with(..,'.'))">
           <xsl:text>. </xsl:text>
+          </xsl:if>
         </xsl:if>
-      </xsl:if>
       </xsl:otherwise>
+
     </xsl:choose>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
   <xsl:template name="citationComment">
+    <xsl:apply-templates />
     <!-- only output a single comment tag that appears as the very last child of the citation -->
     <xsl:variable name="x" select="child::comment[position()=last()]"/>
     <xsl:if test="not(starts-with($x,'p.')) and not(starts-with($x,'In:') and not(starts-with($x,'pp.')))">
@@ -2460,6 +2465,7 @@
       <xsl:value-of select="lower-case(normalize-space(preceding::text()[1]))"/>
     </xsl:variable>
 
+
     <xsl:choose>
       <xsl:when test="not(ancestor::ref-list) or not(substring($previousText, string-length($previousText)-3)='doi:')">
         <a>
@@ -2467,8 +2473,6 @@
           <xsl:apply-templates/>
         </a>
       </xsl:when>
-      <xsl:when test="not(ancestor::ref-list) or substring($previousText, string-length($previousText)-3)='doi:'">
-        </xsl:when>
       <xsl:otherwise>
         <xsl:apply-templates/>
       </xsl:otherwise>

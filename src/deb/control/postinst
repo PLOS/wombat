@@ -53,10 +53,6 @@ case "$1" in
 
 ########### END app-specific code ###########
 
-
-  # removes the saved values, so they need to be re-entered the next time around
-  db_purge
-
   # generate configs from templates
   process_env_template $HOME/conf/context.xml
   cat $HOME/conf/context.xml
@@ -66,3 +62,4 @@ case "$1" in
 
 esac
 
+service [[artifactId]] stop || true

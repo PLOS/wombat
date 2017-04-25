@@ -76,8 +76,6 @@
 <#include "baseJs.ftl" />
 <#include "additionalHeadTracking.ftl" />
 
-<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
-
 </head>
 
 

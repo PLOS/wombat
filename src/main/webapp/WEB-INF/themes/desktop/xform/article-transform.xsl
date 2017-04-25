@@ -966,7 +966,7 @@
                             <xsl:value-of select="$fullArticleLink"/>
                           </xsl:when>
                           <xsl:when test="$doi">
-                            <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
+                            <xsl:value-of select="concat('https://doi.org/',$doi)"/>
                           </xsl:when>
                           <xsl:otherwise>
                             <!-- build link and use + for spaces for consistency with Ambra -->
@@ -2316,7 +2316,10 @@
       <xsl:when test="count(caption/p) &lt; 2">
         <!--doi-->
         <p class="siDoi">
-          <xsl:value-of select="$siDOI"/>
+          <xsl:element name="a">
+            <xsl:attribute name="href"><xsl:value-of select="$siDOI"/></xsl:attribute>
+            <xsl:value-of select="$siDOI"/>
+          </xsl:element>
         </p>
         <!--add class to target styling-->
         <xsl:for-each select="caption/p">
@@ -2332,7 +2335,10 @@
         </xsl:for-each>
         <!--doi-->
         <p class="siDoi">
-          <xsl:value-of select="$siDOI"/>
+          <xsl:element name="a">
+            <xsl:attribute name="href"><xsl:value-of select="$siDOI"/></xsl:attribute>
+            <xsl:value-of select="$siDOI"/>
+          </xsl:element>
         </p>
         <!--the last-->
         <xsl:for-each select="caption/p[last()]">
@@ -2354,7 +2360,10 @@
 
         <!--doi goes here-->
         <p class="siDoi">
-          <xsl:value-of select="$siDOI"/>
+          <xsl:element name="a">
+            <xsl:attribute name="href"><xsl:value-of select="$siDOI"/></xsl:attribute>
+            <xsl:value-of select="$siDOI"/>
+          </xsl:element>
         </p>
 
         <!--final element-->

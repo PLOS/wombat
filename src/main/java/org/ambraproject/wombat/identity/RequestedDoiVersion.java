@@ -47,7 +47,7 @@ public class RequestedDoiVersion {
     Preconditions.checkArgument(!revisionNumber.isPresent() || revisionNumber.getAsInt() >= 0);
     Preconditions.checkArgument(!ingestionNumber.isPresent() || ingestionNumber.getAsInt() >= 0);
 
-    this.doi = Objects.requireNonNull(doi.trim());
+    this.doi = Objects.requireNonNull(doi);
     this.revisionNumber = revisionNumber;
     this.ingestionNumber = ingestionNumber;
   }

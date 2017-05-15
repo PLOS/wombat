@@ -128,7 +128,7 @@ public abstract class AbstractContentApi implements ContentApi {
     RepoConfig repoConfig = getRepoConfig();
     UrlParamBuilder requestParams = UrlParamBuilder.params();
     key.setParameters(requestParams);
-    String repoBucketName = repoConfig.bucketName;
+    String repoBucketName = key.getBucketName() != null ? key.getBucketName() : repoConfig.bucketName;
     return URI.create(String.format("%s/%s/%s?%s",
         repoConfig.address, mode.getPathComponent(), repoBucketName, requestParams.format()));
   }

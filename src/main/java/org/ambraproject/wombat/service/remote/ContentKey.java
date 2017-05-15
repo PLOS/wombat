@@ -36,11 +36,21 @@ import java.util.UUID;
 public abstract class ContentKey {
 
   protected final String key;
+  protected String bucketName;
 
   // Nested subclasses only
   private ContentKey(String key) {
     Preconditions.checkArgument(!key.isEmpty());
     this.key = key;
+    this.bucketName = null;
+  }
+
+  public void setBucketName(String bucketName) {
+    this.bucketName = bucketName;
+  }
+
+  public String getBucketName() {
+    return bucketName;
   }
 
   /**

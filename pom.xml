@@ -48,7 +48,7 @@
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
     <buildDate>${maven.build.timestamp}</buildDate>
     <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
-    <build.datestamp>${maven.build.timestamp}</build.datestamp>
+    <build.timestamp>${maven.build.timestamp}</build.timestamp>
     <build.counter>0</build.counter>
   </properties>
   <repositories>
@@ -524,7 +524,6 @@
       </plugin>
 
       <plugin>
-        <!-- See src/deb/README.md -->
         <artifactId>jdeb</artifactId>
         <groupId>org.vafer</groupId>
         <version>1.5</version>
@@ -535,36 +534,33 @@
               <goal>jdeb</goal>
             </goals>
             <configuration>
-              <deb>${project.build.directory}/${project.artifactId}_[[version]]+${build.datestamp}-plos${build.counter}.deb</deb>
+              <deb>${project.build.directory}/${project.artifactId}_[[version]]+${build.timestamp}-plos${build.counter}.deb</deb>
+              <!-- <snapshotExpand>true</snapshotExpand> -->
+              <controlDir>${project.basedir}/src/deb/control</controlDir>
               <dataSet>
 
-                <!-- extract rendered tomcat7 files to install directory  -->
+                <data>
+                  <src>${project.build.directory}/${project.build.finalName}.war</src>
+                  <type>file</type>
+                  <dst>/opt/plos/wombat/webapps/wombat.war</dst>
+                </data>
+
                 <data>
                   <src>${project.basedir}/src/deb/tomcat7</src>
                   <type>directory</type>
                   <mapper>
-                      <type>perm</type>
-                      <prefix>${wombat.debInstallDir}</prefix>
+                    <type>perm</type>
+                    <prefix>/opt/plos/wombat</prefix>
                   </mapper>
                 </data>
-                <!-- place built war file into webapps directory  -->
+
                 <data>
-                  <src>${project.build.directory}/${project.build.finalName}.war</src>
+                  <src>${project.basedir}/src/deb/wombat.sysv</src>
                   <type>file</type>
-                  <dst>wombat.war</dst>
+                  <dst>/etc/init.d/wombat</dst>
                   <mapper>
-                      <type>perm</type>
-                      <prefix>${wombat.debInstallDir}/webapps</prefix>
-                  </mapper>
-                </data>
-                <!-- move the init script to /etc/init.d directory  -->
-                <data>
-                  <src>${project.basedir}/src/deb/${artifactId}.sysv</src>
-                  <type>file</type>
-                  <dst>/etc/init.d/${artifactId}</dst>
-                  <mapper>
-                      <type>perm</type>
-                      <filemode>755</filemode>
+                    <type>perm</type>
+                    <filemode>755</filemode>
                   </mapper>
                 </data>
 

@@ -1,8 +1,9 @@
 Package: [[artifactId]]
-Version: [[version]]+[[build.datestamp]]-plos[[build.counter]]
-Section: java
-Priority: optional
-Architecture: all
-Depends: default-jre | java8-runtime, tomcat7-common, debconf, adduser, bash
-Maintainer: Ambra Project Dev Team <dev@ambraproject.org>
+Version: [[version]]+[[build.timestamp]]-plos[[build.counter]]
 Description: [[description]]
+Architecture: all
+Section: web
+Priority: optional
+Maintainer: Ambra Project Dev Team <dev@ambraproject.org>
+Depends: java8-runtime, tomcat7-common, adduser, debconf, bash, libmysql-java, mysql-client
+Homepage: https://github.com/PLOS/wombat

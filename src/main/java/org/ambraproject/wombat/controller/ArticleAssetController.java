@@ -215,10 +215,13 @@ public class ArticleAssetController extends WombatController {
   }
 
   private static ContentKey createKey(Map<String, ?> fileRepoKey) {
-    // TODO: Account for bucket name
     String key = (String) fileRepoKey.get("crepoKey");
     UUID uuid = UUID.fromString((String) fileRepoKey.get("crepoUuid"));
-    return ContentKey.createForUuid(key, uuid);
+    ContentKey contentKey = ContentKey.createForUuid(key, uuid);
+    if (fileRepoKey.get("bucketName") != null) {
+      contentKey.setBucketName(fileRepoKey.get("bucketName").toString());
+    }
+    return contentKey;
   }
 
 }

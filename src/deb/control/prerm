@@ -1,2 +1,30 @@
-#!/bin/bash
-echo 'prerm script executing'
+#!/usr/bin/env bash
+
+set -e
+
+NAME=wombat
+
+TOMCAT7_USER=$NAME
+
+case "$1" in
+  remove|upgrade|deconfigure)
+    [ -f /etc/default/$NAME ] && . /etc/default/$NAME
+    # Remove auth for tomcat7 to open privileged ports via authbind.
+    TOMCAT_UID="`id -u $TOMCAT7_USER`"
+    if [ -f "/etc/authbind/byuid/$TOMCAT_UID" ]; then
+      rm -f /etc/authbind/byuid/$TOMCAT_UID
+    fi
+  ;;
+
+  failed-upgrade)
+  ;;
+
+  *)
+    echo "prerm called with unknown argument \`$1'" >&2
+    exit 1
+  ;;
+esac
+
+if [ -x "/etc/init.d/$NAME" ] || [ -e "/etc/init/$NAME.conf" ]; then
+	invoke-rc.d $NAME stop || true
+fi

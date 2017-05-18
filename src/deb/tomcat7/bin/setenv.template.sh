@@ -1,0 +1,3 @@
+#!/bin/sh
+
+export REGISTRATION_BASE_URL=${REGISTRATION_BASE_URL}

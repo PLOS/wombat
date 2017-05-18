@@ -10,7 +10,7 @@
 # Additional improvements by Jason Brittain <jason.brittain@mulesoft.com>.
 #
 ### BEGIN INIT INFO
-# Provides:          tomcat7
+# Provides:          wombat
 # Required-Start:    $local_fs $remote_fs $network
 # Required-Stop:     $local_fs $remote_fs $network
 # Should-Start:      $named
@@ -23,9 +23,10 @@
 
 set -e
 
-PATH=/bin:/usr/bin:/sbin:/usr/sbin
 NAME=wombat
-DESC="Tomcat wombat servlet engine"
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+DESC="Tomcat $NAME servlet engine"
 DEFAULT=/etc/default/$NAME
 JVM_TMP=/tmp/tomcat7-$NAME-tmp
 
@@ -49,10 +50,10 @@ fi
 # The following variables can be overwritten in $DEFAULT
 
 # Run Tomcat 7 as this user ID and group ID
-TOMCAT7_USER=wombat
-TOMCAT7_GROUP=wombat
+TOMCAT7_USER=$NAME
+TOMCAT7_GROUP=$NAME
 
-JAVA_OPTS="-Djava.awt.headless=true -Xmx8196m -XX:-HeapDumpOnOutOfMemoryError -Dsun.net.inetaddr.ttl=30 -Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
+#JAVA_OPTS="-Djava.awt.headless=true -Xmx8196m -XX:-HeapDumpOnOutOfMemoryError -Dsun.net.inetaddr.ttl=30 -Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
 
 # placeholder for additional env vars
 
@@ -193,8 +194,6 @@ case "$1" in
 		log_failure_msg "invalid CATALINA_BASE: $CATALINA_BASE"
 		exit 1
 	fi
-
-    log_daemon_msg "JAVA_OPTS= $JAVA_OPTS"
 
 	log_daemon_msg "Starting $DESC" "$NAME"
 	if start-stop-daemon --test --start --pidfile "$CATALINA_PID" \

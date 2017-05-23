@@ -363,11 +363,15 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   private URI getSolrUri(List<NameValuePair> params) throws SolrUndefinedException {
+    SolrUndefinedException solrUndefinedException = new SolrUndefinedException(
+        "Solr server URI must be defined in wombat.yaml in order to use solr features such "
+            + "as search, RSS, or listing recent articles on the homepage.");
+    if (!runtimeConfiguration.getSolrConfiguration().isPresent()) {
+      throw solrUndefinedException;
+    }
     try {
-      URL solrServer = runtimeConfiguration.getSolrServer()
-          .orElseThrow(() -> new SolrUndefinedException("Solr server URI must be defined " +
-              "in wombat.yaml in order to use solr features such as search, RSS, or " +
-              "listing recent articles on the homepage."));
+      URL solrServer = runtimeConfiguration.getSolrConfiguration().get().getUrl()
+          .orElseThrow(() -> solrUndefinedException);
       return new URL(solrServer, "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
     } catch (MalformedURLException | URISyntaxException e) {
       //Solr server has already been validated - any exception here must be invalid values in params

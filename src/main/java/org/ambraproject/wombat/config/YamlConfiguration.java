@@ -82,11 +82,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public Optional<URL> getSolrServer() {
-    return Optional.ofNullable(buildUrl(input.solrServer, null));
-  }
-
-  @Override
   public String getMailServer() {
     return input.mailServer;
   }
@@ -204,6 +199,23 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return (input.cas == null) ? Optional.empty() : Optional.of(casConfiguration);
   }
 
+  private final SolrConfiguration solrConfiguration = new SolrConfiguration() {
+    @Override
+    public Optional<URL> getUrl() {
+      return Optional.ofNullable(buildUrl(input.solr.url + getCollection() + "/select/", null));
+    }
+
+    @Override
+    public String getCollection() {
+      return input.solr.collection;
+    }
+  };
+
+  @Override
+  public Optional<SolrConfiguration> getSolrConfiguration() {
+    return (input.solr == null) ? Optional.empty() : Optional.of(solrConfiguration);
+  }
+
   @Override
   public boolean areCommentsDisabled() {
     return (input.commentsDisabled != null) && input.commentsDisabled;
@@ -223,9 +235,9 @@ public class YamlConfiguration implements RuntimeConfiguration {
     } catch (MalformedURLException e) {
       throw new RuntimeConfigurationException("Provided server address is not a valid URL", e);
     }
-    if (!Strings.isNullOrEmpty(input.solrServer)) {
+    if (!Strings.isNullOrEmpty(input.solr.url)) {
       try {
-        new URL(input.solrServer);
+        new URL(input.solr.url);
       } catch (MalformedURLException e) {
         throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
       }
@@ -268,7 +280,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
      */
 
     private String server;
-    private String solrServer;
     private String mailServer;
     private String compiledAssetDir;
     private String rootPagePath;
@@ -278,6 +289,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private CacheConfigurationInput cache;
     private HttpConnectionPoolConfigurationInput httpConnectionPool;
     private CasConfigurationInput cas;
+    private SolrConfigurationInput solr;
 
     private Boolean commentsDisabled;
 
@@ -287,14 +299,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setServer(String server) {
       this.server = server;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setSolrServer(String solrServer) {
-      this.solrServer = solrServer;
     }
 
     /**
@@ -360,6 +364,15 @@ public class YamlConfiguration implements RuntimeConfiguration {
     public void setCas(CasConfigurationInput cas) {
       this.cas = cas;
     }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setSolr(SolrConfigurationInput solr) {
+      this.solr = solr;
+    }
+
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -449,5 +462,26 @@ public class YamlConfiguration implements RuntimeConfiguration {
       this.logoutUrl = logoutUrl;
     }
 
+  }
+
+  public static class SolrConfigurationInput {
+    private String url;
+    private String collection;
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setUrl(String url) {
+      this.url = url;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setCollection(String collection) {
+      this.collection = collection;
+    }
   }
 }

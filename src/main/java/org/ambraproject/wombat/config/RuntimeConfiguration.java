@@ -24,7 +24,6 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeSource;
 
 import java.net.URL;
@@ -84,13 +83,6 @@ public interface RuntimeConfiguration {
   URL getServer();
 
   /**
-   * Get the URL of the solr search server.
-   *
-   * @return the URL
-   */
-  Optional<URL> getSolrServer();
-
-  /**
    * Get the host name of the server to which to send SMTP messages;
    */
   String getMailServer();
@@ -114,7 +106,15 @@ public interface RuntimeConfiguration {
     String getLogoutUrl();
   }
 
+  interface SolrConfiguration {
+    Optional<URL> getUrl();
+
+    String getCollection();
+  }
+
   Optional<CasConfiguration> getCasConfiguration();
+
+  Optional<SolrConfiguration> getSolrConfiguration();
 
   boolean areCommentsDisabled();
 

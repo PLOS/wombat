@@ -254,7 +254,7 @@ public class BrowseController extends WombatController {
 
       populateRelatedArticles(populatedArticle);
 
-      populateAuthors(populatedArticle);
+      populateAuthors(populatedArticle, site);
 
       groupedArticles.put(articleType, populatedArticle);
     }
@@ -302,8 +302,8 @@ public class BrowseController extends WombatController {
     article.put("relatedArticles", relatedArticles);
   }
 
-  private void populateAuthors(Map<String, Object> article) throws IOException {
-    Map<String, ?> solrResult = (Map<String, ?>) solrSearchApi.lookupArticleByDoi((String) article.get("doi"));
+  private void populateAuthors(Map<String, Object> article, Site site) throws IOException {
+    Map<String, ?> solrResult = (Map<String, ?>) solrSearchApi.lookupArticleByDoi((String) article.get("doi"), site);
     List<SolrArticleAdapter> solrArticles = SolrArticleAdapter.unpackSolrQuery(solrResult);
     article.put("authors", solrArticles.size() > 0 ? solrArticles.get(0).getAuthors() : ImmutableList.of());
   }

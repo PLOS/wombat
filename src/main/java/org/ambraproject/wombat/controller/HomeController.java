@@ -114,7 +114,7 @@ public class HomeController extends WombatController {
             .map(article -> (String) article.get("doi"))
             .collect(Collectors.toList());
 
-        Map<String, Object> results = (Map<String, Object>) context.solrSearchApi.lookupArticlesByDois(dois);
+        Map<String, Object> results = (Map<String, Object>) context.solrSearchApi.lookupArticlesByDois(dois, site);
         List<SolrArticleAdapter> unpacked = SolrArticleAdapter.unpackSolrQuery(results);
         validateSolrResultsFromList(section, dois, unpacked);
         return Ordering.explicit(dois).onResultOf(SolrArticleAdapter::getDoi).sortedCopy(unpacked);
@@ -141,7 +141,7 @@ public class HomeController extends WombatController {
           .setSortOrder(order)
           .setJournalKeys(ImmutableList.of(site.getJournalKey()))
           .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
-      Map<String, Object> result = (Map<String, Object>) context.solrSearchApi.search(query.build());
+      Map<String, Object> result = (Map<String, Object>) context.solrSearchApi.search(query.build(), site);
       return SolrArticleAdapter.unpackSolrQuery(result);
     }
 
@@ -332,7 +332,7 @@ public class HomeController extends WombatController {
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
         .setIsRssSearch(true);
-    Map<String, ?> recentArticles = solrSearchApi.search(query.build());
+    Map<String, ?> recentArticles = solrSearchApi.search(query.build(), site);
 
     ModelAndView mav = new ModelAndView();
     FeedMetadataField.SITE.putInto(mav, site);

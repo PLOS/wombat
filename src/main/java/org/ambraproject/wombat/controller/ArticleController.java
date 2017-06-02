@@ -775,7 +775,7 @@ public class ArticleController extends WombatController {
           new ByteArrayInputStream(xml), doi -> {
             String citationJournalKey;
             try {
-              citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi);
+              citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi, site);
             } catch (SolrUndefinedException e) {
               // If we can't look it up in Solr, fail quietly, the same as though no match was found.
               citationJournalKey = null;

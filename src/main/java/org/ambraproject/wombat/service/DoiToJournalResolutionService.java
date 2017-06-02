@@ -22,6 +22,7 @@
 
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.apache.lucene.queryparser.classic.QueryParser;
@@ -36,14 +37,14 @@ public class DoiToJournalResolutionService {
   @Autowired
   private SolrSearchApi solrSearchApi;
 
-  public String getJournalKeyFromDoi(String doi) throws IOException {
+  public String getJournalKeyFromDoi(String doi, Site site) throws IOException {
     ArticleSearchQuery explicitDoiSearchQuery = ArticleSearchQuery.builder()
         .setSimple(false)
         .setRows(1)
         .setQuery("id:\"" + QueryParser.escape(doi) + "\"")
         .build();
 
-    Map<String, ?> results = solrSearchApi.search(explicitDoiSearchQuery);
+    Map<String, ?> results = solrSearchApi.search(explicitDoiSearchQuery, site);
     List<SolrArticleAdapter> solrArticleAdapters = SolrArticleAdapter.unpackSolrQuery(results);
     String journalKey = null;
     if (solrArticleAdapters.size() == 1) {

@@ -35,14 +35,16 @@ public class Site {
 
   private final String key;
   private final Theme theme;
+  private final String type;
   private final SiteRequestScheme requestScheme;
 
   private final String journalKey;
   private final String journalName;
 
-  public Site(String key, Theme theme, SiteRequestScheme requestScheme) {
+  public Site(String key, Theme theme, SiteRequestScheme requestScheme, String type) {
     this.key = Preconditions.checkNotNull(key);
     this.theme = Preconditions.checkNotNull(theme);
+    this.type = type;
     this.requestScheme = Preconditions.checkNotNull(requestScheme);
 
     this.journalKey = findJournalKey(theme);
@@ -89,6 +91,8 @@ public class Site {
   public Theme getTheme() {
     return theme;
   }
+
+  public String getType() { return type; }
 
   public String getJournalKey() {
     return journalKey;

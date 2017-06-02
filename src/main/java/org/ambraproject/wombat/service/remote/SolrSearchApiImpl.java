@@ -220,17 +220,17 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   private RuntimeConfiguration runtimeConfiguration;
 
   @Override
-  public Map<String, ?> search(ArticleSearchQuery query) throws IOException {
-    return query.search(this::getRawResults);
+  public Map<String, ?> search(ArticleSearchQuery query, Site site) throws IOException {
+    return query.search(params -> getRawResults(params, site));
   }
 
   @Override
-  public Map<?, ?> lookupArticleByDoi(String doi) throws IOException {
-    return lookupArticlesByDois(ImmutableList.of(doi));
+  public Map<?, ?> lookupArticleByDoi(String doi, Site site) throws IOException {
+    return lookupArticlesByDois(ImmutableList.of(doi), site);
   }
 
   @Override
-  public Map<?, ?> lookupArticlesByDois(List<String> dois) throws IOException {
+  public Map<?, ?> lookupArticlesByDois(List<String> dois, Site site) throws IOException {
     String doiQueryString = dois.stream().map(doi -> "id:" + QueryParser.escape(doi))
         .collect(Collectors.joining(" OR "));
 
@@ -238,7 +238,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
         .setQuery(doiQueryString)
         .setStart(0)
         .setRows(dois.size());
-    return search(query.build());
+    return search(query.build(), site);
   }
 
   @Override
@@ -278,7 +278,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   @Override
-  public Map<?, ?> getStats(String fieldName, String journalKey) throws IOException {
+  public Map<?, ?> getStats(String fieldName, String journalKey, Site site) throws IOException {
     Map<String, String> rawQueryParams = new HashMap();
     rawQueryParams.put("stats", "true");
     rawQueryParams.put("stats.field", fieldName);
@@ -290,19 +290,15 @@ public class SolrSearchApiImpl implements SolrSearchApi {
         .setDateRange(SolrEnumeratedDateRange.ALL_TIME)
         .setJournalKeys(Collections.singletonList(journalKey));
 
-    Map<String, Map> rawResult = (Map<String, Map>) search(query.build());
+    Map<String, Map> rawResult = (Map<String, Map>) search(query.build(), site);
 
     Map<String, Map> statsField = (Map<String, Map>) rawResult.get("stats").get("stats_fields");
     Map<String, String> field = (Map<String, String>) statsField.get(fieldName);
     return field;
   }
 
-  private Map<?, ?> executeQuery(List<NameValuePair> params) throws IOException {
-    return getRawResults(params).get("response");
-  }
-
-  private FacetedQueryResponse executeFacetedQuery(ArticleSearchQuery query) throws IOException {
-    Map<String, Map> rawResults = (Map<String, Map>) search(query);
+  private FacetedQueryResponse executeFacetedQuery(ArticleSearchQuery query, Site site) throws IOException {
+    Map<String, Map> rawResults = (Map<String, Map>) search(query, site);
     Map<?, ?> facetCounts = rawResults.get("facet_counts");
     Map<?, ?> facetFields = (Map<?, ?>) facetCounts.get("facet_fields");
     Map<?, ?> resultsMap = (Map<?, ?>) facetFields.get(query.getFacet().get());
@@ -313,7 +309,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
    * @inheritDoc
    */
   @Override
-  public List<String> getAllSubjects(String journalKey) throws IOException {
+  public List<String> getAllSubjects(String journalKey, Site site) throws IOException {
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setForRawResults(true)
         .setFacet("subject_hierarchy")
@@ -321,7 +317,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
         .setJournalKeys(Collections.singletonList(journalKey));
 
     ArrayList<String> categories = new ArrayList<>();
-    FacetedQueryResponse response = executeFacetedQuery(query.build());
+    FacetedQueryResponse response = executeFacetedQuery(query.build(), site);
     categories.addAll(response.getResultsMap().keySet()
         .stream().map(Object::toString)
         .collect(Collectors.toList()));
@@ -333,14 +329,14 @@ public class SolrSearchApiImpl implements SolrSearchApi {
    * @inheritDoc
    */
   @Override
-  public Collection<SubjectCount> getAllSubjectCounts(String journalKey) throws IOException {
+  public Collection<SubjectCount> getAllSubjectCounts(String journalKey, Site site) throws IOException {
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setForRawResults(true)
         .setFacet("subject_facet")
         .setMaxFacetSize(MAX_FACET_SIZE)
         .setJournalKeys(Collections.singletonList(journalKey));
 
-    FacetedQueryResponse response = executeFacetedQuery(query.build());
+    FacetedQueryResponse response = executeFacetedQuery(query.build(), site);
     List<SubjectCount> subjectCounts = response.getResultsMap().entrySet().stream()
         .map((Map.Entry<?, ?> entry) -> new SubjectCount((String) entry.getKey(),
             ((Double) entry.getValue()).longValue())).collect(Collectors.toList());
@@ -352,17 +348,18 @@ public class SolrSearchApiImpl implements SolrSearchApi {
    * Queries Solr and returns the raw results
    *
    * @param params Solr query parameters
+   * @param site the current site
    * @return raw results from Solr
    * @throws IOException
    */
-  private Map<String, Map> getRawResults(List<NameValuePair> params) throws IOException {
-    URI uri = getSolrUri(params);
+  private Map<String, Map> getRawResults(List<NameValuePair> params, Site site) throws IOException {
+    URI uri = getSolrUri(params, site);
     log.debug("Solr request executing: " + uri);
     Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
     return (Map<String, Map>) rawResults;
   }
 
-  private URI getSolrUri(List<NameValuePair> params) throws SolrUndefinedException {
+  private URI getSolrUri(List<NameValuePair> params, Site site) throws SolrUndefinedException {
     SolrUndefinedException solrUndefinedException = new SolrUndefinedException(
         "Solr server URI must be defined in wombat.yaml in order to use solr features such "
             + "as search, RSS, or listing recent articles on the homepage.");
@@ -370,7 +367,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
       throw solrUndefinedException;
     }
     try {
-      URL solrServer = runtimeConfiguration.getSolrConfiguration().get().getUrl()
+      URL solrServer = runtimeConfiguration.getSolrConfiguration().get().getUrl(site)
           .orElseThrow(() -> solrUndefinedException);
       return new URL(solrServer, "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
     } catch (MalformedURLException | URISyntaxException e) {

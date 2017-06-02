@@ -573,7 +573,7 @@ public class SearchController extends WombatController {
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
 
-    Map<String, ?> searchResults = solrSearchApi.search(queryObj);
+    Map<String, ?> searchResults = solrSearchApi.search(queryObj, site);
 
     String feedTitle = representQueryParametersAsString(params);
     return getFeedModelAndView(site, feedType, feedTitle, searchResults);
@@ -674,7 +674,7 @@ public class SearchController extends WombatController {
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults;
     try {
-      searchResults = solrSearchApi.search(queryObj);
+      searchResults = solrSearchApi.search(queryObj, site);
     } catch (ServiceRequestException sre) {
       model.addAttribute(isInvalidSolrRequest(queryString, sre)
           ? CANNOT_PARSE_QUERY_ERROR : UNKNOWN_QUERY_ERROR, true);
@@ -689,7 +689,7 @@ public class SearchController extends WombatController {
        activeFilterItems = commonParams.setActiveFilterParams(model, request);
     } else {
       Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj,
-          rebuildUrlParameters(queryObj));
+          rebuildUrlParameters(queryObj), site);
       filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
 
       activeFilterItems = new LinkedHashSet<>();
@@ -827,7 +827,7 @@ public class SearchController extends WombatController {
     commonParams.fill(query);
 
     ArticleSearchQuery queryObj = query.build();
-    Map<String, ?> searchResults = solrSearchApi.search(queryObj);
+    Map<String, ?> searchResults = solrSearchApi.search(queryObj, site);
 
     model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
     model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
@@ -845,7 +845,7 @@ public class SearchController extends WombatController {
   }
 
   private TaxonomyGraph modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
-    TaxonomyGraph fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey());
+    TaxonomyGraph fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey(), site);
 
     Collection<String> subjectParents;
     Collection<String> subjectChildren;

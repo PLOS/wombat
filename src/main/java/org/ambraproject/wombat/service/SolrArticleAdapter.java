@@ -80,7 +80,7 @@ public class SolrArticleAdapter implements Serializable {
   }
 
   /**
-   * Adapt a set of results, as provided by {@link org.ambraproject.wombat.service.remote.SolrSearchApi#search(org.ambraproject.wombat.service.remote.ArticleSearchQuery)}.
+   * Adapt a set of results, as provided by {@link org.ambraproject.wombat.service.remote.SolrSearchApi#search(org.ambraproject.wombat.service.remote.ArticleSearchQuery, org.ambraproject.wombat.config.site.Site)}.
    */
   public static List<SolrArticleAdapter> unpackSolrQuery(Map<String, ?> solrResult) {
     List<Map<String, ?>> docs = (List<Map<String, ?>>) solrResult.get("docs");

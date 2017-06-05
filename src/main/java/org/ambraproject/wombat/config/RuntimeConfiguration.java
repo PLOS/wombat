@@ -24,6 +24,7 @@ package org.ambraproject.wombat.config;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.ThemeSource;
 
 import java.net.URL;
@@ -109,7 +110,11 @@ public interface RuntimeConfiguration {
   interface SolrConfiguration {
     Optional<URL> getUrl();
 
-    String getCollection();
+    Optional<URL> getUrl(Site site);
+
+    String getJournalsCollection();
+
+    String getPreprintsCollection();
   }
 
   Optional<CasConfiguration> getCasConfiguration();

@@ -23,6 +23,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.Multimap;
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterFactory;
@@ -33,7 +34,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -75,11 +75,13 @@ public class SearchFilterService {
    * @param query Execute query to determine the search filter results.
    *              Must be set as faceted with the setFacet() method
    * @param urlParams search URL parameters that have been rebuilt from the ArticleSearchQuery object
+   * @param site The site to perform the searches in
    * @return HashMap containing all applicable filters
    * @throws IOException
    */
   public Map<String, SearchFilter> getSearchFilters(ArticleSearchQuery query,
-      Multimap<String, String> urlParams) throws IOException {
+                                                    Multimap<String, String> urlParams,
+                                                    Site site) throws IOException {
 
     ArticleSearchQuery.Builder journalFacetQuery = ArticleSearchQuery.builder()
         .setFacet(JOURNAL_FACET_FIELD)
@@ -91,7 +93,7 @@ public class SearchFilterService {
         .setDateRange(query.getDateRange().orElse(null))
         .setSections(query.getSections());
 
-    Map<?, ?> journalFacetResults = solrSearchApi.search(journalFacetQuery.build());
+    Map<?, ?> journalFacetResults = solrSearchApi.search(journalFacetQuery.build(), site);
     SearchFilter journalFilter = searchFilterFactory
         .createSearchFilter(journalFacetResults, JOURNAL, urlParams);
 
@@ -106,7 +108,7 @@ public class SearchFilterService {
         .setSections(query.getSections())
         .setSubjects(query.getSubjects());  // pass the previously filtered subjects to narrow the results
 
-    Map<?, ?> subjectAreaFacetResults = solrSearchApi.search(subjectAreaFacetQuery.build());
+    Map<?, ?> subjectAreaFacetResults = solrSearchApi.search(subjectAreaFacetQuery.build(), site);
     SearchFilter subjectAreaFilter = searchFilterFactory
         .createSearchFilter(subjectAreaFacetResults, SUBJECT_AREA, urlParams);
 
@@ -122,7 +124,7 @@ public class SearchFilterService {
         .setSections(query.getSections());
 
 
-    Map<?, ?> authorFacetResults = solrSearchApi.search(authorFacetQuery.build());
+    Map<?, ?> authorFacetResults = solrSearchApi.search(authorFacetQuery.build(), site);
     SearchFilter authorFilter = searchFilterFactory.createSearchFilter(authorFacetResults, AUTHOR, urlParams);
 
     ArticleSearchQuery.Builder articleTypeFacetQuery = ArticleSearchQuery.builder()
@@ -135,7 +137,7 @@ public class SearchFilterService {
         .setAuthors(query.getAuthors())
         .setSections(query.getSections());
 
-    Map<?, ?> articleTypeFacetResults = solrSearchApi.search(articleTypeFacetQuery.build());
+    Map<?, ?> articleTypeFacetResults = solrSearchApi.search(articleTypeFacetQuery.build(), site);
     SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(articleTypeFacetResults,
         ARTICLE_TYPE, urlParams);
 
@@ -149,7 +151,7 @@ public class SearchFilterService {
         .setSubjects(query.getSubjects())
         .setAuthors(query.getAuthors());
 
-    Map<?, ?> sectionFacetResults = solrSearchApi.search(sectionFacetQuery.build());
+    Map<?, ?> sectionFacetResults = solrSearchApi.search(sectionFacetQuery.build(), site);
     SearchFilter sectionFilter = searchFilterFactory.createSearchFilter(sectionFacetResults,
         SECTION, urlParams);
 

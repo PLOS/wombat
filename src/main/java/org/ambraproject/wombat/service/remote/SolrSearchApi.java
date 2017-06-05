@@ -61,19 +61,20 @@ public interface SolrSearchApi {
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  public Map<String, ?> search(ArticleSearchQuery query) throws IOException;
+  public Map<String, ?> search(ArticleSearchQuery query, Site site) throws IOException;
 
 
   /**
    * Attempts to retrieve information about an article based on the DOI.
    *
    * @param doi identifies the article
+   * @param site
    * @return information about the article, if it exists; otherwise an empty result set
    * @throws IOException
    */
-  public Map<?, ?> lookupArticleByDoi(String doi) throws IOException;
+  public Map<?, ?> lookupArticleByDoi(String doi, Site site) throws IOException;
 
-  public Map<?, ?> lookupArticlesByDois(List<String> dois) throws IOException;
+  public Map<?, ?> lookupArticlesByDois(List<String> dois, Site site) throws IOException;
 
   /**
    * Adds a new property, link, to each search result passed in.  The value of this property is the correct URL to the
@@ -95,28 +96,31 @@ public interface SolrSearchApi {
    *
    * @param fieldName  specifies the name of the field
    * @param journalKey specifies the name of the journal
+   * @param site the current site
    * @return Solr stats for the given field
    * @throws IOException
    */
-  public Map<?, ?> getStats(String fieldName, String journalKey) throws IOException;
+  public Map<?, ?> getStats(String fieldName, String journalKey, Site site) throws IOException;
 
   /**
    * Returns a list of all subject categories associated with all papers ever published
    * for the given journal.
    *
    * @param journalKey name of the journal in question
+   * @param site the current site
    * @return List of category names
    */
-  public List<String> getAllSubjects(String journalKey) throws IOException;
+  public List<String> getAllSubjects(String journalKey, Site site) throws IOException;
 
   /**
    * Returns the number of articles, for a given journal, associated with all the subject
    * categories in the taxonomy.
    *
    * @param journalKey specifies the journal
+   * @param site the current site
    * @throws IOException
    */
-  public Collection<SubjectCount> getAllSubjectCounts(String journalKey) throws IOException;
+  public Collection<SubjectCount> getAllSubjectCounts(String journalKey, Site site) throws IOException;
 
   /**
    * Simple class wrapping the category -> count map returned by Solr subject searches.

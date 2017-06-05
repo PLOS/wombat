@@ -82,7 +82,7 @@ public class TaxonomyController extends WombatController {
       throw new NotFoundException();
     }
 
-    TaxonomyGraph taxonomyGraph = browseTaxonomyService.parseCategories(site.getJournalKey());
+    TaxonomyGraph taxonomyGraph = browseTaxonomyService.parseCategories(site.getJournalKey(), site);
 
     //parent will be null only for the ROOT taxonomy
     String parent;
@@ -95,7 +95,7 @@ public class TaxonomyController extends WombatController {
       parent = Joiner.on("/").join(categoryParams);
     }
 
-    TaxonomyCountTable articleCounts = browseTaxonomyService.getCounts(taxonomyGraph, site.getJournalKey());
+    TaxonomyCountTable articleCounts = browseTaxonomyService.getCounts(taxonomyGraph, site.getJournalKey(), site);
 
     final Collection<CategoryView> children;
     if (parent != null) {

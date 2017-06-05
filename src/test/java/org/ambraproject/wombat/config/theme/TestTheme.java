@@ -56,10 +56,10 @@ public class TestTheme {
         return map;
       }
     };
-    Site homeSite = new Site("homeSite", homeTheme, dummyScheme);
+    Site homeSite = new Site("homeSite", homeTheme, dummyScheme, "");
 
     Theme targetTheme = new StubTheme("targetTheme", "targetJournal");
-    Site targetSite = new Site("targetSite", targetTheme, dummyScheme);
+    Site targetSite = new Site("targetSite", targetTheme, dummyScheme, "");
 
     SiteSet siteSet = new SiteSet(ImmutableList.of(homeSite, targetSite));
     Site resolved = homeTheme.resolveForeignJournalKey(siteSet, "targetJournal");

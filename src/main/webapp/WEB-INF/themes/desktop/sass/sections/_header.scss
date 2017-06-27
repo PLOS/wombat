@@ -40,19 +40,6 @@
 /// nav spacing stuff
 
 
-.test1{
-  @include plos-grid-column($pixelwidth: 30);
-  background-color: black;
-
-}
-.test2{
-  @include plos-grid-column();
-
-}
-.test3{
-
-}
-
 $nav-spacing: 15px;
 $nav-spacing-full: 25px;
 

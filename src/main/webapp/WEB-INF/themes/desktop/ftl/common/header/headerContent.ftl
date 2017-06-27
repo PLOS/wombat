@@ -22,6 +22,12 @@
 
 
 <header>
+
+  <div class="test1">TEST !</div>
+  <div class="test2">TEST 2</div>
+
+  <div class="test3">TEST 3</div>
+
   <div id="topslot" class="head-top">
   <#include "adSlotTop.ftl" />
   </div>

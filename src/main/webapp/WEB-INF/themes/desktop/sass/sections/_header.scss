@@ -43,19 +43,6 @@
 $nav-spacing: 15px;
 $nav-spacing-full: 25px;
 
-$gutter-width: 30px;
-div.container{
-  @extend .plos-row;
-  div.test1{
-    @include plos-grid-column($pixelwidth: columns, $columns: 3);
-  }
-
-  div.test2{
-    @include plos-grid-column($pixelwidth: columns, $columns: 1 );
-  }
-
-}
-
 
 header {
   background: $clr-header;
@@ -158,6 +145,7 @@ $width-nav: $block-grid-elements - $width-logo;
  all @extend .class are Foundation
  */
 
+
 .nav-main {
   @extend .plos-row;
   @extend .top-bar; // foundation
@@ -169,6 +157,8 @@ $width-nav: $block-grid-elements - $width-logo;
   }
 
 .top-bar-section {
+
+
   @extend .hide-for-print;
   %nav-header-type {
     font-family: $font-face-navigation;
@@ -194,8 +184,12 @@ $width-nav: $block-grid-elements - $width-logo;
     }
 
   //this level of specificity is needed to override foundation styles
+  .dropdown li{
+    background: $white;
+  }
   ul.nav-elements {
     @extend .right; // foundation
+
     padding-right: 0;
     > li {
       margin-left: rem-calc(3);

@@ -43,6 +43,20 @@
 $nav-spacing: 15px;
 $nav-spacing-full: 25px;
 
+$gutter-width: 30px;
+div.container{
+  @extend .plos-row;
+  div.test1{
+    @include plos-grid-column($pixelwidth: columns, $columns: 3);
+  }
+
+  div.test2{
+    @include plos-grid-column($pixelwidth: columns, $columns: 1 );
+  }
+
+}
+
+
 header {
   background: $clr-header;
   }

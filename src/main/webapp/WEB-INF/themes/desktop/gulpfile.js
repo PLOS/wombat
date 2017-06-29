@@ -5,7 +5,11 @@ var sass = require('gulp-sass');
 
 gulp.task('sass', function () {
   return gulp.src('./sass/*.scss')
-    .pipe(sass({outputStyle: 'nested'}).on('error', sass.logError))
+    .pipe(sass({
+      sourceComments: 'map',
+      sourceMap: 'sass',
+      outputStyle: 'nested'
+    }).on('error', sass.logError))
     .pipe(gulp.dest('resource/css'));
 });
 

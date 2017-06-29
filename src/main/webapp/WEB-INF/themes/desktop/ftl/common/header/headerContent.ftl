@@ -21,12 +21,14 @@
   -->
 
 
+
+
 <header>
 
-  <div class="test1">TEST !</div>
-  <div class="test2">TEST 2</div>
-
-  <div class="test3">TEST 3</div>
+  <div class="container">
+    <div class="test1">TEST 1</div>
+    <div class="test2">TEST 2</div>
+  </div>
 
   <div id="topslot" class="head-top">
   <#include "adSlotTop.ftl" />

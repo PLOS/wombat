@@ -100,11 +100,11 @@ $grid-width-inside: ($row-width - $grid-gutter);
   $offset:false,
   $push:false,
   $pull:false,
-  $collapse:null,
+  $collapse:false,
   $float:true,
   $position:false, $columns:false, $args...) {
   // from foundation:
-  @include grid-column($collapse: $collapse, $columns: $columns, $args...);
+  @include grid-column($collapse: $collapse, $columns: $columns, $gutter: $gutter, $offset: $offset, $center: $center, $float:$float, $args...);
   // sets the width
   @if $pixelwidth == full-width {
     width: $grid-width-inside;

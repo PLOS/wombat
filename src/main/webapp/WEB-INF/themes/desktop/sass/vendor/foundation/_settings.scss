@@ -33,7 +33,7 @@ $include-html-grid-classes: false;
 $include-xl-html-grid-classes: false;
 
 $row-width: rem-calc($grid-width);
-$column-gutter: rem-calc($grid-gutter);
+$column-gutter: $grid-gutter-px;
 $total-columns: 12;
 
 // We use these to control various global styles

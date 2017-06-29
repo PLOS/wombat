@@ -94,17 +94,26 @@ $grid-width-inside: ($row-width - $grid-gutter);
 }
 
 
-@mixin plos-grid-column($pixelwidth:columns, $gutter: outside, $gutter-width: $grid-gutter,
-  $last-column:false,
+@mixin plos-grid-column($pixelwidth:columns, $gutter: outside, $gutter-width: $grid-gutter, $collapse: null, $columns:false,
+ $last-column:false,
   $center:false,
   $offset:false,
   $push:false,
   $pull:false,
-  $collapse:false,
+  $collapse:null,
   $float:true,
-  $position:false, $columns:false, $args...) {
+  $position:false) {
+
+
   // from foundation:
-  @include grid-column($collapse: $collapse, $columns: $columns, $gutter: $gutter, $offset: $offset, $center: $center, $float:$float, $args...);
+  @include grid-column($columns, $last-column, $center, $offset, $push, $pull, $collapse, $float, $position);
+
+  @if $gutter-width == $grid-gutter{
+    $gutter-width: $grid-gutter;
+  } @else {
+    $gutter-width: rem-calc($gutter-width);
+  }
+
   // sets the width
   @if $pixelwidth == full-width {
     width: $grid-width-inside;
@@ -113,11 +122,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
   } @else {
     width: rem-calc($pixelwidth);
   }
-  @if $gutter-width == $grid-gutter{
-    $gutter-width: $grid-gutter;
-  } @else {
-    $gutter-width: rem-calc($gutter-width);
-  }
+
   // sets the gutter - adds one on the right and on the left.
   @if $gutter == outside {
     margin-left: ($grid-gutter / 2);
@@ -128,6 +133,7 @@ $grid-width-inside: ($row-width - $grid-gutter);
     margin-left: $gutter-width;
   } @else if $gutter == right {
     margin-right: $gutter-width;
+
   }
 
 }

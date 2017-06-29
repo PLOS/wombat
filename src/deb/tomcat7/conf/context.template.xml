@@ -1,4 +1,5 @@
-<#--
+<?xml version='1.0' encoding='utf-8'?>
+<!--
   ~ Copyright (c) 2017 Public Library of Science
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a
@@ -19,7 +20,22 @@
   ~ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
   ~ DEALINGS IN THE SOFTWARE.
   -->
+<!-- The contents of this file will be loaded for each web application -->
+<Context>
 
-<#-- provides a domain to be used with the doiResolverLink macro (in doiResolverLink.ftl) to create a doi resolver URL.
-Should be overridden in themes as necessary-->
-<#assign doiResolverDomain = 'dx.doi.org' />
+  <!-- Default set of monitored resources -->
+
+
+  <!-- Uncomment this to disable session persistence across Tomcat restarts -->
+  <!--
+  <Manager pathname="" />
+  -->
+
+  <!-- Uncomment this to enable Comet connection tacking (provides events
+       on session expiration as well as webapp lifecycle) -->
+  <!--
+  <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
+  -->
+
+
+</Context>

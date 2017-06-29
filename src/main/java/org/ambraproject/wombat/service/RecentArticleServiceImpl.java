@@ -101,7 +101,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
       articles = cache.get(cacheKey); // remains null if not cached
     }
     if (articles == null) {
-      articles = retrieveRecentArticles(journalKey, articleCount, numberOfDaysAgo, articleTypes, articleTypesToExclude);
+      articles = retrieveRecentArticles(journalKey, articleCount, numberOfDaysAgo, articleTypes, articleTypesToExclude, site);
       if (cacheDuration.isPresent()) {
         /*
          * Casting to Serializable relies on all data structures that Gson uses to be serializable, which is safe
@@ -130,7 +130,8 @@ public class RecentArticleServiceImpl implements RecentArticleService {
                                                           int articleCount,
                                                           double numberOfDaysAgo,
                                                           List<String> articleTypes,
-                                                          List<String> articleTypesToExclude)
+                                                          List<String> articleTypesToExclude,
+                                                          Site site)
       throws IOException {
 
     List<String> journalKeys = ImmutableList.of(journalKey);
@@ -147,10 +148,10 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     for (String articleType : articleTypes) {
       List<SolrArticleAdapter> recentArticles;
       if (articleType.equals(ARTICLE_TYPE_WILDCARD)) {
-        recentArticles = getAllRecentArticles(articleTypesToExclude, journalKeys, dateRange);
+        recentArticles = getAllRecentArticles(articleTypesToExclude, journalKeys, dateRange, site);
       } else {
         recentArticles = getRecentArticlesByType(articleType, articleTypesToExclude,
-            journalKeys, dateRange);
+            journalKeys, dateRange, site);
       }
 
       // Add each query result to 'results' only if the DOI is not already in 'uniqueDois'
@@ -177,7 +178,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
         // Not enough results. Get outside the date range in order to meet the minimum.
         // Ignore order of articleTypes and get the union of all.
         List<SolrArticleAdapter> articlesByType = getAllArticlesByType(articleTypes, articleTypesToExclude,
-            journalKeys, limit);
+            journalKeys, limit, site);
         for (SolrArticleAdapter article : articlesByType) {
           if (articles.size() < articleCount && uniqueDois.add(article.getDoi())) {
             articles.add(article);
@@ -191,7 +192,8 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   private List<SolrArticleAdapter> getRecentArticlesByType(String articleType,
                                                            List<String> articleTypesToExclude,
                                                            List<String> journalKeys,
-                                                           SolrSearchApiImpl.SolrExplicitDateRange dateRange)
+                                                           SolrSearchApiImpl.SolrExplicitDateRange dateRange,
+                                                           Site site)
       throws IOException {
     ArticleSearchQuery recentArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
@@ -203,13 +205,14 @@ public class RecentArticleServiceImpl implements RecentArticleService {
         .setJournalKeys(journalKeys)
         .build();
 
-    Map<String, ?> results = solrSearchApi.search(recentArticleSearchQuery);
+    Map<String, ?> results = solrSearchApi.search(recentArticleSearchQuery, site);
     return SolrArticleAdapter.unpackSolrQuery(results);
   }
 
   private List<SolrArticleAdapter> getAllRecentArticles(List<String> articleTypesToExclude,
                                                         List<String> journalKeys,
-                                                        SolrSearchApiImpl.SolrExplicitDateRange dateRange)
+                                                        SolrSearchApiImpl.SolrExplicitDateRange dateRange,
+                                                        Site site)
       throws IOException {
     ArticleSearchQuery recentArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
@@ -220,14 +223,14 @@ public class RecentArticleServiceImpl implements RecentArticleService {
         .setJournalKeys(journalKeys)
         .build();
 
-    Map<String, ?> results = solrSearchApi.search(recentArticleSearchQuery);
+    Map<String, ?> results = solrSearchApi.search(recentArticleSearchQuery, site);
     return SolrArticleAdapter.unpackSolrQuery(results);
   }
 
   private List<SolrArticleAdapter> getAllArticlesByType(List<String> articleTypes,
                                                         List<String> articleTypesToExclude,
                                                         List<String> journalKeys,
-                                                        int limit)
+                                                        int limit, Site site)
       throws IOException {
     ArticleSearchQuery allArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
@@ -237,7 +240,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
         .setArticleTypesToExclude(articleTypesToExclude)
         .setJournalKeys(journalKeys)
         .build();
-    return SolrArticleAdapter.unpackSolrQuery(solrSearchApi.search(allArticleSearchQuery));
+    return SolrArticleAdapter.unpackSolrQuery(solrSearchApi.search(allArticleSearchQuery, site));
   }
 
 }

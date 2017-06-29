@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
-
 #set -x
 set -o errexit
 
 . /usr/share/debconf/confmodule
 
-TOMCAT7_USER=[[artifactId]]
-TOMCAT7_GROUP=[[artifactId]]
-HOME=[[wombat.debInstallDir]]
+NAME=wombat
+
+TOMCAT7_USER=$NAME
+TOMCAT7_GROUP=$NAME
+HOME=/opt/plos/$NAME
 
 function process_env_template {
 	CONTEXT_TEMPLATE=$1
+	OUTFILE=$2
 
   ls -lh $CONTEXT_TEMPLATE
 
@@ -19,11 +21,11 @@ function process_env_template {
   eval "cat <<EOF
 $(<$CONTEXT_TEMPLATE)
 EOF
-" > $CONTEXT_TEMPLATE
+" > $OUTFILE
 }
 
 case "$1" in
-    configure)
+  configure|reconfigure)
 
   # create user/group
 
@@ -36,11 +38,11 @@ case "$1" in
 		"$TOMCAT7_USER"
 	fi
 
-  chmod +x $HOME/bin/*.sh
-  chown -Rh $TOMCAT7_USER:$TOMCAT7_GROUP $HOME
+	chmod +x $HOME/bin/*.sh
+	chown -Rh $TOMCAT7_USER:$TOMCAT7_GROUP $HOME
 
-  GET="db_get [[artifactId]]"
-
+	echo "Fetching configuration from debconf"
+	GET="db_get [[artifactId]]"
 
 ########### BEGIN app-specific code ###########
 
@@ -53,16 +55,36 @@ case "$1" in
 
 ########### END app-specific code ###########
 
+	echo "Running db_purge"
+	db_purge
 
-  # removes the saved values, so they need to be re-entered the next time around
-  db_purge
+	process_env_template $HOME/conf/context.template.xml $HOME/conf/context.xml
 
-  # generate configs from templates
-  process_env_template $HOME/conf/context.xml
-  cat $HOME/conf/context.xml
+	process_env_template $HOME/conf/server.template.xml $HOME/conf/server.xml
 
-  process_env_template $HOME/conf/server.xml
-  cat $HOME/conf/server.xml
+	process_env_template $HOME/bin/setenv.template.sh $HOME/bin/setenv.sh
+
+  ;;
+
+  abort-upgrade|abort-remove|abort-deconfigure)
+  ;;
+
+  *)
+    echo "postinst called with unknown argument \`$1'" >&2
+    exit 1
+  ;;
 
 esac
 
+# In case this system is running systemd, we make systemd reload the unit files
+# to pick up changes.
+if [ -d /run/systemd/system ] ; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+
+if [ -x "/etc/init.d/$NAME" ] || [ -e "/etc/init/$NAME.conf" ]; then
+	if [ ! -e "/etc/init/$NAME.conf" ]; then
+		update-rc.d $NAME defaults 92 08 >/dev/null
+	fi
+	invoke-rc.d $NAME start || true
+fi

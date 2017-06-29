@@ -115,6 +115,7 @@ public class SiteSet {
     for (Map<String, ?> siteSpec : siteSpecifications) {
       String siteKey = (String) siteSpec.get("key");
       String themeKey = (String) siteSpec.get("theme");
+      String siteType = (String) siteSpec.get("type");
       Theme theme = themeGraph.getTheme(themeKey);
       if (theme == null) {
         throw new RuntimeException(String.format("No theme with key=\"%s\" found (for site: %s)", themeKey, siteKey));
@@ -124,7 +125,7 @@ public class SiteSet {
       SiteRequestScheme requestScheme = resolveDefinition != null ? parseRequestScheme(resolveDefinition)
           : SiteRequestScheme.builder().setPathToken(siteKey).build();
 
-      sites.add(new Site(siteKey, theme, requestScheme));
+      sites.add(new Site(siteKey, theme, requestScheme, siteType));
     }
     validateSchemes(sites);
     return new SiteSet(sites);

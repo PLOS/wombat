@@ -21,20 +21,10 @@
   -->
 
 <#--
-  Render a DOI as an anchor element that displays links to a URI at the global DOI resolver at doi.org.
+  Defines a URI prefix (consisting of a protocol and URL hostname) to be used by the doiResolverLink macro
+  (in doiResolverLink.ftl) to render a DOI in the form of a link to a DOI resolver.
 
-  Contrast to doiResolverLink.ftl, which builds a URL with the option to substitute a custom DOI resolver hostname.
-  The doiAsLink macro is meant to render the DOI in a human-readable URI form that also functions as a web address.
-  This is in accordance with CrossRef's DOI Display Guidelines.
-
-  See:
-    http://www.crossref.org/02publishers/doi_display_guidelines.html
-    http://www.crossref.org/01company/pr/news080211.html
-
-  It should not be necessary to override this macro to change its content: the global, publisher-neutral "doi.org"
-  is by definition the correct thing to display in every environment. May it never go offline.
+  By default, it points to a global DOI resolver. Subthemes may override it to use a DOI resolver operated by a
+  particular publisher instead.
   -->
-<#macro doiAsLink doiName id='' class=''>
-  <#assign doiHref>https://doi.org/${doiName?replace('^(info:doi/|doi:)', '', 'r')}</#assign>
-<a <#if id?has_content>id="${id}"</#if> <#if class?has_content>class="${class}"</#if> href="${doiHref}">${doiHref}</a>
-</#macro>
+<#assign doiResolverPrefix = 'https://doi.org' />

@@ -67,5 +67,9 @@
 
   "browseSubjectArea": {
     "disabled": true
+  },
+
+  "lockssYears": {
+    "disabled": true
   }
 }

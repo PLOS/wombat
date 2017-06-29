@@ -47,7 +47,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
   @Override
   public Map<?, ?> getYearsForJournal(Site site) throws IOException, ParseException {
     Map<String, String> yearRange = (Map<String, String>) solrSearchApi.getStats("publication_date",
-        site.getJournalKey());
+        site.getJournalKey(), site);
     return yearRange;
   }
 
@@ -89,7 +89,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
         .setRows(1000000)
         .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_OLDEST_FIRST)
         .setDateRange(dateRange);
-    Map<String, Map> searchResult = (Map<String, Map>) solrSearchApi.search(query.build());
+    Map<String, Map> searchResult = (Map<String, Map>) solrSearchApi.search(query.build(), site);
     return searchResult;
   }
 }

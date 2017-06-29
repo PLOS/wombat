@@ -36,7 +36,7 @@ import static org.testng.Assert.assertEquals;
 public class LinkTest {
 
   private static Site dummySite(String siteName, SiteRequestScheme scheme) {
-    return new Site(siteName, new StubTheme(siteName, siteName), scheme);
+    return new Site(siteName, new StubTheme(siteName, siteName), scheme, "");
   }
 
   private static final Site TOKEN_1 = dummySite("token1",

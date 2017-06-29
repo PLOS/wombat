@@ -20,6 +20,7 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
+<#include "../macro/doiResolverLink.ftl" />
 <script type="text/javascript">
     var WombatConfig = WombatConfig || {};
     WombatConfig.resourcePath = "<@siteLink handlerName="staticResource" wildcardValues=[""]/>";
@@ -29,5 +30,6 @@
     <@themeConfig map="article" value="figShareInstitutionString" ; figShareInstitutionString>
     WombatConfig.figShareInstitutionString = "${figShareInstitutionString}";
     </@themeConfig>
+    WombatConfig.doiResolverPrefix = "${doiResolverLink('')?js_string}";
 </script>
 <#include "journalConfigJS.ftl"/>

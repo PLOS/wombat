@@ -29,6 +29,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import com.google.gson.GsonBuilder;
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
 import org.ambraproject.wombat.config.theme.ThemeSource;
 
@@ -79,11 +80,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
   @Override
   public URL getServer() {
     return buildUrl(input.server, null);
-  }
-
-  @Override
-  public Optional<URL> getSolrServer() {
-    return Optional.ofNullable(buildUrl(input.solrServer, null));
   }
 
   @Override
@@ -204,6 +200,40 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return (input.cas == null) ? Optional.empty() : Optional.of(casConfiguration);
   }
 
+  private final SolrConfiguration solrConfiguration = new SolrConfiguration() {
+    @Override
+    public Optional<URL> getUrl() {
+      return Optional.ofNullable(buildUrl(input.solr.url + getJournalsCollection() + "/select/", null));
+    }
+
+    @Override
+    public Optional<URL> getUrl(Site site) {
+      URL solrUrl;
+      //todo: make type optional
+      if (site.getType() != null && site.getType().equals("preprints")) {
+         solrUrl = buildUrl(input.solr.url + getPreprintsCollection() + "/select/", null);
+      } else {
+        solrUrl = buildUrl(input.solr.url + getJournalsCollection() + "/select/", null);
+      }
+      return Optional.ofNullable(solrUrl);
+    }
+
+    @Override
+    public String getJournalsCollection() {
+      return input.solr.journalsCollection;
+    }
+
+    @Override
+    public String getPreprintsCollection() {
+      return input.solr.preprintsCollection;
+    }
+  };
+
+  @Override
+  public Optional<SolrConfiguration> getSolrConfiguration() {
+    return (input.solr == null) ? Optional.empty() : Optional.of(solrConfiguration);
+  }
+
   @Override
   public boolean areCommentsDisabled() {
     return (input.commentsDisabled != null) && input.commentsDisabled;
@@ -223,9 +253,9 @@ public class YamlConfiguration implements RuntimeConfiguration {
     } catch (MalformedURLException e) {
       throw new RuntimeConfigurationException("Provided server address is not a valid URL", e);
     }
-    if (!Strings.isNullOrEmpty(input.solrServer)) {
+    if (!Strings.isNullOrEmpty(input.solr.url)) {
       try {
-        new URL(input.solrServer);
+        new URL(input.solr.url);
       } catch (MalformedURLException e) {
         throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
       }
@@ -268,7 +298,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
      */
 
     private String server;
-    private String solrServer;
     private String mailServer;
     private String compiledAssetDir;
     private String rootPagePath;
@@ -278,6 +307,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private CacheConfigurationInput cache;
     private HttpConnectionPoolConfigurationInput httpConnectionPool;
     private CasConfigurationInput cas;
+    private SolrConfigurationInput solr;
 
     private Boolean commentsDisabled;
 
@@ -287,14 +317,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setServer(String server) {
       this.server = server;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setSolrServer(String solrServer) {
-      this.solrServer = solrServer;
     }
 
     /**
@@ -360,6 +382,15 @@ public class YamlConfiguration implements RuntimeConfiguration {
     public void setCas(CasConfigurationInput cas) {
       this.cas = cas;
     }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setSolr(SolrConfigurationInput solr) {
+      this.solr = solr;
+    }
+
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -449,5 +480,35 @@ public class YamlConfiguration implements RuntimeConfiguration {
       this.logoutUrl = logoutUrl;
     }
 
+  }
+
+  public static class SolrConfigurationInput {
+    private String url;
+    private String journalsCollection;
+    private String preprintsCollection;
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setUrl(String url) {
+      this.url = url;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setJournalsCollection(String collection) {
+      this.journalsCollection = collection;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setpreprintsCollection(String collection) {
+      this.preprintsCollection = collection;
+    }
   }
 }

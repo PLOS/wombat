@@ -33,9 +33,9 @@
 
 <#include "listLinks.ftl" />
 
-<#include "subjectAreas.ftl" />
-
 <#include "adSlotAside.ftl" />
+
+<#include "subjectAreas.ftl" />
 
 <#include "twitterModule.ftl" />
 

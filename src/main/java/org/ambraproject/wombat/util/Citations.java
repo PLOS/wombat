@@ -116,7 +116,7 @@ public class Citations {
     citation.append(' ').append(pubInfo);
 
     String doi = (String) articleMetadata.get("doi");
-    citation.append(" doi:").append(doi);
+    citation.append(" https://doi.org/").append(doi);
 
     return citation.toString();
   }

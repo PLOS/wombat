@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
+# set -x
+set -e
 
-#set -x
-#set -o errexit
+case "$1" in
+  configure|reconfigure)
 
-. /usr/share/debconf/confmodule
+    . /usr/share/debconf/confmodule
 
-INPUT="db_input high [[artifactId]]"
+    INPUT="db_input high [[artifactId]]"
 
 ########### BEGIN app-specific code ###########
 
@@ -17,4 +19,16 @@ $INPUT/tomcat_admin_password || true
 
 ########### END app-specific code ###########
 
-db_go || true
+    db_go || true
+
+  ;;
+
+  abort-upgrade)
+  ;;
+
+  *)
+      echo "config called with unknown argument \`$1'" >&2
+      exit 1
+  ;;
+esac
+

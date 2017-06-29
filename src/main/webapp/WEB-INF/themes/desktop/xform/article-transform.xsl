@@ -222,7 +222,7 @@
         <xsl:text> </xsl:text>
         <xsl:value-of select="volume"/>(<xsl:value-of select="issue"/>):
         <xsl:value-of select="elocation-id"/>.
-        doi:<xsl:value-of select="article-id[@pub-id-type='doi']"/>
+        https://doi.org/<xsl:value-of select="article-id[@pub-id-type='doi']"/>
       </p>
       <!-- editors -->
       <xsl:for-each-group select="//contrib-group/contrib[@contrib-type='editor']" group-by="role">
@@ -966,7 +966,7 @@
                             <xsl:value-of select="$fullArticleLink"/>
                           </xsl:when>
                           <xsl:when test="$doi">
-                            <xsl:value-of select="concat('http://dx.doi.org/',$doi)"/>
+                            <xsl:value-of select="concat('https://doi.org/',$doi)"/>
                           </xsl:when>
                           <xsl:otherwise>
                             <!-- build link and use + for spaces for consistency with Ambra -->
@@ -1461,8 +1461,8 @@
         <xsl:if test="object-id[@pub-id-type='doi']">
           <p class="caption_object">
             <a>
-              <xsl:attribute name="href">http://dx.doi.org/<xsl:value-of select="object-id[@pub-id-type='doi']"/></xsl:attribute>
-              http://dx.doi.org/<xsl:value-of select="object-id[@pub-id-type='doi']"/>
+              <xsl:attribute name="href">https://doi.org/<xsl:value-of select="object-id[@pub-id-type='doi']"/></xsl:attribute>
+              https://doi.org/<xsl:value-of select="object-id[@pub-id-type='doi']"/>
             </a>
           </p>
         </xsl:if>
@@ -1785,7 +1785,7 @@
     <xsl:param name="doi"/>
     <xsl:apply-templates/>
     <xsl:if test="$doi and not(ext-link) and not(comment/ext-link)">
-      doi:
+      https://doi.org/
       <xsl:value-of select="$doi"/>
     </xsl:if>
   </xsl:template>
@@ -2214,17 +2214,29 @@
 
   <!-- 6/8/12: Ambra-specific template -->
   <xsl:template match="comment">
-    <xsl:if test="not(self::node()='.')">
-      <xsl:text> </xsl:text>
-      <xsl:apply-templates/>
-      <xsl:if test="substring(.,string-length(.)) != '.' and not(ends-with(..,'.'))">
-        <xsl:text>. </xsl:text>
-      </xsl:if>
-    </xsl:if>
+    <xsl:variable name="totalText">
+      <xsl:value-of select="."/>
+    </xsl:variable>
+    <xsl:choose>
+      <xsl:when test="starts-with($totalText,'doi')">
+      <!-- do nothing -->
+      </xsl:when>
+
+      <xsl:otherwise>
+        <xsl:if test="not(self::node()='.')">
+        <xsl:apply-templates/>
+          <xsl:if test="substring(.,string-length(.)) != '.' and not(ends-with(..,'.'))">
+          <xsl:text>. </xsl:text>
+          </xsl:if>
+        </xsl:if>
+      </xsl:otherwise>
+
+    </xsl:choose>
   </xsl:template>
 
   <!-- 1/4/12: Ambra-specific template -->
   <xsl:template name="citationComment">
+    <xsl:apply-templates />
     <!-- only output a single comment tag that appears as the very last child of the citation -->
     <xsl:variable name="x" select="child::comment[position()=last()]"/>
     <xsl:if test="not(starts-with($x,'p.')) and not(starts-with($x,'In:') and not(starts-with($x,'pp.')))">
@@ -2295,7 +2307,7 @@
 
     <!--here, we're appending SI DOI after the caption but before the file type-->
     <xsl:variable name="siDOI">
-      <xsl:value-of select="replace($objURI,'info:doi/','doi:')"/>
+      <xsl:value-of select="replace($objURI,'info:doi/','https://doi.org/')"/>
     </xsl:variable>
 
     <xsl:choose>
@@ -2304,7 +2316,10 @@
       <xsl:when test="count(caption/p) &lt; 2">
         <!--doi-->
         <p class="siDoi">
-          <xsl:value-of select="$siDOI"/>
+          <xsl:element name="a">
+            <xsl:attribute name="href"><xsl:value-of select="$siDOI"/></xsl:attribute>
+            <xsl:value-of select="$siDOI"/>
+          </xsl:element>
         </p>
         <!--add class to target styling-->
         <xsl:for-each select="caption/p">
@@ -2320,7 +2335,10 @@
         </xsl:for-each>
         <!--doi-->
         <p class="siDoi">
-          <xsl:value-of select="$siDOI"/>
+          <xsl:element name="a">
+            <xsl:attribute name="href"><xsl:value-of select="$siDOI"/></xsl:attribute>
+            <xsl:value-of select="$siDOI"/>
+          </xsl:element>
         </p>
         <!--the last-->
         <xsl:for-each select="caption/p[last()]">
@@ -2342,7 +2360,10 @@
 
         <!--doi goes here-->
         <p class="siDoi">
-          <xsl:value-of select="$siDOI"/>
+          <xsl:element name="a">
+            <xsl:attribute name="href"><xsl:value-of select="$siDOI"/></xsl:attribute>
+            <xsl:value-of select="$siDOI"/>
+          </xsl:element>
         </p>
 
         <!--final element-->
@@ -2452,6 +2473,8 @@
     <xsl:variable name="previousText">
       <xsl:value-of select="lower-case(normalize-space(preceding::text()[1]))"/>
     </xsl:variable>
+
+
     <xsl:choose>
       <xsl:when test="not(ancestor::ref-list) or not(substring($previousText, string-length($previousText)-3)='doi:')">
         <a>

@@ -82,6 +82,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     String crepoKey = (String) manuscriptPointer.get("crepoKey");
     UUID crepoUuid = UUID.fromString((String) manuscriptPointer.get("crepoUuid"));
-    return ContentKey.createForUuid(crepoKey, crepoUuid);
+    ContentKey key = ContentKey.createForUuid(crepoKey, crepoUuid);
+    String bucketName = (String) manuscriptPointer.get("bucketName");
+    key.setBucketName(bucketName);
+    return key;
   }
 }

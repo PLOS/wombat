@@ -24,24 +24,26 @@
 
 .advanced-search-row {
   margin-top: rem-calc(12px);
+  $column-gutter: 30px;
+
   @extend .plos-row;
+
   .advanced-search-col-first {
-    @include plos-grid-column($pixelwidth: columns, $columns: 1, $gutter:none, $collapse: false);
+    @include plos-grid-column($pixelwidth: columns, $columns: 1, $gutter:none);
   }
 
   .advanced-search-col-last {
     text-align: center;
-    @include plos-grid-column($pixelwidth: columns, $columns: 1, $gutter:none, $collapse: false);
+    @include plos-grid-column($pixelwidth: columns, $columns: 1, $gutter:none );
   }
 
-  $column-gutter: 30;
   @for $i from 1 through $total-columns {
     .advanced-search-col-#{$i} {
-      @include plos-grid-column($pixelwidth: columns, $columns: $i, $gutter: outside, $gutter-width: 30, $collapse: false);
+      @include plos-grid-column($pixelwidth: columns, $columns: $i, $gutter:none, $collapse: false);
     }
 
     .advanced-search-col-offset-#{$i} {
-      @include plos-grid-column($pixelwidth: columns, $offset: $i, $gutter: outside, $collapse: false);
+      @include plos-grid-column($pixelwidth: columns, $offset: $i, $gutter:none, $collapse: false);
     }
   }
 

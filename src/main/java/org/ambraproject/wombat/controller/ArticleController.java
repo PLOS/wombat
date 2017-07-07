@@ -40,6 +40,7 @@ import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
 import org.ambraproject.wombat.model.Reference;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
@@ -776,8 +777,9 @@ public class ArticleController extends WombatController {
             String citationJournalKey;
             try {
               citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi, site);
-            } catch (SolrUndefinedException e) {
+            } catch (SolrUndefinedException | EntityNotFoundException e) {
               // If we can't look it up in Solr, fail quietly, the same as though no match was found.
+              log.error("Solr is undefined or returning errors on query.");
               citationJournalKey = null;
             }
             String linkText = null;

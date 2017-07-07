@@ -18,6 +18,7 @@
 // set $rem-base to $base-font-size and make sure $base-font-size is a px value.
 $base-font-size: 100%;
 
+
 // The $base-line-height is 100% while $base-font-size is 150%
 $base-line-height: 120%;
 
@@ -32,7 +33,7 @@ $include-html-grid-classes: false;
 $include-xl-html-grid-classes: false;
 
 $row-width: rem-calc($grid-width);
-$column-gutter: rem-calc($grid-gutter);
+$column-gutter: $grid-gutter-px;
 $total-columns: 12;
 
 // We use these to control various global styles
@@ -1238,3 +1239,9 @@ $include-html-range-slider-classes: true;
 // $range-slider-handle-round: $global-rounded;
 // $range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -12%);
 // $range-slider-handle-cursor: pointer;
+
+
+
+
+
+

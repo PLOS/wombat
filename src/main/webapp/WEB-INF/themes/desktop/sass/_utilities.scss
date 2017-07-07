@@ -30,7 +30,6 @@ category: files
   and ties in with plos-themes and setting each journal color
 */
 
-
 /*doc
 ---
 title: interaction and animation utilities
@@ -65,26 +64,26 @@ type | value
 
 */
 
-
 // hide elements so we dont' get a flash of unstyled content
-p,div,span,li,ul, ol{
-  [data-visibility= "none"]{display:none;
+p, div, span, li, ul, ol {
+  [data-visibility= "none"] {
+    display: none;
   }
 }
 
-[data-js-tooltip=tooltip_trigger]:focus{outline: 0;}
-
+[data-js-tooltip=tooltip_trigger]:focus {
+  outline: 0;
+}
 
 $zindex: (
-  modal     : 90,
-  overlay   : 80,
-  topvisible: 70,
-  crossmark-tooltip: 69,
-  dropdown  : 68,
-  header    : 60,
-  footer    : 50,
-  invisible : -1,
-
+    modal : 90,
+    overlay : 80,
+    topvisible: 70,
+    crossmark-tooltip: 69,
+    dropdown : 68,
+    header : 60,
+    footer : 50,
+    invisible : -1,
 );
 
 //compass overides
@@ -98,9 +97,11 @@ $default-border-radius: $border-radius-default;
 %rounded-default-top {
   @include border-top-radius();
 }
+
 %rounded-default-bottom {
   @include border-bottom-radius();
 }
+
 // color mixin:
 @mixin highlight-color($clr-highlight: $plos-default) {
   color: $clr-highlight;
@@ -174,11 +175,10 @@ example | extension
 %highlight-border {
   border-color: $clr-highlight;
 }
+
 ///////
 //branding
 /////
-
-
 
 @mixin brandcolor($setcolor: $plos-default, $shade1: $plos-default-shade1, $shade2: $plos-default-shade2, $shade3: $plos-default-shade3, $text-color: $white, $text-color-hover: $white) {
   %more-icon {
@@ -198,7 +198,7 @@ example | extension
 
   %brand-background-hover {
     background-color: $setcolor;
-    color:  $text-color;
+    color: $text-color;
     &:hover {
       background-color: $plos-default;
       color: $text-color-hover;
@@ -247,13 +247,12 @@ example | extension
 
 }
 
-
-
 // set the journal-specific colors - ps this is a good example of things that can be
 // pulled into themes or a separate scss file when the maven sass compiler is installed & working
 .plosbiology, .ploscompbiol, .plosgenetics {
   @include brandcolor($setcolor: $plos-bio, $shade1: $plos-bio-shade1, $shade2: $plos-bio-shade2, $shade3: $plos-bio-shade3);
 }
+
 .plosmedicine, .plospathogens, .plosntd {
   @include brandcolor($setcolor: $plos-med, $shade1: $plos-med-shade1, $shade2: $plos-med-shade2, $shade3: $plos-med-shade3);
 }
@@ -311,7 +310,6 @@ example | extension
   }
 }
 
-
 //////////////
 // layout utilities
 //////////////
@@ -337,18 +335,19 @@ example | extension
   margin: 0 auto;
 }
 
-.pad-xsmall-x{
+.pad-xsmall-x {
   padding: 0 $pad-default;
 }
 
-.pad-default-y{
+.pad-default-y {
   padding: $line-height 0;
 }
 
-.margins-reset{
-  margin:0;
-  padding:0;
+.margins-reset {
+  margin: 0;
+  padding: 0;
 }
+
 //
 // you need to use :before pseudo selector like this:
 //  .div_that_needs_overlay:before{
@@ -366,17 +365,71 @@ example | extension
   left: 0;
 }
 
-
 //print utilities
-.print-only { display: none !important; }
+.print-only {
+  display: none !important;
+}
+
 @media print {
-  .hide-on-print { display: none !important; }
-  .print-only { display: block !important; }
-  .hide-for-print { display: none !important; }
-  .show-for-print { display: inherit !important; }
+  .hide-on-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .hide-for-print {
+    display: none !important;
+  }
+  .show-for-print {
+    display: inherit !important;
+  }
 }
 
 // Placeholder for an anchor
 .dummy-anchor {
   visibility: hidden;
+}
+
+//creates the functions image-url and font-files.  Used for img backgrounds in css to avoid having to set the directory path.
+//
+//Usage:  ''background: image-url('logo.png') 50% 50% repeat-x;''
+
+$timestamp: current-time('%Y%m%d%H%M%S');
+$cache-buster: 't='+$timestamp;
+$theme-path: '../../resource/';
+$image-path: $theme-path+'img/';
+$font-path: $theme-path+'fonts/';
+
+@function image-url($src,$prefixImagePath:true,$cacheBuster:false) {
+
+  @if (type-of($src) == string) {
+    $url: false; // must define
+    $src: #{$src};
+    @if ($prefixImagePath == true) {
+      $url: '#{$image-path}#{$src}';
+    } @else {
+      $url: '#{$src}';
+    }
+    @if ($cacheBuster == true) {
+      $url: '#{$url}#{$cache-buster}';
+    }
+    @return url($url);
+  }
+}
+
+@function font-files($src,$prefixImagePath:true,$cacheBuster:false) {
+  $src: #{src};
+
+  @if (type-of($src) == string) {
+    $url: false; // must define
+    @if ($prefixImagePath == true) {
+      $url: '#{$theme-path}/#{$src}';
+    } @else {
+      $url: '#{$src}';
+    }
+    @if ($cacheBuster == true) {
+      $url: '#{$url}#{$cache-buster}';
+    }
+    @return url($url);
+  }
 }

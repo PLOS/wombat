@@ -30,7 +30,6 @@ category: Files
 */
 
 
-@include font-face("FontAwesome", font-files("fontawesome-webfont.ttf", "FontAwesome.otf", "fontawesome-webfont.svg", "fontawesome-webfont.woff"));
 
 p {
   word-wrap: break-word;
@@ -338,6 +337,7 @@ example | extension
 @mixin link-text($color: $clr-body-text, $color-hover: none, $decoration-hover: none, $decoration-text: none) {
   color: $color;
   text-decoration: $decoration-text;
+  @content;
 
   &:hover, a:hover {
     @if $decoration-hover == none {

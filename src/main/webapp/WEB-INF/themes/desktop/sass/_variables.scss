@@ -142,7 +142,8 @@ $table-separator-header: $table-separator-width solid $table-separator-header-co
 //  fixed - sets the grid width and doesn't respond to sizes
 //  responsive - makes the grid responsive - currently uses foundation responsive grid features.
 $grid-type: fixed;
-$grid-gutter: 1.25rem; //TODO: figure out this whole rem thing
+$grid-gutter-px: 20px;
+$grid-gutter: 1.25rem; //TODO: figure out this whole rem thing - grid-gutter-px in rems
 $grid-width: 980px;
 $grid-columns: 12;
 

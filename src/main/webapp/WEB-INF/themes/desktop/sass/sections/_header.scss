@@ -114,7 +114,7 @@ $width-nav: $block-grid-elements - $width-logo;
   }
 
 .logo {
-  @include plos-grid-column($pixelwidth: columns, $columns: $width-logo);
+  @include plos-grid-column($columns: $width-logo);
   @extend .title-area; // foundation
   @include icon-offscreen;
   height: rem-calc(41);
@@ -170,12 +170,16 @@ $width-nav: $block-grid-elements - $width-logo;
 
   // foundation
   @include plos-grid-column-nomargin($pixelwidth: columns, $columns: $width-nav, $float: right);
+  width: 40.83333rem;
   h2, h3 {
     font-family: $font-face-navigation;
     font-size: $txt-size-xlarge;
     }
 
   //this level of specificity is needed to override foundation styles
+  .dropdown li{
+    background: $white;
+  }
   ul.nav-elements {
     @extend .right; // foundation
     padding-right: 0;

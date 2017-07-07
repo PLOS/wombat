@@ -38,16 +38,12 @@
  */
 
 /// nav spacing stuff
-
-
 $nav-spacing: 15px;
 $nav-spacing-full: 25px;
-
 
 header {
   background: $clr-header;
   }
-
 
 .head-top {
   @extend .hide-for-print;
@@ -145,7 +141,6 @@ $width-nav: $block-grid-elements - $width-logo;
  all @extend .class are Foundation
  */
 
-
 .nav-main {
   @extend .plos-row;
   @extend .top-bar; // foundation
@@ -157,8 +152,6 @@ $width-nav: $block-grid-elements - $width-logo;
   }
 
 .top-bar-section {
-
-
   @extend .hide-for-print;
   %nav-header-type {
     font-family: $font-face-navigation;
@@ -189,7 +182,6 @@ $width-nav: $block-grid-elements - $width-logo;
   }
   ul.nav-elements {
     @extend .right; // foundation
-
     padding-right: 0;
     > li {
       margin-left: rem-calc(3);

@@ -44,6 +44,8 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
 }
 
 #figure-lightbox {
+  background-color: $grey-dark;
+  border-radius: 0;
   .loader {
     display: none;
     &.showing {

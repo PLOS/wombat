@@ -1,16 +1,16 @@
 // BREAKPOINTS
 // ---------------------------------------------------------------------------
-$sm: 768px !default;
-$md: 1024px !default;
-$lg: 1200px !default;
+$sm: 480px !default;
+$md: 768px !default;
+$lg: 920px !default;
 
 
 // WIDTH
 // ---------------------------------------------------------------------------
-$w-small: 480px !default;
-$w-medium: 600px !default;
-$w-big: 740px !default;
-$w-large: 840px !default;
+$w-small: 100% !default;
+$w-medium: 100% !default;
+$w-big: 920px !default;
+$w-large: $w-big !default;
 
 
 // Z-INDEX
@@ -25,7 +25,7 @@ $z-over-all: 500 !default;
 // GRID
 // ---------------------------------------------------------------------------
 $grid-columns: 12 !default;
-$grid-gutter: 2% !default;
+$grid-gutter: 24px !default;
 
 
 // FONT FAMILY
@@ -53,12 +53,12 @@ $error: #ce0b24;
 
 
 // Text
-$color-text: #313439 !default;
-$color-headings: #0d0d0e !default;
+$color-text: $black !default;
+$color-headings: $brand-main !default;
 
 // Links
-$color-link: #3794de !default;
-$color-link-hover: #f03c69 !default;
+$color-link: $link !default;
+$color-link-hover: $link-hover !default;
 
 // Button
 $color-button-primary: #1c86f2 !default;
@@ -67,7 +67,7 @@ $color-button-secondary: #313439 !default;
 $color-button-secondary-text: #fff !default;
 
 // States
-$color-error: #f03c69 !default;
+$color-error: $error !default;
 $color-success: #35beb1 !default;
 $color-warning: #f7ba45 !default;
 $color-focus: #1c86f2 !default;
@@ -77,7 +77,7 @@ $color-inverted: #fff !default;
 $color-highlight: #edf2ff !default; // color-focus 15% opacity
 
 // Grayscale
-$color-black: #0d0d0e !default;
+$color-black: $black !default;
 $color-darkgray: #313439 !default;
 $color-midgray: #676b72 !default;
 $color-gray: #bdbdbd !default;
@@ -91,20 +91,22 @@ $color-aluminum: #f8f8f8 !default;
 
 // Font Size
 $font-size: 16px !default;
-$font-size-smaller: $font-size - 4px !default;
-$font-size-small: $font-size - 2px !default;
-$font-size-big: $font-size + 2px !default;
-$font-size-large: $font-size + 4px !default;
+$font-size-smaller: 9px !default;
+$font-size-small: 13px !default;
+$font-size-big: 24px !default;
+$font-size-large: 38px !default;
 
 // Baseline
-$base-line: 24px !default;
-$base-line-smaller: 20px !default;
-$base-line-small: 20px !default;
-$base-line-big: 28px !default;
-$base-line-large: 32px !default;
+$base-line: 1.5 !default;
+$base-line-header: 1.315 !default;
+$base-line-smaller: $base-line !default;
+$base-line-small: $base-line !default;
+$base-line-big: $base-line-header !default;
+$base-line-large: $base-line-header !default;
+
 
 // Margin
-$text-margin-bottom: $font-size !default;
+$text-margin-bottom: $font-size * 1.5!default;
 
 
 // HEADINGS
@@ -112,25 +114,27 @@ $text-margin-bottom: $font-size !default;
 
 // Font Size
 // By default: 60, 48, 36, 24, 21, 18, 16
-$heading-font-size-title: 60px !default;
-$heading-font-size-1: 48px !default;
-$heading-font-size-2: 36px !default;
-$heading-font-size-3: 24px !default;
-$heading-font-size-4: 21px !default;
-$heading-font-size-5: 18px !default;
-$heading-font-size-6: 16px !default;
+$heading-font-size-title: $font-size-large !default;
+$heading-font-size-1: $font-size-large !default;
+$heading-font-size-2: $font-size-big !default;
+$heading-font-size-3: 21px !default;
+$heading-font-size-4: 16px !default;
+$heading-font-size-5: $font-size-small !default;
+$heading-font-size-6: $font-size-smaller !default;
 
 // Baseline
-$heading-base-line-title: 64px !default;
-$heading-base-line-1: 52px !default;
-$heading-base-line-2: 40px !default;
-$heading-base-line-3: 32px !default;
-$heading-base-line-4: 32px !default;
-$heading-base-line-5: 28px !default;
-$heading-base-line-6: 24px !default;
+$heading-base-line-title: $base-line-header !default;
+$heading-base-line-1: $base-line-header !default;
+$heading-base-line-2: $base-line-header !default;
+$heading-base-line-3: $base-line-header !default;
+$heading-base-line-4: $base-line-header !default;
+$heading-base-line-5: $base-line-header !default;
+$heading-base-line-6: $base-line-header !default;
 
 // Margin
 $heading-margin-bottom: $font-size !default;
+
+
 
 
 // TABLES

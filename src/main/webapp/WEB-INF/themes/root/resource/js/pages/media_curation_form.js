@@ -75,9 +75,7 @@ var mediaCurationCoverage;
     },
 
     modalFormReset: function () {
-      $("#media-coverage-form :input + span.form-error, #mcform-captcha + span.form-error, #mcform-error").text("");
-
-      this.modalFormShowRecaptcha('mcform-captcha');
+      $("#media-coverage-form :input + span.form-error, #mcform-error").text("");
 
       $('#media-coverage-success').hide();
       $('#media-coverage-failure').hide();
@@ -85,12 +83,6 @@ var mediaCurationCoverage;
 
       // clear input field values
       $('#media-coverage-form :input').not("#mcform-name, #mcform-email").val('');
-    },
-
-    modalFormShowRecaptcha: function (element) {
-      Recaptcha.create($('#reCaptcha-info').val(), element, {
-        theme: "white",
-        callback: Recaptcha.focus_response_field});
     },
 
     modalFormDatePicker: function () {
@@ -109,11 +101,9 @@ var mediaCurationCoverage;
         publishedOn: $('#mcform-publishedOn').val(),
         comment: $('#mcform-comment').val(),
 
-        recaptcha_challenge_field: $('#recaptcha_challenge_field').val(),
-        recaptcha_response_field: $('#recaptcha_response_field').val()
       };
 
-      $("#media-coverage-form :input + span.form-error, #mcform-captcha + span.form-error").text("");
+      $("#media-coverage-form :input + span.form-error").text("");
 
       var formEndpoint = siteUrlPrefix + "article/submitMediaCurationRequest";
 
@@ -151,11 +141,6 @@ var mediaCurationCoverage;
             if (data.publishedOnError) {
               $("#mcform-publishedOn").next().text(data.publishedOnError);
             }
-
-            if (data.captchaError) {
-              $("#mcform-captcha").next().text(data.captchaError);
-            }
-            Recaptcha.reload();
           }
           else {
             // display success message and close the form

@@ -24,7 +24,7 @@ main{
     margin: $pad-medium $grid-gutter;
   }
 
-  @include breakpoint(sm) {
+  @include breakpoint(md) {
     article {
       margin: $pad-small $grid-gutter-small;
     }

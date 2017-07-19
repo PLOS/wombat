@@ -106,6 +106,13 @@ $font-size-smaller: 9px !default;
 $font-size-small: 13px !default;
 $font-size-big: 24px !default;
 $font-size-large: 38px !default;
+$font-size-large-breakpoint-sm: $font-size-big !default;
+$font-size-large-breakpoint-md: 28px !default;
+$font-size-big-breakpoint-sm: 20px !default;
+$font-size-big-breakpoint-md: $font-size-big !default;
+
+
+
 
 // Baseline
 $base-line: 1.5 !default;
@@ -114,6 +121,7 @@ $base-line-smaller: $base-line !default;
 $base-line-small: $base-line !default;
 $base-line-big: $base-line-header !default;
 $base-line-large: $base-line-header !default;
+
 
 
 // Margin

@@ -69,6 +69,38 @@ h6 a, .h6 a {
   color: inherit;
 }
 
+// breakpoints
+
+@include breakpoint(md){
+	h1.title {
+		font-size: $font-size-large-breakpoint-md;
+	}
+	h1,
+	.h1 {
+		font-size:  $font-size-large-breakpoint-md;
+	}
+	h2,
+	.h2 {
+		font-size: $font-size-big-breakpoint-md;
+	}
+}
+
+@include breakpoint(sm){
+	h1.title {
+		font-size: $font-size-large-breakpoint-sm;
+	}
+	h1,
+	.h1 {
+		font-size:  $font-size-large-breakpoint-sm;
+	}
+	h2,
+	.h2 {
+		font-size: $font-size-big-breakpoint-sm;
+	}
+}
+
+
+
 // Top Space
 p,
 ul,

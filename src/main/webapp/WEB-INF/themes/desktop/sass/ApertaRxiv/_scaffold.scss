@@ -1,0 +1,33 @@
+body{
+
+}
+
+main, #pagehdr, footer {
+
+  @include grid-row;
+  @extend .gutters;
+
+  @include flex-items-center;
+
+  article, nav.nav-main, div.row {
+    @extend .w-big;
+    @extend .w100-sm;
+    @extend .w-medium;
+  }
+
+}
+
+// for article
+main{
+
+  article {
+    margin: $pad-medium $grid-gutter;
+  }
+
+  @include breakpoint(md) {
+    article {
+      margin: $pad-small $grid-gutter-small;
+    }
+  }
+
+}

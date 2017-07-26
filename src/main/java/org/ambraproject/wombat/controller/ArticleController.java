@@ -498,9 +498,7 @@ public class ArticleController extends WombatController {
                                            @RequestParam("title") String title,
                                            @RequestParam("publishedOn") String publishedOn,
                                            @RequestParam("name") String name,
-                                           @RequestParam("email") String email,
-                                           @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
-                                           @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
+                                           @RequestParam("email") String email)
       throws IOException {
     requireNonemptyParameter(doi);
 
@@ -508,8 +506,7 @@ public class ArticleController extends WombatController {
       link = "http://" + link;
     }
 
-    if (!validateMediaCurationInput(model, link, name, email, title, publishedOn, captchaChallenge,
-        captchaResponse, site, request)) {
+    if (!validateMediaCurationInput(model, link, name, email, title, publishedOn)) {
       model.addAttribute("formError", "Invalid values have been submitted.");
       //return model for error reporting
       return jsonService.serialize(model);
@@ -568,9 +565,7 @@ public class ArticleController extends WombatController {
    */
 
   private boolean validateMediaCurationInput(Model model, String link, String name,
-                                             String email, String title, String publishedOn,
-                                             String captchaChallenge, String captchaResponse,
-                                             Site site, HttpServletRequest request)
+                                             String email, String title, String publishedOn)
       throws IOException {
 
     boolean isValid = true;
@@ -612,11 +607,6 @@ public class ArticleController extends WombatController {
       isValid = false;
     } else if (!EmailValidator.getInstance().isValid(email)) {
       model.addAttribute("emailError", "Invalid e-mail address");
-      isValid = false;
-    }
-
-    if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
-      model.addAttribute("captchaError", "Verification is incorrect. Please try again.");
       isValid = false;
     }
 

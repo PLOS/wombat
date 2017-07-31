@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="20px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>share_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="share" transform="translate(-5.000000, -3.000000)" fill="#00295A">
+            <g transform="translate(4.000000, 1.000000)" id="share_icon">
+                <g>
+                    <g id="Group" transform="translate(12.000000, 15.000000) rotate(25.000000) translate(-12.000000, -15.000000) translate(1.000000, 12.000000)">
+                        <circle id="Oval" cx="3" cy="3" r="3"></circle>
+                        <circle id="Oval-Copy" cx="19" cy="3" r="3"></circle>
+                        <rect id="Rectangle" x="5" y="2" width="13" height="2"></rect>
+                    </g>
+                    <g id="Group-Copy" transform="translate(12.000000, 8.500000) scale(1, -1) rotate(25.000000) translate(-12.000000, -8.500000) translate(1.000000, 5.000000)">
+                        <circle id="Oval" cx="3.5" cy="3.5" r="3.5"></circle>
+                        <circle id="Oval-Copy" cx="19" cy="3" r="3"></circle>
+                        <rect id="Rectangle" x="5" y="2" width="13" height="2"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

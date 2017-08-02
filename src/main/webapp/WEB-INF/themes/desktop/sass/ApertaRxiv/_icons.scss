@@ -1,0 +1,36 @@
+/*
+ * icon-label - display an icon for the label.
+ */
+@mixin icon-label($icon, $label) {
+
+  @include flex;
+  @include flex-items-column;
+  margin-right: 1ch;
+
+  .icon {
+    align-self: center;
+    width: 32px; height: 24px;
+    // image-url() is not working...
+    background-image: url("../../resource/img/#{$icon}");
+    background-size: 32px 24px;
+    background-repeat: no-repeat;
+
+  }
+  .icon+* {
+    align-self: center;
+    text-transform: uppercase;
+    font-size: $font-size-smaller;
+  }
+}
+
+main article {
+  .share {
+    @include icon-label('share_icon.svg', 'Share');
+  }
+  .citations {
+    @include icon-label('download_citations.svg', 'Citations');
+  }
+  .fulltext {
+    @include icon-label('download_citations.svg', 'Full Text');
+  }
+}

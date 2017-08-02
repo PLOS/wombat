@@ -1,5 +1,6 @@
 body{
-
+  @include flex;
+  @include flex-items-column;
 }
 
 main, #pagehdr, footer {
@@ -18,16 +19,15 @@ main, #pagehdr, footer {
 }
 
 // for article
-main{
+main {
 
   article {
-    margin: $pad-medium $grid-gutter;
+    padding: $pad-medium $grid-gutter;
   }
 
-  @include breakpoint(md) {
+  @include breakpoint(sm) {
     article {
-      margin: $pad-small $grid-gutter-small;
+      padding: $pad-small $grid-gutter-small;
     }
   }
-
 }

@@ -1,0 +1,78 @@
+
+/*
+ * collapse-component included within a collapse box.
+ * It assumes h2.collapse-toggle as clickable header, and .collapse-box as body
+ * for each collapsable item.
+ */
+@mixin collapse-component {
+
+  h2.collapse-toggle {
+    border-top: solid 1px $color-border;
+    padding-top: 1ch;
+    padding-bottom: 1ch;
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+  h2.collapse-toggle:after {
+    content: "+";
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    float: right;
+    color: #ffffff;
+    background-color: $brand-main;
+    cursor: pointer;
+  }
+  h2.collapse-toggle.active {
+    height: 0px;
+  }
+  h2.collapse-toggle.active:after {
+    content: "\2715";
+    background-color: $brand-accent;
+    font-size: 12px;
+  }
+  h2.collapse-toggle.active > span {
+    max-width: 116px;
+    display: inline-block;
+    word-break: break-all;
+  }
+  .collapse-box {
+    position: relative;
+    width: calc(100% - 128px);
+    left: 128px;
+    top: -1ch;
+    z-index: -1;
+  }
+
+  @include breakpoint(sm) {
+    h2.collapse-toggle {
+      text-align: center;
+      border-top: solid 1px $brand-main;
+      font-weight: normal;
+    }
+    h2.collapse-toggle:after, h2.collapse-toggle.active:after {
+      display: none;
+      visibility: hidden;
+    }
+    h2.collapse-toggle:last-of-type, h2.collapse-toggle.active {
+      border-bottom: solid 1px $brand-main;
+    }
+    h2.collapse-toggle.active {
+      background-color: $brand-accent;
+      height: auto;
+    }
+    h2.collapse-toggle.active > span {
+      max-width: none;
+      display: inline;
+      word-break: normal;
+    }
+    .collapse-box {
+      width: 100%;
+      left: 0px;
+      margin-top: 1ch;
+      top: 0px;
+    }
+  }
+}

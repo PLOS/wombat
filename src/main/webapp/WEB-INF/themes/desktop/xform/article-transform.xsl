@@ -205,19 +205,25 @@
           </xsl:choose>
         </xsl:for-each>
         <!-- pub year -->
-        <xsl:text> (</xsl:text>
-        <xsl:choose>
-          <xsl:when test="pub-date[@pub-type='collection']/year | pub-date[@pub-type='ppub']/year">
-            <xsl:value-of select="pub-date[@pub-type='collection']/year | pub-date[@pub-type='ppub']/year"/>
-          </xsl:when>
-          <xsl:when test="pub-date[@pub-type='epub']/year">
-            <xsl:value-of select="pub-date[@pub-type='epub']/year"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="pub-date[@pub-type='epreprint']/year"/>
-          </xsl:otherwise>
-        </xsl:choose>
-        <xsl:text>) </xsl:text>
+        <xsl:variable name="collectionYear" select="pub-date[@pub-type='collection']/year"/>
+        <xsl:variable name="ppubYear" select="pub-date[@pub-type='ppub']/year"/>
+        <xsl:variable name="epubYear" select="pub-date[@pub-type='epub']/year"/>
+        <xsl:variable name="epreprintYear" select="pub-date[@pub-type='epreprint']/year"/>
+        <xsl:if test="$collectionYear | $ppubYear | $epubYear | $epreprintYear">
+          <xsl:text> (</xsl:text>
+          <xsl:choose>
+            <xsl:when test="$collectionYear | $ppubYear">
+              <xsl:value-of select="$collectionYear | $ppubYear"/>
+            </xsl:when>
+            <xsl:when test="$epubYear">
+              <xsl:value-of select="$epubYear"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$epreprintYear"/>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:text>) </xsl:text>
+        </xsl:if>
         <!-- article title -->
         <xsl:apply-templates select="title-group/article-title" mode="metadata-citation"/>
         <xsl:variable name="at" select="normalize-space(title-group/article-title)"/>

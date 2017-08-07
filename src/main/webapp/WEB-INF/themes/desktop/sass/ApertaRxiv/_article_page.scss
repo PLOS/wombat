@@ -102,7 +102,11 @@ main {
       .article-body {
         margin-top: 4ch;
 
-        @include collapse-component;
+        @include section-component;
+
+        .article-authors {
+          @include author-component;
+        }
       }
     }
   }

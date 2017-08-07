@@ -1,19 +1,21 @@
 
 /*
- * collapse-component included within a collapse box.
- * It assumes h2.collapse-toggle as clickable header, and .collapse-box as body
+ * section-component included within a collapse box.
+ * It assumes h2.section-toggle as clickable header, and .section-box as body
  * for each collapsable item.
  */
-@mixin collapse-component {
+@mixin section-component {
 
-  h2.collapse-toggle {
+  h2.section-toggle {
+    position: relative;
     border-top: solid 1px $color-border;
     padding-top: 1ch;
     padding-bottom: 1ch;
     margin-bottom: 0;
     font-weight: bold;
   }
-  h2.collapse-toggle:after {
+  h2.section-toggle:after {
+    position: relative;
     content: "+";
     width: 20px;
     height: 20px;
@@ -24,55 +26,98 @@
     color: #ffffff;
     background-color: $brand-main;
     cursor: pointer;
+    z-index: 1;
   }
-  h2.collapse-toggle.active {
+  h2.section-toggle.active {
     height: 0px;
   }
-  h2.collapse-toggle.active:after {
+  h2.section-toggle.active:after {
     content: "\2715";
     background-color: $brand-accent;
     font-size: 12px;
   }
-  h2.collapse-toggle.active > span {
+  h2.section-toggle.active > span {
     max-width: 116px;
     display: inline-block;
     word-break: break-all;
   }
-  .collapse-box {
+  .section-box {
     position: relative;
     width: calc(100% - 128px);
     left: 128px;
     top: -1ch;
-    z-index: -1;
   }
 
   @include breakpoint(sm) {
-    h2.collapse-toggle {
+    h2.section-toggle {
       text-align: center;
       border-top: solid 1px $brand-main;
       font-weight: normal;
     }
-    h2.collapse-toggle:after, h2.collapse-toggle.active:after {
+    h2.section-toggle:after, h2.section-toggle.active:after {
       display: none;
       visibility: hidden;
     }
-    h2.collapse-toggle:last-of-type, h2.collapse-toggle.active {
+    h2.section-toggle:last-of-type, h2.section-toggle.active {
       border-bottom: solid 1px $brand-main;
     }
-    h2.collapse-toggle.active {
+    h2.section-toggle.active {
       background-color: $brand-accent;
       height: auto;
     }
-    h2.collapse-toggle.active > span {
+    h2.section-toggle.active > span {
       max-width: none;
       display: inline;
       word-break: normal;
     }
-    .collapse-box {
+    .section-box {
       width: 100%;
       left: 0px;
       margin-top: 1ch;
       top: 0px;
     }
+  }
+}
+
+@mixin author-component {
+
+  .author-toggle {
+    position: relative;
+
+    span.email {
+      margin-left: 1ch;
+    }
+    span.email:after {
+      content: "\2709";
+      color: #c45703;
+    }
+  }
+  .author-toggle:before {
+    position: relative;
+    content: "\2023";
+    display: inline-block; width: 32px; left: 0px;
+    font-size: 1.2rem;
+  }
+  .author-toggle.active {
+    font-weight: bold;
+  }
+  .author-toggle.active:before {
+    content: "\25be";
+  }
+  .author-box {
+    position: relative;
+    font-size: $font-size-small;
+    margin-left: 36px;
+
+    span.type {
+      text-transform: uppercase;
+      display: block; margin-top: 1ch;
+    }
+    p {
+      margin-bottom: 1ch;
+    }
+  }
+
+  @include breakpoint(sm) {
   }
 }

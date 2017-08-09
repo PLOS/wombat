@@ -107,6 +107,28 @@ main {
         .article-authors {
           @include author-component;
         }
+
+        .supplementary-material {
+          @include flex;
+          @include flex-items-row;
+          @include flex-items-middle;
+
+          margin-top: 24px;
+
+          margin-bottom: 24px;
+
+          a {
+            text-decoration: none;
+            color: #333;
+          }
+          .filetype {
+            display: inline-block;
+            width: 24px; height: 24px;
+            margin-right: 16px;
+            background-size: 24px 24px;
+            background-repeat: no-repeat;
+          }
+        }
       }
     }
   }

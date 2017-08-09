@@ -13,6 +13,7 @@
     padding-bottom: 1ch;
     margin-bottom: 0;
     font-weight: bold;
+    font-family: "Lato";
   }
   h2.section-toggle:after {
     position: relative;
@@ -37,14 +38,14 @@
     font-size: 12px;
   }
   h2.section-toggle.active > span {
-    max-width: 116px;
+    max-width: 130px;
     display: inline-block;
-    word-break: break-all;
+    word-break: break-word;
   }
   .section-box {
     position: relative;
     width: calc(100% - 128px);
-    left: 128px;
+    left: 134px;
     top: -1ch;
   }
 

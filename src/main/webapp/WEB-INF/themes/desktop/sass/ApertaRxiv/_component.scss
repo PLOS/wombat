@@ -14,68 +14,84 @@
     margin-bottom: 0;
     font-weight: bold;
     font-family: "Lato";
-  }
-  h2.section-toggle:after {
-    position: relative;
-    content: "+";
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
-    line-height: 20px;
-    text-align: center;
-    float: right;
-    color: #ffffff;
-    background-color: $brand-main;
-    cursor: pointer;
-    z-index: 1;
-  }
-  h2.section-toggle.active {
-    height: 0px;
-  }
-  h2.section-toggle.active:after {
-    content: "\2715";
-    background-color: $brand-accent;
-    font-size: 12px;
-  }
-  h2.section-toggle.active > span {
-    max-width: 130px;
-    display: inline-block;
-    word-break: break-word;
-  }
-  .section-box {
-    position: relative;
-    width: calc(100% - 128px);
-    left: 134px;
-    top: -1ch;
-  }
 
-  @include breakpoint(sm) {
-    h2.section-toggle {
+    @include breakpoint(sm) {
       text-align: center;
       border-top: solid 1px $brand-main;
       font-weight: normal;
     }
-    h2.section-toggle:after, h2.section-toggle.active:after {
-      display: none;
-      visibility: hidden;
+
+    &:after {
+      position: relative;
+      content: "+";
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+      line-height: 20px;
+      text-align: center;
+      float: right;
+      color: #ffffff;
+      background-color: $brand-main;
+      cursor: pointer;
+      z-index: 1;
+
+      @include breakpoint(sm) {
+        display: none;
+        visibility: hidden;
+      }
     }
-    h2.section-toggle:last-of-type, h2.section-toggle.active {
-      border-bottom: solid 1px $brand-main;
+
+    &.active {
+      height: 0px;
+
+      &:after {
+        content: "\2715";
+        background-color: $brand-accent;
+        font-size: 12px;
+        @include breakpoint(sm) {
+          display: none;
+          visibility: hidden;
+        }
+      }
+
+      > span {
+        max-width: 130px;
+        display: inline-block;
+        word-break: break-word;
+
+        @include breakpoint(sm) {
+          max-width: none;
+          display: inline;
+          word-break: normal;
+        }
+      }
+
+      @include breakpoint(sm) {
+        border-bottom: solid 1px $brand-main;
+        background-color: $brand-accent;
+        height: auto;
+      }
     }
-    h2.section-toggle.active {
-      background-color: $brand-accent;
-      height: auto;
+
+    &:last-of-type {
+      @include breakpoint(sm) {
+        border-bottom: solid 1px $brand-main;
+      }
     }
-    h2.section-toggle.active > span {
-      max-width: none;
-      display: inline;
-      word-break: normal;
-    }
-    .section-box {
+  }
+
+  .section-box {
+    position: relative;
+
+    width: calc(100% - 128px);
+    left: 134px;
+    top: -1ch;
+
+    @include breakpoint(sm) {
       width: 100%;
       left: 0px;
-      margin-top: 1ch;
-      top: 0px;
+      margin-top: 0;
+      top: calc(48px - 2ch);
     }
   }
 }

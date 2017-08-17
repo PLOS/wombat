@@ -1,6 +1,13 @@
 
 $(document).ready(function () {
 
+    // Capture articleinfo and contributions
+    var articleinfo = $("#articleText .articleinfo");
+    articleinfo.remove();
+
+    var contributions = $("#articleText .contributions");
+    contributions.remove();
+
     // Create section collapse.
     var items = $("#articleText > *");
     items.each(function(index, item) {
@@ -8,6 +15,7 @@ $(document).ready(function () {
         var h2 = $(item).find("h2");
         if (!$(item).hasClass("toc-section") || !a.attr("title")) {
             // remove items without toc-section and title.
+            //$(item).css("display", "none");
             $(item).remove();
         } else {
             // Move the section headers in an outside h2.
@@ -31,6 +39,13 @@ $(document).ready(function () {
     $("#authors").addClass("section-box");
     $("#authors").insertAfter(h2);
 
+    // Put articleinfo as Disclosures after authors.
+    h2 = $('<h2 class="section-toggle" href="#disclosures"><span>Disclosures</span></h2>');
+    h2.insertAfter($("#articleText > *:nth-child(4)")); // insert as fifth child
+    articleinfo.attr("id", "disclosures");
+    articleinfo.addClass("section-box hide");
+    articleinfo.insertAfter(h2);
+
     // Sanitize supporting information.
     $("#articleText .figshare_widget").remove();
     $("#articleText .supplementary-material").each(function(index, item) {
@@ -47,4 +62,5 @@ $(document).ready(function () {
         $(item).append('<span class="filetype ' + type + '"></span>');
         $(item).append(a);
     });
+
 });

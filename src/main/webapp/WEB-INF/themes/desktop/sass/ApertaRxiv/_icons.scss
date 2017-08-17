@@ -33,4 +33,10 @@ main article {
   .fulltext {
     @include icon-label('download_citations.svg', 'Full Text');
   }
+  .filetype {
+    background-image: url("../../resource/img/doc_icon.png");
+  }
+  .filetype.png, .filetype.jpg, .filetype.jpeg, .filetype.gif, .filetype.tif {
+    background-image: url("../../resource/img/pic_icon.png");
+  }
 }

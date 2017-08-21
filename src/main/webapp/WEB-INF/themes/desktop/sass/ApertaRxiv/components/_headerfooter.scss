@@ -1,0 +1,52 @@
+
+
+body{
+  background: $white;
+}
+
+//layout
+
+header{
+  nav > ul{
+    @extend .row;
+    @extend .auto;
+    li{@extend .col;
+    }
+
+  }
+
+}
+
+header nav{
+  ul {
+    margin:  $heading-margin-bottom 0;
+
+    a{ text-decoration: none;}
+
+    li {
+      border-bottom: 1px solid $color-gray;
+      padding:  $heading-margin-bottom 0;
+
+      &.search {
+
+      }
+      &.logo {
+        text-align: center;
+      }
+      &.menu {
+        text-align: right;
+      }
+    }
+  }
+
+  .head-search {
+    form {
+      @extend .form;
+      label,legend {@extend .hide;}
+      input {
+        @extend .search;
+      }
+      button {@extend .hide;}
+    }
+  }
+}

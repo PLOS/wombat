@@ -29,7 +29,7 @@
   <artifactId>wombat</artifactId>
   <name>wombat</name>
   <packaging>war</packaging>
-  <version>3.3.3</version>
+  <version>3.3.5</version>
   <url>https://github.com/PLOS/wombat</url>
   <scm>
     <connection>scm:git:git@github.com:PLOS/wombat.git</connection>

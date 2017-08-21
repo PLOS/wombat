@@ -76,15 +76,4 @@ case "$1" in
 
 esac
 
-# In case this system is running systemd, we make systemd reload the unit files
-# to pick up changes.
-if [ -d /run/systemd/system ] ; then
-	systemctl --system daemon-reload >/dev/null || true
-fi
-
-if [ -x "/etc/init.d/$NAME" ] || [ -e "/etc/init/$NAME.conf" ]; then
-	if [ ! -e "/etc/init/$NAME.conf" ]; then
-		update-rc.d $NAME defaults 92 08 >/dev/null
-	fi
-	invoke-rc.d $NAME start || true
-fi
+service [[artifactId]] stop || true

@@ -3,7 +3,7 @@ body{
   @include flex-items-column;
 }
 
-main, #pagehdr, footer {
+main, #pagehdr, header, footer {
 
   @include grid-row;
   @extend .gutters;

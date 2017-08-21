@@ -1,199 +1,226 @@
 
 // for article
-main {
-
+main article {
   align-self: center;
   max-width: 920px;
   width: 100%;
+  box-sizing: border-box;
 
-  .article-meta {
-    // cannot use grid as it folds to single column
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    font-size: $font-size-smaller;
-    color: $brand-main;
-    margin-top: 4ch;
+  @include flex;
+  @include flex-items-column;
+  @include flex-items-nowrap;
+
+  .article-header-block {
     width: 100%;
-
-    .peer-reviewed, .preprint-checks {
-      text-transform: uppercase;
-      text-align: center;
-      flex: 1;
-      max-width: 100px;
-    }
-  }
-
-  article {
-    padding: $pad-medium $grid-gutter;
-    box-sizing: border-box;
-    border: solid 1px $color-border;
-    @include breakpoint(sm) {
-      border: none;
-    }
 
     @include flex;
     @include flex-items-column;
-    @include flex-items-nowrap;
 
-    .article-info-block {
+    .article-meta {
+      // cannot use grid as it folds to single column
+      width: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      font-size: $font-size-smaller;
+      color: $color-button-primary-text;
+      margin-top: 4ch;
+
+      .peer-reviewed, .preprint-checks {
+        text-transform: uppercase;
+        text-align: center;
+        min-height: 30px;
+        width: 112px;
+        padding: 1ch;
+        box-sizing: border-box;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+
+        @include flex;
+        @include flex-items-middle;
+        @include flex-items-center;
+
+        @include breakpoint(sm) {
+          min-height: 41px;
+          width: 77px;
+        }
+      }
+
+      .preprint-checks {
+        background-color: #39a329;
+      }
+      .peer-reviewed {
+        background-color: #4a4a4a;
+      }
+    }
+
+    .article-info {
+      margin-bottom: 2ch;
+
       @include flex;
       @include flex-items-row;
       @include flex-items-nowrap;
-      @include flex-items-space-between;
-      @include breakpoint(sm) {
-        @include flex-items-space-around;
+      @include flex-items-left;
+      @include flex-items-bottom;
+
+      @include breakpoint(0, $md) {
+        @include flex-items-wrap;
       }
 
       .date-doi {
-        @include breakpoint(sm) {
-          text-align: center;
-        }
-        font-family: $headings-font-family;
-        margin-bottom: 4ch;
-
         .date {
           font-size: $font-size-big;
           color: $brand-main;
+          @include breakpoint(sm) {
+            font-size: $font-size-medium;
+          }
         }
         .doi {
           font-size: $font-size-small;
           a {
             text-decoration: none;
-            color: $brand-accent;
+            color: $color-midgray;
           }
         }
       }
       .published {
-        @include breakpoint(sm) {
-          display: none;
+        font-size: $font-size-small;
+        margin-left: 3ch;
+
+        a {
+          text-decoration: none;
         }
-      }
-      .buttons {
-        @include breakpoint(sm) {
-          display: none;
+
+        @include breakpoint(0, $md) {
+          width: 100%;
+          margin-left: 0;
+          margin-top: 2ch;
         }
-        @include flex;
-        @include flex-items-row;
-        @include flex-items-nowrap;
       }
     }
 
-    .article-content-block {
-      max-width: 720px;
-      align-self: center;
 
-      .article-title {
-        @include breakpoint(sm) {
-          text-align: center;
+    .article-buttons {
+      @include flex;
+      @include flex-items-row;
+      @include flex-items-nowrap;
+
+      align-self: flex-start;
+
+      @include breakpoint(sm) {
+        align-self: center;;
+      }
+
+      > div {
+        margin-right: 2ch;
+      }
+    }
+  }
+
+  .article-content-block {
+    max-width: 720px;
+    width: 100%;
+    align-self: left;
+
+    .article-body {
+      margin-top: 4ch;
+
+      #articleText {
+        @include flex;
+        @include flex-items-column;
+        @include flex-items-nowrap;
+      }
+
+      @include section-component;
+
+      .article-authors {
+        @include author-component;
+      }
+
+      .supplementary-material {
+        @include flex;
+        @include flex-items-row;
+        @include flex-items-middle;
+
+        margin-top: 24px;
+
+        margin-bottom: 24px;
+
+        a {
+          text-decoration: none;
+          color: #333;
+        }
+        .filetype {
+          display: inline-block;
+          width: 24px; height: 24px;
+          margin-right: 16px;
+          background-size: 24px 24px;
+          background-repeat: no-repeat;
         }
       }
 
-      .article-post-title {
-        align-self: center;
-        display: inline-block;
-        @include breakpoint(sm) {
-          width: 100%;
-          text-align: center;
-        }
-
-      }
-
-      .article-body {
-        margin-top: 4ch;
-
-        @include section-component;
-
-        .article-authors {
-          @include author-component;
-        }
-
-        .supplementary-material {
-          @include flex;
-          @include flex-items-row;
-          @include flex-items-middle;
-
-          margin-top: 24px;
-
-          margin-bottom: 24px;
-
-          a {
-            text-decoration: none;
-            color: #333;
+      .comments {
+        form {
+          width: calc(100% - 30px);
+          @include breakpoint(sm) {
+            width: 100%;
           }
-          .filetype {
+          max-width: 592px;
+          margin-top: 1rem;
+          padding: 1rem;
+          font-size: 13px;
+          color: $color-darkgray;
+          background-color: $brand-accent;
+          fieldset {
+            margin-top: 0; margin-bottom: 1rem; padding: 0;
+            border: none;
+          }
+          fieldset:last-child {
+            margin-bottom: 0px;
+          }
+          ::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+            color: $brand-accent;
+          }
+          .topic {
             display: inline-block;
-            width: 24px; height: 24px;
-            margin-right: 16px;
-            background-size: 24px 24px;
-            background-repeat: no-repeat;
           }
-        }
-
-        .comments {
-          form {
-            width: calc(100% - 30px);
-            @include breakpoint(sm) {
-              width: 100%;
-            }
-            max-width: 592px;
-            margin-top: 1rem;
-            padding: 1rem;
+          .topic, input[type="text"] {
+            margin-bottom: 1ch;
+          }
+          label {
+            display: inline-block;
+          }
+          input[type="text"], textarea {
+            background-color: $input-background-color;
+            border: 1px solid $brand-accent;
             font-size: 13px;
-            color: $color-darkgray;
-            background-color: $brand-accent;
-            fieldset {
-              margin-top: 0; margin-bottom: 1rem; padding: 0;
-              border: none;
+          }
+          input[type="text"] {
+            height: 24px;
+          }
+          textarea {
+            height: 80px;
+            padding: 4px 12px;
+          }
+          .help {
+            font-size: 9px;
+          }
+          .buttons {
+            button {
+              background: linear-gradient(0deg, #AA4A19 0%, #C47D59 100%);
+              text-transform: uppercase;
+              border-radius: 0px;
             }
-            fieldset:last-child {
-              margin-bottom: 0px;
+            .link {
+              text-decoration: none;
+              margin-left: 3ch; margin: 2ch;
             }
-            ::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
-              color: $brand-accent;
-            }
-            .topic {
-              display: inline-block;
-            }
-            .topic, input[type="text"] {
-              margin-bottom: 1ch;
-            }
-            label {
-              display: inline-block;
-            }
-            input[type="text"], textarea {
-              background-color: $input-background-color;
-              border: 1px solid $brand-accent;
-              font-size: 13px;
-            }
-            input[type="text"] {
-              height: 24px;
-            }
-            textarea {
-              height: 80px;
-              padding: 4px 12px;
-            }
-            .help {
-              font-size: 9px;
-            }
+          }
+          @include breakpoint(sm) {
             .buttons {
-              button {
-                background: linear-gradient(0deg, #AA4A19 0%, #C47D59 100%);
-                text-transform: uppercase;
-                border-radius: 0px;
-              }
-              .link {
-                text-decoration: none;
-                margin-left: 3ch; margin: 2ch;
-              }
-            }
-            @include breakpoint(sm) {
-              .buttons {
-                text-align: center;
+              text-align: center;
 
-                > * {
-                  display: inline-block;
-                }
+              > * {
+                display: inline-block;
               }
             }
           }

@@ -6,6 +6,8 @@
   @include flex;
   @include flex-items-column;
   margin-right: 1ch;
+  text-decoration: none;
+  color: $color-text;
 
   .icon {
     align-self: center;
@@ -27,8 +29,8 @@ main article {
   .share {
     @include icon-label('share_icon.svg', 'Share');
   }
-  .citations {
-    @include icon-label('download_citations.svg', 'Citations');
+  .xml {
+    @include icon-label('download_citations.svg', 'XML');
   }
   .fulltext {
     @include icon-label('download_citations.svg', 'Full Text');

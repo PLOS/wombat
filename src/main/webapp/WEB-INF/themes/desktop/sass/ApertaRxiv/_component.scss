@@ -1,5 +1,36 @@
 
 /*
+ * Collapse/expand button
+ */
+@mixin collapse-expand-button($size: 20px) {
+  &:after {
+    position: relative;
+    content: "+";
+    top: 12px;
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    float: right;
+    color: #ffffff;
+    background-color: $brand-main;
+    cursor: pointer;
+    z-index: 1;
+
+    @include breakpoint(0, $md) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+  &.active:after {
+    content: "\2715";
+    background-color: $brand-accent;
+    font-size: 12px;
+  }
+}
+
+/*
  * section-component included within a collapse box.
  * It assumes h2.section-toggle as clickable header, and .section-box as body
  * for each collapsable item.
@@ -9,64 +40,35 @@
   h2.section-toggle {
     position: relative;
     border-top: solid 1px $color-border;
-    padding-top: 1ch;
-    padding-bottom: 1ch;
     margin-bottom: 0;
+    line-height: 46px;
     font-weight: bold;
-    font-family: "Lato";
 
-    @include breakpoint(sm) {
+    @include breakpoint(0, $md) {
       text-align: center;
       border-top: solid 1px $brand-main;
       font-weight: normal;
+      font-size: $font-size-medium;
     }
 
-    &:after {
-      position: relative;
-      content: "+";
-      width: 20px;
-      height: 20px;
-      font-size: 20px;
-      line-height: 20px;
-      text-align: center;
-      float: right;
-      color: #ffffff;
-      background-color: $brand-main;
-      cursor: pointer;
-      z-index: 1;
-
-      @include breakpoint(sm) {
-        display: none;
-        visibility: hidden;
-      }
-    }
+    @include collapse-expand-button;
 
     &.active {
       height: 0px;
-
-      &:after {
-        content: "\2715";
-        background-color: $brand-accent;
-        font-size: 12px;
-        @include breakpoint(sm) {
-          display: none;
-          visibility: hidden;
-        }
-      }
 
       > span {
         max-width: 130px;
         display: inline-block;
         word-break: break-word;
 
-        @include breakpoint(sm) {
+        @include breakpoint(0, $md) {
           max-width: none;
           display: inline;
           word-break: normal;
         }
       }
 
-      @include breakpoint(sm) {
+      @include breakpoint(0, $md) {
         border-bottom: solid 1px $brand-main;
         background-color: $brand-accent;
         height: auto;
@@ -74,7 +76,7 @@
     }
 
     &:last-of-type {
-      @include breakpoint(sm) {
+      @include breakpoint(0, $md) {
         border-bottom: solid 1px $brand-main;
       }
     }
@@ -85,13 +87,18 @@
 
     width: calc(100% - 128px);
     left: 134px;
-    top: -1ch;
+    top: 1.5ch;
 
-    @include breakpoint(sm) {
+    @include breakpoint(md) {
+      max-width: 592px;
+      align-self: center;
+    }
+
+    @include breakpoint(0,$md) {
       width: 100%;
       left: 0px;
-      margin-top: 0;
       top: calc(48px - 2ch);
+      padding-bottom: 3ch;
     }
   }
 }
@@ -108,19 +115,22 @@
       content: "\2709";
       color: #c45703;
     }
+    &:before {
+      position: relative;
+      content: "\2023";
+      display: inline-block;
+      width: 32px;
+      left: 0px;
+      font-size: 1.2rem;
+    }
+    &.active {
+      font-weight: bold;
+      &:before {
+        content: "\25be";
+      }
+    }
   }
-  .author-toggle:before {
-    position: relative;
-    content: "\2023";
-    display: inline-block; width: 32px; left: 0px;
-    font-size: 1.2rem;
-  }
-  .author-toggle.active {
-    font-weight: bold;
-  }
-  .author-toggle.active:before {
-    content: "\25be";
-  }
+
   .author-box {
     position: relative;
     font-size: $font-size-small;
@@ -133,8 +143,5 @@
     p {
       margin-bottom: 1ch;
     }
-  }
-
-  @include breakpoint(sm) {
   }
 }

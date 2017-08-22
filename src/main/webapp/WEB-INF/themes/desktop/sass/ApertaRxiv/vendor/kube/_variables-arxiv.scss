@@ -243,9 +243,9 @@ $input-textarea-padding-tb: 8px !default;
 
 // States
 $input-border-width: 1px !default;
-$input-border-color: $color-lightgray !default;
+$input-border-color: $color-gray !default;
 $input-background-color: #fff !default;
-$input-box-shadow: none !default;
+$input-box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.5) !default;
 
 $input-focus-background-color: #fff !default;
 $input-focus-border-color: $color-focus !default;
@@ -263,7 +263,7 @@ $input-disabled-opacity: .6;
 $input-disabled-color: rgba(0, 0, 0, .5);
 
 // Radius
-$input-border-radius: 3px !default;
+$input-border-radius: 0px !default;
 
 
 // OVERLAY

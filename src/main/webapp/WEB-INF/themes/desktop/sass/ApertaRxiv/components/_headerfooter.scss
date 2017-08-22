@@ -10,6 +10,9 @@ header{
   nav > ul{
     @extend .row;
     @extend .auto;
+    @include breakpoint(sm) {
+      @include flex-items-row;
+    }
     li{@extend .col;
     }
 
@@ -17,15 +20,27 @@ header{
 
 }
 
-header nav{
+header nav {
   ul {
-    margin:  $heading-margin-bottom 0;
+    margin: $heading-margin-bottom 0 0 0;
 
-    a{ text-decoration: none;}
+    a {
+      text-decoration: none;
+      color: $color-text;
+    }
 
     li {
       border-bottom: 1px solid $color-gray;
-      padding:  $heading-margin-bottom 0;
+      padding: $grid-gutter-small;
+
+
+      a{
+        span{@extend .hide-sm;}
+        i{
+          @extend .show-sm;
+          font-size: 36px;
+        }
+      }
 
       &.search {
 
@@ -42,11 +57,35 @@ header nav{
   .head-search {
     form {
       @extend .form;
-      label,legend {@extend .hide;}
-      input {
-        @extend .search;
+      label, legend {
+        @extend .hide;
       }
-      button {@extend .hide;}
+      fieldset{
+        padding:0;
+        margin-top:-1px;
+      }
+      .search-contain{
+
+        @extend .append;
+        input {
+          font-size: $font-size-big;
+          line-height: $font-size-large;
+        }
+
+        button {
+          background-color: #fff;
+          border: 1px solid $color-gray;
+          border-radius:0px;
+          @extend .hide-sm;
+        .search-icon{
+          @extend .kube-search;
+        }
+        }
+
+
+      }
+
+
     }
   }
 }

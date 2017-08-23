@@ -33,9 +33,10 @@
       <fieldset>
         <legend>Search</legend>
         <label for="search">Search</label>
-        <input id="search" type="text" name="q" placeholder="Search" required/>
-        <button id="headerSearchButton" type="submit"><span class="search-icon"></span></button>
-
+        <div class="search-contain">
+          <input id="search" type="text" name="q" placeholder="Search" required/>
+          <button id="headerSearchButton" type="submit"><span class="search-icon"></span></button>
+        </div>
       </fieldset>
       <#if journal?has_content><input type="hidden" name="filterJournals" value="${journal}"/></#if>
     </form>

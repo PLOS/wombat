@@ -16,6 +16,7 @@ header {
       @extend .col;
     }
   }
+  margin-bottom: $text-margin-bottom * 2;
 }
 
 header .head-top {

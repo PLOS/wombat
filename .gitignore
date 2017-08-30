@@ -24,6 +24,13 @@ target/
 # Backup files #
 *.versionsBackup
 
+# Eclipse project metadata
+.settings/
+.classpath
+.project
+.factorypath
+test-output/
+**/.local
 
 
 
@@ -32,3 +39,4 @@ plos-mobile-themes
 plos-themes
 src/main/webapp/WEB-INF/themes/desktop/codekit-config.json
 .DS_Store
+/.apt_generated/

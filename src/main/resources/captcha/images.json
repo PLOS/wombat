@@ -1,0 +1,150 @@
+[
+    {
+        "value": "Airplane",
+        "path": "airplane.png"
+    },
+    {
+        "value": "Balloons",
+        "path": "balloons.png"
+    },
+    {
+        "value": "Camera",
+        "path": "camera.png"
+    },
+    {
+        "value": "Car",
+        "path": "car.png"
+    },
+    {
+        "value": "Cat",
+        "path": "cat.png"
+    },
+    {
+        "value": "Chair",
+        "path": "chair.png"
+    },
+    {
+        "value": "Clip",
+        "path": "clip.png"
+    },
+    {
+        "value": "Clock",
+        "path": "clock.png"
+    },
+    {
+        "value": "Cloud",
+        "path": "cloud.png"
+    },
+    {
+        "value": "Computer",
+        "path": "computer.png"
+    },
+    {
+        "value": "Envelope",
+        "path": "envelope.png"
+    },
+    {
+        "value": "Eye",
+        "path": "eye.png"
+    },
+    {
+        "value": "Flag",
+        "path": "flag.png"
+    },
+    {
+        "value": "Folder",
+        "path": "folder.png"
+    },
+    {
+        "value": "Foot",
+        "path": "foot.png"
+    },
+    {
+        "value": "Graph",
+        "path": "graph.png"
+    },
+    {
+        "value": "House",
+        "path": "house.png"
+    },
+    {
+        "value": "Key",
+        "path": "key.png"
+    },
+    {
+        "value": "Leaf",
+        "path": "leaf.png"
+    },
+    {
+        "value": "Light Bulb",
+        "path": "light-bulb.png"
+    },
+    {
+        "value": "Lock",
+        "path": "lock.png"
+    },
+    {
+        "value": "Magnifying Glass",
+        "path": "magnifying-glass.png"
+    },
+    {
+        "value": "Man",
+        "path": "man.png"
+    },
+    {
+        "value": "Music Note",
+        "path": "music-note.png"
+    },
+    {
+        "value": "Pants",
+        "path": "pants.png"
+    },
+    {
+        "value": "Pencil",
+        "path": "pencil.png"
+    },
+    {
+        "value": "Printer",
+        "path": "printer.png"
+    },
+    {
+        "value": "Robot",
+        "path": "robot.png"
+    },
+    {
+        "value": "Scissors",
+        "path": "scissors.png"
+    },
+    {
+        "value": "Sunglasses",
+        "path": "sunglasses.png"
+    },
+    {
+        "value": "Tag",
+        "path": "tag.png"
+    },
+    {
+        "value": "Tree",
+        "path": "tree.png"
+    },
+    {
+        "value": "Truck",
+        "path": "truck.png"
+    },
+    {
+        "value": "T-Shirt",
+        "path": "t-shirt.png"
+    },
+    {
+        "value": "Umbrella",
+        "path": "umbrella.png"
+    },
+    {
+        "value": "Woman",
+        "path": "woman.png"
+    },
+    {
+        "value": "World",
+        "path": "world.png"
+    }
+]

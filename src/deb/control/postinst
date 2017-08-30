@@ -61,6 +61,8 @@ case "$1" in
 	process_env_template $HOME/conf/context.template.xml $HOME/conf/context.xml
 
 	process_env_template $HOME/conf/server.template.xml $HOME/conf/server.xml
+	
+	process_env_template $HOME/conf/tomcat-users.template.xml $HOME/conf/tomcat-users.xml
 
 	process_env_template $HOME/bin/setenv.template.sh $HOME/bin/setenv.sh
 

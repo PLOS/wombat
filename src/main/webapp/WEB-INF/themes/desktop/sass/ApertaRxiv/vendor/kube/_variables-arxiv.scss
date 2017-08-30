@@ -43,7 +43,7 @@ $pad-medium: $pad-small * 2;
 // ---------------------------------------------------------------------------
 $text-font-family: 'Lato', serif !default;
 $monospace-font-family: 'Courier New', monospace !default;
-$headings-font-family: 'Droid Serif', serif !default;
+$headings-font-family: $text-font-family !default;
 $buttons-font-family: $text-font-family !default;
 $input-font-family: $text-font-family !default;
 
@@ -55,12 +55,14 @@ $input-font-family: $text-font-family !default;
 $black: #333333;
 $brand-main: #00295a;
 $brand-accent: #c7d0db;
-$white: #f4f4f4;
+$brand-separator: #9b9b9b;
+$white: #fff;
 $link: #c47d59;
 $link-visited: #e2946d;
 $link-hover: #984b23;
 $link-active: #205e9c;
 $error: #ce0b24;
+
 
 
 // Text
@@ -91,11 +93,13 @@ $color-highlight: #edf2ff !default; // color-focus 15% opacity
 $color-black: $black !default;
 $color-darkgray: #313439 !default;
 $color-midgray: #676b72 !default;
-$color-gray: #bdbdbd !default;
+$color-gray: $brand-separator !default;
 $color-lightgray: #d4d4d4 !default;
 $color-silver: #e0e1e1 !default;
 $color-aluminum: #f8f8f8 !default;
 
+// border
+$color-border: $brand-separator !default;
 
 // TEXT
 // ---------------------------------------------------------------------------
@@ -104,6 +108,7 @@ $color-aluminum: #f8f8f8 !default;
 $font-size: 16px !default;
 $font-size-smaller: 9px !default;
 $font-size-small: 13px !default;
+$font-size-medium: 20px !default;
 $font-size-big: 24px !default;
 $font-size-large: 38px !default;
 $font-size-large-breakpoint-sm: $font-size-big !default;
@@ -240,9 +245,9 @@ $input-textarea-padding-tb: 8px !default;
 
 // States
 $input-border-width: 1px !default;
-$input-border-color: $color-lightgray !default;
+$input-border-color: $color-border !default;
 $input-background-color: #fff !default;
-$input-box-shadow: none !default;
+$input-box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.2) !default;
 
 $input-focus-background-color: #fff !default;
 $input-focus-border-color: $color-focus !default;
@@ -257,10 +262,10 @@ $input-success-border-color: $color-success !default;
 $input-success-focus-box-shadow: 0 0 1px $color-success inset !default;
 
 $input-disabled-opacity: .6;
-$input-disabled-color: rgba(0, 0, 0, .5);
+$input-disabled-color: rgba(0, 0, 0, .2);
 
 // Radius
-$input-border-radius: 3px !default;
+$input-border-radius: 0px !default;
 
 
 // OVERLAY

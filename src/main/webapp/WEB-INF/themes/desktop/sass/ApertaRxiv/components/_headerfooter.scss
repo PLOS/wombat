@@ -1,0 +1,93 @@
+
+body {
+  background: $white;
+}
+
+//layout
+
+header {
+  nav > ul {
+    @extend .row;
+    @extend .auto;
+    @include breakpoint(sm) {
+      @include flex-items-row;
+    }
+    li {
+      @extend .col;
+    }
+  }
+  margin-bottom: $text-margin-bottom * 2;
+}
+
+header .head-top {
+  @extend .min-w100;
+  background: $brand-separator;
+  .center{
+    margin: $pad-large;
+    @include flex-items-center;
+  }
+}
+
+header nav {
+  ul {
+    margin: $heading-margin-bottom 0 0 0;
+
+    a {
+      text-decoration: none;
+      color: $color-text;
+      span {
+        @extend .hide-sm;
+        text-transform: uppercase;
+        font-size: $font-size-small;
+      }
+      i {
+        @extend .show-sm;
+        font-size: $font-size-large;
+      }
+    }
+
+    li {
+      border-bottom: 1px solid $color-border;
+      padding: $grid-gutter-small;
+
+      &.logo {
+        text-align: center;
+      }
+      &.menu {
+        text-align: right;
+      }
+    }
+  }
+
+  .head-search {
+    form {
+      @extend .form;
+      label, legend {
+        @extend .hide;
+      }
+      fieldset {
+        padding: 0;
+        margin-top: -1px;
+      }
+      .search-contain {
+        @extend .append;
+        input {
+          font-size: $font-size-big;
+          line-height: $font-size-large;
+        }
+
+        button {
+          background-color: $white;
+          border: 1px solid $color-border;
+          border-radius: 0px;
+          @extend .hide-sm;
+          @extend .kube-search;
+          .search-icon {
+            @extend .hide;
+          }
+        }
+
+      }
+    }
+  }
+}

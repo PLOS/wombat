@@ -22,7 +22,7 @@ if (typeof jQuery === 'undefined') {throw new Error('Kube\'s requires jQuery')};
 
         for (var prop in this.prototype) f[prop] = this.prototype[prop];
         this.prototype = f;
-        this.prototype.super = parent.prototype;
+        this.prototype['super'] = parent.prototype;
     };
 
     // Core Class

@@ -1,0 +1,44 @@
+/*
+ * icon-label - display an icon for the label.
+ */
+@mixin icon-label($icon, $label) {
+
+  @include flex;
+  @include flex-items-column;
+  margin-right: 1ch;
+  text-decoration: none;
+  color: $color-text;
+
+  .icon {
+    align-self: center;
+    width: 32px; height: 24px;
+    // image-url() is not working...
+    background-image: url("../../resource/img/#{$icon}");
+    background-size: 32px 24px;
+    background-repeat: no-repeat;
+
+  }
+  .icon+* {
+    align-self: center;
+    text-transform: uppercase;
+    font-size: $font-size-smaller;
+  }
+}
+
+main article {
+  .share {
+    @include icon-label('share_icon.svg', 'Share');
+  }
+  .xml {
+    @include icon-label('download_citations.svg', 'XML');
+  }
+  .fulltext {
+    @include icon-label('download_citations.svg', 'Full Text');
+  }
+  .filetype {
+    background-image: url("../../resource/img/doc_icon.png");
+  }
+  .filetype.png, .filetype.jpg, .filetype.jpeg, .filetype.gif, .filetype.tif {
+    background-image: url("../../resource/img/pic_icon.png");
+  }
+}

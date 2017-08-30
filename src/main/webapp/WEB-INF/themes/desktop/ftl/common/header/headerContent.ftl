@@ -42,8 +42,9 @@
     <nav class="nav-main">
 
     <#include "../siteMenu/siteMenu.ftl" />
-
+      <li id="navsearch" class="head-search">
     <#include "search.ftl" />
+      </li>
 
       </ul>     <#--opened in siteMenu.ftl -->
       </section>  <#--opened in siteMenu.ftl -->

@@ -1,0 +1,147 @@
+
+/*
+ * Collapse/expand button
+ */
+@mixin collapse-expand-button($size: 20px) {
+  &:after {
+    position: relative;
+    content: "+";
+    top: 12px;
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    float: right;
+    color: #ffffff;
+    background-color: $brand-main;
+    cursor: pointer;
+    z-index: 1;
+
+    @include breakpoint(0, $md) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+  &.active:after {
+    content: "\2715";
+    background-color: $brand-accent;
+    font-size: 12px;
+  }
+}
+
+/*
+ * section-component included within a collapse box.
+ * It assumes h2.section-toggle as clickable header, and .section-box as body
+ * for each collapsable item.
+ */
+@mixin section-component {
+
+  h2.section-toggle {
+    position: relative;
+    border-top: solid 1px $color-border;
+    margin-bottom: 0;
+    line-height: 46px;
+    font-weight: bold;
+
+    @include breakpoint(0, $md) {
+      text-align: center;
+      border-top: solid 1px $brand-main;
+      font-weight: normal;
+      font-size: $font-size-medium;
+    }
+
+    @include collapse-expand-button;
+
+    &.active {
+      height: 0px;
+
+      > span {
+        max-width: 130px;
+        display: inline-block;
+        word-break: break-word;
+
+        @include breakpoint(0, $md) {
+          max-width: none;
+          display: inline;
+          word-break: normal;
+        }
+      }
+
+      @include breakpoint(0, $md) {
+        border-bottom: solid 1px $brand-main;
+        background-color: $brand-accent;
+        height: auto;
+      }
+    }
+
+    &:last-of-type {
+      @include breakpoint(0, $md) {
+        border-bottom: solid 1px $brand-main;
+      }
+    }
+  }
+
+  .section-box {
+    position: relative;
+
+    width: calc(100% - 128px);
+    left: 134px;
+    top: 1.5ch;
+
+    @include breakpoint(md) {
+      max-width: 592px;
+      align-self: center;
+    }
+
+    @include breakpoint(0,$md) {
+      width: 100%;
+      left: 0px;
+      top: calc(48px - 2ch);
+      padding-bottom: 3ch;
+    }
+  }
+}
+
+@mixin author-component {
+
+  .author-toggle {
+    position: relative;
+
+    span.email {
+      margin-left: 1ch;
+    }
+    span.email:after {
+      content: "\2709";
+      color: #c45703;
+    }
+    &:before {
+      position: relative;
+      content: "\2023";
+      display: inline-block;
+      width: 32px;
+      left: 0px;
+      font-size: 1.2rem;
+    }
+    &.active {
+      font-weight: bold;
+      &:before {
+        content: "\25be";
+      }
+    }
+  }
+
+  .author-box {
+    position: relative;
+    font-size: $font-size-small;
+    margin-left: 36px;
+
+    span.type {
+      text-transform: uppercase;
+      display: block; margin-top: 1ch;
+    }
+    p {
+      margin-bottom: 1ch;
+    }
+  }
+}

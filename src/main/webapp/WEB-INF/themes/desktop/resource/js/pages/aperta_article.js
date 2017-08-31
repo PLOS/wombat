@@ -63,4 +63,6 @@ $(document).ready(function () {
         $(item).append(a);
     });
 
+    // initialize tooltip_hover for everything
+    tooltip_hover.init();
 });

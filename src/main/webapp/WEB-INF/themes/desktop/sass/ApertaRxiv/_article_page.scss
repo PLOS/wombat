@@ -112,6 +112,49 @@ main article {
 
       > div {
         margin-right: 2ch;
+        position: relative;
+      }
+
+      .share-article {
+        @include js-tooltip-container;
+        cursor: pointer;
+      }
+
+      .share-options {
+        margin-top: 37px !important;
+        @include js-tooltip-target;
+        opacity: 1;
+        z-index: 10;
+        list-style-type: none;
+        background-color: $color-button-primary;
+        border-radius: $button-border-radius;
+
+        li {
+          list-style-position: outside; // firefox
+          list-style-type: none;
+          padding-left: $pad-small;
+          padding-right: $pad-large;
+          padding-top: $pad-xsmall;
+          padding-bottom: $pad-xsmall;
+
+          a {
+            color: $color-inverted;
+            text-decoration: none;
+            vertical-align: middle;
+            line-height: $font-size;
+            white-space: nowrap;
+
+            img {
+              width: 16px;
+              height: 16px;
+              margin-right: $pad-small;
+            }
+
+          }
+          &:hover {
+            background-color: $color-button-secondary;
+          }
+        }
       }
     }
   }

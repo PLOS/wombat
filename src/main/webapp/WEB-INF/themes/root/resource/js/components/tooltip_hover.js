@@ -93,9 +93,9 @@ this widget assumes that your trigger and your tooltip are within the same conta
       $(s.hover_trigger).off("mouseenter mouseleave").mouseenter(function () {
         $(this).addClass(s.class_trigger).find(s.hover_target).addClass(s.class_target).before('<div class=' + s.class_shim + '> </div>');  //TODO: make the shim get the height
       }).mouseleave(function () {
-          $(this).removeClass(s.class_trigger).find(s.hover_target).removeClass(s.class_target);
-          $('.shim').remove();
-        });
+        $(this).removeClass(s.class_trigger).find(s.hover_target).removeClass(s.class_target);
+        $('.shim').remove();
+      });
     }
 
   };

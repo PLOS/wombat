@@ -33,8 +33,8 @@ $grid-gutter-small: $grid-gutter /2 !default;
 // ---------------------------------------------------------------------------
 
 $pad-large: $grid-gutter;
-$pad-small: $grid-gutter / 3;
-$pad-medium: $pad-small * 2;
+$pad-small: $grid-gutter / 3; //8px
+$pad-medium: $pad-small * 2; //16px
 
 
 
@@ -95,7 +95,7 @@ $color-darkgray: #313439 !default;
 $color-midgray: #676b72 !default;
 $color-gray: $brand-separator !default;
 $color-lightgray: #d4d4d4 !default;
-$color-silver: #e0e1e1 !default;
+$color-silver: #4A4A4A !default;
 $color-aluminum: #f8f8f8 !default;
 
 // border
@@ -107,6 +107,7 @@ $color-border: $brand-separator !default;
 // Font Size
 $font-size: 16px !default;
 $font-size-smaller: 9px !default;
+$font-size-smallish: 11px !default;
 $font-size-small: 13px !default;
 $font-size-medium: 20px !default;
 $font-size-big: 24px !default;
@@ -141,8 +142,8 @@ $text-margin-bottom: $font-size * 1.5!default;
 $heading-font-size-title: $font-size-large !default;
 $heading-font-size-1: $font-size-large !default;
 $heading-font-size-2: $font-size-big !default;
-$heading-font-size-3: 21px !default;
-$heading-font-size-4: 16px !default;
+$heading-font-size-3: $font-size-medium !default;
+$heading-font-size-4: $font-size !default;
 $heading-font-size-5: $font-size-small !default;
 $heading-font-size-6: $font-size-smaller !default;
 

@@ -1,6 +1,10 @@
 
 ///link styles
 
+a:hover, a:active{
+  color: $link-hover;
+}
+
 .link-title{
   color: $brand-main;
   &:hover, &:active{
@@ -13,7 +17,7 @@
   text-decoration: none;
   &:hover, &:active{
     text-decoration: underline;
-
+    color: inherit !important;
   }
 }
 
@@ -28,5 +32,9 @@
 
 //useful styles
 
+///DELETE: ITEM 4 &5
 
+.strong {
+  font-weight: 600 !important;
+}
 

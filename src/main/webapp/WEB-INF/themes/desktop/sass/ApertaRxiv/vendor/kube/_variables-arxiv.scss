@@ -32,7 +32,9 @@ $grid-gutter-small: $grid-gutter /2 !default;
 // VERTICAL GRID
 // ---------------------------------------------------------------------------
 
-$pad-large: $grid-gutter;
+$pad-large: $grid-gutter; //24px
+
+$pad-xlarge: $grid-gutter * 1.5; //36
 $pad-small: $grid-gutter / 3; //8px
 $pad-medium: $pad-small * 2; //16px
 
@@ -126,7 +128,7 @@ $base-line-header: 1.315 !default;
 $base-line-smaller: $base-line !default;
 $base-line-small: $base-line !default;
 $base-line-big: $base-line-header !default;
-$base-line-large: $base-line-header !default;
+$base-line-large: 36px !default;
 
 
 
@@ -151,7 +153,7 @@ $heading-font-size-6: $font-size-smaller !default;
 $heading-base-line-title: $base-line-header !default;
 $heading-base-line-1: $base-line-header !default;
 $heading-base-line-2: $base-line-header !default;
-$heading-base-line-3: $base-line-header !default;
+$heading-base-line-3: $base-line-large !default;
 $heading-base-line-4: $base-line-header !default;
 $heading-base-line-5: $base-line-header !default;
 $heading-base-line-6: $base-line-header !default;

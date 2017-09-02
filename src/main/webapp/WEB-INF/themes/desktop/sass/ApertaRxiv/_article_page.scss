@@ -10,6 +10,11 @@ main article {
   @include flex-items-column;
   @include flex-items-nowrap;
 
+
+  h2 {
+    @extend .h3;
+  }
+
   .article-header-block {
     width: 100%;
 

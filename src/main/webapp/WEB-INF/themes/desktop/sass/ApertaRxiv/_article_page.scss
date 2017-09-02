@@ -158,6 +158,37 @@ main article {
         }
       }
 
+      .subjects {
+        > div {
+          width: 100%;
+
+          // flex box layout can be left-right with wrapping, cannot do top-down columns
+          -webkit-column-count: 2;
+          -moz-column-count: 2;
+          column-count: 2;
+
+          @include breakpoint(sm) {
+            -webkit-column-count: 1;
+            -moz-column-count: 1;
+            column-count: 1;
+          }
+
+          .subject {
+            text-align: center;
+            height: 36px;
+            line-height: 36px;
+
+            @include breakpoint(sm) {
+              width: 100%;
+            }
+
+            a {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+
       .comments {
         form {
           width: calc(100% - 30px);

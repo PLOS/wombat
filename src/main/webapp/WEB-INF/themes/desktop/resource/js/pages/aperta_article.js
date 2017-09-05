@@ -63,6 +63,9 @@ $(document).ready(function () {
         $(item).append(a);
     });
 
-    // initialize tooltip_hover for everything
-    tooltip_hover.init();
+    $("#share-options li a").click(function(event) {
+        // TODO: link is not automatically opened, don't know why. So using window.open.
+        console.log("clicked " + event.currentTarget.getAttribute("href"));
+        window.open(event.currentTarget.getAttribute("href"));
+    });
 });

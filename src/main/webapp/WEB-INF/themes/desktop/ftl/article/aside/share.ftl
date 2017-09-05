@@ -22,5 +22,8 @@
 
 <div class="share-article" id="shareArticle" data-js-tooltip-hover="trigger">
   Share
-  <#include 'shareOptions.ftl' />
+  <ul data-js-tooltip-hover="target" class="share-options" id="share-options">
+    <#include 'shareOptions.ftl' />
+    <#include 'shareInserts.ftl' />
+  </ul>
 </div>

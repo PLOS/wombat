@@ -20,7 +20,7 @@ a:hover {
 // Headings
 h1.title, h1, h2, h3, h4, h5, h6 {
 	font-family: $headings-font-family;
-	font-weight: bold;
+	font-weight: 600;
 	color: $color-headings;
 	text-rendering: optimizeLegibility;
     margin-bottom: $heading-margin-bottom;

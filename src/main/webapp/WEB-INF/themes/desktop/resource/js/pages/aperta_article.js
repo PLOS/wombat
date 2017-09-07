@@ -39,6 +39,12 @@ $(document).ready(function () {
     $("#authors").addClass("section-box");
     $("#authors").insertAfter(h2);
 
+    $(".author-corresponding").each(function(index, item) {
+        var html = $(item).html();
+        html = html.replace(/<span class="email">\* E-mail:<\/span>/, '');
+        $(item).html(html);
+    });
+
     // Put articleinfo as Disclosures after authors.
     h2 = $('<h2 class="section-toggle" href="#disclosures"><span>Disclosures</span></h2>');
     h2.insertAfter($("#articleText > *:nth-child(4)")); // insert as fifth child

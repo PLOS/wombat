@@ -24,7 +24,7 @@ main article {
       justify-content: space-between;
       font-size: $font-size-smaller;
       color: $color-button-primary-text;
-      margin-top: 4ch;
+      margin-bottom: 6px;
 
       .peer-reviewed, .preprint-checks {
         text-transform: uppercase;
@@ -79,6 +79,10 @@ main article {
           a {
             text-decoration: none;
             color: $color-midgray;
+
+            &:hover {
+              color: $link-hover;
+            }
           }
         }
       }
@@ -165,6 +169,7 @@ main article {
 
     .article-body {
       margin-top: 4ch;
+      border-bottom: solid 1px $color-border;
 
       #articleText {
         @include flex;

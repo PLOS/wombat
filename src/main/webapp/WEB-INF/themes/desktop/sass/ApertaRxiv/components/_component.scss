@@ -1,36 +1,5 @@
 
 /*
- * Collapse/expand button
- */
-@mixin collapse-expand-button($size: 20px) {
-  &:after {
-    position: relative;
-    content: "+";
-    top: 4px;
-    width: 20px;
-    height: 20px;
-    font-size: $font-size;
-    line-height: 20px;
-    text-align: center;
-    float: right;
-    color: #ffffff;
-    background-color: $brand-main;
-    cursor: pointer;
-    z-index: 1;
-
-    @include breakpoint(0, $md) {
-      display: none;
-      visibility: hidden;
-    }
-  }
-  &.active:after {
-    content: "\2715";
-    background-color: $brand-accent;
-    font-size: $font-size-small;
-  }
-}
-
-/*
  * section-component included within a collapse box.
  * It assumes h2.section-toggle as clickable header, and .section-box as body
  * for each collapsable item.
@@ -42,8 +11,8 @@
     border-top: solid 1px $color-border;
     margin-bottom: 0;
     line-height: 30px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     font-weight: bold;
 
     @include breakpoint(0, $md) {
@@ -53,7 +22,10 @@
       font-size: $font-size-medium;
     }
 
-    @include collapse-expand-button;
+    &:hover {
+      color: $link-hover;
+      cursor: pointer;
+    }
 
     &.active {
       height: 0px;
@@ -89,8 +61,7 @@
 
     width: calc(100% - 128px);
     left: 134px;
-    padding-top: 0px;
-    top: -8px;
+    top: 3px;
 
     @include breakpoint(md) {
       max-width: 592px;
@@ -112,11 +83,14 @@
     position: relative;
 
     span.email {
+      position: relative;
       margin-left: 1ch;
-    }
-    span.email:after {
-      content: "\2709";
-      color: #c45703;
+      display: inline-block;
+      top: 4px;
+      height: 20px;
+      width: 20px;
+      background-image: url("../../resource/img/correspond_icon.svg");
+      background-size: 20px 20px;
     }
     &:before {
       position: relative;

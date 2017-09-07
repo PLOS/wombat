@@ -65,7 +65,6 @@ $(document).ready(function () {
 
     $("#share-options li a").click(function(event) {
         // TODO: link is not automatically opened, don't know why. So using window.open.
-        console.log("clicked " + event.currentTarget.getAttribute("href"));
         window.open(event.currentTarget.getAttribute("href"));
     });
 });

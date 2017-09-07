@@ -11,8 +11,8 @@
     border-top: solid 1px $color-border;
     margin-bottom: 0;
     line-height: 30px;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding-top: $pad-xxsmall;
+    padding-bottom: $pad-xxsmall;
     font-weight: bold;
 
     @include breakpoint(0, $md) {

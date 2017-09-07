@@ -181,6 +181,10 @@ main article {
 
       .article-authors {
         @include author-component;
+
+        .author-corresponding span.email {
+          display: none; visibility: hidden;
+        }
       }
 
       .supplementary-material {

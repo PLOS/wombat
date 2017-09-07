@@ -195,10 +195,6 @@ public class ArticleController extends WombatController {
     model.addAttribute("areCommentsDisabled", runtimeConfiguration.areCommentsDisabled());
   }
 
-  private boolean isPreprints(Site site) {
-    return site.getType() != null && site.getType().equals("preprints");
-  }
-
   /**
    * Serves a request for a list of all the root-level comments associated with an article.
    *

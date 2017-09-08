@@ -145,3 +145,183 @@
     }
   }
 }
+
+
+////////////
+//pagination controls
+
+///////////////
+
+/*!
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
+// Paging controls (shared with mobile).
+
+$inactive-background-color: $brand-separator;
+$pagination-height: $pad-large;
+
+// For floating implementation. For example, if there is "results per page" to one side.
+//  .nav-pagination {
+//    @extend %floating;
+//  }
+
+//Pagination:
+//columns = 24px wide
+//gutters = 12px
+// font-size = 16px, regular, sans, $link-brown
+//icon text =9px, light, sans, $link-brown, line-height:13px
+//  Active page number background: #D9D9D9
+//  Inactive caret: 50% opacity
+
+//
+//%floating-pagination {
+//  display: inline;
+//}
+//
+//// For full width implementation:
+////  .nav-pagination {
+////    @extend %full-width-pagination;
+////  }
+//%full-width-pagination {
+//  text-align: center;
+//  position: relative;
+//  padding: 0 30px;
+//  margin: 20px 0;
+//  display: block;
+//
+//  .previous-page {
+//    position: absolute;
+//    left: $grid-gutter-small;
+//  }
+//  .next-page {
+//    position: absolute;
+//    right: $grid-gutter-small;
+//  }
+//}
+//
+//@mixin search-results-rounded-control {
+//  display: inline-block;
+//  font-weight: bold;
+//  //font-size: $txt-size-medium;
+//  //line-height: $pad-default;
+//  padding: rem-calc(0 6px);
+//  min-width: rem-calc(16px);
+//}
+//
+.nav-pagination {
+  @extend .row;
+  @extend .gutters;
+  @extend  .align-center;
+  a, span {
+    @extend .col;
+    text-align: center;
+
+    box-sizing: content-box;
+
+  }
+  .number {
+    width: $pagination-height;
+    line-height: $pagination-height;
+    height:  $pagination-height;
+  }
+  .active {
+     background: $inactive-background-color;
+  }
+  .switch{
+    color: $link;
+    &.disabled {
+      opacity: 0.5;
+    }
+      .icon-text{
+        font-size: $font-size-smaller;
+        display: block;
+      }
+      .icon {
+        @extend .caret;
+        font-size: $font-size-big;
+        font-weight: bolder;
+        line-height: 19px; //seems to align better
+      }
+
+    &.previous-page .icon {
+        @extend .left;
+      }
+
+    &.next-page .icon {
+        @extend .right;
+    }
+
+  }
+}
+//
+//.number, .switch, .skip {
+//  @include search-results-rounded-control;
+//  background-color: $inactive-background-color;
+//  text-align: center;
+//  margin: rem-calc(0 1px);
+//}
+//
+//.switch {
+//  //background: ;
+//  &.previous-page {
+//    margin: rem-calc(0 50 0 0);
+//    padding: 0;
+//  }
+//  &.next-page {
+//    margin: rem-calc(0 0 0 50);
+//    padding: 0;
+//  }
+//  &.disabled {
+//    background-color: $inactive-background-color;
+//    cursor: default;
+//  }
+//
+//  padding: 0;
+//  .icon-text {
+//    //@extend .aria-text;
+//  }
+//
+//  // Hide the text that is embedded and display an icon instead.
+//  .icon:before {
+//    width: $pagination-height;
+//    line-height: $pagination-height;
+//    white-space: nowrap;
+//    color: $white;
+//  }
+//}
+//
+//.previous-page {
+//  .icon:before {
+//    //@extend .icon-caret-left;
+//    margin-left: -2px;
+//  }
+//}
+//
+//.next-page {
+//  .icon:before {
+//    //@extend .icon-caret-right;
+//  }
+//}
+
+
+
+

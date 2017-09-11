@@ -39,18 +39,18 @@ import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
+import org.ambraproject.wombat.model.EmailMessage;
 import org.ambraproject.wombat.model.Reference;
-import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.DoiToJournalResolutionService;
-import org.ambraproject.wombat.model.EmailMessage;
+import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.ParseXmlService;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
@@ -212,7 +212,7 @@ public class ArticleController extends WombatController {
         .populate(request, model);
 
     try {
-      model.addAttribute("articleComments", commentService.getArticleComments(articleId));
+      model.addAttribute("articleComments", commentService.getArticleComments(articleId, site));
     } catch (UserApi.UserApiException e) {
       log.error(e.getMessage(), e);
       model.addAttribute("userApiError", e);
@@ -268,7 +268,7 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(commentDoi);
     Map<String, Object> comment;
     try {
-      comment = commentService.getComment(commentDoi);
+      comment = commentService.getComment(commentDoi, site);
     } catch (CommentService.CommentNotFoundException e) {
       throw new NotFoundException(e);
     } catch (UserApi.UserApiException e) {
@@ -342,7 +342,8 @@ public class ArticleController extends WombatController {
     ApiAddress address = ApiAddress.builder("articles").embedDoi(parentArticleDoi).addToken("comments").build();
 
     String authId = request.getRemoteUser();
-    ArticleComment comment = new ArticleComment(parentArticleDoi, userApi.getUserIdFromAuthId(authId),
+    final String creatorUserId = authId == null ? null : userApi.getUserIdFromAuthId(authId);
+    ArticleComment comment = new ArticleComment(parentArticleDoi, creatorUserId,
         parentCommentUri, commentTitle, commentBody, ciStatement);
 
     HttpResponse response = articleApi.postObject(address, comment);
@@ -366,7 +367,8 @@ public class ArticleController extends WombatController {
     }
 
     String authId = request.getRemoteUser();
-    ArticleCommentFlag flag = new ArticleCommentFlag(userApi.getUserIdFromAuthId(authId), flagCommentBody, reasonCode);
+    final String creatorUserId = authId == null ? null : userApi.getUserIdFromAuthId(authId);
+    ArticleCommentFlag flag = new ArticleCommentFlag(creatorUserId, flagCommentBody, reasonCode);
 
     Map<String, Object> comment = getComment(targetCommentDoi);
     String parentArticleDoi = getParentArticleDoiFromComment(comment);
@@ -560,7 +562,6 @@ public class ArticleController extends WombatController {
    * @param link  link pointing to media content relating to the article
    * @param name  name of the user submitting the media curation request
    * @param email email of the user submitting the media curation request
-   * @param site  current site
    * @return true if everything is ok
    */
 

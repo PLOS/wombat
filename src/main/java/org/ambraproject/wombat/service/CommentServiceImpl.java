@@ -24,6 +24,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -128,26 +129,31 @@ public class CommentServiceImpl implements CommentService {
   }
 
   @Override
-  public Map<String, Object> getComment(String commentDoi) throws IOException {
+  public Map<String, Object> getComment(String commentDoi, Site site) throws IOException {
     Map<String, Object> comment;
     try {
-      comment = articleApi.requestObject(ApiAddress.builder("comments").embedDoi(commentDoi).build(), Map.class);
+      final ApiAddress commentUrl = ApiAddress.builder("comments").embedDoi(commentDoi).build();
+      comment = articleApi.requestObject(commentUrl, Map.class);
     } catch (EntityNotFoundException enfe) {
       throw new CommentNotFoundException(commentDoi, enfe);
     }
 
     modifyCommentTree(comment, CommentFormatting::addFormattingFields);
-    addCreatorData(ImmutableList.of(comment));
+    if (site.getType() == null || !site.getType().equals("preprints")) {
+      addCreatorData(ImmutableList.of(comment));
+    }
     return comment;
   }
 
   @Override
-  public List<Map<String, Object>> getArticleComments(RequestedDoiVersion articleId) throws IOException {
-    List<Map<String, Object>> comments = articleApi.requestObject(
-        ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addToken("comments").build(),
-        List.class);
+  public List<Map<String, Object>> getArticleComments(RequestedDoiVersion articleId, Site site) throws IOException {
+    final ApiAddress commentsUrl = ApiAddress.builder("articles").embedDoi(articleId.getDoi())
+        .addToken("comments").build();
+    List<Map<String, Object>> comments = articleApi.requestObject(commentsUrl, List.class);
     comments.forEach(comment -> modifyCommentTree(comment, CommentFormatting::addFormattingFields));
-    addCreatorData(comments);
+    if (site.getType() == null || !site.getType().equals("preprints")) {
+      addCreatorData(comments);
+    }
     return comments;
   }
 

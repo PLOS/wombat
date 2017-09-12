@@ -16,12 +16,13 @@
     background-image: url("../../resource/img/#{$icon}");
     background-size: 32px 24px;
     background-repeat: no-repeat;
-
+    margin-bottom: 4px;
   }
   .icon+* {
     align-self: center;
     text-transform: uppercase;
     font-size: $font-size-smaller;
+    @extend .strong;
   }
 }
 

@@ -22,6 +22,7 @@ header {
 header .head-top {
   @extend .min-w100;
   background: $brand-separator;
+  height: 138px;
   .center{
     margin: $pad-large;
     @include flex-items-center;

@@ -117,9 +117,49 @@ main article {
 
       > div {
         margin-right: 2ch;
+        position: relative;
+      }
+
+    }
+  }
+
+  .share-options {
+    list-style-type: none;
+    background-color: $color-button-primary;
+    border-radius: $button-border-radius;
+
+    ul {
+      margin-bottom: 0px;
+
+      li {
+        list-style-position: outside; // firefox
+        list-style-type: none;
+        padding-left: $pad-small;
+        padding-right: $pad-large;
+        padding-top: $pad-xsmall;
+        padding-bottom: $pad-xsmall;
+
+        a {
+          color: $color-inverted;
+          text-decoration: none;
+          vertical-align: middle;
+          line-height: $font-size;
+          white-space: nowrap;
+
+          img {
+            width: 16px;
+            height: 16px;
+            margin-right: $pad-small;
+          }
+
+        }
+        &:hover {
+          background-color: $color-button-secondary;
+        }
       }
     }
   }
+
 
   .article-content-block {
     max-width: 720px;
@@ -160,6 +200,37 @@ main article {
           margin-right: 16px;
           background-size: 24px 24px;
           background-repeat: no-repeat;
+        }
+      }
+
+      .subjects {
+        > div {
+          width: 100%;
+
+          // flex box layout can be left-right with wrapping, cannot do top-down columns
+          -webkit-column-count: 2;
+          -moz-column-count: 2;
+          column-count: 2;
+
+          @include breakpoint(sm) {
+            -webkit-column-count: 1;
+            -moz-column-count: 1;
+            column-count: 1;
+          }
+
+          .subject {
+            text-align: center;
+            height: 36px;
+            line-height: 36px;
+
+            @include breakpoint(sm) {
+              width: 100%;
+            }
+
+            a {
+              text-decoration: none;
+            }
+          }
         }
       }
 

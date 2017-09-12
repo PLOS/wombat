@@ -68,4 +68,15 @@ $(document).ready(function () {
         console.log("clicked " + event.currentTarget.getAttribute("href"));
         window.open(event.currentTarget.getAttribute("href"));
     });
+
+    // show-more authors
+    $("#authors #authors-show-more").click(function() {
+        $("#authors > .authors-show-more").addClass("hide");
+        $("#authors > .on-show-more, #authors > .authors-show-less").removeClass("hide");
+    });
+    $("#authors #authors-show-less").click(function() {
+        $("#authors").collapse("closeAll");
+        $("#authors > .authors-show-more").removeClass("hide");
+        $("#authors > .on-show-more, #authors > .authors-show-less").addClass("hide");
+    });
 });

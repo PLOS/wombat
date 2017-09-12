@@ -106,12 +106,19 @@
         content: "\25be";
       }
     }
+    &:not(.active) {
+      margin-bottom: 4px;
+    }
   }
 
   .author-box {
     position: relative;
     font-size: $font-size-small;
-    margin-left: 36px;
+
+    margin-left: 5px; padding-left: 30px;
+    margin-bottom: 14px; padding-bottom: 14px;
+    margin-top: -15px; padding-top: 15px;
+    border-left: solid 2px; border-bottom: solid 2px;
 
     span.type {
       text-transform: uppercase;

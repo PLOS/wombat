@@ -63,6 +63,6 @@ public interface ArticleArchiveService {
    * @return list of articles published in a given year and month in a journal
    * @throws IOException
    */
-  public abstract Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month) throws IOException;
+  public abstract Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month) throws IOException, ParseException;
 
 }

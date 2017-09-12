@@ -130,3 +130,62 @@
   }
 }
 
+
+////////////
+//pagination controls
+
+///////////////
+
+$inactive-background-color: $brand-separator;
+$pagination-height: $pad-large;
+
+.nav-pagination {
+  @extend .row;
+  @extend .gutters;
+  @extend  .align-center;
+  a, span {
+    @extend .col;
+    text-align: center;
+    box-sizing: content-box;
+
+  }
+  .number {
+    width: $pagination-height;
+    line-height: $pagination-height;
+    height:  $pagination-height;
+  }
+  .active {
+     background: $inactive-background-color;
+  }
+  .switch{
+    color: $link;
+    &.disabled {
+      opacity: 0.5;
+    }
+      .icon-text{
+        font-size: $font-size-smaller;
+        display: block;
+      }
+      .icon {
+        @extend .caret;
+        font-size: $font-size-big;
+        font-weight: bolder;
+        line-height: 19px; //seems to align better
+      }
+
+    &.previous-page .icon {
+        @extend .left;
+      }
+
+    &.next-page .icon {
+        @extend .right;
+    }
+
+  }
+}
+
+
+
+
+
+

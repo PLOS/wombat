@@ -10,6 +10,11 @@ main article {
   @include flex-items-column;
   @include flex-items-nowrap;
 
+
+  h2 {
+    @extend .h3;
+  }
+
   .article-header-block {
     width: 100%;
 
@@ -123,8 +128,6 @@ main article {
   }
 
   .share-options {
-    opacity: 1;
-    z-index: 10;
     list-style-type: none;
     background-color: $color-button-primary;
     border-radius: $button-border-radius;

@@ -1,0 +1,40 @@
+
+///link styles
+
+a:hover, a:active{
+  color: $link-hover;
+}
+
+.link-title{
+  color: $brand-main;
+  &:hover, &:active{
+    color: $link-active
+  }
+}
+
+.link-text{
+  color: inherit !important;
+  text-decoration: none;
+  &:hover, &:active{
+    text-decoration: underline;
+    color: inherit !important;
+  }
+}
+
+// text-treatments
+
+//used for lists
+.light-type{
+  font-size: $font-size-smallish;
+  line-height: $font-size;
+  color: $color-silver;
+}
+
+//useful styles
+
+///DELETE: ITEM 4 &5
+
+.strong {
+  font-weight: 600 !important;
+}
+

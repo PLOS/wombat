@@ -19,14 +19,21 @@
   ~ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
   ~ DEALINGS IN THE SOFTWARE.
   -->
+<#assign title = article.title, articleDoi = article.doi />
+<#assign tabPage="Article"/>
 
-<#include "../baseTemplates/articleSection.ftl" />
-<#assign title = article.title />
-<#assign bodyId = 'page-figures' />
-<#assign mainId = "figures-content" />
-<#assign mainClass = "content" />
+<#assign adPage="Article"/>
 
-<@page_header />
-<#include "figureList.ftl" />
-<#include "../common/bottomMenu/bottomMenu.ftl" />
-<@page_footer />
+<#include "../common/head.ftl" />
+<#include "../common/journalStyle.ftl" />
+
+<body class="article ${journalStyle}">
+
+<#include "../common/header/headerContainer.ftl" />
+<div class="set-grid">
+  <section class="body-section">
+    <#include "backToArticleLink.ftl" />
+    <#include "figureList.ftl" />
+  </section>
+</div>
+<#include "../common/footer/footer.ftl" />

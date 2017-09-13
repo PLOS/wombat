@@ -41,7 +41,7 @@
 
   <section class="body-section">
 
-    <p><a class="back" href="<@siteLink handlerName="article" queryParameters={"id":article.doi} />" >< Back to Article</a></p>
+    <#include "backToArticleLink.ftl" />
 
     <h1 id="artTitle"><@xform xml=article.title/></h1>
 

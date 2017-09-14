@@ -23,6 +23,11 @@ header .head-top {
   @extend .min-w100;
   background: $brand-separator;
   height: 138px;
+  @include flex-items-center;
+  @include flex-items-middle;
+
+  .title {@extend .hide;}
+
   .center{
     margin: $pad-large;
     @include flex-items-center;
@@ -31,7 +36,9 @@ header .head-top {
 
 header nav {
   ul {
+    @include flex-items-middle;
     margin: $heading-margin-bottom 0 0 0;
+    border-bottom: 1px solid $color-border;
 
     a {
       text-decoration: none;
@@ -48,7 +55,6 @@ header nav {
     }
 
     li {
-      border-bottom: 1px solid $color-border;
       padding: $grid-gutter-small;
 
       &.logo {
@@ -78,12 +84,11 @@ header nav {
         }
 
         button {
-          background-color: $white;
           border: 1px solid $color-border;
-          border-radius: 0px;
+          background-color: transparent;
           @extend .hide-sm;
-          @extend .kube-search;
-          .search-icon {
+          @extend .icon-search;
+          span{
             @extend .hide;
           }
         }

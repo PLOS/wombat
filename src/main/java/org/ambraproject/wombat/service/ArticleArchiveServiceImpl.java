@@ -32,7 +32,6 @@ import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Map;
@@ -71,15 +70,16 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month) throws IOException {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
+  public Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month) throws IOException, ParseException {
     Calendar startDate = Calendar.getInstance();
-    startDate.set(Integer.parseInt(year), Arrays.asList(MONTHS).indexOf(month), 1);
+    startDate.setTime(new SimpleDateFormat("MMMM").parse(month));
+    startDate.set(Calendar.YEAR, Integer.parseInt(year));
+    startDate.set(Calendar.DAY_OF_MONTH, 1);
 
     Calendar endDate = (Calendar) startDate.clone();
     endDate.add(Calendar.MONTH, 1);
 
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     SolrSearchApiImpl.SolrExplicitDateRange dateRange = new SolrSearchApiImpl.SolrExplicitDateRange
         ("Monthly Search", dateFormat.format(startDate.getTime()), dateFormat.format(endDate.getTime()));
 

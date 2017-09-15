@@ -99,7 +99,7 @@ public class LockssController extends WombatController {
 
   @RequestMapping(name = "lockssArticles", value = "/lockss-manifest/vol_{year}/{month}", method = RequestMethod.GET)
   public String getArticlesPerMonth(@SiteParam Site site, @PathVariable String year,
-                                    @PathVariable String month, Model model) throws IOException {
+                                    @PathVariable String month, Model model) throws IOException, ParseException {
     Map<String, Map> searchResult = (Map<String, Map>) articleArchiveServiceImpl.getArticleDoisPerMonth(site,
         year, month);
     model.addAttribute("month", month);

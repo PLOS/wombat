@@ -46,10 +46,10 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULTS;
+
 public class RecentArticleServiceImpl implements RecentArticleService {
   private static final Logger log = LoggerFactory.getLogger(RecentArticleServiceImpl.class);
-
-  private static final int MAXIMUM_RESULTS = 1000;
 
   //todo: turn this field into a flag in homepage.yaml instead of treating as an article type.
   //The current usage of this wildcard behaves like so: If the specified article types does not meet
@@ -197,7 +197,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
       throws IOException {
     ArticleSearchQuery recentArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
-        .setRows(MAXIMUM_RESULTS)
+        .setRows(MAXIMUM_SOLR_RESULTS)
         .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setArticleTypes(ImmutableList.of(articleType))
         .setArticleTypesToExclude(articleTypesToExclude)
@@ -216,7 +216,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
       throws IOException {
     ArticleSearchQuery recentArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
-        .setRows(MAXIMUM_RESULTS)
+        .setRows(MAXIMUM_SOLR_RESULTS)
         .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setArticleTypesToExclude(articleTypesToExclude)
         .setDateRange(dateRange)

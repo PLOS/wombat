@@ -36,12 +36,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
+
+import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULTS;
 
 /**
  * Responsible for providing the publication year range, months and article DOIs published in a given year and month
@@ -97,14 +100,29 @@ public class LockssController extends WombatController {
     return site + "/ftl/lockss/months";
   }
 
-  @RequestMapping(name = "lockssArticles", value = "/lockss-manifest/vol_{year}/{month}", method = RequestMethod.GET)
+  @RequestMapping(name = "lockssArticles", value = "/lockss-manifest/vol_{year}/{month}",
+      method = RequestMethod.GET, params = {"cursor", "pageNumber"})
   public String getArticlesPerMonth(@SiteParam Site site, @PathVariable String year,
-                                    @PathVariable String month, Model model) throws IOException, ParseException {
-    Map<String, Map> searchResult = (Map<String, Map>) articleArchiveServiceImpl.getArticleDoisPerMonth(site,
-        year, month);
+                                    @PathVariable String month, @RequestParam String cursor,
+                                    @RequestParam String pageNumber, Model model)
+      throws IOException, ParseException {
+    Map<String, ?> searchResult = (Map<String, Map>) articleArchiveServiceImpl
+        .getArticleDoisPerMonth(site, year, month, cursor);
     model.addAttribute("month", month);
     model.addAttribute("year", year);
     model.addAttribute("searchResult", searchResult);
+    model.addAttribute("nextCursorMark", searchResult.get("nextCursorMark"));
+
+    int pageNumberCount = Integer.parseInt(pageNumber);
+    final int listStartNumber = pageNumberCount * MAXIMUM_SOLR_RESULTS + 1;
+    model.addAttribute("listStart", listStartNumber);
+
+    final boolean isLastPage = (Double) searchResult.get("numFound")
+        <= listStartNumber + MAXIMUM_SOLR_RESULTS;
+    model.addAttribute("showMoreLink", !isLastPage);
+
+    pageNumberCount = pageNumberCount + 1;
+    model.addAttribute("pageNumber", pageNumberCount);
 
     return site + "/ftl/lockss/dois";
   }

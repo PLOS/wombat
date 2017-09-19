@@ -83,6 +83,8 @@ public class ArticleSearchQuery {
   private final String startDate;
   private final String endDate;
 
+  private final Optional<String> cursor;
+
   private final ImmutableMap<String, String> rawParameters;
 
   private ArticleSearchQuery(Builder builder) {
@@ -106,6 +108,7 @@ public class ArticleSearchQuery {
     this.sections = ImmutableList.copyOf(builder.sections);
     this.startDate = builder.startDate;
     this.endDate = builder.endDate;
+    this.cursor = Optional.ofNullable(builder.cursor);
     this.dateRange = Optional.ofNullable(builder.dateRange);
     this.rawParameters = ImmutableMap.copyOf(builder.rawParameters);
   }
@@ -164,6 +167,8 @@ public class ArticleSearchQuery {
       params.add(new BasicNameValuePair("facet", "false"));
       params.add(new BasicNameValuePair("fl", ARTICLE_FIELDS));
     }
+
+    cursor.ifPresent(cursor -> params.add(new BasicNameValuePair("cursorMark", cursor)));
 
     setQueryFilters(params);
 
@@ -398,6 +403,7 @@ public class ArticleSearchQuery {
     builder.dateRange = this.dateRange.orElse(null);
     builder.authors = this.authors;
     builder.sections = this.sections;
+    builder.cursor = this.cursor.orElse(null);
     builder.rawParameters = this.rawParameters;
     return builder;
   }
@@ -431,6 +437,8 @@ public class ArticleSearchQuery {
 
     private String startDate;
     private String endDate;
+
+    private String cursor;
 
     private Map<String, String> rawParameters = ImmutableMap.of();
 
@@ -602,6 +610,11 @@ public class ArticleSearchQuery {
 
     public Builder setEndDate(String endDate) {
       this.endDate = endDate;
+      return this;
+    }
+
+    public Builder setCursor(String cursor) {
+      this.cursor = cursor;
       return this;
     }
 

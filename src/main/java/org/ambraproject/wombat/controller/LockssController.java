@@ -118,7 +118,7 @@ public class LockssController extends WombatController {
     model.addAttribute("listStart", listStartNumber);
 
     final boolean isLastPage = (Double) searchResult.get("numFound")
-        <= listStartNumber + MAXIMUM_SOLR_RESULTS;
+        < listStartNumber + MAXIMUM_SOLR_RESULTS;
     model.addAttribute("showMoreLink", !isLastPage);
 
     pageNumberCount = pageNumberCount + 1;

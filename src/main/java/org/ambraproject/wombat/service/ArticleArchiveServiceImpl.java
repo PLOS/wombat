@@ -36,6 +36,8 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Map;
 
+import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULTS;
+
 public class ArticleArchiveServiceImpl implements ArticleArchiveService {
 
   private static final ImmutableList<String> MONTHS = ImmutableList.copyOf(new DateFormatSymbols().getMonths());
@@ -70,7 +72,8 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month) throws IOException, ParseException {
+  public Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month,
+                                          String cursor) throws IOException, ParseException {
     Calendar startDate = Calendar.getInstance();
     startDate.setTime(new SimpleDateFormat("MMMM").parse(month));
     startDate.set(Calendar.YEAR, Integer.parseInt(year));
@@ -85,11 +88,14 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
 
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setJournalKeys(Collections.singletonList(site.getJournalKey()))
-        .setStart(0)
-        .setRows(1000000)
+        .setRows(MAXIMUM_SOLR_RESULTS)
         .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_OLDEST_FIRST)
-        .setDateRange(dateRange);
-    Map<String, Map> searchResult = (Map<String, Map>) solrSearchApi.search(query.build(), site);
+        .setDateRange(dateRange)
+        .setCursor(cursor)
+        .setForRawResults(true);
+    Map<String, Map> rawResult = (Map<String, Map>) solrSearchApi.search(query.build(), site);
+    Map<String, Map> searchResult = rawResult.get("response");
+    searchResult.put("nextCursorMark", rawResult.get("nextCursorMark"));
     return searchResult;
   }
 }

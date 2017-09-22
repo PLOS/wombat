@@ -11,9 +11,11 @@
 
   }
     p { margin-bottom: 4px;
-
-
     }
+
+  .search-results-authors{
+    @extend .strong;
+  }
   .search-results-title {
     .date {
       @extend .normal;
@@ -28,9 +30,24 @@
     padding-top: $pad-medium;
    margin-top: $pad-medium;
 
-   .search-results-authors{
-     @extend .strong;
-   }
+
  }
 }
 
+.results-number {
+  @extend .row;
+  @extend .auto;
+  div {
+    @extend .col;
+  }
+
+  .results {
+    font-size: $font-size-medium;
+  }
+
+  .query {
+    text-align: right;
+    color: $brand-separator;
+
+  }
+}

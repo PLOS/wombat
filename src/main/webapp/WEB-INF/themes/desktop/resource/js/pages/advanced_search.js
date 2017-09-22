@@ -70,6 +70,7 @@ var AdvancedSearch = {};
       this.containerSelector = containerSelector;
     }
 
+
     if ($(this.containerSelector).length === 0) {
       /* There is no container in which to initialize advanced search */
       return cb(new Error('Advanced Search: No valid container provided to initialize advanced search widget.'));

@@ -30,10 +30,9 @@
 <#include "../macro/searchResultsAlm.ftl" />
 
 <#include "../common/almQueryJs.ftl" />
-
+<#include "../common/almConfigJs.ftl" />
 
 <@js src="resource/js/util/class.js"/>
-<@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/components/pagination.js"/>
 <@js src="resource/js/components/range_datepicker.js"/>

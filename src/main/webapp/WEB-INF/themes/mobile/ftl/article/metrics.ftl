@@ -31,7 +31,8 @@
 <#include "metricsBody.ftl"/>
 
 <#include "../common/configJs.ftl" />
-<@js src="resource/js/util/alm_config.js"/>
+<#include "../common/almConfigJs.ftl" />
+
 <@js src="resource/js/components/table_open.js"/>
 <@js src="resource/js/components/tooltip_hover.js"/>
 <@js src="resource/js/vendor/hover-enhanced.js"/>

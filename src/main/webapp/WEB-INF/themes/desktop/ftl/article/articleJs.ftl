@@ -23,9 +23,10 @@
 <#include "articleData.ftl" />
 
 <#include "../common/almQueryJs.ftl" />
+<#include "../common/almConfigJs.ftl" />
+
 <@js src="resource/js/components/show_onscroll.js"/>
 
-<@js src="resource/js/util/alm_config.js"/>
 <@js src="resource/js/util/alm_query.js"/>
 
 <@js src="resource/js/components/twitter_module.js"/>

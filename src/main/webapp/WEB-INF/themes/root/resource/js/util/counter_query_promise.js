@@ -56,8 +56,11 @@ var CounterQuery;
     },
 
     validate: function (data) {
-      //todo: implement validation
-      return data;
+      // todo: implement actual response validation
+      return this.promise
+        .then(function () {
+          return data;
+        });
     }
 
   });
@@ -149,7 +152,7 @@ var CounterQuery;
         $.ajax({
           url: requestUrl,
           jsonp: 'callback',
-          dataType: 'xml',
+          dataType: 'json',
           timeout: 60000,
           success: function (response) {
             that.dataValidator.validate(response)

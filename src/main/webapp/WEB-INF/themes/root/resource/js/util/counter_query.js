@@ -55,7 +55,7 @@
     $.ajax({
       url: requestUrl,
       jsonp: 'callback',
-      dataType: 'xml',
+      dataType: 'json',
       timeout: 20000,
       success: function (response) {
         if(response.data.length > 0) {

@@ -121,12 +121,12 @@
      * Show the "report a concern" box beneath a reply, clearing the response box first if necessary.
      * @param replyId  the ID of the reply where the box should be shown
      */
-    this.showReportBox = function (replyId) {
+    this.showReportBox = function (replyId, callback) {
       var outer = this;
       this.showBox(replyId, 'respond', 'report', ['.btn_cancel', '.close_confirm'],
         function (box) {
           box.find('.btn_submit').click(function () {
-            outer.submitReport(replyId,$(this));
+            outer.submitReport(replyId,$(this), callback);
           });
         });
     };
@@ -139,7 +139,7 @@
      * Show the "respond to this posting" box beneath a reply, clearing the report box first if necessary.
      * @param replyId  the ID of the reply where the box should be shown
      */
-    this.showRespondBox = function (replyId, depth, eventElement) {
+    this.showRespondBox = function (replyId, depth, eventElement, callback) {
       var replyElement = getReplyElement(replyId);
       replyElement.data('depth', depth);
       var outer = this;
@@ -151,9 +151,19 @@
             // the first box, shift the Captcha form back so they won't be confused if there is a validation failure.
             shiftCaptchaFormTo(box);
 
-            outer.submitResponse(replyId, $(this));
+            if (callback) {
+              if (replyId == "0") { // TODO: hack for Aperta top level submitDiscussion
+                var articleDoi = replyElement.data("uri");
+                outer.submitDiscussion(articleDoi, eventElement, replyElement, callback);
+              } else {
+                outer.submitResponse(replyId, $(this), callback);
+              }
+            } else {
+              outer.submitResponse(replyId, $(this));
+            }
           });
-          box.find('[name="comment_title"]').attr("value", 'RE: ' + parentTitle);
+          
+          box.find('[name="comment_title"]').attr("value", parentTitle ? 'RE: ' + parentTitle : '');
           outer.wireCompetingInterestRadioButtons(box);
 
           shiftCaptchaFormTo(box);
@@ -199,14 +209,20 @@
      * Submit a top-level response to an article over Ajax and show the result.
      * @param articleDoi the DOI of the article to which the user is responding
      */
-    this.submitDiscussion = function (articleDoi, eventElement) {
-      var replyElement = $('.reply');
+    this.submitDiscussion = function (articleDoi, eventElement, replyElement, callback) {
+      if (!replyElement) {
+          replyElement = $('.reply');
+      }
       var commentData = getCommentData(replyElement);
       commentData.target = articleDoi;
 
       var listThreadURL = this.addresses.listThreadURL; // make available in the local scope
       var submittedCallback = function (data) {
-        window.location = listThreadURL + '?id=' + data.createdCommentUri;
+        if (callback) {
+          callback(data, articleDoi);
+        } else {
+          window.location = listThreadURL + '?id=' + data.createdCommentUri;
+        }
       };
       submit(replyElement, $('.error'), this.addresses.submitDiscussionURL, commentData, submittedCallback, eventElement);
     };
@@ -215,25 +231,29 @@
      * Submit the response data from a reply's response box and show the result. Talks to the server over Ajax.
      * @param parentId  the ID of the existing reply, to which the user is responding
      */
-    this.submitResponse = function (parentId, eventElement) {
+    this.submitResponse = function (parentId, eventElement, callback) {
       var replyElement = getReplyElement(parentId);
       var commentData = getCommentData(replyElement);
       commentData.inReplyTo = replyElement.data('uri');
 
       var outer = this;
       var submittedCallback = function (data) {
-        // Reload the page so the user can see their comment
-        location.reload(true);
-        return; // TODO: Instead insert the comment into the page without a refresh
-        var annotationUrl = null; // outer.addresses.getAnnotationURL; TODO: Set up with Ajax endpoint
+        if (callback) {
+          callback(data, parentId);
+        } else {
+          // Reload the page so the user can see their comment
+          location.reload(true);
+          return; // TODO: Instead insert the comment into the page without a refresh
+          var annotationUrl = null; // outer.addresses.getAnnotationURL; TODO: Set up with Ajax endpoint
 
-        // Make a second Ajax request to get the new comment (we need its back-end representation)
+          // Make a second Ajax request to get the new comment (we need its back-end representation)
 
-        sendAjaxRequest(annotationUrl, {annotationId: data.replyId},
-            function (data, textStatus, jqXHR) {
-              // Got the new comment; now add the content to the page
-              outer.putComment(parentId, data.annotationId, data.annotation);
-            });
+          sendAjaxRequest(annotationUrl, {annotationId: data.replyId},
+              function (data, textStatus, jqXHR) {
+                  // Got the new comment; now add the content to the page
+                  outer.putComment(parentId, data.annotationId, data.annotation);
+              });
+        }
       };
       var errorMsgElement = replyElement.find('.subresponse .error');
       submit(replyElement, errorMsgElement, this.addresses.submitReplyURL, commentData, submittedCallback, eventElement);
@@ -243,7 +263,7 @@
      * Submit a report (flag) from a reply's "report a concern" button and show the result.
      * @param replyId  the ID of the reply being flagged
      */
-    this.submitReport = function (replyId, eventElement) {
+    this.submitReport = function (replyId, eventElement, callback) {
       var reply = getReplyElement(replyId);
       var data = {
         target: reply.data('uri'),
@@ -255,6 +275,9 @@
       var submittedCallback = function (data) {
         reportDialog.find('.flagForm').hide();
         animatedShow(reportDialog.find('.flagConfirm'));
+        if (callback) {
+          callback(data, replyId);
+        }
       };
       submit(reply, errorMsgElement, this.addresses.submitFlagURL, data, submittedCallback, eventElement);
     };

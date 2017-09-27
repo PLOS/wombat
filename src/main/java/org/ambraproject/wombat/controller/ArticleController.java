@@ -314,8 +314,8 @@ public class ArticleController extends WombatController {
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
                                   @RequestParam(value = "inReplyTo", required = false) String parentCommentUri,
-                                  @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
-                                  @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
+                                  @RequestParam(value = RECAPTCHA_CHALLENGE_FIELD, required=false) String captchaChallenge,
+                                  @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required=false) String captchaResponse)
       throws IOException {
     checkCommentsAreEnabled();
 
@@ -325,7 +325,10 @@ public class ArticleController extends WombatController {
     if (validationErrors.isEmpty()) {
       // Submit Captcha for validation only if there are no other errors.
       // Otherwise, the user's valid Captcha response would be wasted when they resubmit the comment.
-      if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
+
+      // Allow missing recaptcha for ApertaRxiv. TODO: Is there a better way instead of using journalKey?
+      if (!"ApertaRxiv".equalsIgnoreCase(site.getJournalKey())
+          && !captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
         validationErrors.put("captchaValidationFailure", true);
       }
     }

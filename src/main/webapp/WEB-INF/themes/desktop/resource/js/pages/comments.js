@@ -409,7 +409,9 @@
     function getCommentData(replyElement) {
       var data = {
         commentTitle: replyElement.find('[name="comment_title"]').val(),
-        comment: replyElement.find('[name="comment"]').val()
+        comment: replyElement.find('[name="comment"]').val(),
+        authorEmailAddress: replyElement.find('[name="author_email_address"]').val(),
+        authorName: replyElement.find('[name="author_name"]').val()
       };
 
       var ciRadio = replyElement.find('input:radio[name="competing"]:checked');
@@ -457,6 +459,8 @@
 
       comment.find('.response_title').text(childReply.title);
       comment.find('.response_body').html(childReply.body);
+      comment.find('.response_author_email_address').text(childReply.authorEmailAddress);
+      comment.find('.response_author_name').text(childReply.authorName);
 
       var authorLink = comment.find('a.replyCreator');
       authorLink.text(childReply.creatorDisplayName);

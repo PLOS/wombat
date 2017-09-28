@@ -77,6 +77,126 @@
   }
 }
 
+@mixin comment-component {
+
+  .response {
+    position: relative;
+
+    &.comment-toggle {
+      &:before {
+        position: relative;
+        content: "\2023";
+        display: inline-block;
+        width: 32px;
+        left: 0px;
+        font-size: 1.2rem;
+      }
+      &.active {
+        font-weight: bold;
+        &:before {
+          content: "\25be";
+        }
+      }
+      &:not(.active) {
+        margin-bottom: 4px;
+      }
+    }
+
+    .arrow {
+      display: inline-block;
+      font-size: 18px;
+      vertical-align: middle;
+      margin-right: 14px;
+      transform: scaleX(-1);
+
+      &:after {
+        content: "\21b5";
+      }
+    }
+
+    .response_title {
+      font-size: 16px;
+      line-height: 17px;
+      color: #2a2e38;
+      font-weight: normal;
+
+      &.active {
+        font-weight: bold;
+      }
+    }
+
+    .response_timestamp {
+      font-size: 13px;
+      line-height: 24px;
+      font-style: italic;
+      color: #9b9b9b;
+      font-weight: normal;
+      display: block;
+      margin-left: 36px;
+    }
+  }
+
+  .response_content {
+    position: relative;
+    font-size: $font-size-small;
+
+    &.comment-box {
+      margin-left: 5px;
+      padding-left: 30px;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      margin-top: -38px;
+      padding-top: 50px;
+      border-left: solid 2px;
+      border-bottom: solid 2px;
+    }
+    &:not(.comment-box) {
+      margin-top: 1.5ch;
+    }
+
+    span.type {
+      text-transform: uppercase;
+      display: block; margin-top: 1ch;
+    }
+    p {
+      margin-bottom: 1ch;
+    }
+
+    .competing_interests {
+      margin-top: 1.5ch;
+      margin-bottom: 1.5ch;
+    }
+
+    .toolbar {
+      @include flex;
+      @include flex-items-row;
+      @include flex-items-space-between;
+
+      a {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    .flagConfirm {
+      margin-top: 1.5ch;
+    }
+
+    .replies {
+      margin-top: 2ch;
+
+      &[count="0"] {
+        display: none;
+      }
+
+      > dd {
+        margin-left: 35px;
+      }
+    }
+  }
+}
+
+
 @mixin author-component {
 
   .author-toggle {

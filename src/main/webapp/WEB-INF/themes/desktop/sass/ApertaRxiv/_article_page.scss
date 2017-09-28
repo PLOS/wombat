@@ -244,6 +244,8 @@ main article {
       }
 
       .comments {
+        @include comment-component;
+
         a.inactive {
           color: $brand-separator;
         }

@@ -310,6 +310,8 @@ public class ArticleController extends WombatController {
                                   @SiteParam Site site,
                                   @RequestParam("commentTitle") String commentTitle,
                                   @RequestParam("comment") String commentBody,
+                                  @RequestParam("authorEmailAddress") String authorEmailAddress,
+                                  @RequestParam("authorName") String authorName,
                                   @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
@@ -347,7 +349,7 @@ public class ArticleController extends WombatController {
     String authId = request.getRemoteUser();
     final String creatorUserId = authId == null ? null : userApi.getUserIdFromAuthId(authId);
     ArticleComment comment = new ArticleComment(parentArticleDoi, creatorUserId,
-        parentCommentUri, commentTitle, commentBody, ciStatement);
+        parentCommentUri, commentTitle, commentBody, ciStatement, authorEmailAddress, authorName);
 
     HttpResponse response = articleApi.postObject(address, comment);
     String responseJson = EntityUtils.toString(response.getEntity());

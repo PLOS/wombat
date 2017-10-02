@@ -42,7 +42,10 @@
   @if ($responsive: true) {
     @include breakpoint(sm) {
       background-size: $sml-size;
+      width: 32px;
+      height: 24px;
     }
+
   }
 }
 

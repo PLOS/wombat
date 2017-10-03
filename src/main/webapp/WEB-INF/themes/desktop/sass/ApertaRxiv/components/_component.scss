@@ -62,6 +62,7 @@
     width: calc(100% - 128px);
     left: 134px;
     top: 3px;
+    min-height: 37px; // to avoid bouncing in kube slideDown animation which starts height from 0.
 
     @include breakpoint(md) {
       max-width: 592px;

@@ -224,7 +224,7 @@
     }
     &.active {
       font-weight: bold;
-      z-index: 70; // TODO: this gives undefined $zindex: map-get($zindex, topvisible);
+      zindex: map-get($zindex, topvisible);
 
       &:before {
         content: "\25be";

@@ -202,6 +202,7 @@
 
   .author-toggle {
     position: relative;
+    cursor: pointer;
 
     span.email {
       position: relative;
@@ -223,6 +224,8 @@
     }
     &.active {
       font-weight: bold;
+      z-index: 70; // TODO: this gives undefined $zindex: map-get($zindex, topvisible);
+
       &:before {
         content: "\25be";
       }
@@ -240,6 +243,7 @@
     margin-bottom: 14px; padding-bottom: 14px;
     margin-top: -15px; padding-top: 15px;
     border-left: solid 2px; border-bottom: solid 2px;
+    min-height: 5px;
 
     span.type {
       text-transform: uppercase;

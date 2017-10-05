@@ -186,6 +186,10 @@ main article {
       .article-authors {
         @include author-component;
 
+        .authors-show-more, .authors-show-less {
+          cursor: pointer;
+        }
+
         .author-corresponding span.email {
           display: none; visibility: hidden;
         }

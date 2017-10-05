@@ -34,9 +34,16 @@
  }
 }
 
+.search-results-select{
+  select {
+    @extend .small;
+  }
+}
+
 .results-number {
   @extend .row;
   @extend .auto;
+  margin-bottom: $pad-medium;
   div {
     @extend .col;
   }

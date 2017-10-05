@@ -223,9 +223,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
       http.addFilter(casAuthenticationFilter())
           .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
           .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
-          .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
-          .and().authorizeRequests().antMatchers(NEW_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
-          .and().authorizeRequests().antMatchers(FLAG_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
+          .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
       http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
       http.csrf().disable();
     }

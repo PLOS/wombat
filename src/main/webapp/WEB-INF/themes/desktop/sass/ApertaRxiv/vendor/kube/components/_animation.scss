@@ -86,7 +86,7 @@
 .slideOutUp    { animation: slideOutUp 500ms; }
 
 .slideUp       { overflow: hidden; animation: slideUp 200ms ease-in-out; }
-.slideDown     { overflow: hidden; animation: slideDown 80ms ease-in-out; }
+.slideDown     { overflow: hidden; animation: slideDown 200ms ease-in-out; }
 
 .flipIn        { animation: flipIn 250ms cubic-bezier(0.5, -0.5, 0.5, 1.5) }
 .flipOut       { animation: flipOut 500ms cubic-bezier(0.5, -0.5, 0.5, 1.5) }

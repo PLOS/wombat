@@ -277,3 +277,13 @@ $input-border-radius: 0px !default;
 // OVERLAY
 // ---------------------------------------------------------------------------
 $overlay-background-color: rgba(#fff, .95);
+
+$zindex: (
+    modal : 90,
+    overlay : 80,
+    topvisible: 70,
+    dropdown : 68,
+    header : 60,
+    footer : 50,
+    invisible : -1,
+);

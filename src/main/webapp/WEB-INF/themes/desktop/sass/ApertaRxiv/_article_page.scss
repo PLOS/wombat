@@ -217,6 +217,73 @@ main article {
         }
       }
 
+      .metrics {
+        @include breakpoint(0,$md) {
+          text-align: center;
+        }
+
+        > .alm-info {
+
+          display: inline-block;
+          min-height: 68px;
+
+          &.query-pending {
+            background-image: url("../../resource/img/blocks.svg");
+            background-size: 68px 68px;
+            background-repeat: no-repeat;
+            width: 68px;
+
+            > * {
+              visibility: hidden;
+            }
+          }
+          > .counters {
+            display: table;
+            border-spacing: 10px;
+
+            > div {
+              display: table-row;
+
+              > * {
+                display: table-cell;
+              }
+
+              > h1 {
+                font-weight: normal;
+                text-align: right;
+              }
+              > div {
+                text-align: left;
+              }
+            }
+
+            @include breakpoint(0, $md) {
+              @include flex;
+              @include flex-items-column;
+
+              > div {
+                @include flex;
+                @include flex-items-column;
+
+                > h1 {
+                  text-align: center;
+                  margin-bottom: 0;
+                }
+                > div {
+                  text-align: center;
+                  margin-bottom: 10px;
+                }
+              }
+            }
+          }
+
+          &:not(.query-error) > .counter-error, &.query-error > .counters {
+            display: none;
+            visibility: hidden;
+          }
+        }
+      }
+
       .subjects {
         > div {
           width: 100%;

@@ -10,9 +10,9 @@
     position: relative;
     border-top: solid 1px $color-border;
     margin-bottom: 0;
-    line-height: 30px;
-    padding-top: $pad-xxsmall;
-    padding-bottom: $pad-xxsmall;
+    line-height: 37px;
+    padding-top: $pad-xsmall;
+    padding-bottom: $pad-small;
     font-weight: bold;
 
     @include breakpoint(0, $md) {
@@ -70,6 +70,7 @@
     }
 
     @include breakpoint(0,$md) {
+      min-height: 0px;
       width: 100%;
       left: 0px;
       padding-top: calc(48px - 2ch);
@@ -244,6 +245,10 @@
     margin-top: -15px; padding-top: 15px;
     border-left: solid 2px; border-bottom: solid 2px;
     min-height: 5px;
+
+    @include breakpoint(0, $md) {
+      min-height: 0px;
+    }
 
     span.type {
       text-transform: uppercase;

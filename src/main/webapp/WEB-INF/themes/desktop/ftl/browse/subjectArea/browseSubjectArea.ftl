@@ -197,8 +197,8 @@
 <@js src="resource/js/vendor/jquery.jsonp-2.4.0.js" />
 
 <#include "subjectAreaJs.ftl" />
+<#include "../../common/almConfigJs.ftl" />
 
-<@js src="resource/js/util/alm_config.js" />
 <@js src="resource/js/util/alm_query.js"/>
 <@js src="resource/js/components/search_results_alm.js"/>
 <@js src="resource/js/components/tooltip_hover.js"/>

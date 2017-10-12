@@ -19,24 +19,21 @@
   ~ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
   ~ DEALINGS IN THE SOFTWARE.
   -->
+<#assign title = article.title, articleDoi = article.doi />
+<#assign tabPage="Article"/>
 
-<#include "../baseTemplates/articleSection.ftl" />
-<#assign articleDoi = article.doi />
-<#assign title = article.title />
-<#assign bodyId = 'page-authors' />
-<#assign cssFile = 'metrics.css' />
-<#assign mainId = "pjax-container" />
+<#assign adPage="Article"/>
 
-<@page_header />
-<#include "metricsBody.ftl"/>
+<#include "../common/head.ftl" />
+<#include "../common/journalStyle.ftl" />
 
-<#include "../common/configJs.ftl" />
-<#include "../common/almConfigJs.ftl" />
+<body class="article ${journalStyle}">
 
-<@js src="resource/js/components/table_open.js"/>
-<@js src="resource/js/components/tooltip_hover.js"/>
-<@js src="resource/js/vendor/hover-enhanced.js"/>
-<@js src="resource/js/highcharts.js"/>
-<#include "articleData.ftl" />
-<#include "metricsJs.ftl" />
-<@page_footer />
+<#include "../common/header/headerContainer.ftl" />
+<div class="set-grid">
+  <section class="body-section">
+    <#include "backToArticleLink.ftl" />
+    <#include "figureList.ftl" />
+  </section>
+</div>
+<#include "../common/footer/footer.ftl" />

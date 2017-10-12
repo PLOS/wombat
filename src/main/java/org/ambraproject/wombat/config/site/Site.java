@@ -80,6 +80,10 @@ public class Site {
     return journalName;
   }
 
+  public boolean isPreprints() {
+    return getType() != null && getType().equals("preprints");
+  }
+
   public String getJournalName() {
     return journalName;
   }

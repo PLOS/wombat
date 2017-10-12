@@ -59,10 +59,12 @@ public interface ArticleArchiveService {
    * @param site specifies the name of the journal
    * @param year specifies the year
    * @param month specifies the month
+   * @param cursor cursor mark provided for paging solr
    *
    * @return list of articles published in a given year and month in a journal
    * @throws IOException
    */
-  public abstract Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month) throws IOException;
+  public abstract Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month,
+                                                   String cursor) throws IOException, ParseException;
 
 }

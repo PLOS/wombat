@@ -30,14 +30,19 @@ public class ArticleComment {
   private String title;
   private String body;
   private String competingInterestStatement;
+  private String authorEmailAddress;
+  private String authorName;
 
-  public ArticleComment(String articleDoi, String creatorUserId, String parentCommentId, String title,
-      String body, String competingInterestStatement) {
+  public ArticleComment(String articleDoi, String creatorUserId, String parentCommentId,
+                        String title, String body, String competingInterestStatement,
+                        String authorEmailAddress, String authorName) {
     this.articleDoi = articleDoi;
     this.creatorUserId = creatorUserId;
     this.parentCommentId = parentCommentId;
     this.title = title;
     this.body = body;
     this.competingInterestStatement = competingInterestStatement;
+    this.authorEmailAddress = authorEmailAddress;
+    this.authorName = authorName;
   }
 }

@@ -32,10 +32,12 @@ $grid-gutter-small: $grid-gutter /2 !default;
 // VERTICAL GRID
 // ---------------------------------------------------------------------------
 
-$pad-large: $grid-gutter;
-$pad-small: $grid-gutter / 3;
-$pad-medium: $pad-small * 2;
-
+$pad-xlarge: $grid-gutter * 1.5; //36
+$pad-large: $grid-gutter; //24px
+$pad-small: $grid-gutter / 3; //8px
+$pad-medium: $pad-small * 2; //16px
+$pad-xsmall: $pad-small / 2;
+$pad-xxsmall: $grid-gutter / 8;
 
 
 
@@ -95,7 +97,7 @@ $color-darkgray: #313439 !default;
 $color-midgray: #676b72 !default;
 $color-gray: $brand-separator !default;
 $color-lightgray: #d4d4d4 !default;
-$color-silver: #e0e1e1 !default;
+$color-silver: #4A4A4A !default;
 $color-aluminum: #f8f8f8 !default;
 
 // border
@@ -107,6 +109,7 @@ $color-border: $brand-separator !default;
 // Font Size
 $font-size: 16px !default;
 $font-size-smaller: 9px !default;
+$font-size-smallish: 11px !default;
 $font-size-small: 13px !default;
 $font-size-medium: 20px !default;
 $font-size-big: 24px !default;
@@ -125,7 +128,7 @@ $base-line-header: 1.315 !default;
 $base-line-smaller: $base-line !default;
 $base-line-small: $base-line !default;
 $base-line-big: $base-line-header !default;
-$base-line-large: $base-line-header !default;
+$base-line-large: 36px !default;
 
 
 
@@ -141,8 +144,8 @@ $text-margin-bottom: $font-size * 1.5!default;
 $heading-font-size-title: $font-size-large !default;
 $heading-font-size-1: $font-size-large !default;
 $heading-font-size-2: $font-size-big !default;
-$heading-font-size-3: 21px !default;
-$heading-font-size-4: 16px !default;
+$heading-font-size-3: $font-size-medium !default;
+$heading-font-size-4: $font-size !default;
 $heading-font-size-5: $font-size-small !default;
 $heading-font-size-6: $font-size-smaller !default;
 
@@ -150,7 +153,7 @@ $heading-font-size-6: $font-size-smaller !default;
 $heading-base-line-title: $base-line-header !default;
 $heading-base-line-1: $base-line-header !default;
 $heading-base-line-2: $base-line-header !default;
-$heading-base-line-3: $base-line-header !default;
+$heading-base-line-3: $base-line-large !default;
 $heading-base-line-4: $base-line-header !default;
 $heading-base-line-5: $base-line-header !default;
 $heading-base-line-6: $base-line-header !default;
@@ -196,9 +199,12 @@ $button-base-line: 20px !default;
 
 // Height
 $button-height: 40px !default;
+$button-height-tiny: 24px !default;
 $button-height-small: 36px !default;
 $button-height-big: 48px !default;
 $button-height-large: 56px !default;
+
+$button-width-tiny: 32px !default;
 
 // Padding
 $button-padding-tb: 8px !default;
@@ -271,3 +277,13 @@ $input-border-radius: 0px !default;
 // OVERLAY
 // ---------------------------------------------------------------------------
 $overlay-background-color: rgba(#fff, .95);
+
+$zindex: (
+    modal : 90,
+    overlay : 80,
+    topvisible: 70,
+    dropdown : 68,
+    header : 60,
+    footer : 50,
+    invisible : -1,
+);

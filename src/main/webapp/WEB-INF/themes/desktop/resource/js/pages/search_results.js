@@ -477,7 +477,7 @@ var SearchResult;
         method: 'GET',
         jsonp: 'callback',
         dataType: 'json',
-        timeout: 10000,
+        timeout: 20000,
         success: function (response) {
           that.$resultListEl.html('');
           if (response.cannotParseQueryError) {

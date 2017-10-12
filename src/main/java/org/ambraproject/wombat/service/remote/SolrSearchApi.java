@@ -38,6 +38,8 @@ import java.util.Objects;
  */
 public interface SolrSearchApi {
 
+  public static final int MAXIMUM_SOLR_RESULTS = 1000;
+
   /**
    * Type representing some restriction on the desired search results--for instance, a date range, or a sort order.
    * Implementations of SearchService should also provide appropriate implementations of this interface.

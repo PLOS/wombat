@@ -1,0 +1,36 @@
+@import "ApertaRxiv/components/global-library-imports";
+// for article
+
+.searchResults{
+    //font-sizes
+  dt .date, dd{
+    @extend .light-type;
+    a{
+      @extend .link-text;
+    }
+
+  }
+    p { margin-bottom: 4px;
+
+
+    }
+  .search-results-title {
+    .date {
+      @extend .normal;
+
+    }
+    a {@extend .link-title;
+    }
+  }
+
+ dt{
+   border-top: 0.5px solid $color-border;
+    padding-top: $pad-medium;
+   margin-top: $pad-medium;
+
+   .search-results-authors{
+     @extend .strong;
+   }
+ }
+}
+

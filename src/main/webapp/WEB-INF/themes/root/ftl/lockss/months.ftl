@@ -33,7 +33,9 @@
       <ul>
         <#list months as month>
           <#if month?has_content>
-            <li><a href="<@siteLink path="lockss-manifest/vol_" + year + "/" + month />"> ${month} </a></li>
+            <li>
+              <a href="<@siteLink path="lockss-manifest/vol_" + year + "/" + month + "?cursor=*&pageNumber=0" />"> ${month} </a>
+            </li>
           </#if>
         </#list>
       </ul>

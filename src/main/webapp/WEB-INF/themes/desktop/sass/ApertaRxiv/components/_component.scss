@@ -1,36 +1,5 @@
 
 /*
- * Collapse/expand button
- */
-@mixin collapse-expand-button($size: 20px) {
-  &:after {
-    position: relative;
-    content: "+";
-    top: 12px;
-    width: 20px;
-    height: 20px;
-    font-size: 16px;
-    line-height: 20px;
-    text-align: center;
-    float: right;
-    color: #ffffff;
-    background-color: $brand-main;
-    cursor: pointer;
-    z-index: 1;
-
-    @include breakpoint(0, $md) {
-      display: none;
-      visibility: hidden;
-    }
-  }
-  &.active:after {
-    content: "\2715";
-    background-color: $brand-accent;
-    font-size: 12px;
-  }
-}
-
-/*
  * section-component included within a collapse box.
  * It assumes h2.section-toggle as clickable header, and .section-box as body
  * for each collapsable item.
@@ -41,7 +10,9 @@
     position: relative;
     border-top: solid 1px $color-border;
     margin-bottom: 0;
-    line-height: 46px;
+    line-height: 30px;
+    padding-top: $pad-xxsmall;
+    padding-bottom: $pad-xxsmall;
     font-weight: bold;
 
     @include breakpoint(0, $md) {
@@ -51,7 +22,10 @@
       font-size: $font-size-medium;
     }
 
-    @include collapse-expand-button;
+    &:hover {
+      color: $link-hover;
+      cursor: pointer;
+    }
 
     &.active {
       height: 0px;
@@ -87,7 +61,8 @@
 
     width: calc(100% - 128px);
     left: 134px;
-    top: 1.5ch;
+    top: 3px;
+    min-height: 37px; // to avoid bouncing in kube slideDown animation which starts height from 0.
 
     @include breakpoint(md) {
       max-width: 592px;
@@ -97,23 +72,147 @@
     @include breakpoint(0,$md) {
       width: 100%;
       left: 0px;
-      top: calc(48px - 2ch);
-      padding-bottom: 3ch;
+      padding-top: calc(48px - 2ch);
+      padding-bottom: 1ch;
     }
   }
 }
+
+@mixin comment-component {
+
+  .response {
+    position: relative;
+
+    &.comment-toggle {
+      &:before {
+        position: relative;
+        content: "\2023";
+        display: inline-block;
+        width: 32px;
+        left: 0px;
+        font-size: 1.2rem;
+      }
+      &.active {
+        font-weight: bold;
+        &:before {
+          content: "\25be";
+        }
+      }
+      &:not(.active) {
+        margin-bottom: 4px;
+      }
+    }
+
+    .arrow {
+      display: inline-block;
+      font-size: 18px;
+      vertical-align: middle;
+      margin-right: 14px;
+      transform: scaleX(-1);
+
+      &:after {
+        content: "\21b5";
+      }
+    }
+
+    .response_title {
+      font-size: 16px;
+      line-height: 17px;
+      color: #2a2e38;
+      font-weight: normal;
+
+      &.active {
+        font-weight: bold;
+      }
+    }
+
+    .response_timestamp {
+      font-size: 13px;
+      line-height: 24px;
+      font-style: italic;
+      color: #9b9b9b;
+      font-weight: normal;
+      display: block;
+      margin-left: 36px;
+    }
+  }
+
+  .response_content {
+    position: relative;
+    font-size: $font-size-small;
+
+    &.comment-box {
+      margin-left: 5px;
+      padding-left: 30px;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      margin-top: -38px;
+      padding-top: 50px;
+      border-left: solid 2px;
+      border-bottom: solid 2px;
+    }
+    &:not(.comment-box) {
+      margin-top: 1.5ch;
+    }
+
+    span.type {
+      text-transform: uppercase;
+      display: block; margin-top: 1ch;
+    }
+    p {
+      margin-bottom: 1ch;
+    }
+
+    .competing_interests {
+      margin-top: 1.5ch;
+      margin-bottom: 1.5ch;
+    }
+
+    .toolbar {
+      @include flex;
+      @include flex-items-row;
+      @include flex-items-space-between;
+
+      a {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    .flagConfirm {
+      margin-top: 1.5ch;
+    }
+
+    .replies {
+      margin-top: 2ch;
+
+      &[count="0"] {
+        display: none;
+      }
+
+      > dd {
+        margin-left: 35px;
+      }
+    }
+  }
+}
+
 
 @mixin author-component {
 
   .author-toggle {
     position: relative;
+    cursor: pointer;
 
     span.email {
+      position: relative;
       margin-left: 1ch;
-    }
-    span.email:after {
-      content: "\2709";
-      color: #c45703;
+      display: inline-block;
+      top: 4px;
+      height: 20px;
+      width: 20px;
+      background-image: url("../../resource/img/correspond_icon.svg");
+      background-size: 20px 20px;
     }
     &:before {
       position: relative;
@@ -125,16 +224,26 @@
     }
     &.active {
       font-weight: bold;
+      zindex: map-get($zindex, topvisible);
+
       &:before {
         content: "\25be";
       }
+    }
+    &:not(.active) {
+      margin-bottom: 4px;
     }
   }
 
   .author-box {
     position: relative;
     font-size: $font-size-small;
-    margin-left: 36px;
+
+    margin-left: 5px; padding-left: 30px;
+    margin-bottom: 14px; padding-bottom: 14px;
+    margin-top: -15px; padding-top: 15px;
+    border-left: solid 2px; border-bottom: solid 2px;
+    min-height: 5px;
 
     span.type {
       text-transform: uppercase;
@@ -145,3 +254,63 @@
     }
   }
 }
+
+
+////////////
+//pagination controls
+
+///////////////
+
+$inactive-background-color: $brand-separator;
+$pagination-height: $pad-large;
+
+.nav-pagination {
+  @extend .row;
+  @extend .gutters;
+  @extend  .align-center;
+  a, span {
+    @extend .col;
+    text-align: center;
+    box-sizing: content-box;
+
+  }
+  .number {
+    width: $pagination-height;
+    line-height: $pagination-height;
+    height:  $pagination-height;
+  }
+  .active {
+     background: $inactive-background-color;
+  }
+  .switch{
+    color: $link;
+    &.disabled {
+      opacity: 0.5;
+    }
+      .icon-text{
+        font-size: $font-size-smaller;
+        display: block;
+      }
+      .icon {
+        @extend .caret;
+        font-size: $font-size-big;
+        font-weight: bolder;
+        line-height: 19px; //seems to align better
+      }
+
+    &.previous-page .icon {
+        @extend .left;
+      }
+
+    &.next-page .icon {
+        @extend .right;
+    }
+
+  }
+}
+
+
+
+
+
+

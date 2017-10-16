@@ -62,6 +62,7 @@
     width: calc(100% - 128px);
     left: 134px;
     top: 3px;
+    min-height: 37px; // to avoid bouncing in kube slideDown animation which starts height from 0.
 
     @include breakpoint(md) {
       max-width: 592px;
@@ -201,6 +202,7 @@
 
   .author-toggle {
     position: relative;
+    cursor: pointer;
 
     span.email {
       position: relative;
@@ -222,6 +224,8 @@
     }
     &.active {
       font-weight: bold;
+      zindex: map-get($zindex, topvisible);
+
       &:before {
         content: "\25be";
       }
@@ -239,6 +243,7 @@
     margin-bottom: 14px; padding-bottom: 14px;
     margin-top: -15px; padding-top: 15px;
     border-left: solid 2px; border-bottom: solid 2px;
+    min-height: 5px;
 
     span.type {
       text-transform: uppercase;

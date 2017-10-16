@@ -199,9 +199,12 @@ $button-base-line: 20px !default;
 
 // Height
 $button-height: 40px !default;
+$button-height-tiny: 24px !default;
 $button-height-small: 36px !default;
 $button-height-big: 48px !default;
 $button-height-large: 56px !default;
+
+$button-width-tiny: 32px !default;
 
 // Padding
 $button-padding-tb: 8px !default;
@@ -274,3 +277,13 @@ $input-border-radius: 0px !default;
 // OVERLAY
 // ---------------------------------------------------------------------------
 $overlay-background-color: rgba(#fff, .95);
+
+$zindex: (
+    modal : 90,
+    overlay : 80,
+    topvisible: 70,
+    dropdown : 68,
+    header : 60,
+    footer : 50,
+    invisible : -1,
+);

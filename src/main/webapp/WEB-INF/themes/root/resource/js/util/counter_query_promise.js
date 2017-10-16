@@ -102,12 +102,6 @@ var CounterQuery;
       }
     },
 
-    isArticleNew: function () {
-      var publishDate = moment(ArticleData.date, "MMM DD, YYYY").valueOf();
-      var todayMinus48Hours = moment().subtract(2, 'days').valueOf();
-      return (todayMinus48Hours < publishDate);
-    },
-
     /*
     * Data validation functions:
     */
@@ -160,12 +154,7 @@ var CounterQuery;
                 deferred.resolve(data);
               })
               .fail(function (error) {
-                if(that.isArticleNew()) {
-                  deferred.reject(new ErrorFactory('NewArticleError', '[CounterQuery::processRequest] - The article is too new to have data.'));
-                }
-                else {
-                  deferred.reject(error);
-                }
+                deferred.reject(error);
               });
 
           },

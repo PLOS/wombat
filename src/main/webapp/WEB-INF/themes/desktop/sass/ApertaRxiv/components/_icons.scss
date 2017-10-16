@@ -11,11 +11,11 @@
 
   .icon {
     align-self: center;
-    width: 32px;
-    height: 24px;
+    width: $button-width-tiny;
+    height: $button-height-tiny;
     // image-url() is not working...
     background-image: url("../../resource/img/#{$icon}");
-    background-size: 32px 24px;
+    background-size: $button-width-tiny $button-height-tiny;
     background-repeat: no-repeat;
     margin-bottom: 4px;
   }
@@ -42,7 +42,10 @@
   @if ($responsive: true) {
     @include breakpoint(sm) {
       background-size: $sml-size;
+      width: $button-width-tiny;
+      height: $button-height-tiny;
     }
+
   }
 }
 

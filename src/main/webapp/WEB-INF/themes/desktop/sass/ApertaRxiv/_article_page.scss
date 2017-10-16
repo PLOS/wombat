@@ -129,8 +129,9 @@ main article {
 
   .share-options {
     list-style-type: none;
-    background-color: $color-button-primary;
-    border-radius: $button-border-radius;
+    background-color: $brand-main;
+    border-radius: $input-border-radius;
+    box-shadow: 1px 2px 2px rgba(0,0,0,.5);
 
     ul {
       margin-bottom: 0px;
@@ -158,7 +159,7 @@ main article {
 
         }
         &:hover {
-          background-color: $color-button-secondary;
+          background-color: #7b9abf;
         }
       }
     }
@@ -184,6 +185,10 @@ main article {
 
       .article-authors {
         @include author-component;
+
+        .authors-show-more, .authors-show-less {
+          cursor: pointer;
+        }
 
         .author-corresponding span.email {
           display: none; visibility: hidden;

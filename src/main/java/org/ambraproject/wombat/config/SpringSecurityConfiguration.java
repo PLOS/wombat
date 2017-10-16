@@ -223,8 +223,18 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
       http.addFilter(casAuthenticationFilter())
           .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
           .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
-          .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
-      http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
+          .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
+          .and().authorizeRequests().requestMatchers(new RequestMatcher() {
+              public boolean matches(HttpServletRequest request) {
+                String path = "" + request.getServletPath() + request.getPathInfo();
+                String host = "" + request.getServerName().toLowerCase();
+                return (path != null && (path.contains("DesktopApertaRxiv") || host.contains("apertarxiv")));
+              }
+           }).permitAll()
+          .and().authorizeRequests().antMatchers(NEW_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
+          .and().authorizeRequests().antMatchers(FLAG_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
+
+        http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
       http.csrf().disable();
     }
   }

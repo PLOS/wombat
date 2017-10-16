@@ -23,6 +23,7 @@
     align-self: center;
     text-transform: uppercase;
     font-size: $font-size-smaller;
+    color: $brand-main;
     @extend .strong;
   }
 }

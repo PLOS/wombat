@@ -25,20 +25,12 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
   <!-- Appenders -->
-  <appender name="console" class="org.apache.log4j.ConsoleAppender">
-    <param name="Target" value="System.out"/>
+  <appender name="syslog" class="org.apache.log4j.net.SyslogAppender">
+    <param name="SyslogHost" value="127.0.0.1" />
+    <param name="Facility" value="local4" />
+    <param name="FacilityPrinting" value="true"/>
     <layout class="org.apache.log4j.PatternLayout">
-      <param name="ConversionPattern" value="%d{ISO8601} %-5p: %c - %m%n"/>
-    </layout>
-  </appender>
-
-  <appender name="drfa" class="org.apache.log4j.DailyRollingFileAppender">
-    <param name="append" value="true" />
-    <param name="encoding" value="UTF-8" />
-    <param name="file" value="${catalina.base}/logs/wombat.log" />
-    <param name="DatePattern" value="'.'yyyy-MM-dd" />
-    <layout class="org.apache.log4j.PatternLayout">
-      <param name="ConversionPattern" value="%d{ISO8601} %-5p: %c - %m%n"/>
+      <param name="ConversionPattern" value="%d{ISO8601} %-5p: [%t] %c{2} %x - %m%n"/>
     </layout>
   </appender>
 
@@ -47,28 +39,10 @@
     <level value="info"/>
   </logger>
 
-  <!-- 3rdparty Loggers -->
-  <!--<logger name="org.springframework.core">-->
-    <!--<level value="info"/>-->
-  <!--</logger>-->
-
-  <!--<logger name="org.springframework.beans">-->
-    <!--<level value="info"/>-->
-  <!--</logger>-->
-
-  <!--<logger name="org.springframework.context">-->
-    <!--<level value="info"/>-->
-  <!--</logger>-->
-
-  <!--<logger name="org.springframework.web">-->
-    <!--<level value="info"/>-->
-  <!--</logger>-->
-
   <!-- Root Logger -->
   <root>
-    <priority value="error"/>
-    <appender-ref ref="drfa"/>
-    <appender-ref ref="console"/>
+    <priority value="info"/>
+    <appender-ref ref="syslog"/>
   </root>
 
 </log4j:configuration>

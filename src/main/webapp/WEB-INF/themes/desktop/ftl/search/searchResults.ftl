@@ -32,14 +32,18 @@
 <#include "../common/almQueryJs.ftl" />
 <#include "../common/almConfigJs.ftl" />
 
+<#include "../common/counterJs.ftl" />
+
 <@js src="resource/js/util/class.js"/>
 <@js src="resource/js/util/alm_query.js"/>
+<@js src="resource/js/util/counter_query.js"/>
 <@js src="resource/js/components/pagination.js"/>
 <@js src="resource/js/components/range_datepicker.js"/>
 <@js src="resource/js/vendor/spin.js"/>
 <@js src="resource/js/vendor/foundation-datepicker.min.js"/>
 <@js src="resource/js/pages/advanced_search.js"/>
 <@js src="resource/js/components/search_results_alm_ajax.js"/>
+<@js src="resource/js/components/search_results_counter_ajax.js"/>
 <@js src="resource/js/pages/search_results.js"/>
 <@js src="resource/js/components/toggle.js"/>
 <@js src="resource/js/vendor/underscore-min.js"/>

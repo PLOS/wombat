@@ -20,15 +20,14 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-var SearchResultsALMData;
+var SearchResultsCounterData;
 
 (function ($) {
 
-  SearchResultsALMData = Class.extend({
+  SearchResultsCounterData = Class.extend({
 
     containerID: '.search-results-alm-container',
     DOIlist: [],
-
 
     init: function (DOIlist) {
       this.setDOIList(DOIlist);
@@ -40,38 +39,39 @@ var SearchResultsALMData;
     getDOIList: function () {
       return this.DOIlist;
     },
-    processALMDataRequest: function () {
+    processCounterDataRequest: function () {
       var that = this;
 
-      var query = new AlmQuery();
-      var validator = new AlmQueryValidator({checkSources: false});
-
-      query
-          .setDataValidator(validator)
-          .getArticleSummary(that.DOIlist)
-          .then(function (data) {
-            that.showALMData(data)
+      counterQueries = [];
+      _.each(that.DOIlist, function(doi) {
+        var counterQuery = new CounterQuery();
+        var counterValidator = new CounterQueryValidator();
+        counterQuery
+          .setDataValidator(counterValidator)
+          .getArticleSummary(doi)
+          .then(function (counterData) {
+            that.showCounterData(doi, counterData);
           })
           .fail(function (error) {
-            that.showALMErrorMessage();
+            that.showALMErrorMessage(error);
           });
+        counterQueries.push(counterQuery);
+      });
+
     },
-    showALMData: function (data) {
+    showCounterData: function (doi, data) {
       var that = this;
       var template = _.template($('#searchResultsAlm').html());
-      _.each(data, function (i) {
-        var doi = i.doi;
-        var templateData = {
-          itemDoi: doi,
-          saveCount: i.saved,
-          citationCount: i.cited,
-          shareCount: i.discussed,
-          viewCount: i.viewed
-        };
+      var templateData = {
+        itemDoi: doi,
+        saveCount: 0,
+        citationCount: 0,
+        shareCount: 0,
+        viewCount: data['get-document']
+      };
 
-        $(that.containerID).filter("[data-doi='" + doi + "']").html(template(templateData));
+      $(that.containerID).filter("[data-doi='" + doi + "']").html(template(templateData));
 
-      });
     },
     showALMErrorMessage: function (error) {
       var template = _.template($('#searchResultsAlmError').html());
@@ -81,7 +81,3 @@ var SearchResultsALMData;
 
 
 })(jQuery);
-
-function getPmcViews(data) {
-  return data.sources.find(x => x.name === 'pmc' && x.group_name === 'viewed').metrics.html
-}

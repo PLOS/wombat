@@ -77,6 +77,7 @@ var SearchResult;
     resultsOffset: 0,
     pagination: null,
     ALMData: null,
+    counterData: null,
     filtersParams: [
       "filterJournals",
       "filterSubjects",
@@ -106,6 +107,7 @@ var SearchResult;
       });
 
       this.ALMData = new SearchResultsALMData();
+      this.counterData = new SearchResultsCounterData();
 
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
@@ -518,7 +520,12 @@ var SearchResult;
               that.ALMData.DOIlist = _.pluck(that.results, 'id');
 
               that.ALMData.setDOIList(that.ALMData.DOIlist);
-              that.ALMData.processALMDataRequest();
+              // that.ALMData.processALMDataRequest();
+
+              that.counterData.DOIlist = that.ALMData.getDOIList();
+
+              that.counterData.setDOIList(that.counterData.DOIlist);
+              that.counterData.processCounterDataRequest();
 
               that.scrollWindowToTop();
 

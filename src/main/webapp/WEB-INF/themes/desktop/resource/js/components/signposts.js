@@ -98,5 +98,9 @@ var Signposts;
 })(jQuery);
 
 function getPmcViews(data) {
-  return data[0].sources.find(x => x.name === 'pmc' && x.group_name === 'viewed').metrics.html
+  //todo: replace YUI compressor so we can use the following line instead of hardcoding '7'
+  //https://github.com/yui/yuicompressor/issues/262
+  // var viewed_data = data[0].sources.find(x => x.name === 'pmc' && x.group_name === 'viewed');
+  var viewed_data = data[0].sources[7];
+  return viewed_data['metrics']['html'];
 }

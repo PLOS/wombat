@@ -220,6 +220,7 @@ main article {
       .subjects {
         > div {
           width: 100%;
+          min-height: 76px;
 
           // flex box layout can be left-right with wrapping, cannot do top-down columns
           -webkit-column-count: 2;

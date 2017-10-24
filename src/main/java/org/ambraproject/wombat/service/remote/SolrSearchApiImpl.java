@@ -30,8 +30,11 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -355,8 +358,19 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   private Map<String, Map> getRawResults(List<NameValuePair> params, Site site) throws IOException {
     URI uri = getSolrUri(params, site);
     log.debug("Solr request executing: " + uri);
-    Map<?, ?> rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
-    return (Map<String, Map>) rawResults;
+    Map<String, Map> rawResults = new HashMap<>();
+    if (params.contains(new BasicNameValuePair("wt", "csv"))) {
+      rawResults.put("response", ImmutableMap.of("stringResponse", getStringResponse(uri)));
+    } else {
+      rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
+    }
+    return rawResults;
+  }
+
+  private String getStringResponse(URI uri) throws IOException {
+    try(CloseableHttpResponse response = cachedRemoteReader.getResponse(new HttpGet(uri))) {
+      return EntityUtils.toString(response.getEntity());
+    }
   }
 
   private URI getSolrUri(List<NameValuePair> params, Site site) throws SolrUndefinedException {

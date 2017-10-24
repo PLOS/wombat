@@ -61,6 +61,14 @@
     <% }); %>
 </script>
 
+<script type="text/template" id="searchResultsNumberTemplate">
+    <%= resultsCount %> results
+
+    for <strong><%= q %></strong>
+
+
+</script>
+
 <script id="searchResultsAlm" type="text/template">
 
 

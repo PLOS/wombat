@@ -277,6 +277,7 @@ $pagination-height: $pad-large;
     @extend .col;
     text-align: center;
     box-sizing: content-box;
+    text-decoration: none;
 
   }
   .number {
@@ -285,12 +286,11 @@ $pagination-height: $pad-large;
     height:  $pagination-height;
   }
   .active {
-     background: $inactive-background-color;
+     background: $color-lightgray;
   }
   .switch{
     color: $link;
     &.disabled {
-      opacity: 0.5;
     }
       .icon-text{
         font-size: $font-size-smaller;

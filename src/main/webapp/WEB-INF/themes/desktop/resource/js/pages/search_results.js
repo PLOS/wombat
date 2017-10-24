@@ -579,17 +579,13 @@ var SearchResult;
       }
     },
     updateCounterText: function () {
-      var counterText = '%TOTAL% %RESULTSTR% for <strong>%TERM%</strong>';
-      counterText = counterText.replace('%TOTAL%', s.numberFormat(this.resultTotalRecords, 0));
-      if (this.resultTotalRecords > 1) {
-        counterText = counterText.replace('%RESULTSTR%', 'results');
-      }
-      else {
-        counterText = counterText.replace('%RESULTSTR%', 'result');
-      }
-      counterText = counterText.replace('%TERM%', this.currentSearchParams.q);
+      var template = _.template($('#searchResultsNumberTemplate').html());
+      var templateData = {
+        resultsCount: s.numberFormat(this.resultTotalRecords, 0),
+        q: this.currentSearchParams.q
+      };
+      $('.results-number').html(template(templateData));
 
-      this.$searchCounterEl.html(counterText);
     },
     createFilters: function () {
       var that = this;

@@ -52,7 +52,11 @@ public class ArticleSearchQuery {
       "id", "publication_date", "title", "title_display", "journal_name", "author_display",
       "abstract", "abstract_primary_display"}));
   private static final String CSV_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
-      "id", "title", "journal_name", "author_display", "abstract"}));
+      "id", "publication_date", "title", "author_display", "author_affiliate", "article_type",
+      "received_date", "accepted_date", "counter_total_all", "alm_scopusCiteCount",
+      "alm_citeulikeCount", "alm_connoteaCount", "alm_mendeleyCount", "alm_twitterCount",
+      "alm_facebookCount", "alm_pmc_usage_total_all", "alm_webOfScienceCount", "editor_display",
+      "abstract", "subject", "reference" }));
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;
 

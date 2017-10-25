@@ -85,6 +85,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULT_COUNT;
+
 /**
  * Controller class for user-initiated searches.
  */
@@ -665,17 +667,27 @@ public class SearchController extends WombatController {
   public FileSystemResource csvExport(HttpServletRequest request, Model model,
                                       HttpServletResponse response, @SiteParam Site site,
                                       @RequestParam MultiValueMap<String, String> params) throws IOException {
-
-    // TODO: 10/24/17 paginate results
-    if (!performValidSearch(request, model, site, params, true)) {
-      throw new IOException("Invalid solr query. Please alter and try again.");
-    }
-
+    final Integer totalRows = Integer.parseInt(params.getFirst("rows"));
     response.setHeader("Content-Disposition", "attachment; filename=solrCsvExport.csv");
+    return convertToCsvFile(collateCsvResults(request, model, site, params, totalRows));
+  }
 
-    // TODO: 10/24/17 decouple search results from the model
-    final Map<String, ?> searchResults = (Map<String, ?>) model.asMap().get("searchResults");
-    return convertToCsvFile((String) searchResults.get("stringResponse"));
+  private String collateCsvResults(HttpServletRequest request, Model model, Site site,
+                                 MultiValueMap<String, String> params, Integer totalRows) throws IOException {
+    StringBuilder resultsBuilder = new StringBuilder();
+    Integer start = 0;
+    for (int i = 0; i < totalRows; i += MAXIMUM_SOLR_RESULT_COUNT) {
+      final String rows = ((Integer) Math.min(MAXIMUM_SOLR_RESULT_COUNT, totalRows - i)).toString();
+      params.set("resultsPerPage", rows);
+      params.set("start", start.toString());
+      if (!performValidSearch(request, model, site, params, true)) {
+        throw new IOException("Invalid solr query. Please alter and try again.");
+      }
+      // TODO: 10/24/17 decouple search results from the model
+      final Map<String, ?> searchResults = (Map<String, ?>) model.asMap().get("searchResults");
+      resultsBuilder.append(searchResults.get("stringResponse"));
+    }
+    return resultsBuilder.toString();
   }
 
   private static FileSystemResource convertToCsvFile(String stringResponse) throws IOException {

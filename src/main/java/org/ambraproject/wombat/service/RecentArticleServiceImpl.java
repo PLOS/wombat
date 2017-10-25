@@ -46,7 +46,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULTS;
+import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULT_COUNT;
 
 public class RecentArticleServiceImpl implements RecentArticleService {
   private static final Logger log = LoggerFactory.getLogger(RecentArticleServiceImpl.class);
@@ -197,7 +197,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
       throws IOException {
     ArticleSearchQuery recentArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
-        .setRows(MAXIMUM_SOLR_RESULTS)
+        .setRows(MAXIMUM_SOLR_RESULT_COUNT)
         .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setArticleTypes(ImmutableList.of(articleType))
         .setArticleTypesToExclude(articleTypesToExclude)
@@ -216,7 +216,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
       throws IOException {
     ArticleSearchQuery recentArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
-        .setRows(MAXIMUM_SOLR_RESULTS)
+        .setRows(MAXIMUM_SOLR_RESULT_COUNT)
         .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setArticleTypesToExclude(articleTypesToExclude)
         .setDateRange(dateRange)

@@ -57,7 +57,7 @@ public class SearchControllerTest extends AbstractTestNGSpringContextTests {
 
     Site site = MockSiteUtil.getByUniqueJournalKey(siteSet, "journal1Key");
     SearchController.CommonParams commonParams = new SearchController.CommonParams(siteSet, site);
-    commonParams.parseParams(params);
+    commonParams.parseParams(params, false);
 
     assertEquals(commonParams.start, 90);  // Default results per page should be 15
     assertEquals(commonParams.sortOrder, SolrSearchApiImpl.SolrSortOrder.RELEVANCE);

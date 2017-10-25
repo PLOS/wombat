@@ -234,14 +234,20 @@ public class SearchController extends WombatController {
      * precedence and default values when ones aren't present.
      *
      * @param params
+     * @param isCsvExport
      * @throws IOException
      */
-    void parseParams(Map<String, List<String>> params) throws IOException {
-      String pageParam = getSingleParam(params, "page", null);
-      resultsPerPage = Integer.parseInt(getSingleParam(params, "resultsPerPage", "15"));
-      if (pageParam != null) {
-        int page = Integer.parseInt(pageParam);
-        start = (page - 1) * resultsPerPage;
+    void parseParams(Map<String, List<String>> params, boolean isCsvExport) throws IOException {
+      if (isCsvExport) {
+        start = Integer.parseInt(getSingleParam(params, "start", null));
+        resultsPerPage = Integer.parseInt(getSingleParam(params, "rows", "15"));
+      } else {
+        String pageParam = getSingleParam(params, "page", null);
+        resultsPerPage = Integer.parseInt(getSingleParam(params, "resultsPerPage", "15"));
+        if (pageParam != null) {
+          int page = Integer.parseInt(pageParam);
+          start = (page - 1) * resultsPerPage;
+        }
       }
       sortOrder = SolrSearchApiImpl.SolrSortOrder.RELEVANCE;
       String sortOrderParam = getSingleParam(params, "sortOrder", null);
@@ -548,9 +554,11 @@ public class SearchController extends WombatController {
   }
 
   private CommonParams modelCommonParams(HttpServletRequest request, Model model,
-                                         @SiteParam Site site, @RequestParam MultiValueMap<String, String> params) throws IOException {
+                                         @SiteParam Site site,
+                                         @RequestParam MultiValueMap<String, String> params,
+                                         boolean isCsvExport) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params);
+    commonParams.parseParams(params, isCsvExport);
     commonParams.addToModel(model, request);
     model.addAttribute("sortOrders", SolrSearchApiImpl.SolrSortOrder.values());
     model.addAttribute("dateRanges", SolrSearchApiImpl.SolrEnumeratedDateRange.values());
@@ -572,7 +580,7 @@ public class SearchController extends WombatController {
       params = {"q"}, method = RequestMethod.GET)
   public ModelAndView getSearchRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
                                            @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
-    CommonParams commonParams = modelCommonParams(request, model, site, params);
+    CommonParams commonParams = modelCommonParams(request, model, site, params, false);
 
     String queryString = params.getFirst("q");
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
@@ -677,10 +685,9 @@ public class SearchController extends WombatController {
   private String collateCsvResults(HttpServletRequest request, Model model, Site site,
                                    MultiValueMap<String, String> params, Integer totalRows) throws IOException {
     StringBuilder resultsBuilder = new StringBuilder();
-    Integer start = 0;
-    for (int i = 0; i < totalRows; i += MAXIMUM_SOLR_RESULT_COUNT) {
-      final String rows = ((Integer) Math.min(MAXIMUM_SOLR_RESULT_COUNT, totalRows - i)).toString();
-      params.set("resultsPerPage", rows);
+    for (Integer start = 0; start < totalRows; start += MAXIMUM_SOLR_RESULT_COUNT) {
+      final String rows = ((Integer) Math.min(MAXIMUM_SOLR_RESULT_COUNT, totalRows - start)).toString();
+      params.set("rows", rows);
       params.set("start", start.toString());
       if (!performValidSearch(request, model, site, params, true)) {
         throw new IOException("Invalid solr query. Please alter and try again.");
@@ -692,7 +699,7 @@ public class SearchController extends WombatController {
     return resultsBuilder.toString();
   }
 
-  private static FileSystemResource convertToCsvFile(String stringResponse) throws IOException {
+  private FileSystemResource convertToCsvFile(String stringResponse) throws IOException {
     File file = File.createTempFile("tmp", "csv");
     file.deleteOnExit();
     FileUtils.writeStringToFile(file, stringResponse);
@@ -722,7 +729,7 @@ public class SearchController extends WombatController {
   private boolean performValidSearch(HttpServletRequest request, Model model, @SiteParam Site site,
                                      @RequestParam MultiValueMap<String, String> params,
                                      boolean isCsvExport) throws IOException {
-    CommonParams commonParams = modelCommonParams(request, model, site, params);
+    CommonParams commonParams = modelCommonParams(request, model, site, params, isCsvExport);
 
     String queryString = params.getFirst("q");
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
@@ -886,7 +893,7 @@ public class SearchController extends WombatController {
       params.add("filterJournals", site.getJournalKey());
     }
 
-    CommonParams commonParams = modelCommonParams(request, model, site, params);
+    CommonParams commonParams = modelCommonParams(request, model, site, params, false);
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery("")
         .setSimple(false);

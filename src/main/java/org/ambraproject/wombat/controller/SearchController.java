@@ -651,11 +651,10 @@ public class SearchController extends WombatController {
   }
 
   /**
-   * Performs a "simple" or "advanced" search. The query parameter is read, and if advanced search
-   * terms are found, an advanced search is performed. Otherwise, a simple search is performed. The
-   * only difference between simple and advanced searches is the use of dismax in the ultimate
-   * Solr query.
+   * Performs a csv export of a search.
    *
+   * @param request HttpServletRequest
+   * @param model   model that will contain search results
    * @param site   site the request originates from
    * @param params all URL parameters
    * @return String indicating template location

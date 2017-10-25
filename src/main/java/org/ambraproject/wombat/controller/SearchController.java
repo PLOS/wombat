@@ -69,6 +69,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -655,8 +656,8 @@ public class SearchController extends WombatController {
    *
    * @param request HttpServletRequest
    * @param model   model that will contain search results
-   * @param site   site the request originates from
-   * @param params all URL parameters
+   * @param site    site the request originates from
+   * @param params  all URL parameters
    * @return String indicating template location
    * @throws IOException
    */
@@ -667,12 +668,14 @@ public class SearchController extends WombatController {
                                       HttpServletResponse response, @SiteParam Site site,
                                       @RequestParam MultiValueMap<String, String> params) throws IOException {
     final Integer totalRows = Integer.parseInt(params.getFirst("rows"));
-    response.setHeader("Content-Disposition", "attachment; filename=solrCsvExport.csv");
+    final String filename = String.format("solrCsvExport-%s-q-%s.csv", Instant.now(),
+        params.getFirst("q"));
+    response.setHeader("Content-Disposition", "attachment; filename=" + filename);
     return convertToCsvFile(collateCsvResults(request, model, site, params, totalRows));
   }
 
   private String collateCsvResults(HttpServletRequest request, Model model, Site site,
-                                 MultiValueMap<String, String> params, Integer totalRows) throws IOException {
+                                   MultiValueMap<String, String> params, Integer totalRows) throws IOException {
     StringBuilder resultsBuilder = new StringBuilder();
     Integer start = 0;
     for (int i = 0; i < totalRows; i += MAXIMUM_SOLR_RESULT_COUNT) {

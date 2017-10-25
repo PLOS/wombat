@@ -36,7 +36,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Map;
 
-import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULTS;
+import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULT_COUNT;
 
 public class ArticleArchiveServiceImpl implements ArticleArchiveService {
 
@@ -88,7 +88,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
 
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setJournalKeys(Collections.singletonList(site.getJournalKey()))
-        .setRows(MAXIMUM_SOLR_RESULTS)
+        .setRows(MAXIMUM_SOLR_RESULT_COUNT)
         .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_OLDEST_FIRST)
         .setDateRange(dateRange)
         .setCursor(cursor)

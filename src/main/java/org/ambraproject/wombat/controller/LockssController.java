@@ -44,7 +44,7 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
-import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULTS;
+import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULT_COUNT;
 
 /**
  * Responsible for providing the publication year range, months and article DOIs published in a given year and month
@@ -114,11 +114,11 @@ public class LockssController extends WombatController {
     model.addAttribute("nextCursorMark", searchResult.get("nextCursorMark"));
 
     int pageNumberCount = Integer.parseInt(pageNumber);
-    final int listStartNumber = pageNumberCount * MAXIMUM_SOLR_RESULTS + 1;
+    final int listStartNumber = pageNumberCount * MAXIMUM_SOLR_RESULT_COUNT + 1;
     model.addAttribute("listStart", listStartNumber);
 
     final boolean isLastPage = (Double) searchResult.get("numFound")
-        < listStartNumber + MAXIMUM_SOLR_RESULTS;
+        < listStartNumber + MAXIMUM_SOLR_RESULT_COUNT;
     model.addAttribute("showMoreLink", !isLastPage);
 
     pageNumberCount = pageNumberCount + 1;

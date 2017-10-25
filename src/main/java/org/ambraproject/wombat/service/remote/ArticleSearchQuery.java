@@ -43,14 +43,20 @@ public class ArticleSearchQuery {
   /**
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
-  private static final String ARTICLE_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
-      "id", "eissn", "publication_date", "title", "title_display", "journal_name",
-      "author_display", "article_type", "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount",
-      "alm_mendeleyCount", "alm_twitterCount", "alm_facebookCount", "retraction", "expression_of_concern",
-      "striking_image", "figure_table_caption", "journal_key",}));
-  private static final String RSS_FIELDS = Joiner.on(',').join(ImmutableList.copyOf(new String[]{
-      "id", "publication_date", "title", "title_display", "journal_name", "author_display",
-      "abstract", "abstract_primary_display"}));
+  private static final String ARTICLE_FIELDS = Joiner.on(',').join("id", "eissn",
+      "publication_date", "title", "title_display", "journal_name", "author_display",
+      "article_type", "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount",
+      "alm_mendeleyCount", "alm_twitterCount", "alm_facebookCount", "retraction",
+      "expression_of_concern", "striking_image", "figure_table_caption", "journal_key");
+  private static final String RSS_FIELDS = Joiner.on(',').join("id", "publication_date",
+      "title", "title_display", "journal_name", "author_display", "abstract",
+      "abstract_primary_display");
+  private static final String CSV_FIELDS = Joiner.on(',').join(
+      "id", "publication_date", "title", "author_display", "author_affiliate",
+      "article_type", "received_date", "accepted_date", "counter_total_all", "alm_scopusCiteCount",
+      "alm_citeulikeCount", "alm_connoteaCount", "alm_mendeleyCount", "alm_twitterCount",
+      "alm_facebookCount", "alm_pmc_usage_total_all", "alm_webOfScienceCount", "editor_display",
+      "abstract", "subject", "reference");
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;
 
@@ -59,6 +65,7 @@ public class ArticleSearchQuery {
   private final boolean isForRawResults;
   private final boolean isPartialSearch;
   private final boolean isRssSearch;
+  private final boolean isCsvSearch;
 
   private final ImmutableList<String> filterQueries;
 
@@ -93,6 +100,7 @@ public class ArticleSearchQuery {
     this.isForRawResults = builder.isForRawResults;
     this.isPartialSearch = builder.isPartialSearch;
     this.isRssSearch = builder.isRssSearch;
+    this.isCsvSearch = builder.isCsvSearch;
     this.filterQueries = ImmutableList.copyOf(builder.filterQueries);
     this.facet = Optional.ofNullable(builder.facet);
     this.minFacetCount = builder.minFacetCount;
@@ -124,7 +132,12 @@ public class ArticleSearchQuery {
   @VisibleForTesting
   List<NameValuePair> buildParameters() {
     List<NameValuePair> params = new ArrayList<>();
-    params.add(new BasicNameValuePair("wt", "json"));
+
+    if (isCsvSearch) {
+      params.add(new BasicNameValuePair("wt", "csv"));
+    } else {
+      params.add(new BasicNameValuePair("wt", "json"));
+    }
 
     if (isPartialSearch) {
       params.add(new BasicNameValuePair("qf", "doc_partial_body"));
@@ -163,6 +176,9 @@ public class ArticleSearchQuery {
     } else if (isRssSearch) {
       params.add(new BasicNameValuePair("facet", "false"));
       params.add(new BasicNameValuePair("fl", RSS_FIELDS));
+    } else if (isCsvSearch) {
+      params.add(new BasicNameValuePair("facet", "false"));
+      params.add(new BasicNameValuePair("fl", CSV_FIELDS));
     } else {
       params.add(new BasicNameValuePair("facet", "false"));
       params.add(new BasicNameValuePair("fl", ARTICLE_FIELDS));
@@ -328,6 +344,10 @@ public class ArticleSearchQuery {
     return isForRawResults;
   }
 
+  public boolean isCsvSearch() {
+    return isCsvSearch;
+  }
+
   public Optional<String> getFacet() {
     return facet;
   }
@@ -390,6 +410,7 @@ public class ArticleSearchQuery {
     builder.query = this.query.orElse(null);
     builder.isSimple = this.isSimple;
     builder.isForRawResults = this.isForRawResults;
+    builder.isCsvSearch = this.isCsvSearch;
     builder.filterQueries = this.filterQueries;
     builder.facet = this.facet.orElse(null);
     builder.minFacetCount = this.minFacetCount;
@@ -414,6 +435,7 @@ public class ArticleSearchQuery {
     private boolean isForRawResults;
     private boolean isPartialSearch;
     private boolean isRssSearch;
+    private boolean isCsvSearch;
 
     private List<String> filterQueries = ImmutableList.of();
 
@@ -487,6 +509,14 @@ public class ArticleSearchQuery {
      */
     public Builder setIsRssSearch(boolean isRssSearch) {
       this.isRssSearch = isRssSearch;
+      return this;
+    }
+
+    /**
+     * @param isCsvSearch Flag the search to return only fields used by the RSS view
+     */
+    public Builder setIsCsvSearch(boolean isCsvSearch) {
+      this.isCsvSearch = isCsvSearch;
       return this;
     }
 

@@ -29,6 +29,7 @@
     <param name="SyslogHost" value="127.0.0.1" />
     <param name="Facility" value="local4" />
     <param name="FacilityPrinting" value="true"/>
+    <param name="appName" value="wombat"/>
     <param name="Header" value="true"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern" value="%d{ISO8601} %-5p: [%t] %c{2} %x - %m%n"/>

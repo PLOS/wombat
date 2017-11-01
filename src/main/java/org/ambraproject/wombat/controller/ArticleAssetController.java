@@ -198,7 +198,7 @@ public class ArticleAssetController extends WombatController {
   public void serveAssetFile(HttpServletRequest request, HttpServletResponse response,
                              @SiteParam Site site,
                              RequestedDoiVersion id,
-                             @RequestParam(value = "type") String fileType,
+                             @RequestParam(value = "type", required = true) String fileType,
                              @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {
     serve(request, response, AssetUrlStyle.ASSET_FILE, site, id, fileType, booleanParameter(isDownload));
@@ -209,11 +209,8 @@ public class ArticleAssetController extends WombatController {
                                @SiteParam Site site,
                                RequestedDoiVersion id,
                                @RequestParam(value = "size") String figureSize,
-                               @RequestParam(value = "download", required = false) String isDownload,
-                               @RequestParam(value = "rev", required = false) Integer revisionNumber)
+                               @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {
-
-    id = RequestedDoiVersion.ofRevision(id.getDoi(), revisionNumber);
     serve(request, response, AssetUrlStyle.FIGURE_IMAGE, site, id, figureSize, booleanParameter(isDownload));
   }
 

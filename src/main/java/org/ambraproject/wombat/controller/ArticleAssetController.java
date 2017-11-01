@@ -208,7 +208,7 @@ public class ArticleAssetController extends WombatController {
   public void serveFigureImage(HttpServletRequest request, HttpServletResponse response,
                                @SiteParam Site site,
                                RequestedDoiVersion id,
-                               @RequestParam(value = "size") String figureSize,
+                               @RequestParam(value = "size", required = true) String figureSize,
                                @RequestParam(value = "download", required = false) String isDownload)
       throws IOException {
     serve(request, response, AssetUrlStyle.FIGURE_IMAGE, site, id, figureSize, booleanParameter(isDownload));

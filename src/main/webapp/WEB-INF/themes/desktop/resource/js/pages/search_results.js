@@ -105,9 +105,7 @@ var SearchResult;
         that.processRequest();
       });
 
-      if (typeof SearchResultsALMData !== "undefined") {
-        this.ALMData = new SearchResultsALMData();
-      }
+      this.ALMData = new SearchResultsALMData();
 
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();
@@ -517,13 +515,10 @@ var SearchResult;
 
               that.hideLoading();
 
-              if (that.ALMData) {
+              that.ALMData.DOIlist = _.pluck(that.results, 'id');
 
-                that.ALMData.DOIlist = _.pluck(that.results, 'id');
-
-                that.ALMData.setDOIList(that.ALMData.DOIlist);
-                that.ALMData.processALMDataRequest();
-              }
+              that.ALMData.setDOIList(that.ALMData.DOIlist);
+              that.ALMData.processALMDataRequest();
 
               that.scrollWindowToTop();
 

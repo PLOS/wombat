@@ -550,7 +550,8 @@ var FigureLightbox = {};
       size: 'large'
     };
     options = _.extend(defaultOptions, options);
-    return options.path + '?size=' + options.size + '&id=' + imgDoi;
+    var sizeParameterString = options.path.indexOf("?") === -1 ? '?size=' : '&size=';
+    return options.path + sizeParameterString + options.size + '&id=' + imgDoi;
   };
 
   FigureLightbox.destroy = function () {

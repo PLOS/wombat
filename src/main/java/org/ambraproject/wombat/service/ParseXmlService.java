@@ -23,6 +23,7 @@
 package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.model.Reference;
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -34,16 +35,24 @@ import java.util.List;
  * This class is used to parse the article xml
  */
 public interface ParseXmlService {
+
+  /**
+   * @param xml article xml
+   * @return article xml transformed into a document
+   * @throws IOException
+   */
+  Document getDocument(InputStream xml) throws IOException;
+
   /**
    * Parses the references in the article xml
    *
-   * @param xml  article xml
+   * @param doc article xml transformed into a document
    * @return list of Reference objects
    * @throws ParserConfigurationException
    * @throws IOException
    * @throws SAXException
    * @throws XmlContentException
    */
-  List<Reference> parseArticleReferences(InputStream xml,
+  List<Reference> parseArticleReferences(Document doc,
                                          ParseReferenceService.DoiToJournalLinkService linkService) throws IOException;
 }

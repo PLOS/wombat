@@ -80,11 +80,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
+import org.w3c.dom.Document;
 
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -103,6 +105,7 @@ import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -311,13 +314,13 @@ public class ArticleController extends WombatController {
                                   @RequestParam("commentTitle") String commentTitle,
                                   @RequestParam("comment") String commentBody,
                                   @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
-                                  @RequestParam(value = "authorEmailAddress", required=false) String authorEmailAddress,
-                                  @RequestParam(value = "authorName", required=false) String authorName,
+                                  @RequestParam(value = "authorEmailAddress", required = false) String authorEmailAddress,
+                                  @RequestParam(value = "authorName", required = false) String authorName,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
                                   @RequestParam(value = "inReplyTo", required = false) String parentCommentUri,
-                                  @RequestParam(value = RECAPTCHA_CHALLENGE_FIELD, required=false) String captchaChallenge,
-                                  @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required=false) String captchaResponse)
+                                  @RequestParam(value = RECAPTCHA_CHALLENGE_FIELD, required = false) String captchaChallenge,
+                                  @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required = false) String captchaResponse)
       throws IOException {
     checkCommentsAreEnabled();
 
@@ -576,7 +579,7 @@ public class ArticleController extends WombatController {
 
     boolean isValid = true;
 
-    UrlValidator urlValidator = new UrlValidator(new String[]{"http","https"});
+    UrlValidator urlValidator = new UrlValidator(new String[]{"http", "https"});
 
     if (StringUtils.isBlank(link)) {
       model.addAttribute("linkError", "This field is required.");
@@ -639,6 +642,24 @@ public class ArticleController extends WombatController {
     HttpHeaders headers = new HttpHeaders();
     headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
     return new ResponseEntity<>(figureView, headers, HttpStatus.OK);
+  }
+
+  @RequestMapping(name = "uploadPreprintRevision", value = "/article/uploadPreprintRevision?state={state}")
+  public String uploadPreprintRevision(HttpServletRequest request, Model model, @SiteParam Site site,
+                                       @PathVariable String state) throws IOException {
+    final byte[] decodedState = Base64.getDecoder().decode(state);
+    Map<String, Object> stateJson = gson.fromJson(new String(decodedState), HashMap.class);
+
+    String correspondingAuthorOrcidId = (String) stateJson.get("orcid_id");
+    // TODO: 11/9/17 get and compare ID returned from orcid
+    String returnedOrcidId = "";
+    if (correspondingAuthorOrcidId.equals(returnedOrcidId)) {
+      //todo: direct to upload revision page
+      return null;
+    } else {
+      final RequestedDoiVersion articleId = RequestedDoiVersion.of((String) stateJson.get("doi"));
+      return renderArticle(request, model, site, articleId);
+    }
   }
 
   @RequestMapping(name = "email", value = "/article/email")
@@ -768,26 +789,10 @@ public class ArticleController extends WombatController {
                                    HttpServletRequest request) throws IOException {
     return corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
       byte[] xml = ByteStreams.toByteArray(stream);
-      List<Reference> references = parseXmlService.parseArticleReferences(
-          new ByteArrayInputStream(xml), doi -> {
-            String citationJournalKey;
-            try {
-              citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi, site);
-            } catch (SolrUndefinedException | EntityNotFoundException e) {
-              // If we can't look it up in Solr, fail quietly, the same as though no match was found.
-              log.error("Solr is undefined or returning errors on query.");
-              citationJournalKey = null;
-            }
-            String linkText = null;
-            if (citationJournalKey != null) {
-              linkText = Link.toForeignSite(site, citationJournalKey, siteSet)
-                  .toPattern(requestMappingContextDictionary, "article")
-                  .addQueryParameter("id", doi)
-                  .build()
-                  .get(request);
-            }
-            return linkText;
-          });
+      final Document document = parseXmlService.getDocument(new ByteArrayInputStream(xml));
+
+      List<Reference> references = parseXmlService.parseArticleReferences(document,
+          doi -> getLinkText(site, request, doi));
 
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
       try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
@@ -797,5 +802,25 @@ public class ArticleController extends WombatController {
 
       return new XmlContent(articleHtml.toString(), references);
     });
+  }
+
+  private String getLinkText(Site site, HttpServletRequest request, String doi) throws IOException {
+    String citationJournalKey;
+    try {
+      citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi, site);
+    } catch (SolrUndefinedException | EntityNotFoundException e) {
+      // If we can't look it up in Solr, fail quietly, the same as though no match was found.
+      log.error("Solr is undefined or returning errors on query.");
+      citationJournalKey = null;
+    }
+    String linkText = null;
+    if (citationJournalKey != null) {
+      linkText = Link.toForeignSite(site, citationJournalKey, siteSet)
+          .toPattern(requestMappingContextDictionary, "article")
+          .addQueryParameter("id", doi)
+          .build()
+          .get(request);
+    }
+    return linkText;
   }
 }

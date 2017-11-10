@@ -235,6 +235,7 @@
         <xsl:text> </xsl:text>
         <!-- journal/volume/issue/enumber/doi -->
         <xsl:value-of select="../journal-meta/journal-id[@journal-id-type='nlm-ta']"/>
+        <xsl:text> </xsl:text>
         <xsl:choose>
           <xsl:when test="not(volume)">:</xsl:when>
           <xsl:otherwise>

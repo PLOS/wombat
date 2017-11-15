@@ -63,6 +63,13 @@
   @include icon-label('download_citations.svg', 'Full Text');
 }
 
+.upload {
+  @include icon-label('download_citations.svg', 'Upload');
+  .icon {
+    transform: scaleY(-1);
+  }
+}
+
 .filetype {
   background-image: url("../../resource/img/doc_icon.png");
 }

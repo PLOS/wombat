@@ -29,6 +29,9 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
@@ -84,6 +87,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 
 import javax.mail.MessagingException;
@@ -92,6 +96,8 @@ import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -112,6 +118,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Controller for rendering an article.
@@ -797,5 +805,58 @@ public class ArticleController extends WombatController {
 
       return new XmlContent(articleHtml.toString(), references);
     });
+  }
+
+  @RequestMapping(name = "revisionUpload", value = "/article/upload", method = RequestMethod.POST)
+  @ResponseBody
+  public Object revisionUpload(HttpServletRequest request,
+                                  @SiteParam Site site,
+                                  @RequestParam("doi") String doi,
+                                  @RequestParam("file") MultipartFile requestFile)
+      throws IOException {
+
+    String fileName = requestFile.getOriginalFilename();
+    long fileSize = requestFile.getSize();
+
+    String[] parts = doi.split("/");
+    String shortDoi = parts[parts.length-1];
+
+    JsonObject json = new JsonObject();
+    JsonObject metadata = new JsonObject();
+    metadata.addProperty("aarx_doi", doi);
+    metadata.addProperty("revision_id", "yes");
+    json.add("metadata", metadata);
+
+    JsonObject manifest = new JsonObject();
+    manifest.addProperty("journal_code", "pbiol");
+    manifest.addProperty("revision_filename", "metadata.json");
+    JsonArray files = new JsonArray();
+    files.add(new JsonPrimitive(shortDoi + ".pdf"));
+    manifest.add("files", files);
+    manifest.addProperty("destination", "preprint");
+    manifest.addProperty("archive_filename", shortDoi + ".zip");
+
+    //File f = File.createTempFile(shortDoi, ".zip");
+    //f.deleteOnExit();
+    File f = new File("/tmp/" + shortDoi + ".zip");
+
+    ZipOutputStream out = new ZipOutputStream(new FileOutputStream(f));
+
+    ZipEntry e = new ZipEntry(shortDoi + ".pdf");
+    out.putNextEntry(e);
+    out.write(requestFile.getBytes());
+    out.closeEntry();
+
+    out.putNextEntry(new ZipEntry("metadata.json"));
+    out.write(gson.toJson(json).getBytes(Charset.forName("UTF-8")));
+    out.closeEntry();
+
+    out.close();
+
+    FileOutputStream out1 = new FileOutputStream("/tmp/" + shortDoi + ".man.json");
+    out1.write(gson.toJson(manifest).getBytes(Charset.forName("UTF-8")));
+    out1.close();
+
+    return ImmutableMap.of("status", "received " + fileName + " " + fileSize + " bytes");
   }
 }

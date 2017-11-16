@@ -410,8 +410,10 @@
       var data = {
         commentTitle: replyElement.find('[name="comment_title"]').val(),
         comment: replyElement.find('[name="comment"]').val(),
+        authorPhone: replyElement.find('[name="author_phone"]').val(),
         authorEmailAddress: replyElement.find('[name="author_email_address"]').val(),
-        authorName: replyElement.find('[name="author_name"]').val()
+        authorName: replyElement.find('[name="author_name"]').val(),
+        authorAffiliation: replyElement.find('[name="author_affiliation"]').val()
       };
 
       var ciRadio = replyElement.find('input:radio[name="competing"]:checked');

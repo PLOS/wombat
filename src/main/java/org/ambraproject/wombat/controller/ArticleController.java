@@ -313,12 +313,21 @@ public class ArticleController extends WombatController {
                                   @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
                                   @RequestParam(value = "authorEmailAddress", required=false) String authorEmailAddress,
                                   @RequestParam(value = "authorName", required=false) String authorName,
+                                  @RequestParam(value = "authorPhone", required=false) String authorPhone,
+                                  @RequestParam(value = "authorAffiliation", required=false) String authorAffiliation,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
                                   @RequestParam(value = "inReplyTo", required = false) String parentCommentUri,
                                   @RequestParam(value = RECAPTCHA_CHALLENGE_FIELD, required=false) String captchaChallenge,
                                   @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required=false) String captchaResponse)
       throws IOException {
+
+    // honeypot for bot
+    if (authorPhone != null && !authorPhone.isEmpty() || authorAffiliation != null && !authorAffiliation.isEmpty()) {
+      log.warn("bot trapped in honeypot: {}", request.getRemoteAddr());
+      return ImmutableMap.of("status", "success");
+    }
+
     checkCommentsAreEnabled();
 
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,

@@ -322,7 +322,12 @@ public class ArticleController extends WombatController {
                                   @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required=false) String captchaResponse)
       throws IOException {
 
-    // honeypot for bot
+    // honeypot for bot.
+    // authorPhone and authorAffiliation are fake parameters, which are present in the form, but hidden via CSS.
+    // A bot will likely fill one or both of these. But a human will not see those fields to fill them.
+    // If any of these parameters are non-empty, then mark it as a bot, and do not proceed further.
+    // However, return success response to avoid alarming the bot.
+
     if (authorPhone != null && !authorPhone.isEmpty() || authorAffiliation != null && !authorAffiliation.isEmpty()) {
       log.warn("bot trapped in honeypot: {}", request.getRemoteAddr());
       return ImmutableMap.of("status", "success");

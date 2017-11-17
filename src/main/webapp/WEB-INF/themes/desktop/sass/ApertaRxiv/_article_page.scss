@@ -323,6 +323,9 @@ main article {
           color: $brand-separator;
         }
 
+        #author_phone, #author_affiliation { // honeypot
+          display: none; visibility: hidden;
+        }
         form {
           width: calc(100% - 30px);
           @include breakpoint(sm) {

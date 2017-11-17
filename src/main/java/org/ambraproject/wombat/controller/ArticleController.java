@@ -313,12 +313,26 @@ public class ArticleController extends WombatController {
                                   @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
                                   @RequestParam(value = "authorEmailAddress", required=false) String authorEmailAddress,
                                   @RequestParam(value = "authorName", required=false) String authorName,
+                                  @RequestParam(value = "authorPhone", required=false) String authorPhone,
+                                  @RequestParam(value = "authorAffiliation", required=false) String authorAffiliation,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
                                   @RequestParam(value = "inReplyTo", required = false) String parentCommentUri,
                                   @RequestParam(value = RECAPTCHA_CHALLENGE_FIELD, required=false) String captchaChallenge,
                                   @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required=false) String captchaResponse)
       throws IOException {
+
+    // honeypot for bot.
+    // authorPhone and authorAffiliation are fake parameters, which are present in the form, but hidden via CSS.
+    // A bot will likely fill one or both of these. But a human will not see those fields to fill them.
+    // If any of these parameters are non-empty, then mark it as a bot, and do not proceed further.
+    // However, return success response to avoid alarming the bot.
+
+    if (authorPhone != null && !authorPhone.isEmpty() || authorAffiliation != null && !authorAffiliation.isEmpty()) {
+      log.warn("bot trapped in honeypot: {}", request.getRemoteAddr());
+      return ImmutableMap.of("status", "success");
+    }
+
     checkCommentsAreEnabled();
 
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,

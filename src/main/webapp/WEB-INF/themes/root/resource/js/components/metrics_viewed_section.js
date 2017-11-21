@@ -253,7 +253,8 @@ var MetricsViewedSection;
 
       var counterViews = this.filterEvents('counter', pubYearMonth);
       var pmcViews = this.filterEvents('pmc', pubYearMonth);
-      var relativeMetric = _.filter(this.data.sources, function (source) { return source.name.toLowerCase() == 'relativemetric'});
+      var data = this.data;
+      var relativeMetric = _.filter(data.sources, function (source) { return source.name.toLowerCase() == 'relativemetric'});
 
       if(relativeMetric[0] && relativeMetric[0].events && !_.isEmpty(relativeMetric[0].events.subject_areas)) {
         filteredData.relativeMetricData = relativeMetric[0].events;
@@ -265,10 +266,11 @@ var MetricsViewedSection;
       * In the end, we sum the counter + pmc to have the grand total. These totals are used in the table.
       */
 
-      var counterViewsTotalPDF = _.reduce(counterViews, function (memo, event) { return memo + parseInt(event.pdf_views); }, 0);
-      var counterViewsTotalXML = _.reduce(counterViews, function (memo, event) { return memo + parseInt(event.xml_views); }, 0);
-      var counterViewsTotalHTML = _.reduce(counterViews, function (memo, event) { return memo + parseInt(event.html_views); }, 0);
-      var counterViewsTotal = counterViewsTotalPDF + counterViewsTotalXML + counterViewsTotalHTML;
+      var counterData = data.counterData;
+      var counterViewsTotalPDF = counterData["get-pdf"];
+      var counterViewsTotalXML = counterData["get-xml"];
+      var counterViewsTotalHTML = counterData["get-document"];
+      var counterViewsTotal = counterData["totals"];
 
       var pmcViewsTotalPDF = _.reduce(pmcViews, function (memo, event) { return memo + parseInt(event.pdf); }, 0);
       var pmcViewsTotalHTML = _.reduce(pmcViews, function (memo, event) { return memo + parseInt(event['full-text']); }, 0);

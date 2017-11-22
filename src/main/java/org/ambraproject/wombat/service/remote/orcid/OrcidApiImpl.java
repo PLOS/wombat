@@ -104,7 +104,7 @@ public class OrcidApiImpl implements OrcidApi {
     final String errorDescription = errorJson.get("error_description");
     if (errorDescription.startsWith("Reused authorization code: ")) {
       throw new OrcidAuthenticationTokenReusedException();
-    } else if (errorDescription.startsWith("expired")) {
+    } else if (errorDescription.contains("expired")) {
       throw new OrcidAuthenticationTokenExpiredException();
     } else {
       log.error("Unknown error from ORCID authorization API: " + errorDescription);

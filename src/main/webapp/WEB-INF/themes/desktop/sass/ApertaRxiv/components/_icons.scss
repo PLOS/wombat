@@ -63,6 +63,14 @@
   @include icon-label('download_citations.svg', 'Full Text');
 }
 
+.edit {
+  @include icon-label('edit_icon.svg', 'Edit');
+}
+
+.save {
+  @include icon-label('save_icon.svg', 'Save');
+}
+
 .filetype {
   background-image: url("../../resource/img/doc_icon.png");
 }

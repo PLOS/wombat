@@ -76,6 +76,34 @@
       padding-top: calc(48px - 2ch);
       padding-bottom: 1ch;
     }
+
+    &.open.editable {
+      z-index: 10;
+      background-color: #efefef;
+
+      // following is achieved using trial and error.
+      // 592px is hardcoded because of max-width above.
+
+      @include breakpoint($md) {
+        padding: 10px;
+        margin: -10px;
+        width: calc(100% - 108px);
+      }
+      @include breakpoint(0,$sm) {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-left: -10px;
+        box-sizing: content-box;
+      }
+      @include breakpoint($sm,592px) {
+        box-sizing: content-box;
+      }
+      @include breakpoint(592px,$md) {
+        box-sizing: content-box;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
   }
 }
 

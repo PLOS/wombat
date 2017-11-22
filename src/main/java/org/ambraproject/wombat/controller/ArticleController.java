@@ -29,6 +29,9 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
@@ -92,6 +95,8 @@ import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -111,7 +116,11 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Controller for rendering an article.
@@ -812,4 +821,99 @@ public class ArticleController extends WombatController {
       return new XmlContent(articleHtml.toString(), references);
     });
   }
+
+
+  /**
+   * @param model data passed in from the view
+   * @param site  current site
+   * @return path to the template
+   * @throws IOException
+   */
+  @RequestMapping(name = "editArticleXml", value = "/article/edit", method = RequestMethod.POST)
+  @ResponseBody
+  public Object editArticleXml(HttpServletRequest request, HttpServletResponse response, Model model,
+                             @SiteParam Site site,
+                             RequestedDoiVersion articleId,
+                             @RequestParam("id") String articleUri,
+                             @RequestParam("abstract") String abstractHtml)
+      throws IOException, MessagingException {
+    requireNonemptyParameter(articleUri);
+    requireNonemptyParameter(abstractHtml);
+
+    ArticlePointer articlePointer = articleMetadataFactory.get(site, articleId)
+        .validateVisibility("article")
+        .populate(request, model)
+        .fillAmendments(model)
+        .getArticlePointer();
+
+    String fullXml = corpusContentApi.readManuscript(articlePointer, site, "xml", (InputStream stream) -> {
+          byte[] bytes = ByteStreams.toByteArray(stream);
+          return new String(bytes);
+        });
+
+
+    // TODO: use/extend parseXmlService instead of regex.
+    final Pattern pattern = Pattern.compile("<abstract>\\s*(.*?)\\s*<\\/abstract>", Pattern.DOTALL);
+    Matcher matcher = pattern.matcher(fullXml);
+    String abstractText = "";
+    if (matcher.find()) {
+      abstractText = matcher.group(1);
+    }
+
+    if (abstractHtml.equals(abstractText)) {
+      return ImmutableMap.of("status", "no change");
+    } else {
+      String changedXml = matcher.replaceFirst("<abstract>\n" + abstractHtml + "\n</abstract>");
+
+      String path = createZipWithXml(articleUri, changedXml);
+
+      return ImmutableMap.of("status", "updated zip at " + path);
+    }
+  }
+
+  public String createZipWithXml(String doi, String xml)
+      throws IOException {
+
+    String[] parts = doi.split("/");
+    String shortDoi = parts[parts.length-1];
+
+    JsonObject json = new JsonObject();
+    JsonObject metadata = new JsonObject();
+    metadata.addProperty("aarx_doi", doi);
+    metadata.addProperty("revision_id", "yes");
+    json.add("metadata", metadata);
+
+    JsonObject manifest = new JsonObject();
+    manifest.addProperty("journal_code", "pbiol");
+    manifest.addProperty("revision_filename", "metadata.json");
+    JsonArray files = new JsonArray();
+    files.add(new JsonPrimitive(shortDoi + ".xml"));
+    manifest.add("files", files);
+    manifest.addProperty("destination", "preprint");
+    manifest.addProperty("archive_filename", shortDoi + ".zip");
+
+    //File f = File.createTempFile(shortDoi, ".zip");
+    //f.deleteOnExit();
+    File f = new File("/tmp/" + shortDoi + ".zip");
+
+    ZipOutputStream out = new ZipOutputStream(new FileOutputStream(f));
+
+    ZipEntry e = new ZipEntry(shortDoi + ".xml");
+    out.putNextEntry(e);
+    out.write(xml.getBytes());
+    out.closeEntry();
+
+    out.putNextEntry(new ZipEntry("metadata.json"));
+    out.write(gson.toJson(json).getBytes(Charset.forName("UTF-8")));
+    out.closeEntry();
+
+    out.close();
+
+    FileOutputStream out1 = new FileOutputStream("/tmp/" + shortDoi + ".man.json");
+    out1.write(gson.toJson(manifest).getBytes(Charset.forName("UTF-8")));
+    out1.close();
+
+    return f.getPath();
+  }
+
 }

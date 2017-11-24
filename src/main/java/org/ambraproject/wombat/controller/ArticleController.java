@@ -87,6 +87,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 
 import javax.mail.MessagingException;
@@ -822,13 +823,64 @@ public class ArticleController extends WombatController {
     });
   }
 
+  @RequestMapping(name = "revisionUpload", value = "/article/upload", method = RequestMethod.POST)
+  @ResponseBody
+  public Object revisionUpload(HttpServletRequest request,
+                                  @SiteParam Site site,
+                                  @RequestParam("doi") String doi,
+                                  @RequestParam("file") MultipartFile requestFile)
+      throws IOException {
 
-  /**
-   * @param model data passed in from the view
-   * @param site  current site
-   * @return path to the template
-   * @throws IOException
-   */
+    String fileName = requestFile.getOriginalFilename();
+    long fileSize = requestFile.getSize();
+    String[] parts = doi.split("/");
+    String shortDoi = parts[parts.length-1];
+
+    JsonObject json = new JsonObject();
+    JsonObject metadata = new JsonObject();
+    metadata.addProperty("aarx_doi", doi);
+    metadata.addProperty("revision_id", "yes");
+    json.add("metadata", metadata);
+
+    JsonObject manifest = new JsonObject();
+    manifest.addProperty("journal_code", "pbiol");
+    manifest.addProperty("revision_filename", "metadata.json");
+    JsonArray files = new JsonArray();
+    files.add(new JsonPrimitive(shortDoi + ".pdf"));
+    manifest.add("files", files);
+    manifest.addProperty("destination", "preprint");
+    manifest.addProperty("archive_filename", shortDoi + ".zip");
+    //File f = File.createTempFile(shortDoi, ".zip");
+    //f.deleteOnExit();
+    File f = new File("/tmp/" + shortDoi + ".zip");
+
+    ZipOutputStream out = new ZipOutputStream(new FileOutputStream(f));
+
+    ZipEntry e = new ZipEntry(shortDoi + ".pdf");
+    out.putNextEntry(e);
+    out.write(requestFile.getBytes());
+    out.closeEntry();
+
+    out.putNextEntry(new ZipEntry("metadata.json"));
+    out.write(gson.toJson(json).getBytes(Charset.forName("UTF-8")));
+    out.closeEntry();
+
+    out.close();
+
+    FileOutputStream out1 = new FileOutputStream("/tmp/" + shortDoi + ".man.json");
+    out1.write(gson.toJson(manifest).getBytes(Charset.forName("UTF-8")));
+    out1.close();
+    return ImmutableMap.of("status", "received " + fileName + " " + fileSize + " bytes");
+  }
+
+
+
+    /**
+     * @param model data passed in from the view
+     * @param site  current site
+     * @return path to the template
+     * @throws IOException
+     */
   @RequestMapping(name = "editArticleXml", value = "/article/edit", method = RequestMethod.POST)
   @ResponseBody
   public Object editArticleXml(HttpServletRequest request, HttpServletResponse response, Model model,

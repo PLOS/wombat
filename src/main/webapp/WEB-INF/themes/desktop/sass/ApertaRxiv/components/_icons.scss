@@ -63,12 +63,19 @@
   @include icon-label('download_citations.svg', 'Full Text');
 }
 
-.edit {
+.upload {
+  @include icon-label('download_citations.svg', 'Upload');
+  .icon {
+    transform: scaleY(-1);
+  }
+
+  .edit {
   @include icon-label('edit_icon.svg', 'Edit');
 }
 
 .save {
   @include icon-label('save_icon.svg', 'Save');
+>>>>>>> dev-revisionPrototypes
 }
 
 .filetype {

@@ -119,11 +119,17 @@ main article {
         align-self: center;;
       }
 
-      > div {
+      > div, > a {
         margin-right: 2ch;
         position: relative;
       }
 
+      .save {
+        background-color: #ffffff;
+        padding: 10px; margin: -10px;
+        border-radius: 40px;
+        z-index: 10;
+      }
     }
   }
 
@@ -323,6 +329,9 @@ main article {
           color: $brand-separator;
         }
 
+        #author_phone, #author_affiliation { // honeypot
+          display: none; visibility: hidden;
+        }
         form {
           width: calc(100% - 30px);
           @include breakpoint(sm) {
@@ -392,4 +401,10 @@ main article {
       }
     }
   }
+}
+
+body > div.mask {
+  position: fixed;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 }

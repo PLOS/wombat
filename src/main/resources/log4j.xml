@@ -20,29 +20,30 @@
   ~ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
   ~ DEALINGS IN THE SOFTWARE.
   -->
-
 <!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-  <!-- Appenders -->
-  <appender name="syslog" class="org.apache.log4j.net.SyslogAppender">
-    <param name="SyslogHost" value="127.0.0.1" />
-    <param name="Facility" value="local4" />
-    <param name="FacilityPrinting" value="true"/>
-    <layout class="org.apache.log4j.PatternLayout">
-      <param name="ConversionPattern" value="%d{ISO8601} %-5p: [%t] %c{2} %x - %m%n"/>
-    </layout>
-  </appender>
+  <!-- Appenders -->
+  <appender name="syslog" class="org.apache.log4j.net.SyslogAppender">
+    <param name="SyslogHost" value="127.0.0.1" />
+    <param name="Header" value="true" />
+    <param name="Facility" value="local4" />
+   <!--  <param name="FacilityPrinting" value="true"/> -->
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="wombat %C: [%t] %x:%m%n"/>
+   <!--   <param name="ConversionPattern" value="%d{ISO8601} %-5p: [%t] %c{2} %x - %m%n"/> -->
+    </layout>
+  </appender>
 
-  <!-- Application Loggers -->
-  <logger name="org.ambraproject.wombat">
-    <level value="info"/>
-  </logger>
+  <!-- Application Loggers -->
+  <logger name="org.ambraproject.wombat">
+    <level value="info"/>
+  </logger>
 
-  <!-- Root Logger -->
-  <root>
-    <priority value="info"/>
-    <appender-ref ref="syslog"/>
-  </root>
+  <!-- Root Logger -->
+  <root>
+    <priority value="info"/>
+    <appender-ref ref="syslog"/>
+  </root>
 
 </log4j:configuration>

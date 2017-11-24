@@ -502,6 +502,20 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
             font-size: $txt-size-xsmall;
             margin-left: 3px;
           }
+
+          span.equation {
+            display: block;
+            text-align: center;
+            font-size: $txt-size-medium;
+            margin: $line-height 0;
+            .note {
+              color: $clr-body-text;
+              font-size: $txt-size-xxsmall;
+              display: block;
+              text-align: right;
+              font-weight: bold;
+            }
+          }
         }
 
         a {

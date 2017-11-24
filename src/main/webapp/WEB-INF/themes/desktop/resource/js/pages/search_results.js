@@ -105,7 +105,9 @@ var SearchResult;
         that.processRequest();
       });
 
-      this.ALMData = new SearchResultsALMData();
+      if (typeof SearchResultsALMData !== "undefined") {
+        this.ALMData = new SearchResultsALMData();
+      }
 
       this.$searchHeaderEl.hide();
       this.$filtersEl.hide();

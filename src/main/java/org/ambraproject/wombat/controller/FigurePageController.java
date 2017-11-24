@@ -22,6 +22,7 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.MoreCollectors;
 import org.ambraproject.wombat.config.site.Site;
@@ -71,8 +72,7 @@ public class FigurePageController extends WombatController {
 
     List<Map<String, ?>> figures = articleMetadata.getFigureView().stream()
         .map((Map<String, ?> figureMetadata) -> {
-          String description = (String) figureMetadata.get("description");
-          String descriptionHtml = articleTransformService.transformImageDescription(site, articlePointer, description);
+          String descriptionHtml = getDescriptionHtml(site, articlePointer, figureMetadata);
           return ImmutableMap.<String, Object>builder()
               .putAll(figureMetadata)
               .put("descriptionHtml", descriptionHtml)
@@ -105,11 +105,17 @@ public class FigurePageController extends WombatController {
         .collect(MoreCollectors.onlyElement());
     model.addAttribute("figure", figureMetadata);
 
-    String description = (String) figureMetadata.get("description");
-    String descriptionHtml = articleTransformService.transformImageDescription(site, articlePointer, description);
+    String descriptionHtml = getDescriptionHtml(site, articlePointer, figureMetadata);
     model.addAttribute("descriptionHtml", descriptionHtml);
 
     return site + "/ftl/article/figure";
+  }
+
+  private String getDescriptionHtml(Site site, ArticlePointer articlePointer,
+                                    Map<String, ?> figureMetadata) {
+    String description = (String) figureMetadata.get("description");
+    return Strings.isNullOrEmpty(description) ? "" :
+        articleTransformService.transformImageDescription(site, articlePointer, description);
   }
 
   /**

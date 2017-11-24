@@ -117,6 +117,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -321,12 +323,26 @@ public class ArticleController extends WombatController {
                                   @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
                                   @RequestParam(value = "authorEmailAddress", required=false) String authorEmailAddress,
                                   @RequestParam(value = "authorName", required=false) String authorName,
+                                  @RequestParam(value = "authorPhone", required=false) String authorPhone,
+                                  @RequestParam(value = "authorAffiliation", required=false) String authorAffiliation,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
                                   @RequestParam(value = "inReplyTo", required = false) String parentCommentUri,
                                   @RequestParam(value = RECAPTCHA_CHALLENGE_FIELD, required=false) String captchaChallenge,
                                   @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required=false) String captchaResponse)
       throws IOException {
+
+    // honeypot for bot.
+    // authorPhone and authorAffiliation are fake parameters, which are present in the form, but hidden via CSS.
+    // A bot will likely fill one or both of these. But a human will not see those fields to fill them.
+    // If any of these parameters are non-empty, then mark it as a bot, and do not proceed further.
+    // However, return success response to avoid alarming the bot.
+
+    if (authorPhone != null && !authorPhone.isEmpty() || authorAffiliation != null && !authorAffiliation.isEmpty()) {
+      log.warn("bot trapped in honeypot: {}", request.getRemoteAddr());
+      return ImmutableMap.of("status", "success");
+    }
+
     checkCommentsAreEnabled();
 
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
@@ -817,7 +833,6 @@ public class ArticleController extends WombatController {
 
     String fileName = requestFile.getOriginalFilename();
     long fileSize = requestFile.getSize();
-
     String[] parts = doi.split("/");
     String shortDoi = parts[parts.length-1];
 
@@ -835,7 +850,6 @@ public class ArticleController extends WombatController {
     manifest.add("files", files);
     manifest.addProperty("destination", "preprint");
     manifest.addProperty("archive_filename", shortDoi + ".zip");
-
     //File f = File.createTempFile(shortDoi, ".zip");
     //f.deleteOnExit();
     File f = new File("/tmp/" + shortDoi + ".zip");
@@ -856,7 +870,102 @@ public class ArticleController extends WombatController {
     FileOutputStream out1 = new FileOutputStream("/tmp/" + shortDoi + ".man.json");
     out1.write(gson.toJson(manifest).getBytes(Charset.forName("UTF-8")));
     out1.close();
-
     return ImmutableMap.of("status", "received " + fileName + " " + fileSize + " bytes");
   }
+
+
+
+    /**
+     * @param model data passed in from the view
+     * @param site  current site
+     * @return path to the template
+     * @throws IOException
+     */
+  @RequestMapping(name = "editArticleXml", value = "/article/edit", method = RequestMethod.POST)
+  @ResponseBody
+  public Object editArticleXml(HttpServletRequest request, HttpServletResponse response, Model model,
+                             @SiteParam Site site,
+                             RequestedDoiVersion articleId,
+                             @RequestParam("id") String articleUri,
+                             @RequestParam("abstract") String abstractHtml)
+      throws IOException, MessagingException {
+    requireNonemptyParameter(articleUri);
+    requireNonemptyParameter(abstractHtml);
+
+    ArticlePointer articlePointer = articleMetadataFactory.get(site, articleId)
+        .validateVisibility("article")
+        .populate(request, model)
+        .fillAmendments(model)
+        .getArticlePointer();
+
+    String fullXml = corpusContentApi.readManuscript(articlePointer, site, "xml", (InputStream stream) -> {
+          byte[] bytes = ByteStreams.toByteArray(stream);
+          return new String(bytes);
+        });
+
+
+    // TODO: use/extend parseXmlService instead of regex.
+    final Pattern pattern = Pattern.compile("<abstract>\\s*(.*?)\\s*<\\/abstract>", Pattern.DOTALL);
+    Matcher matcher = pattern.matcher(fullXml);
+    String abstractText = "";
+    if (matcher.find()) {
+      abstractText = matcher.group(1);
+    }
+
+    if (abstractHtml.equals(abstractText)) {
+      return ImmutableMap.of("status", "no change");
+    } else {
+      String changedXml = matcher.replaceFirst("<abstract>\n" + abstractHtml + "\n</abstract>");
+
+      String path = createZipWithXml(articleUri, changedXml);
+
+      return ImmutableMap.of("status", "updated zip at " + path);
+    }
+  }
+
+  public String createZipWithXml(String doi, String xml)
+      throws IOException {
+
+    String[] parts = doi.split("/");
+    String shortDoi = parts[parts.length-1];
+
+    JsonObject json = new JsonObject();
+    JsonObject metadata = new JsonObject();
+    metadata.addProperty("aarx_doi", doi);
+    metadata.addProperty("revision_id", "yes");
+    json.add("metadata", metadata);
+
+    JsonObject manifest = new JsonObject();
+    manifest.addProperty("journal_code", "pbiol");
+    manifest.addProperty("revision_filename", "metadata.json");
+    JsonArray files = new JsonArray();
+    files.add(new JsonPrimitive(shortDoi + ".xml"));
+    manifest.add("files", files);
+    manifest.addProperty("destination", "preprint");
+    manifest.addProperty("archive_filename", shortDoi + ".zip");
+
+    //File f = File.createTempFile(shortDoi, ".zip");
+    //f.deleteOnExit();
+    File f = new File("/tmp/" + shortDoi + ".zip");
+
+    ZipOutputStream out = new ZipOutputStream(new FileOutputStream(f));
+
+    ZipEntry e = new ZipEntry(shortDoi + ".xml");
+    out.putNextEntry(e);
+    out.write(xml.getBytes());
+    out.closeEntry();
+
+    out.putNextEntry(new ZipEntry("metadata.json"));
+    out.write(gson.toJson(json).getBytes(Charset.forName("UTF-8")));
+    out.closeEntry();
+
+    out.close();
+
+    FileOutputStream out1 = new FileOutputStream("/tmp/" + shortDoi + ".man.json");
+    out1.write(gson.toJson(manifest).getBytes(Charset.forName("UTF-8")));
+    out1.close();
+
+    return f.getPath();
+  }
+
 }

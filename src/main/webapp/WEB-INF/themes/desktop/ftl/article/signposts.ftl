@@ -23,6 +23,7 @@
 <#assign metricsUrl>
   <@siteLink handlerName="articleMetrics" queryParameters={"id": article.doi} />
 </#assign>
+
 <#include "../common/almQueryJs.ftl" />
 <@js src="resource/js/components/signposts.js"/>
 

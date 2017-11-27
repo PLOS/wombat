@@ -72,9 +72,10 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   private JsonService jsonService;
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;
-
   @Autowired
   private ArticleApi articleApi;
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
 
   @VisibleForTesting
   protected Map<String, String> eIssnToJournalKey;
@@ -218,9 +219,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     }
 
   }
-
-  @Autowired
-  private RuntimeConfiguration runtimeConfiguration;
 
   @Override
   public Map<String, ?> search(ArticleSearchQuery query, Site site) throws IOException {

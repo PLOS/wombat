@@ -20,39 +20,24 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-package org.ambraproject.wombat.service;
+package org.ambraproject.wombat.service.remote.orcid;
 
-import org.ambraproject.wombat.model.Reference;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
+import org.ambraproject.wombat.config.site.Site;
 
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
+import java.net.URISyntaxException;
 
 /**
- * This class is used to parse the article xml
+ * Interface to the ORCID API
  */
-public interface ParseXmlService {
+public interface OrcidApi {
 
   /**
-   * @param xml article xml
-   * @return article xml transformed into a document
-   * @throws IOException
-   */
-  Document getDocument(InputStream xml) throws IOException;
-
-  /**
-   * Parses the references in the article xml
+   * Authenticates a code. If successful, return the associated ORCID ID.
    *
-   * @param doc article xml transformed into a document
-   * @return list of Reference objects
-   * @throws ParserConfigurationException
+   * @return ORCID ID
    * @throws IOException
-   * @throws SAXException
-   * @throws XmlContentException
    */
-  List<Reference> parseArticleReferences(Document doc,
-                                         ParseReferenceService.DoiToJournalLinkService linkService) throws IOException;
+  public String getOrcidIdFromAuthorizationCode(Site site, String code) throws IOException, URISyntaxException;
+
 }

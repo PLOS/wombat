@@ -45,18 +45,17 @@ import java.util.stream.Collectors;
 
 
 public class ParseXmlServiceImpl implements ParseXmlService {
+
   private static final Logger log = LoggerFactory.getLogger(ParseXmlServiceImpl.class);
+
   @Autowired
   private ParseReferenceService parseReferenceService;
-
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public List<Reference> parseArticleReferences(InputStream xml,
-                                                ParseReferenceService.DoiToJournalLinkService linkService)
-      throws IOException {
+  public Document getDocument(InputStream xml) throws IOException {
     Objects.requireNonNull(xml);
 
     Document doc;
@@ -69,6 +68,16 @@ public class ParseXmlServiceImpl implements ParseXmlService {
 
     // to combine adjacent text nodes and remove empty ones in the dom
     doc.getDocumentElement().normalize();
+    return doc;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public List<Reference> parseArticleReferences(Document doc,
+                                                ParseReferenceService.DoiToJournalLinkService linkService)
+      throws IOException {
 
     List<Reference> references = new ArrayList<>();
     List<Node> refListNodes = NodeListAdapter.wrap(doc.getElementsByTagName("ref-list"));

@@ -25,6 +25,7 @@ package org.ambraproject.wombat.controller;
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.io.ByteStreams;
@@ -55,9 +56,12 @@ import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrUndefinedException;
 import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenExpiredException;
+import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenReusedException;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
@@ -85,6 +89,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
+import org.w3c.dom.Document;
 
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -98,11 +103,14 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Serializable;
 import java.io.StringWriter;
+import java.net.URISyntaxException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -169,6 +177,8 @@ public class ArticleController extends WombatController {
   private RequestMappingContextDictionary requestMappingContextDictionary;
   @Autowired
   private DoiToJournalResolutionService doiToJournalResolutionService;
+  @Autowired
+  private OrcidApi orcidApi;
 
   // TODO: this method currently makes 5 backend RPCs, all sequentially. Explore reducing this
   // number, or doing them in parallel, if this is a performance bottleneck.
@@ -311,15 +321,15 @@ public class ArticleController extends WombatController {
                                   @RequestParam("commentTitle") String commentTitle,
                                   @RequestParam("comment") String commentBody,
                                   @RequestParam("isCompetingInterest") boolean hasCompetingInterest,
-                                  @RequestParam(value = "authorEmailAddress", required=false) String authorEmailAddress,
-                                  @RequestParam(value = "authorName", required=false) String authorName,
-                                  @RequestParam(value = "authorPhone", required=false) String authorPhone,
-                                  @RequestParam(value = "authorAffiliation", required=false) String authorAffiliation,
+                                  @RequestParam(value = "authorEmailAddress", required = false) String authorEmailAddress,
+                                  @RequestParam(value = "authorName", required = false) String authorName,
+                                  @RequestParam(value = "authorPhone", required = false) String authorPhone,
+                                  @RequestParam(value = "authorAffiliation", required = false) String authorAffiliation,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
                                   @RequestParam(value = "inReplyTo", required = false) String parentCommentUri,
-                                  @RequestParam(value = RECAPTCHA_CHALLENGE_FIELD, required=false) String captchaChallenge,
-                                  @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required=false) String captchaResponse)
+                                  @RequestParam(value = RECAPTCHA_CHALLENGE_FIELD, required = false) String captchaChallenge,
+                                  @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required = false) String captchaResponse)
       throws IOException {
 
     // honeypot for bot.
@@ -590,7 +600,7 @@ public class ArticleController extends WombatController {
 
     boolean isValid = true;
 
-    UrlValidator urlValidator = new UrlValidator(new String[]{"http","https"});
+    UrlValidator urlValidator = new UrlValidator(new String[]{"http", "https"});
 
     if (StringUtils.isBlank(link)) {
       model.addAttribute("linkError", "This field is required.");
@@ -653,6 +663,40 @@ public class ArticleController extends WombatController {
     HttpHeaders headers = new HttpHeaders();
     headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
     return new ResponseEntity<>(figureView, headers, HttpStatus.OK);
+  }
+
+  @RequestMapping(name = "uploadPreprintRevision", value = "/article/uploadPreprintRevision")
+  public String uploadPreprintRevision(HttpServletRequest request, Model model, @SiteParam Site site,
+                                       @RequestParam("state") String state,
+                                       @RequestParam("code") String code) throws IOException, URISyntaxException {
+    final byte[] decodedState = Base64.getDecoder().decode(state);
+    final String decodedJson = URLDecoder.decode(new String(decodedState), "UTF-8");
+    Map<String, Object> stateJson = gson.fromJson(decodedJson, HashMap.class);
+
+    String correspondingAuthorOrcidId = (String) stateJson.get("orcid_id");
+    String authenticatedOrcidId = "";
+
+    try {
+      authenticatedOrcidId = orcidApi.getOrcidIdFromAuthorizationCode(site, code);
+    } catch (OrcidAuthenticationTokenExpiredException | OrcidAuthenticationTokenReusedException e) {
+      model.addAttribute("orcidAuthenticationError", e.getMessage());
+    }
+
+    boolean isError = true;
+    if (correspondingAuthorOrcidId.equals("http://orcid.org/" + authenticatedOrcidId)) {
+      model.addAttribute("orcidId", correspondingAuthorOrcidId);
+      isError = false;
+    } else if (!Strings.isNullOrEmpty(authenticatedOrcidId)) {
+      model.addAttribute("orcidAuthenticationError", "ORCID IDs do not match. " +
+          "Corresponding author ORCID ID must be used.");
+    }
+
+    if (isError) {
+      final RequestedDoiVersion articleId = RequestedDoiVersion.of((String) stateJson.get("doi"));
+      return renderArticle(request, model, site, articleId);
+    } else {
+      return site + "/ftl/article/uploadPreprintRevision";
+    }
   }
 
   @RequestMapping(name = "email", value = "/article/email")
@@ -782,26 +826,10 @@ public class ArticleController extends WombatController {
                                    HttpServletRequest request) throws IOException {
     return corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
       byte[] xml = ByteStreams.toByteArray(stream);
-      List<Reference> references = parseXmlService.parseArticleReferences(
-          new ByteArrayInputStream(xml), doi -> {
-            String citationJournalKey;
-            try {
-              citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi, site);
-            } catch (SolrUndefinedException | EntityNotFoundException e) {
-              // If we can't look it up in Solr, fail quietly, the same as though no match was found.
-              log.error("Solr is undefined or returning errors on query.");
-              citationJournalKey = null;
-            }
-            String linkText = null;
-            if (citationJournalKey != null) {
-              linkText = Link.toForeignSite(site, citationJournalKey, siteSet)
-                  .toPattern(requestMappingContextDictionary, "article")
-                  .addQueryParameter("id", doi)
-                  .build()
-                  .get(request);
-            }
-            return linkText;
-          });
+      final Document document = parseXmlService.getDocument(new ByteArrayInputStream(xml));
+
+      List<Reference> references = parseXmlService.parseArticleReferences(document,
+          doi -> getLinkText(site, request, doi));
 
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
       try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
@@ -811,5 +839,25 @@ public class ArticleController extends WombatController {
 
       return new XmlContent(articleHtml.toString(), references);
     });
+  }
+
+  private String getLinkText(Site site, HttpServletRequest request, String doi) throws IOException {
+    String citationJournalKey;
+    try {
+      citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi, site);
+    } catch (SolrUndefinedException | EntityNotFoundException e) {
+      // If we can't look it up in Solr, fail quietly, the same as though no match was found.
+      log.error("Solr is undefined or returning errors on query.");
+      citationJournalKey = null;
+    }
+    String linkText = null;
+    if (citationJournalKey != null) {
+      linkText = Link.toForeignSite(site, citationJournalKey, siteSet)
+          .toPattern(requestMappingContextDictionary, "article")
+          .addQueryParameter("id", doi)
+          .build()
+          .get(request);
+    }
+    return linkText;
   }
 }

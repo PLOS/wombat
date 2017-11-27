@@ -25,7 +25,6 @@ package org.ambraproject.wombat.service.remote.orcid;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
-import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
@@ -52,8 +51,6 @@ public class OrcidApiImpl implements OrcidApi {
 
   private static final Logger log = LoggerFactory.getLogger(OrcidApiImpl.class);
 
-  @Autowired
-  private JsonService jsonService;
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;
   @Autowired

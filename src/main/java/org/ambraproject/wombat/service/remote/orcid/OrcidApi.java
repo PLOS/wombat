@@ -38,6 +38,6 @@ public interface OrcidApi {
    * @return ORCID ID
    * @throws IOException
    */
-  public String getOrcidIdFromCode(Site site, String code) throws IOException, URISyntaxException;
+  public String getOrcidIdFromAuthorizationCode(Site site, String code) throws IOException, URISyntaxException;
 
 }

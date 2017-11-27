@@ -60,7 +60,7 @@ public class OrcidApiImpl implements OrcidApi {
    * {@inheritDoc}
    */
   @Override
-  public String getOrcidIdFromCode(Site site, String code) throws IOException, URISyntaxException {
+  public String getOrcidIdFromAuthorizationCode(Site site, String code) throws IOException, URISyntaxException {
 
     List<NameValuePair> params = new ArrayList<>();
     params.add(new BasicNameValuePair("client_id", getOrcidClientId(site)));

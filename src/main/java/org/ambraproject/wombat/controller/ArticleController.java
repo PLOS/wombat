@@ -677,7 +677,7 @@ public class ArticleController extends WombatController {
     String authenticatedOrcidId = "";
 
     try {
-      authenticatedOrcidId = orcidApi.getOrcidIdFromCode(site, code);
+      authenticatedOrcidId = orcidApi.getOrcidIdFromAuthorizationCode(site, code);
     } catch (OrcidAuthenticationTokenExpiredException | OrcidAuthenticationTokenReusedException e) {
       model.addAttribute("orcidAuthenticationError", e.getMessage());
     }

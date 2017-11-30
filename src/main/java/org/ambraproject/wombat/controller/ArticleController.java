@@ -27,6 +27,7 @@ import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.MoreCollectors;
 import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -44,6 +45,7 @@ import org.ambraproject.wombat.model.ArticleComment;
 import org.ambraproject.wombat.model.ArticleCommentFlag;
 import org.ambraproject.wombat.model.EmailMessage;
 import org.ambraproject.wombat.model.Reference;
+import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
@@ -111,6 +113,7 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -121,6 +124,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 /**
@@ -145,6 +149,8 @@ public class ArticleController extends WombatController {
   private ArticleApi articleApi;
   @Autowired
   private CorpusContentApi corpusContentApi;
+  @Autowired
+  private ArticleResolutionService articleResolutionService;
   @Autowired
   private ArticleTransformService articleTransformService;
   @Autowired
@@ -823,64 +829,70 @@ public class ArticleController extends WombatController {
     });
   }
 
+  /**
+   * Replace the existing ZIP of the article files, by updating its PDF with the newly uploaded PDF file.
+   *
+   * @param request
+   * @param response
+   * @param model
+   * @param site
+   * @param articleId
+   * @param doi The article DOI.
+   * @param requestFile The uploaded file metadata and content.
+   * @return status
+   * @throws IOException
+   */
   @RequestMapping(name = "revisionUpload", value = "/article/upload", method = RequestMethod.POST)
   @ResponseBody
-  public Object revisionUpload(HttpServletRequest request,
+  public Object revisionUpload(HttpServletRequest request, HttpServletResponse response, Model model,
                                   @SiteParam Site site,
-                                  @RequestParam("doi") String doi,
+                                  RequestedDoiVersion articleId,
+                                  @RequestParam("id") String doi,
                                   @RequestParam("file") MultipartFile requestFile)
       throws IOException {
 
-    String fileName = requestFile.getOriginalFilename();
-    long fileSize = requestFile.getSize();
-    String[] parts = doi.split("/");
-    String shortDoi = parts[parts.length-1];
+    // get the existing ZIP content
+    Map<String, byte[]> files = getExistingArchive(articleId);
 
-    JsonObject json = new JsonObject();
-    JsonObject metadata = new JsonObject();
-    metadata.addProperty("aarx_doi", doi);
-    metadata.addProperty("revision_id", "yes");
-    json.add("metadata", metadata);
+    // locate the article XML file.
+    String fileName = getArchiveFileByExt(files, ".xml");
+    if (fileName == null) {
+      return ImmutableMap.of("status", "failed to get XML filename");
+    }
 
-    JsonObject manifest = new JsonObject();
-    manifest.addProperty("journal_code", "pbiol");
-    manifest.addProperty("revision_filename", "metadata.json");
-    JsonArray files = new JsonArray();
-    files.add(new JsonPrimitive(shortDoi + ".pdf"));
-    manifest.add("files", files);
-    manifest.addProperty("destination", "preprint");
-    manifest.addProperty("archive_filename", shortDoi + ".zip");
-    //File f = File.createTempFile(shortDoi, ".zip");
-    //f.deleteOnExit();
-    File f = new File("/tmp/" + shortDoi + ".zip");
+    // add or change revision information
+    files.put(fileName, editArticleRevision(files.get(fileName)));
 
-    ZipOutputStream out = new ZipOutputStream(new FileOutputStream(f));
+    // locate the PDF file name
+    fileName = getArchiveFileByExt(files, ".pdf");
+    if (fileName == null) {
+      return ImmutableMap.of("status", "failed to get PDF filename");
+    }
 
-    ZipEntry e = new ZipEntry(shortDoi + ".pdf");
-    out.putNextEntry(e);
-    out.write(requestFile.getBytes());
-    out.closeEntry();
+    // replace the PDF file with the newly uploaded file content
+    files.put(fileName, requestFile.getBytes());
 
-    out.putNextEntry(new ZipEntry("metadata.json"));
-    out.write(gson.toJson(json).getBytes(Charset.forName("UTF-8")));
-    out.closeEntry();
+    // create the new ZIP
+    String path = createZipFromFiles(doi, files);
 
-    out.close();
+    // TODO: deposit the ZIP to article router.
 
-    FileOutputStream out1 = new FileOutputStream("/tmp/" + shortDoi + ".man.json");
-    out1.write(gson.toJson(manifest).getBytes(Charset.forName("UTF-8")));
-    out1.close();
-    return ImmutableMap.of("status", "received " + fileName + " " + fileSize + " bytes");
+    return ImmutableMap.of("status", "updated zip at " + path);
   }
 
 
 
-    /**
-     * @param model data passed in from the view
-     * @param site  current site
-     * @return path to the template
-     * @throws IOException
-     */
+  /**
+    * Replace the existing ZIP of the article files, by editing content of the article XML.
+    *
+    * @param model data passed in from the view
+    * @param site  current site
+    * @param articleId
+    * @param articleUri The article DOI.
+    * @param abstractHtml Edited (new) abstract that replaces the existing abstract in the XML.
+    * @return status
+    * @throws IOException
+    */
   @RequestMapping(name = "editArticleXml", value = "/article/edit", method = RequestMethod.POST)
   @ResponseBody
   public Object editArticleXml(HttpServletRequest request, HttpServletResponse response, Model model,
@@ -892,18 +904,22 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(articleUri);
     requireNonemptyParameter(abstractHtml);
 
-    ArticlePointer articlePointer = articleMetadataFactory.get(site, articleId)
-        .validateVisibility("article")
-        .populate(request, model)
-        .fillAmendments(model)
-        .getArticlePointer();
+    // get the existing ZIP content
+    Map<String, byte[]> files = getExistingArchive(articleId);
 
-    String fullXml = corpusContentApi.readManuscript(articlePointer, site, "xml", (InputStream stream) -> {
-          byte[] bytes = ByteStreams.toByteArray(stream);
-          return new String(bytes);
-        });
+    // locate the article XML file.
+    String fileName = getArchiveFileByExt(files, ".xml");
+    if (fileName == null) {
+      return ImmutableMap.of("status", "failed to get XML filename");
+    }
 
+    // add or change revision information
+    files.put(fileName, editArticleRevision(files.get(fileName)));
 
+    // extract XML content
+    String fullXml = (fileName != null ? new String(files.get(fileName)) : "");
+
+    // locate <abstract> element in the XML
     // TODO: use/extend parseXmlService instead of regex.
     final Pattern pattern = Pattern.compile("<abstract>\\s*(.*?)\\s*<\\/abstract>", Pattern.DOTALL);
     Matcher matcher = pattern.matcher(fullXml);
@@ -912,58 +928,139 @@ public class ArticleController extends WombatController {
       abstractText = matcher.group(1);
     }
 
+    // replace <abstract> with the supplied content, if it changed.
     if (abstractHtml.equals(abstractText)) {
       return ImmutableMap.of("status", "no change");
     } else {
       String changedXml = matcher.replaceFirst("<abstract>\n" + abstractHtml + "\n</abstract>");
 
-      String path = createZipWithXml(articleUri, changedXml);
+      // replace article XML file in the ZIP content.
+      files.put(fileName, changedXml.getBytes());
+
+      // create the new ZIP
+      String path = createZipFromFiles(articleUri, files);
+
+      // TODO: deposit the new ZIP to the article router.
 
       return ImmutableMap.of("status", "updated zip at " + path);
     }
   }
 
-  public String createZipWithXml(String doi, String xml)
+  private byte[] editArticleRevision(byte[] content) {
+    String fullXml = new String(content);
+
+    // locate <revision-id> element in the XML
+    final Pattern pattern1 = Pattern.compile("<revision-id>\\s*(.*?)\\s*<\\/revision-id>", Pattern.DOTALL);
+    Matcher matcher1 = pattern1.matcher(fullXml);
+    String revisionText = "";
+    if (matcher1.find()) {
+      revisionText = matcher1.group(1);
+    }
+
+    if (revisionText.isEmpty()) {
+      revisionText = "1";
+      // insert revision-id at begining of article-meta block
+      final Pattern pattern2 = Pattern.compile("<article-meta>", Pattern.DOTALL);
+      Matcher matcher2 = pattern2.matcher(fullXml);
+      fullXml = matcher2.replaceFirst("<article-meta>\n<revision-id>" + revisionText + "</revision-id>");
+    } else {
+      // replace revision-id with new value.
+      revisionText = String.valueOf(Integer.parseInt(revisionText) + 1);
+      fullXml = matcher1.replaceFirst("<revision-id>" + revisionText + "</revision-id>");
+    }
+
+    return fullXml.getBytes();
+  }
+
+  /**
+   * Fetch the existing ZIP file content for the given article using Rhino API.
+   *
+   * @param articleId
+   * @return Collection of file name and its content (byte array) from the ZIP archive.
+   * @throws EntityNotFoundException
+   * @throws IOException
+   */
+  private Map<String, byte[]> getExistingArchive(RequestedDoiVersion articleId)
+    throws EntityNotFoundException, IOException {
+
+    // convert articleId to articlePointer
+    ArticlePointer articlePointer = articleResolutionService.toIngestion(articleId);
+
+    // Fetch ZIP from Rhino.
+    ApiAddress repackUrl = ApiAddress.builder("articles")
+        .embedDoi(articlePointer.getDoi()).addToken("ingestions")
+        .addToken(String.valueOf(articlePointer.getIngestionNumber()))
+        .addToken("ingestible").build();
+    InputStream input = articleApi.requestStream(repackUrl);
+
+    // ZIP file content is not stored on disk, but just in memory, in "files" variable below.
+    Map<String, byte[]> files = new LinkedHashMap<String, byte[]>();
+
+    try (ZipInputStream zipStream = new ZipInputStream(input)) {
+      ZipEntry entry;
+      while ((entry = zipStream.getNextEntry()) != null) {
+        byte[] fileContent = ByteStreams.toByteArray(zipStream);
+        String fileName = entry.getName();
+        files.put(entry.getName(), fileContent);
+      }
+    } finally {
+      input.close();
+    }
+    return files;
+  }
+
+  /**
+   * Locate a file name in the collection, by its extension.
+   * Excludes manifest and metadata names.
+   * Assumes unique. If multiple file for the extension found, then throws an error.
+   *
+   * @param files
+   * @param ext
+   * @return Filename found.
+   */
+  private String getArchiveFileByExt(Map<String, byte[]> files, String ext) {
+    return files.keySet().stream().filter(key -> {
+      return !key.startsWith("manifest.") && !key.startsWith("metadata.") && key.toLowerCase().endsWith(ext);
+    }).collect(MoreCollectors.onlyElement());
+  }
+
+  /**
+   * Re-create the ZIP file from the files collections.
+   * DOI is used to construct the file name.
+   *
+   * @param doi
+   * @param files
+   * @return Created ZIP file path.
+   * @throws IOException
+   */
+  private String createZipFromFiles(String doi, Map<String, byte[]> files)
       throws IOException {
 
     String[] parts = doi.split("/");
     String shortDoi = parts[parts.length-1];
 
-    JsonObject json = new JsonObject();
-    JsonObject metadata = new JsonObject();
-    metadata.addProperty("aarx_doi", doi);
-    metadata.addProperty("revision_id", "yes");
-    json.add("metadata", metadata);
-
-    JsonObject manifest = new JsonObject();
-    manifest.addProperty("journal_code", "pbiol");
-    manifest.addProperty("revision_filename", "metadata.json");
-    JsonArray files = new JsonArray();
-    files.add(new JsonPrimitive(shortDoi + ".xml"));
-    manifest.add("files", files);
-    manifest.addProperty("destination", "preprint");
-    manifest.addProperty("archive_filename", shortDoi + ".zip");
-
+    //TODO: use temp file for ZIP, and delete after deposit.
     //File f = File.createTempFile(shortDoi, ".zip");
     //f.deleteOnExit();
+
+    // For now, create in /tmp directory, for manual inspection.
+
     File f = new File("/tmp/" + shortDoi + ".zip");
 
-    ZipOutputStream out = new ZipOutputStream(new FileOutputStream(f));
+    final ZipOutputStream out = new ZipOutputStream(new FileOutputStream(f));
 
-    ZipEntry e = new ZipEntry(shortDoi + ".xml");
-    out.putNextEntry(e);
-    out.write(xml.getBytes());
-    out.closeEntry();
-
-    out.putNextEntry(new ZipEntry("metadata.json"));
-    out.write(gson.toJson(json).getBytes(Charset.forName("UTF-8")));
-    out.closeEntry();
+    files.forEach((fileName, bytes) -> {
+      ZipEntry e = new ZipEntry(fileName);
+      try {
+        out.putNextEntry(e);
+        out.write(bytes);
+        out.closeEntry();
+      } catch (IOException ex) {
+        ex.printStackTrace();
+      }
+    });
 
     out.close();
-
-    FileOutputStream out1 = new FileOutputStream("/tmp/" + shortDoi + ".man.json");
-    out1.write(gson.toJson(manifest).getBytes(Charset.forName("UTF-8")));
-    out1.close();
 
     return f.getPath();
   }

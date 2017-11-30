@@ -68,6 +68,7 @@
   .icon {
     transform: scaleY(-1);
   }
+}
 
   .edit {
   @include icon-label('edit_icon.svg', 'Edit');
@@ -75,7 +76,6 @@
 
 .save {
   @include icon-label('save_icon.svg', 'Save');
->>>>>>> dev-revisionPrototypes
 }
 
 .filetype {

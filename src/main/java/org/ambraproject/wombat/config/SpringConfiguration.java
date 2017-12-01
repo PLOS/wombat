@@ -94,6 +94,8 @@ import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
 import org.ambraproject.wombat.service.SearchFilterService;
+import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
+import org.ambraproject.wombat.service.remote.orcid.OrcidApiImpl;
 import org.ambraproject.wombat.util.GitInfo;
 import org.ambraproject.wombat.util.NullJavaMailSender;
 import org.springframework.context.annotation.Bean;
@@ -431,6 +433,11 @@ public class SpringConfiguration {
   @Bean
   public TopLevelLockssManifestService topLevelLockssManifestService() {
     return new TopLevelLockssManifestService();
+  }
+
+  @Bean
+  public OrcidApi orcidApi() {
+    return new OrcidApiImpl();
   }
 
 }

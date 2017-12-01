@@ -20,39 +20,14 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-package org.ambraproject.wombat.service;
+package org.ambraproject.wombat.service.remote.orcid;
 
-import org.ambraproject.wombat.model.Reference;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 
-/**
- * This class is used to parse the article xml
- */
-public interface ParseXmlService {
+public class OrcidAuthenticationTokenExpiredException extends IOException {
 
-  /**
-   * @param xml article xml
-   * @return article xml transformed into a document
-   * @throws IOException
-   */
-  Document getDocument(InputStream xml) throws IOException;
-
-  /**
-   * Parses the references in the article xml
-   *
-   * @param doc article xml transformed into a document
-   * @return list of Reference objects
-   * @throws ParserConfigurationException
-   * @throws IOException
-   * @throws SAXException
-   * @throws XmlContentException
-   */
-  List<Reference> parseArticleReferences(Document doc,
-                                         ParseReferenceService.DoiToJournalLinkService linkService) throws IOException;
+  @Override
+  public String getMessage() {
+    return "This ORCID authenticated session has expired. Please log in again.";
+  }
 }

@@ -683,7 +683,7 @@ public class ArticleController extends WombatController {
     }
 
     boolean isError = true;
-    if (correspondingAuthorOrcidId.equals("http://orcid.org/" + authenticatedOrcidId)) {
+    if (correspondingAuthorOrcidId.equals(authenticatedOrcidId)) {
       model.addAttribute("orcidId", correspondingAuthorOrcidId);
       isError = false;
     } else if (!Strings.isNullOrEmpty(authenticatedOrcidId)) {

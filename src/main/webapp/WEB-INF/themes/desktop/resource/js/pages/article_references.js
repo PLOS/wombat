@@ -44,7 +44,8 @@
 
           var $that = $(this);
 
-          var queryStringConcat = 'query.author=' + queryStringAuthor + '&query.title=' + queryStringTitle;
+          var queryStringConcat = (queryStringAuthor ? 'query.author=' + queryStringAuthor + '&' : '')
+            + 'query.title=' + queryStringTitle;
           var crossrefApi = "http://api.crossref.org/works?query=" + queryStringConcat + "&sort=score&rows=1";
           var DOIResolver = 'https://doi.org/';
           var crossrefSearchString = 'http://search.crossref.org/?q=' + queryStringCit;
@@ -64,6 +65,17 @@
                   function (data) {
                     var DOIs = data.message.items[0].DOI;
                     articleLink = DOIResolver + DOIs;
+                    if (queryStringTitle && data.message.items[0].title) {
+                      // if result title and queried title are close match then use the result, otherwise discard.
+                      var title = data.message.items[0].title[0];
+                      // close match is done by comparing only alphanumeric characters in lower case. discard all other characters.
+                      if (title.toLowerCase().replace(/[^a-zA-Z0-9]/g, '')
+                          != decodeURIComponent(queryStringTitle).toLowerCase().replace(/[^a-zA-Z0-9]/g, '')) {
+                        console.log("mismatch in title " + title + " != " + decodeURIComponent(queryStringTitle)
+                            + "\n, using search query");
+                        articleLink = crossrefSearchString;
+                      }
+                    }
                   }
               )
               .error(

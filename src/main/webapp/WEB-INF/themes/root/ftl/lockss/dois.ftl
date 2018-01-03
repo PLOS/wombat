@@ -43,7 +43,7 @@
           </#list>
         </ol>
         <#if showMoreLink>
-          <a href="<@siteLink path="lockss-manifest/vol_" + year + "/" + month + "?pageNumber=" + pageNumber+ "&cursor=" + nextCursorMark/>">View more...</a>
+          <a href="<@siteLink path="lockss-manifest/vol_" + year + "/" + month + "?pageNumber=" + pageNumber+ "&cursor=" + nextCursorMark?url("UTF-8")/>">View more...</a>
         </#if>
       </#if>
     </div>

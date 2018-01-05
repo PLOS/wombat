@@ -80,8 +80,11 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
   }
 
   private String createCommentHtml(FeedMetadata feedMetadata, Map<String, Object> comment) {
-    Map<String, Object> article = (Map<String, Object>) comment.get("parentArticle");
-    String articleTitle = (String) Objects.requireNonNull(article.get("title"));
+    Map<String, Object> article = (Map<String, Object>) comment.get("article");
+    String articleTitle = (String) article.get("title");
+    if (articleTitle == null) {
+      articleTitle = (String) article.get("doi");
+    }
 
     String header = String.format("<p>Comment on <a href=\"%s\">%s</a></p>\n",
         getArticleUrl(feedMetadata, article), articleTitle);
@@ -96,7 +99,7 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
 
   @Override
   protected Item createRssItem(FeedMetadata feedMetadata, Map<String, Object> comment) {
-    String commentId = (String) comment.get("annotationUri");
+    String commentId = (String) comment.get("commentUri");
 
     Item item = new Item();
     item.setTitle((String) comment.get("title"));
@@ -119,8 +122,8 @@ public class CommentFeedView extends AbstractFeedView<Map<String, Object>> {
 
   @Override
   protected Entry createAtomEntry(FeedMetadata feedMetadata, Map<String, Object> comment) {
-    Map<String, Object> article = (Map<String, Object>) comment.get("parentArticle");
-    String commentId = (String) comment.get("annotationUri");
+    Map<String, Object> article = (Map<String, Object>) comment.get("article");
+    String commentId = (String) comment.get("commentUri");
     String commentTitle = (String) comment.get("title");
 
     Entry entry = new Entry();

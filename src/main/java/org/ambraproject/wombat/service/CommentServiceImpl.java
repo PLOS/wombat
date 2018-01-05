@@ -34,6 +34,7 @@ import org.plos.ned_client.model.Individualprofile;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -54,6 +55,7 @@ public class CommentServiceImpl implements CommentService {
 
   private static final String REPLIES_KEY = "replies";
   private static final String CREATOR_KEY = "creator";
+  private static final String ARTICLE_KEY = "article";
   //private static final String USER_PROFILE_ID_KEY = "userProfileID";
 
   /**
@@ -100,6 +102,21 @@ public class CommentServiceImpl implements CommentService {
     return getAmbraProfile(individual);
   }
 
+  private String requestArticleTitle(String articleDoi) {
+    try {
+      List<Object> revisions = articleApi.requestObject(ApiAddress.builder("articles")
+              .embedDoi(articleDoi).addToken("revisions").build(), ArrayList.class);
+      if (!revisions.isEmpty()) {
+        Map<String, Object> latest = (Map<String, Object>) revisions.get(revisions.size() - 1);
+        String title = (String) ((Map<String, Object>) latest.get("ingestion")).get("title");
+        return title.replaceAll("\\<.*?>","");
+      }
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+    return articleDoi;
+  }
+
   /**
    * Add display data related to comment creators to all comments. The argument may be a "forest" of multiple roots,
    * each with a tree of replies. Creator data will be added to all comments in each tree.
@@ -125,6 +142,28 @@ public class CommentServiceImpl implements CommentService {
       String userId = creator.get("userId").toString();
       Individualprofile profile = Objects.requireNonNull(profiles.get(userId));
       comment.put(CREATOR_KEY, profile);
+    }));
+  }
+
+  private void addArticleTitle(Collection<Map<String, Object>> rootComments) {
+    // Gather up all distinct article DOIs in the forest
+    Set<String> articleDois = Collections.synchronizedSet(new HashSet<>());
+    rootComments.forEach(rootComment -> modifyCommentTree(rootComment, comment -> {
+      Map<String, Object> article = (Map<String, Object>) comment.get(ARTICLE_KEY);
+      articleDois.add(article.get("doi").toString());
+    }));
+
+    // For each distinct article DOI, make a remote request for the article title
+    // (this is the bottleneck that we want to parallelize)
+    Map<String, String> titles = articleDois.parallelStream()
+        .collect(Collectors.toMap(Function.identity(), this::requestArticleTitle));
+
+    // Insert the title into each comment
+    rootComments.forEach(rootComment -> modifyCommentTree(rootComment, comment -> {
+      Map<String, Object> article = (Map<String, Object>) comment.get(ARTICLE_KEY);
+      String doi = article.get("doi").toString();
+      String title = Objects.requireNonNull(titles.get(doi));
+      article.put("title", title);
     }));
   }
 
@@ -160,11 +199,12 @@ public class CommentServiceImpl implements CommentService {
   @Override
   public List<Map<String, Object>> getRecentJournalComments(String journalKey, int count) throws IOException {
     Preconditions.checkArgument(count >= 0);
-    ApiAddress requestAddress = ApiAddress.builder("journals").addToken(journalKey)
-        .addParameter("comments").addParameter("limit", count)
+    ApiAddress requestAddress = ApiAddress.builder("comments")
+        .addParameter("journal", journalKey).addParameter("limit", count)
         .build();
     List<Map<String, Object>> comments = articleApi.requestObject(requestAddress, List.class);
     comments.forEach(comment -> modifyCommentTree(comment, CommentFormatting::addFormattingFields));
+    addArticleTitle(comments);
     addCreatorData(comments);
     return comments;
   }

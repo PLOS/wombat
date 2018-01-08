@@ -42,6 +42,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -147,7 +148,7 @@ public class CommentServiceImpl implements CommentService {
 
   private void addArticleTitle(Collection<Map<String, Object>> rootComments) {
     // Gather up all distinct article DOIs in the forest
-    Set<String> articleDois = Collections.synchronizedSet(new HashSet<>());
+    Set<String> articleDois = ConcurrentHashMap.newKeySet();
     rootComments.forEach(rootComment -> modifyCommentTree(rootComment, comment -> {
       Map<String, Object> article = (Map<String, Object>) comment.get(ARTICLE_KEY);
       articleDois.add(article.get("doi").toString());

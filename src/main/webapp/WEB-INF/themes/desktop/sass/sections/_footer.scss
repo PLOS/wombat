@@ -28,10 +28,9 @@ footer {
   .row {@extend .plos-row;}
   // widths
   .brand-column{
-    @include plos-grid-column(455);
-  }
+    @extend .plos-column-5 }
   .link-column{
-    @include plos-grid-column(230);
+    @extend .plos-column-3;
   }
   @extend %bg-dark;
   padding: rem-calc(25 0 60); // 25px 0 60px;

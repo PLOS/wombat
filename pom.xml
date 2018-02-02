@@ -364,6 +364,7 @@
         <artifactId>tomcat6-maven-plugin</artifactId>
         <version>2.1</version>
         <configuration>
+          <path>/</path>
           <systemProperties>
             <java.util.logging.manager>org.apache.juli.ClassLoaderLogManager</java.util.logging.manager>
             <org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>true

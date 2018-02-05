@@ -69,6 +69,9 @@
   </@siteLink>
 </#if>
 
+<#if article.articleType??>
+  <meta name="citation_article_type" content="${article.articleType}">
+</#if>
 
 <#--//crossmark identifier-->
 <meta name="dc.identifier" content="${article.doi}" />

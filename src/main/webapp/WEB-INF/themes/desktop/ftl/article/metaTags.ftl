@@ -33,6 +33,7 @@
 <#if article.description??>
   <#assign articleDescription><@xform xml=article.description textOnly=true/></#assign>
   <meta name="description" content="${articleDescription}" />
+  <meta name="citation_abstract" content="${articleDescription}">
 </#if>
 <#assign articleTitle><@xform xml=article.title textOnly=true/></#assign>
 

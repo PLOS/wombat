@@ -24,7 +24,6 @@
   <@siteLink handlerName="articleMetrics" queryParameters={"id": article.doi} />
 </#assign>
 
-<#include "../common/counterJs.ftl" />
 <#include "../common/almQueryJs.ftl" />
 <@js src="resource/js/components/signposts.js"/>
 

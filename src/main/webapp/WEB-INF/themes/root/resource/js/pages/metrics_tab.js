@@ -29,55 +29,28 @@ var MetricsTab = {};
   MetricsTab.getComponents = function () {
     return this.components;
   };
+
   MetricsTab.init = function () {
+    var query = new AlmQuery();
     var that = this;
 
-
-    var counter_query = new CounterQuery();
-    var counter_validator = new CounterQueryValidator();
-
-    counter_query
-      .setDataValidator(counter_validator)
-      .getArticleSummary(ArticleData.doi)
-      .then(function (counterData) {
-        combineWithAlmRequest(counterData);
+    query
+      .getArticleDetail(ArticleData.doi)
+      .then(function (articleData) {
+        var data = articleData[0];
+        _.each(that.getComponents(), function (value) { value.loadData(data); });
       })
       .fail(function (error) {
-        show_error(error, that);
-      });
-
-    function combineWithAlmRequest(counterData) {
-      var query = new AlmQuery();
-      query
-        .getArticleDetail(ArticleData.doi)
-        .then(function (articleData) {
-          var data = articleData[0];
-          data.counterData = counterData;
-          _.each(that.getComponents(), function (value) {
-            value.loadData(data);
-          });
-        })
-        .fail(function (error) {
-          show_error(error, that);
-        })
-    }
-
+        switch(error.name) {
+          case 'NewArticleError':
+            _.each(that.getComponents(), function (value) { value.newArticleError(); });
+            break;
+          default:
+            _.each(that.getComponents(), function (value) { value.dataError(); });
+            break;
+        }
+      })
   };
-
-  function show_error(error, that) {
-    switch (error.name) {
-      case 'NewArticleError':
-        _.each(that.getComponents(), function (value) {
-          value.newArticleError();
-        });
-        break;
-      default:
-        _.each(that.getComponents(), function (value) {
-          value.dataError();
-        });
-        break;
-    }
-  }
 
   MetricsTab.init();
 

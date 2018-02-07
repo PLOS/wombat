@@ -120,11 +120,25 @@ public class ParseReferenceService {
       NodeList extLinkList = element.getElementsByTagName("ext-link");
       if (!ParseXmlUtil.isNullOrEmpty(extLinkList)) {
         Element extLink = (Element) extLinkList.item(0);
+        // use the ext-link as doi, only if ext-link previous text is "doi:" or "doi"
+        boolean useDoi = false;
+        Node previousNode = extLink.getPreviousSibling();
+        if (previousNode != null) {
+          String previousText = extLink.getPreviousSibling().getTextContent();
+          if (!Strings.isNullOrEmpty(previousText)) {
+            previousText = previousText.trim();
+            if (previousText.equalsIgnoreCase("doi:") || previousText.equalsIgnoreCase("doi")) {
+              useDoi = true;
+            }
+          }
+        }
         String linkType = ParseXmlUtil.getElementAttributeValue(extLink, "ext-link-type");
         if (linkType.equals("uri")) {
           uri = ParseXmlUtil.getElementAttributeValue(extLink, "xlink:href");
           // TODO: add a validation check for the doi and add it to the meta-tags
-          doi = extLink.getFirstChild() == null ? null : extLink.getFirstChild().getNodeValue();
+          if (useDoi) {
+            doi = extLink.getFirstChild() == null ? null : extLink.getFirstChild().getNodeValue();
+          }
         }
       }
       PageRange pages = buildPages(element);

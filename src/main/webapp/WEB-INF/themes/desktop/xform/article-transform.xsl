@@ -1071,8 +1071,8 @@
                       <xsl:attribute name="href">
                         <!-- build link and use + for spaces for consistency with Ambra -->
                         <xsl:variable name="pubYear" select="($cit/year)[1]"/>
-                        <xsl:value-of select="replace(concat('http://scholar.google.com/scholar_lookup?title=',
-                        $title,'&amp;author=', $author, '&amp;publication_year=', $pubYear),'%20','+')"/>
+                        <xsl:value-of select="replace(concat('http://scholar.google.com/scholar?q=',
+                        $title,'%20', $author, '%20', $pubYear),'%20','+')"/>
                       </xsl:attribute>
                       <xsl:attribute name="target">_new</xsl:attribute>
                       <xsl:attribute name="title">Go to article in Google Scholar</xsl:attribute>

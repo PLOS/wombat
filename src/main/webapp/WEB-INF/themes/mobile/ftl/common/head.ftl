@@ -44,6 +44,9 @@
     <#assign articleAbstract><@xform xml=article.abstractText textOnly=true/></#assign>
     <meta name="citation_abstract" content="${articleAbstract}">
   </#if>
+  <#if article.articleType??>
+    <meta name="citation_article_type" content="${article.articleType}">
+  </#if>
 </#if>
 
 

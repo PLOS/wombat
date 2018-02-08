@@ -39,4 +39,8 @@
 
   <beans:bean class="org.ambraproject.wombat.config.SpringMvcConfiguration" />
 
+  <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- <beans:property name="maxUploadSize" value=""/> -->
+  </beans:bean>
+
 </beans:beans>

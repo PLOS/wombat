@@ -41,6 +41,11 @@
     <meta name="citation_doi" content="${article.doi}"/>
   </#if>
 </#if>
+<#if article.abstractText??>
+  <#assign articleAbstract><@xform xml=article.abstractText textOnly=true/></#assign>
+  <meta name="citation_abstract" content="${articleAbstract}">
+</#if>
+
   <style type='text/css'>
     @-ms-viewport {
       width: device-width;

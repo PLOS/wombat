@@ -40,6 +40,9 @@
   <#if article.doi??>
     <meta name="citation_doi" content="${article.doi}"/>
   </#if>
+  <#if article.articleType??>
+    <meta name="citation_article_type" content="${article.articleType}">
+  </#if>
 </#if>
   <style type='text/css'>
     @-ms-viewport {

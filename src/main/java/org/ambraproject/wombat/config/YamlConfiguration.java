@@ -253,7 +253,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     } catch (MalformedURLException e) {
       throw new RuntimeConfigurationException("Provided server address is not a valid URL", e);
     }
-    if (!Strings.isNullOrEmpty(input.solr.url)) {
+    if (input.solr != null && !Strings.isNullOrEmpty(input.solr.url)) {
       try {
         new URL(input.solr.url);
       } catch (MalformedURLException e) {

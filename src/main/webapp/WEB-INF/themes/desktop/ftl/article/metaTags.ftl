@@ -34,6 +34,12 @@
   <#assign articleDescription><@xform xml=article.description textOnly=true/></#assign>
   <meta name="description" content="${articleDescription}" />
 </#if>
+
+<#if article.abstractText??>
+  <#assign articleAbstract><@xform xml=article.abstractText textOnly=true/></#assign>
+  <meta name="citation_abstract" content="${articleAbstract}">
+</#if>
+
 <#assign articleTitle><@xform xml=article.title textOnly=true/></#assign>
 
 <#if categoryTerms??>
@@ -69,6 +75,9 @@
   </@siteLink>
 </#if>
 
+<#if article.articleType??>
+  <meta name="citation_article_type" content="${article.articleType}">
+</#if>
 
 <#--//crossmark identifier-->
 <meta name="dc.identifier" content="${article.doi}" />

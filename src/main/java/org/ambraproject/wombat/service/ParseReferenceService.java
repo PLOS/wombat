@@ -124,12 +124,10 @@ public class ParseReferenceService {
         boolean useDoi = false;
         Node previousNode = extLink.getPreviousSibling();
         if (previousNode != null) {
-          String previousText = extLink.getPreviousSibling().getTextContent();
+          String previousText = previousNode.getTextContent();
           if (!Strings.isNullOrEmpty(previousText)) {
             previousText = previousText.trim();
-            if (previousText.equalsIgnoreCase("doi:") || previousText.equalsIgnoreCase("doi")) {
-              useDoi = true;
-            }
+            useDoi = previousText.equalsIgnoreCase("doi:") || previousText.equalsIgnoreCase("doi");
           }
         }
         String linkType = ParseXmlUtil.getElementAttributeValue(extLink, "ext-link-type");

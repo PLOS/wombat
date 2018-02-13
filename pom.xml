@@ -50,6 +50,7 @@
     <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
     <build.timestamp>${maven.build.timestamp}</build.timestamp>
     <build.counter>0</build.counter>
+    <wombat.configDir>${env.HOME}/ambra/config</wombat.configDir>
   </properties>
   <repositories>
     <repository>
@@ -366,6 +367,7 @@
         <configuration>
           <path>/</path>
           <systemProperties>
+            <wombat.configDir>${wombat.configDir}</wombat.configDir><!-- this is necessary -->
             <java.util.logging.manager>org.apache.juli.ClassLoaderLogManager</java.util.logging.manager>
             <org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>true
             </org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>

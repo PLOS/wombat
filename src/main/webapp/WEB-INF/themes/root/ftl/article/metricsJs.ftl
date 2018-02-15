@@ -21,6 +21,7 @@
   -->
 
 <#include "../common/almQueryJs.ftl" />
+<#include "../common/counterJs.ftl" />
 <@js src="resource/js/util/number.js"/>
 <@js src="resource/js/components/metric_tile.js"/>
 <@js src="resource/js/components/metrics_tab_component.js"/>

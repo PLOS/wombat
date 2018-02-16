@@ -158,7 +158,8 @@ public class SearchController extends WombatController {
       RESULTS_AND_DISCUSSION("results_and_discussion:"),
       SUPPORTING_INFORMATION("supporting_information:"),
       TRIAL_REGISTRATION("trial_registration:"),
-      VOLUME("volume:");
+      VOLUME("volume:"),
+      DATA_AVAILABILITY("data_availability:");
 
       private final String text;
 

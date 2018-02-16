@@ -2253,7 +2253,6 @@
 
   <!-- 1/4/12: Ambra-specific template -->
   <xsl:template name="citationComment">
-    <xsl:apply-templates />
     <!-- only output a single comment tag that appears as the very last child of the citation -->
     <xsl:variable name="x" select="child::comment[position()=last()]"/>
     <xsl:if test="not(starts-with($x,'p.')) and not(starts-with($x,'In:') and not(starts-with($x,'pp.')))">

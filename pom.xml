@@ -538,7 +538,7 @@
                 <data>
                   <src>${project.build.directory}/${project.build.finalName}.war</src>
                   <type>file</type>
-                  <dst>/opt/plos/wombat/webapps/wombat.war</dst>
+                  <dst>/opt/plos/wombat/webapps/ROOT.war</dst>
                 </data>
 
                 <data>

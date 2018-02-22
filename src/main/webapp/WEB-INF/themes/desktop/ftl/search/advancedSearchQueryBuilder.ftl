@@ -50,6 +50,7 @@
                 <option value="author_affiliate" >Author Affiliations</option>
                 <option value="competing_interest" >Competing Interest Statement</option>
                 <option value="conclusions" >Conclusions</option>
+                <option value="data_availability" >Data Availability</option>
                 <option value="editor" >Editor</option>
                 <option value="elocation_id" >eNumber</option>
                 <option value="figure_table_caption" >Figure &amp; Table Captions</option>
@@ -63,7 +64,6 @@
                 <option value="supporting_information" >Supporting Information</option>
                 <option value="trial_registration" >Trial Registration</option>
                 <option value="volume" >Volume Number</option>
-                <option value="data_availability" >Data Availability</option>
             </select>
         </div>
         <div id="input-condition-container" class="advanced-search-col-7">

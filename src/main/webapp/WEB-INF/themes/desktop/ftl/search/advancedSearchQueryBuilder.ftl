@@ -63,6 +63,7 @@
                 <option value="supporting_information" >Supporting Information</option>
                 <option value="trial_registration" >Trial Registration</option>
                 <option value="volume" >Volume Number</option>
+                <option value="data_availability" >Data Availability</option>
             </select>
         </div>
         <div id="input-condition-container" class="advanced-search-col-7">

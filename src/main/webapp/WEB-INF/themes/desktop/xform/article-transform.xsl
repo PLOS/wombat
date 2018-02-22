@@ -1046,26 +1046,19 @@
                       View Article
                     </xsl:element>
                   </xsl:element>
-                  <xsl:element name="li">
-                    <xsl:element name="a">
-                      <xsl:attribute name="href">
-                        <xsl:variable name="author_clause">
-                          <xsl:choose>
-                            <xsl:when test="$author">
-                              <xsl:value-of select="concat($author, encode-for-uri('[author] AND '))"/>
-                            </xsl:when>
-                          </xsl:choose>
-                        </xsl:variable>
-                        <!-- build link and use + for spaces for consistency with Ambra -->
-                        <xsl:value-of select="replace(concat('http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?',
-                        'db=PubMed&amp;cmd=Search&amp;doptcmdl=Citation&amp;defaultField=Title%20Word&amp;term=',
-                        $author_clause, $title),'%20','+')"/>
-                      </xsl:attribute>
-                      <xsl:attribute name="target">_new</xsl:attribute>
-                      <xsl:attribute name="title">Go to article in PubMed</xsl:attribute>
-                      PubMed/NCBI
+                  <xsl:variable name="pmid" select="$cit/(object-id|pub-id)[@pub-id-type='pmid']"/>
+                  <xsl:if test="$pmid">
+                    <xsl:element name="li">
+                      <xsl:element name="a">
+                        <xsl:attribute name="href">
+                          <xsl:value-of select="concat('http://www.ncbi.nlm.nih.gov/pubmed/', $pmid)"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="target">_new</xsl:attribute>
+                        <xsl:attribute name="title">Go to article in PubMed</xsl:attribute>
+                        PubMed/NCBI
+                      </xsl:element>
                     </xsl:element>
-                  </xsl:element>
+                  </xsl:if>
                   <xsl:element name="li">
                     <xsl:element name="a">
                       <xsl:attribute name="href">
@@ -2260,7 +2253,6 @@
 
   <!-- 1/4/12: Ambra-specific template -->
   <xsl:template name="citationComment">
-    <xsl:apply-templates />
     <!-- only output a single comment tag that appears as the very last child of the citation -->
     <xsl:variable name="x" select="child::comment[position()=last()]"/>
     <xsl:if test="not(starts-with($x,'p.')) and not(starts-with($x,'In:') and not(starts-with($x,'pp.')))">

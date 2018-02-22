@@ -35,43 +35,13 @@ var Signposts;
       var counter_validator = new CounterQueryValidator();
 
       var counter_views;
+
       counter_query
         .setDataValidator(counter_validator)
         .getArticleSummary(ArticleData.doi)
         .then(function (counterData) {
           counter_views = counterData['totals'];
-        })
-        .fail(function (error) {
-          show_error(error, that);
-        });
-
-      var alm_query = new AlmQuery();
-      var alm_validator = new AlmQueryValidator({checkSources: false});
-
-      alm_query
-        .setDataValidator(alm_validator)
-        .getArticleDetail(ArticleData.doi)
-        .then(function (articleData) {
-          var data = articleData[0];
-          var template = _.template($('#signpostsTemplate').html());
-          var templateData = {
-            saveCount: data.saved,
-            citationCount: data.cited,
-            shareCount: data.discussed,
-            viewCount: getPmcViewsAndDownloads(articleData) + counter_views
-          };
-
-          that.$element.html(template(templateData));
-
-          if (!_.isUndefined(data.sources)) {
-            var scopus = _.findWhere(data.sources, {name: 'scopus'});
-            if (scopus.metrics.total > 0) {
-              $('#almCitations').find('.citations-tip a').html('Displaying Scopus citation count.');
-            }
-          }
-
-          //Initialize tooltips
-          tooltip_hover.init();
+          call_alm(counter_views, that);
         })
         .fail(function (error) {
           show_error(error, that);
@@ -79,6 +49,40 @@ var Signposts;
 
     }
   });
+
+  function call_alm(counter_views, that) {
+    var alm_query = new AlmQuery();
+    var alm_validator = new AlmQueryValidator({checkSources: false});
+
+    alm_query
+      .setDataValidator(alm_validator)
+      .getArticleDetail(ArticleData.doi)
+      .then(function (articleData) {
+        var data = articleData[0];
+        var template = _.template($('#signpostsTemplate').html());
+        var templateData = {
+          saveCount: data.saved,
+          citationCount: data.cited,
+          shareCount: data.discussed,
+          viewCount: getPmcViewsAndDownloads(articleData) + counter_views
+        };
+
+        that.$element.html(template(templateData));
+
+        if (!_.isUndefined(data.sources)) {
+          var scopus = _.findWhere(data.sources, {name: 'scopus'});
+          if (scopus.metrics.total > 0) {
+            $('#almCitations').find('.citations-tip a').html('Displaying Scopus citation count.');
+          }
+        }
+
+        //Initialize tooltips
+        tooltip_hover.init();
+      })
+      .fail(function (error) {
+        show_error(error, that);
+      });
+  }
 
   function show_error(error, that) {
     var template;

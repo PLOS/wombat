@@ -39,7 +39,7 @@ var Signposts;
         .setDataValidator(counter_validator)
         .getArticleSummary(ArticleData.doi)
         .then(function (counterData) {
-          counter_views = counterData['get-document'];
+          counter_views = counterData['totals'];
         })
         .fail(function (error) {
           show_error(error, that);

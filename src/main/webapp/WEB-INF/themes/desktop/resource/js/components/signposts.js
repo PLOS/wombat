@@ -39,7 +39,7 @@ var Signposts;
         .setDataValidator(counter_validator)
         .getArticleSummary(ArticleData.doi)
         .then(function (counterData) {
-          counter_views = counterData['get-document'];
+          counter_views = counterData['totals'];
         })
         .fail(function (error) {
           show_error(error, that);
@@ -58,7 +58,7 @@ var Signposts;
             saveCount: data.saved,
             citationCount: data.cited,
             shareCount: data.discussed,
-            viewCount: getPmcViews(articleData) + counter_views
+            viewCount: getPmcViewsAndDownloads(articleData) + counter_views
           };
 
           that.$element.html(template(templateData));
@@ -97,10 +97,10 @@ var Signposts;
 
 })(jQuery);
 
-function getPmcViews(data) {
+function getPmcViewsAndDownloads(data) {
   //todo: replace YUI compressor so we can use the following line instead of hardcoding '7'
   //https://github.com/yui/yuicompressor/issues/262
-  // var viewed_data = data[0].sources.find(x => x.name === 'pmc' && x.group_name === 'viewed');
-  var viewed_data = data[0].sources[7];
-  return viewed_data['metrics']['html'];
+  // var pmc_metrics = data[0].sources.find(x => x.name === 'pmc' && x.group_name === 'viewed');
+  var pmc_metrics = data[0].sources[7]['metrics'];
+  return pmc_metrics['html'] + pmc_metrics['pdf'];
 }

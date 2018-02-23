@@ -55,8 +55,6 @@ case "$1" in
 
 ########### END app-specific code ###########
 
-	echo "Running db_purge"
-	db_purge
 
 	process_env_template $HOME/conf/context.template.xml $HOME/conf/context.xml
 

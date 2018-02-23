@@ -44,7 +44,12 @@
         <li id="artDoi">
               <#include "../macro/doiAsLink.ftl" />
               <@doiAsLink article.doi />
-            </li>
+        </li>
+        <#if article.preprintDoi?has_content>
+          <li class="published">
+            <a href="http://dx.doi.org/${article.preprintDoi}">&gt;&gt; See the published version</a>
+          </li>
+        </#if>
       </ul>
 
     </div>

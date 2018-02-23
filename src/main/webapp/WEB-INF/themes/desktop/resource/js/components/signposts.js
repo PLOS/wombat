@@ -35,43 +35,13 @@ var Signposts;
       var counter_validator = new CounterQueryValidator();
 
       var counter_views;
+
       counter_query
         .setDataValidator(counter_validator)
         .getArticleSummary(ArticleData.doi)
         .then(function (counterData) {
-          counter_views = counterData['get-document'];
-        })
-        .fail(function (error) {
-          show_error(error, that);
-        });
-
-      var alm_query = new AlmQuery();
-      var alm_validator = new AlmQueryValidator({checkSources: false});
-
-      alm_query
-        .setDataValidator(alm_validator)
-        .getArticleDetail(ArticleData.doi)
-        .then(function (articleData) {
-          var data = articleData[0];
-          var template = _.template($('#signpostsTemplate').html());
-          var templateData = {
-            saveCount: data.saved,
-            citationCount: data.cited,
-            shareCount: data.discussed,
-            viewCount: getPmcViews(articleData) + counter_views
-          };
-
-          that.$element.html(template(templateData));
-
-          if (!_.isUndefined(data.sources)) {
-            var scopus = _.findWhere(data.sources, {name: 'scopus'});
-            if (scopus.metrics.total > 0) {
-              $('#almCitations').find('.citations-tip a').html('Displaying Scopus citation count.');
-            }
-          }
-
-          //Initialize tooltips
-          tooltip_hover.init();
+          counter_views = counterData['totals'];
+          call_alm(counter_views, that);
         })
         .fail(function (error) {
           show_error(error, that);
@@ -79,6 +49,40 @@ var Signposts;
 
     }
   });
+
+  function call_alm(counter_views, that) {
+    var alm_query = new AlmQuery();
+    var alm_validator = new AlmQueryValidator({checkSources: false});
+
+    alm_query
+      .setDataValidator(alm_validator)
+      .getArticleDetail(ArticleData.doi)
+      .then(function (articleData) {
+        var data = articleData[0];
+        var template = _.template($('#signpostsTemplate').html());
+        var templateData = {
+          saveCount: data.saved,
+          citationCount: data.cited,
+          shareCount: data.discussed,
+          viewCount: getPmcViewsAndDownloads(articleData) + counter_views
+        };
+
+        that.$element.html(template(templateData));
+
+        if (!_.isUndefined(data.sources)) {
+          var scopus = _.findWhere(data.sources, {name: 'scopus'});
+          if (scopus.metrics.total > 0) {
+            $('#almCitations').find('.citations-tip a').html('Displaying Scopus citation count.');
+          }
+        }
+
+        //Initialize tooltips
+        tooltip_hover.init();
+      })
+      .fail(function (error) {
+        show_error(error, that);
+      });
+  }
 
   function show_error(error, that) {
     var template;
@@ -97,10 +101,10 @@ var Signposts;
 
 })(jQuery);
 
-function getPmcViews(data) {
+function getPmcViewsAndDownloads(data) {
   //todo: replace YUI compressor so we can use the following line instead of hardcoding '7'
   //https://github.com/yui/yuicompressor/issues/262
-  // var viewed_data = data[0].sources.find(x => x.name === 'pmc' && x.group_name === 'viewed');
-  var viewed_data = data[0].sources[7];
-  return viewed_data['metrics']['html'];
+  // var pmc_metrics = data[0].sources.find(x => x.name === 'pmc' && x.group_name === 'viewed');
+  var pmc_metrics = data[0].sources[7]['metrics'];
+  return pmc_metrics['html'] + pmc_metrics['pdf'];
 }

@@ -146,6 +146,7 @@ public class SearchController extends WombatController {
       AUTHOR_AFFILIATE("author_affiliate:"),
       COMPETING_INTEREST("competing_interest:"),
       CONCLUSIONS("conclusions:"),
+      DATA_AVAILABILITY("data_availability:"),
       EDITOR("editor:"),
       ELOCATION_ID("elocation_id:"),
       FIGURE_TABLE_CAPTION("figure_table_caption:"),

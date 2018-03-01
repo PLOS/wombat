@@ -2235,7 +2235,7 @@
       <xsl:value-of select="."/>
     </xsl:variable>
     <xsl:choose>
-      <xsl:when test="starts-with($totalText,'doi')">
+      <xsl:when test="starts-with($totalText,'doi') and parent::*/@publication-type='journal'">
       <!-- do nothing -->
       </xsl:when>
 
@@ -2492,10 +2492,16 @@
 
 
     <xsl:choose>
-      <xsl:when test="not(ancestor::ref-list) or not(substring($previousText, string-length($previousText)-3)='doi:')">
+      <xsl:when test="not(ancestor::ref-list) or ancestor::*/@publication-type='journal' and not(substring($previousText, string-length($previousText)-3)='doi:')">
         <a>
           <xsl:call-template name="assign-href"/>
           <xsl:apply-templates/>
+        </a>
+      </xsl:when>
+      <xsl:when test="substring($previousText, string-length($previousText)-3)='doi:'">
+        <a>
+          <xsl:attribute name="href" select="concat('https://doi.org/', text())"/>
+          <xsl:value-of select="text()"/>
         </a>
       </xsl:when>
       <xsl:otherwise>

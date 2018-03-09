@@ -2241,7 +2241,14 @@
 
       <xsl:otherwise>
         <xsl:if test="not(self::node()='.')">
-        <xsl:apply-templates/>
+          <xsl:choose>
+            <xsl:when test="starts-with($totalText,'doi') and ext-link">
+              <xsl:apply-templates select="ext-link"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates/>
+            </xsl:otherwise>
+          </xsl:choose>
           <xsl:if test="substring(.,string-length(.)) != '.' and not(ends-with(..,'.'))">
           <xsl:text>. </xsl:text>
           </xsl:if>
@@ -2501,7 +2508,7 @@
       <xsl:when test="substring($previousText, string-length($previousText)-3)='doi:'">
         <a>
           <xsl:attribute name="href" select="concat('https://doi.org/', text())"/>
-          <xsl:value-of select="text()"/>
+          <xsl:value-of select="concat('https://doi.org/', text())"/>
         </a>
       </xsl:when>
       <xsl:otherwise>

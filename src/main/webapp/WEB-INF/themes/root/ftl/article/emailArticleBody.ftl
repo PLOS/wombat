@@ -80,13 +80,9 @@
             <#t>${note!'I thought you would find this article interesting.'}
           </textarea><#t>
         </li>
-        <li>
-          <label class="form-label">Text verification</label>
-        ${captchaHTML}
-        <@formValidation "captchaError" "captcha">Verification is incorrect. Please try again
-          .</@formValidation>
-        </li>
       </ol>
+      <input type="text" name="authorPhone" placeholder="Phone ..." id="authorPhone">
+      <input type="text" name="authorAffiliation" placeholder="Affiliation (optional)..." id="authorAffiliation">
       <input class="btn" id="sendButton" type="submit" value="Send" />
     </fieldset>
   </form>

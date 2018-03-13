@@ -1,4 +1,4 @@
-/*!
+/*
  * Copyright (c) 2017 Public Library of Science
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -20,71 +20,37 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-@import "global-library-imports";
-@import "global-section-imports";
+package org.ambraproject.wombat.service;
 
-/// scaffolding
+import com.google.common.base.Strings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
-main {
-    @include layout-two-column;
+/**
+ * Implementation for a captcha
+ * <p>
+ * Uses google ReCaptcha.
+ */
+public class HoneypotServiceImpl implements HoneypotService {
+
+  private static final Logger log = LoggerFactory.getLogger(HoneypotService.class);
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public boolean checkHoneypot(HttpServletRequest request, String... trapFields) throws IOException {
+
+    boolean botTrapped = false;
+    for (String trapField : trapFields) {
+      if (!Strings.isNullOrEmpty(trapField)) {
+        log.warn("bot trapped in honeypot: {}", request.getRemoteAddr());
+        botTrapped = true;
+      }
+    }
+    return botTrapped;
   }
-
-/// navigation
-main nav ul {
-    @include nav-enhanced;
-    }
-
-/// site content specific styles
-@mixin site-content {
-
-  p {
-    overflow: auto;
-    }
-  //for image floating
-
-  a {
-    //TODO: redo links so that underline is standard
-    @extend %link-text-default;
-    }
-
-  img.img-default, img.img-center {
-    display: block;
-    clear: both;
-    margin: $line-height-small auto;
-    }
-
-  img.img-left {
-    display: inline-block;
-    margin: 0 $pad-small $line-height-small 0;
-    text-align: left;
-    float: left;
-    }
-
-  table {
-    img.img-default {
-      @extend .img-left;
-    }
-  }
-
-  }
-article {      // to work on ck editor editing
-  @include site-content;
-  ul{@extend .list-bullet;}
-  }
-
-.ambra-form {
-  @import 'sections/ambra/forms';
-}
-
-// Special adjustments:
-
-.survey-page {
-  .survey-page-header, .question-number, .survey-footer, .smcx-widget-footer {
-    display: none;
-  }
-}
-
-#authorPhone, #authorAffiliation { // honeypot
-  display: none; visibility: hidden;
 }

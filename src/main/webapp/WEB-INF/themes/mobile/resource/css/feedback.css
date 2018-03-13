@@ -37,10 +37,6 @@
   margin-top: 12px;
 }
 
-#feedback-form-container form#feedbackCreate li#security-check-row, #emailThisArticleForm li#security-check-row {
-  text-align: center;
-}
-
 #feedback-form-container form#feedbackCreate label, #emailThisArticleForm label {
   width: 24%;
   min-width: 100px;

@@ -71,8 +71,8 @@ import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.BrowseTaxonomyServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
-import org.ambraproject.wombat.service.CaptchaService;
-import org.ambraproject.wombat.service.CaptchaServiceImpl;
+import org.ambraproject.wombat.service.HoneypotService;
+import org.ambraproject.wombat.service.HoneypotServiceImpl;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CitationDownloadServiceImpl;
 import org.ambraproject.wombat.service.CommentCensorService;
@@ -376,8 +376,8 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public CaptchaService captchaService() {
-    return new CaptchaServiceImpl();
+  public HoneypotService captchaService() {
+    return new HoneypotServiceImpl();
   }
 
   @Bean

@@ -60,8 +60,8 @@ import java.util.OptionalInt;
 public class ArticleTransformServiceImpl implements ArticleTransformService {
   private static final Logger log = LoggerFactory.getLogger(ArticleTransformServiceImpl.class);
 
-  private static final SiteTransformerFactory SITE_TRANSFORMER_FACTORY = new SiteTransformerFactory(
-      "xform/", "article-transform.xsl");
+  @Autowired
+  DataUriEncodeFunction dataUriEncodeFunction;
 
   @Autowired
   private Charset charset;
@@ -109,7 +109,7 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
   private Transformer buildTransformer(Site site, XMLReader xmlReader, TransformerInitializer initialization)
       throws IOException {
     log.debug("Building transformer for: {}", site);
-    Transformer transformer = SITE_TRANSFORMER_FACTORY.build(site);
+    Transformer transformer = new SiteTransformerFactory("xform/", "article-transform.xsl", dataUriEncodeFunction).build(site);
     initialization.initialize(xmlReader, transformer);
     return transformer;
   }

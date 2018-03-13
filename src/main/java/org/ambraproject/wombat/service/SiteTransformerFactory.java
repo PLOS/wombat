@@ -25,6 +25,8 @@ package org.ambraproject.wombat.service;
 import com.google.common.io.Closer;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -40,22 +42,37 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
+import net.sf.saxon.TransformerFactoryImpl;
+import net.sf.saxon.s9api.Processor;
+import net.sf.saxon.s9api.ExtensionFunction;
 
 public class SiteTransformerFactory {
+  ExtensionFunction[] extensionFunctions;
 
-  private static TransformerFactory newTransformerFactory() {
+  private TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here
     // Preferred over TransformerFactory.newInstance because Java system properties can burn in hell
-    return new net.sf.saxon.TransformerFactoryImpl();
+    TransformerFactoryImpl tFactoryImpl = new TransformerFactoryImpl();
+    net.sf.saxon.Configuration saxonConfig = tFactoryImpl.getConfiguration();
+    Processor processor = (Processor) saxonConfig.getProcessor();
+    for (ExtensionFunction ext : extensionFunctions) {
+      processor.registerExtensionFunction(ext);
+    }
+    return tFactoryImpl;
   }
 
   private final String rootPath;
   private final String templateFilename;
   private final Map<Site, Templates> transformTemplateCache = new ConcurrentHashMap<>();
 
-  public SiteTransformerFactory(String rootPath, String templateFilename) {
+  public SiteTransformerFactory(String rootPath, String templateFilename, ExtensionFunction ... extensionFunctions) {
     this.rootPath = Objects.requireNonNull(rootPath);
     this.templateFilename = Objects.requireNonNull(templateFilename);
+    this.extensionFunctions = extensionFunctions;
+  }
+
+  public SiteTransformerFactory(String rootPath, String templateFilename) {
+    this(rootPath, templateFilename, new ExtensionFunction[] {});
   }
 
   public Transformer build(Site site) {

@@ -81,6 +81,7 @@ import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentServiceImpl;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.CommentValidationServiceImpl;
+import org.ambraproject.wombat.service.DataUriEncodeFunction;
 import org.ambraproject.wombat.service.DoiToJournalResolutionService;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.FreemarkerMailServiceImpl;
@@ -323,6 +324,11 @@ public class SpringConfiguration {
   @Bean
   public ArticleResolutionService articleResolutionService() {
     return new ArticleResolutionService();
+  }
+
+  @Bean
+  public DataUriEncodeFunction dataUriEncodeFunction() {
+    return new DataUriEncodeFunction();
   }
 
   @Bean

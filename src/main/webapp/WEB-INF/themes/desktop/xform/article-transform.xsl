@@ -35,6 +35,7 @@
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:aml="http://topazproject.org/aml/"
                 xmlns:dc="http://purl.org/dc/elements/1.1/"
+                xmlns:ambra="http://www.ambraproject.org/xslt/"
                 exclude-result-prefixes="util xsl xlink mml xs aml dc">
 
   <!-- 1/4/12: Ambra-specific instruction. import nlm -->
@@ -1608,7 +1609,7 @@
           <xsl:value-of select="@xlink:href"/>
         </xsl:variable>
         <xsl:attribute name="src">
-          <xsl:value-of select="concat('article/file?type=thumbnail&amp;id=',$graphicDOI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
+          <xsl:value-of select="ambra:embed-data-uri($graphicDOI, $versionLinkParameter)"/>
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">

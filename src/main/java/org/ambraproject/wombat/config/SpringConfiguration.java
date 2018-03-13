@@ -376,7 +376,7 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public HoneypotService captchaService() {
+  public HoneypotService honeypotService() {
     return new HoneypotServiceImpl();
   }
 

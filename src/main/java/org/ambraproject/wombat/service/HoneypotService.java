@@ -33,7 +33,7 @@ public interface HoneypotService {
    * If any of these parameters are non-empty, then mark it as a bot, and do not proceed further.
    * However, return success response to avoid alarming the bot.
    *
-   * @return true if the captcha is valid
+   * @return true if any of the fields contain any non-empty string
    * @throws Exception
    */
   public boolean checkHoneypot(HttpServletRequest request, String... trapFields) throws IOException;

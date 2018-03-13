@@ -51,10 +51,6 @@
   border: 1px solid rgb(169, 169, 169);
 }
 
-#feedback-form-container form#feedbackCreate #recaptcha_widget_div, #emailThisArticleForm #recaptcha_widget_div{
-  display: inline-block;
-}
-
 #feedback-form-container form#feedbackCreate label#security-check-label, #emailThisArticleForm label#security-check-label {
   margin: 20px 0 0;
   min-width: 150px;

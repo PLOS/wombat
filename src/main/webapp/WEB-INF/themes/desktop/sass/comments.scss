@@ -390,20 +390,6 @@
   margin-top: -29px; /* Center in window (29 == 1/2 of size) */
 }
 
-//RECAPTCHA styling
-#recaptcha_widget_div {
-  @extend .clearfix;
-  display: block !important;
-  #recaptcha_area #recaptcha_table {
-    background-color: $white;
-  }
-
-}
-
-#recaptcha_privacy {
-  font-size: $txt-size-xxsmall;
-}
-
 .removed_comment_note {
   font-style: italic;
 }

@@ -29,11 +29,6 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-/**
- * Implementation for a captcha
- * <p>
- * Uses google ReCaptcha.
- */
 public class HoneypotServiceImpl implements HoneypotService {
 
   private static final Logger log = LoggerFactory.getLogger(HoneypotService.class);

@@ -55,10 +55,6 @@
     <@commentErrorMessage "censoredCi">
     Your comment triggered a profanity filter. Please reword your comment.
     </@commentErrorMessage>
-
-    <@commentErrorMessage "captchaValidationFailure">
-    Verification is incorrect. Please try again.
-    </@commentErrorMessage>
   </@commentErrorMessageBlock>
 
 <form class="cf" onsubmit="return false;">
@@ -87,16 +83,6 @@
                 id="competing_interests"
                 disabled="disabled"
                 placeholder="Enter your competing interests..."></textarea>
-    </div>
-
-    <div class="captchaContainer">
-      <#if isStandalone>
-    ${captchaHtml}
-      </#if>
-      <#--
-        Else, count on JavaScript to insert it into the captchaContainer.
-        We don't want captchaHtml appearing twice on the page, because that breaks it.
-        -->
     </div>
 
     <span class="btn flt-l btn_submit primary"

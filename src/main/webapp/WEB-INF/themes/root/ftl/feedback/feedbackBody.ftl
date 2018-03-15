@@ -79,15 +79,9 @@
         <textarea id="feedbackCreate_note" name="note" cols="70" rows="5">${note!''}</textarea>
       <@formValidation "noteError">This field is required.</@formValidation>
       </li>
-      <li id="security-check-row">
-        <label id="security-check-label"><strong>Security Check:</strong></label>
-
-        <p>This question is to determine if you are a human visitor in order to prevent automated spam
-          submissions.</p>
-      ${captchaHtml}
-      <@formValidation "captchaError">Verification is incorrect. Please try again.</@formValidation>
-      </li>
     </ol>
+    <input type="text" name="authorAffiliation" placeholder="Affiliation (optional)..." id="authorAffiliation">
+    <input type="text" name="authorPhone" placeholder="Phone ..." id="authorPhone">
     <input id="submit-feedback-btn" type="submit" value="Submit Feedback" class="btn rounded"/>
   </fieldset>
 </form>

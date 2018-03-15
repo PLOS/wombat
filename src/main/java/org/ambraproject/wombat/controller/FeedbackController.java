@@ -24,9 +24,9 @@ package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.model.EmailMessage;
 import org.ambraproject.wombat.service.FreemarkerMailService;
+import org.ambraproject.wombat.service.HoneypotService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +48,6 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -62,7 +61,7 @@ public class FeedbackController extends WombatController {
   @Autowired
   private FreemarkerMailService freemarkerMailService;
   @Autowired
-  private CaptchaService captchaService;
+  private HoneypotService honeypotService;
   @Autowired
   private JavaMailSender javaMailSender; // TODO
 
@@ -79,7 +78,6 @@ public class FeedbackController extends WombatController {
   @RequestMapping(name = "feedback", value = "/feedback", method = RequestMethod.GET)
   public String serveFeedbackPage(Model model, @SiteParam Site site) throws IOException {
     validateFeedbackConfig(site);
-    model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.empty()));
     return site + "/ftl/feedback/feedback";
   }
 
@@ -91,8 +89,8 @@ public class FeedbackController extends WombatController {
                                 @RequestParam("subject") String subject,
                                 @RequestParam("name") String name,
                                 @RequestParam("userId") String userId,
-                                @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
-                                @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
+                                @RequestParam(value = "authorPhone", required = false) String authorPhone,
+                                @RequestParam(value = "authorAffiliation", required = false) String authorAffiliation)
       throws IOException, MessagingException {
     validateFeedbackConfig(site);
 
@@ -104,20 +102,20 @@ public class FeedbackController extends WombatController {
     model.addAttribute("subject", subject);
 
     Set<String> errors = validateInput(fromEmailAddress, note, subject, name);
-    if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
-      errors.add("captchaError");
-    }
     if (applyValidation(response, model, errors)) {
       return serveFeedbackPage(model, site);
     }
 
-
     if (subject.isEmpty()) {
-      model.addAttribute("subject", (String) getFeedbackConfig(site).get("defaultSubject"));
+      model.addAttribute("subject", getFeedbackConfig(site).get("defaultSubject"));
     }
 
     model.addAttribute("id", userId);
     model.addAttribute("userInfo", formatUserInfo(request));
+
+    if (honeypotService.checkHoneypot(request, authorPhone, authorAffiliation)) {
+      return site + "/ftl/feedback/success";
+    }
 
     Multipart content = freemarkerMailService.createContent(site, "feedback", model);
 
@@ -139,9 +137,7 @@ public class FeedbackController extends WombatController {
    *
    * @return a set of error flags to be added to the FTL model (empty if all input is valid)
    */
-  private static Set<String> validateInput(String fromEmailAddress,
-                                           String note,
-                                           String subject,
+  private static Set<String> validateInput(String fromEmailAddress, String note, String subject,
                                            String name) {
     Set<String> errors = new HashSet<>();
     if (StringUtils.isBlank(subject)) {
@@ -168,8 +164,8 @@ public class FeedbackController extends WombatController {
         .collect(Collectors.joining("<br/>\n"));
   }
 
-  public static Map<String, String> getUserSessionAttributes(HttpServletRequest request) {
-    Map<String, String> headers = new LinkedHashMap<String, String>();
+  private static Map<String, String> getUserSessionAttributes(HttpServletRequest request) {
+    Map<String, String> headers = new LinkedHashMap<>();
 
     for (String headerName : Collections.list(request.getHeaderNames())) {
       List<String> headerValues = Collections.list(request.getHeaders(headerName));

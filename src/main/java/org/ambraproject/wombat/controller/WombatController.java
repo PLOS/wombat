@@ -159,12 +159,6 @@ public abstract class WombatController {
     return contentDispositionValue;
   }
 
-
-  // Parameter names defined by net.tanesha.recaptcha library
-  protected static final String RECAPTCHA_CHALLENGE_FIELD = "recaptcha_challenge_field";
-  protected static final String RECAPTCHA_RESPONSE_FIELD = "recaptcha_response_field";
-
-
   /**
    * If any validation errors from a form are present, set them up to be rendered.
    * <p>

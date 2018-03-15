@@ -43,23 +43,23 @@ import org.ambraproject.wombat.model.ArticleCommentFlag;
 import org.ambraproject.wombat.model.EmailMessage;
 import org.ambraproject.wombat.model.Reference;
 import org.ambraproject.wombat.service.ArticleTransformService;
-import org.ambraproject.wombat.service.CaptchaService;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.DoiToJournalResolutionService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
+import org.ambraproject.wombat.service.HoneypotService;
 import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrUndefinedException;
 import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenExpiredException;
 import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenReusedException;
 import org.apache.commons.io.output.WriterOutputStream;
@@ -116,7 +116,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -152,7 +151,7 @@ public class ArticleController extends WombatController {
   @Autowired
   private JsonService jsonService;
   @Autowired
-  private CaptchaService captchaService;
+  private HoneypotService honeypotService;
   @Autowired
   private FreeMarkerConfig freeMarkerConfig;
   @Autowired
@@ -241,7 +240,6 @@ public class ArticleController extends WombatController {
         .validateVisibility("articleCommentForm")
         .populate(request, model);
 
-    model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
     addCommentAvailability(model);
     return site + "/ftl/article/comment/newComment";
   }
@@ -297,7 +295,6 @@ public class ArticleController extends WombatController {
         .populate(request, model);
 
     model.addAttribute("comment", comment);
-    model.addAttribute("captchaHtml", captchaService.getCaptchaHtml(site, Optional.of("clean")));
     addCommentAvailability(model);
     return site + "/ftl/article/comment/comment";
   }
@@ -327,19 +324,10 @@ public class ArticleController extends WombatController {
                                   @RequestParam(value = "authorAffiliation", required = false) String authorAffiliation,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
-                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri,
-                                  @RequestParam(value = RECAPTCHA_CHALLENGE_FIELD, required = false) String captchaChallenge,
-                                  @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required = false) String captchaResponse)
+                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri)
       throws IOException {
 
-    // honeypot for bot.
-    // authorPhone and authorAffiliation are fake parameters, which are present in the form, but hidden via CSS.
-    // A bot will likely fill one or both of these. But a human will not see those fields to fill them.
-    // If any of these parameters are non-empty, then mark it as a bot, and do not proceed further.
-    // However, return success response to avoid alarming the bot.
-
-    if (authorPhone != null && !authorPhone.isEmpty() || authorAffiliation != null && !authorAffiliation.isEmpty()) {
-      log.warn("bot trapped in honeypot: {}", request.getRemoteAddr());
+    if (honeypotService.checkHoneypot(request, authorPhone, authorAffiliation)) {
       return ImmutableMap.of("status", "success");
     }
 
@@ -347,17 +335,6 @@ public class ArticleController extends WombatController {
 
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
-
-    if (validationErrors.isEmpty()) {
-      // Submit Captcha for validation only if there are no other errors.
-      // Otherwise, the user's valid Captcha response would be wasted when they resubmit the comment.
-
-      // Allow missing recaptcha for ApertaRxiv. TODO: Is there a better way instead of using journalKey?
-      if (!"ApertaRxiv".equalsIgnoreCase(site.getJournalKey())
-          && !captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
-        validationErrors.put("captchaValidationFailure", true);
-      }
-    }
 
     if (!validationErrors.isEmpty()) {
       return ImmutableMap.of("validationErrors", validationErrors);
@@ -507,8 +484,6 @@ public class ArticleController extends WombatController {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility("articleRelatedContent")
         .populate(request, model);
-    String recaptchaPublicKey = (String) site.getTheme().getConfigMap("captcha").get("publicKey");
-    model.addAttribute("recaptchaPublicKey", recaptchaPublicKey);
     return site + "/ftl/article/relatedContent";
   }
 
@@ -706,7 +681,6 @@ public class ArticleController extends WombatController {
         .validateVisibility("email")
         .populate(request, model);
     model.addAttribute("maxEmails", MAX_TO_EMAILS);
-    model.addAttribute("captchaHTML", captchaService.getCaptchaHtml(site, Optional.empty()));
     return site + "/ftl/article/email";
   }
 
@@ -725,8 +699,8 @@ public class ArticleController extends WombatController {
                              @RequestParam("emailFrom") String emailFrom,
                              @RequestParam("senderName") String senderName,
                              @RequestParam("note") String note,
-                             @RequestParam(RECAPTCHA_CHALLENGE_FIELD) String captchaChallenge,
-                             @RequestParam(RECAPTCHA_RESPONSE_FIELD) String captchaResponse)
+                             @RequestParam(value = "authorPhone", required = false) String authorPhone,
+                             @RequestParam(value = "authorAffiliation", required = false) String authorAffiliation)
       throws IOException, MessagingException {
     requireNonemptyParameter(articleUri);
 
@@ -741,8 +715,7 @@ public class ArticleController extends WombatController {
         .map(email -> EmailMessage.createAddress(null /*name*/, email))
         .collect(Collectors.toList());
 
-    Set<String> errors = validateEmailArticleInput(toAddresses, emailFrom, senderName,
-        captchaChallenge, captchaResponse, site, request);
+    Set<String> errors = validateEmailArticleInput(toAddresses, emailFrom, senderName);
     if (applyValidation(response, model, errors)) {
       return renderEmailThisArticle(request, model, site, articleId);
     }
@@ -752,9 +725,14 @@ public class ArticleController extends WombatController {
         .getIngestionMetadata();
 
     String title = articleMetadata.get("title").toString();
-    model.addAttribute("title", title);
-    model.addAttribute("description", articleMetadata.get("description"));
+    model.addAttribute("article", articleMetadata);
     model.addAttribute("journalName", site.getJournalName());
+
+    if (honeypotService.checkHoneypot(request, authorPhone, authorAffiliation)) {
+      response.setStatus(HttpStatus.CREATED.value());
+      return site + "/ftl/article/emailSuccess";
+    }
+
     Multipart content = freemarkerMailService.createContent(site, "emailThisArticle", model);
 
     EmailMessage message = EmailMessage.builder()
@@ -772,8 +750,7 @@ public class ArticleController extends WombatController {
   }
 
   private Set<String> validateEmailArticleInput(List<InternetAddress> emailToAddresses,
-                                                String emailFrom, String senderName, String captchaChallenge, String captchaResponse,
-                                                Site site, HttpServletRequest request) throws IOException {
+                                                String emailFrom, String senderName) throws IOException {
 
     Set<String> errors = new HashSet<>();
     if (StringUtils.isBlank(emailFrom)) {
@@ -793,10 +770,6 @@ public class ArticleController extends WombatController {
 
     if (StringUtils.isBlank(senderName)) {
       errors.add("senderNameMissing");
-    }
-
-    if (!captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
-      errors.add("captchaError");
     }
 
     return errors;

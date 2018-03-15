@@ -647,10 +647,6 @@ html:not(.positionfixed) #page-figure #site-header-container {
   margin-top: 20px;
 }
 
-#email-article-form #captcha {
-  margin-bottom: 20px;
-}
-
 #privacy-link {
   color: #336699;
   font-size: 1.5em;

@@ -327,9 +327,7 @@ public class ArticleController extends WombatController {
                                   @RequestParam(value = "authorAffiliation", required = false) String authorAffiliation,
                                   @RequestParam(value = "ciStatement", required = false) String ciStatement,
                                   @RequestParam(value = "target", required = false) String parentArticleDoi,
-                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri,
-                                  @RequestParam(value = RECAPTCHA_CHALLENGE_FIELD, required = false) String captchaChallenge,
-                                  @RequestParam(value = RECAPTCHA_RESPONSE_FIELD, required = false) String captchaResponse)
+                                  @RequestParam(value = "inReplyTo", required = false) String parentCommentUri)
       throws IOException {
 
     // honeypot for bot.
@@ -347,17 +345,6 @@ public class ArticleController extends WombatController {
 
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
-
-    if (validationErrors.isEmpty()) {
-      // Submit Captcha for validation only if there are no other errors.
-      // Otherwise, the user's valid Captcha response would be wasted when they resubmit the comment.
-
-      // Allow missing recaptcha for ApertaRxiv. TODO: Is there a better way instead of using journalKey?
-      if (!"ApertaRxiv".equalsIgnoreCase(site.getJournalKey())
-          && !captchaService.validateCaptcha(site, request.getRemoteAddr(), captchaChallenge, captchaResponse)) {
-        validationErrors.put("captchaValidationFailure", true);
-      }
-    }
 
     if (!validationErrors.isEmpty()) {
       return ImmutableMap.of("validationErrors", validationErrors);

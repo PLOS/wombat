@@ -131,9 +131,6 @@
         });
     };
 
-    function shiftCaptchaFormTo(replyBox) {
-      $('#captchaForm').detach().appendTo(replyBox.find('.captchaContainer')).show();
-    }
 
     /**
      * Show the "respond to this posting" box beneath a reply, clearing the report box first if necessary.
@@ -147,10 +144,6 @@
       this.showBox(replyId, 'report', 'respond', ['.btn_cancel'],
         function (box) {
           box.find('.btn_submit').click(function () {
-            // Usually the Captcha form will already be here.  In case the user opened a second box and submitted from
-            // the first box, shift the Captcha form back so they won't be confused if there is a validation failure.
-            shiftCaptchaFormTo(box);
-
             if (callback) {
               if (replyId == "0") { // TODO: hack for Aperta top level submitDiscussion
                 var articleDoi = replyElement.data("uri");
@@ -165,8 +158,6 @@
           
           box.find('[name="comment_title"]').attr("value", parentTitle ? 'RE: ' + parentTitle : '');
           outer.wireCompetingInterestRadioButtons(box);
-
-          shiftCaptchaFormTo(box);
         });
     };
 
@@ -329,11 +320,6 @@
             errors.push({key: errorKey, value: serverErrors[errorKey]});
           }
 
-          if (serverErrors['captchaValidationFailure']) {
-            // Need to refresh because the third-party server will not accept a second response for the same challenge.
-            $("#recaptcha_reload").click();
-          }
-
           if (errors.length > 0) {
             for (var i in errors) {
               var error = errors[i];
@@ -394,13 +380,6 @@
       messageElement.show();
     }
 
-    function getRecaptchaFields() {
-      return {
-        recaptcha_challenge_field: $('#recaptcha_challenge_field').val(),
-        recaptcha_response_field: $('#recaptcha_response_field').val()
-      };
-    }
-
     /**
      * Pull the input for a submitted comment from the page.
      * @param replyElement  the existing reply, to which the user is responding, as a JQuery element
@@ -421,8 +400,6 @@
       if (data.isCompetingInterest) {
         data.ciStatement = replyElement.find('[name="competing_interests"]').val();
       }
-
-      $.extend(data, getRecaptchaFields(replyElement));
 
       return data;
     }

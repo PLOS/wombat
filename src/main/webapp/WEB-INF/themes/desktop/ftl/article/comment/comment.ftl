@@ -53,10 +53,6 @@
     <#include "errorMessages.ftl" />
     <@postNewCommentLink article.doi />
 
-      <div id="captchaForm" style="display: none">
-        ${captchaHtml}
-      </div>
-
       <div id="respond_prototype" class="reply subresponse cf" style="display: none">
         <h4>Post Your Discussion Comment</h4>
 

@@ -22,34 +22,30 @@
 
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.config.site.Site;
+import com.google.common.base.Strings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.Optional;
 
-/**
- * Interface for a captcha implementation
- */
-public interface CaptchaService {
+public class HoneypotServiceImpl implements HoneypotService {
+
+  private static final Logger log = LoggerFactory.getLogger(HoneypotService.class);
 
   /**
-   * Validate the given challenge and response
-   *
-   * @param ip the current user's IP address
-   * @param challenge challenge (from the html form snippet)
-   * @param response response (from the html form snippet)
-   *
-   * @return true if the captcha is valid
-   *
-   * @throws Exception
+   * {@inheritDoc}
    */
-  public boolean validateCaptcha(Site site, String ip, String challenge, String response) throws IOException;
+  @Override
+  public boolean checkHoneypot(HttpServletRequest request, String... trapFields) throws IOException {
 
-  /**
-   * @return Returns a captchaHTML block to insert into a web page
-   */
-  public String getCaptchaHtml(Site site, Optional<String> captchaTheme) throws IOException;
-
-  public String getPublicKey(Site site) throws IOException;
+    boolean botTrapped = false;
+    for (String trapField : trapFields) {
+      if (!Strings.isNullOrEmpty(trapField)) {
+        log.warn("bot trapped in honeypot: {}", request.getRemoteAddr());
+        botTrapped = true;
+      }
+    }
+    return botTrapped;
+  }
 }
-

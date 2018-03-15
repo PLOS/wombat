@@ -37,10 +37,6 @@
   margin-top: 12px;
 }
 
-#feedback-form-container form#feedbackCreate li#security-check-row, #emailThisArticleForm li#security-check-row {
-  text-align: center;
-}
-
 #feedback-form-container form#feedbackCreate label, #emailThisArticleForm label {
   width: 24%;
   min-width: 100px;
@@ -53,10 +49,6 @@
 #feedback-form-container form#feedbackCreate textarea, #emailThisArticleForm textarea {
   width: 50%;
   border: 1px solid rgb(169, 169, 169);
-}
-
-#feedback-form-container form#feedbackCreate #recaptcha_widget_div, #emailThisArticleForm #recaptcha_widget_div{
-  display: inline-block;
 }
 
 #feedback-form-container form#feedbackCreate label#security-check-label, #emailThisArticleForm label#security-check-label {

@@ -2247,11 +2247,11 @@
             </xsl:when>
             <xsl:otherwise>
               <xsl:apply-templates/>
+              <xsl:if test="substring(.,string-length(.)) != '.' and not(ends-with(..,'.'))">
+                <xsl:text>. </xsl:text>
+              </xsl:if>
             </xsl:otherwise>
           </xsl:choose>
-          <xsl:if test="substring(.,string-length(.)) != '.' and not(ends-with(..,'.'))">
-          <xsl:text>. </xsl:text>
-          </xsl:if>
         </xsl:if>
       </xsl:otherwise>
 

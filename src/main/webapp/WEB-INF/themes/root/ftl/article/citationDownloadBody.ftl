@@ -26,7 +26,7 @@
   <span>Article Source:</span>
   <a href="<@siteLink handlerName="article" queryParameters={'id': article.doi} />"
      title="Back to original article">
-    <strong>${article.title}</strong>
+    <strong><@xform xml=article.title/></strong>
   </a>
   <br/>
 <#include "citation.ftl" />

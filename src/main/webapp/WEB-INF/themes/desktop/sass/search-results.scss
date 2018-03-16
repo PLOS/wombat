@@ -645,6 +645,12 @@ $search-icon-pad-default: 8;
   .grey-text {
     width: 100%;
   }
+
+  .required {
+    color: #f03;
+    font-size: 13px;
+    font-weight: bold;
+  }
 }
 
 /* Advanced search rules */

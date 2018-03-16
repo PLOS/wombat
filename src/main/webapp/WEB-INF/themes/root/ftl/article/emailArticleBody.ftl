@@ -41,7 +41,7 @@
   <h1>E-mail this Article</h1>
   <p>
     <span class="source">Article Source:</span>
-    <a href="<@siteLink handlerName="article" queryParameters={'id': article.doi} />" title="Back to original article">${article.title}
+    <a href="<@siteLink handlerName="article" queryParameters={'id': article.doi} />" title="Back to original article"><@xform xml=article.title/>
     </a>
   </p>
   <p>Fields marked with an <span class="required">*</span> are required. </p>

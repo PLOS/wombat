@@ -78,7 +78,7 @@ public class AlertController extends WombatController {
       throws IOException {
     if (name.isEmpty()) {
       log.error("Empty name parameter");
-      return respondFailure("name required");
+      return respondFailure("Please name your saved search.");
     }
 
     String authId = request.getRemoteUser();

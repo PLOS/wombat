@@ -22,7 +22,7 @@
 
 <h2>Save this search</h2>
 
-  Save search as <br/>
+  Save search as<span class="required">*</span> <br/>
   <input type="text" class="big-box" id="text_name_savedsearch"/><br/>
   <input type="hidden" id="alert_query_savedsearch" value=''/>
 

@@ -17,6 +17,11 @@ target/
 *.iml
 *.ipr
 *.iws
+.classpath
+.factorypath
+.project
+.settings/
+test-output/
 
 # Temporary files #
 *~

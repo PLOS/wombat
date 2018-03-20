@@ -73,6 +73,17 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
     return new BasicHeader("Authorization", "Basic " + encoded);
   }
 
+  /**
+   * This method fetches the NED user credentials.
+   *
+   * <ul>
+   *  <li>NED Server URL</li>
+   *  <li>User name</li>
+   *  <li>Password</li>
+   * </ul>
+   *
+   * @return The {@link UserApiConfiguration}
+   */
   private UserApiConfiguration fetchApiConfiguration() {
     final Optional<RuntimeConfiguration.UserApiConfiguration> userApiConfig =
         runtimeConfiguration.getUserApiConfiguration();

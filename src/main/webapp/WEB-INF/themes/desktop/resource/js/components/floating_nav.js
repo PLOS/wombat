@@ -122,7 +122,7 @@
               var sectionHeight = bottomPosition-topPosition;
               var windowHeight = $(window).height();
               var spacingHeight = opts.content.find('.final-section-spacing').height();
-              if(sectionHeight + spacingHeight < windowHeight) {
+              if(sectionHeight + spacingHeight + $('body > footer').innerHeight() < windowHeight) {
                 if(!opts.content.find('.final-section-spacing').length) {
                   opts.content.append('<div class="final-section-spacing"></div>')
                 }

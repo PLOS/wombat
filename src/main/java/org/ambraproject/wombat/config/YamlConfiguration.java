@@ -295,13 +295,11 @@ public class YamlConfiguration implements RuntimeConfiguration {
     if (input.userApi == null) {
       throw new RuntimeConfigurationException("User API connection properties are required");
     }
-    if (input.userApi != null && !Strings.isNullOrEmpty(input.userApi.server)) {
-      try {
-        new URL(input.userApi.server);
-      } catch (MalformedURLException e) {
-        throw new RuntimeConfigurationException(
-            "Provided User API server address is not a valid URL", e);
-      }
+    try {
+      new URL(input.userApi.server);
+    } catch (MalformedURLException e) {
+      throw new RuntimeConfigurationException(
+          "Provided User API server address is not a valid URL", e);
     }
   }
 

@@ -30,6 +30,7 @@ import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.MemcacheClient;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
+import org.ambraproject.wombat.config.yaml.IgnoreMissingPropertyConstructor;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleApiImpl;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
@@ -46,6 +47,7 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -60,7 +62,8 @@ public class RootConfiguration {
 
   @Bean
   public Yaml yaml() {
-    return new Yaml();
+    final Constructor contructor = new IgnoreMissingPropertyConstructor();
+    return new Yaml(contructor);
   }
 
   private static final String CONFIG_DIR_PROPERTY_NAME = "wombat.configDir";

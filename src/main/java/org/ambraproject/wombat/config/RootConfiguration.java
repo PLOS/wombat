@@ -44,6 +44,7 @@ import org.ambraproject.wombat.service.remote.UserApiImpl;
 import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.yaml.snakeyaml.Yaml;
@@ -60,10 +61,19 @@ import java.util.Date;
 @Configuration
 public class RootConfiguration {
 
+  @Value("${rootConfiguration.ignoreMissingProperty:false}")
+  private boolean ignoreMissingProperty;
+
   @Bean
   public Yaml yaml() {
-    final Constructor contructor = new IgnoreMissingPropertyConstructor();
-    return new Yaml(contructor);
+    final Yaml yaml;
+    if (ignoreMissingProperty) {
+      final Constructor contructor = new IgnoreMissingPropertyConstructor();
+      yaml = new Yaml(contructor);
+    } else {
+      yaml = new Yaml();
+    }
+    return yaml;
   }
 
   private static final String CONFIG_DIR_PROPERTY_NAME = "wombat.configDir";

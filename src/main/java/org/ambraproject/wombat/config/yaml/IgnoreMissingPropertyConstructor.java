@@ -120,6 +120,8 @@ public class IgnoreMissingPropertyConstructor extends Constructor {
           if (exception != null && exception instanceof YAMLException) {
             final String message = exception.getMessage();
             if (message.contains("Unable to find property ")) {
+              // Ignore the missing JavaBean to store the property, and continue
+              // parsing the YAML.
               LOG.warn("Caught exception while parsing YAML: {}", exception);
               continue;
             }

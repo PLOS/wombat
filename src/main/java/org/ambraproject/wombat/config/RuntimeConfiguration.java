@@ -117,9 +117,19 @@ public interface RuntimeConfiguration {
     String getPreprintsCollection();
   }
 
+  interface UserApiConfiguration {
+    String getServerUrl();
+
+    String getAppName();
+
+    String getPassword();
+  }
+
   Optional<CasConfiguration> getCasConfiguration();
 
   Optional<SolrConfiguration> getSolrConfiguration();
+
+  Optional<UserApiConfiguration> getUserApiConfiguration();
 
   boolean areCommentsDisabled();
 

@@ -29,6 +29,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import com.google.gson.GsonBuilder;
+
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
 import org.ambraproject.wombat.config.theme.ThemeSource;
@@ -234,6 +235,28 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return (input.solr == null) ? Optional.empty() : Optional.of(solrConfiguration);
   }
 
+  private final UserApiConfiguration userApiConfiguration = new UserApiConfiguration() {
+    @Override
+    public String getServerUrl() {
+      return input.userApi.server;
+    }
+
+    @Override
+    public String getAppName() {
+      return input.userApi.authorizationAppName;
+    }
+
+    @Override
+    public String getPassword() {
+      return input.userApi.authorizationPassword;
+    }
+  };
+
+  @Override
+  public Optional<UserApiConfiguration> getUserApiConfiguration() {
+    return (input.userApi == null) ? Optional.empty() : Optional.of(userApiConfiguration);
+  }
+
   @Override
   public boolean areCommentsDisabled() {
     return (input.commentsDisabled != null) && input.commentsDisabled;
@@ -267,6 +290,16 @@ public class YamlConfiguration implements RuntimeConfiguration {
       if (!Strings.isNullOrEmpty(input.cache.memcachedHost) && Strings.isNullOrEmpty(input.cache.cacheAppPrefix)) {
         throw new RuntimeConfigurationException("If memcachedHost is specified, cacheAppPrefix must be as well");
       }
+    }
+
+    if (input.userApi == null) {
+      throw new RuntimeConfigurationException("User API connection properties are required");
+    }
+    try {
+      new URL(input.userApi.server);
+    } catch (MalformedURLException e) {
+      throw new RuntimeConfigurationException(
+          "Provided User API server address is not a valid URL", e);
     }
   }
 
@@ -308,6 +341,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private HttpConnectionPoolConfigurationInput httpConnectionPool;
     private CasConfigurationInput cas;
     private SolrConfigurationInput solr;
+    private UserApiConfigurationInput userApi;
 
     private Boolean commentsDisabled;
 
@@ -391,6 +425,13 @@ public class YamlConfiguration implements RuntimeConfiguration {
       this.solr = solr;
     }
 
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setUserApi(UserApiConfigurationInput userApi) {
+      this.userApi = userApi;
+    }
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -510,5 +551,36 @@ public class YamlConfiguration implements RuntimeConfiguration {
     public void setpreprintsCollection(String collection) {
       this.preprintsCollection = collection;
     }
+  }
+
+  public static class UserApiConfigurationInput {
+    private String server;
+    private String authorizationAppName;
+    private String authorizationPassword;
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setServer(String server) {
+      this.server = server;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setAuthorizationAppName(String authorizationAppName) {
+      this.authorizationAppName = authorizationAppName;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setAuthorizationPassword(String authorizationPassword) {
+      this.authorizationPassword = authorizationPassword;
+    }
+
   }
 }

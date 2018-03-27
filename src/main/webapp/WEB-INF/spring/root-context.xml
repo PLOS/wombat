@@ -34,4 +34,8 @@
 
   <beans:bean class="org.ambraproject.wombat.config.RootConfiguration" />
 
+  <context:property-placeholder location="file:${wombat.configDir}/wombat_local.properties"
+                                ignore-resource-not-found="true"
+                                ignore-unresolvable="true"/>
+
 </beans:beans>

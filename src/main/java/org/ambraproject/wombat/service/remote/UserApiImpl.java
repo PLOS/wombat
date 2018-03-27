@@ -25,6 +25,9 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
@@ -36,13 +39,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
 
   @Autowired
-  private ArticleApi articleApi;
+  private RuntimeConfiguration runtimeConfiguration;
 
   // Configuration data for sending requests to the remote user service.
   // Lazily initialized. We can't create it until articleApi is wired.
@@ -70,22 +73,35 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
     return new BasicHeader("Authorization", "Basic " + encoded);
   }
 
-  private static final ApiAddress USER_API_CONFIG = ApiAddress.builder("config/userApi").build();
-
+  /**
+   * This method fetches the NED user credentials.
+   *
+   * <ul>
+   *  <li>NED Server URL</li>
+   *  <li>User name</li>
+   *  <li>Password</li>
+   * </ul>
+   *
+   * @return The {@link UserApiConfiguration}
+   */
   private UserApiConfiguration fetchApiConfiguration() {
-    Map<String, ?> userConfigData;
-    try {
-      userConfigData = articleApi.requestObject(USER_API_CONFIG, Map.class);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-    String server = (String) userConfigData.get("server");
+    final Optional<RuntimeConfiguration.UserApiConfiguration> userApiConfig =
+        runtimeConfiguration.getUserApiConfiguration();
+    final ImmutableMap<String, String> userConfigData = userApiConfig.map(
+        config -> ImmutableMap.of(
+            "server", config.getServerUrl(),
+            "authorizationAppName", config.getAppName(),
+            "authorizationPassword", config.getPassword()))
+        .orElseThrow(() -> new RuntimeException("userApi is not configured"));
+
+    final String server = userConfigData.get("server");
     if (server == null) {
       throw new RuntimeException("userApi is not configured");
     }
+
     return new UserApiConfiguration(server,
-        (String) userConfigData.get("authorizationAppName"),
-        (String) userConfigData.get("authorizationPassword"));
+        userConfigData.get("authorizationAppName"),
+        userConfigData.get("authorizationPassword"));
   }
 
   private transient UserApiConfiguration userApiConfiguration;

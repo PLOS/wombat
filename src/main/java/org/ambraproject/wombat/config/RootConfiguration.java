@@ -30,6 +30,7 @@ import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.MemcacheClient;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
+import org.ambraproject.wombat.config.yaml.IgnoreMissingPropertyConstructor;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleApiImpl;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
@@ -43,9 +44,11 @@ import org.ambraproject.wombat.service.remote.UserApiImpl;
 import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -58,9 +61,19 @@ import java.util.Date;
 @Configuration
 public class RootConfiguration {
 
+  @Value("${rootConfiguration.ignoreMissingProperty:false}")
+  private boolean ignoreMissingProperty;
+
   @Bean
   public Yaml yaml() {
-    return new Yaml();
+    final Yaml yaml;
+    if (ignoreMissingProperty) {
+      final Constructor contructor = new IgnoreMissingPropertyConstructor();
+      yaml = new Yaml(contructor);
+    } else {
+      yaml = new Yaml();
+    }
+    return yaml;
   }
 
   private static final String CONFIG_DIR_PROPERTY_NAME = "wombat.configDir";

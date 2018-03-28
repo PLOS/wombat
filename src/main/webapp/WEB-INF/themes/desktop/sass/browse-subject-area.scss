@@ -42,6 +42,11 @@
   padding-bottom: rem-calc(6);
 }
 
+.article-block IMG {
+  max-width: none;
+  min-height: 0;
+}
+
 
 /// temporary until we replace search results ALM
 

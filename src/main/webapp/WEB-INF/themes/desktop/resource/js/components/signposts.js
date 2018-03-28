@@ -102,9 +102,20 @@ var Signposts;
 })(jQuery);
 
 function getPmcViewsAndDownloads(data) {
-  //todo: replace YUI compressor so we can use the following line instead of hardcoding '7'
+  //todo: replace YUI compressor so we can use the following line instead of looping
   //https://github.com/yui/yuicompressor/issues/262
   // var pmc_metrics = data[0].sources.find(x => x.name === 'pmc' && x.group_name === 'viewed');
-  var pmc_metrics = data[0].sources[7]['metrics'];
-  return pmc_metrics['html'] + pmc_metrics['pdf'];
+
+  var pmc_views_and_downloads;
+  var sources = data[0].sources;
+  for (var source in sources) {
+    if (sources.hasOwnProperty(source)) {
+      var this_source = sources[source];
+      if (this_source.name === 'pmc' && this_source.group_name === 'viewed') {
+        pmc_views_and_downloads = this_source.metrics.html + this_source.metrics.pdf;
+      }
+    }
+  }
+
+  return pmc_views_and_downloads;
 }

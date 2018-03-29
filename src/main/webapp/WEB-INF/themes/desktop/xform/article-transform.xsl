@@ -2499,7 +2499,7 @@
 
 
     <xsl:choose>
-      <xsl:when test="not(ancestor::ref-list) or ancestor::*/@publication-type='journal' and not(substring($previousText, string-length($previousText)-3)='doi:')">
+      <xsl:when test="not(ancestor::ref-list) or not(substring($previousText, string-length($previousText)-3)='doi:')">
         <a>
           <xsl:call-template name="assign-href"/>
           <xsl:apply-templates/>

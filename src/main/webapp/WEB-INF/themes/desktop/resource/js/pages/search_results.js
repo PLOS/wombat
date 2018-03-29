@@ -375,6 +375,8 @@ var SearchResult;
 
         if (that.$searchAlertModalEl.hasClass('loggedIn')) {
           var textInput = $('#text_name_savedsearch');
+          textInput.val('');
+          $('#span_error_savedsearch').html('');
           textInput.focus();
           textInput[0].selectionStart = textInput[0].selectionEnd = textInput[0].value.length;
         }

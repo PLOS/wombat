@@ -509,7 +509,6 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         .button,
         button {
           font-size: rem-calc(14);
-          height: $topbar-input-height;
           position: relative;
           top: (($topbar-height - $topbar-input-height) / 2);
         }

@@ -29,9 +29,22 @@
       <h1 id="lb-title"><%= articleTitle %></h1>
 
       <div id="lb-authors">
-        <% authorList.split(',').forEach(function (author) { %>
-        <span><%= author.trim() %></span>
-        <% }) %>
+        <#assign maxFigureAuthorsToShow = 3 />
+        <#if authors?size gt maxFigureAuthorsToShow + 1>
+          <#list authors as author>
+            <#if author_index lt (maxFigureAuthorsToShow - 1) >
+              <span>${author.fullName}</span>
+            </#if>
+          </#list>
+          <a class="more-authors" href="<@siteLink path="/article/authors?id=${article.doi}"
+            title="show all authors"/>">...</a>
+          <#assign authorLast = authors?last />
+          <span>${authorLast.fullName}</span>
+        <#else>
+          <#list authors as author>
+            <span>${author.fullName}</span>
+          </#list>
+        </#if>
       </div>
 
       <div class="lb-close" title="close">&nbsp;</div>

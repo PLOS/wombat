@@ -172,9 +172,18 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
     span {
       white-space: nowrap;
       padding-right: rem-calc(3);
+      &:after {
+        content: ", ";
+      }
     }
     span:last-child {
       padding-right: 0;
+      &:after {
+        content: "";
+      }
+    }
+    a.more-authors {
+      color: $grey-med-light;
     }
   }
 

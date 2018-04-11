@@ -267,7 +267,7 @@ example | extension
 
 .plosone {
 
-  @include brandcolor($setcolor: $plos-one, $shade1: $plos-one-shade1, $shade2: $plos-one-shade2, $shade3: $plos-one-shade3, $text-color: $clr-body-text, $text-color-hover: $white);
+  @include brandcolor($setcolor: $plos-one, $shade1: $plos-one-shade1, $shade2: $plos-one-shade2, $shade3: $plos-one-shade3);
 
   .article-content .table-download .definition-label {
     color: $grey-dark;

@@ -379,6 +379,9 @@ $width-nav: $block-grid-elements - $width-logo;
       a {
         padding-top: 0;
         padding-bottom: 0;
+        vertical-align: middle;
+        align-items: center;
+        display: inline-flex;
         }
       a.button {
         top: 0 ///overide foundation top-bar

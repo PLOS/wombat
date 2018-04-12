@@ -1051,7 +1051,7 @@
                     <xsl:element name="li">
                       <xsl:element name="a">
                         <xsl:attribute name="href">
-                          <xsl:value-of select="concat('http://www.ncbi.nlm.nih.gov/pubmed/', $pmid)"/>
+                          <xsl:value-of select="concat('http://www.ncbi.nlm.nih.gov/pubmed/', $pmid[last()])"/>
                         </xsl:attribute>
                         <xsl:attribute name="target">_new</xsl:attribute>
                         <xsl:attribute name="title">Go to article in PubMed</xsl:attribute>

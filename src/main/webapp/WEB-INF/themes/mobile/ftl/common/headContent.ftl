@@ -28,8 +28,6 @@
 
 <body>
 
-TESTING!!!!
-
 <div id="container-main">
 
 <#include "header/headerContainer.ftl" />

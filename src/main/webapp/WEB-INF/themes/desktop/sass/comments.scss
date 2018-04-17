@@ -104,6 +104,10 @@
       text-decoration: underline;
     }
 
+    li a:not([href]) {
+      text-decoration: none;
+    }
+
     li div.responses {
       border-right: 1px solid #D1D1D1;
       font-weight: bold;

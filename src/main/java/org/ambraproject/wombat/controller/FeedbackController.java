@@ -89,6 +89,7 @@ public class FeedbackController extends WombatController {
                                 @RequestParam("subject") String subject,
                                 @RequestParam("name") String name,
                                 @RequestParam("userId") String userId,
+                                @RequestParam(value = "consent", required = false) String consent,
                                 @RequestParam(value = "authorPhone", required = false) String authorPhone,
                                 @RequestParam(value = "authorAffiliation", required = false) String authorAffiliation)
       throws IOException, MessagingException {
@@ -101,7 +102,7 @@ public class FeedbackController extends WombatController {
     model.addAttribute("name", name);
     model.addAttribute("subject", subject);
 
-    Set<String> errors = validateInput(fromEmailAddress, note, subject, name);
+    Set<String> errors = validateInput(fromEmailAddress, note, subject, name, consent);
     if (applyValidation(response, model, errors)) {
       return serveFeedbackPage(model, site);
     }
@@ -138,7 +139,7 @@ public class FeedbackController extends WombatController {
    * @return a set of error flags to be added to the FTL model (empty if all input is valid)
    */
   private static Set<String> validateInput(String fromEmailAddress, String note, String subject,
-                                           String name) {
+                                           String name, String consent) {
     Set<String> errors = new HashSet<>();
     if (StringUtils.isBlank(subject)) {
       errors.add("subjectError");
@@ -153,6 +154,9 @@ public class FeedbackController extends WombatController {
     }
     if (StringUtils.isBlank(note)) {
       errors.add("noteError");
+    }
+    if (consent == null || !"true".equals(consent)) {
+      errors.add("consentError");
     }
     return errors;
   }

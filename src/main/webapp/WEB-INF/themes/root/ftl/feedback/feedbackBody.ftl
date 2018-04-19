@@ -79,6 +79,13 @@
         <textarea id="feedbackCreate_note" name="note" cols="70" rows="5">${note!''}</textarea>
       <@formValidation "noteError">This field is required.</@formValidation>
       </li>
+      <li>
+        <label for="consent">
+          <input type="checkbox" id="feedbackCreate_consent" name="consent" value="true">
+          I have read and agree to the terms of the <a href="https://www.plos.org/privacy-policy" target="_blank" title="Page opens in new window">PLOS Privacy Policy</a> and hereby consent to send my personal information to PLOS.
+        </label>
+        <@formValidation "consentError">This field is required.</@formValidation>
+      </li>
     </ol>
     <input type="text" name="authorAffiliation" placeholder="Affiliation (optional)..." id="authorAffiliation">
     <input type="text" name="authorPhone" placeholder="Phone ..." id="authorPhone">

@@ -75,7 +75,7 @@ var mediaCurationCoverage;
     },
 
     modalFormReset: function () {
-      $("#media-coverage-form :input + span.form-error, #mcform-error").text("");
+      $("#media-coverage-form :input + span.form-error, #media-coverage-form div.form-error, #mcform-error").text("");
 
       $('#media-coverage-success').hide();
       $('#media-coverage-failure').hide();
@@ -100,10 +100,10 @@ var mediaCurationCoverage;
         title: $('#mcform-title').val(),
         publishedOn: $('#mcform-publishedOn').val(),
         comment: $('#mcform-comment').val(),
-
+        consent: $('#mcform-consent')[0].checked
       };
 
-      $("#media-coverage-form :input + span.form-error").text("");
+      $("#media-coverage-form :input + span.form-error, #media-coverage-form div.form-error").text("");
 
       var formEndpoint = siteUrlPrefix + "article/submitMediaCurationRequest";
 
@@ -140,6 +140,10 @@ var mediaCurationCoverage;
 
             if (data.publishedOnError) {
               $("#mcform-publishedOn").next().text(data.publishedOnError);
+            }
+
+            if (data.consentError) {
+              $("#mcform-consent").parent().next().text(data.consentError);
             }
           }
           else {

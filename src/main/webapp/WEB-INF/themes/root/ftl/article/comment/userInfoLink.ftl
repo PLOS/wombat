@@ -21,5 +21,5 @@
   -->
 
 <#macro userInfoLink user class="">
-  <a class="${class}" >${user.displayname}</a>
+  <span class="userlink ${class}" >${user.displayname}</span>
 </#macro>

@@ -61,6 +61,7 @@
   <#include "preamble.ftl" />
     <input type="text" name="userId" style="visibility: hidden" value="<#--TODO: Add userId if present-->"/>
     <ol>
+      <li><i>All fields are required</i></li>
       <li>
       <@formInput "name">Name:</@formInput>
       <@formValidation "nameError">This field is required.</@formValidation>

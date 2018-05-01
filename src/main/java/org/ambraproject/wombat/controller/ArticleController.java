@@ -514,7 +514,6 @@ public class ArticleController extends WombatController {
     }
 
     if (!validateMediaCurationInput(model, link, name, email, title, publishedOn, consent)) {
-      model.addAttribute("formError", "Invalid values have been submitted.");
       //return model for error reporting
       return jsonService.serialize(model);
     }

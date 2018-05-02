@@ -42,7 +42,7 @@
    * @param errorCallback  the callback in which we handle errors
    */
   $.fn.getArticleSummary = function (doi, successCallback, errorCallback) {
-    var config = ALM_CONFIG; // expect to import value from alm_config.js
+    var config = ALM_CONFIG; // expect to import value from config/alm.yaml
 
     if (config.host == null) {
       // TODO: Replace with better console logging

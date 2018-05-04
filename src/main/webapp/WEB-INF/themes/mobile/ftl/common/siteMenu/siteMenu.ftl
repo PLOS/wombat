@@ -38,6 +38,16 @@
   </p>
 
   </#macro>
+
+  <#macro siteMenuCalloutSingleButton buttonText buttonTarget>
+    <p class="button-contain special">
+      <a class="rounded coloration-white-on-color"" href="${buttonTarget}">
+      ${buttonText}
+      </a>
+    </p>
+    </div>  <!-- opens in siteMenuCalloutDescription -->
+  </#macro>
+
   <#macro menuGroup title singleColumn=false containsCallout=false>
     <#nested/>
   </#macro>

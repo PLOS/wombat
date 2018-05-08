@@ -64,6 +64,18 @@
           h2 {
             max-width: rem-calc(525);
           }
+          .bottom-margin {
+            margin-bottom: 1rem;
+          }
+
+          .center-text {
+            text-align: center;
+
+            > * {
+              float: none;
+            }
+          }
+
           .input-group {
             width: rem-calc(250);
 
@@ -84,6 +96,14 @@
               margin-top: rem-calc(5);
               color: white;
             }
+          }
+
+          label.error_consent {
+            display: none;
+            float: left;
+            width: 100%;
+            margin-top: rem-calc(5);
+            color: white;
           }
         }
 

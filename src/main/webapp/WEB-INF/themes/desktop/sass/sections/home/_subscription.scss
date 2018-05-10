@@ -64,11 +64,12 @@
           h2 {
             max-width: rem-calc(525);
           }
-          .bottom-margin {
-            margin-bottom: 1rem;
+          div  {
+            @extend .plos-row;
+            margin-bottom: $pad-small;
           }
 
-          .center-text {
+          .button-row{
             text-align: center;
 
             > * {

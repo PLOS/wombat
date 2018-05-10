@@ -34,6 +34,21 @@
 </#macro>
 
 <head prefix="og: http://ogp.me/ns#">
+  <script type="text/javascript">
+    var performance = {"start": new Date().getTime(), "toString": function() {
+        return "dom=" + (this.domloaded - this.start) + " load=" + (this.load - this.start);
+    }};
+    document.addEventListener("DOMContentLoaded", function(event) {
+        performance.domloaded = new Date().getTime();
+        console.log(performance.toString());
+    });
+    window.addEventListener("load", function(event) {
+        performance.load = new Date().getTime();
+        console.log(performance.toString());
+    });
+    //// uncomment below to delay DOMContentLoaded for test
+    //for(var i=0; i<2000000000; i++) {}
+  </script>
   <title><@titleFormat removeTags(title) /></title>
 
 

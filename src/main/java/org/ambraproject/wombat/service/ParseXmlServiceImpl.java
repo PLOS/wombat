@@ -94,17 +94,27 @@ public class ParseXmlServiceImpl implements ParseXmlService {
 
       Element refListElement = (Element) refListNode;
 
+      System.out.println("time2-1=" + System.currentTimeMillis() % 10000);
       List<Node> refNodes = NodeListAdapter.wrap(refListElement.getElementsByTagName("ref"));
       references.addAll(refNodes.stream()
           .map(ref -> {
             try {
-              return parseReferenceService.buildReferences((Element) ref, linkService);
+              long begin = System.currentTimeMillis();
+              List<Reference> list = parseReferenceService.buildReferences((Element) ref, linkService);
+              long end = System.currentTimeMillis();
+              total += end - begin;
+              return list;
             } catch (XMLParseException | IOException e) {
               throw new RuntimeException(e);
             }
           }) // Stream<List<Reference>>
           .flatMap(Collection::stream).collect(Collectors.toList()));
+      System.out.println(" total=" + total);
+      System.out.println("time2-4=" + System.currentTimeMillis() % 10000);
     }
     return references;
   }
+
+  static long total = 0;
+
 }

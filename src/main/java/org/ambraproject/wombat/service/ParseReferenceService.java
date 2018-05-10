@@ -170,6 +170,8 @@ public class ParseReferenceService {
     }
     return references;
   }
+  static long total1 = 0;
+  static long total = 0;
 
 
   /**

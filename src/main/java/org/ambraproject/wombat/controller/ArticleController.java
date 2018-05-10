@@ -187,16 +187,21 @@ public class ArticleController extends WombatController {
                               @SiteParam Site site,
                               RequestedDoiVersion articleId)
       throws IOException {
+    System.out.println("time1=" + System.currentTimeMillis() % 10000);
     ArticlePointer articlePointer = articleMetadataFactory.get(site, articleId)
         .validateVisibility("article")
         .populate(request, model)
         .fillAmendments(model)
         .getArticlePointer();
+    System.out.println("time2=" + System.currentTimeMillis() % 10000);
 
     XmlContent xmlContent = getXmlContent(site, articlePointer, request);
+    System.out.println("time3=" + System.currentTimeMillis() % 10000);
     model.addAttribute("articleText", xmlContent.html);
+    System.out.println("time4=" + System.currentTimeMillis() % 10000);
     model.addAttribute("references", xmlContent.references);
 
+    System.out.println("time5=" + System.currentTimeMillis() % 10000);
     return site + "/ftl/article/article";
   }
 
@@ -803,26 +808,36 @@ public class ArticleController extends WombatController {
   private XmlContent getXmlContent(Site site, ArticlePointer articlePointer,
                                    HttpServletRequest request) throws IOException {
     return corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
+      System.out.println("time1-1=" + System.currentTimeMillis() % 10000);
+
       byte[] xml = ByteStreams.toByteArray(stream);
       final Document document = parseXmlService.getDocument(new ByteArrayInputStream(xml));
 
+      System.out.println("time1-2=" + System.currentTimeMillis() % 10000);
       List<Reference> references = parseXmlService.parseArticleReferences(document,
           doi -> getLinkText(site, request, doi));
 
+      System.out.println("time1-3=" + System.currentTimeMillis() % 10000);
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
       try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
         articleTransformService.transformArticle(site, articlePointer, references,
             new ByteArrayInputStream(xml), outputStream);
       }
+      System.out.println("time1-4=" + System.currentTimeMillis() % 10000);
 
       return new XmlContent(articleHtml.toString(), references);
     });
   }
 
+  static long total = 0;
   private String getLinkText(Site site, HttpServletRequest request, String doi) throws IOException {
     String citationJournalKey;
     try {
+      long begin = System.currentTimeMillis();
       citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi, site);
+      long end = System.currentTimeMillis();
+      total += end - begin;
+      System.out.println("  total1 = " + total);
     } catch (SolrUndefinedException | EntityNotFoundException e) {
       // If we can't look it up in Solr, fail quietly, the same as though no match was found.
       log.error("Solr is undefined or returning errors on query.");

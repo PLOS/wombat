@@ -51,6 +51,11 @@
           margin-right: $pad-default;
         }
 
+        a {
+          color: $white;
+          text-decoration: underline;
+        }
+
         .button-default {
           border: 0 solid transparent;
           text-transform: uppercase;
@@ -104,6 +109,10 @@
             float: left;
             width: 100%;
             margin-top: rem-calc(5);
+            color: white;
+          }
+
+          label.email_consent {
             color: white;
           }
         }

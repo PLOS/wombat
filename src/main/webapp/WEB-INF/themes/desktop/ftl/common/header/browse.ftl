@@ -29,7 +29,7 @@
       <div id="subjInfoText">
         <p>Click through the PLOS taxonomy to find articles in your field.</p>
         <p>For more information about PLOS Subject Areas, click
-          <a href="<@siteLink path='s/help-using-this-site#loc-subject-areas'/>">here</a>.
+          <a href="https://github.com/PLOS/plos-thesaurus/blob/develop/README.md" target="_blank" title="Link opens in new window">here</a>.
         </p>
       </div>
     </div>

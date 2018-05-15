@@ -504,7 +504,8 @@ public class ArticleController extends WombatController {
                                            @RequestParam("title") String title,
                                            @RequestParam("publishedOn") String publishedOn,
                                            @RequestParam("name") String name,
-                                           @RequestParam("email") String email)
+                                           @RequestParam("email") String email,
+                                           @RequestParam("consent") String consent)
       throws IOException {
     requireNonemptyParameter(doi);
 
@@ -512,8 +513,7 @@ public class ArticleController extends WombatController {
       link = "http://" + link;
     }
 
-    if (!validateMediaCurationInput(model, link, name, email, title, publishedOn)) {
-      model.addAttribute("formError", "Invalid values have been submitted.");
+    if (!validateMediaCurationInput(model, link, name, email, title, publishedOn, consent)) {
       //return model for error reporting
       return jsonService.serialize(model);
     }
@@ -570,12 +570,17 @@ public class ArticleController extends WombatController {
    */
 
   private boolean validateMediaCurationInput(Model model, String link, String name,
-                                             String email, String title, String publishedOn)
+                                             String email, String title, String publishedOn, String consent)
       throws IOException {
 
     boolean isValid = true;
 
     UrlValidator urlValidator = new UrlValidator(new String[]{"http", "https"});
+
+    if (consent == null || !"true".equals(consent)) {
+      model.addAttribute("consentError", "This field is required.");
+      isValid = false;
+    }
 
     if (StringUtils.isBlank(link)) {
       model.addAttribute("linkError", "This field is required.");

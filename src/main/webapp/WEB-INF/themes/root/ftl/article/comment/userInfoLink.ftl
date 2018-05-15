@@ -20,9 +20,6 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<#include "../../common/userMgmtUrl.ftl" />
-
 <#macro userInfoLink user class="">
-  <#assign userInfoUrl = userMgmtUrl('people/${user.displayname}') />
-  <a class="${class}" <#if userInfoUrl?has_content>href="${userInfoUrl}"</#if> >${user.displayname}</a>
+  <span class="userlink ${class}" >${user.displayname}</span>
 </#macro>

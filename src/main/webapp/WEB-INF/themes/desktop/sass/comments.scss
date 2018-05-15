@@ -61,6 +61,11 @@
       left: rem-calc(10);
     }
   }
+
+  .userlink {
+    font-weight: bold;
+  }
+
 @extend %size-overide;
   position: relative;
   h2 {
@@ -145,7 +150,7 @@
       word-wrap: break-word;
     }
 
-    li div.title span {
+    li div.title span:not(.userlink) {
       display: block;
       font-size: .9em;
     }

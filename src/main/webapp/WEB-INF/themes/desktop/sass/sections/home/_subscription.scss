@@ -51,6 +51,11 @@
           margin-right: $pad-default;
         }
 
+        a {
+          color: $white;
+          text-decoration: underline;
+        }
+
         .button-default {
           border: 0 solid transparent;
           text-transform: uppercase;
@@ -64,6 +69,19 @@
           h2 {
             max-width: rem-calc(525);
           }
+          div  {
+            @extend .plos-row;
+            margin-bottom: $pad-small;
+          }
+
+          .button-row{
+            text-align: center;
+
+            > * {
+              float: none;
+            }
+          }
+
           .input-group {
             width: rem-calc(250);
 
@@ -84,6 +102,18 @@
               margin-top: rem-calc(5);
               color: white;
             }
+          }
+
+          label.error_consent {
+            display: none;
+            float: left;
+            width: 100%;
+            margin-top: rem-calc(5);
+            color: white;
+          }
+
+          label.email_consent {
+            color: white;
           }
         }
 

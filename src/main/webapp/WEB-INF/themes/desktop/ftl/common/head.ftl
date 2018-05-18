@@ -50,7 +50,7 @@
     //for(var i=0; i<2000000000; i++) {}
   </script>
   <title><@titleFormat removeTags(title) /></title>
-
+  <script src="resource/js/rum-speedindex.js"></script>
 
   <#include "../macro/ifDevFeatureEnabled.ftl" />
 

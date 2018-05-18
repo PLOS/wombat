@@ -100,5 +100,8 @@
 TODO: move reveal mode & fig-viewer divs to global location when the new lightbox is implemented sitewide
 -->
 <div class="reveal-modal-bg"></div>
+<script async>
+  console.log("speed index=" + RUMSpeedIndex());
+</script>
 </body>
 </html>

@@ -58,33 +58,3 @@
 #content.related-content ul li {
   list-style-type: none;
 }
-
-
-/* Figshare recommendations */
-#figshare-related div.rca-row-1 {
-  width: 100%;
-  margin: 0;
-  padding: 0 5%;
-}
-
-#figshare-related div.rca-row-2,
-#figshare-related div.rca-row-3{
-  width: 50%;
-  margin: 0;
-  padding: 2% 3%;
-  text-align: center;
-}
-
-#figshare-related .rca-row-2 div,
-#figshare-related .rca-row-3 div{
-  display: inline-block;
-}
-
-#figshare-related .rc-cta {
-  padding: 5%;
-}
-
-#figshare-related .rc-cta a.rc-figshare-logo{
-  right: 5px;
-  top: 20px;
-}

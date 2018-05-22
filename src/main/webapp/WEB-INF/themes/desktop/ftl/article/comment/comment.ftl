@@ -142,7 +142,7 @@
             >
 
           <div class="info">
-            <h3 class="response_title">${comment.title}</h3>
+            <h3 class="response_title">${comment.title?html}</h3>
             <h4>
               <#if depth == 0>
                 Posted by <@userInfoLink user=comment.creator class="user icon replyCreator" />

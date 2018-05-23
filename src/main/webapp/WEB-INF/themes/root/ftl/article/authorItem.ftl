@@ -62,7 +62,7 @@
   <p class="orcid" id="authOrcid-${author_index?c}">
     <span class="type">
       <a id="connect-orcid-link" href="https://orcid.org/" target="_blank" title="ORCID Registry">
-        <img id="orcid-id-logo" src="https://orcid.org/sites/default/files/images/orcid_16x16.png" width='16' height='16' alt="ORCID logo"/>
+        <img id="orcid-id-logo" src="<@siteLink path="/resource/img/orcid_16x16.png"/>" width='16' height='16' alt="ORCID logo"/>
       </a>
     </span>
     <a href="${author.orcid.value}">${author.orcid.value}</a>

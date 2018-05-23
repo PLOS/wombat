@@ -44,6 +44,4 @@
   </div>
 </div>
 
-<#include "recommendedArticles.ftl" />
-
 <@js src="resource/js/pages/related_content.js"/>

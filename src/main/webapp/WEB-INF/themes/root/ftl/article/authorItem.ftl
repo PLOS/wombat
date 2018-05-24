@@ -60,8 +60,8 @@
   </#if>
   <#if author.orcid?? && author.orcid.authenticated>
   <p class="orcid" id="authOrcid-${author_index?c}">
-    <span class="type">
-      <a id="connect-orcid-link" href="https://orcid.org/" target="_blank" title="ORCID Registry">
+    <span>
+      <a id="connect-orcid-link" href="${author.orcid.value}" target="_blank" title="ORCID Registry">
         <img id="orcid-id-logo" src="<@siteLink path="/resource/img/orcid_16x16.png"/>" width='16' height='16' alt="ORCID logo"/>
       </a>
     </span>

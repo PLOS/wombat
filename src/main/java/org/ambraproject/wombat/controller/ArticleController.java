@@ -28,7 +28,6 @@ import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
@@ -62,6 +61,7 @@ import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenExpiredException;
 import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenReusedException;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
@@ -99,6 +99,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Serializable;
@@ -803,7 +804,7 @@ public class ArticleController extends WombatController {
   private XmlContent getXmlContent(Site site, ArticlePointer articlePointer,
                                    HttpServletRequest request) throws IOException {
     return corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
-      byte[] xml = ByteStreams.toByteArray(stream);
+      byte[] xml = IOUtils.toByteArray(new InputStreamReader(stream, charset), charset);
       final Document document = parseXmlService.getDocument(new ByteArrayInputStream(xml));
 
       List<Reference> references = parseXmlService.parseArticleReferences(document,

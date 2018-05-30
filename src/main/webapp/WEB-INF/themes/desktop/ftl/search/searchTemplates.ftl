@@ -64,7 +64,7 @@
 <script type="text/template" id="searchResultsNumberTemplate">
     <%= resultsCount %> results
 
-    for <strong><%= q %></strong>
+    for <strong><%= _.escape(q) %></strong>
 
 
 </script>
@@ -200,7 +200,7 @@
   <div class="search-results-none-found">
     <p>You searched for articles that have all of the following:</p>
 
-    <p>Search Term: "<span><%= q %></span>"</p>
+    <p>Search Term: "<span><%= _.escape(q) %></span>"</p>
 
     <p>There were no results; please refine your search above and try again.</p>
   </div>

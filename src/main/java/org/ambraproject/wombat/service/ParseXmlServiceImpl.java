@@ -41,6 +41,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.stream.Collectors;
 
 
@@ -50,6 +53,8 @@ public class ParseXmlServiceImpl implements ParseXmlService {
 
   @Autowired
   private ParseReferenceService parseReferenceService;
+
+  private ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
 
   /**
    * {@inheritDoc}
@@ -95,14 +100,28 @@ public class ParseXmlServiceImpl implements ParseXmlService {
       Element refListElement = (Element) refListNode;
 
       List<Node> refNodes = NodeListAdapter.wrap(refListElement.getElementsByTagName("ref"));
-      references.addAll(refNodes.stream()
+      List<Future<List<Reference>>> futures = refNodes.stream()
           .map(ref -> {
+            return executor.submit(() -> {
+              try {
+                List<Reference> list = parseReferenceService.buildReferences((Element) ref, linkService);
+                return list;
+              } catch (XMLParseException | IOException e) {
+                return null;
+              }
+            });
+          }).collect(Collectors.toList()); // Stream<List<Reference>>
+      references.addAll(futures.stream()
+          .map(future -> {
             try {
-              return parseReferenceService.buildReferences((Element) ref, linkService);
-            } catch (XMLParseException | IOException e) {
-              throw new RuntimeException(e);
+              return future.get();
+            } catch (Exception e) {
+              return null;
             }
-          }) // Stream<List<Reference>>
+          })
+          .filter(future -> {
+            return future != null;
+          })
           .flatMap(Collection::stream).collect(Collectors.toList()));
     }
     return references;

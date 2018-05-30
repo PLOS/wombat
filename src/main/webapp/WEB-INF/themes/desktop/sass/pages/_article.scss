@@ -520,7 +520,11 @@ $article-sidebar-width: 160;
     margin-right: $icon-space;
   }
   .orcid span.type {display: none;}
+}
 
+#orcid-id-logo {
+  float: left;
+  padding-right: 4px;
 }
 
 .author-list .active {
@@ -570,7 +574,6 @@ $article-sidebar-width: 160;
   font-family: $font-face-plain;
   font-size: $txt-size-xxxsmall;
 }
-
 
 
 // RIGHT COLUMN STYLES

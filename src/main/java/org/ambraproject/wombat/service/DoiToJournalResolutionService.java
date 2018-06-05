@@ -26,13 +26,18 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.apache.lucene.queryparser.classic.QueryParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DoiToJournalResolutionService {
+  private static final Logger log = LoggerFactory.getLogger(DoiToJournalResolutionService.class);
 
   @Autowired
   private SolrSearchApi solrSearchApi;
@@ -51,6 +56,37 @@ public class DoiToJournalResolutionService {
       journalKey = solrArticleAdapters.get(0).getJournalKey();
     }
     return journalKey;
+  }
+
+  public List<String> getJournalKeysFromDois(List<String> dois, Site site) throws IOException {
+    if (dois.isEmpty()) {
+      return new ArrayList<String>();
+    }
+
+    List<String> quoted = dois.stream().map(doi -> {
+      return "\"" + QueryParser.escape(doi) + "\"";
+    }).collect(Collectors.toList());
+
+    ArticleSearchQuery explicitDoiSearchQuery = ArticleSearchQuery.builder()
+        .setSimple(false)
+        .setRows(dois.size())
+        .setQuery("id:(" + String.join(" OR ", quoted) + ")")
+        .setIsJournalSearch(true)
+        .build();
+
+    Map<String, ?> results = solrSearchApi.search(explicitDoiSearchQuery, site);
+    List<Map<String, ?>> docs = (List<Map<String, ?>>) results.get("docs");
+
+    List<String> journalKeys = null;
+    if (docs.size() == dois.size()) {
+      journalKeys = docs.stream().map(data -> {
+          return (String) data.get("journal_key");
+      }).collect(Collectors.toList());
+    } else {
+      log.warn("incorrect solr result count " + docs.size() + " != " + dois.size()
+          + " for query=" + explicitDoiSearchQuery.getQuery());
+    }
+    return journalKeys;
   }
 }
 

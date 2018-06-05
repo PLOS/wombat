@@ -59,7 +59,7 @@ public class DoiToJournalResolutionService {
   }
 
   public List<String> getJournalKeysFromDois(List<String> dois, Site site) throws IOException {
-    if (dois.size() == 0) {
+    if (dois.isEmpty()) {
       return new ArrayList<String>();
     }
 

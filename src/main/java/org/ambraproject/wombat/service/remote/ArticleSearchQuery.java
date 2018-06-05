@@ -57,6 +57,10 @@ public class ArticleSearchQuery {
       "alm_citeulikeCount", "alm_connoteaCount", "alm_mendeleyCount", "alm_twitterCount",
       "alm_facebookCount", "alm_pmc_usage_total_all", "alm_webOfScienceCount", "editor_display",
       "abstract", "subject", "reference");
+  private static final String JOURNAL_FIELDS = Joiner.on(',').join(
+      "journal_key", "journal_name");
+
+
   private static final int MAX_FACET_SIZE = 100;
   private static final int MIN_FACET_COUNT = 1;
 
@@ -66,6 +70,7 @@ public class ArticleSearchQuery {
   private final boolean isPartialSearch;
   private final boolean isRssSearch;
   private final boolean isCsvSearch;
+  private final boolean isJournalSearch;
 
   private final ImmutableList<String> filterQueries;
 
@@ -101,6 +106,7 @@ public class ArticleSearchQuery {
     this.isPartialSearch = builder.isPartialSearch;
     this.isRssSearch = builder.isRssSearch;
     this.isCsvSearch = builder.isCsvSearch;
+    this.isJournalSearch = builder.isJournalSearch;
     this.filterQueries = ImmutableList.copyOf(builder.filterQueries);
     this.facet = Optional.ofNullable(builder.facet);
     this.minFacetCount = builder.minFacetCount;
@@ -179,6 +185,9 @@ public class ArticleSearchQuery {
     } else if (isCsvSearch) {
       params.add(new BasicNameValuePair("facet", "false"));
       params.add(new BasicNameValuePair("fl", CSV_FIELDS));
+    } else if (isJournalSearch) {
+      params.add(new BasicNameValuePair("facet", "false"));
+      params.add(new BasicNameValuePair("fl", JOURNAL_FIELDS));
     } else {
       params.add(new BasicNameValuePair("facet", "false"));
       params.add(new BasicNameValuePair("fl", ARTICLE_FIELDS));
@@ -436,6 +445,7 @@ public class ArticleSearchQuery {
     private boolean isPartialSearch;
     private boolean isRssSearch;
     private boolean isCsvSearch;
+    private boolean isJournalSearch;
 
     private List<String> filterQueries = ImmutableList.of();
 
@@ -517,6 +527,14 @@ public class ArticleSearchQuery {
      */
     public Builder setIsCsvSearch(boolean isCsvSearch) {
       this.isCsvSearch = isCsvSearch;
+      return this;
+    }
+
+    /**
+     * @param isJournalSearch Flag the search to return only fields used by the DoiToJournalResolutionService
+     */
+    public Builder setIsJournalSearch(boolean isJournalSearch) {
+      this.isJournalSearch = isJournalSearch;
       return this;
     }
 

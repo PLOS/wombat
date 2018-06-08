@@ -339,7 +339,7 @@ example | extension
   text-decoration: $decoration-text;
   @content;
 
-  &:hover, a:hover {
+  &:hover, a:hover, &:hover a {
     @if $decoration-hover == none {
       color: $plos-default;
       text-decoration: none;

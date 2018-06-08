@@ -19,13 +19,11 @@
   ~ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
   ~ DEALINGS IN THE SOFTWARE.
   -->
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       lang="en" xml:lang="en"
       itemscope itemtype="http://schema.org/Article"
       class="no-js">
-
 
 <#assign title = article.title />
 <#assign articleDoi = article.doi />
@@ -67,7 +65,7 @@
             </div>
             <div class="title">
               <a href="<@siteLink handlerName="articleCommentTree" queryParameters={"id": comment.commentUri} />">
-              ${comment.title}
+              ${comment.title?html}
               </a>
             <span>
               <#include "userInfoLink.ftl" />

@@ -799,6 +799,12 @@ html:not(.positionfixed) #page-figure #site-header-container {
   margin-bottom: 20px;
 }
 
+/* line 525, sass/pages/_article.scss */
+#orcid-id-logo {
+  float: left;
+  padding-right: 4px;
+}
+
 .modal-content .comment-markup {
   font-size: 1.1em;
   margin-bottom: 20px;

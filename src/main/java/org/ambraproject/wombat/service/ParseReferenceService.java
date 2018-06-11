@@ -142,7 +142,7 @@ public class ParseReferenceService {
       PageRange pages = buildPages(element);
 
       String fullArticleLink = null;
-      if (doi != null) {
+      if (doi != null && linkService != null) {
         fullArticleLink = linkService.getLink(doi);
       }
 

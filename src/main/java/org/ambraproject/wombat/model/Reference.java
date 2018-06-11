@@ -188,6 +188,26 @@ public class Reference implements Serializable {
 
     }
 
+    public Builder(Reference reference) {
+      this.title = reference.title;
+      this.chapterTitle = reference.chapterTitle;
+      this.year = reference.year;
+      this.journal = reference.journal;
+      this.fullArticleLink = reference.fullArticleLink;
+      this.volume = reference.volume;
+      this.volumeNumber = reference.volumeNumber;
+      this.issue = reference.issue;
+      this.publisherName = reference.publisherName;
+      this.isbn = reference.isbn;
+      this.fPage = reference.fPage;
+      this.lPage = reference.lPage;
+      this.doi = reference.doi;
+      this.uri = reference.uri;
+      this.authors = ImmutableList.copyOf(reference.authors);
+      this.collabAuthors = ImmutableList.copyOf(reference.collabAuthors);
+      this.unStructuredReference = reference.unStructuredReference;
+    }
+
     public Builder setTitle(String title) {
       this.title = title;
       return this;

@@ -113,6 +113,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -806,14 +807,54 @@ public class ArticleController extends WombatController {
       byte[] xml = ByteStreams.toByteArray(stream);
       final Document document = parseXmlService.getDocument(new ByteArrayInputStream(xml));
 
-      List<Reference> references = parseXmlService.parseArticleReferences(document,
-          doi -> getLinkText(site, request, doi));
+      long time1 = System.currentTimeMillis();
+
+      // do not supply Solr related link service now
+      List<Reference> references = parseXmlService.parseArticleReferences(document, null);
+
+      long time2 = System.currentTimeMillis();
+
+      // invoke one Solr API to resolve all references dois to journal keys
+      List<String> dois = references.stream().map(ref -> {
+        return ref.getDoi();
+      }).filter(doi -> {
+        return doi != null && doi.startsWith("10.1371/");
+      }). collect(Collectors.toList());
+
+      List<String> keys = doiToJournalResolutionService.getJournalKeysFromDois(dois, site);
+
+      long time3 = System.currentTimeMillis();
+
+      // store the link text from journal key to references.
+      // since Reference is immutable, need to create a new list of new reference objects.
+      Iterator<Reference> itRef = references.iterator();
+      Iterator<String> itKey = keys.iterator();
+      List<Reference> referencesWithLinks = new ArrayList<Reference>();
+      while (itRef.hasNext()) {
+        Reference ref = itRef.next();
+        if (ref.getDoi() != null && ref.getDoi().startsWith("10.1371/")) {
+          String key = itKey.next();
+          Reference.Builder builder = new Reference.Builder(ref);
+          Reference refWithLink = builder.setFullArticleLink(getLinkText(site, request, ref.getDoi(), key)).build();
+          referencesWithLinks.add(refWithLink);
+        } else {
+          referencesWithLinks.add(ref);
+        }
+      }
+      references = referencesWithLinks;
+
+      long time4 = System.currentTimeMillis();
 
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
       try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
         articleTransformService.transformArticle(site, articlePointer, references,
             new ByteArrayInputStream(xml), outputStream);
       }
+
+      long time5 = System.currentTimeMillis();
+      System.out.println("total time=" + (time5 - time1) + " transform=" + (time5 - time4)
+          + " references=" + (time4 - time1) + " including solr=" + (time3 - time2));
+
 
       return new XmlContent(articleHtml.toString(), references);
     });
@@ -828,6 +869,11 @@ public class ArticleController extends WombatController {
       log.error("Solr is undefined or returning errors on query.");
       citationJournalKey = null;
     }
+
+    return getLinkText(site, request, doi, citationJournalKey);
+  }
+
+  private String getLinkText(Site site, HttpServletRequest request, String doi, String citationJournalKey) throws IOException {
     String linkText = null;
     if (citationJournalKey != null) {
       linkText = Link.toForeignSite(site, citationJournalKey, siteSet)

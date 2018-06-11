@@ -90,13 +90,6 @@ var Signposts;
           $('#almCitations').find('.citations-tip a').html(html);
         }
 
-        // if (!_.isUndefined(data.sources)) {
-        //   var scopus = _.findWhere(data.sources, {name: 'scopus'});
-        //   if (scopus.metrics.total > 0) {
-        //     $('#almCitations').find('.citations-tip a').html('Displaying Scopus citation count.');
-        //   }
-        // }
-
         //Initialize tooltips
         tooltip_hover.init();
       })

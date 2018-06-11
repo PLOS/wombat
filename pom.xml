@@ -51,6 +51,7 @@
     <build.timestamp>${maven.build.timestamp}</build.timestamp>
     <build.counter>0</build.counter>
     <maven.tomcat.port>8080</maven.tomcat.port>
+    <google.truth.version>0.39</google.truth.version>
   </properties>
   <repositories>
     <repository>
@@ -263,7 +264,7 @@
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>5.14.9</version>
+      <version>6.9.10</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -274,9 +275,18 @@
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
-      <version>1.9.5</version>
-      <scope>test</scope>
+      <artifactId>mockito-core</artifactId>
+      <version>2.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.truth</groupId>
+      <artifactId>truth</artifactId>
+      <version>${google.truth.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.truth.extensions</groupId>
+      <artifactId>truth-java8-extension</artifactId>
+      <version>${google.truth.version}</version>
     </dependency>
 
     <!-- Confusion alert: this rhino is a javascript runtime used in

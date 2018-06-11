@@ -59,21 +59,35 @@ var Signposts;
       .getArticleDetail(ArticleData.doi)
       .then(function (articleData) {
         var data = articleData[0];
+        data.sources
+        var citation_used = "Scopus";
+        var citation_count = 0;
+        if (!_.isUndefined(data.sources)) {
+          var scopus = _.findWhere(data.sources, {name: 'scopus'});
+          var crossref = _.findWhere(data.sources, {name: 'crossref'});
+          if (scopus.metrics.total >= crossref.metrics.total) {
+            citation_used = "Scopus";
+            citation_count = scopus.metrics.total;
+          } else {
+            citation_used = "Crossref";
+            citation_count = crossref.metrics.total;
+          }
+        }
+
         var template = _.template($('#signpostsTemplate').html());
         var templateData = {
           saveCount: data.saved,
-          citationCount: data.cited,
+          citationCount: citation_count,
           shareCount: data.discussed,
           viewCount: getPmcViewsAndDownloads(articleData) + counter_views
         };
 
         that.$element.html(template(templateData));
 
-        if (!_.isUndefined(data.sources)) {
-          var scopus = _.findWhere(data.sources, {name: 'scopus'});
-          if (scopus.metrics.total > 0) {
-            $('#almCitations').find('.citations-tip a').html('Displaying Scopus citation count.');
-          }
+        if (citation_used == "Crossref") {
+          var html = $('#almCitations').find('.citations-tip a').html();
+          html = html.replace("Scopus", citation_used);
+          $('#almCitations').find('.citations-tip a').html(html);
         }
 
         //Initialize tooltips

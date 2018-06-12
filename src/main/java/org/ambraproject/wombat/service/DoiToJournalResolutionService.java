@@ -32,6 +32,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -77,15 +78,18 @@ public class DoiToJournalResolutionService {
     Map<String, ?> results = solrSearchApi.search(explicitDoiSearchQuery, site);
     List<Map<String, ?>> docs = (List<Map<String, ?>>) results.get("docs");
 
-    List<String> journalKeys = null;
-    if (docs.size() == dois.size()) {
-      journalKeys = docs.stream().map(data -> {
-          return (String) data.get("journal_key");
-      }).collect(Collectors.toList());
-    } else {
-      log.warn("incorrect solr result count " + docs.size() + " != " + dois.size()
-          + " for query=" + explicitDoiSearchQuery.getQuery());
-    }
+    Map<String, String> keysMap = new HashMap<String,String>();
+    docs.stream().forEach(data -> {
+      keysMap.put((String) data.get("id"), (String) data.get("journal_key"));
+    });
+    List<String> journalKeys = dois.stream().map(id -> {
+      if (keysMap.containsKey(id)) {
+        return keysMap.get(id);
+      } else {
+        return "";
+      }
+    }).collect(Collectors.toList());
+
     return journalKeys;
   }
 }

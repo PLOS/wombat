@@ -35,8 +35,6 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.TestArticleServiceImpl;
 import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.mockito.ArgumentMatcher;
-import org.mockito.Matchers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
@@ -50,8 +48,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.argThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -114,18 +111,12 @@ public class ArticleControllerTest extends ControllerTest {
       return new ArticleController();
     }
 
+    @SuppressWarnings("unchecked")
     @Bean
     public ArticleApi articleApi() throws IOException {
       ArticleApi articleApi = mock(ArticleApi.class);
-      when(articleApi.requestObject(
-          argThat(new ArgumentMatcher<ApiAddress>() {
-            @Override
-            public boolean matches(Object o) {
-              return (o instanceof ApiAddress) && ((ApiAddress) o).getAddress().endsWith("authors");
-            }
-          }),
-          any(Class.class))
-      ).thenReturn(ImmutableList.of());
+      when(articleApi.requestObject(any(ApiAddress.class), any(Class.class)))
+          .thenReturn(ImmutableList.of());
       return articleApi;
     }
 
@@ -159,7 +150,7 @@ public class ArticleControllerTest extends ControllerTest {
         when(site.toString()).thenReturn(key);
         when(site.getJournalKey()).thenReturn(SITE_CONFIG.get(key));
 
-        when(siteSet.getSite(Matchers.matches(key))).thenReturn(site);
+        when(siteSet.getSite(key)).thenReturn(site);
 
         testSiteBuilder.add(site);
       }

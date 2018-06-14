@@ -834,12 +834,12 @@ public class ArticleController extends WombatController {
         Reference ref = itRef.next();
         if (ref.getDoi() != null && ref.getDoi().startsWith("10.1371/")) {
           String key = itKey.next();
-          if (!Strings.isNullOrEmpty(key)) {
+          if (Strings.isNullOrEmpty(key)) {
+            referencesWithLinks.add(ref);
+          } else {
             Reference.Builder builder = new Reference.Builder(ref);
             Reference refWithLink = builder.setFullArticleLink(getLinkText(site, request, ref.getDoi(), key)).build();
             referencesWithLinks.add(refWithLink);
-          } else {
-            referencesWithLinks.add(ref);
           }
         } else {
           referencesWithLinks.add(ref);

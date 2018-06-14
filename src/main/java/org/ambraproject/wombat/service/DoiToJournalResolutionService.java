@@ -79,7 +79,7 @@ public class DoiToJournalResolutionService {
     List<Map<String, ?>> docs = (List<Map<String, ?>>) results.get("docs");
 
     Map<String, String> keysMap = new HashMap<String,String>();
-    docs.stream().forEach(data -> {
+    docs.forEach(data -> {
       keysMap.put((String) data.get("id"), (String) data.get("journal_key"));
     });
     List<String> journalKeys = dois.stream().map(id -> {

@@ -865,19 +865,6 @@ public class ArticleController extends WombatController {
     });
   }
 
-  private String getLinkText(Site site, HttpServletRequest request, String doi) throws IOException {
-    String citationJournalKey;
-    try {
-      citationJournalKey = doiToJournalResolutionService.getJournalKeyFromDoi(doi, site);
-    } catch (SolrUndefinedException | EntityNotFoundException e) {
-      // If we can't look it up in Solr, fail quietly, the same as though no match was found.
-      log.error("Solr is undefined or returning errors on query.");
-      citationJournalKey = null;
-    }
-
-    return getLinkText(site, request, doi, citationJournalKey);
-  }
-
   private String getLinkText(Site site, HttpServletRequest request, String doi, String citationJournalKey) throws IOException {
     String linkText = null;
     if (citationJournalKey != null) {

@@ -782,11 +782,12 @@ public class ArticleController extends WombatController {
   }
 
 
-  private static class XmlContent implements Serializable {
+  @SuppressWarnings("serial")
+  static class XmlContent implements Serializable {
     private final String html;
     private final ImmutableList<Reference> references;
 
-    private XmlContent(String html, List<Reference> references) {
+    public XmlContent(String html, List<Reference> references) {
       this.html = Objects.requireNonNull(html);
       this.references = ImmutableList.copyOf(references);
     }

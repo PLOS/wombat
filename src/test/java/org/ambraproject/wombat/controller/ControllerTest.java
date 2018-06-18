@@ -23,6 +23,7 @@
 package org.ambraproject.wombat.controller;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
@@ -69,7 +70,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.testng.annotations.BeforeMethod;
 
 import com.google.common.base.Charsets;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -77,11 +78,13 @@ import com.google.gson.GsonBuilder;
 @WebAppConfiguration
 public class ControllerTest extends AbstractTestNGSpringContextTests {
 
-  private static final RuntimeConfiguration runtimeConfiguration = new TestRuntimeConfiguration();
+  protected static final Joiner NOSPACE_JOINER = Joiner.on("").skipNulls();
 
-  protected static final ImmutableMap<String, String> SITE_CONFIG = ImmutableMap.of(
-      "DesktopPlosOne", "DesktopPlosOne",
-      "DesktopPlosCollections", "DesktopPlosCollections");
+  protected static final String DESKTOP_PLOS_COLLECTIONS = "DesktopPlosCollections";
+
+  protected static final String DESKTOP_PLOS_ONE = "DesktopPlosOne";
+
+  private static final RuntimeConfiguration runtimeConfiguration = new TestRuntimeConfiguration();
 
   @Autowired
   protected WebApplicationContext wac;
@@ -129,32 +132,6 @@ public class ControllerTest extends AbstractTestNGSpringContextTests {
   }
 
   @Bean
-  protected SiteSet siteSet() {
-    final SiteSet siteSet = mock(SiteSet.class);
-
-    ImmutableSet.Builder<Site> testSiteBuilder = ImmutableSet.builder();
-    for (String key : SITE_CONFIG.keySet()){
-      final SiteRequestScheme mockRequestScheme = mock(SiteRequestScheme.class);
-      when(mockRequestScheme.isForSite(any(HttpServletRequest.class))).thenReturn(true);
-
-      final Theme mockTheme = mock(ThemeTest.class);
-      final Site site = mock(Site.class);
-      when(site.getRequestScheme()).thenReturn(mockRequestScheme);
-      when(site.getTheme()).thenReturn(mockTheme);
-      when(site.getKey()).thenReturn(key);
-      when(site.toString()).thenReturn(key);
-      when(site.getJournalKey()).thenReturn(SITE_CONFIG.get(key));
-
-      when(siteSet.getSite(key)).thenReturn(site);
-
-      testSiteBuilder.add(site);
-    }
-    when(siteSet.getSites()).thenReturn(testSiteBuilder.build());
-
-    return siteSet;
-  }
-
-  @Bean
   protected HoneypotService honeypotService() {
     final HoneypotService honeypotService = mock(HoneypotService.class);
     return honeypotService;
@@ -188,7 +165,7 @@ public class ControllerTest extends AbstractTestNGSpringContextTests {
 
   @Bean
   protected ArticleApi articleApi() {
-    final ArticleApi articleApi = spy(ArticleApiImpl.class);
+    final ArticleApi articleApi = mock(ArticleApiImpl.class);
     return articleApi;
   }
 
@@ -216,7 +193,43 @@ public class ControllerTest extends AbstractTestNGSpringContextTests {
     return javaMailSender;
   }
 
-  @BeforeMethod
+  @Bean
+  protected Theme activeTheme() {
+    final Theme theme = mock(ThemeTest.class);
+    return theme;
+  }
+
+  /**
+   *  Unit test can only work with a single site.
+   */
+  @Bean
+  protected Site activeSite(Theme theme) {
+    final SiteRequestScheme mockRequestScheme = mock(SiteRequestScheme.class);
+    doAnswer(invocation -> {
+      final Object[] args = invocation.getArguments();
+      final HttpServletRequest request = (HttpServletRequest) args[0];
+      logger.info("doAnswer() URI = " + request.getRequestURI());
+      return true;
+    }).when(mockRequestScheme).isForSite(any(HttpServletRequest.class));
+
+
+    final Site mockSite = mock(Site.class);
+    when(mockSite.getRequestScheme()).thenReturn(mockRequestScheme);
+    when(mockSite.getTheme()).thenReturn(theme);
+    when(mockSite.getKey()).thenReturn(DESKTOP_PLOS_ONE);
+    when(mockSite.toString()).thenReturn(DESKTOP_PLOS_ONE);
+    when(mockSite.getJournalKey()).thenReturn(DESKTOP_PLOS_ONE);
+    return mockSite;
+  }
+
+  @Bean
+  protected SiteSet siteSet(Site site) {
+    final SiteSet siteSet = mock(SiteSet.class);
+    when(siteSet.getSites()).thenReturn(ImmutableSet.of(site));
+    return siteSet;
+  }
+
+  @BeforeMethod(alwaysRun = true)
   public void setUp() throws IOException {
     mockMvc = webAppContextSetup(wac).alwaysDo(print()).build();
   }

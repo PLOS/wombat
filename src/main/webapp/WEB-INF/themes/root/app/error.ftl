@@ -43,7 +43,7 @@
 
     <div id="stackTrace">
       <h2>Technical Information for Developers</h2>
-      <pre>${stackTrace}</pre>
+      <pre>${stackTrace?html}</pre>
     </div>
 
   </div>

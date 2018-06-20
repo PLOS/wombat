@@ -807,12 +807,8 @@ public class ArticleController extends WombatController {
       byte[] xml = ByteStreams.toByteArray(stream);
       final Document document = parseXmlService.getDocument(new ByteArrayInputStream(xml));
 
-      long time1 = System.currentTimeMillis();
-
       // do not supply Solr related link service now
       List<Reference> references = parseXmlService.parseArticleReferences(document, null);
-
-      long time2 = System.currentTimeMillis();
 
       // invoke one Solr API to resolve all references dois to journal keys
       List<String> dois = references.stream().map(ref -> {
@@ -822,8 +818,6 @@ public class ArticleController extends WombatController {
       }). collect(Collectors.toList());
 
       List<String> keys = doiToJournalResolutionService.getJournalKeysFromDois(dois, site);
-
-      long time3 = System.currentTimeMillis();
 
       // store the link text from journal key to references.
       // since Reference is immutable, need to create a new list of new reference objects.
@@ -847,18 +841,11 @@ public class ArticleController extends WombatController {
       }
       references = referencesWithLinks;
 
-      long time4 = System.currentTimeMillis();
-
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
       try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
         articleTransformService.transformArticle(site, articlePointer, references,
             new ByteArrayInputStream(xml), outputStream);
       }
-
-      long time5 = System.currentTimeMillis();
-      System.out.println("total time=" + (time5 - time1) + " transform=" + (time5 - time4)
-          + " references=" + (time4 - time1) + " including solr=" + (time3 - time2));
-
 
       return new XmlContent(articleHtml.toString(), references);
     });

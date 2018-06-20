@@ -103,7 +103,8 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   }
 
   @Override
-  public final <T> T requestObject(ApiAddress address, Type responseType) throws IOException {
+  public final <T> T requestObjectForType(ApiAddress address, Type responseType)
+      throws IOException {
     CacheKey cacheKey = CacheKey.create(getCachePrefix(), address.getAddress());
 
     // Just try to cache everything. We may want to narrow this in the future.
@@ -111,8 +112,8 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   }
 
   @Override
-  public final <T> T requestObject(ApiAddress address, Class<T> responseClass) throws IOException {
-    return requestObject(address, (Type) responseClass);
+  public <T> T requestObject(ApiAddress address, Class<T> responseClass) throws IOException {
+    return requestObjectForType(address, (Type) responseClass);
   }
 
   private <R extends HttpUriRequest & HttpEntityEnclosingRequest>

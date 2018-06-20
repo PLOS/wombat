@@ -93,7 +93,7 @@ public class AlertService {
   }
 
   private List<Alert> fetchAlerts(String userId) throws IOException {
-    return userApi.requestObject(buildAlertAddress(userId).build(), LIST_OF_ALERTS);
+    return userApi.requestObjectForType(buildAlertAddress(userId).build(), LIST_OF_ALERTS);
   }
 
   /**

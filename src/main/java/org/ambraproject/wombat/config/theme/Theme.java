@@ -232,7 +232,7 @@ public abstract class Theme {
    * @param path a path within the theme's {@code config/} directory
    * @return a map of overridden values
    */
-  public final Map<String, Object> getConfigMap(String path) {
+  public Map<String, Object> getConfigMap(String path) {
     String configPath = "config/" + path;
     Map<String, Object> values = Maps.newLinkedHashMap();
     for (Theme theme : getInheritanceChain()) {

@@ -26,6 +26,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.theme.ThemeSource;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Optional;
 
@@ -35,6 +36,8 @@ import java.util.Optional;
  */
 public class TestRuntimeConfiguration implements RuntimeConfiguration {
 
+  public static final String SERVER_URL = "http://www.example.com/";
+
   @Override
   public String getCompiledAssetDir() {
     return System.getProperty("java.io.tmpdir");
@@ -42,7 +45,12 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
 
   @Override
   public URL getServer() {
-    return null;
+    try {
+      final URL serverUrl = new URL(SERVER_URL);
+      return serverUrl;
+    } catch (MalformedURLException exception) {
+      return null;
+    }
   }
 
   @Override

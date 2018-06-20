@@ -94,6 +94,19 @@ public class ArticleMetadata {
     this.relationships = Collections.unmodifiableMap(relationships);
   }
 
+  /**
+   * Constructor for the purpose of running unit tests.
+   */
+  ArticleMetadata() {
+    factory = null;
+    site = null;
+    articleId = null;
+    articlePointer = null;
+    ingestionMetadata = null;
+    itemTable = null;
+    relationships = null;
+  }
+
   public static class Factory {
     @Autowired
     private ArticleApi articleApi;
@@ -127,7 +140,31 @@ public class ArticleMetadata {
           .embedDoi(articlePointer.getDoi()).addToken("relationships").build();
       Map<String, List<Map<String, ?>>> relationships
           = articleApi.requestObject(relationshipsApiAddress, Map.class);
-      return new ArticleMetadata(this, site, id, articlePointer, ingestionMetadata, itemTable, relationships);
+
+      final ArticleMetadata articleMetaData =
+          newInstance(site, id, articlePointer, ingestionMetadata, itemTable, relationships);
+      return articleMetaData;
+    }
+
+    /**
+     * Creates an instance of {@link ArticleMetadata}.
+     *
+     * @param site
+     * @param articleId
+     * @param articlePointer
+     * @param ingestionMetadata
+     * @param itemTable
+     * @param relationships
+     *
+     * @return The article metadata
+     */
+    public ArticleMetadata newInstance(Site site,
+        RequestedDoiVersion articleId, ArticlePointer articlePointer,
+        Map<String, ?> ingestionMetadata, Map<String, ?> itemTable,
+        Map<String, List<Map<String, ?>>> relationships) {
+      final ArticleMetadata articleMetaData = new ArticleMetadata(this, site, articleId,
+          articlePointer, ingestionMetadata, itemTable, relationships);
+      return articleMetaData;
     }
   }
 

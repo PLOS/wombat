@@ -59,7 +59,8 @@ public interface RestfulJsonApi {
    * @throws NullPointerException                                    if either argument is null
    * @throws org.ambraproject.wombat.service.EntityNotFoundException if the object at the address does not exist
    */
-  public abstract <T> T requestObject(ApiAddress address, Type responseType) throws IOException;
+  public abstract <T> T requestObjectForType(ApiAddress address, Type responseType)
+      throws IOException;
 
   public abstract <T> T requestObject(ApiAddress address, Class<T> responseClass) throws IOException;
 

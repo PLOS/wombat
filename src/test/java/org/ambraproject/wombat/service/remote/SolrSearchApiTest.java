@@ -59,9 +59,6 @@ import static org.testng.Assert.fail;
 public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
 
   @Autowired
-  private SolrSearchApi searchService;
-
-  @Autowired
   private SiteSet siteSet;
 
   private static List<NameValuePair> buildCommonParams(String query, boolean useDisMax, int start,

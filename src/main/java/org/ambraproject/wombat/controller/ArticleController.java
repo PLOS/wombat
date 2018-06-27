@@ -817,7 +817,7 @@ public class ArticleController extends WombatController {
       List<String> dois = references.stream().map(ref -> {
         return ref.getDoi();
       }).filter(doi -> {
-        return doi != null && doi.startsWith("10.1371/");
+        return inPlosJournal(doi);
       }). collect(Collectors.toList());
 
       List<String> keys = doiToJournalResolutionService.getJournalKeysFromDois(dois, site);
@@ -829,7 +829,7 @@ public class ArticleController extends WombatController {
       List<Reference> referencesWithLinks = new ArrayList<Reference>();
       while (itRef.hasNext()) {
         Reference ref = itRef.next();
-        if (ref.getDoi() != null && ref.getDoi().startsWith("10.1371/")) {
+        if (inPlosJournal(ref.getDoi())) {
           String key = itKey.next();
           if (Strings.isNullOrEmpty(key)) {
             referencesWithLinks.add(ref);
@@ -852,6 +852,10 @@ public class ArticleController extends WombatController {
 
       return new XmlContent(articleHtml.toString(), references);
     });
+  }
+
+  private Boolean inPlosJournal(String doi) {
+    return doi != null && doi.startsWith("10.1371/");
   }
 
   private String getLinkText(Site site, HttpServletRequest request, String doi, String citationJournalKey) throws IOException {

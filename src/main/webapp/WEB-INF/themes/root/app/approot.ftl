@@ -53,6 +53,7 @@
   Available under the
   <a href="http://creativecommons.org/licenses/by/2.0/deed.en">Creative Commons Attribution 2.0 Generic License.</a>
 </div>
+<h1>environment is: ${environment}</h1>
 <hr/>
 </#if>
 

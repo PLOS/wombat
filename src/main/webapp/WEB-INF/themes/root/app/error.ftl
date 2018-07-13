@@ -41,11 +41,12 @@
 
     <p>Thank you for your patience.</p>
 
-    <div id="stackTrace">
-      <h2>Technical Information for Developers</h2>
-      <h1>environment is: ${environment}</h1>
-      <pre>${stackTrace?html}</pre>
-    </div>
+
+    <#if environment != "prod">
+      <div title="Technical Information for Developers">
+        <pre>${stackTrace?html}</pre>
+      </div>
+    </#if>
 
   </div>
 </div>

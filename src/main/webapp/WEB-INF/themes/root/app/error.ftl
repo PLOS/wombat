@@ -43,6 +43,7 @@
 
     <div id="stackTrace">
       <h2>Technical Information for Developers</h2>
+      <h1>environment is: ${environment}</h1>
       <pre>${stackTrace?html}</pre>
     </div>
 

@@ -387,7 +387,9 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setEnvironment(String environment) { this.environment = environment; }
+    public void setEnvironment(String environment) {
+      this.environment = environment;
+    }
 
     /**
      * @deprecated For access by reflective deserializer only

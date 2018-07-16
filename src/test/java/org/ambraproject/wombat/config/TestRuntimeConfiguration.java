@@ -62,6 +62,11 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
+  public String getEnvironment() {
+    return null;
+  }
+
+  @Override
   public String getRootPagePath() {
     return null;
   }

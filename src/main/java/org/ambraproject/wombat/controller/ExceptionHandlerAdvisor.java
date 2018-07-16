@@ -22,6 +22,7 @@
 
 package org.ambraproject.wombat.controller;
 
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.service.remote.UserApi;
@@ -54,6 +55,8 @@ class ExceptionHandlerAdvisor {
   private SiteResolver siteResolver;
   @Autowired
   private AppRootPage appRootPage;
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
 
   /**
    * Handler invoked for all uncaught exceptions.  Renders a "nice" 500 page.
@@ -79,6 +82,8 @@ class ExceptionHandlerAdvisor {
     StringWriter stackTrace = new StringWriter();
     exception.printStackTrace(new PrintWriter(stackTrace));
     mav.addObject("stackTrace", stackTrace.toString());
+
+    mav.addObject("environment", runtimeConfiguration.getEnvironment().toString());
 
     return mav;
   }

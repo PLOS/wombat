@@ -92,6 +92,12 @@ public interface RuntimeConfiguration {
    * Get the path of an HTML document to display on the root page
    */
   String getRootPagePath();
+
+  /**
+   * Get the name of the runtime environment ("prod", "dev", etc.)
+   */
+  String getEnvironment();
+
   /**
    * @return the set of enabled dev features, configured in wombat.yaml.
    */

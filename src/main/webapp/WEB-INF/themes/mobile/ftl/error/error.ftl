@@ -34,7 +34,10 @@
 
 <p>Thank you for your patience.</p>
 
-<div class="collapsible" title="+&nbsp;Technical Information for Developers">
-  <pre>${stackTrace?html}</pre>
-</div>
+<#if environment != "prod">
+    <div class="collapsible" title="Technical Information for Developers">
+        <pre>${stackTrace?html}</pre>
+    </div>
+</#if>
+
 <@page_footer />

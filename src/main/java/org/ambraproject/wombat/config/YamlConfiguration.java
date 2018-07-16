@@ -98,6 +98,11 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return input.rootPagePath;
   }
 
+  @Override
+  public String getEnvironment() {
+    return input.environment;
+  }
+
   /**
    * Future-proofing against the need for other ThemeSource types that may exist in the future (mainly, one that reads
    * from a remote source, probably by URL). Currently, the only supported type reads from the local filesystem.
@@ -334,6 +339,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String mailServer;
     private String compiledAssetDir;
     private String rootPagePath;
+    private String environment;
     private List<String> enableDevFeatures;
     private List<Map<String, ?>> themeSources;
 
@@ -375,6 +381,14 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setRootPagePath(String rootPagePath) {
       this.rootPagePath = rootPagePath;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setEnvironment(String environment) {
+      this.environment = environment;
     }
 
     /**

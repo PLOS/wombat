@@ -42,9 +42,11 @@
 
        <p>Thank you for your patience.</p>
 
-       <div title="+&nbsp;Technical Information for Developers">
-         <pre>${stackTrace?html}</pre>
-       </div>
+        <#if environment != "prod">
+            <div title="Technical Information for Developers">
+                <pre>${stackTrace?html}</pre>
+            </div>
+        </#if>
 
      </div>
   </article>

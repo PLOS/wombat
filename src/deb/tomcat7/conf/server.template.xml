@@ -79,7 +79,7 @@
                  enableLookups="false"
                  maxParameterCount="5000"
                  scheme="http" URIEncoding="UTF-8"
-                 minSpareThreads="5" maxThreads="250"/>
+                 minSpareThreads="50" maxThreads="1000"/>
 
     <!-- A "Connector" using the shared thread pool-->
     <!--

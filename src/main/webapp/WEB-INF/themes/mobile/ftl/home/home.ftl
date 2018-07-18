@@ -43,7 +43,6 @@
     <ul>
       <@sectionLink "recent" "recent" />
           <@sectionLink "popular" "popular" />
-          <#include "curatedArticleLists.ftl" />
     </ul>
   </nav>
   <form id="hpSectionForm" action="" method="get" style="display: none;">

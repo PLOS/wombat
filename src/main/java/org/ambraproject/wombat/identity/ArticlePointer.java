@@ -34,7 +34,7 @@ import java.util.OptionalInt;
  * To ensure that the DOI is in its canonical form (with regard to URI prefixes and case-sensitivity), the object must
  * be constructed from a string provided by the API, not an end user.
  */
-public final class ArticlePointer {
+public class ArticlePointer {
 
   /**
    * An object describing the original request from the client.

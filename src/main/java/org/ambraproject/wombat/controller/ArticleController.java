@@ -731,6 +731,7 @@ public class ArticleController extends WombatController {
         .getIngestionMetadata();
 
     String title = articleMetadata.get("title").toString();
+    title = title.replaceAll("<[^>]+>", "");
     model.addAttribute("article", articleMetadata);
     model.addAttribute("journalName", site.getJournalName());
 

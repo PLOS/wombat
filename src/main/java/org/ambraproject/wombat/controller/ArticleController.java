@@ -730,8 +730,6 @@ public class ArticleController extends WombatController {
         .validateVisibility("emailPost")
         .getIngestionMetadata();
 
-    String title = articleMetadata.get("title").toString();
-    title = title.replaceAll("<[^>]+>", "");
     model.addAttribute("article", articleMetadata);
     model.addAttribute("journalName", site.getJournalName());
 
@@ -741,6 +739,9 @@ public class ArticleController extends WombatController {
     }
 
     Multipart content = freemarkerMailService.createContent(site, "emailThisArticle", model);
+
+    String title = articleMetadata.get("title").toString();
+    title = title.replaceAll("<[^>]+>", "");
 
     EmailMessage message = EmailMessage.builder()
         .addToEmailAddresses(toAddresses)

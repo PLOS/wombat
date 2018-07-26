@@ -159,11 +159,7 @@ var SiteContent = function () {
     // There are some rare cases where we don't have enough info for authors to show
     // this.  If that's the case the div won't be available.
     if ($authorMeta.length == 1) {
-      var supportsFixedPosition = Modernizr.positionfixed;
 
-      if (!supportsFixedPosition) { //if there is no support for fixed position, we need to handle the modal a different way
-        window.location = 'temp-author-info.html'; //redirects to homepage
-      } else {
         var isActive = self.$modalInfoWindow.hasClass('active');
 
         if (isActive) { //if the window is active, just load the content
@@ -176,9 +172,7 @@ var SiteContent = function () {
           options.authorID = authorID;
           self.showModalWindow(self.authorModalShown, options); //callback, options
 
-        }
-
-      } //end support for fixed position
+      }
     }
   }; //end showAuthorInfo
 

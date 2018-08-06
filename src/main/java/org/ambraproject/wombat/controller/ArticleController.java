@@ -509,7 +509,7 @@ public class ArticleController extends WombatController {
     requireNonemptyParameter(doi);
 
     if (!link.matches("^\\w+://.*")) {
-      link = "http://" + link;
+      link = "https://" + link;
     }
 
     if (!validateMediaCurationInput(model, link, name, email, title, publishedOn, consent)) {

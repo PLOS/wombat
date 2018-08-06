@@ -24,13 +24,7 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
+import com.google.common.collect.*;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -38,12 +32,8 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleType;
+import org.ambraproject.wombat.service.*;
 import org.ambraproject.wombat.service.remote.ApiAddress;
-import org.ambraproject.wombat.service.ArticleResolutionService;
-import org.ambraproject.wombat.service.ArticleService;
-import org.ambraproject.wombat.service.ArticleTransformService;
-import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.XmlUtil;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.util.TextUtil;
@@ -56,18 +46,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ArticleMetadata {
@@ -155,13 +134,14 @@ public class ArticleMetadata {
      * @param ingestionMetadata
      * @param itemTable
      * @param relationships
-     *
      * @return The article metadata
      */
     public ArticleMetadata newInstance(Site site,
-        RequestedDoiVersion articleId, ArticlePointer articlePointer,
-        Map<String, ?> ingestionMetadata, Map<String, ?> itemTable,
-        Map<String, List<Map<String, ?>>> relationships) {
+                                       RequestedDoiVersion articleId,
+                                       ArticlePointer articlePointer,
+                                       Map<String, ?> ingestionMetadata,
+                                       Map<String, ?> itemTable,
+                                       Map<String, List<Map<String, ?>>> relationships) {
       final ArticleMetadata articleMetaData = new ArticleMetadata(this, site, articleId,
           articlePointer, ingestionMetadata, itemTable, relationships);
       return articleMetaData;
@@ -220,7 +200,7 @@ public class ArticleMetadata {
     return ((Number) revisionMetadata.get("revisionNumber")).intValue();
   }
 
-  private RevisionMenu getRevisionMenu() throws IOException {
+  RevisionMenu getRevisionMenu() throws IOException {
     List<Map<String, ?>> revisionList = factory.articleApi.requestObject(
         ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addToken("revisions").build(),
         List.class);
@@ -262,7 +242,7 @@ public class ArticleMetadata {
     return this;
   }
 
-  private Link buildCrossSiteRedirect(String targetJournal, String handlerName) {
+  Link buildCrossSiteRedirect(String targetJournal, String handlerName) {
     Site targetSite = this.site.getTheme().resolveForeignJournalKey(factory.siteSet, targetJournal);
     return Link.toForeignSite(site, targetSite)
         .toPattern(factory.requestMappingContextDictionary, handlerName)
@@ -303,19 +283,19 @@ public class ArticleMetadata {
         .collect(Collectors.toList());
   }
 
-  private ArticleType getArticleType() {
+  ArticleType getArticleType() {
     String typeName = (String) ingestionMetadata.get("articleType");
     return ArticleType.getDictionary(site.getTheme()).lookUp(typeName);
   }
 
-  private Map<String, Integer> getCommentCount() throws IOException {
+  Map<String, Integer> getCommentCount() throws IOException {
     return factory.articleApi.requestObject(
         ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addToken("comments").addParameter("count").build(),
         Map.class);
   }
 
 
-  private Map<String, Collection<Object>> getContainingArticleLists() throws IOException {
+  Map<String, Collection<Object>> getContainingArticleLists() throws IOException {
     List<Map<?, ?>> articleListObjects = factory.articleApi.requestObject(
         ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addParameter("lists").build(),
         List.class);
@@ -359,7 +339,7 @@ public class ArticleMetadata {
    *
    * @return a sorted list of category terms
    */
-  private List<String> getCategoryTerms() throws IOException {
+  List<String> getCategoryTerms() throws IOException {
     List<Map<String, ?>> categoryViews = (List<Map<String, ?>>) factory.articleApi.requestObject(
         ApiAddress.builder("articles").embedDoi(articleId.getDoi()).addToken("categories").build(),
         List.class);
@@ -396,7 +376,7 @@ public class ArticleMetadata {
 
   private static final ImmutableSet<String> RELATIONSHIP_DIRECTIONS = ImmutableSet.of("inbound", "outbound");
 
-  private List<Map<String, ?>> getRelatedArticles() {
+  List<Map<String, ?>> getRelatedArticles() {
     // Eliminate duplicate DOIs (in case there are inbound and outbound relationships with the same article)
     Map<String, Map<String, ?>> relationshipsByDoi = new HashMap<>();
     for (String direction : RELATIONSHIP_DIRECTIONS) {
@@ -432,7 +412,7 @@ public class ArticleMetadata {
    * @return the list of authors appended to the model
    * @throws IOException
    */
-  private void populateAuthors(Model model) throws IOException {
+  void populateAuthors(Model model) throws IOException {
     Map<?, ?> allAuthorsData = getAuthors();
     List<?> authors = (List<?>) allAuthorsData.get("authors");
     model.addAttribute("authors", authors);

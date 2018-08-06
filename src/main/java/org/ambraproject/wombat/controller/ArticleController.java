@@ -47,7 +47,6 @@ import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.DoiToJournalResolutionService;
-import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.HoneypotService;
 import org.ambraproject.wombat.service.ParseXmlService;
@@ -57,7 +56,6 @@ import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
-import org.ambraproject.wombat.service.remote.SolrUndefinedException;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenExpiredException;
@@ -813,13 +811,8 @@ public class ArticleController extends WombatController {
       // do not supply Solr related link service now
       List<Reference> references = parseXmlService.parseArticleReferences(document, null);
 
-      // invoke one Solr API to resolve all references dois to journal keys
-      List<String> dois = references.stream().map(ref -> {
-        return ref.getDoi();
-      }).filter(doi -> {
-        return doi != null && doi.startsWith("10.1371/");
-      }). collect(Collectors.toList());
-
+      // invoke the Solr API once to resolve all journal keys
+      List<String> dois = references.stream().map(ref -> ref.getDoi()).filter(doi -> inPlosJournal(doi)).collect(Collectors.toList());
       List<String> keys = doiToJournalResolutionService.getJournalKeysFromDois(dois, site);
 
       // store the link text from journal key to references.
@@ -829,19 +822,22 @@ public class ArticleController extends WombatController {
       List<Reference> referencesWithLinks = new ArrayList<Reference>();
       while (itRef.hasNext()) {
         Reference ref = itRef.next();
-        if (ref.getDoi() != null && ref.getDoi().startsWith("10.1371/")) {
-          String key = itKey.next();
-          if (Strings.isNullOrEmpty(key)) {
-            referencesWithLinks.add(ref);
-          } else {
-            Reference.Builder builder = new Reference.Builder(ref);
-            Reference refWithLink = builder.setFullArticleLink(getLinkText(site, request, ref.getDoi(), key)).build();
-            referencesWithLinks.add(refWithLink);
-          }
-        } else {
+        if (!inPlosJournal(ref.getDoi())) {
           referencesWithLinks.add(ref);
+          continue;
         }
+
+        String key = itKey.next();
+        if (Strings.isNullOrEmpty(key)) {
+          referencesWithLinks.add(ref);
+          continue;
+        }
+
+        Reference.Builder builder = new Reference.Builder(ref);
+        Reference refWithLink = builder.setFullArticleLink(getLinkText(site, request, ref.getDoi(), key)).build();
+        referencesWithLinks.add(refWithLink);
       }
+
       references = referencesWithLinks;
 
       StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
@@ -852,6 +848,10 @@ public class ArticleController extends WombatController {
 
       return new XmlContent(articleHtml.toString(), references);
     });
+  }
+
+  private Boolean inPlosJournal(String doi) {
+    return doi != null && doi.startsWith("10.1371/");
   }
 
   private String getLinkText(Site site, HttpServletRequest request, String doi, String citationJournalKey) throws IOException {

@@ -32,11 +32,7 @@ import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.*;
 
 public class ArticleResolutionService {
 
@@ -135,9 +131,8 @@ public class ArticleResolutionService {
   public AssetPointer toParentIngestion(RequestedDoiVersion assetId) throws IOException {
     Map<String, ?> doiOverview;
     try {
-      doiOverview = articleApi.requestObject(
-          ApiAddress.builder("dois").embedDoi(assetId.getDoi()).build(),
-          Map.class);
+      ApiAddress apiAddress = ApiAddress.builder("dois").embedDoi(assetId.getDoi()).build();
+      doiOverview = articleApi.requestObject(apiAddress, Map.class);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }

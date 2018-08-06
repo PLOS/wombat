@@ -49,7 +49,7 @@ import java.util.function.UnaryOperator;
  * <p>
  * This class is intended to be thread-safe. Writes are synchronized, and the object is immutable while being read.
  */
-public final class RequestMappingContextDictionary {
+public class RequestMappingContextDictionary {
   private static final Logger log = LoggerFactory.getLogger(RequestMappingContextDictionary.class);
 
   // While false, this object is in a state to accept writes. Permanently set to true on first call to getPattern.

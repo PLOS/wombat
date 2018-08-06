@@ -654,7 +654,7 @@ public class CommentFormatting {
         }
 
         if (urlStr.toLowerCase().startsWith("www.")) {
-          urlStr = "http://" + urlStr;
+          urlStr = "https://" + urlStr;
         }
 
         if (verifyHierarchicalURI(urlStr, null)) {

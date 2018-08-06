@@ -141,7 +141,7 @@ public class CommentFormattingTest {
           .setExpectedCompetingInterestStatement(""),
       new TestCase()
           .setBody("Visit www.example.com")
-          .setExpectedBodyWithHighlightedText("<p>Visit <a rel=\"nofollow\" href=\"http://www.example.com\">www.example.com</a></p>")
+          .setExpectedBodyWithHighlightedText("<p>Visit <a rel=\"nofollow\" href=\"https://www.example.com\">www.example.com</a></p>")
           .setExpectedCompetingInterestStatement(""),
       new TestCase()
           .setBody("Visit http://example.com")

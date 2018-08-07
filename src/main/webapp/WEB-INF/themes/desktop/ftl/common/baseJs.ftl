@@ -22,7 +22,7 @@
 
 <#include "configJs.ftl" />
 <#--//This file gets called in the head.ftl because it should sit above other js files- the actual Js gets printed in the bottom of the body. -->
-<script src="//code.jquery.com/jquery-2.1.4.min.js" ></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>
 <script>window.jQuery || document.write('<script src="<@siteLink path="resource/js/vendor/jquery-2.1.4.min.js" />""><\/script>')</script>
 
 <#if article??>

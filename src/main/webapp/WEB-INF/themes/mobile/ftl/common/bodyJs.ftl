@@ -20,7 +20,7 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
 <#if article??>
     <@themeConfig map="article" value="showFigShare" ; showFigShare>
@@ -30,7 +30,7 @@
     </@themeConfig>
 </#if>
 
-<#--<script src="//code.jquery.com/jquery-2.1.4.min.js" ></script>-->
+<#--<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>-->
 
 <#--<script>window.jQuery || document.write('<script src="<@siteLink path="resource/js/vendor/jquery-2.1.4.min.js" />""><\/script>')</script>-->
 <@js src="resource/js/vendor/moment.js"/>

@@ -23,7 +23,6 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.base.CharMatcher;
-import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
@@ -82,12 +81,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -112,8 +109,6 @@ public class ArticleController extends WombatController {
   private ArticleTransformService articleTransformService;
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;
-  @Autowired
-  private CitationDownloadService citationDownloadService;
   @Autowired
   private JsonService jsonService;
   @Autowired
@@ -197,52 +192,6 @@ public class ArticleController extends WombatController {
         .populate(request, model);
     return site + "/ftl/article/metrics";
   }
-
-  @RequestMapping(name = "citationDownloadPage", value = "/article/citation")
-  public String renderCitationDownloadPage(HttpServletRequest request, Model model, @SiteParam Site site,
-                                           RequestedDoiVersion articleId)
-      throws IOException {
-    articleMetadataFactory.get(site, articleId)
-        .validateVisibility("citationDownloadPage")
-        .populate(request, model);
-    return site + "/ftl/article/citationDownload";
-  }
-
-  @RequestMapping(name = "downloadRisCitation", value = "/article/citation/ris", produces = "application/x-research-info-systems;charset=UTF-8")
-  public ResponseEntity<String> serveRisCitationDownload(@SiteParam Site site, RequestedDoiVersion articleId)
-      throws IOException {
-    return serveCitationDownload(site, "downloadRisCitation", articleId, "ris",
-        citationDownloadService::buildRisCitation);
-  }
-
-  @RequestMapping(name = "downloadBibtexCitation", value = "/article/citation/bibtex", produces = "application/x-bibtex;charset=UTF-8")
-  public ResponseEntity<String> serveBibtexCitationDownload(@SiteParam Site site, RequestedDoiVersion articleId)
-      throws IOException {
-    return serveCitationDownload(site, "downloadBibtexCitation", articleId, "bib",
-        citationDownloadService::buildBibtexCitation);
-  }
-
-  private ResponseEntity<String> serveCitationDownload(Site site, String handlerName,
-                                                       RequestedDoiVersion articleId,
-                                                       String fileExtension,
-                                                       Function<Map<String, ?>, String> serviceFunction)
-      throws IOException {
-    ArticleMetadata articleMetadata = articleMetadataFactory.get(site, articleId)
-        .validateVisibility(handlerName);
-    Map<String, Object> combinedMetadata = new HashMap<>();
-    combinedMetadata.putAll(articleMetadata.getIngestionMetadata());
-    combinedMetadata.putAll(articleMetadata.getAuthors());
-
-    String citationBody = serviceFunction.apply(combinedMetadata);
-    String contentDispositionValue = String.format("attachment; filename=\"%s.%s\"",
-        URLEncoder.encode((String) combinedMetadata.get("doi"), Charsets.UTF_8.toString()),
-        fileExtension);
-
-    HttpHeaders headers = new HttpHeaders();
-    headers.add(HttpHeaders.CONTENT_DISPOSITION, contentDispositionValue);
-    return new ResponseEntity<>(citationBody, headers, HttpStatus.OK);
-  }
-
 
   /**
    * Serves the related content tab content for an article.

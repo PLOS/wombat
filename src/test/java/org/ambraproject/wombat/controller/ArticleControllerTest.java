@@ -99,12 +99,6 @@ public class ArticleControllerTest extends ControllerTest {
   }
 
   @Bean
-  protected CitationDownloadService citationDownloadService() {
-    final CitationDownloadService citationDownloadService = mock(CitationDownloadService.class);
-    return citationDownloadService;
-  }
-
-  @Bean
   protected ParseReferenceService parseReferenceService() {
     final ParseReferenceService parseReferenceService = new ParseReferenceService();
     return parseReferenceService;

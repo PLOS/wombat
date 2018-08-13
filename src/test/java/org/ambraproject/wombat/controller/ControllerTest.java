@@ -22,22 +22,11 @@
 
 package org.ambraproject.wombat.controller;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.nio.charset.Charset;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.google.common.base.Charsets;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableSet;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.TestRuntimeConfiguration;
@@ -48,32 +37,29 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.ArticleTransformService;
-import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.HoneypotService;
-import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.service.remote.ArticleApiImpl;
-import org.ambraproject.wombat.service.remote.CachedRemoteService;
-import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.SolrSearchApi;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
-import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.service.remote.*;
 import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.ambraproject.wombat.util.ThemeTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.testng.annotations.BeforeMethod;
 
-import com.google.common.base.Charsets;
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+import java.nio.charset.Charset;
+import java.util.Date;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @WebAppConfiguration
 public class ControllerTest extends AbstractTestNGSpringContextTests {
@@ -173,24 +159,6 @@ public class ControllerTest extends AbstractTestNGSpringContextTests {
   protected ArticleTransformService articleTransformService() {
     final ArticleTransformService articleTransformService = mock(ArticleTransformService.class);
     return articleTransformService;
-  }
-
-  @Bean
-  protected FreeMarkerConfig freeMarkerConfig() {
-    final FreeMarkerConfig freeMarkerConfig = mock(FreeMarkerConfig.class);
-    return freeMarkerConfig;
-  }
-
-  @Bean
-  protected FreemarkerMailService freemarkerMailService() {
-    final FreemarkerMailService freemarkerMailService = mock(FreemarkerMailService.class);
-    return freemarkerMailService;
-  }
-
-  @Bean
-  protected JavaMailSender javaMailSender() {
-    final JavaMailSender javaMailSender = mock(JavaMailSender.class);
-    return javaMailSender;
   }
 
   @Bean

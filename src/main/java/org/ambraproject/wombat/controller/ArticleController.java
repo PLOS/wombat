@@ -22,8 +22,6 @@
 
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.CharMatcher;
-import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.ByteStreams;
@@ -36,9 +34,11 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
-import org.ambraproject.wombat.model.EmailMessage;
 import org.ambraproject.wombat.model.Reference;
-import org.ambraproject.wombat.service.*;
+import org.ambraproject.wombat.service.ArticleTransformService;
+import org.ambraproject.wombat.service.DoiToJournalResolutionService;
+import org.ambraproject.wombat.service.HoneypotService;
+import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
@@ -63,21 +63,15 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.w3c.dom.Document;
 
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URLDecoder;
@@ -99,7 +93,6 @@ public class ArticleController extends WombatController {
    * Initial size (in bytes) of buffer that holds transformed article HTML before passing it to the model.
    */
   private static final int XFORM_BUFFER_SIZE = 0x8000;
-  private static final int MAX_TO_EMAILS = 5;
 
   @Autowired
   private Charset charset;
@@ -111,14 +104,6 @@ public class ArticleController extends WombatController {
   private CachedRemoteService<Reader> cachedRemoteReader;
   @Autowired
   private JsonService jsonService;
-  @Autowired
-  private HoneypotService honeypotService;
-  @Autowired
-  private FreeMarkerConfig freeMarkerConfig;
-  @Autowired
-  private FreemarkerMailService freemarkerMailService;
-  @Autowired
-  private JavaMailSender javaMailSender;
   @Autowired
   private ArticleMetadata.Factory articleMetadataFactory;
   @Autowired
@@ -402,110 +387,6 @@ public class ArticleController extends WombatController {
       return site + "/ftl/article/uploadPreprintRevision";
     }
   }
-
-  @RequestMapping(name = "email", value = "/article/email")
-  public String renderEmailThisArticle(HttpServletRequest request, Model model, @SiteParam Site site,
-                                       RequestedDoiVersion articleId) throws IOException {
-    articleMetadataFactory.get(site, articleId)
-        .validateVisibility("email")
-        .populate(request, model);
-    model.addAttribute("maxEmails", MAX_TO_EMAILS);
-    return site + "/ftl/article/email";
-  }
-
-  /**
-   * @param model data passed in from the view
-   * @param site  current site
-   * @return path to the template
-   * @throws IOException
-   */
-  @RequestMapping(name = "emailPost", value = "/article/email", method = RequestMethod.POST)
-  public String emailArticle(HttpServletRequest request, HttpServletResponse response, Model model,
-                             @SiteParam Site site,
-                             RequestedDoiVersion articleId,
-                             @RequestParam("articleUri") String articleUri,
-                             @RequestParam("emailToAddresses") String emailToAddresses,
-                             @RequestParam("emailFrom") String emailFrom,
-                             @RequestParam("senderName") String senderName,
-                             @RequestParam("note") String note,
-                             @RequestParam(value = "authorPhone", required = false) String authorPhone,
-                             @RequestParam(value = "authorAffiliation", required = false) String authorAffiliation)
-      throws IOException, MessagingException {
-    requireNonemptyParameter(articleUri);
-
-    model.addAttribute("emailToAddresses", emailToAddresses);
-    model.addAttribute("emailFrom", emailFrom);
-    model.addAttribute("senderName", senderName);
-    model.addAttribute("note", note);
-    model.addAttribute("articleUri", articleUri);
-
-    List<InternetAddress> toAddresses = Splitter.on(CharMatcher.anyOf("\n\r")).omitEmptyStrings()
-        .splitToList(emailToAddresses).stream()
-        .map(email -> EmailMessage.createAddress(null /*name*/, email))
-        .collect(Collectors.toList());
-
-    Set<String> errors = validateEmailArticleInput(toAddresses, emailFrom, senderName);
-    if (applyValidation(response, model, errors)) {
-      return renderEmailThisArticle(request, model, site, articleId);
-    }
-
-    Map<String, ?> articleMetadata = articleMetadataFactory.get(site, articleId)
-        .validateVisibility("emailPost")
-        .getIngestionMetadata();
-
-    model.addAttribute("article", articleMetadata);
-    model.addAttribute("journalName", site.getJournalName());
-
-    if (honeypotService.checkHoneypot(request, authorPhone, authorAffiliation)) {
-      response.setStatus(HttpStatus.CREATED.value());
-      return site + "/ftl/article/emailSuccess";
-    }
-
-    Multipart content = freemarkerMailService.createContent(site, "emailThisArticle", model);
-
-    String title = articleMetadata.get("title").toString();
-    title = title.replaceAll("<[^>]+>", "");
-
-    EmailMessage message = EmailMessage.builder()
-        .addToEmailAddresses(toAddresses)
-        .setSenderAddress(EmailMessage.createAddress(senderName, emailFrom))
-        .setSubject("An Article from " + site.getJournalName() + ": " + title)
-        .setContent(content)
-        .setEncoding(freeMarkerConfig.getConfiguration().getDefaultEncoding())
-        .build();
-
-    message.send(javaMailSender);
-
-    response.setStatus(HttpStatus.CREATED.value());
-    return site + "/ftl/article/emailSuccess";
-  }
-
-  private Set<String> validateEmailArticleInput(List<InternetAddress> emailToAddresses,
-                                                String emailFrom, String senderName) throws IOException {
-
-    Set<String> errors = new HashSet<>();
-    if (StringUtils.isBlank(emailFrom)) {
-      errors.add("emailFromMissing");
-    } else if (!EmailValidator.getInstance().isValid(emailFrom)) {
-      errors.add("emailFromInvalid");
-    }
-
-    if (emailToAddresses.isEmpty()) {
-      errors.add("emailToAddressesMissing");
-    } else if (emailToAddresses.size() > MAX_TO_EMAILS) {
-      errors.add("tooManyEmailToAddresses");
-    } else if (emailToAddresses.stream()
-        .noneMatch(email -> EmailValidator.getInstance().isValid(email.toString()))) {
-      errors.add("emailToAddressesInvalid");
-    }
-
-    if (StringUtils.isBlank(senderName)) {
-      errors.add("senderNameMissing");
-    }
-
-    return errors;
-  }
-
 
   @SuppressWarnings("serial")
   static class XmlContent implements Serializable {

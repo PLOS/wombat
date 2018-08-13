@@ -54,7 +54,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Controller for rendering an article.
+ * Controller for submitting and rendering an article's comments.
  */
 @Controller
 public class CommentController extends WombatController {

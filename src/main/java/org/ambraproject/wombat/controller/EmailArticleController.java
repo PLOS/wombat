@@ -57,7 +57,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Controller for rendering an article.
+ * Controller for emailing an article.
  */
 @Controller
 public class EmailArticleController extends WombatController {

@@ -56,7 +56,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Controller for rendering an article.
+ * Controller for submitting media curation requests.
  */
 @Controller
 public class MediaCurationController extends WombatController {

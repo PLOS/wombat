@@ -45,7 +45,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 /**
- * Controller for rendering an article.
+ * Controller for rendering and downloading ciatations.
  */
 @Controller
 public class CitationController extends WombatController {

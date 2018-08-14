@@ -255,7 +255,7 @@
 <@renderJs />
 
 
-<script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
+<script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
 
 </body>
 </html>

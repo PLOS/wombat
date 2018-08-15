@@ -38,6 +38,7 @@ import net.sf.saxon.s9api.QName;
 import net.sf.saxon.s9api.SaxonApiException;
 import net.sf.saxon.s9api.SequenceType;
 import net.sf.saxon.s9api.XdmAtomicValue;
+import net.sf.saxon.s9api.XdmItem;
 import net.sf.saxon.s9api.XdmValue;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.identity.AssetPointer;
@@ -105,6 +106,18 @@ public class DataUriEncodeFunction implements ExtensionFunction {
       SequenceType.makeSequenceType(ItemType.STRING, OccurrenceIndicator.ONE),
       SequenceType.makeSequenceType(ItemType.STRING, OccurrenceIndicator.ONE)
     };
+  }
+
+  public static int extractInt(XdmValue value) throws SaxonApiException {
+    XdmItem item = value.itemAt(0);
+    XdmAtomicValue atomic = (XdmAtomicValue) item;
+    return Math.toIntExact(atomic.getLongValue());
+  }
+
+  public static String extractString(XdmValue value) {
+    XdmItem item = value.itemAt(0);
+    XdmAtomicValue atomic = (XdmAtomicValue) item;
+    return atomic.getStringValue();
   }
 
   @Override

@@ -47,7 +47,7 @@
         </li>
         <#if article.preprintDoi?has_content>
           <li class="published">
-            <a href="https://dx.doi.org/${article.preprintDoi}">&gt;&gt; See the preprint</a>
+            <a id="preprintsLink" href="https://dx.doi.org/${article.preprintDoi}">&gt;&gt; See the preprint</a>
           </li>
         </#if>
       </ul>

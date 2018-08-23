@@ -129,40 +129,7 @@ public class DataUriEncodeFunction implements ExtensionFunction {
   public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
     XdmValue fallback = new XdmAtomicValue("article/file?type=thumbnail&id=" + arguments[0].toString() + arguments[0].toString());
 
-    try {
-      String doi = arguments[0].toString();
-      String version = arguments[1].toString();
-
-      AssetUrlStyle requestedStyle = AssetUrlStyle.ASSET_FILE;
-      Site site;
-      String fileType = "thumbnail";
-      Boolean isDownload = true;
-
-      RequestedDoiVersion id = RequestedDoiVersion.of(doi);
-      AssetPointer asset = articleResolutionService.toParentIngestion(id);
-      String type = "thumbnail";
-      Map<String, ?> itemMetadata = articleService.getItemMetadata(asset);
-      String itemType = (String) itemMetadata.get("itemType");
-      AssetUrlStyle itemStyle = AssetUrlStyle.findByItemType(itemType);
-
-      Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
-      Map<String, ?> fileRepoKey = (Map<String, ?>) files.get(fileType);
-      ContentKey contentKey = createKey(fileRepoKey);
-      try (CloseableHttpResponse responseFromApi = corpusContentApi.request(contentKey, ImmutableList.of())) {
-        HttpEntity entity = responseFromApi.getEntity();
-        ContentType contentType = null;
-        if (entity != null) { contentType = ContentType.get(entity); }
-        if (contentType == null) {
-          return fallback;
-        } else {
-          byte[] body = IOUtils.toByteArray(responseFromApi.getEntity().getContent());
-          String dataUri = "data:" + contentType + ";base64," + Base64.getEncoder().encodeToString(body);
-          return new XdmAtomicValue(dataUri);
-        }
-      }
-    } catch (Exception ex) {
-      return fallback;
-    }
+    return fallback;
   }
 
   private static ContentKey createKey(Map<String, ?> fileRepoKey) {

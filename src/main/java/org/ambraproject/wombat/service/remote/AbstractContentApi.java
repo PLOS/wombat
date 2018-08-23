@@ -22,10 +22,12 @@
 
 package org.ambraproject.wombat.service.remote;
 
+import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.http.Header;
+import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 public abstract class AbstractContentApi implements ContentApi {
 
@@ -149,4 +152,12 @@ public abstract class AbstractContentApi implements ContentApi {
         (Reader stream) -> gson.fromJson(stream, Map.class));
   }
 
+  @Override
+  public Optional<CloseableHttpResponse> optionalRequest(ContentKey contentKey) {
+    try {
+      return Optional.ofNullable(request(contentKey, ImmutableList.of()));
+    } catch (IOException ex) {
+      return Optional.empty();
+    }
+  }
 }

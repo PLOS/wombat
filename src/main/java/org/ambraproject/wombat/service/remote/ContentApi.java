@@ -29,6 +29,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 
 public interface ContentApi {
 
@@ -42,6 +43,13 @@ public interface ContentApi {
    */
   public abstract CloseableHttpResponse request(ContentKey key, Collection<? extends Header> headers)
       throws IOException;
+
+  /**
+   * Requests a file from the content repository. Returns empty optional if an IOException was encountered.
+   * @param key the content repo key
+   * @return either the response from the content repo or empty if there was an error
+   */
+  public abstract Optional<CloseableHttpResponse> optionalRequest(ContentKey key);
 
   public abstract Map<String, Object> requestMetadata(CacheKey cacheKey, ContentKey key) throws IOException;
 

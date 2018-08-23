@@ -61,33 +61,6 @@ import org.springframework.stereotype.Component;
 public class DataUriEncodeFunction implements ExtensionFunction {
   private static final Logger log = LoggerFactory.getLogger(DataUriEncodeFunction.class);
 
-  static enum AssetUrlStyle {
-    FIGURE_IMAGE("figureImage", "size", new String[]{"figure", "table", "standaloneStrikingImage"}),
-    ASSET_FILE("assetFile", "type", new String[]{"article", "supplementaryMaterial", "graphic"});
-
-    private final String handlerName;
-    private final String typeParameterName;
-    private final ImmutableSet<String> itemTypes;
-
-    private AssetUrlStyle(String handlerName, String typeParameterName, String[] itemTypes) {
-      this.handlerName = Objects.requireNonNull(handlerName);
-      this.typeParameterName = Objects.requireNonNull(typeParameterName);
-      this.itemTypes = ImmutableSet.copyOf(itemTypes);
-    }
-
-    private static final ImmutableMap<String, AssetUrlStyle> BY_ITEM_TYPE =
-        EnumSet.allOf(AssetUrlStyle.class).stream()
-            .flatMap((AssetUrlStyle s) -> s.itemTypes.stream()
-                .map((String itemType) -> Maps.immutableEntry(itemType, s)))
-            .collect(ImmutableMap.toImmutableMap(Map.Entry::getKey, Map.Entry::getValue));
-
-    static AssetUrlStyle findByItemType(String itemType) {
-      AssetUrlStyle style = BY_ITEM_TYPE.get(itemType);
-      if (style == null) throw new IllegalArgumentException("Unrecognized: " + itemType);
-      return style;
-    }
-  }
-
   @Autowired
   private CorpusContentApi corpusContentApi;
 

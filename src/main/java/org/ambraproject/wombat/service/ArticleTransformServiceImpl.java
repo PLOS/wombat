@@ -163,6 +163,8 @@ public class ArticleTransformServiceImpl implements ArticleTransformService {
         versionNumber = articleId.getIngestionNumber();
       }
 
+      transformer.setParameter("ingestionNumber", articleId.getIngestionNumber());
+
       // Pre-build a snippet of a URL, meant to be concatenated onto a link in an HTML attribute.
       // Assumes that it will always be preceded by at least one other parameter,
       // else we would need a question mark instead of an ampersand.

@@ -57,6 +57,7 @@
                  used to provide DOIs and author/title overrides for reference links -->
   <xsl:param name="refs"/>
 
+  <xsl:param name="ingestionNumber"/>
   <xsl:param name="versionLinkParameter"/>
 
   <!-- ============================================================= -->
@@ -1609,7 +1610,8 @@
           <xsl:value-of select="@xlink:href"/>
         </xsl:variable>
         <xsl:attribute name="src">
-          <xsl:value-of select="ambra:embed-data-uri($graphicDOI, $versionLinkParameter)"/>
+          <xsl:value-of select="ambra:embed-data-uri($graphicDOI, $ingestionNumber,
+                                                     concat('article/file?type=thumbnail&amp;id=', $graphicDOI, $versionLink)"/>
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">

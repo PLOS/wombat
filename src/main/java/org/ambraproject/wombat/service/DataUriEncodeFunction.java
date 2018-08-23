@@ -83,8 +83,12 @@ public class DataUriEncodeFunction implements ExtensionFunction {
   @Override
   public SequenceType[] getArgumentTypes() {
     return new SequenceType[] {
+      // Fallback
       SequenceType.makeSequenceType(ItemType.STRING, OccurrenceIndicator.ONE),
-      SequenceType.makeSequenceType(ItemType.STRING, OccurrenceIndicator.ONE)
+      // DOI
+      SequenceType.makeSequenceType(ItemType.STRING, OccurrenceIndicator.ONE),
+      // Ingestion Number
+      SequenceType.makeSequenceType(ItemType.INTEGER, OccurrenceIndicator.ONE)
     };
   }
 

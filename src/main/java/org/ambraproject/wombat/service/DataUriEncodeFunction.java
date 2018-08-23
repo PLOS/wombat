@@ -119,6 +119,12 @@ public class DataUriEncodeFunction implements ExtensionFunction {
     XdmAtomicValue atomic = (XdmAtomicValue) item;
     return atomic.getStringValue();
   }
+  public RequestedDoiVersion getDoiFromArguments(XdmValue[] arguments) throws SaxonApiException {
+    String doi = extractString(arguments[1]);
+    int ingestionNumber = extractInt(arguments[2]);
+
+    return RequestedDoiVersion.ofIngestion(doi, ingestionNumber);
+  }
 
   @Override
   public XdmValue call(XdmValue[] arguments) throws SaxonApiException {

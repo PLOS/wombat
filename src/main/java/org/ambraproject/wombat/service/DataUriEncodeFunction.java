@@ -22,18 +22,12 @@
 
 package org.ambraproject.wombat.service;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-
 import java.io.IOException;
 import java.util.Base64;
-import java.util.EnumSet;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
+
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.ItemType;
 import net.sf.saxon.s9api.OccurrenceIndicator;
@@ -43,14 +37,12 @@ import net.sf.saxon.s9api.SequenceType;
 import net.sf.saxon.s9api.XdmAtomicValue;
 import net.sf.saxon.s9api.XdmItem;
 import net.sf.saxon.s9api.XdmValue;
-import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.entity.ContentType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -129,21 +121,14 @@ public class DataUriEncodeFunction implements ExtensionFunction {
     }
   }
   
-  @Override
-  public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
-    XdmValue fallback = new XdmAtomicValue("article/file?type=thumbnail&id=" + arguments[0].toString() + arguments[0].toString());
-
-    return fallback;
-  }
-
-  private static ContentKey createKey(Map<String, ?> fileRepoKey) {
-    String key = (String) fileRepoKey.get("crepoKey");
-    UUID uuid = UUID.fromString((String) fileRepoKey.get("crepoUuid"));
-    ContentKey contentKey = ContentKey.createForUuid(key, uuid);
-    if (fileRepoKey.get("bucketName") != null) {
-      contentKey.setBucketName(fileRepoKey.get("bucketName").toString());
-    }
-    return contentKey;
+  private Optional<ContentKey> getThumbnailContentKey(RequestedDoiVersion doi) {
+    try {
+      AssetPointer asset = articleResolutionService.toParentIngestion(doi);
+      Map<String, ?> files = articleService.getItemFiles(asset);
+      return Optional.of(createKeyFromMap((Map<String, String>) files.get("thumbnail")));
+    } catch (IOException ex) {
+      return Optional.empty();
+    }      
   }
 
   public static ContentKey createKeyFromMap(Map<String, String> fileRepoMap) {
@@ -154,5 +139,17 @@ public class DataUriEncodeFunction implements ExtensionFunction {
       contentKey.setBucketName(fileRepoMap.get("bucketName"));
     }
     return contentKey;
+  }
+
+  @Override
+  public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
+    XdmValue fallback = arguments[0];
+    
+    return getThumbnailContentKey(getDoiFromArguments(arguments))
+      .flatMap((contentKey)->corpusContentApi.optionalRequest(contentKey))
+      .map((request)->request.getEntity())
+      .flatMap(DataUriEncodeFunction::encodeAsDataUrl)
+      .map((s) -> (XdmValue) new XdmAtomicValue(s))
+      .orElse(fallback);
   }
 }

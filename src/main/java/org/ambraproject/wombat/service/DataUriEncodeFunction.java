@@ -26,10 +26,13 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
+
+import java.io.IOException;
 import java.util.Base64;
 import java.util.EnumSet;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 import net.sf.saxon.s9api.ExtensionFunction;
 import net.sf.saxon.s9api.ItemType;
@@ -49,11 +52,15 @@ import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.entity.ContentType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataUriEncodeFunction implements ExtensionFunction {
+  private static final Logger log = LoggerFactory.getLogger(DataUriEncodeFunction.class);
+
   static enum AssetUrlStyle {
     FIGURE_IMAGE("figureImage", "size", new String[]{"figure", "table", "standaloneStrikingImage"}),
     ASSET_FILE("assetFile", "type", new String[]{"article", "supplementaryMaterial", "graphic"});
@@ -119,6 +126,7 @@ public class DataUriEncodeFunction implements ExtensionFunction {
     XdmAtomicValue atomic = (XdmAtomicValue) item;
     return atomic.getStringValue();
   }
+
   public RequestedDoiVersion getDoiFromArguments(XdmValue[] arguments) throws SaxonApiException {
     String doi = extractString(arguments[1]);
     int ingestionNumber = extractInt(arguments[2]);
@@ -126,6 +134,24 @@ public class DataUriEncodeFunction implements ExtensionFunction {
     return RequestedDoiVersion.ofIngestion(doi, ingestionNumber);
   }
 
+  private static String makeDataUrl(ContentType contentType, byte[] body) {
+    return "data:" + contentType + ";base64," + Base64.getEncoder().encodeToString(body);
+  }
+
+  public static Optional<String> encodeAsDataUrl(HttpEntity entity) {
+    ContentType contentType = ContentType.get(entity);
+    if (contentType == null) {
+      return Optional.empty();
+    } else {
+      try {
+        return Optional.of(makeDataUrl(contentType, IOUtils.toByteArray(entity.getContent())));
+      } catch (IOException ex) {
+        log.warn("Caught exception generating data-uri: {}", ex);
+        return Optional.empty();
+      }
+    }
+  }
+  
   @Override
   public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
     XdmValue fallback = new XdmAtomicValue("article/file?type=thumbnail&id=" + arguments[0].toString() + arguments[0].toString());

@@ -174,4 +174,14 @@ public class DataUriEncodeFunction implements ExtensionFunction {
     }
     return contentKey;
   }
+
+  public static ContentKey createKeyFromMap(Map<String, String> fileRepoMap) {
+    String key = fileRepoMap.get("crepoKey");
+    UUID uuid = UUID.fromString(fileRepoMap.get("crepoUuid"));
+    ContentKey contentKey = ContentKey.createForUuid(key, uuid);
+    if (fileRepoMap.get("bucketName") != null) {
+      contentKey.setBucketName(fileRepoMap.get("bucketName"));
+    }
+    return contentKey;
+  }
 }

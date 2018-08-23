@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service;
 
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
+import org.ambraproject.wombat.service.remote.ContentKey;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;
@@ -23,8 +24,11 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -82,5 +86,15 @@ public class DataUriEncodeFunctionTest {
     
     assertEquals(Optional.of("data:image/x-foo;base64,YmFy"),
                  DataUriEncodeFunction.encodeAsDataUrl(entity));
+  }
+
+  @Test
+  public void testCreateKeyFromMap() {
+    Map<String, String> fileRepoMap = new HashMap<>();
+    fileRepoMap.put("crepoKey", "foo");
+    UUID uuid =  UUID.randomUUID();
+    fileRepoMap.put("crepoUuid", uuid.toString());
+    ContentKey key = DataUriEncodeFunction.createKeyFromMap(fileRepoMap);
+    assertEquals(String.format("[key: foo, uuid: %s]", uuid), key.toString());
   }
 }

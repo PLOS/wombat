@@ -74,7 +74,7 @@ public class DataUriEncodeFunctionTest {
   public void testEncodeAsDataUri() throws IOException {
     assertEquals(Optional.empty(), DataUriEncodeFunction.encodeAsDataUrl(null));
 
-    InputStream stubInputStream =  IOUtils.toInputStream("bar", "UTF-8"); // base64: Zm9v
+    InputStream stubInputStream =  IOUtils.toInputStream("bar", "UTF-8"); // base64: YmFy
     HttpEntity entity = mock(HttpEntity.class);
     Header header = mock(Header.class);
     HeaderElement element = mock(HeaderElement.class);

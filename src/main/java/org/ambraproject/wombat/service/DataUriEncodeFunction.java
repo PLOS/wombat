@@ -84,18 +84,35 @@ public class DataUriEncodeFunction implements ExtensionFunction {
     };
   }
 
+  /**
+   * Extract a single int value from an XdmValue.
+   * @param value the XdmValue to extract from
+   * @return the int extracted
+   */
   public static int extractInt(XdmValue value) throws SaxonApiException {
     XdmItem item = value.itemAt(0);
     XdmAtomicValue atomic = (XdmAtomicValue) item;
     return Math.toIntExact(atomic.getLongValue());
   }
 
+  /**
+   * Extract a single string value from an XdmValue.
+   * @param value the XdmValue to extract from
+   * @return the string extracted
+   */
   public static String extractString(XdmValue value) {
     XdmItem item = value.itemAt(0);
     XdmAtomicValue atomic = (XdmAtomicValue) item;
     return atomic.getStringValue();
   }
 
+  /**
+   * Generate a RequestedDoiVersion from the arguments passed.
+   * @param arguments an XdmValue array. The first entry is ignored,
+   *   the second is the doi string, and the third is the ingestion
+   *   number
+   * @return the RequestedDoiVersion generated from the arguments
+   */
   public RequestedDoiVersion getDoiFromArguments(XdmValue[] arguments) throws SaxonApiException {
     String doi = extractString(arguments[1]);
     int ingestionNumber = extractInt(arguments[2]);
@@ -107,6 +124,12 @@ public class DataUriEncodeFunction implements ExtensionFunction {
     return "data:" + contentType + ";base64," + Base64.getEncoder().encodeToString(body);
   }
 
+  /**
+   * Encode a HttpEntity as a data url, or return empty if there was an IOException.
+   * @param entity  the HttpEntity to encode; will use the Content-Type and the body
+   * @return either a string representing the base-64 encoded data
+   *   url, or empty if there was an error
+   */
   public static Optional<String> encodeAsDataUrl(HttpEntity entity) {
     ContentType contentType = ContentType.get(entity);
     if (contentType == null) {

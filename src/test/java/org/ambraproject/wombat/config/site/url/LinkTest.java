@@ -100,9 +100,9 @@ public class LinkTest {
     reqSecure.setScheme("https");
     reqSecure.setServerPort(443);
     cases.add(new Object[]{Link.toLocalSite(TOKEN_1).toPath("path"), reqSecure, "/site1/path"});
-    cases.add(new Object[]{Link.toForeignSite(TOKEN_1, HOST_AND_TOKEN_1).toPath("path"), reqSecure, "https://1.example.com/site3/path"});
+    cases.add(new Object[]{Link.toForeignSite(TOKEN_1, HOST_AND_TOKEN_1).toPath("path"), reqSecure, "http://1.example.com/site3/path"});
     cases.add(new Object[]{Link.toLocalSite(HOST_ONLY).toPath("path"), reqSecure, "/path"});
-    cases.add(new Object[]{Link.toForeignSite(TOKEN_1, HOST_ONLY).toPath("path"), reqSecure, "https://hostOnly.example.com/path"});
+    cases.add(new Object[]{Link.toForeignSite(TOKEN_1, HOST_ONLY).toPath("path"), reqSecure, "http://hostOnly.example.com/path"});
 
     MockHttpServletRequest proxiedReq = new MockHttpServletRequest();
     proxiedReq.setServerName("internal-frontend.example.com");

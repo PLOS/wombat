@@ -81,6 +81,7 @@ public class ArticleServiceImpl implements ArticleService {
     Map<String, ?> articleFiles = (Map<String, ?>) articleItem.get("files");
     Map<String, ?> manuscriptPointer = (Map<String, ?>) articleFiles.get("manuscript");
 
+    // TODO: Use createKeyFromMap here.
     String crepoKey = (String) manuscriptPointer.get("crepoKey");
     UUID crepoUuid = UUID.fromString((String) manuscriptPointer.get("crepoUuid"));
     ContentKey key = ContentKey.createForUuid(crepoKey, crepoUuid);

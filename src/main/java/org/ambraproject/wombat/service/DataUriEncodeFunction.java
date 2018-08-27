@@ -43,6 +43,7 @@ import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.entity.ContentType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -169,10 +170,10 @@ public class DataUriEncodeFunction implements ExtensionFunction {
     XdmValue fallback = arguments[0];
     
     return getThumbnailContentKey(getDoiFromArguments(arguments))
-      .flatMap((contentKey)->corpusContentApi.optionalRequest(contentKey))
-      .map((request)->request.getEntity())
+      .flatMap(corpusContentApi::optionalRequest)
+      .map(CloseableHttpResponse::getEntity)
       .flatMap(DataUriEncodeFunction::encodeAsDataUrl)
-      .map((s) -> (XdmValue) new XdmAtomicValue(s))
+      .map((s)-> (XdmValue) new XdmAtomicValue(s)) // Is there a more succient way to do this?
       .orElse(fallback);
   }
 }

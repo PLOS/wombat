@@ -1610,7 +1610,7 @@
           <xsl:value-of select="@xlink:href"/>
         </xsl:variable>
         <xsl:attribute name="src">
-          <xsl:value-of select="ambra:embed-data-uri($graphicDOI, $ingestionNumber,
+          <xsl:value-of select="ambra:embed-data-url($graphicDOI, $ingestionNumber,
                                                      concat('article/file?type=thumbnail&amp;id=', $graphicDOI, $versionLink)"/>
         </xsl:attribute>
       </xsl:if>

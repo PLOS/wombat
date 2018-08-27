@@ -65,7 +65,7 @@ public class DataUriEncodeFunction implements ExtensionFunction {
 
   @Override
   public QName getName() {
-    return new QName("http://www.ambraproject.org/xslt/", "embed-data-uri");
+    return new QName("http://www.ambraproject.org/xslt/", "embed-data-url");
   }
 
   @Override
@@ -139,7 +139,7 @@ public class DataUriEncodeFunction implements ExtensionFunction {
       try {
         return Optional.of(makeDataUrl(contentType, IOUtils.toByteArray(entity.getContent())));
       } catch (IOException ex) {
-        log.warn("Caught exception generating data-uri: {}", ex);
+        log.warn("Caught exception generating data-url: {}", ex);
         return Optional.empty();
       }
     }

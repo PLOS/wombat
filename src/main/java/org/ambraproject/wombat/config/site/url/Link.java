@@ -392,7 +392,14 @@ public class Link {
   }
 
   private void appendPrefix(StringBuilder sb, HttpServletRequest request) {
-    sb.append(request.getScheme()).append("://");
+
+    String protocol = request.getHeader("X-Forwarded-Proto");
+
+    if (protocol == null) {
+      protocol = "http";
+    }
+
+    sb.append(protocol).append("://");
 
     ClientEndpoint clientEndpoint = ClientEndpoint.get(request);
 

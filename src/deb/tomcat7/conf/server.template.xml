@@ -78,9 +78,7 @@
                  connectionTimeout="20000"
                  enableLookups="false"
                  maxParameterCount="5000"
-                 proxyName="journals.plos.org"
-                 proxyPort="443"
-                 scheme="https" URIEncoding="UTF-8"
+                 scheme="http" URIEncoding="UTF-8"
                  minSpareThreads="50" maxThreads="1000"/>
 
     <!-- A "Connector" using the shared thread pool-->

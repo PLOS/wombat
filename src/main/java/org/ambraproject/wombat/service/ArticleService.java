@@ -29,6 +29,7 @@ import org.ambraproject.wombat.service.remote.ContentKey;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Service class that deals with article metadata.
@@ -52,4 +53,6 @@ public interface ArticleService {
   Map<String, ?> getItemFiles(AssetPointer assetId) throws IOException;
 
   ContentKey getManuscriptKey(ArticlePointer articleId) throws IOException;
+
+  Optional<ContentKey> getThumbnailKey(RequestedDoiVersion doi);
 }

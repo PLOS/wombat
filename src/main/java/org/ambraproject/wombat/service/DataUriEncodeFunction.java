@@ -145,31 +145,11 @@ public class DataUriEncodeFunction implements ExtensionFunction {
     }
   }
   
-  private Optional<ContentKey> getThumbnailContentKey(RequestedDoiVersion doi) {
-    try {
-      AssetPointer asset = articleResolutionService.toParentIngestion(doi);
-      Map<String, ?> files = articleService.getItemFiles(asset);
-      return Optional.of(createKeyFromMap((Map<String, String>) files.get("thumbnail")));
-    } catch (IOException ex) {
-      return Optional.empty();
-    }      
-  }
-
-  public static ContentKey createKeyFromMap(Map<String, String> fileRepoMap) {
-    String key = fileRepoMap.get("crepoKey");
-    UUID uuid = UUID.fromString(fileRepoMap.get("crepoUuid"));
-    ContentKey contentKey = ContentKey.createForUuid(key, uuid);
-    if (fileRepoMap.get("bucketName") != null) {
-      contentKey.setBucketName(fileRepoMap.get("bucketName"));
-    }
-    return contentKey;
-  }
-
   @Override
   public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
     XdmValue fallback = arguments[0];
     
-    return getThumbnailContentKey(getDoiFromArguments(arguments))
+    return articleService.getThumbnailKey(getDoiFromArguments(arguments))
       .flatMap(corpusContentApi::optionalRequest)
       .map(CloseableHttpResponse::getEntity)
       .flatMap(DataUriEncodeFunction::encodeAsDataUrl)

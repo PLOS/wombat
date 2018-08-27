@@ -33,6 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 public class ArticleServiceImpl implements ArticleService {
@@ -86,5 +87,26 @@ public class ArticleServiceImpl implements ArticleService {
     String bucketName = (String) manuscriptPointer.get("bucketName");
     key.setBucketName(bucketName);
     return key;
+  }
+
+  @Override
+  public Optional<ContentKey> getThumbnailKey(RequestedDoiVersion doi) {
+    try {
+      AssetPointer asset = articleResolutionService.toParentIngestion(doi);
+      Map<String, ?> files = getItemFiles(asset);
+      return Optional.of(createKeyFromMap((Map<String, String>) files.get("thumbnail")));
+    } catch (IOException ex) {
+      return Optional.empty();
+    }
+  }
+
+  public ContentKey createKeyFromMap(Map<String, String> fileRepoMap) {
+    String key = fileRepoMap.get("crepoKey");
+    UUID uuid = UUID.fromString(fileRepoMap.get("crepoUuid"));
+    ContentKey contentKey = ContentKey.createForUuid(key, uuid);
+    if (fileRepoMap.get("bucketName") != null) {
+      contentKey.setBucketName(fileRepoMap.get("bucketName"));
+    }
+    return contentKey;
   }
 }

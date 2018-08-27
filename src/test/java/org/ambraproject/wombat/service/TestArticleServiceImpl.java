@@ -33,6 +33,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * used to return article metadata from json files during tests of article controller functionality
@@ -67,6 +68,11 @@ public class TestArticleServiceImpl implements ArticleService {
 
   @Override
   public Map<String, ?> getItemFiles(AssetPointer assetId) throws IOException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public Optional<ContentKey> getThumbnailKey(RequestedDoiVersion doi) {
     throw new UnsupportedOperationException();
   }
 }

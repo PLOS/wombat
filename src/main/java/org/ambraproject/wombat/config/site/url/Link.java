@@ -395,9 +395,7 @@ public class Link {
 
     String protocol = request.getHeader("X-Forwarded-Proto");
 
-    if (protocol == null) {
-      protocol = "http";
-    }
+    protocol = protocol == null ? "http" : protocol;
 
     sb.append(protocol).append("://");
 

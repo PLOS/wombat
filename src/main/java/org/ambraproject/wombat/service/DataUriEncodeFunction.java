@@ -145,6 +145,16 @@ public class DataUriEncodeFunction implements ExtensionFunction {
     }
   }
   
+  /**
+   * Function to be used from within stylesheets. Will either encode a
+   * thumbnail as a data-url or return a fallback URL.
+   * @param arguments an array of XdmValue arguments passed in from
+   *   the stylesheet. The first is a fallback URL that will be
+   *   returned if there is a problem fetching any data. The second is
+   *   the doi. The third is the ingestion number to retrieve.
+   * @return either a data-url for the thumbnail content or the
+   *   fallback string
+   */
   @Override
   public XdmValue call(XdmValue[] arguments) throws SaxonApiException {
     XdmValue fallback = arguments[0];

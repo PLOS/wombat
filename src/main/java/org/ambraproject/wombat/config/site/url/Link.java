@@ -393,9 +393,13 @@ public class Link {
 
   private void appendPrefix(StringBuilder sb, HttpServletRequest request) {
 
-    String protocol = request.getHeader("X-Forwarded-Proto");
+    String protocol = new String("http");
 
-    protocol = protocol == null ? "http" : protocol;
+    String header = request.getHeader("X-Forwarded-Proto");
+
+    if (header != null && header.equals("https") ) {
+      protocol = new String("https");
+    }
 
     sb.append(protocol).append("://");
 

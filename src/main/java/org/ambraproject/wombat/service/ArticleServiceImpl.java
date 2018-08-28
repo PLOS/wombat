@@ -95,7 +95,11 @@ public class ArticleServiceImpl implements ArticleService {
     try {
       AssetPointer asset = articleResolutionService.toParentIngestion(doi);
       Map<String, ?> files = getItemFiles(asset);
-      return Optional.of(createKeyFromMap((Map<String, String>) files.get("thumbnail")));
+      if (files.containsKey("thumbnail")) {
+        return Optional.of(createKeyFromMap((Map<String, String>) files.get("thumbnail")));
+      } else {
+        return Optional.empty();
+      }
     } catch (IOException ex) {
       return Optional.empty();
     }

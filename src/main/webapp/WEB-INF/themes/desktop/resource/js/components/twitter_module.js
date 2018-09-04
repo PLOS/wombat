@@ -66,8 +66,11 @@ var TwitterModule;
               // Change the profile pic domain if is an old one
               var tweetAvatar = item.user_profile_image;
               var tweetAvatarParse = tweetAvatar.slice(7, 9);
+
               if (tweetAvatarParse === "a0") {
-                item.user_profile_image = "http://pbs" + tweetAvatar.slice(9);
+                item.user_profile_image = "https://pbs" + tweetAvatar.slice(9);
+              } else {
+                item.user_profile_image = tweetAvatar.replace(/http:/g,'https:');
               }
 
               return item;

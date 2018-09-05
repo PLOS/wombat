@@ -71,7 +71,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   @Autowired
   private JsonService jsonService;
   @Autowired
-  private CachedRemoteService<Reader> cachedRemoteReader;
+  private RemoteService<Reader> remoteReader;
   @Autowired
   private ArticleApi articleApi;
   @Autowired
@@ -360,13 +360,13 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     if (params.contains(new BasicNameValuePair("wt", "csv"))) {
       rawResults.put("response", ImmutableMap.of("stringResponse", getStringResponse(uri)));
     } else {
-      rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
+      rawResults = jsonService.requestObject(remoteReader, new HttpGet(uri), Map.class);
     }
     return rawResults;
   }
 
   private String getStringResponse(URI uri) throws IOException {
-    try(CloseableHttpResponse response = cachedRemoteReader.getResponse(new HttpGet(uri))) {
+    try(CloseableHttpResponse response = remoteReader.getResponse(new HttpGet(uri))) {
       return EntityUtils.toString(response.getEntity());
     }
   }

@@ -67,26 +67,22 @@ public class EditorialContentApiImpl extends AbstractContentApi implements Edito
       cacheKey = cacheKey.addTimeToLive(cacheTtl.intValue());
     }
 
-    String transformedHtml = requestCachedReader(cacheKey, version, new CacheDeserializer<Reader, String>() {
-      @Override
-      public String read(Reader htmlReader) throws IOException {
-        // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
-        // The whole document will be in memory anyway, so buffering it into a string is no great performance loss.
-        String htmlString = IOUtils.toString(htmlReader);
-        Document document = Jsoup.parseBodyFragment(htmlString);
-
-        for (HtmlElementTransformation transformation : transformations) {
-          transformation.apply(sitePageContext, siteSet, document);
-        }
-        for (HtmlElementSubstitution substitution : substitutions) {
-          substitution.substitute(document);
-        }
-
-        // We received a snippet, which Jsoup has automatically turned into a complete HTML document.
-        // We want to return only the transformed snippet, so retrieve it from the body tag.
-        return document.getElementsByTag("body").html();
-      }
-    });
+    Reader htmlReader = requestReader(version);
+    // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this awkward.
+    // The whole document will be in memory anyway, so buffering it into a string is no great performance loss.
+    String htmlString = IOUtils.toString(htmlReader);
+    Document document = Jsoup.parseBodyFragment(htmlString);
+    
+    for (HtmlElementTransformation transformation : transformations) {
+      transformation.apply(sitePageContext, siteSet, document);
+    }
+    for (HtmlElementSubstitution substitution : substitutions) {
+      substitution.substitute(document);
+    }
+    
+    // We received a snippet, which Jsoup has automatically turned into a complete HTML document.
+    // We want to return only the transformed snippet, so retrieve it from the body tag.
+    String transformedHtml =  document.getElementsByTag("body").html();
     return new StringReader(transformedHtml);
   }
 
@@ -97,8 +93,7 @@ public class EditorialContentApiImpl extends AbstractContentApi implements Edito
    */
   @Override
   public Object getJson(String pageType, String key) throws IOException {
-    CacheKey cacheKey = CacheKey.create(pageType, key);
     ContentKey version = ContentKey.createForLatestVersion(key);
-    return requestCachedReader(cacheKey, version, jsonReader -> gson.fromJson(jsonReader, Object.class));
+    return gson.fromJson(requestReader(version), Object.class);
   }
 }

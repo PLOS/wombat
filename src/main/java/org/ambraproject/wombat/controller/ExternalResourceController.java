@@ -97,11 +97,10 @@ public class ExternalResourceController extends WombatController {
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
                      ContentKey key)
       throws IOException {
-    CacheKey cacheKey = key.asCacheKey("indirect");
     Map<String, Object> fileMetadata;
 
     try {
-      fileMetadata = editorialContentApi.requestMetadata(cacheKey, key);
+      fileMetadata = editorialContentApi.requestMetadata(key);
     } catch (EntityNotFoundException e) {
       String message = String.format("Not found in repo: %s", key.toString());
       throw new NotFoundException(message, e);

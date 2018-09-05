@@ -42,7 +42,7 @@ import org.ambraproject.wombat.cache.NullCache;
 import org.ambraproject.wombat.config.yaml.IgnoreMissingPropertyConstructor;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleApiImpl;
-import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.RemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ReaderService;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
@@ -166,14 +166,12 @@ public class RootConfiguration {
   }
 
   @Bean
-  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager,
-                                                               Cache cache) {
-    return new CachedRemoteService<>(new StreamService(httpClientConnectionManager), cache);
+  public RemoteService<InputStream> remoteStreamer(HttpClientConnectionManager httpClientConnectionManager) {
+    return new StreamService(httpClientConnectionManager);
   }
 
   @Bean
-  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager,
-                                                        Cache cache) {
-    return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager), cache);
+  public RemoteService<Reader> remoteReader(HttpClientConnectionManager httpClientConnectionManager) {
+    return new ReaderService(httpClientConnectionManager);
   }
 }

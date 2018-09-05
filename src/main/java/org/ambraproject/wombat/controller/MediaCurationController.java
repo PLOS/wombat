@@ -24,8 +24,8 @@ package org.ambraproject.wombat.controller;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.RemoteService;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
@@ -64,7 +64,7 @@ public class MediaCurationController extends WombatController {
   private static final Logger log = LoggerFactory.getLogger(MediaCurationController.class);
 
   @Autowired
-  private CachedRemoteService<Reader> cachedRemoteReader;
+  private RemoteService<Reader> remoteReader;
   @Autowired
   private JsonService jsonService;
 
@@ -118,7 +118,7 @@ public class MediaCurationController extends WombatController {
     HttpPost httpPost = new HttpPost(mediaCurationUrl);
     httpPost.setEntity(entity);
     StatusLine statusLine = null;
-    try (CloseableHttpResponse response = cachedRemoteReader.getResponse(httpPost)) {
+    try (CloseableHttpResponse response = remoteReader.getResponse(httpPost)) {
       statusLine = response.getStatusLine();
     } catch (ServiceRequestException e) {
       //This exception is thrown when the submitted link is already present for the article.

@@ -70,26 +70,6 @@ public class JsonService {
   }
 
   /**
-   * Serialize an object either through a REST request or from the cache. If there is a cached value, and the REST
-   * service does not indicate that the value has been modified since the value was inserted into the cache, return that
-   * value. Else, query the service for JSON and deserialize it to an object as usual.
-   *
-   * @param cacheKey  the cache parameters object containing the cache key at which to retrieve and store the value
-   * @param target       the request to make to the SOA service if the value is not cached
-   * @param responseType the type of object to deserialize
-   * @param <T>          the type of {@code responseClass}
-   * @return the deserialized object
-   * @throws IOException
-   */
-  public <T> T requestCachedObject(CachedRemoteService<? extends Reader> remoteService, CacheKey cacheKey,
-                                   HttpUriRequest target, final Type responseType)
-      throws IOException {
-    Preconditions.checkNotNull(responseType);
-    return remoteService.requestCached(cacheKey, target,
-        (Reader reader) -> deserializeStream(responseType, reader, target.getURI()));
-  }
-
-  /**
    * Serialize the content of a stream to an object.
    *
    * @param responseType the object type into which to serialize the JSON code

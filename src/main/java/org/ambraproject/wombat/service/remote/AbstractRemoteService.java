@@ -34,11 +34,14 @@ import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.conn.HttpHostConnectException;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.cache.CacheConfig;
+import org.apache.http.impl.client.cache.CachingHttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 
 import java.io.Closeable;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Optional;
@@ -51,16 +54,27 @@ abstract class AbstractRemoteService<S extends Closeable> implements RemoteServi
 
   private final Optional<HttpClientConnectionManager> connectionManager;
 
+  HttpClientBuilder clientBuilder;
+  CloseableHttpClient client;
+
   protected AbstractRemoteService(HttpClientConnectionManager connectionManager) {
     this.connectionManager = Optional.ofNullable(connectionManager);
+    CacheConfig cacheConfig = CacheConfig.
+      custom().
+      setMaxObjectSize(100000000)
+      .build();
+
+    this.clientBuilder = CachingHttpClientBuilder.create()
+      .setCacheDir(new File("/tmp/wombat-cache"))
+      .setCacheConfig(cacheConfig);
+    this.connectionManager.map((mgr)->clientBuilder.setConnectionManager(mgr));
   }
 
   private CloseableHttpClient createClient() {
-    HttpClientBuilder clientBuilder = HttpClientBuilder.create();
-    if (connectionManager.isPresent()) {
-      clientBuilder = clientBuilder.setConnectionManager(connectionManager.get());
+    if (client == null) {
+      client = clientBuilder.build();
     }
-    return clientBuilder.build();
+    return client;
   }
 
   @Override

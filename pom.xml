@@ -134,7 +134,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
+      <artifactId>httpclient-cache</artifactId>
       <version>4.3.6</version>
     </dependency>
     <dependency>

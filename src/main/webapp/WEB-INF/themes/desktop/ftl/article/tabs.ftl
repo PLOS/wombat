@@ -60,6 +60,6 @@
 
   <@tabyLink tabPage "Metrics" "articleMetrics" false>Metrics</@tabyLink>
   <@tabyLink tabPage "Comments" "articleComments" false>Comments</@tabyLink>
-  <@tabyLink tabPage "Related" "articleRelatedContent" false>Related Content</@tabyLink>
+  <@tabyLink tabPage "Related" "articleRelatedContent" false>Media Coverage</@tabyLink>
 </ul>
 </#macro>

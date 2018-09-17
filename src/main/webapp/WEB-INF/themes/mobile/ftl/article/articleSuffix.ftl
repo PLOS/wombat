@@ -58,7 +58,7 @@
 
   <#if isSectionLinkDisplayed("Related")>
     <@articleButton "articleRelatedContent">
-      Related Content
+      Media Coverage
     </@articleButton>
   </#if>
 

@@ -55,4 +55,11 @@ public interface ParseXmlService {
    */
   List<Reference> parseArticleReferences(Document doc,
                                          ParseReferenceService.DoiToJournalLinkService linkService) throws IOException;
+
+  /**
+   *
+   * @param document article XML
+   * @return
+   */
+  String articleHasTpr(Document document);
 }

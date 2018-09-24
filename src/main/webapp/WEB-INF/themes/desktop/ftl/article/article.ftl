@@ -42,41 +42,40 @@
   <#include "articleHeader.ftl" />
   <section class="article-body">
 
-  <#include "tabs.ftl" />
+    <#include "tabs.ftl" />
     <@displayTabList 'Article' />
 
     <div class="article-container">
 
-    <#include "nav.ftl" />
-    <#include "articleLightbox.ftl" />
+      <#include "nav.ftl" />
+      <#include "articleLightbox.ftl" />
 
       <div class="article-content">
 
+        <#include "revision/revisionNotice.ftl" />
+        <#include "amendment.ftl" />
 
-      <#include "revision/revisionNotice.ftl" />
-      <#include "amendment.ftl" />
-
-      <#-- Figure carousel is placed here, then inserted midway through article text by JavaScript -->
-      <#include "figure_carousel.ftl" />
+        <#-- Figure carousel is placed here, then inserted midway through article text by JavaScript -->
+        <#include "figure_carousel.ftl" />
 
         <div class="article-text" id="artText">
-        ${articleText}
+          ${articleText}
 
           <div class="ref-tooltip">
-             <div class="ref_tooltip-content">
+            <div class="ref_tooltip-content">
 
-             </div>
+            </div>
           </div>
 
         </div>
       </div>
     </div>
 
-    </section>
-    <aside class="article-aside">
+  </section>
+  <aside class="article-aside">
     <#include "aside/sidebar.ftl" />
-    </aside>
-  </div>
+  </aside>
+</div>
 
   <#include "../common/footer/footer.ftl" />
 
@@ -100,5 +99,10 @@
 TODO: move reveal mode & fig-viewer divs to global location when the new lightbox is implemented sitewide
 -->
 <div class="reveal-modal-bg"></div>
+
+<#if articleHasTpr>
+  <script>console.log('This article has TPR content');</script>
+</#if>
+
 </body>
 </html>

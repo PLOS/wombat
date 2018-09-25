@@ -30,17 +30,17 @@
   <#if isSectionLinkDisplayed(section)>
     <@themeConfig map="mappings" value=handlerName ; mappingFlag>
       <#if !(mappingFlag?? && mappingFlag.disabled?? && mappingFlag.disabled)>
-      <li class="tab-title <#if tabPage == section>active</#if>" id="tab${section}">
-        <#assign tabCounter = tabCounter + 1 />
-        <#if usesRevision>
-          <#assign linkParameters = articlePtr>
-        <#else>
-          <#assign linkParameters = {"id": article.doi}>
-        </#if>
-        <@siteLink handlerName=handlerName queryParameters=linkParameters ; href>
-          <a href="${href}" class="article-tab-${tabCounter?c}"><#nested/></a>
-        </@siteLink>
-      </li>
+        <li class="tab-title <#if tabPage == section>active</#if>" id="tab${section}">
+          <#assign tabCounter = tabCounter + 1 />
+          <#if usesRevision>
+            <#assign linkParameters = articlePtr>
+          <#else>
+            <#assign linkParameters = {"id": article.doi}>
+          </#if>
+          <@siteLink handlerName=handlerName queryParameters=linkParameters ; href>
+            <a href="${href}" class="article-tab-${tabCounter?c}"><#nested/></a>
+          </@siteLink>
+        </li>
       </#if>
     </@themeConfig>
   </#if>

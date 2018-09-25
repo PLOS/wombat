@@ -59,6 +59,7 @@
   </#if>
 
   <@tabyLink tabPage "Metrics" "articleMetrics" false>Metrics</@tabyLink>
+  <@tabyLink tabPage "PeerReview" "articlePeerReview" false>Peer Review</@tabyLink>
   <@tabyLink tabPage "Comments" "articleComments" false>Comments</@tabyLink>
   <@tabyLink tabPage "Related" "articleRelatedContent" false>Media Coverage</@tabyLink>
 </ul>

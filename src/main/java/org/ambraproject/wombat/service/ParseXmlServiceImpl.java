@@ -107,4 +107,9 @@ public class ParseXmlServiceImpl implements ParseXmlService {
     }
     return references;
   }
+
+  @Override
+  public String articleHasTpr(Document document) {
+    return "yes";
+  }
 }

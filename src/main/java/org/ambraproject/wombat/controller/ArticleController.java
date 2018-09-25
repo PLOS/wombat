@@ -42,6 +42,7 @@ import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenExpiredException;
 import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenReusedException;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -118,7 +119,16 @@ public class ArticleController extends WombatController {
     model.addAttribute("articleText", xmlContent.html);
     model.addAttribute("references", xmlContent.references);
 
+    model.addAttribute("articleHasTpr", articleHasTpr(site, articlePointer));
+
     return site + "/ftl/article/article";
+  }
+
+  private boolean articleHasTpr(Site site, ArticlePointer articlePointer) throws IOException {
+    return corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
+      String articleXmlStr = IOUtils.toString(stream);
+      return articleXmlStr.contains("decision-letter");
+    });
   }
 
   /**
@@ -267,7 +277,6 @@ public class ArticleController extends WombatController {
 
       // do not supply Solr related link service now
       List<Reference> references = parseXmlService.parseArticleReferences(document, null);
-
       // invoke the Solr API once to resolve all journal keys
       List<String> dois = references.stream().map(ref -> ref.getDoi()).filter(doi -> inPlosJournal(doi)).collect(Collectors.toList());
       List<String> keys = doiToJournalResolutionService.getJournalKeysFromDois(dois, site);

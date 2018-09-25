@@ -100,7 +100,7 @@ TODO: move reveal mode & fig-viewer divs to global location when the new lightbo
 -->
 <div class="reveal-modal-bg"></div>
 
-<#if articleHasTpr>
+<#if peerReview??>
   <script>console.log('This article has TPR content');</script>
 </#if>
 

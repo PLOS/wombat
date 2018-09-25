@@ -119,16 +119,7 @@ public class ArticleController extends WombatController {
     model.addAttribute("articleText", xmlContent.html);
     model.addAttribute("references", xmlContent.references);
 
-    model.addAttribute("articleHasTpr", articleHasTpr(site, articlePointer));
-
     return site + "/ftl/article/article";
-  }
-
-  private boolean articleHasTpr(Site site, ArticlePointer articlePointer) throws IOException {
-    return corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
-      String articleXmlStr = IOUtils.toString(stream);
-      return articleXmlStr.contains("decision-letter");
-    });
   }
 
   /**
@@ -185,6 +176,15 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/relatedContent";
   }
 
+  /**
+   * Serves the peer review tab content for an article.
+   *
+   * @param model     data to pass to the view
+   * @param site      current site
+   * @param articleId specifies the article
+   * @return path to the template
+   * @throws IOException
+   */
   @RequestMapping(name = "articlePeerReview", value = "/article/peerReview")
   public String renderArticlePeerReview(HttpServletRequest request, Model model, @SiteParam Site site,
                                             RequestedDoiVersion articleId) throws IOException {
@@ -194,7 +194,7 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/peerReview";
   }
 
-  /*
+  /**
    * Returns a list of figures and tables of a given article; main usage is the figshare tile on the Metrics
    * tab
    *
@@ -277,6 +277,7 @@ public class ArticleController extends WombatController {
 
       // do not supply Solr related link service now
       List<Reference> references = parseXmlService.parseArticleReferences(document, null);
+
       // invoke the Solr API once to resolve all journal keys
       List<String> dois = references.stream().map(ref -> ref.getDoi()).filter(doi -> inPlosJournal(doi)).collect(Collectors.toList());
       List<String> keys = doiToJournalResolutionService.getJournalKeysFromDois(dois, site);

@@ -37,6 +37,8 @@ import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.util.TextUtil;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -174,6 +176,7 @@ public class ArticleMetadata {
 
     model.addAttribute("revisionMenu", getRevisionMenu());
 
+    model.addAttribute("peerReview", getPeerReview());
     return this;
   }
 
@@ -220,6 +223,14 @@ public class ArticleMetadata {
         (Boolean) Iterables.getLast(revisionList).get("isDisplayed");
 
     return new RevisionMenu(revisionList, isDisplayingLatestRevision);
+  }
+
+
+  String getPeerReview() throws IOException {
+    return factory.corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
+      String articleXmlStr = IOUtils.toString(stream);
+      return StringUtils.substringBetween(articleXmlStr, "decision-letter");
+    });
   }
 
   /**

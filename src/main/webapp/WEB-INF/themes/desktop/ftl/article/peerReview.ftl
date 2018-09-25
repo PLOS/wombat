@@ -17,7 +17,7 @@
     <@displayTabList "PeerReview" />
     <h1>SOME TPR HERE:</h1>
     <div>
-      ${peerReview}
+      ${peerReview?web_safe}
     </div>
   </section>
   <aside class="article-aside">

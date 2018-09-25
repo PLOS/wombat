@@ -229,7 +229,9 @@ public class ArticleMetadata {
   String getPeerReview() throws IOException {
     return factory.corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
       String articleXmlStr = IOUtils.toString(stream);
-      return StringUtils.substringBetween(articleXmlStr, "decision-letter");
+
+      String crudeDecisionLetterExtract = StringUtils.substringBetween(articleXmlStr, "decision-letter");
+      return crudeDecisionLetterExtract;
     });
   }
 

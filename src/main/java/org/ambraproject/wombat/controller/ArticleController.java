@@ -42,7 +42,6 @@ import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenExpiredException;
 import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenReusedException;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

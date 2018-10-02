@@ -34,7 +34,7 @@
       <#include "maxAuthorsToShow.ftl" />
       <#macro authorItem author author_index author_has_next>
         <a href="#" class="author-info" data-author-id="${author_index?c}">
-        ${author.fullName}<#if author.onBehalfOf??>, ${author.onBehalfOf}</#if></a><#if author_has_next><#-- no space -->,</#if>
+        ${author.fullName}<#if author.onBehalfOf??>, ${author.onBehalfOf}</#if><#if author_has_next><#-- no space -->,</#if></a>
       </#macro>
 
       <#if authors?size gt maxAuthorsToShow + 1>

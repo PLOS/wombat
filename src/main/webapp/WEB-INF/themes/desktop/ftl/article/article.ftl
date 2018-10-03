@@ -99,10 +99,5 @@
 TODO: move reveal mode & fig-viewer divs to global location when the new lightbox is implemented sitewide
 -->
 <div class="reveal-modal-bg"></div>
-
-<#if peerReview??>
-  <script>console.log('This article has TPR content');</script>
-</#if>
-
 </body>
 </html>

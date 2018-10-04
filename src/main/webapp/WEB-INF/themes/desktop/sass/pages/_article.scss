@@ -411,6 +411,9 @@ $article-sidebar-width: 160;
     a.article-tab-5 {
       background: lighten($tabs-base-color, 40%);
     }
+    a.article-tab-6 {
+      background: lighten($tabs-base-color, 50%);
+    }
 
     a {
       display: block;

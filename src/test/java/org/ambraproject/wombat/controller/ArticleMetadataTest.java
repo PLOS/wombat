@@ -64,6 +64,7 @@ public class ArticleMetadataTest extends AbstractTestNGSpringContextTests {
     doReturn(null).when(articleMetadata).getCategoryTerms();
     doReturn(null).when(articleMetadata).getRelatedArticles();
     doReturn(null).when(articleMetadata).getRevisionMenu();
+    doReturn(new ArrayList()).when(articleMetadata).getPeerReview();
     doNothing().when(articleMetadata).populateAuthors(any());
 
     articleMetadata.populate(mock(HttpServletRequest.class), mock(Model.class));
@@ -74,6 +75,7 @@ public class ArticleMetadataTest extends AbstractTestNGSpringContextTests {
     verify(articleMetadata).getCategoryTerms();
     verify(articleMetadata).getRelatedArticles();
     verify(articleMetadata).getRevisionMenu();
+    verify(articleMetadata).getPeerReview();
     verify(articleMetadata).populateAuthors(any());
   }
 

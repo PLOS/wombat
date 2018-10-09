@@ -38,14 +38,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.ui.Model;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
@@ -186,5 +189,27 @@ public class ArticleControllerTest extends ControllerTest {
     verify(mockArticleApi, times(2)).requestObject(any(), eq(Map.class));
     verify(mockArticleMetadata).getArticlePointer();
     verify(mockCorpusContentApi).readManuscript(any(), any(), any(), any());
+  }
+
+  @Test
+  public void testPeerReviewNotFound(){
+    ArticleController articleController = new ArticleController();
+    Map<String, Object> map = new HashMap<String,Object>();
+
+    try {
+      articleController.throwIfPeerReviewNotFound(map);
+    } catch (NotFoundException e) {
+      return;
+    }
+    fail("should have thrown a NotFound exception");
+  }
+
+  @Test
+  public void testPeerReviewFound(){
+    ArticleController articleController = new ArticleController();
+    Map<String, Object> map = new HashMap<String,Object>();
+
+    map.put("peerReview", "foo");
+    articleController.throwIfPeerReviewNotFound(map);
   }
 }

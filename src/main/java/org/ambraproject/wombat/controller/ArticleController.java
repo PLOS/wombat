@@ -190,6 +190,9 @@ public class ArticleController extends WombatController {
     articleMetadataFactory.get(site, articleId)
         .validateVisibility("articlePeerReview")
         .populate(request, model);
+
+    throwIfPeerReviewNotFound(model.asMap());
+
     return site + "/ftl/article/peerReview";
   }
 
@@ -256,6 +259,12 @@ public class ArticleController extends WombatController {
     public XmlContent(String html, List<Reference> references) {
       this.html = Objects.requireNonNull(html);
       this.references = ImmutableList.copyOf(references);
+    }
+  }
+  
+  void throwIfPeerReviewNotFound(Map<String, Object> map) {
+    if (null == map.get("peerReview")) {
+      throw new NotFoundException();
     }
   }
 

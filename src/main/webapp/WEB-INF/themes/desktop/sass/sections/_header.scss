@@ -42,7 +42,7 @@ $nav-spacing: 15px;
 $nav-spacing-full: 25px;
 
 header {
-  background: $clr-header;
+  background: $grey-light;
   }
 
 .head-top {
@@ -79,18 +79,23 @@ $width-nav: $block-grid-elements - $width-logo;
   .nav-user {
     @extend .inline-list; // from foundation
     @extend .right; // from foundation
-    font-weight: bold;
+    font-weight: 400;
     > li {
       margin-top: rem-calc(-5);
       margin-left: rem-calc(4);
 
       > a {
         @include rounded-pill(transparent, rem-calc(14 16 8));
-        color: $plos-default;
+        color: $grey-dark;
 
         &:hover {
-          color: $clr-highlight-text;
-          background: $plos-default;
+          color: $black;
+          background: $grey-light;
+          
+          body.plosone & {
+            color: $white;
+            background: $plos-one-purple;
+            }
           }
 
         }
@@ -100,14 +105,16 @@ $width-nav: $block-grid-elements - $width-logo;
         color: $clr-highlight-text;
 
         body.plosone & {
-          color: $plos-default;
+          color: $black;
 
           &:hover {
             color: $clr-highlight-text;
+                          
             }
           }
 
         @extend %brand-background-hover;
+
         }
       }
     }
@@ -155,7 +162,9 @@ $width-nav: $block-grid-elements - $width-logo;
   @extend .hide-for-print;
   %nav-header-type {
     font-family: $font-face-navigation;
-    font-size: $txt-size-xlarge;
+    font-size: $txt-size-medium;
+    font-weight: 600;
+    text-transform:uppercase;
     }
   %nav-element-type {
     width: 100%;
@@ -165,6 +174,11 @@ $width-nav: $block-grid-elements - $width-logo;
     &:hover {
       color: $clr-highlight-text;
       background: $clr-highlight-hover;
+
+				body.plosone & {
+					color: $white;
+					background: $plos-one-purple;
+				}
       }
     }
 
@@ -210,7 +224,7 @@ $width-nav: $block-grid-elements - $width-logo;
   ul.nav-elements {
     .menu-section-header {
       @extend %nav-header-type;
-      color: $clr-link;
+      color: $black;
       cursor: pointer;
       border-left: 1px solid $clr-separator;
       &:first-child {
@@ -360,6 +374,7 @@ $width-nav: $block-grid-elements - $width-logo;
       height: auto;
       font-family: $font-face-plain;
       font-size: $txt-size-large;
+      text-transform: none;
       .plosone & {
         font-size: $txt-size-medium-large;
         }
@@ -389,7 +404,9 @@ $width-nav: $block-grid-elements - $width-logo;
       a.button-link {
         @extend %brand-color;
         font-family: $font-face-fancy;
-        font-size: $txt-size-large;
+        font-size: $txt-size-medium;
+        font-weight: 600;
+        text-transform:uppercase;
         background: $grey-dark !important; /// This has to stand until i dig out foundation
         white-space: nowrap;
         margin-left: $pad-small;
@@ -440,13 +457,15 @@ $width-nav: $block-grid-elements - $width-logo;
 
       input[type="text"] {
         margin: 0;
-        padding: 0;
+        padding: 0 $pad-xsmall;
         border: none;
         display: inline-block;
         width: rem-calc(150);
         font-family: $font-face-fancy;
-        font-size: $txt-size-xlarge;
+        font-size: $txt-size-medium;
         color: $clr-input-active;
+        text-align: left;
+        text-transform: uppercase;
         top: 0 !important;
         }
       @include input-placeholder-color();
@@ -477,12 +496,17 @@ $width-nav: $block-grid-elements - $width-logo;
     line-height: 32px;
     padding: 0;
     font-size: rem-calc($txt-size-small);
-    @include link-text($clr-highlight-hover, underline);
+    @include link-text($black, underline);
     }
   // this is the only way I could find to override the white background on hover
   ul > li.head-search:hover:not(.has-form) > a {
     background: $clr-header;
     color: $plos-default;
+    
+     .plosone & {
+       color: $plos-one-purple;
+       }
+       
     }
   }
 

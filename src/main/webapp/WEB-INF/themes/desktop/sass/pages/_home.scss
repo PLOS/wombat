@@ -39,6 +39,10 @@ $image-container: ($image-width + $pad-small);
   // home specific colors
   /////
   background: $clr-header;
+  
+  &.plosone {
+  	background: $white;
+  	}
 
   %width-full {
     @include plos-grid-column($pixelwidth: full-width);
@@ -330,11 +334,29 @@ $image-container: ($image-width + $pad-small);
   @extend %width-full;
   @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-small $pad-default);
   position: relative;
+  
+    body.plosone & {
+			@include blocks($white, $shadow: none, $radius: none);
+			border: 1px solid $plos-one;
+			border-left: 10px solid $plos-one;
+			}
+
   h3, a {
     color: $white;
+    
+    body.plosone & {
+        color: $plos-one-pink;
+      }
+      
     }
   h3 {
     font-size: rem-calc($txt-size-xlarge);
+    
+    body.plosone & {
+        font-size: rem-calc($txt-size-medium);
+    }
+    
+    
     }
   h4 {
     font-family: $font-face-plain;

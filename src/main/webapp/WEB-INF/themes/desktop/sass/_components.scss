@@ -49,6 +49,11 @@ category: components
   @if $hover == true {
     &:hover {
       background: $clr-link-hover;
+      
+      body.plosone & {
+      	background: $plos-one-purple;
+      }
+      
     }
   } @else {
   }
@@ -64,13 +69,13 @@ category: components
 }
 
 %button-base{
-  border-radius: 4px;     //matches production
+  border-radius: 3px;     //matches production
   width: auto;
   padding: $pad-xsmall;
   height: auto;
   line-height: rem-calc(17);
   font-size: $txt-size-xsmall;
-  font-weight: bold;
+  font-weight: 600;
   color: $white;
 }
 
@@ -84,7 +89,7 @@ category: components
 .button-big{
   @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-small);
   line-height: rem-calc($button-height);
-  font-weight: bold;
+  font-weight: 600;
   font-size: $txt-size-mediumish;
   text-align: center;
   &.highlighted{
@@ -99,6 +104,15 @@ category: components
   font-size: $txt-size-medium;
   text-align: center;
   @extend %brand-background-hover;
+  
+  body.plosone & {
+	  font-size: $txt-size-small;
+	  font-weight: 600;
+	  text-transform: uppercase;
+	  background: $plos-one-pink;
+	  color: $white;
+		}
+  
   }
 
 @mixin circle($circumference: 18, $background: $plos-default) {
@@ -151,6 +165,7 @@ variable  | result   | default
      // no radius
   } @if $radius == all {
     border-radius: $border-radius-default;
+
 }
   // set block padding
   @if $padding == default {
@@ -172,6 +187,7 @@ variable  | result   | default
 
 .block{
   @include blocks();
+  
 }
 .block-noshadow{
   @include blocks($shadow: none);
@@ -183,6 +199,11 @@ variable  | result   | default
 .block-dark{
   @include blocks($radius: all, $color: $grey-dark, $shadow: none)
 }
+
+body.plosone .block  {
+	@include blocks($shadow: none, $radius: none);  
+}
+  
 
 
 ///PLACEHOLDER STYLES
@@ -441,7 +462,7 @@ TypeAhead
     background-color: white;
     min-width: 100%;
     border: 1px solid $grey-med-light;
-    border-top-color: transparent;
+   border-top-color: transparent;
     padding: $pad-small/2 0;
   }
   h5 {

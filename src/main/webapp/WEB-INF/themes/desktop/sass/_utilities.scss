@@ -117,6 +117,8 @@ $clr-highlight-text: $white) {
   }
 }
 
+
+
 @mixin highlight-border($clr-highlight: $plos-default, $width: 6px, $position: bottom) {
 
   @if $position == bottom {
@@ -202,7 +204,7 @@ example | extension
     &:hover {
       background-color: $plos-default;
       color: $text-color-hover;
-      	
+
     }
   }
   //color shading variations on adjacent box headers
@@ -331,6 +333,11 @@ example | extension
 <div class="example-box-shadow">i have box-shadow</div> | ` @include box-shadow()`
 
 */
+
+
+@mixin border-default{
+     border: 1px solid $grey-light;
+}
 
 .center-simple {
   margin: 0 auto;

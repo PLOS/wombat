@@ -39,7 +39,7 @@ $image-container: ($image-width + $pad-small);
   // home specific colors
   /////
   background: $clr-header;
-  
+
   &.plosone {
   	background: $white;
   	}
@@ -194,9 +194,13 @@ $image-container: ($image-width + $pad-small);
     }
   }
 
+
 .block {
+
   position: relative;
   height: $block-height;
+  @include border-default;
+
   .blurb {
     color: $grey-med-dark;
     a {
@@ -262,6 +266,7 @@ $image-container: ($image-width + $pad-small);
 
       }
     }
+
 
   }
 
@@ -334,7 +339,7 @@ $image-container: ($image-width + $pad-small);
   @extend %width-full;
   @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-small $pad-default);
   position: relative;
-  
+
     body.plosone & {
 			@include blocks($white, $shadow: none, $radius: none);
 			border: 1px solid $plos-one;
@@ -343,20 +348,20 @@ $image-container: ($image-width + $pad-small);
 
   h3, a {
     color: $white;
-    
+
     body.plosone & {
         color: $plos-one-pink;
       }
-      
+
     }
   h3 {
     font-size: rem-calc($txt-size-xlarge);
-    
+
     body.plosone & {
         font-size: rem-calc($txt-size-medium);
     }
-    
-    
+
+
     }
   h4 {
     font-family: $font-face-plain;

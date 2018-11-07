@@ -72,7 +72,7 @@ $plos-med-shade1: #d4afe0;
 $plos-med-shade2: #c493d4;
 $plos-med-shade3: #decbe4;
 
-$clr-brand: $plos-default;
+
 
 $black: #000;
 $white: #fff;
@@ -92,6 +92,8 @@ $warning: #e53350;
 $alert: #ffd87a;
 $success: #16a127;
 
+$clr-brand: $grey-med-light;
+
 //colors
 
 $clr-highlight: $plos-default !default;
@@ -106,7 +108,7 @@ $clr-panel: $white;
 $clr-header: $grey-light;
 $clr-separator: $grey-med-light;
 
-$clr-link: $clr-highlight;
+$clr-link: $plos-default;
 $clr-body-text: $black;
 $clr-link-hover: $grey-dark;
 $clr-muted: $grey-med-dark;

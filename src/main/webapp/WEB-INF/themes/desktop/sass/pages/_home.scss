@@ -34,7 +34,8 @@ $image-container: ($image-width + $pad-small);
 //2. use pixel widths - Digital Pulp submitted designs with columns in pixel widths that vary from page to page.
 // questions:
 // I am using foundation settings values.
-.home {
+
+body {
   ///////
   // home specific colors
   /////
@@ -169,8 +170,9 @@ $image-container: ($image-width + $pad-small);
     bottom: 0;
     padding: $pad-small $pad-default;
     font-size: rem-calc($txt-size-medium-large);
+
     h4 {
-      font-size: $txt-size-giant;
+      font-size: $txt-size-medium;
       @extend .no-margin;
       }
     .authors {
@@ -189,8 +191,18 @@ $image-container: ($image-width + $pad-small);
         vertical-align: bottom;
         display: inline-block;
         line-height: 1;
+
+        body.plos-one & {
+          display: none;
+        }
         }
       }
+    }
+    body.plosone & {
+      width: 100%;
+      left:0;
+      font-size: rem-calc($txt-size-medium);
+      background-color: $plos-one-teal;
     }
   }
 
@@ -239,6 +251,10 @@ $image-container: ($image-width + $pad-small);
   .category {
     @extend %brand-title;
     margin-bottom: $pad-xsmall;
+
+    body.plosone & {
+      color: $plos-one-purple;
+    }
     }
   .title {
     @extend %header-xlarge;

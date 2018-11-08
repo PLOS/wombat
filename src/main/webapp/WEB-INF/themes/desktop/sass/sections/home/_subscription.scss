@@ -20,15 +20,23 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-.home {
-  main {
-    .plos-row {
+/* .home {
+ main {
+    .plos-row {*/
       .home-email-subscription {
         @extend %width-full;
         @extend .block-card;
 
         background-color: $clr-home-subscription-bg;
-        padding: $pad-large $pad-default;
+
+          .plosone & {
+            background-color: $white;
+            border: 1px solid $plos-one;
+            border-left: 10px solid $plos-one;
+            color: $black;
+          }
+
+        padding: $pad-medium $pad-default;
         transition: background-color 500ms linear;
 
         h2, .input-group, button {
@@ -45,6 +53,11 @@
           &.multiline {
             margin-top: rem-calc(-5);
           }
+
+          .plosone & {
+            color: $plos-one-pink;
+            margin-bottom: rem-calc(4);
+          }
         }
 
         h2, .input-group {
@@ -54,15 +67,24 @@
         a {
           color: $white;
           text-decoration: underline;
+
+          body.plosone & {
+            color: $plos-one-purple;
+          }
         }
 
         .button-default {
           border: 0 solid transparent;
           text-transform: uppercase;
           font-weight: bold;
-          font-size: $txt-size-large;
+          font-size: $txt-size-medium;
           background-color: $clr-home-subscription-button;
           color: white;
+
+          .plosone & {
+            background-color: $plos-one-pink;
+            color: $white;
+          }
         }
 
         form {
@@ -77,6 +99,10 @@
           .button-row{
             text-align: center;
 
+            body.plosone & {
+              text-align: right;
+            }
+
             > * {
               float: none;
             }
@@ -85,14 +111,21 @@
           .input-group {
             width: rem-calc(250);
 
+            body.plosone & {
+              width:100%;
+              display: block;
+            }
+
             input {
-              @include border-radius();
+            //  @include border-radius();
               line-height: rem-calc(33);
-              border: 0 solid transparent;
-              text-align: center;
-              font-size: $txt-size-large;
+              border: 1px solid $grey-med-light;
+              text-align: left;
+              font-size: $txt-size-small;
               width: 100%;
               float: left;
+              padding: 0 6px;
+              text-transform: uppercase;
             }
 
             label.error {
@@ -114,6 +147,11 @@
 
           label.email_consent {
             color: white;
+
+            .plosone & {
+              color: $grey-med;
+              font-size: $txt-size-small;
+            }
           }
         }
 
@@ -157,6 +195,6 @@
           }
         }
       }
-    }
-  }
-}
+/*     }
+ }
+}*/

@@ -64,6 +64,11 @@
   bottom: 40px;
   z-index: 2;
   box-sizing: content-box;
+
+  body.plosone & {
+    background-color: $plos-one-teal;
+    color: $white;
+  }
 }
 
 .article-block .details h2 {
@@ -73,11 +78,15 @@
 }
 
 .article-block .details h2 a {
-  color: #333;
+  color: $grey-dark;
+
+  body.plosone & {
+    color: $grey-light;
+  }
 }
 
 .article-block .details p {
-  color: #fff;
+  color: $white;
   margin: 0;
 }
 
@@ -120,8 +129,8 @@
   line-height: 40px;
   text-align: center;
   text-decoration: none;
-  color: #fff;
-  background: #333;
+  color: $white;
+  background: $grey-dark;
 }
 
 .article-block .actions li.disabled {
@@ -331,4 +340,3 @@ div.tooltipContainer {
 }
 
 /* END METRICS IN BROWSE */
-

@@ -61,12 +61,17 @@ have a fixed width and height (but it's not required).
   $icon-height: rem-calc(30);
   $carousel-width: rem-calc(306);
   // TODO PG-width is set in home.scss
-  @extend %brand-shading;
+  // @extend %brand-shading;
   @extend .block-card;
-  margin-right: $pad-default;
+  margin-right: $pad-xsmall;
   position: relative;
   .block-header {
     @extend %brand-header;
+
+      .plosone & {
+        background-color: $white;
+        color: $plos-one-purple;
+      }
   }
   .carousel {  //TODO: do we move this into home?
     li {

@@ -40,19 +40,18 @@ For example: instead of using `font-size: 22px` you should  instead use `font-si
 
 //journal specific
 
-$plos-default: #3c63af; //blue
+$plos-default: #666; //blue
 
 $plos-bio: #16a127; //green: biology, comp-bio, genetics
 $plos-med: #891fb1; // purple: medicine, pathogens, ntds
 $plos-currents: #1dbfe0; // light blue
-$generic-brand: #ccc;
+$generic-brand: #aaa;
 
+// plos one rebrand 2018
 $plos-one: #d7df23; //lime
 $plos-one-purple: #3e0577;
 $plos-one-pink: #cc00a6;
 $plos-one-teal: #3daca0;
-
-
 
 //hues for background shading - mostly for signposts for article
 $plos-default-shade1: #abc2e8;
@@ -92,7 +91,7 @@ $warning: #e53350;
 $alert: #ffd87a;
 $success: #16a127;
 
-$clr-brand: $grey-med-light;
+$clr-brand: $grey-dark;
 
 //colors
 

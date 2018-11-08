@@ -211,7 +211,11 @@ example | extension
   %brand-shading {
     &:first-child {
       .block-header {
-        background-color: darken($setcolor, 18%);
+        background-color: darken($setcolor, 13%);
+        
+        body.plos-one & {
+          background-color: $white;
+        }
       }
       .jcarousel-prev,
       .jcarousel-next {
@@ -223,7 +227,11 @@ example | extension
     }
     &:first-child + .carousel-wrap {
       .block-header {
-        background-color: darken($setcolor, 13%);
+        background-color: darken($setcolor, 0);
+
+        body.plos-one & {
+          background-color: $white;
+        }
       }
       .jcarousel-prev,
       .jcarousel-next {

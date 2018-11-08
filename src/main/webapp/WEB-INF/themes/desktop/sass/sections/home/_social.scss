@@ -23,7 +23,7 @@
 
 
 #social-links {
-  @include blocks($color: #04417d, $radius: all, $padding: $pad-xsmall, $shadow: none);
+  @include blocks($color: $plos-default, $radius: none, $padding: $pad-xsmall, $shadow: none);
 
   h3 {
     @extend %header-xlarge-light;
@@ -59,7 +59,7 @@
     .social-blogs {
       width: rem-calc(104);
       line-height: ($txt-size-xxlarge * 2);
-      font-size: rem-calc($txt-size-medium-large);
+      font-size: rem-calc($txt-size-medium);
       font-family: $font-face-fancy;
     }
   }

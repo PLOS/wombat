@@ -39,7 +39,7 @@
 
 /// nav spacing stuff
 $nav-spacing: 15px;
-$nav-spacing-full: 25px;
+$nav-spacing-full: 15px;
 
 header {
   background: $grey-light;
@@ -89,13 +89,9 @@ $width-nav: $block-grid-elements - $width-logo;
         color: $grey-dark;
 
         &:hover {
-          color: $black;
-          background: $grey-light;
-          
-          body.plosone & {
-            color: $white;
-            background: $plos-one-purple;
-            }
+          color: $white;
+          background: $grey-dark;
+
           }
 
         }
@@ -109,7 +105,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
           &:hover {
             color: $clr-highlight-text;
-                          
+
             }
           }
 
@@ -177,7 +173,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
 				body.plosone & {
 					color: $white;
-					background: $plos-one-purple;
+					background: $grey-med;
 				}
       }
     }
@@ -216,7 +212,7 @@ $width-nav: $block-grid-elements - $width-logo;
       padding-right: 0;
       }
     &:first-child {
-      border-left: 1px solid transparent;
+    /*  border-left: 1px solid transparent;*/
       margin-left: 0;
       }
     }
@@ -226,7 +222,7 @@ $width-nav: $block-grid-elements - $width-logo;
       @extend %nav-header-type;
       color: $black;
       cursor: pointer;
-      border-left: 1px solid $clr-separator;
+    /*  border-left: 1px solid $clr-separator;*/
       &:first-child {
         border-left: none;
         }
@@ -462,7 +458,7 @@ $width-nav: $block-grid-elements - $width-logo;
         display: inline-block;
         width: rem-calc(150);
         font-family: $font-face-fancy;
-        font-size: $txt-size-medium;
+        font-size: $txt-size-small;
         color: $clr-input-active;
         text-align: left;
         text-transform: uppercase;
@@ -502,11 +498,7 @@ $width-nav: $block-grid-elements - $width-logo;
   ul > li.head-search:hover:not(.has-form) > a {
     background: $clr-header;
     color: $plos-default;
-    
-     .plosone & {
-       color: $plos-one-purple;
-       }
-       
+
     }
   }
 
@@ -514,4 +506,3 @@ $width-nav: $block-grid-elements - $width-logo;
 #user, #topslot {
   @extend .hide-for-print;
   }
-

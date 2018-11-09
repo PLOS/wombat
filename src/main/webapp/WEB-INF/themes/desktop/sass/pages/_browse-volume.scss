@@ -21,6 +21,9 @@
  */
 
 @include dark-background;
+body.plosone {
+  background-color: $white;
+}
 
 h1 {
   @extend .title-primary-large;
@@ -181,9 +184,3 @@ ul#journal_slides {
     }
   }
 }
-
-
-
-
-
-

@@ -50,9 +50,9 @@ category: components
     &:hover {
       background: $clr-link-hover;
 
-      body.plosone & {
+    /*  body.plosone & {
       	background: $plos-one-purple;
-      }
+      }*/
 
     }
   } @else {

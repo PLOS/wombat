@@ -129,7 +129,7 @@ $article-sidebar-width: 160;
 
         &.show-tip {
           background-color: $plos-default;
-          border-radius: $border-radius-default;
+          border-radius: $border-radius-smaller;
           color: $white;
         }
       }
@@ -137,7 +137,7 @@ $article-sidebar-width: 160;
       p {
         @extend %signposts-tooltip-transition;
         background-color: $plos-default;
-        border-radius: $border-radius-default;
+        border-radius: $border-radius-smaller;
         max-width: rem-calc(280);
         position: absolute;
         text-align: left;
@@ -400,19 +400,19 @@ $article-sidebar-width: 160;
       background: $tabs-base-color;
     }
     a.article-tab-2 {
-      background: lighten($tabs-base-color, 10%);
+      background: lighten($tabs-base-color, 8%);
     }
     a.article-tab-3 {
-      background: lighten($tabs-base-color, 20%);
+      background: lighten($tabs-base-color, 16%);
     }
     a.article-tab-4 {
-      background: lighten($tabs-base-color, 30%);
+      background: lighten($tabs-base-color, 24%);
     }
     a.article-tab-5 {
-      background: lighten($tabs-base-color, 40%);
+      background: lighten($tabs-base-color, 32%);
     }
     a.article-tab-6 {
-      background: lighten($tabs-base-color, 50%);
+      background: lighten($tabs-base-color, 40%);
     }
 
     a {

@@ -26,13 +26,16 @@
     height: 387px;
     overflow: hidden;
     padding: 0;
-    border: 1px solid $grey-light;
     margin: 0;
     background: #fff;
     position: absolute;
     top: 0;
     right: 0;
     z-index: 1;
+
+    body.plosone & {
+      border: 1px solid $grey-light;
+    }
   }
   /* END TWEETS */
 

@@ -27,7 +27,7 @@ $block-height-small: rem-calc(180);
 
 $image-width: rem-calc(70);
 $hero-height: rem-calc(380);
-$image-container: ($image-width + $pad-small);
+$image-container: ($image-width + $pad-xsmall);
 
 // this mixin extends the foundation grid to do two things it can't do
 //1. add margins on the outside if needed
@@ -42,8 +42,8 @@ body {
   background: $clr-header;
 
   &.plosone {
-  	background: $white;
-  	}
+    background: $white;
+    }
 
   %width-full {
     @include plos-grid-column($pixelwidth: full-width);
@@ -84,7 +84,7 @@ body {
   h1, h2, h3, h5, h6 {
     font-family: $font-face-fancy;
     line-height: 1;
-    margin-bottom: 0;
+    margin-bottom: $line-height-small;
     }
   h1 {
     font-size: rem-calc($txt-size-giant);
@@ -97,7 +97,7 @@ body {
     }
   p {
     line-height: rem-calc($txt-size-mediumish);
-    margin-bottom: 0.3125rem;
+    margin-bottom: 0.3125;
     }
 
   }
@@ -150,7 +150,7 @@ body {
     background: image-url("gradient-light_1x364.png") repeat-x bottom;
     }
   img {
-    @include border-top-radius();
+   // @include border-top-radius();
     width: 100%;
     }
   // hero colors: default is white text
@@ -170,6 +170,16 @@ body {
     bottom: 0;
     padding: $pad-small $pad-default;
     font-size: rem-calc($txt-size-medium-large);
+    
+      body.plosone & {
+      width: 50%;
+      bottom:10px;
+      left:0;
+      right:50%;
+      font-size: rem-calc($txt-size-medium);
+      background-color: $plos-one-teal;
+      
+    }
 
     h4 {
       font-size: $txt-size-medium;
@@ -191,21 +201,34 @@ body {
         vertical-align: bottom;
         display: inline-block;
         line-height: 1;
+                        }
 
-        body.plos-one & {
-          display: none;
-        }
-        }
+
       }
     }
-    body.plosone & {
-      width: 100%;
-      left:0;
-      font-size: rem-calc($txt-size-medium);
-      background-color: $plos-one-teal;
-    }
   }
-
+    
+    body.plosone {
+        .hero {
+            .hero-content {
+                .title {
+                    font-size: rem-calc($txt-size-large);
+                    text-transform: uppercase;
+                }
+                p {
+                    &.credit {
+                        display: none;
+                    }
+                }
+                
+                .published_at,
+                .authors {
+                    display: none;
+                }
+            }
+        }
+    }
+ 
 
 .block {
 
@@ -214,7 +237,8 @@ body {
   @include border-default;
 
   .blurb {
-    color: $grey-med-dark;
+    color: $grey-med;
+    margin: $line-height-small 0 0;
     a {
       @include link-text($color: $plos-default, $decoration-hover: underline);
       }
@@ -223,43 +247,52 @@ body {
     width: $image-container;
     display: block;
     position: absolute;
-    left: $pad-small;
+    left: $pad-xsmall;
     top: $pad-small;
+    
 
     }
   &.image .block-content {
-    margin-left: ($image-container + $pad-small);
-    margin-right: $pad-small;
-    height: ($block-height - ($pad-default));
+    margin-left: ($image-container + $pad-xsmall);
+    margin-right: $pad-xsmall;
+    height: ($block-height - ($pad-small));
     overflow: hidden;
     }
   // components
   .date {
-    @extend %small-italic;
+   
     @extend .right;
     //padding-right on block-content needs to be overridden here
-    margin-right: -$pad-default;
+    margin-right: -$pad-xsmall;
+    font-size: $txt-size-xsmall;
+    color: $grey-med;
     }
   .credits {
-    @extend %small-italic;
+    //@extend %small-italic;
+    font-size: $txt-size-xxxsmall;
     position: absolute;
     bottom: $pad-small;
-    left: ($image-container + $pad-default);
-    margin: 0 $pad-small + $pad-xsmall 0 0;
-
+    left: ($image-container + $pad-small);
+    margin: 0;
+    color: $grey-med-light;
     }
   .category {
     @extend %brand-title;
-    margin-bottom: $pad-xsmall;
-
+    margin-bottom: $line-height-small;
+    font-size: $txt-size-xxxsmall;
+    letter-spacing: .1rem;
+    font-weight: 600;
+    
     body.plosone & {
       color: $plos-one-purple;
     }
     }
   .title {
-    @extend %header-xlarge;
-    margin-bottom: $pad-xsmall;
+   // @extend %header-large;
+    margin-bottom: $line-height-small;
     @extend %link-text-body;
+    font-size: $txt-size-medium-large;
+    font-weight: 600;
 
     //in case p tag is added in CMS, need to override global settings
     p {
@@ -270,20 +303,33 @@ body {
 
   .block-content {
     position: relative;
-    padding-right: $pad-default;
-    font-size: rem-calc($txt-size-default);
+    padding-right: $pad-xsmall;
+    font-size: rem-calc($txt-size-xxsmall);
     }
 
   &.small {
     .title {
-      @extend %home-subheader;
-      @extend %header-medium-bold;
-      line-height: 1.1;
+     // @extend %home-subheader;
+     // @extend %header-large;
+     font-size: $txt-size-small;
+      line-height: $line-height;
 
       }
     }
 
 
+  }
+
+    
+.plosone .block.image .block-image img,
+.plosone .block.large.image .block-image img,
+.plosone .block.small.image .block-image img    {
+    filter: gray; /* IE6-9 */
+      -webkit-filter: grayscale(75%); /* Chrome 19+ & Safari 6+ */
+      -moz-filter: grayscale(75%);
+      -ms-filter: grayscale(75%);
+      -o-filter: grayscale(75%);
+      filter: grayscale(75%);
   }
 
 // ROW THREE: is VERY different than the others
@@ -319,7 +365,7 @@ body {
       .block.small {
         height: $block-height;
         .block-image {
-          height: ($block-height - ($pad-default));
+          height: ($block-height - ($pad-small));
           overflow: hidden;
           }
         }
@@ -330,60 +376,59 @@ body {
 // ROW THREE: spacing and other styling details.
 .row.three {
   .row-small-blocks .small {
-    $small-block-spacing: ($pad-xsmall/2);
+    $small-block-spacing: ($pad-small/2);
     .date, .category {
-      margin-bottom: $small-block-spacing;
+      margin-bottom: $line-height-small;
       }
     .date {
-      float: none !important; // sadly have to use this to override the .right on the other blocks
+     // float: none !important; // sadly have to use this to override the .right on the other blocks
       margin-right: 0;
       }
     .title {
-      margin-top: $small-block-spacing;
+      //margin-top: $line-height-small;
       a {
         font-family: $font-face-fancy;
-        font-weight: bold;
-        font-size: rem-calc($txt-size-medium);
-        @include link-text($color: $grey-med-dark);
+        font-weight: 600;
+        font-size: rem-calc($txt-size-small);
+        @include link-text($color: $black);
         }
       }
     }
   }
+  
+  
+
 
 // ROW THREE: heights and other styling details.
 #billboard {
   @extend %width-full;
-  @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-small $pad-default);
+  @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-default);
   position: relative;
 
     body.plosone & {
-			@include blocks($white, $shadow: none, $radius: none);
-			border: 1px solid $plos-one;
-			border-left: 10px solid $plos-one;
-			}
+            @include blocks($white, $shadow: none, $radius: none);
+            border: 1px solid $plos-one;
+            border-left: 10px solid $plos-one;
+            }
 
   h3, a {
     color: $white;
 
-    body.plosone & {
-        color: $plos-one-pink;
-      }
-
     }
   h3 {
     font-size: rem-calc($txt-size-xlarge);
-
-    body.plosone & {
-        font-size: rem-calc($txt-size-medium);
-    }
-
 
     }
   h4 {
     font-family: $font-face-plain;
     color: $grey-med-light;
     font-size: rem-calc($txt-size-medium-large);
-    line-height: rem-calc(17)
+    line-height: rem-calc(18);
+    
+        body.plosone & {
+        font-size: rem-calc($txt-size-medium);
+        color: $plos-one-purple;
+    }
 
     }
   a {
@@ -396,6 +441,23 @@ body {
     right: $pad-default;
     top: 50%;
     margin-top: rem-calc(-13);
+    
+     body.plosone & {
+         color: $white;
+         font-weight: 600;
+         font-size: rem-calc($txt-size-small);
+         text-transform: uppercase;
+         background-color: $plos-one-pink;
+         letter-spacing: .1rem;
+    }
+
+    }
+        body.plosone & {
+            h3 {
+        font-size: rem-calc($txt-size-large);
+        line-height: $line-height-large;
+        color: $plos-one-purple;
+        }
     }
   }
 
@@ -407,6 +469,7 @@ body {
 
   h3 {
     @extend %brand-title;
+    margin: 0 0 $line-height-small;
     }
 
   ul.list-plain {
@@ -415,7 +478,7 @@ body {
 
     li {
       color: $clr-body-text;
-      margin-bottom: 15px;
+      margin-bottom: $line-height-small;
 
       a {
         @extend %link-text-body;
@@ -437,7 +500,7 @@ body {
   right: auto;
   > a {
     @extend %link-text-body;
-    @extend %header-allcaps-plain;
+  //  @extend %header-allcaps-plain;
     }
   &:after {
     @extend .more-icon;
@@ -478,7 +541,11 @@ body {
 
 #twitter {
   @extend %width-small;
-  margin-bottom: rem-calc(16); // non-standard to account for the drop-shadow on adjacent containers
+  margin-bottom: rem-calc(12); // non-standard to account for the drop-shadow on adjacent containers
+  
+  body.plosone & {
+      outline: 1px solid $grey-light;
+  }
   }
 
 //ISCB box
@@ -505,17 +572,21 @@ body {
   }
 
 #submission-links {
-  @include blocks($color: $grey-dark, $radius: all, $padding: $pad-small $pad-medium $pad-xsmall $pad-medium, $shadow: none);
+  @include blocks($color: $grey-dark, $radius: none, $padding: $pad-small, $shadow: none);
   @extend %width-small;
   //padding-top: $pad-small + $pad-xsmall;
-  p{text-align: center; margin:$pad-default auto $pad-small auto}
-  a {
+  
+  	p{
+	  	text-align: center; 
+	  	margin:$pad-default auto $pad-small auto;
+	  	}
+    a {
     @include link-text($color: $clr-link-against-dark, $decoration-hover: underline);
-    font-size: $txt-size-medium-large;
+    font-size: $txt-size-medium;
     font-family: $font-face-fancy;
-  }
-  h3 {
-    @extend %header-bottom-shadow;
+     }
+    h3 {
+  //  @extend %header-bottom-shadow;
     @extend %header-xlarge-light;
     }
 
@@ -534,12 +605,60 @@ body {
       }
 
     }
+    
   }
+  
+ body.plosone #submission-links {
+      @include blocks();
+            border: 1px solid $plos-one;
+            border-left: 10px solid $plos-one;
+         p {
+	  	text-align: left; 
+	  	margin:$pad-default auto $pad-small auto;
+	  	}
+    a {
+	     @include border-radius();
+	color: $white;
+	background-color: $plos-one-pink;
+    font-size: $txt-size-xxsmall;
+    font-family: $font-face-fancy;
+	text-transform: uppercase;
+	font-weight: 600;
+	margin-right: $pad-small;
+	line-height: 1;
+	padding: $pad-small $pad-default;
+     }
+           
+            
+            h3 {
+             color: $plos-one-purple;
+            text-transform: uppercase;
+            font-size: $txt-size-medium;
+            font-weight: 600;
+            margin-bottom: $line-height-small;
+            }
+              .split-item {
+    margin: 0 !important;
+    width: 90%;
+    height: 40px;
+    text-align: center;
+    &:first-child {
+	    display:none;
+      /*border-right: 0;
+      a {
+	      background-color: $white;
+	      border: 1px solid $plos-one-pink;
+	      color: $plos-one-pink;
+      }*/
+      }
+
+    }
+ }
 
 
 #social-links {
   @extend %width-small;
-  @include blocks($color: #04417d, $radius: all, $padding: $pad-xsmall, $shadow: none);
+  @include blocks($color: #04417d, $radius: none, $padding: $pad-xsmall, $shadow: none);
 
   h3 {
     @extend %header-xlarge-light;
@@ -592,10 +711,11 @@ body {
   .block-header {
     @extend %brand-header;
     @extend %link-text-white;
+    
     }
 
   #blogrss {
-    padding: $pad-default $pad-default 0;
+    padding: $pad-xsmall $pad-xsmall 0;
     div {
       @include clearfix();
       margin-bottom: $pad-small;
@@ -606,38 +726,47 @@ body {
       width: $image-width;
       background-size: cover;
       background-position: center;
-      margin-right: $pad-small;
+      margin-right: $pad-xsmall;
       margin-bottom: 0;
       }
     .postdate {
-      margin: 0;
+      margin: 0 0 $line-height-xsmall;
       font-size: $txt-size-xxxsmall;
       font-family: $font-face-plain;
       color: $clr-muted;
       padding: 0;
       }
     .posttitle {
-      height: 30px;
-      line-height: 15px;
+      line-height: 1.1;
       overflow: hidden;
-      margin: $pad-xsmall 0;
+      margin: 0;
       a {
         @extend %link-text-body;
         font-family: $font-face-fancy;
-        font-size: $txt-size-small;
+        font-size: $txt-size-xsmall;
+        font-weight: 600;
         }
       }
     .postauthor {
-      @extend %small-italic;
-      color: $clr-muted;
-      margin: 0;
+/*      @extend %small-italic;*/
+      color: $grey-med;
+      margin: $pad-small 0;
       padding: 0;
+      font-family: $font-face-fancy;
+      font-size: $txt-size-xxxsmall;
+      letter-spacing: .05rem;
+      text-transform: uppercase;
+      line-height: $line-height-small;
+     
       }
     }
   .more-link {
+    font-size: $txt-size-xxxsmall;
     bottom: $pad-small;
-    left: ($image-width + ($pad-large + $pad-small));
+    left: ($image-width + ($pad-large + $pad-large));
+
     }
+
   }
 
 #ad-slot-bottom {
@@ -651,4 +780,16 @@ body {
     margin-top:0;
 
     }
-  }
+
+}  
+        body.plosone #blogs {
+            .block-header {
+                 background-color: $white;
+                a {
+                    color: $plos-one-purple; 
+                }
+            }
+        }
+           
+
+

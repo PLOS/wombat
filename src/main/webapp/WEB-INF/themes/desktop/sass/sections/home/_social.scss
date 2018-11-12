@@ -24,10 +24,11 @@
 
 #social-links {
   @include blocks($color: $plos-default, $radius: none, $padding: $pad-xsmall, $shadow: none);
+  
 
   h3 {
     @extend %header-xlarge-light;
-    text-indent: $pad-small;
+    text-indent: $pad-default;
     margin-bottom: $pad-small;
     margin-top: $pad-small;
     font-weight: normal;
@@ -50,7 +51,7 @@
         }
       }
       .social {
-        width: ($txt-size-xxlarge * 2);
+        width: ($txt-size-large * 2);
       }
       .icon-text {
         @extend .aria-text;
@@ -58,7 +59,7 @@
     }
     .social-blogs {
       width: rem-calc(104);
-      line-height: ($txt-size-xxlarge * 2);
+      line-height: ($txt-size-large * 2);
       font-size: rem-calc($txt-size-medium);
       font-family: $font-face-fancy;
     }

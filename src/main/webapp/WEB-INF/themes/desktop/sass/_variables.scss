@@ -75,10 +75,10 @@ $plos-med-shade3: #decbe4;
 
 $black: #000;
 $white: #fff;
-$grey-dark: #333;
+$grey-dark: #303030;
 
-$grey-med-dark: #666;
-$grey-med: #707070;
+$grey-med-dark: #606060;
+$grey-med: #909090;
 
 $grey-med-light: #c0c0c0;
 $grey-light: #e0e0e0;
@@ -158,10 +158,10 @@ $grid-width: 980px;
 $grid-columns: 12;
 
 // layout patterns
-$border-radius-smaller: 2px;
-$border-radius-small: 3px; //icon backgrounds
-$border-radius-default: 5px;
-$border-radius-large: 8px;
+$border-radius-smaller: 1px;
+$border-radius-small: 2px; //icon backgrounds
+$border-radius-default: 3px;
+$border-radius-large: 5px;
 $default-box-shadow-color: rgba(0, 0, 0, 0.15);
 $default-box-shadow-h-offset: 1px;
 $default-box-shadow-v-offset: 1px;
@@ -202,7 +202,7 @@ $font-face-navigation: $font-face-fancy;
 $font-face-headings: $font-face-fancy;
 // special fonts for article display
 $font-face-roman: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
-$font-face-sans-serif: "Arial Narrow", Arial, Helvetica, sans-serif;
+$font-face-sans-serif: Helvetica, Arial, sans-serif;
 $font-face-monospace: "Courier New", monospace;
 
 //Type Sizes
@@ -230,8 +230,33 @@ $txt-size-h5: $txt-size-default; // may not use
 $txt-size-h6: $txt-size-default; // may not use
 $txt-size-note: $txt-size-small;
 
-$txt-margin-bottom-h3: 16px;
-$txt-margin-top-h3: 24px;
+/*$txt-size-giant: 32px;
+$txt-size-xxxlarge: 26px;
+$txt-size-xxlarge: 22px;
+$txt-size-xlarge: 20px;
+$txt-size-large: 18px;
+$txt-size-medium-large: 16px;
+$txt-size-mediumish: 15px;
+$txt-size-medium: 14px;
+$txt-size-small: 13px;
+$txt-size-xsmall: 12px;
+$txt-size-xxsmall: 11px;
+$txt-size-xxxsmall: 10px;
+$txt-size-xxxxsmall: 9px;
+
+$txt-size-pgtitle: $txt-size-xxxlarge;
+$txt-size-default: $txt-size-small;
+$txt-size-h1: $txt-size-xlarge;  //TODO- should this be page title?
+$txt-size-h2: $txt-size-xlarge;
+$txt-size-h3: $txt-size-medium-large;
+$txt-size-h4: $txt-size-medium-large;
+$txt-size-h5: $txt-size-default; // may not use
+$txt-size-h6: $txt-size-default; // may not use
+$txt-size-note: $txt-size-small;
+*/
+
+$txt-margin-bottom-h3: 12px;
+$txt-margin-top-h3: 12px;
 
 $sub-alignment: .5ex; //controls sub text
 $sup-alignment: 1ex; //controls super text
@@ -247,7 +272,7 @@ $paragraph-spacing: $line-height-small;
 $list-spacing: $paragraph-spacing;
 $line-height-icon: rem-calc(35);
 
-$button-height: 35px;
+$button-height: 36px;
 
 // Here we define the breakpoints which will become the upper border for each media size.
 // The function em-calc() calculates the em-value from a px-value.

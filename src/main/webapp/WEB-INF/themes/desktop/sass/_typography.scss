@@ -138,32 +138,32 @@ ol {
 
 /// sizes are set in foundation.
 h2, h3, h4, h5 {
-  font-family: $font-face-plain;
+  font-family: $font-face-fancy;
 }
 
 // font-weights
 h3, h5 {
-  font-weight: bold;
+  font-weight: 400;
 }
 
 h4 {
-  font-weight: normal;
+  font-weight: 400;
 }
 
 //spacing
 h2, h3, h4, h5 {
   margin-bottom: rem-calc($line-height-small);
-  margin-top: rem-calc($line-height-medium);
-  line-height: normal;
+  margin-top: rem-calc($line-height-small);
+  line-height: $line-height;
 }
 
 h2 {
-  margin-bottom: rem-calc($line-height);
+
   font-size: rem-calc($txt-size-h2);
-  font-weight: normal;
+  font-weight: 400;
 }
 
-
+/*
 
 h3 {
   margin-bottom: rem-calc($txt-margin-bottom-h3);
@@ -172,7 +172,7 @@ h3 {
 
 h4, h5 {
   margin-top: rem-calc($line-height-small);
-}
+}*/
 
 //special title styles
 
@@ -294,7 +294,7 @@ blockquote, .pullquote, .block-quote {
 %brand-title {
   @extend %header-allcaps;
   @extend %brand-color;
-  margin-bottom: $pad-small;
+  //margin-bottom: $pad-small;
 }
 
 %brand-header {

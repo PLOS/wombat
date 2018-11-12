@@ -71,6 +71,8 @@ have a fixed width and height (but it's not required).
       .plosone & {
         background-color: $white;
         color: $plos-one-purple;
+		border-bottom:1px solid $grey-light;
+        font-weight: 600;
       }
   }
   .carousel {  //TODO: do we move this into home?
@@ -79,11 +81,15 @@ have a fixed width and height (but it's not required).
       padding: $pad-default;
       height: 145px;
       h3 {
-        @extend %home-subheader;
-        @extend  %header-large;
+       // @extend %home-subheader;
+       // @extend  %header-large;
+       font-size: rem-calc($txt-size-default);
+       font-weight: 600;
+       line-height: $line-height;
+       margin-bottom: $line-height-small;
       }
       p {
-        font-size: rem-calc($txt-size-medium);
+        font-size: rem-calc($txt-size-small);
       }
     }
   }
@@ -109,7 +115,8 @@ have a fixed width and height (but it's not required).
       @extend .fa-chevron-circle-right;
     }
     .numbers {
-      @extend %small-italic;
+     // @extend %small-italic;
+     font-size: $txt-size-xsmall;
       color: $grey-med-dark;
       display: inline-block;
       padding: 0 $pad-xsmall;

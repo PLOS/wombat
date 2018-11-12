@@ -48,7 +48,7 @@ $level-wrapper-width: $level-container-width + rem-calc(88);
 $level-selection-bg: $grey-dark;
 
 .areas {
-  background: $tabs-base-color;
+  background: $grey-dark;
 
    .wrapper {
     width: $level-wrapper-width;
@@ -224,11 +224,11 @@ $level-selection-bg: $grey-dark;
   width: $level-width;
   height: $level-scroll-height;
   overflow: hidden;
-  background: $grey-light;
+  background: $white;
 
   a {
     text-decoration: none;
-    color: $grey-dark;
+    color: $grey-med-dark;
   }
 }
 

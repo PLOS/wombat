@@ -582,6 +582,7 @@ body.plosone {
     @include link-text($color: $clr-link-against-dark, $decoration-hover: underline);
     font-size: $txt-size-medium;
     font-family: $font-face-fancy;
+    margin-top: $line-height-small;
   }
   h3 {
   //  @extend %header-bottom-shadow;

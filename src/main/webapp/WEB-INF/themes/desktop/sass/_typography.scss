@@ -152,8 +152,7 @@ h4 {
 
 //spacing
 h2, h3, h4, h5 {
-  margin-bottom: rem-calc($line-height-small);
-  margin-top: rem-calc($line-height-small);
+  margin-bottom: rem-calc($line-height-xsmall);
   line-height: $line-height;
 }
 

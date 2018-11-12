@@ -20,9 +20,6 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-/* .home {
- main {
-    .plos-row {*/
       .home-email-subscription {
         @extend %width-full;
         @extend .block-card;
@@ -55,8 +52,9 @@
           }
 
           .plosone & {
-            color: $plos-one-pink;
-            margin-bottom: rem-calc($line-height-medium);
+            color: $plos-one-purple;
+            margin-top: rem-calc($line-height-small);
+            margin-bottom: rem-calc($line-height-small);
           }
         }
 
@@ -77,13 +75,14 @@
           border: 0 solid transparent;
           text-transform: uppercase;
           font-weight: 600;
-          font-size: $txt-size-medium;
+          font-size: $txt-size-small;
           background-color: $clr-home-subscription-button;
           color: $white;
 
           .plosone & {
             background-color: $plos-one-pink;
             color: $white;
+            width: 8rem;
           }
         }
 
@@ -100,7 +99,8 @@
             text-align: center;
 
             body.plosone & {
-              text-align: right;
+	            max-width: 100%;
+              text-align: left;
             }
 
             > * {
@@ -112,7 +112,7 @@
             width: rem-calc(250);
 
             body.plosone & {
-              width:100%;
+              width:30rem;
               display: block;
             }
 
@@ -125,7 +125,8 @@
               width: 100%;
               float: left;
               padding: 0 6px;
-              text-transform: uppercase;
+              &::placeholder {
+	              text-transform: uppercase; }
             }
 
             label.error {
@@ -143,6 +144,7 @@
             width: 100%;
             margin-top: rem-calc(5);
             color: white;
+     
           }
 
           label.email_consent {
@@ -151,6 +153,7 @@
             .plosone & {
               color: $grey-med;
               font-size: $txt-size-small;
+                     
             }
           }
         }
@@ -195,6 +198,17 @@
           }
         }
       }
-/*     }
- }
-}*/
+
+.plosone  { 
+	.home-email-subscription {
+		form {
+			label.error_consent,
+			label.error {
+				color: $plos-one-pink;
+	            background: lighten($plos-one, 50%);
+	            font-size: $txt-size-small;
+	            font-style: italic;
+			}
+		}
+	}        
+}

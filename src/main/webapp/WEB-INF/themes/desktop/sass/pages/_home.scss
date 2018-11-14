@@ -40,6 +40,9 @@ body {
   // home specific colors
   /////
   background: $white;
+  &.home {
+	  background-color: $grey-light;
+  }
 
   &.plosone {
     background: $white;
@@ -598,7 +601,7 @@ body.plosone {
     @include link-text($color: $white, $decoration-hover: underline);
     font-size: $txt-size-medium;
     font-family: $font-face-fancy;
-    margin-top: $line-height-small;
+    //margin-top: $line-height-small;
   }
   h3 {
   //  @extend %header-bottom-shadow;
@@ -679,9 +682,10 @@ body.plosone #submission-links {
 
 
   h3 {
-    @extend %header-xlarge-light;
-    margin-bottom: $pad-small;
-    text-indent: 0;
+    color: $white;
+    margin: 0 0 $pad-small 0;
+    text-align: left;
+    text-indent: $pad-xsmall;
   }
   ul {
     list-style: none;

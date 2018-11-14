@@ -39,7 +39,7 @@ body {
   ///////
   // home specific colors
   /////
-  background: $clr-header;
+  background: $white;
 
   &.plosone {
     background: $white;
@@ -403,7 +403,7 @@ body.plosone {
         font-size: rem-calc($txt-size-small);
         @include link-text($color: $black);
         &:hover {
-           @include brandcolor();
+          @include brandcolor();
         }
       }
     }
@@ -416,7 +416,7 @@ body.plosone {
 // ROW THREE: heights and other styling details.
 #billboard {
   @extend %width-full;
-  @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-default);
+  @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-medium);
   position: relative;
 
   body.plosone & {
@@ -431,12 +431,14 @@ body.plosone {
   }
   h3 {
     font-size: rem-calc($txt-size-xlarge);
+    margin: 0;
   }
   h4 {
     font-family: $font-face-plain;
     color: $grey-med-light;
     font-size: rem-calc($txt-size-medium-large);
     line-height: rem-calc(18);
+    margin-bottom: $line-height-small;
 
     body.plosone & {
       font-size: rem-calc($txt-size-medium);
@@ -460,6 +462,9 @@ body.plosone {
       font-size: rem-calc($txt-size-xsmall);
       text-transform: uppercase;
       background-color: $plos-one-pink;
+      &:hover {
+	      @extend %brand-background;
+      }
     }
   }
   body.plosone & {
@@ -581,7 +586,7 @@ body.plosone {
 }
 
 #submission-links {
-  @include blocks($color: $grey-med, $radius: none, $padding: $pad-small, $shadow: none);
+  @include blocks($color: $grey-med-dark, $radius: none, $padding: $pad-small, $shadow: none);
   @extend %width-small;
   //padding-top: $pad-small + $pad-xsmall;
 
@@ -590,7 +595,7 @@ body.plosone {
     margin: $pad-default auto $pad-small auto;
   }
   a {
-    @include link-text($color: $clr-link-against-dark, $decoration-hover: underline);
+    @include link-text($color: $white, $decoration-hover: underline);
     font-size: $txt-size-medium;
     font-family: $font-face-fancy;
     margin-top: $line-height-small;
@@ -636,8 +641,8 @@ body.plosone #submission-links {
     line-height: 1;
     padding: $pad-small $pad-default;
     &:hover {
-       @extend %brand-background;
-       text-decoration: none;
+      @extend %brand-background;
+      text-decoration: none;
     }
   }
 
@@ -669,13 +674,14 @@ body.plosone #submission-links {
 
 #social-links {
   @extend %width-small;
-  @include blocks(/*$color: #04417d, */$radius: none, $padding: $pad-xsmall, $shadow: none);
+  @extend %brand-background;
+  @include blocks($radius: none, $padding: $pad-xsmall, $shadow: none);
 
 
   h3 {
     @extend %header-xlarge-light;
-  /*  text-indent: $pad-xsmall;*/
     margin-bottom: $pad-small;
+    text-indent: 0;
   }
   ul {
     list-style: none;
@@ -684,14 +690,14 @@ body.plosone #submission-links {
       float: left;
       margin: 0 0 0 rem-calc(4);
       > a {
-        background: $plos-default;
+        @extend %brand-background;
         border-radius: $border-radius-default;
         display: inline-block;
         height: ($txt-size-xlarge * 2);
         text-align: center;
         color: $clr-light-text;
         &:hover {
-          background: $grey-dark;
+          @extend %brand-background-hover;
         }
       }
 
@@ -704,8 +710,8 @@ body.plosone #submission-links {
     }
     .social-blogs {
       width: rem-calc(104);
-      line-height: ($txt-size-xxlarge * 2);
-      font-size: rem-calc($txt-size-medium-large);
+      line-height: ($txt-size-xlarge * 2);
+      font-size: rem-calc($txt-size-large);
       font-family: $font-face-fancy;
     }
   }
@@ -714,13 +720,15 @@ body.plosone #submission-links {
     @include blocks($color: $plos-one-pink);
 
     h3 {
-        text-transform: uppercase;
-        font-size: $txt-size-medium-large;
+      text-transform: uppercase;
+      font-size: $txt-size-medium-large;
+      text-indent: $pad-xsmall;
     }
     ul {
       > li {
         > a {
           background: $plos-one-pink;
+          color: $white;
           &:hover {
             background: $plos-one-purple;
           }
@@ -793,7 +801,9 @@ body.plosone #submission-links {
   .more-link {
     font-size: $txt-size-xsmall;
     bottom: $pad-small;
-    left: ($image-width + ($pad-large + $pad-large));
+    right: $pad-small;
+    text-align: right;
+   // right: ($image-width + ($pad-large + $pad-large));
   }
 }
 

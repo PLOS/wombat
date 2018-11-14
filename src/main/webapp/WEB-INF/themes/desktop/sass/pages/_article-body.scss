@@ -58,29 +58,38 @@ $line-height-small: ($line-height * .5);
       padding-top: $target-large-offset;
     }
   }
-  a:target{
+  a:target {
     margin-top: -$target-offset;
     padding-top: $target-offset;
-    display:inline-block;
+    display: inline-block;
   }
 }
 
-.article-body.content, .article-content {
+.article-body.content,
+.article-content {
   a {
-    @extend %link-text-default;
+    //@extend %link-text-default;
+    @extend %brand-color;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .plosone & {
+    a {
+      color: $plos-one-purple;
+    }
   }
 }
 
-.body-section{
+.body-section {
   margin-top: $line-height-medium;
   margin-bottom: $line-height-medium;
 }
 
-
-
 .article-content {
 
- .section > div {
+  .section > div {
     margin-bottom: $line-height;
   }
 
@@ -91,7 +100,6 @@ $line-height-small: ($line-height * .5);
 
   .abstract {
     h2 {
-
     }
   }
 
@@ -106,13 +114,16 @@ $line-height-small: ($line-height * .5);
       &:first-child {
         border-top: 0 none;
       }
-
     }
   }
 
-  .callout-standard, .box {
+  .callout-standard,
+  .box {
     @include callout();
-    h2:first-of-type, h3:first-of-type { margin-top: 0;}  //TODO - abstract a little
+    h2:first-of-type,
+    h3:first-of-type {
+      margin-top: 0;
+    }  //TODO - abstract a little
   }
 
   .callout-alert {
@@ -124,7 +135,7 @@ $line-height-small: ($line-height * .5);
     margin-bottom: $line-height-medium;
     position: relative;
 
-    a.info-link{
+    a.info-link {
       @extend .icon-question;
       position: absolute;
       top: $pad-small;
@@ -142,19 +153,21 @@ $line-height-small: ($line-height * .5);
       }
     }
 
-    .link-separator::after{
+    .link-separator::after {
       content: '| ';
       color: $clr-body-text;
       font-weight: normal;
     }
 
     .amendment-link,
-    .amendment-date{
+    .amendment-date {
       font-weight: bold;
     }
   }
 
-  .amendment-eoc, .amendment-retraction, .amendment-uncorrected-proof{
+  .amendment-eoc,
+  .amendment-retraction,
+  .amendment-uncorrected-proof {
     @extend .callout-alert;
     h2 {
       color: $clr-warning;
@@ -163,7 +176,6 @@ $line-height-small: ($line-height * .5);
         //TODO - make this a mixin? do we adjust line-height on all icons?
         @extend .icon-alert;
         font-size: $txt-size-medium-large;
-
       }
     }
   }
@@ -175,7 +187,6 @@ $line-height-small: ($line-height * .5);
       &:before {
         content: '';
         @extend .icon-correction;
-
       }
     }
   }
@@ -199,7 +210,6 @@ $line-height-small: ($line-height * .5);
   span.inline-formula {
     display: inline-block;
     vertical-align: middle; //NOTE: I like this but set it to "text-top" is another option.
-
   }
   span.equation {
     display: block;
@@ -213,7 +223,6 @@ $line-height-small: ($line-height * .5);
       text-align: right;
       font-weight: bold;
     }
-
   }
 
   .attrib {
@@ -224,14 +233,14 @@ $line-height-small: ($line-height * .5);
   }
 
   // supplementary materials - need to have no margin between paragraphs just below the box
-  .supplementary-material{
+  .supplementary-material {
     margin-bottom: $line-height;
-    p {margin-bottom: 0;}
-
+    p { margin-bottom: 0; }
   }
-  .figshare_widget{
+  .figshare_widget {
     @extend .hide-for-print;
-    .fw-download-trigger-one-file:hover, .fw-download-trigger:hover{
+    .fw-download-trigger-one-file:hover,
+    .fw-download-trigger:hover {
       color: $white;   //sadly have to force this to overide styles. Yeah, it HS ot be this specific.
     }
   }
@@ -256,11 +265,11 @@ $line-height-small: ($line-height * .5);
       }
       &.amendment-eoc a {
         font-weight: bold;
-        color: $clr-warning
+        color: $clr-warning;
       }
       &.amendment-retraction a {
         font-weight: bold;
-        color: $clr-warning
+        color: $clr-warning;
       }
     }
   }
@@ -314,7 +323,7 @@ $line-height-small: ($line-height * .5);
   text-align: center;
   width: 100%;
   &:hover .carousel-control .button,
-  .carousel-control.controls-show  button{
+  .carousel-control.controls-show  button {
     display: block;
   }
   .carousel-wrapper {
@@ -329,7 +338,7 @@ $line-height-small: ($line-height * .5);
 
   .carousel-item {
     float: left;
-    border-right:$fc-pad-item-between solid $fc-colorbg-container;
+    border-right: $fc-pad-item-between solid $fc-colorbg-container;
     width: ($fc-size-item-width + $fc-pad-item-between);
     height: $fc-size-item-height;
     background-color: $fc-colorbg-item;
@@ -344,16 +353,16 @@ $line-height-small: ($line-height * .5);
       margin: $fc-pad-item-inside auto;
     }
 
-    &.empty{
+    &.empty {
       background-color: $fc-colorbg-container;
     }
   }
 
-  .carousel-control{
-    .button{
+  .carousel-control {
+    .button {
       @extend .fa;
       top: 50px;
-      right:$fc-button-pad;
+      right: $fc-button-pad;
       display: none;
       position: absolute;
       background-color: $clr-body-text;
@@ -365,13 +374,17 @@ $line-height-small: ($line-height * .5);
       text-align: center;
       cursor: pointer;
       color: $white; //TODO- use buttons
-      &.previous{ @extend .fa-caret-left; }
-      &.next{ @extend .fa-caret-right;}
-      &:hover{
+      &.previous {
+        @extend .fa-caret-left;
+      }
+      &.next {
+        @extend .fa-caret-right;
+      }
+      &:hover {
         background-color: $plos-default;
       }
-      &:first-child{
-        left:$fc-button-pad;
+      &:first-child {
+        left: $fc-button-pad;
       }
     }
   }
@@ -387,10 +400,10 @@ $line-height-small: ($line-height * .5);
       display: inline-block;
       color: $grey-med;
 
-      &.active, &:hover {
+      &.active,
+      &:hover {
         color: $plos-default;
       }
-
     }
   }
 }
@@ -486,7 +499,8 @@ $line-height-small: ($line-height * .5);
   position: relative;
   font-family: $font-face-plain;  //for table expand link
 
-  div, p {
+  div,
+  p {
     margin: 0 0 8px;
   }
 
@@ -584,13 +598,13 @@ $line-height-small: ($line-height * .5);
   span {
     @extend %link-text-default;
     font-size: $txt-size-small;
-
   }
 }
 
 
 
-.article-content .reflinks, #lightbox-refs .reflinks {
+.article-content .reflinks,
+#lightbox-refs .reflinks {
   @include clearfix;
   margin-bottom: 0;
   margin-left: 0;
@@ -598,7 +612,7 @@ $line-height-small: ($line-height * .5);
 //  height: rem-calc(25);
 
   li {
-   float: left;
+    float: left;
     margin: 0 rem-calc(4) $pad-small $pad-default;
     padding: 0;
     list-style-type: disc;
@@ -607,16 +621,15 @@ $line-height-small: ($line-height * .5);
     list-style-type: none;
     margin-left: 0;
   }
-
 }
 
 
-$number-margin:  rem-calc(25);
+$number-margin: rem-calc(25);
 ol.references {
 
   list-style-type: none;
   padding-left: $number-margin;
-  > li{
+  > li {
     @include clearfix;
     margin-bottom: $line-height;
   }
@@ -669,7 +682,8 @@ ol.references {
     }
   }
   //for the arrow
-  &:after, &:before {
+  &:after,
+  &:before {
     top: 100%;
     left: 50%;
     border: solid transparent;
@@ -694,24 +708,24 @@ ol.references {
     margin-left: rem-calc(-13);
   }
 }
-.article-content{
-  ol.simple{
-    list-style:none;
-    }
-  ol.roman-lower{
-    list-style:lower-roman;
+.article-content {
+  ol.simple {
+    list-style: none;
   }
-  ol.roman-upper{
-    list-style:upper-roman;
+  ol.roman-lower {
+    list-style: lower-roman;
   }
-  ol.alpha-lower{
-    list-style:lower-alpha;
+  ol.roman-upper {
+    list-style: upper-roman;
   }
-  ol.alpha-upper{
-    list-style:upper-alpha;
+  ol.alpha-lower {
+    list-style: lower-alpha;
   }
-  ol.order{
-    list-style:decimal;
+  ol.alpha-upper {
+    list-style: upper-alpha;
+  }
+  ol.order {
+    list-style: decimal;
   }
 }
 @media print {
@@ -721,6 +735,6 @@ ol.references {
 }
 //figure page
 
-.article-id{
+.article-id {
   @extend .pad-default-y;
 }

@@ -30,10 +30,13 @@ $article-sidebar-width: 160;
 
 //shared article Styles
 
-.article-tabs{
-  h1{@extend .title-primary;}
-  h2{@extend .title-secondary;}
-
+.article-tabs {
+  h1 {
+    @extend .title-primary;
+  }
+  h2 {
+    @extend .title-secondary;
+  }
 }
 
 // extensible layout styles
@@ -81,7 +84,7 @@ $article-sidebar-width: 160;
   }
 
   .anime-hide {
-     opacity: 0;
+    opacity: 0;
   }
   @include plos-grid-column($article-sidebar-width, $gutter: none);
   @extend .inline-list;
@@ -159,7 +162,8 @@ $article-sidebar-width: 160;
       p.citations-tip {
         top: rem-calc(93);
         right: rem-calc(30);
-        .scopus, .crossref {
+        .scopus,
+        .crossref {
           display: none;
         }
       }
@@ -173,37 +177,37 @@ $article-sidebar-width: 160;
       }
     }
   }
-    .unavailable {
-      width: rem-calc($article-sidebar-width);
-      border-right: 0;
-      border-bottom: 0;
-      font-size: $txt-size-xsmall;
-      font-weight: normal;
-      text-align: right;
-      color: $grey-med-dark;
-    }
-    #loadingMetrics {
-      @extend .unavailable;
-      position: relative;
-      height: rem-calc($article-sidebar-width);
+  .unavailable {
+    width: rem-calc($article-sidebar-width);
+    border-right: 0;
+    border-bottom: 0;
+    font-size: $txt-size-xsmall;
+    font-weight: normal;
+    text-align: right;
+    color: $grey-med-dark;
+  }
+  #loadingMetrics {
+    @extend .unavailable;
+    position: relative;
+    height: rem-calc($article-sidebar-width);
 
-      text-align: center;
-      p {
-        padding-top: rem-calc(75);
-        font-size: $txt-size-medium-large;
-      }
-    }
-    #tooSoon {
-      @extend .unavailable;
-      padding: $pad-small $pad-small;
-    }
-    #metricsError {
-      @extend .unavailable;
-      padding: rem-calc(105) $pad-small $pad-small $pad-default;
-      background: $grey-light;
-      height: rem-calc($article-sidebar-width);
+    text-align: center;
+    p {
+      padding-top: rem-calc(75);
+      font-size: $txt-size-medium-large;
     }
   }
+  #tooSoon {
+    @extend .unavailable;
+    padding: $pad-small $pad-small;
+  }
+  #metricsError {
+    @extend .unavailable;
+    padding: rem-calc(105) $pad-small $pad-small $pad-default;
+    background: $grey-light;
+    height: rem-calc($article-sidebar-width);
+  }
+}
 
 .article-meta {
   //  padding-right: $pad-default;
@@ -249,7 +253,6 @@ $article-sidebar-width: 160;
       content: '';
       @extend .icon-correction;
     }
-
   }
 
   .article-type {
@@ -273,13 +276,14 @@ $article-sidebar-width: 160;
   h1 {
     @extend .title-primary;
     margin-bottom: $pad-small;
-    i, italic, named-content {
+    i,
+    italic,
+    named-content {
       font-style: italic;
     }
   }
   #revisionMenu {
     display: inline-block;
-
   }
   .date-doi {
     @include clearfix();
@@ -291,8 +295,8 @@ $article-sidebar-width: 160;
       float: left;
       margin: 0 $pad-small;
 
-      &.revisionList+li, &:first-child
-      {
+      &.revisionList + li,
+      &:first-child {
         margin: 0 $pad-small 0 0;
         padding-left: 0;
         list-style-type: none;
@@ -355,7 +359,9 @@ $article-sidebar-width: 160;
       line-height: rem-calc(16);
       margin: rem-calc(2) 0;
 
-      i, italic, named-content {
+      i,
+      italic,
+      named-content {
         font-style: italic;
       }
     }
@@ -435,8 +441,8 @@ $article-sidebar-width: 160;
       font-weight: bold;
       font-family: $font-face-plain;
 
-      &:after{
-        content:"\f103";
+      &:after {
+        content: "\f103";
         position: absolute;
         bottom: $pad-xsmall;
         left: rem-calc(8);
@@ -463,21 +469,21 @@ $article-sidebar-width: 160;
     position: relative;
     margin-left: -($pad-highlight * 1.5);
 
-    &.active{
-      a:hover{text-decoration: none;}
+    &.active {
+      a:hover { text-decoration: none; }
     }
 
-    &[data-js-toggle='toggle_trigger'] a{
+    &[data-js-toggle='toggle_trigger'] a {
       color: $clr-highlight;
     }
 
-    > a, > span{
+    > a,
+    > span {
       display: inline-block;   // needed to overwrite the inline-list
       padding: $pad-highlight $pad-highlight-x; //TODO line-height;
     }
-
   }
-  .contribute{
+  .contribute {
     @extend .icon-author-contribute;
   }
 
@@ -492,25 +498,26 @@ $article-sidebar-width: 160;
 
 
   ///print styles
-  [data-js-toggle="toggle_trigger"], [data-js-toggle="toggle_add"]{
+  [data-js-toggle="toggle_trigger"],
+  [data-js-toggle="toggle_add"] {
     @extend .hide-for-print;
   }
-  [data-js-toggle="toggle_target"]{
+  [data-js-toggle="toggle_target"] {
     @extend .show-for-print;
   }
 }
 
-.author-info{
+.author-info {
   @extend .pill-small;
   padding-right: ($pad-default);
   width: rem-calc(450);
   top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
   height: auto;
-  position:absolute;
+  position: absolute;
   margin-top: $pad-small;
   display: none;
 
-  p{
+  p {
     border-top: rem-calc(2) solid $grey-med;
     padding: $pad-small 0;
     &:first-child {
@@ -518,11 +525,12 @@ $article-sidebar-width: 160;
     }
   }
 
-  .email, .rel-footnote {
+  .email,
+  .rel-footnote {
     @include icon-offscreen;
     margin-right: $icon-space;
   }
-  .orcid span.type {display: none;}
+  .orcid span.type { display: none; }
 }
 
 #orcid-id-logo {
@@ -531,7 +539,10 @@ $article-sidebar-width: 160;
 }
 
 .author-list .active {
-  a, a:hover { color: $white; }
+  a,
+  a:hover {
+    color: $white;
+  }
 
   .author-name {
     @include rounded-pill($padding: $pad-highlight $pad-highlight-x,$hover: false);
@@ -553,26 +564,26 @@ $article-sidebar-width: 160;
 .article-type {
   height: auto;
   width: auto;
-  display:table;
+  display: table;
   @include js-tooltip-container();
 }
 
-.type-desc{
+.type-desc {
   @include tooltip();
   @include js-tooltip-target($margintop: rem-calc(35));
   left: 0;
 
-  p{
+  p {
     color: $clr-tooltip-text;
     text-transform: none;
 
-    a{
+    a {
       @extend %link-text-white;
     }
   }
 }
 
-.article-type-tooltip{
+.article-type-tooltip {
   @include tooltip-trigger($outside-box: yes);
   font-family: $font-face-plain;
   font-size: $txt-size-xxxsmall;
@@ -594,7 +605,7 @@ $article-sidebar-width: 160;
     color: $white;
 
     &:hover {
-      background: $plos-default;
+      @extend %brand-background;
     }
   }
 
@@ -605,7 +616,7 @@ $article-sidebar-width: 160;
     white-space: nowrap;
     &:not(.no-pdf) {
       &:hover {
-        background: $plos-default;
+        @extend %brand-background;
       }
     }
 
@@ -621,7 +632,7 @@ $article-sidebar-width: 160;
     width: 20%;
     &:hover {
       cursor: pointer;
-      background: $plos-default;
+      @extend %brand-background;
     }
   }
 
@@ -652,7 +663,7 @@ $article-sidebar-width: 160;
   }
 }
 
-.print-article{
+.print-article {
   @extend .button-big;
   @include js-tooltip-container;
   @include plos-grid-column(77, $gutter:right, $gutter-width: 5px);
@@ -681,7 +692,6 @@ $article-sidebar-width: 160;
     padding-bottom: $pad-small;
     margin-bottom: rem-calc(8); // TEMP PROD: use 10px;
   }
-
 }
 
 .share-article {
@@ -778,7 +788,6 @@ body.article .ui-widget-overlay {
       }
     }
   }
-
 }
 
 .skyscraper-container {
@@ -914,11 +923,11 @@ body.article .ui-widget-overlay {
         background: image-url('icon.taxonomy.target.png') no-repeat 0 0;
         cursor: pointer;
 
-        &:hover, &.flagged {
+        &:hover,
+        &.flagged {
           background-position: 0 -16px;
         }
       }
-
     }
   }
 }
@@ -1001,11 +1010,13 @@ body.article .ui-widget-overlay {
     }
   }
 
-  .more-tweets, .placeholderPic {
+  .more-tweets,
+  .placeholderPic {
     display: none;
   }
 
-  .load-more, .view-all {
+  .load-more,
+  .view-all {
     @extend %link-text-default;
     font-family: $font-face-fancy;
     font-size: $txt-size-large;
@@ -1030,7 +1041,7 @@ body.article .ui-widget-overlay {
   a {
     @include link-text($grey-med, underline);
     visibility: hidden;
-    padding-left:0;
+    padding-left: 0;
     padding-right: $pad-small;
     display: inline;
 
@@ -1068,7 +1079,6 @@ body.article .ui-widget-overlay {
       visibility: visible;
     }
   }
-
 }
 
 @media print {
@@ -1090,10 +1100,12 @@ body.article .ui-widget-overlay {
   }
 }
 
-section.authors{
+section.authors {
   margin-bottom: $line-height-large;
-  p{margin-bottom: rem-calc(3px);}
-  dt{font-size: $txt-size-medium-large; margin-bottom: $line-height-xsmall;}
-  span.rel-footnote{display: none;}
-
+  p { margin-bottom: rem-calc(3px); }
+  dt {
+    font-size: $txt-size-medium-large;
+    margin-bottom: $line-height-xsmall;
+  }
+  span.rel-footnote { display: none; }
 }

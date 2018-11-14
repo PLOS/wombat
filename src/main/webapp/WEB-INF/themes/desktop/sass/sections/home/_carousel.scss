@@ -68,28 +68,30 @@ have a fixed width and height (but it's not required).
   .block-header {
     @extend %brand-header;
 
-      .plosone & {
-        background-color: $white;
-        color: $plos-one-purple;
-		    border-bottom:1px solid $grey-light;
-        font-weight: 600;
-      }
+    .plosone & {
+      background-color: $white;
+      color: $plos-one-purple;
+      border-bottom: 1px solid $grey-light;
+      font-weight: 600;
+    }
   }
   .carousel {  //TODO: do we move this into home?
     li {
       width: $carousel-width;
-      padding: $pad-default;
+      padding: $pad-small $pad-default;
       height: 145px;
       h3 {
        // @extend %home-subheader;
        // @extend  %header-large;
-       font-size: rem-calc($txt-size-default);
-       font-weight: 600;
-       line-height: $line-height;
-       margin-bottom: $line-height-small;
+        font-size: rem-calc($txt-size-default);
+        font-weight: 600;
+        line-height: $line-height;
+        margin-bottom: $line-height-xsmall;
       }
       p {
         font-size: rem-calc($txt-size-small);
+        color: $grey-med;
+        line-height: $line-height;
       }
     }
   }
@@ -97,7 +99,7 @@ have a fixed width and height (but it's not required).
     position: absolute;
     bottom: $line-height-small;
     left: 45%;
-    width: 120px;
+    width: 60%;
     margin-left: -50px;
     .jcarousel-prev,
     .jcarousel-next {
@@ -119,7 +121,7 @@ have a fixed width and height (but it's not required).
     }
     .numbers {
      // @extend %small-italic;
-     font-size: $txt-size-xsmall;
+      font-size: $txt-size-xsmall;
       color: $grey-med;
       display: inline-block;
       padding: 0 $pad-xsmall;

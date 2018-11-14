@@ -20,201 +20,207 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-      .home-email-subscription {
-        @extend %width-full;
-        @extend .block-card;
-        color: $white;
-        background-color: $clr-home-subscription-bg;
+.home-email-subscription {
+  @extend %width-full;
+  @extend .block-card;
+  background-color: $grey-med-light;
+  
+  .plosone & {
+    background-color: $white;
+    border: 1px solid $plos-one-pink;
+    border-left: 10px solid $plos-one-pink;
+    color: $plos-one-purple;
+  }
 
-          .plosone & {
-            background-color: $white;
-            border: 1px solid $plos-one-pink;
-            border-left: 10px solid $plos-one-pink;
-            color: $plos-one-purple;
-          }
-
-        padding: $pad-small;/*
+  padding: $pad-default;/*
         transition: background-color 500ms linear;*/
 
-        h2, .input-group, button {
-          float: left;
-        }
+  h2,
+  .input-group,
+  button {
+    float: left;
+  }
 
-        h2 {
-          font-family: $font-face-fancy;
-          color: $white;
-          margin-top: rem-calc(4);
-          margin-bottom: $line-height-small;
-          line-height: $line-height-medium;
+  h2 {
+    font-family: $font-face-fancy;
+    margin-top: rem-calc($line-height-small);
+    margin-bottom: rem-calc($line-height-small);
+    line-height: $line-height-medium;
+    font-size: $txt-size-large;
 
-          &.multiline {
-            margin-top: rem-calc(-5);
-          }
+    &.multiline {
+      margin-top: rem-calc(-5);
+    }
 
-          .plosone & {
-            color: $plos-one-purple;
-            margin-top: rem-calc($line-height-small);
-            margin-bottom: rem-calc($line-height-small);
-          }
-        }
+    .plosone & {
+      color: $plos-one-purple;
+    }
+  }
 
-        h2, .input-group {
-          margin-right: $pad-default;
-        }
+  h2,
+  .input-group {
+    margin-right: $pad-default;
+  }
 
-        a {
-          color: $white;
-          text-decoration: underline;
+  a {
+    color: $black;
+    text-decoration: underline;
 
-          body.plosone & {
-            color: $plos-one-purple;
-          }
-        }
+    body.plosone & {
+      color: $plos-one-purple;
+    }
+  }
 
-        .button-default {
-          border: 0 solid transparent;
+  .button-default {
+    @extend %brand-background;
+    border: 0 solid transparent;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: $txt-size-small;
+    background-color: $clr-home-subscription-button;
+    color: $white;
+    width: 8rem;
+
+    .plosone & {
+      background-color: $plos-one-pink;
+      color: $white;
+
+      &:hover {
+        @extend %brand-background;
+      }
+    }
+  }
+
+  form {
+    h2 {
+      width: 100%;
+      color: $grey-dark;
+    }
+    div {
+      @extend .plos-row;
+      margin-bottom: $pad-small;
+    }
+
+    .button-row {
+      max-width: 100%;
+      text-align: left;
+
+      > * {
+        float: none;
+      }
+    }
+
+    .input-group {
+      width: 100%;
+
+      input {
+        line-height: rem-calc(33);
+        border: 1px solid $grey-med-dark;
+        text-align: left;
+        font-size: $txt-size-small;
+        width: 30rem;
+        float: left;
+        padding: 0 $pad-xsmall;
+        &::placeholder {
           text-transform: uppercase;
-          font-weight: 600;
-          font-size: $txt-size-small;
-          background-color: $clr-home-subscription-button;
-          color: $white;
-
-          .plosone & {
-            background-color: $plos-one-pink;
-            color: $white;
-            width: 8rem;
-            &:hover {
-              @extend %brand-background;
-            }
-          }
-        }
-
-        form {
-          h2 {
-            max-width: rem-calc(525);
-          }
-          div  {
-            @extend .plos-row;
-            margin-bottom: $pad-small;
-          }
-
-          .button-row{
-            text-align: center;
-
-            body.plosone & {
-	            max-width: 100%;
-              text-align: left;
-            }
-
-            > * {
-              float: none;
-            }
-          }
-
-          .input-group {
-            width: rem-calc(250);
-
-            body.plosone & {
-              width:30rem;
-              display: block;
-            }
-
-            input {
-            //  @include border-radius();
-              line-height: rem-calc(33);
-              border: 1px solid $grey-med-light;
-              text-align: left;
-              font-size: $txt-size-small;
-              width: 100%;
-              float: left;
-              padding: 0 $pad-xsmall;
-              &::placeholder {
-	              text-transform: uppercase; }
-            }
-
-            label.error {
-              display: none;
-              float: left;
-              width: 100%;
-              margin-top: rem-calc(5);
-              color: white;
-            }
-          }
-
-          label.error_consent {
-            display: none;
-            float: left;
-            width: 100%;
-            margin-top: rem-calc(5);
-            color: white;
-
-          }
-
-          label.email_consent {
-            color: white;
-            width: 100%;
-
-            .plosone & {
-              color: $grey-med;
-              font-size: $txt-size-small;
-
-            }
-          }
-        }
-
-        .error-message, .success-message {
-          display: none;
-        }
-
-        &.error {
-          background-color: $clr-warning !important;
-          .error-message {
-            display: block;
-          }
-
-          .success-message, form {
-            display: none;
-          }
-
-          a {
-
-          }
-        }
-
-        &.success {
-          background-color: $clr-success !important;
-          .success-message {
-            display: block;
-            h2 {
-              margin-top: 0;
-              width: 100%;
-            }
-
-            p {
-              margin-top: $list-nested-margin;
-              color: white;
-              float: left;
-            }
-          }
-
-          .error-message, form {
-            display: none;
-          }
         }
       }
 
-.plosone  {
-	.home-email-subscription {
-		form {
-			label.error_consent,
-			label.error {
-       @extend %brand-background;
 
-				color: $plos-one-pink;
-	      font-size: $txt-size-small;
-	      font-style: italic;
+      label.error {
+        display: none;
+        float: left;
+        width: 30rem;
+        margin-top: $line-height-small;
+        font-size: $txt-size-xsmall;
+        color: $warning;
+        background-color: $clr-warning-bg !important;
+        padding: $pad-xsmall;
+      }
+    }
+    .consent {
+      width: 100%;
+      text-align: left;
+
+      label.error_consent {
+        display: none;
         width: 100%;
-			}
-		}
-	}
+        float: left;
+        margin-top: $line-height-small;
+        font-size: $txt-size-xsmall;
+        color: $warning;
+        background-color: $clr-warning-bg !important;
+        padding: $pad-xsmall;
+      }
+
+      label.email_consent {
+        color: $grey-dark;
+        width: 100%;
+        line-height: $line-height;
+        font-size: $txt-size-small;
+
+        .plosone & {
+          color: $grey-med;
+        }
+      }
+    }
+  }
+
+  .error-message,
+  .success-message {
+    display: none;
+  }
+
+  &.error {
+    background-color: $clr-warning !important;
+    .error-message {
+      display: block;
+    }
+
+    .success-message,
+    form {
+      display: none;
+    }
+
+    a {
+    }
+  }
+
+  &.success {
+    background-color: $clr-success !important;
+    .success-message {
+      display: block;
+      h2 {
+        margin-top: 0;
+        width: 100%;
+      }
+
+      p {
+        margin-top: $list-nested-margin;
+        color: white;
+        float: left;
+      }
+    }
+
+    .error-message,
+    form {
+      display: none;
+    }
+  }
+}
+
+.plosone {
+  .home-email-subscription {
+    form {
+      label.error_consent,
+      label.error {
+        @extend %brand-background;
+
+        color: $plos-one-pink;
+        font-size: $txt-size-small;
+        font-style: italic;
+        width: 100%;
+      }
+    }
+  }
 }

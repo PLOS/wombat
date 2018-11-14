@@ -404,21 +404,27 @@ $article-sidebar-width: 160;
 
     a.article-tab-1 {
       background: $tabs-base-color;
+      color: $white;
     }
     a.article-tab-2 {
       background: lighten($tabs-base-color, 8%);
+      color: $white;
     }
     a.article-tab-3 {
       background: lighten($tabs-base-color, 16%);
+      color: $white;
     }
     a.article-tab-4 {
       background: lighten($tabs-base-color, 24%);
+      color: $white;
     }
     a.article-tab-5 {
       background: lighten($tabs-base-color, 32%);
+      color: $white;
     }
     a.article-tab-6 {
       background: lighten($tabs-base-color, 40%);
+      color: $white;
     }
 
     a {

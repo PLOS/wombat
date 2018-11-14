@@ -88,7 +88,7 @@ body {
   h6 {
     font-family: $font-face-fancy;
     line-height: 1;
-    margin-bottom: $line-height-small;
+    margin-bottom: $line-height;
   }
   h1 {
     font-size: rem-calc($txt-size-giant);
@@ -179,7 +179,7 @@ body {
 
     body.plosone & {
       width: 50%;
-      bottom: 10px;
+      bottom: $line-height-small;
       left: 0;
       right: 50%;
       font-size: rem-calc($txt-size-medium);
@@ -188,7 +188,7 @@ body {
 
     h4 {
       font-size: $txt-size-medium;
-      @extend .no-margin;
+    /*  @extend .no-margin;*/
     }
     .authors {
       width: 75%;
@@ -223,13 +223,14 @@ body.plosone {
       }
       p {
         &.credit {
-          display: none;
+          font-size: $txt-size-small;
         }
       }
 
       .published_at,
       .authors {
-        display: none;
+        font-size: $txt-size-xsmall;
+        width: 100%;
       }
     }
   }
@@ -237,7 +238,6 @@ body.plosone {
 
 
 .block {
-
   position: relative;
   height: $block-height;
   @include border-default;
@@ -276,7 +276,7 @@ body.plosone {
     font-size: $txt-size-xxxsmall;
     position: absolute;
     bottom: $pad-small;
-    left: ($image-container + $pad-small);
+    left: ($image-container + $pad-default);
     margin: 0;
     color: $grey-med-light;
   }
@@ -297,6 +297,7 @@ body.plosone {
     @extend %link-text-body;
     font-size: $txt-size-medium-large;
     font-weight: 600;
+    line-height: $line-height;
 
     //in case p tag is added in CMS, need to override global settings
     p {
@@ -319,6 +320,14 @@ body.plosone {
       line-height: $line-height;
     }
   }
+
+  .plosone .block {
+    .title {
+      &:hover {
+        color: $plos-one-purple;
+      }
+    }
+  }
 }
 
 
@@ -326,11 +335,11 @@ body.plosone {
 .plosone .block.large.image .block-image img,
 .plosone .block.small.image .block-image img {
   filter: gray; /* IE6-9 */
-  -webkit-filter: grayscale(75%); /* Chrome 19+ & Safari 6+ */
-  -moz-filter: grayscale(75%);
-  -ms-filter: grayscale(75%);
-  -o-filter: grayscale(75%);
-  filter: grayscale(75%);
+  -webkit-filter: grayscale(50%); /* Chrome 19+ & Safari 6+ */
+  -moz-filter: grayscale(50%);
+  -ms-filter: grayscale(50%);
+  -o-filter: grayscale(50%);
+  filter: grayscale(50%);
 }
 
 // ROW THREE: is VERY different than the others
@@ -393,12 +402,15 @@ body.plosone {
         font-weight: 600;
         font-size: rem-calc($txt-size-small);
         @include link-text($color: $black);
+        &:hover {
+           @include brandcolor();
+        }
       }
     }
   }
 }
-  
-  
+
+
 
 
 // ROW THREE: heights and other styling details.
@@ -409,8 +421,8 @@ body.plosone {
 
   body.plosone & {
     @include blocks($white, $shadow: none, $radius: none);
-    border: 1px solid $plos-one;
-    border-left: 10px solid $plos-one;
+    border: 1px solid $plos-one-pink;
+    border-left: 10px solid $plos-one-pink;
   }
 
   h3,
@@ -448,7 +460,6 @@ body.plosone {
       font-size: rem-calc($txt-size-xsmall);
       text-transform: uppercase;
       background-color: $plos-one-pink;
-      /*letter-spacing: .1rem;*/
     }
   }
   body.plosone & {
@@ -570,7 +581,7 @@ body.plosone {
 }
 
 #submission-links {
-  @include blocks($color: $grey-dark, $radius: none, $padding: $pad-small, $shadow: none);
+  @include blocks($color: $grey-med, $radius: none, $padding: $pad-small, $shadow: none);
   @extend %width-small;
   //padding-top: $pad-small + $pad-xsmall;
 
@@ -607,8 +618,8 @@ body.plosone {
 
 body.plosone #submission-links {
   @include blocks();
-  border: 1px solid $plos-one;
-  border-left: 10px solid $plos-one;
+  border: 1px solid $plos-one-pink;
+  border-left: 10px solid $plos-one-pink;
   p {
     text-align: left;
     margin: $pad-default auto $pad-small auto;
@@ -624,6 +635,10 @@ body.plosone #submission-links {
     margin-right: $pad-small;
     line-height: 1;
     padding: $pad-small $pad-default;
+    &:hover {
+       @extend %brand-background;
+       text-decoration: none;
+    }
   }
 
 
@@ -654,11 +669,12 @@ body.plosone #submission-links {
 
 #social-links {
   @extend %width-small;
-  @include blocks($color: #04417d, $radius: none, $padding: $pad-xsmall, $shadow: none);
+  @include blocks(/*$color: #04417d, */$radius: none, $padding: $pad-xsmall, $shadow: none);
+
 
   h3 {
     @extend %header-xlarge-light;
-    text-indent: $pad-small;
+  /*  text-indent: $pad-xsmall;*/
     margin-bottom: $pad-small;
   }
   ul {
@@ -671,13 +687,14 @@ body.plosone #submission-links {
         background: $plos-default;
         border-radius: $border-radius-default;
         display: inline-block;
-        height: ($txt-size-xxlarge * 2);
+        height: ($txt-size-xlarge * 2);
         text-align: center;
         color: $clr-light-text;
         &:hover {
           background: $grey-dark;
         }
       }
+
       .social {
         width: ($txt-size-xxlarge * 2);
       }
@@ -690,6 +707,25 @@ body.plosone #submission-links {
       line-height: ($txt-size-xxlarge * 2);
       font-size: rem-calc($txt-size-medium-large);
       font-family: $font-face-fancy;
+    }
+  }
+
+  .plosone & {
+    @include blocks($color: $plos-one-pink);
+
+    h3 {
+        text-transform: uppercase;
+        font-size: $txt-size-medium-large;
+    }
+    ul {
+      > li {
+        > a {
+          background: $plos-one-pink;
+          &:hover {
+            background: $plos-one-purple;
+          }
+        }
+      }
     }
   }
 }
@@ -725,10 +761,10 @@ body.plosone #submission-links {
       margin-bottom: 0;
     }
     .postdate {
-      margin: 0 0 $line-height-xsmall;
+      margin: 0 0 $line-height-small;
       font-size: $txt-size-xxxsmall;
       font-family: $font-face-plain;
-      color: $clr-muted;
+      color: $grey-med;
       padding: 0;
     }
     .posttitle {
@@ -755,7 +791,7 @@ body.plosone #submission-links {
     }
   }
   .more-link {
-    font-size: $txt-size-xxxsmall;
+    font-size: $txt-size-xsmall;
     bottom: $pad-small;
     left: ($image-width + ($pad-large + $pad-large));
   }
@@ -777,6 +813,7 @@ body.plosone #blogs {
     background-color: $white;
     a {
       color: $plos-one-purple;
+      font-weight: 600;
     }
   }
 }

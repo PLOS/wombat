@@ -45,7 +45,7 @@ $level-carousel-button-width: rem-calc(35);
 $level-carousel-button-height: rem-calc(41);
 $level-wrapper-width: $level-container-width + rem-calc(88);
 
-$level-selection-bg: $grey-dark;
+$level-selection-bg: $grey-med-dark;
 
 .areas {
   background: $grey-dark;
@@ -224,11 +224,11 @@ $level-selection-bg: $grey-dark;
   width: $level-width;
   height: $level-scroll-height;
   overflow: hidden;
-  background: $white;
+  background: $grey-light;
 
   a {
     text-decoration: none;
-    color: $grey-med-dark;
+    color: $grey-dark;
   }
 }
 

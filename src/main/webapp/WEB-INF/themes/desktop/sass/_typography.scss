@@ -138,7 +138,7 @@ ol {
 
 /// sizes are set in foundation.
 h2, h3, h4, h5 {
-  font-family: $font-face-fancy;
+  font-family: $font-face-plain;
 }
 
 // font-weights
@@ -152,14 +152,14 @@ h4 {
 
 //spacing
 h2, h3, h4, h5 {
-  margin-bottom: rem-calc($line-height-xsmall);
-  line-height: $line-height;
+  margin-bottom: rem-calc($line-height-small);
+  line-height: $line-height-large;
 }
 
 h2 {
 
   font-size: rem-calc($txt-size-h2);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 /*
@@ -344,7 +344,7 @@ example | extension
       text-decoration: none;
     } @else if $decoration-hover == underline {
       @if $color-hover != none {
-        color: $color-hover;
+          @extend %brand-color;
       } @else {
         color: $color;
       }

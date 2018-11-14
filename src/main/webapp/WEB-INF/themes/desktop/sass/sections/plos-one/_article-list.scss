@@ -66,7 +66,7 @@
   box-sizing: content-box;
 
   body.plosone & {
-    background-color: $plos-one-teal;
+    background-color: $plos-one-pink;
     color: $white;
   }
 }
@@ -75,19 +75,37 @@
   @extend .title-medium;
   line-height: rem-calc(19);
   margin: 0 0 14px;
+
+  .plosone & {
+    font-size: $txt-size-small;
+    font-weight: 600;
+    line-height: $line-height;
+    margin: 0 0 $line-height;
+  }
 }
 
 .article-block .details h2 a {
   color: $grey-dark;
 
   body.plosone & {
-    color: $grey-light;
+    color: $white;
+
+    &:hover {
+      color: $plos-one-purple;
+    }
   }
 }
 
 .article-block .details p {
   color: $white;
   margin: 0;
+
+  .plosone & {
+  /*  color: $grey-light;
+    text-transform: uppercase;*/
+    font-size: $txt-size-small;
+    font-weight: 400;
+  }
 }
 
 .article-block .details p span {

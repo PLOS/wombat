@@ -71,7 +71,7 @@ have a fixed width and height (but it's not required).
       .plosone & {
         background-color: $white;
         color: $plos-one-purple;
-		border-bottom:1px solid $grey-light;
+		    border-bottom:1px solid $grey-light;
         font-weight: 600;
       }
   }
@@ -95,8 +95,8 @@ have a fixed width and height (but it's not required).
   }
   .carousel-control {
     position: absolute;
-    bottom: 10px;
-    left: 50%;
+    bottom: $line-height-small;
+    left: 45%;
     width: 120px;
     margin-left: -50px;
     .jcarousel-prev,
@@ -106,6 +106,9 @@ have a fixed width and height (but it's not required).
       &:hover {
         @extend .fa-inverse;
         text-decoration: none;
+      }
+      .plosone & {
+        color: $grey-med-light;
       }
     }
     .jcarousel-prev {
@@ -117,7 +120,7 @@ have a fixed width and height (but it's not required).
     .numbers {
      // @extend %small-italic;
      font-size: $txt-size-xsmall;
-      color: $grey-med-dark;
+      color: $grey-med;
       display: inline-block;
       padding: 0 $pad-xsmall;
       vertical-align: top;

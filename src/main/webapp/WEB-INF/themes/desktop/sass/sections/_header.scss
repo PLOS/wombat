@@ -89,8 +89,8 @@ $width-nav: $block-grid-elements - $width-logo;
         color: $grey-dark;
 
         &:hover {
-          color: $white;
-          background: $grey-dark;
+        color: $white;
+          @extend %brand-background-hover;
 
           }
 
@@ -98,18 +98,18 @@ $width-nav: $block-grid-elements - $width-logo;
       }
     li.highlighted {
       > a {
+        @extend %brand-background;
         color: $clr-highlight-text;
 
         body.plosone & {
           color: $black;
 
           &:hover {
-            color: $clr-highlight-text;
+            color: $white;
+              @extend %brand-background-hover;
 
             }
           }
-
-        @extend %brand-background-hover;
 
         }
       }

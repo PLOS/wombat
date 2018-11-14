@@ -23,14 +23,14 @@
       .home-email-subscription {
         @extend %width-full;
         @extend .block-card;
-
+        color: $white;
         background-color: $clr-home-subscription-bg;
 
           .plosone & {
             background-color: $white;
-            border: 1px solid $plos-one;
-            border-left: 10px solid $plos-one;
-            color: $black;
+            border: 1px solid $plos-one-pink;
+            border-left: 10px solid $plos-one-pink;
+            color: $plos-one-purple;
           }
 
         padding: $pad-small;/*
@@ -83,6 +83,9 @@
             background-color: $plos-one-pink;
             color: $white;
             width: 8rem;
+            &:hover {
+              @extend %brand-background;
+            }
           }
         }
 
@@ -124,7 +127,7 @@
               font-size: $txt-size-small;
               width: 100%;
               float: left;
-              padding: 0 6px;
+              padding: 0 $pad-xsmall;
               &::placeholder {
 	              text-transform: uppercase; }
             }
@@ -144,16 +147,17 @@
             width: 100%;
             margin-top: rem-calc(5);
             color: white;
-     
+
           }
 
           label.email_consent {
             color: white;
+            width: 100%;
 
             .plosone & {
               color: $grey-med;
               font-size: $txt-size-small;
-                     
+
             }
           }
         }
@@ -199,16 +203,18 @@
         }
       }
 
-.plosone  { 
+.plosone  {
 	.home-email-subscription {
 		form {
 			label.error_consent,
 			label.error {
+       @extend %brand-background;
+
 				color: $plos-one-pink;
-	            background: lighten($plos-one, 50%);
-	            font-size: $txt-size-small;
-	            font-style: italic;
+	      font-size: $txt-size-small;
+	      font-style: italic;
+        width: 100%;
 			}
 		}
-	}        
+	}
 }

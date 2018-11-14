@@ -850,6 +850,9 @@ body.article .ui-widget-overlay {
 
       .taxo-term {
         @extend .button;
+        @extend %brand-background;
+        color: $white;
+        text-transform: none;
         width: auto;
         float: left;
         //the next three elements are for truncation. width is needed and is being set with js

@@ -177,15 +177,6 @@ body {
     padding: $pad-small $pad-default;
     font-size: rem-calc($txt-size-medium-large);
 
-    body.plosone & {
-      width: 50%;
-      bottom: $line-height-small;
-      left: 0;
-      right: 50%;
-      font-size: rem-calc($txt-size-medium);
-      background-color: $plos-one-teal;
-    }
-
     h4 {
       font-size: $txt-size-medium;
     /*  @extend .no-margin;*/
@@ -217,6 +208,13 @@ body.plosone {
       background-image: none;
     }
     .hero-content {
+      width: 50%;
+      bottom: $line-height-small;
+      left: 0;
+      right: 50%;
+      font-size: rem-calc($txt-size-medium);
+      background-color: $plos-one-teal;
+
       .title {
         font-size: rem-calc($txt-size-large);
         text-transform: uppercase;
@@ -281,7 +279,7 @@ body.plosone {
     font-size: $txt-size-xxxsmall;
     line-height: $line-height-small;
     position: absolute;
-    bottom: $pad-xsmall;
+    bottom: $line-height-small;
     left: ($image-container + $pad-small);
     margin: 0;
     color: $grey-med;
@@ -382,7 +380,7 @@ body.plosone {
       .block.large {
         height: $block-height-small;
         .block-image {
-          height: ($block-height-small - ($pad-small));
+          height: ($block-height-small - ($pad-default));
           overflow: hidden;
         }
       }
@@ -410,7 +408,7 @@ body.plosone {
       margin-right: 0;
     }
     .title {
-      margin: 0 0 $line-height-small 0;
+      margin: 0 0 $line-height-xsmall 0;
       a {
         font-family: $font-face-fancy;
         font-weight: 600;
@@ -454,7 +452,7 @@ body.plosone {
   h4 {
     font-family: $font-face-plain;
     color: $grey-med-light;
-    font-size: rem-calc($txt-size-medium-large);
+    font-size: rem-calc($txt-size-medium);
     line-height: rem-calc(18);
     margin-bottom: $line-height-small;
 
@@ -473,13 +471,14 @@ body.plosone {
     right: $pad-default;
     top: 50%;
     margin-top: rem-calc(-13);
+    color: $white;
+    font-weight: 600;
+    font-size: rem-calc($txt-size-xsmall);
+    text-transform: uppercase;
 
     body.plosone & {
-      color: $white;
-      font-weight: 600;
-      font-size: rem-calc($txt-size-xsmall);
-      text-transform: uppercase;
       background-color: $plos-one-pink;
+      color: $white;
       &:hover {
         @extend %brand-background;
       }

@@ -67,6 +67,7 @@ have a fixed width and height (but it's not required).
   position: relative;
   .block-header {
     @extend %brand-header;
+    padding-left: $pad-small;
 
     .plosone & {
       background-color: $white;
@@ -78,7 +79,7 @@ have a fixed width and height (but it's not required).
   .carousel {  //TODO: do we move this into home?
     li {
       width: $carousel-width;
-      padding: $pad-small $pad-default;
+      padding: $pad-small;
       height: 145px;
       h3 {
        // @extend %home-subheader;
@@ -89,7 +90,7 @@ have a fixed width and height (but it's not required).
         margin-bottom: $line-height-xsmall;
       }
       p {
-        font-size: rem-calc($txt-size-small);
+        font-size: rem-calc($txt-size-xsmall);
         color: $grey-med;
         line-height: $line-height;
       }

@@ -23,10 +23,9 @@
 .home-email-subscription {
   @extend %width-full;
   @extend .block-card;
-  background-color: $grey-med-light;
-  
+  background-color: $white;
+
   .plosone & {
-    background-color: $white;
     border: 1px solid $plos-one-pink;
     border-left: 10px solid $plos-one-pink;
     color: $plos-one-purple;
@@ -115,7 +114,7 @@
 
       input {
         line-height: rem-calc(33);
-        border: 1px solid $grey-med-dark;
+        border: 1px solid $grey-med;
         text-align: left;
         font-size: $txt-size-small;
         width: 30rem;

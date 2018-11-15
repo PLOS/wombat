@@ -26,8 +26,8 @@ $block-height: rem-calc(250);
 $block-height-small: rem-calc(180);
 
 $image-width: rem-calc(70);
-$hero-height: rem-calc(380);
-$image-container: ($image-width + $pad-xsmall);
+$hero-height: rem-calc(360);
+$image-container: ($image-width + $pad-small);
 
 // this mixin extends the foundation grid to do two things it can't do
 //1. add margins on the outside if needed
@@ -41,7 +41,7 @@ body {
   /////
   background: $white;
   &.home {
-	  background-color: $grey-light;
+    background-color: $grey-light;
   }
 
   &.plosone {
@@ -145,9 +145,6 @@ body {
   @include blocks($padding: none, $shadow: none);
   position: relative;
   background: transparent;
-}
-
-.hero {
   // overlay colors
   &.overlay-dark > a:before {
     @extend .overlay;
@@ -246,8 +243,13 @@ body.plosone {
   @include border-default;
 
   .blurb {
-    color: $grey-med;
-    margin: $line-height-small 0 0;
+    color: $grey-dark;
+    margin: 0 $line-height-small 0 0;
+    p {
+      font-size: rem-calc($txt-size-small);
+      color: $grey-med-dark;
+      line-height: $line-height;
+    }
     a {
       @include link-text($color: $plos-default, $decoration-hover: underline);
     }
@@ -260,9 +262,9 @@ body.plosone {
     top: $pad-small;
   }
   &.image .block-content {
-    margin-left: ($image-container + $pad-xsmall);
-    margin-right: $pad-xsmall;
-    height: ($block-height - ($pad-small));
+    margin-left: $image-container;
+    margin-right: 0;
+    height: $block-height;/*($block-height - ($pad-xsmall));*/
     overflow: hidden;
   }
   // components
@@ -270,24 +272,25 @@ body.plosone {
 
     @extend .right;
     //padding-right on block-content needs to be overridden here
-    margin-right: -$pad-xsmall;
+    margin-right: 0;
     font-size: $txt-size-xsmall;
     color: $grey-med;
   }
   .credits {
     //@extend %small-italic;
     font-size: $txt-size-xxxsmall;
+    line-height: $line-height-small;
     position: absolute;
-    bottom: $pad-small;
-    left: ($image-container + $pad-default);
+    bottom: $pad-xsmall;
+    left: ($image-container + $pad-small);
     margin: 0;
-    color: $grey-med-light;
+    color: $grey-med;
   }
   .category {
     @extend %brand-title;
     margin-bottom: $line-height-small;
     font-size: $txt-size-xxxsmall;
-    letter-spacing: .1rem;
+    letter-spacing: .05rem;
     font-weight: 600;
 
     body.plosone & {
@@ -296,9 +299,9 @@ body.plosone {
   }
   .title {
    // @extend %header-large;
-    margin-bottom: $line-height-small;
+    margin: 0 0 $line-height-small;
     @extend %link-text-body;
-    font-size: $txt-size-medium-large;
+    font-size: $txt-size-default;
     font-weight: 600;
     line-height: $line-height;
 
@@ -311,16 +314,24 @@ body.plosone {
 
   .block-content {
     position: relative;
-    padding-right: $pad-xsmall;
-    font-size: rem-calc($txt-size-xxsmall);
+    padding-right: 0;
+   // font-size: rem-calc($txt-size-xsmall);
   }
 
   &.small {
     .title {
-     // @extend %home-subheader;
-     // @extend %header-large;
-      font-size: $txt-size-small;
+      font-size: $txt-size-xxsmall;
       line-height: $line-height;
+      font-weight: 400;
+      margin: 0 0 0 0;
+    }
+    .blurb {
+      margin: 0 0 0 0;
+      p {
+        font-size: rem-calc($txt-size-xsmall);
+        color: $grey-med-dark;
+        line-height: $line-height;
+      }
     }
   }
 
@@ -371,7 +382,7 @@ body.plosone {
       .block.large {
         height: $block-height-small;
         .block-image {
-          height: ($block-height-small - ($pad-default));
+          height: ($block-height-small - ($pad-small));
           overflow: hidden;
         }
       }
@@ -399,15 +410,19 @@ body.plosone {
       margin-right: 0;
     }
     .title {
-      //margin-top: $line-height-small;
+      margin: 0 0 $line-height-small 0;
       a {
         font-family: $font-face-fancy;
         font-weight: 600;
         font-size: rem-calc($txt-size-small);
+        line-height: $line-height;
         @include link-text($color: $black);
         &:hover {
           @include brandcolor();
         }
+      }
+      .blurb {
+        margin: 0 0 0 0;
       }
     }
   }
@@ -466,7 +481,7 @@ body.plosone {
       text-transform: uppercase;
       background-color: $plos-one-pink;
       &:hover {
-	      @extend %brand-background;
+        @extend %brand-background;
       }
     }
   }
@@ -619,7 +634,7 @@ body.plosone {
     height: 40px;
     text-align: center;
     &:first-child {
-      border-right: 1px solid $grey-med-dark;
+     // border-right: 1px solid $grey-med-dark;
     }
   }
 }
@@ -663,9 +678,9 @@ body.plosone #submission-links {
     height: 40px;
     text-align: center;
     .plosone & {
-	    &:first-child {
-      display: none;
-    }
+      &:first-child {
+        display: none;
+      }
     }
   }
 }

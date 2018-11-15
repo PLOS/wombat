@@ -142,7 +142,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
       }
 
       &:hover {
-        background: $plos-default;
+        background: $grey-med-dark;
         color: $white;
       }
     }
@@ -377,7 +377,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
           display: block;
           float: right;
           padding: 0 $pad-small;
-          border-left: 1px solid #666;
+          border-left: 1px solid $grey-med-dark;
           border-color: rgba(51,51,51,0.25);
           line-height: $lb-control-bar-height;
           font-family: $font-face-fancy;
@@ -502,7 +502,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
             top: 0;
             height: $lb-description-bar-height;
             z-index: map-get($zindex, header);
-            background: #efefef;
+            background: $grey-light;
             overflow-y: scroll;
             left: 0;
           }

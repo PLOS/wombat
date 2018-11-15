@@ -662,14 +662,10 @@ body.plosone #submission-links {
     width: 90%;
     height: 40px;
     text-align: center;
-    &:first-child {
+    .plosone & {
+	    &:first-child {
       display: none;
-      /*border-right: 0;
-      a {
-	      background-color: $white;
-	      border: 1px solid $plos-one-pink;
-	      color: $plos-one-pink;
-      }*/
+    }
     }
   }
 }

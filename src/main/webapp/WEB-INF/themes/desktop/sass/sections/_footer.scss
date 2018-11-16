@@ -23,61 +23,51 @@
 /*
  *      styles for the footer
  */
-footer {
+#pageftr {
   @extend .hide-for-print;
-  .row {@extend .plos-row;}
-  // widths
-  .brand-column{
-    @extend .plos-column-5 }
-  .link-column{
-    @extend .plos-column-3;
+  .row {
+    @extend .plos-row;
   }
   @extend %bg-dark;
-  padding: rem-calc(25 0 60); // 25px 0 60px;
-  color: $grey-med-light;
-
+  color: $white;
+  padding: $line-height 0 0;
   .logo-footer {
-    padding-bottom: rem-calc(25);
+    margin: 0;
   }
   //pseudo elements are for Firefox
-  a, a:visited, a:focus, a:active {
-    @include link-text($color: $grey-med-light, $decoration-hover: underline){
+  a,
+  a:visited,
+  a:focus,
+  a:active {
+    @include link-text($color: $white, $decoration-hover: underline);
   }
+
+
   .nav {
-    position: relative;
-    }
-  }
-  .nav-aux {
-    @extend .inline-list;
-    margin-top: rem-calc(75);
-    margin-left: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
     li {
-      margin-left: rem-calc(10);
-      padding: rem-calc(0 10 0 0);
-      border-right: 1px solid $grey-med-light;
+      list-style-type: none;
+      line-height: $line-height;
+      padding: 0;
     }
-    li:first-child {
-      margin-left: 0;
-    }
-    li:last-child {
-      padding-right: none;
-      border-right: none;
-    }
-  }
-  ul {
-    list-style: none;
-    padding-left: 0;
-    margin-left: 0;
   }
 
+  .logo-footer {
+    float: right;
   }
-  .nav-special {
-    font-size: $txt-size-xsmall;
-    a {
-      font-weight: bold;
-      color: $clr-light-text
-    }
+  .footer-non-profit-statement {
+    text-align: right;
+    color: $grey-med-light;
   }
+}
+
+footer .block {
+  background: inherit;
+  border: 0;
+  padding: $line-height-small 0 0;
+}
 
 

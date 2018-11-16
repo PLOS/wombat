@@ -27,18 +27,18 @@
   @extend %brand-background;
 
   h3 {
-    @extend %header-xlarge-light;
-    text-indent: $pad-default;
+   
     margin-bottom: $pad-small;
     margin-top: $pad-small;
     font-weight: normal;
+    text-indent: $pad-small;
   }
   ul {
     list-style: none;
-    margin: 0 0 0 rem-calc(-4);
+    margin: 0 0 0 $pad-small;
     > li {
       float: left;
-      margin: 0 0 0 rem-calc(4);
+      margin: 0 rem-calc(4) 0 0;
       > a {
          @extend %brand-background;
         display: inline-block;

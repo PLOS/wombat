@@ -38,11 +38,13 @@
  */
 
 /// nav spacing stuff
-$nav-spacing: 15px;
-$nav-spacing-full: 15px;
+$nav-spacing: 18px;
+$nav-spacing-full: $nav-spacing;
 
 header {
-  background: $grey-light;
+  background: $off-white;
+  
+
   }
 
 .head-top {
@@ -208,7 +210,7 @@ $width-nav: $block-grid-elements - $width-logo;
     float: left;
     //  cursor: pointer;
     &:last-child {
-      border-right: 1px solid $grey-light;
+     // border-right: 1px solid $grey-light;
       padding-right: 0;
       }
     &:first-child {
@@ -243,7 +245,7 @@ $width-nav: $block-grid-elements - $width-logo;
       border: none;
       margin-left: rem-calc(25);
       padding-bottom: rem-calc(3);
-      background-color: $grey-med-light;
+     // background-color: $grey-med-light;
       @extend %rounded-default;
     }
 
@@ -448,7 +450,7 @@ $width-nav: $block-grid-elements - $width-logo;
         border: none;
         margin: 0;
         padding: 0 $pad-small;
-        background-color: $white;
+    //    background-color: $white;
         }
 
       input[type="text"] {
@@ -496,7 +498,7 @@ $width-nav: $block-grid-elements - $width-logo;
     }
   // this is the only way I could find to override the white background on hover
   ul > li.head-search:hover:not(.has-form) > a {
-    background: $clr-header;
+   background: $clr-header;
     color: $plos-default;
 
     }

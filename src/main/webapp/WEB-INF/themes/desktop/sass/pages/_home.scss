@@ -26,7 +26,7 @@ $block-height: rem-calc(250);
 $block-height-small: rem-calc(180);
 
 $image-width: rem-calc(70);
-$hero-height: rem-calc(360);
+$hero-height: rem-calc(380);
 $image-container: ($image-width + $pad-small);
 
 // this mixin extends the foundation grid to do two things it can't do
@@ -145,6 +145,9 @@ body {
   @include blocks($padding: none, $shadow: none);
   position: relative;
   background: transparent;
+}
+
+.hero {
   // overlay colors
   &.overlay-dark > a:before {
     @extend .overlay;
@@ -249,20 +252,22 @@ body.plosone {
       line-height: $line-height;
     }
     a {
-      @include link-text($color: $plos-default, $decoration-hover: underline);
+      @extend %brand-color;
+      @include link-text($decoration-hover: underline);
     }
   }
   .block-image {
     width: $image-container;
     display: block;
     position: absolute;
-    left: $pad-xsmall;
+    left: $pad-small;
     top: $pad-small;
   }
   &.image .block-content {
-    margin-left: $image-container;
-    margin-right: 0;
-    height: $block-height;/*($block-height - ($pad-xsmall));*/
+    margin-left: ($image-container + $pad-xsmall);
+    margin-right: $pad-xsmall;
+    margin-bottom: $line-height-small;
+    height: ($block-height - ($pad-small));
     overflow: hidden;
   }
   // components
@@ -279,13 +284,14 @@ body.plosone {
     font-size: $txt-size-xxxsmall;
     line-height: $line-height-small;
     position: absolute;
-    bottom: $line-height-small;
-    left: ($image-container + $pad-small);
-    margin: 0;
+    bottom: 0;
+   // left: ($image-container + $pad-xsmall);
+    margin-left: ($image-container + $pad-xsmall);
     color: $grey-med;
   }
   .category {
     @extend %brand-title;
+    line-height: $line-height;
     margin-bottom: $line-height-small;
     font-size: $txt-size-xxxsmall;
     letter-spacing: .05rem;
@@ -297,9 +303,9 @@ body.plosone {
   }
   .title {
    // @extend %header-large;
-    margin: 0 0 $line-height-small;
+    margin: 0 0 $line-height-small 0;
     @extend %link-text-body;
-    font-size: $txt-size-default;
+    font-size: $txt-size-medium;
     font-weight: 600;
     line-height: $line-height;
 
@@ -313,6 +319,7 @@ body.plosone {
   .block-content {
     position: relative;
     padding-right: 0;
+    margin-bottom: $line-height-small;
    // font-size: rem-calc($txt-size-xsmall);
   }
 
@@ -387,7 +394,7 @@ body.plosone {
       .block.small {
         height: $block-height;
         .block-image {
-          height: ($block-height - ($pad-small));
+          height: ($block-height - ($pad-default));
           overflow: hidden;
         }
       }
@@ -398,7 +405,7 @@ body.plosone {
 // ROW THREE: spacing and other styling details.
 .row.three {
   .row-small-blocks .small {
-    $small-block-spacing: ($pad-small/2);
+    $small-block-spacing: ($pad-xsmall/2);
     .date,
     .category {
       margin-bottom: $line-height-small;
@@ -688,14 +695,15 @@ body.plosone #submission-links {
 #social-links {
   @extend %width-small;
   @extend %brand-background;
-  @include blocks($radius: none, $padding: $pad-xsmall, $shadow: none);
+  @include blocks($radius: none, $padding: $pad-small, $shadow: none);
 
 
   h3 {
     color: $white;
     margin: 0 0 $pad-small 0;
     text-align: left;
-    text-indent: $pad-xsmall;
+    text-transform: uppercase;
+    font-size: $txt-size-default;
   }
   ul {
     list-style: none;
@@ -707,7 +715,7 @@ body.plosone #submission-links {
         @extend %brand-background;
         border-radius: $border-radius-default;
         display: inline-block;
-        height: ($txt-size-xlarge * 2);
+        height: $txt-size-xlarge;
         text-align: center;
         color: $clr-light-text;
         &:hover {
@@ -724,8 +732,8 @@ body.plosone #submission-links {
     }
     .social-blogs {
       width: rem-calc(104);
-      line-height: ($txt-size-xlarge * 2);
-      font-size: rem-calc($txt-size-large);
+      line-height: ($txt-size-large * 2);
+      font-size: rem-calc($txt-size-default);
       font-family: $font-face-fancy;
     }
   }
@@ -736,7 +744,6 @@ body.plosone #submission-links {
     h3 {
       text-transform: uppercase;
       font-size: $txt-size-medium-large;
-      text-indent: $pad-xsmall;
     }
     ul {
       > li {

@@ -308,6 +308,11 @@ body.plosone {
     font-size: $txt-size-medium;
     font-weight: 600;
     line-height: $line-height;
+      a {
+        &:hover {
+          @extend %brand-color;
+        }
+      }
 
     //in case p tag is added in CMS, need to override global settings
     p {
@@ -342,8 +347,10 @@ body.plosone {
 
   .plosone .block {
     .title {
+      a {
       &:hover {
         color: $plos-one-purple;
+      }
       }
     }
   }
@@ -423,7 +430,7 @@ body.plosone {
         line-height: $line-height;
         @include link-text($color: $black);
         &:hover {
-          @include brandcolor();
+          @extend %brand-color;
         }
       }
       .blurb {
@@ -476,7 +483,7 @@ body.plosone {
     position: absolute;
     display: inline-block;
     right: $pad-default;
-    top: 50%;
+    top: 40%;
     margin-top: rem-calc(-13);
     color: $white;
     font-weight: 600;

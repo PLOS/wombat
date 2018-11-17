@@ -221,7 +221,7 @@ example | extension
       .jcarousel-next {
         color: darken($setcolor, 18%);
         &:hover {
-          color: $plos-default;
+          @extend %brand-background-hover;   
         }
       }
     }
@@ -237,8 +237,7 @@ example | extension
       .jcarousel-next {
         color: darken($setcolor, 13%);
         &:hover {
-          color: $plos-default;
-        }
+          @extend %brand-background-hover;        }
       }
     }
   }

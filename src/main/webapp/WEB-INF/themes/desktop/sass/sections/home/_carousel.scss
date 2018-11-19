@@ -95,6 +95,13 @@ have a fixed width and height (but it's not required).
         line-height: $line-height;
       }
     }
+    .plosone & {
+      a {
+        &:hover {
+          color: $plos-one-purple;
+        }
+      }
+    }
   }
   .carousel-control {
     position: absolute;
@@ -112,6 +119,9 @@ have a fixed width and height (but it's not required).
       }
       .plosone & {
         color: $grey-med-light;
+        &:hover {
+          color: $plos-one-purple;
+        }
       }
     }
     .jcarousel-prev {

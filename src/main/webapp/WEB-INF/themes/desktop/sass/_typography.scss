@@ -86,9 +86,9 @@ example | extension
 /* basic styles  */
 @mixin text-default{
   font-size: rem-calc($txt-size-default);
-  line-height: rem-calc($line-height);
+  line-height: $line-height;
 }
-@mixin text-below{margin-bottom: $paragraph-spacing;}
+@mixin text-below{margin-bottom: $line-height-small;}
 @mixin default-list{
   li{
     @include text-default;
@@ -105,7 +105,7 @@ ol {
   list-style-type: none;
   > li {
     padding-left: $pad-default;
-    margin-bottom: rem-calc($line-height-small);
+    margin-bottom: $line-height-small;
     position: relative;
   }
   > li:before {
@@ -152,7 +152,7 @@ h4 {
 
 //spacing
 h2, h3, h4, h5 {
-  margin-bottom: rem-calc($line-height-small);
+  margin-bottom: $line-height-small;
   line-height: $line-height-large;
 }
 
@@ -198,8 +198,9 @@ h4, h5 {
 
 .title-primary{
     font-family: $font-face-fancy;
-    font-size: $txt-size-xxxlarge;
-    line-height: $line-height-large-text;
+    font-size: $txt-size-xxlarge;
+    line-height: $line-height-large;
+    font-weight: 600;
 }
 
 .title-secondary{
@@ -213,7 +214,7 @@ h4, h5 {
 
 //callout styles
 
-@mixin callout($margin-top: rem-calc($line-height-medium),
+@mixin callout($margin-top: rem-calc($line-height),
 $margin-bottom: rem-calc($line-height),
 $padding-x: rem-calc($line-height),
 $padding-y: $pad-default,
@@ -381,7 +382,7 @@ example | extension
 
 
 .type{
-  font-weight:bold;
+  font-weight:600;
   &:after{content: ':'}
 }
 
@@ -392,7 +393,7 @@ example | extension
 }
 
 %condense {
-  letter-spacing: -0.5px;
+  letter-spacing: -0.5rem;
 }
 
 %txt-transform {
@@ -400,7 +401,7 @@ example | extension
 }
 
 .inline-intro {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .no-margin {
@@ -467,7 +468,7 @@ This is one place not to use @extend, since this is a semantic class name
 */
 
 .note, .caption, figcaption {
-  color: $grey-med-light;
+  color: $grey-med;
 }
 
 /////////

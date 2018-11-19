@@ -468,6 +468,7 @@ body.plosone {
     color: $white;
   }
   h3 {
+    font-family: $font-face-fancy;
     font-size: rem-calc($txt-size-xlarge);
     margin: 0;
   }
@@ -479,7 +480,7 @@ body.plosone {
     margin-bottom: $line-height-small;
 
     body.plosone & {
-      font-size: rem-calc($txt-size-medium);
+      font-size: $txt-size-medium;
       color: $plos-one-purple;
     }
   }
@@ -567,21 +568,30 @@ body.plosone {
   bottom: $pad-small;
  // left: $pad-small;
   right: $pad-small;
+  font-family: $font-face-fancy;
   font-size: $txt-size-xxxsmall;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .05rem;
   text-align: right;
   > a {
-    color: $grey-med;
+    @extend %brand-color;
     &:hover {
-      @extend %brand-color;
       text-decoration: underline;
     }
   }
   &:after {
     @extend .more-icon;
-    font-size: $txt-size-default;
+    font-size: $txt-size-medium;
+    
+  }
+  .plosone & {
+    > a {
+      color: $plos-one-purple;
+    }
+    &:after {
+      color: $plos-one-purple;
+    }
   }
 }
 
@@ -601,17 +611,19 @@ body.plosone {
     width: rem-calc(160);
   }
   .boxtitle {
-    margin-top: rem-calc(5);
+    margin-top: $line-height-small;
     a {
       @extend %link-text-body;
-      @extend %header-allcaps-xlarge;
-      @extend %condense;
+      font-size: $txt-size-large;
+      text-transform: uppercase;
       display: block;
-      margin-bottom: rem-calc(5);
+      line-height: $line-height;
+      margin-bottom:$line-height;
     }
     .subhead {
       font-face: $font-face-plain;
-      font-size: $txt-size-medium-large;
+      font-size: $txt-size-default;
+      line-height: $line-height;
     }
   }
 }

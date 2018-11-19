@@ -40,7 +40,7 @@ For example: instead of using `font-size: 22px` you should  instead use `font-si
 
 //journal specific
 
-$plos-default: #606060; //grey
+$plos-default: #909090; //grey
 
 $plos-bio: #16a127; //green: biology, comp-bio, genetics
 $plos-med: #891fb1; // purple: medicine, pathogens, ntds
@@ -62,7 +62,6 @@ $plos-default-shade3: #c6d7f2;
 $plos-one-shade1: #f4f6c3;
 $plos-one-shade2: #fbfceb;
 $plos-one-shade3: #ecf09b;
-
 
 $plos-bio-shade1: #a8e2be;
 $plos-bio-shade2: #92e5ab;
@@ -113,9 +112,9 @@ $clr-separator: $grey-med-light;
 $clr-link: $plos-default;
 $clr-body-text: $black;
 $clr-link-hover: $grey-dark;
-$clr-muted: $grey-med-dark;
+$clr-muted: $grey-med;
 $clr-light-text: $white;
-$clr-callout-bg: $grey-light;
+$clr-callout-bg: $off-white;
 $clr-alert: $alert;
 $clr-warning: $warning;
 $clr-warning-bg: #fce2e5;
@@ -124,12 +123,11 @@ $clr-success: $success;
 
 $clr-btn-primary: $clr-highlight;
 $clr-btn-secondary: $grey-dark;
-$clr-btn-disabled: $grey-med-light;
+$clr-btn-disabled: $grey-light;
 $clr-btn-text: $white;
-$clr-callout-bg:  $grey-light;
 
-$clr-input-placeholder: $grey-dark;
-$clr-input-active: $grey-med-dark;
+$clr-input-placeholder: $grey-med-dark;
+$clr-input-active: $grey-dark;
 $clr-input-disabled: $grey-light;
 
 $clr-aperta: #8ecb87;
@@ -163,7 +161,7 @@ $grid-columns: 12;
 $border-radius-smaller: 1px;
 $border-radius-small: 2px; //icon backgrounds
 $border-radius-default: 3px;
-$border-radius-large: 5px;
+$border-radius-large: 4px;
 $default-box-shadow-color: rgba(0, 0, 0, 0.15);
 $default-box-shadow-h-offset: 1px;
 $default-box-shadow-v-offset: 1px;
@@ -192,7 +190,7 @@ $pad-highlight: 2px;
 $pad-highlight-x: ($pad-highlight *2);
 $icon-space: 2px;
 
-$pad-inbetween: 8px;
+$pad-inbetween: 9px;
 
 // typography
 $font-face-plain: Helvetica, Arial, sans-serif;
@@ -232,8 +230,8 @@ $txt-size-h5: $txt-size-default; // may not use
 $txt-size-h6: $txt-size-default; // may not use
 $txt-size-note: $txt-size-small;
 
-$txt-margin-bottom-h3: 12px;
-$txt-margin-top-h3: 12px;
+$txt-margin-bottom-h3: 9px;
+$txt-margin-top-h3: 9px;
 
 $sub-alignment: .5ex; //controls sub text
 $sup-alignment: 1ex; //controls super text

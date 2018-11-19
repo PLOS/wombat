@@ -224,7 +224,6 @@ $width-nav: $block-grid-elements - $width-logo;
       @extend %nav-header-type;
       color: $black;
       cursor: pointer;
-    /*  border-left: 1px solid $clr-separator;*/
       &:first-child {
         border-left: none;
         }
@@ -237,13 +236,16 @@ $width-nav: $block-grid-elements - $width-logo;
         margin-bottom: 0;
         & > a {
           @extend %nav-element-type;
+          &:hover {
+            background: $grey-light;
+          }
           }
         }
       }
 
     .subject-area {
       border: none;
-      margin-left: rem-calc(25);
+     // margin-left: rem-calc(25);
       padding-bottom: rem-calc(3);
      // background-color: $grey-med-light;
       @extend %rounded-default;
@@ -261,6 +263,9 @@ $width-nav: $block-grid-elements - $width-logo;
       .menu-section {
         li > a {
           padding-left: rem-calc($nav-spacing) !important;
+          }
+          &:hover {
+            background: $grey-light;
           }
         }
 
@@ -300,7 +305,7 @@ $width-nav: $block-grid-elements - $width-logo;
     // &hover + li is used to account for the padding needed for the
     //  drop shadow. if the color isn't changed it sticks out too much.
     &:hover + li {
-      border-left: 1px solid scale-color(#666, $lightness: 82%);
+    //  border-left: 1px solid scale-color(#666, $lightness: 82%);
 
       }
     > .dropdown {
@@ -360,23 +365,24 @@ $width-nav: $block-grid-elements - $width-logo;
 
     @include border-bottom-radius();
     h3, p {
-      color: $clr-body-bg
+      color: $clr-body-bg;
+      line-height: $line-height;
       }
 
     h3 {
-      font-size: $txt-size-xxxlarge;
-      font-weight: normal;
+      font-size: $txt-size-large;
+      font-weight: 600;
       }
 
     .callout-content {
       height: auto;
-      font-family: $font-face-plain;
-      font-size: $txt-size-large;
+      font-family: $font-face-fancy;
+      font-size: $txt-size-default;
       text-transform: none;
       .plosone & {
-        font-size: $txt-size-medium-large;
+        font-size: $txt-size-medium;
         }
-      line-height: 1.3; //TODO- this needs to be a natural number
+      line-height: $line-height; //TODO- this needs to be a natural number
       @include plos-grid-column(680, $gutter: none);
       a {
         background: none !important;
@@ -402,7 +408,7 @@ $width-nav: $block-grid-elements - $width-logo;
       a.button-link {
         @extend %brand-color;
         font-family: $font-face-fancy;
-        font-size: $txt-size-medium;
+        font-size: $txt-size-small;
         font-weight: 600;
         text-transform:uppercase;
         background: $grey-dark !important; /// This has to stand until i dig out foundation
@@ -432,7 +438,7 @@ $width-nav: $block-grid-elements - $width-logo;
     //the following is needed because &hover + li is used to account for the
     // padding needed for the drop shadow. if the color isn't changed it sticks
     // out too much.
-    border-left: 1px solid $grey-light;
+   // border-left: 1px solid $grey-light;
     form {
       background: $white;
       display: inline-block;
@@ -463,13 +469,13 @@ $width-nav: $block-grid-elements - $width-logo;
         font-size: $txt-size-small;
         color: $clr-input-active;
         text-align: left;
-        text-transform: uppercase;
         top: 0 !important;
         }
-      @include input-placeholder-color();
+     // @include input-placeholder-color();
 
       &.placeholder {
         @include input-placeholder-color(#999);
+        text-transform: uppercase;
         }
 
       button[type="submit"] {

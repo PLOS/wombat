@@ -173,7 +173,7 @@ variable  | result   | default
 }
   // set block padding
   @if $padding == default {
-    padding: $pad-xsmall;
+    padding: $pad-xsmall $pad-small $pad-xsmall $pad-xsmall;
   } @else if $padding == none{
     padding: 0;
   } @else {
@@ -342,7 +342,7 @@ variable  | result   | default
   padding-left: ($spacing - $border-width);
 }
 
-@mixin nav-side($txt-color: $grey-med, $pad-left: $pad-small, $pad-y: rem-calc(2), $margin-bottom: $pad-xsmall) {
+@mixin nav-side($txt-color: $grey-med-dark, $pad-left: $pad-small, $pad-y: rem-calc(2), $margin-bottom: $pad-xsmall) {
   @extend .no-bullet;
 
   margin-bottom: ($margin-bottom * 2);
@@ -464,7 +464,7 @@ TypeAhead
     background-color: white;
     min-width: 100%;
     border: 1px solid $grey-med-light;
-   border-top-color: transparent;
+    border-top-color: transparent;
     padding: $pad-small/2 0;
   }
   h5 {

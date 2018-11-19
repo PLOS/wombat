@@ -44,7 +44,7 @@ $line-height-medium: ($line-height * 1.5);
 $line-height-small: ($line-height * .5);
 
 // callout is for blockquotes.
-@mixin callout($clr-body: $clr-callout-bg) {
+@mixin callout($clr-body: $off-white) {
   padding: $line-height $pad-default 1px $pad-default; //TODO -  why is this 1px - not sure but its the only thing that seems to work
   background: $clr-body;
   margin-bottom: $line-height;
@@ -95,7 +95,7 @@ $line-height-small: ($line-height * .5);
 
   .title-small {
     font-size: $txt-size-default;
-    font-weight: bold;
+    font-weight: 600;
   }
 
   .abstract {
@@ -120,6 +120,7 @@ $line-height-small: ($line-height * .5);
   .callout-standard,
   .box {
     @include callout();
+    background: $off-white;
     h2:first-of-type,
     h3:first-of-type {
       margin-top: 0;
@@ -306,7 +307,7 @@ $line-height-small: ($line-height * .5);
 
 #figure-carousel {
   // creating local variables to make editing and bug fixing easier
-  $fc-colorbg-container: $grey-light;
+  $fc-colorbg-container: $off-white;
   $fc-colorbg-item: $white;
   $fc-pad-item-between: $pad-small;
   $fc-pad-container-vertical: $line-height;

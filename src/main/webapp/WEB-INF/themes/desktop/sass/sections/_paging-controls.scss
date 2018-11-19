@@ -40,8 +40,8 @@ $pagination-height: 24px;
 %full-width-pagination {
   text-align: center;
   position: relative;
-  padding: 0 30px;
-  margin: 20px 0;
+  padding: 0 $line-height-large;
+  margin: $line-height 0;
   display: block;
 
   .previous-page {
@@ -56,7 +56,7 @@ $pagination-height: 24px;
 
 @mixin search-results-rounded-control {
   display: inline-block;
-  font-weight: bold;
+  font-weight: 600;
   font-size: $txt-size-medium;
   line-height: $pad-default;
   padding: rem-calc(0 6px);
@@ -70,6 +70,9 @@ $pagination-height: 24px;
     padding: rem-calc(0 4px);
     box-sizing: content-box;
     color: $clr-body-text;
+    &:hover {
+      @extend %brand-background;
+    }
   }
   .active {
     @extend %brand-background;

@@ -27,9 +27,9 @@
   @extend %brand-background;
 
   h3 {
-   
-    margin-bottom: $pad-small;
-    margin-top: $pad-small;
+    color: $white;
+    margin: $pad-small 0;
+    font-family: $font-face-fancy;
     font-weight: normal;
     text-indent: $pad-small;
   }
@@ -40,7 +40,7 @@
       float: left;
       margin: 0 rem-calc(4) 0 0;
       > a {
-         @extend %brand-background;
+        @extend %brand-background;
         display: inline-block;
         height: ($txt-size-xxlarge * 2);
         text-align: center;
@@ -58,12 +58,12 @@
     }
     .social-blogs {
       width: rem-calc(104);
-      line-height: ($txt-size-large * 2);
+      line-height: ($txt-size-xxlarge * 2);
       font-size: rem-calc($txt-size-medium);
       font-family: $font-face-fancy;
     }
   }
-    .plosone & {
+  .plosone & {
     @include blocks($color: $plos-one-pink);
 
     h3 {
@@ -83,5 +83,4 @@
       }
     }
   }
-
 }

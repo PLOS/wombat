@@ -59,8 +59,8 @@ $plos-default-shade1: #abc2e8;
 $plos-default-shade2: #93aad0;
 $plos-default-shade3: #c6d7f2;
 // the shades aren't straight percentages or hue variations, so it is necessary to list each one
-$plos-one-shade1: #fbfceb;
-$plos-one-shade2: #f4f6c3;
+$plos-one-shade1: #f4f6c3;
+$plos-one-shade2: #fbfceb;
 $plos-one-shade3: #ecf09b;
 
 
@@ -181,7 +181,7 @@ $target-large-offset: 65px; // this is the amount we want to offset the target t
 // typography
 $pad-xsmall: ($grid-gutter / 4);  //5px
 $pad-small: ($grid-gutter / 2);   //10px
-$pad-smallish: $pad-small + $pad-xsmall; //15px
+$pad-smallish: $pad-small + $pad-small; //15px
 $pad-default: $grid-gutter;       //20px
 $pad-medium: ($grid-gutter * 1.5); //30px
 $pad-large: ($grid-gutter * 2);   //40px

@@ -173,7 +173,7 @@ variable  | result   | default
 }
   // set block padding
   @if $padding == default {
-    padding: $pad-small;
+    padding: $pad-xsmall;
   } @else if $padding == none{
     padding: 0;
   } @else {

@@ -245,7 +245,7 @@ body.plosone {
 
   .blurb {
     color: $grey-dark;
-    margin: 0 $line-height-small 0 0;
+    margin: 0 0 $line-height-small 0;
     p {
       font-size: rem-calc($txt-size-small);
       color: $grey-med-dark;
@@ -260,14 +260,15 @@ body.plosone {
     width: $image-container;
     display: block;
     position: absolute;
-    left: $pad-small;
+    left: $pad-xsmall;
     top: $pad-small;
   }
   &.image .block-content {
     margin-left: ($image-container + $pad-xsmall);
     margin-right: $pad-xsmall;
-    margin-bottom: $line-height-small;
-    height: ($block-height - ($pad-small));
+    margin-bottom: 0;
+    height: ($block-height - ($pad-xsmall));
+
     overflow: hidden;
   }
   // components
@@ -284,15 +285,16 @@ body.plosone {
     font-size: $txt-size-xxxsmall;
     line-height: $line-height-small;
     position: absolute;
-    bottom: 0;
-   // left: ($image-container + $pad-xsmall);
-    margin-left: ($image-container + $pad-xsmall);
+    bottom: -$pad-xsmall;
+    left: ($image-container + $pad-small);
+    margin-top: $line-height-small;
+   // margin-left: ($image-container + $pad-xsmall);
     color: $grey-med;
   }
   .category {
     @extend %brand-title;
     line-height: $line-height;
-    margin-bottom: $line-height-small;
+    margin-bottom: 0;
     font-size: $txt-size-xxxsmall;
     letter-spacing: .05rem;
     font-weight: 600;
@@ -303,16 +305,16 @@ body.plosone {
   }
   .title {
    // @extend %header-large;
-    margin: 0 0 $line-height-small 0;
+    margin: $line-height-small 0;
     @extend %link-text-body;
-    font-size: $txt-size-medium;
+    font-size: $txt-size-mediumish;
     font-weight: 600;
     line-height: $line-height;
-      a {
-        &:hover {
-          @extend %brand-color;
-        }
+    a {
+      &:hover {
+        @extend %brand-color;
       }
+    }
 
     //in case p tag is added in CMS, need to override global settings
     p {
@@ -324,7 +326,7 @@ body.plosone {
   .block-content {
     position: relative;
     padding-right: 0;
-    margin-bottom: $line-height-small;
+    margin-bottom: 0;
    // font-size: rem-calc($txt-size-xsmall);
   }
 
@@ -332,11 +334,11 @@ body.plosone {
     .title {
       font-size: $txt-size-xxsmall;
       line-height: $line-height;
-      font-weight: 400;
-      margin: 0 0 0 0;
+      font-weight: 600;
+      margin: $line-height 0 0;
     }
     .blurb {
-      margin: 0 0 0 0;
+      margin: 0;
       p {
         font-size: rem-calc($txt-size-xsmall);
         color: $grey-med-dark;
@@ -344,19 +346,17 @@ body.plosone {
       }
     }
   }
+}
 
-  .plosone .block {
-    .title {
-      a {
+.plosone .block {
+  .title {
+    a {
       &:hover {
         color: $plos-one-purple;
-      }
       }
     }
   }
 }
-
-
 .plosone .block.image .block-image img,
 .plosone .block.large.image .block-image img,
 .plosone .block.small.image .block-image img {
@@ -412,22 +412,22 @@ body.plosone {
 // ROW THREE: spacing and other styling details.
 .row.three {
   .row-small-blocks .small {
-    $small-block-spacing: ($pad-xsmall/2);
+   // $small-block-spacing: ($pad-xsmall/2);
     .date,
     .category {
-      margin-bottom: $line-height-small;
+      margin-bottom: 0;
     }
     .date {
      // float: none !important; // sadly have to use this to override the .right on the other blocks
       margin-right: 0;
     }
     .title {
-      margin: 0 0 $line-height-xsmall 0;
+      margin: $line-height-small 0;
       a {
         font-family: $font-face-fancy;
         font-weight: 600;
-        font-size: rem-calc($txt-size-small);
-        line-height: $line-height;
+        font-size: $txt-size-small;
+       // line-height: $line-height;
         @include link-text($color: $black);
         &:hover {
           @extend %brand-color;
@@ -439,9 +439,17 @@ body.plosone {
     }
   }
 }
-
-
-
+.plosone .row.three {
+  .row-small-blocks .small {
+    .title {
+      a {
+        &:hover {
+          color: $plos-one-purple;
+        }
+      }
+    }
+  }
+}
 
 // ROW THREE: heights and other styling details.
 #billboard {
@@ -515,22 +523,37 @@ body.plosone {
 
   h3 {
     @extend %brand-title;
-    margin: 0 0 $line-height-small;
+    margin: $line-height-small 0;
   }
 
   ul.list-plain {
     @extend .no-bullet; // from foundation
-    line-height: normal;
+    //line-height: normal;
 
     li {
       color: $clr-body-text;
-      margin-bottom: $line-height-small;
+      margin-bottom: $line-height;
+      line-height: $line-height;
 
       a {
         @extend %link-text-body;
         display: block;
-        font-family: $font-face-fancy;
         font-size: $txt-size-xsmall;
+        &:hover {
+          @extend %brand-color;
+          text-decoration: underline;
+        }
+      }
+    }
+    .plosone & {
+      ul.list-plain {
+        li {
+          a {
+            &:hover {
+              color: $plos-one-purple;
+            }
+          }
+        }
       }
     }
   }
@@ -542,14 +565,23 @@ body.plosone {
 .more-link {
   position: absolute;
   bottom: $pad-small;
-  left: $pad-small;
-  right: auto;
+ // left: $pad-small;
+  right: $pad-small;
+  font-size: $txt-size-xxxsmall;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05rem;
+  text-align: right;
   > a {
-    @extend %link-text-body;
-  //  @extend %header-allcaps-plain;
+    color: $grey-med;
+    &:hover {
+      @extend %brand-color;
+      text-decoration: underline;
+    }
   }
   &:after {
     @extend .more-icon;
+    font-size: $txt-size-default;
   }
 }
 
@@ -793,7 +825,7 @@ body.plosone #submission-links {
       width: $image-width;
       background-size: cover;
       background-position: center;
-      margin-right: $pad-xsmall;
+      margin-right: $pad-small;
       margin-bottom: 0;
     }
     .postdate {
@@ -827,10 +859,12 @@ body.plosone #submission-links {
     }
   }
   .more-link {
-    font-size: $txt-size-xsmall;
+    font-size: $txt-size-xxxsmall;
     bottom: $pad-small;
     right: $pad-small;
     text-align: right;
+    font-weight: 600;
+    color: $grey-med;
    // right: ($image-width + ($pad-large + $pad-large));
   }
 }

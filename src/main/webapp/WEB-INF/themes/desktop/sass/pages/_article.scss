@@ -610,12 +610,19 @@ $article-sidebar-width: 160;
     display: inline;
     float: left;
     line-height: rem-calc(36);
-    font-size: $txt-size-default;
+    font-size: $txt-size-small;
     font-weight: 600;
     color: $white;
 
     &:hover {
       @extend %brand-background;
+    }
+  }
+  .plosone .dload-menu {
+    div {
+      &:hover {
+        background: $plos-one-purple;
+      }
     }
   }
 
@@ -645,6 +652,22 @@ $article-sidebar-width: 160;
       @extend %brand-background;
     }
   }
+  .plosone & {
+    .dload-hover {
+      &:hover {
+        background: $plos-one-purple;
+        color: $white;
+      }
+    }
+    .dload-pdf {
+      &:not(.no-pdf) {
+        &:hover {
+          background: $plos-one-purple;
+          color: $white;
+        }
+      }
+    }
+  }
 
   .shim {
     height: rem-calc(100);
@@ -667,6 +690,7 @@ $article-sidebar-width: 160;
   z-index: map-get($zindex, dropdown);
   left: -127px;
   cursor: default;
+  font-size: $txt-size-small;
 
   a { //firefox
     font-family: $font-face-plain;
@@ -678,6 +702,7 @@ $article-sidebar-width: 160;
   @include js-tooltip-container;
   @include plos-grid-column(77, $gutter:right, $gutter-width: 5px);
   cursor: pointer;
+  font-size: $txt-size-small;
 }
 
 .print-options {
@@ -694,7 +719,7 @@ $article-sidebar-width: 160;
   margin-bottom: $pad-default;
 
   h3 {
-    font-size: $txt-size-default;//$txt-size-h3;
+    font-size: $txt-size-small;//$txt-size-h3;
     font-family: $font-face-plain;
     font-weight: 600;
     line-height: $line-height; // TEMP PROD: use 18px;
@@ -708,6 +733,7 @@ $article-sidebar-width: 160;
   @include js-tooltip-container;
   @include plos-grid-column(77, $gutter: none);
   cursor: pointer;
+  font-size: $txt-size-small;
 }
 
 .share-options {
@@ -722,6 +748,7 @@ $article-sidebar-width: 160;
   li {
     list-style-position: outside; // firefox
     list-style-type: none;
+    font-size: $txt-size-small;
 
     a img {
       width: 16px;
@@ -999,6 +1026,9 @@ body.article .ui-widget-overlay {
         .plosone & {
           a {
             color: $plos-one-purple;
+            .tweetText & {
+              color: $plos-one-purple;
+            }
           }
         }
         img {
@@ -1016,7 +1046,7 @@ body.article .ui-widget-overlay {
           clear: both;
 
           strong {
-            font-weight: 600;
+            font-weight: 500;
             &:hover {
               text-decoration: underline;
             }

@@ -40,7 +40,7 @@ For example: instead of using `font-size: 22px` you should  instead use `font-si
 
 //journal specific
 
-$plos-default: #909090; //grey
+$plos-default: #606060; //grey
 
 $plos-bio: #16a127; //green: biology, comp-bio, genetics
 $plos-med: #891fb1; // purple: medicine, pathogens, ntds
@@ -55,9 +55,9 @@ $plos-one-teal: #3daca0;
 
 
 //hues for background shading - mostly for signposts for article
-$plos-default-shade1: #abc2e8;
-$plos-default-shade2: #93aad0;
-$plos-default-shade3: #c6d7f2;
+$plos-default-shade1: #f0f0f0;
+$plos-default-shade2: #e0e0e0;
+$plos-default-shade3: #d0d0d0;
 // the shades aren't straight percentages or hue variations, so it is necessary to list each one
 $plos-one-shade1: #f4f6c3;
 $plos-one-shade2: #fbfceb;
@@ -101,8 +101,8 @@ $clr-highlight: $plos-default !default;
 $clr-highlight-hover: $plos-default !default;
 $clr-highlight-text: $white !default;
 
-$clr-tooltip-text: #a7bee9;
-$clr-link-against-dark: #89a0d0;
+$clr-tooltip-text: $grey-light;
+$clr-link-against-dark: $white;
 
 $clr-body-bg: $white;
 $clr-panel: $white;
@@ -251,16 +251,16 @@ $button-height: 36px;
 
 // Here we define the breakpoints which will become the upper border for each media size.
 // The function em-calc() calculates the em-value from a px-value.
-$small-breakpoint:  em-calc(640)  !default;
+$small-breakpoint: em-calc(640)  !default;
 $medium-breakpoint: em-calc(1024) !default;
-$large-breakpoint:  em-calc(1440) !default;
+$large-breakpoint: em-calc(1440) !default;
 $xlarge-breakpoint: em-calc(1920) !default;
 
 // Here we define the lower and upper bounds for each media size
-$small-range:   (0, $small-breakpoint) !default; /* 0, 640px */
-$medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint) !default; /* 641px, 1024px */
-$large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint)  !default; /* 1025px, 1440px */
-$xlarge-range:  ($large-breakpoint  + em-calc(1), $xlarge-breakpoint) !default; /* 1441px, 1920px */
+$small-range: (0, $small-breakpoint) !default; /* 0, 640px */
+$medium-range: ($small-breakpoint  + em-calc(1), $medium-breakpoint) !default; /* 641px, 1024px */
+$large-range: ($medium-breakpoint + em-calc(1), $large-breakpoint)  !default; /* 1025px, 1440px */
+$xlarge-range: ($large-breakpoint  + em-calc(1), $xlarge-breakpoint) !default; /* 1441px, 1920px */
 $xxlarge-range: ($xlarge-breakpoint + em-calc(1), em-calc(99999999)) !default; /* 1921px, ... */
 
 /*doc

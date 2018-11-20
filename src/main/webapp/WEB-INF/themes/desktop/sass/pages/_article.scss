@@ -270,9 +270,6 @@ $article-sidebar-width: 160;
   }
 }
 
-
-
-
 .article-title-etc {
   @include plos-grid-column($article-body-width, $gutter: none);
   margin-top: $line-height;
@@ -434,7 +431,7 @@ $article-sidebar-width: 160;
     a {
       display: block;
       height: 72px;
-      padding: $temp-pad-tabs;  // TEMP-PROD: use $pad-small;
+      padding: $pad-small;  // TEMP-PROD: use $pad-small;
       border-right: 1px solid $white;
       font-weight: 600;
       color: $white;
@@ -1157,13 +1154,33 @@ body.article .ui-widget-overlay {
 
 section.authors {
   margin-bottom: $line-height-large;
-  p { margin-bottom: rem-calc(3px); }
+  
+  h1, h2, p, dt {
+    margin-left: $pad-small;
+  }
+  p { 
+    margin-bottom: 0; 
+    }
   dt {
     font-size: $txt-size-medium;
-    margin-bottom: $line-height-small;
+    line-height: $line-height;
+    margin-top: $line-height; 
   }
   dd {
     margin-bottom: $line-height;
+    p {
+      line-height: $line-height;
+      //margin-bottom: $line-height-small;
+      & span.type {
+        font-family: $font-face-fancy;
+        font-size: $txt-size-xxxsmall;
+        font-weight:600;
+        color: $grey-med-dark;
+        text-transform:uppercase;
+        letter-spacing: 0.05rem;
+      }
+    }
   }
+
   span.rel-footnote { display: none; }
 }

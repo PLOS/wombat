@@ -69,21 +69,27 @@
 @extend %size-overide;
   position: relative;
   h2 {
-    margin: 30px 10px;
+    margin: $line-height 0 $line-height $line-height-small;
     font-weight: normal;
-    font-size: rem-calc(26px);
+    font-size: $txt-size-large;
     font-family: $font-face-fancy;
   }
 
   p.post_comment {
-    color: #666;
-    margin-bottom: 50px;
-    padding: 0 10px;
+   
+    margin-bottom: $line-height-large;
+    padding: 0 $line-height-small;
   }
 
   p.post_comment a {
-    color: $plos-default;
+    @extend %brand-color;
+    
+    .plosone & {
+      color: $plos-one-purple;
+    }
+    &:hover {
     text-decoration: underline;
+    }
   }
 
   ul#threads {

@@ -29,7 +29,7 @@ h2 {
   width: 47.1875rem;
   padding-bottom: 70px;
   font: 81.25%/1.385 arial, sans-serif;
-  color: #333;
+  color: $grey-dark;
 
    table {
     border-collapse: collapse;
@@ -59,31 +59,31 @@ table#mini td {
   text-align: left;
   vertical-align: bottom;
   background-color: transparent;
-  border: 1px solid #ccc;
+  border: 1px solid $grey-med;
   font-weight: normal;
   padding: 1px 4px;
   padding-bottom: 3px;
 }
 
 table#mini th.header1 {
-  color: #fff;
+  color: $white;
   background-color: $clr-highlight;
 }
 
 table#mini th.header2 {
-  color: #fff;
+  color: $white;
   background-color: #6d84bf;
 }
 
 table#mini td.data1 {
-  color: #fff;
-  font-weight: bold;
+  color: $white;
+  font-weight: 600;
   background-color: $clr-highlight;
 }
 
 table#mini td.data2 {
-  color: #fff;
-  font-weight: bold;
+  color: $white;
+  font-weight: 600;
   background-color: #6d84bf;
 }
 
@@ -102,8 +102,8 @@ table#mini tfoot td {
 .tileTooltip{@include js-tooltip-target();}
 
 .tileTooltip {
-  border: 1px solid #ccc;
-  background: #e5e4e4;
+  border: 1px solid $grey-med;
+  background: $off-white;
   box-shadow: 5px 5px 5px #888;
   padding: 0;
   top: -100px;
@@ -123,7 +123,7 @@ table.tile_mini td {
   text-align: left;
   vertical-align: bottom;
   background: #efefef;
-  border: 1px solid #ccc;
+  border: 1px solid $grey-med;
   font-weight: normal;
   padding: 1px 5px;
   padding-bottom: 1px;
@@ -131,25 +131,25 @@ table.tile_mini td {
 
 table.tile_mini th.header1 {
   text-align: center;
-  color: #fff;
+  color: $white;
   background-color: $clr-highlight;
 }
 
 table.tile_mini th.header2 {
   text-align: center;
-  color: #fff;
+  color: $white;
   background-color: #6d84bf;
 }
 
 table.tile_mini td.data1 {
-  color: #fff;
-  font-weight: bold;
+  color: $white;
+  font-weight: 600;
   background-color: $clr-highlight;
 }
 
 table.tile_mini td.data2 {
-  color: #fff;
-  font-weight: bold;
+  color: $white;
+  font-weight: 600;
   background-color: #6d84bf;
 }
 
@@ -173,8 +173,8 @@ table.tile_mini td.data2 {
 div#pageViewsSummary {
   width: 600px;
   display: table;
-  border: 1px solid #ccc;
-  background-color: #e5e4e4;
+  border: 1px solid $grey-med;
+  background-color: $off-white;
   padding: 0;
 }
 
@@ -199,14 +199,14 @@ div#pageViewsSummary div.totalCount {
   padding-top: 3px;
   padding-bottom: 5px;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   color: #333
 }
 
 div#pageViewsSummary div.pubDates {
   font-size: 9px;
-  font-weight: bold;
-  color: #666;
+  font-weight: 600;
+  color: $grey-med-dark;
   line-height: 11px;
 }
 
@@ -220,18 +220,18 @@ table#pageViewsTable {
 table#pageViewsTable th,
 table#pageViewsTable td {
   border-width: 0 0 1px 1px;
-  border-color: #e5e4e4;
+  border-color: $off-white;
   border-style: solid;
   padding: 3px 8px 2px 8px;
   vertical-align: middle;
   height: 17px;
   font-size: 11px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 table#pageViewsTable th {
-  background-color: #e5e4e4;
-  color: #666;
+  background-color: $off-white;
+  color: $grey-med-dark;
 }
 
 table#pageViewsTable td {
@@ -241,30 +241,30 @@ table#pageViewsTable td {
 
 table#pageViewsTable td.source1 {
   background-color: $clr-highlight;
-  font-weight: bold;
-  color: #fff;
+  font-weight: 600;
+  color: $white;
 }
 
 table#pageViewsTable td.source2 {
   background-color: #6d84bf;
-  font-weight: bold;
-  color: #fff;
+  font-weight: 600;
+  color: $white;
 }
 
 table#pageViewsTable td.total {
-  font-weight: bold;
-  color: black;
+  font-weight: 600;
+  color: $black;
 }
 
 table#pageViewsTable tr.percent td {
-  color: black;
+  color: $black;
 }
 
 /* styling for average usage stat information */
 #averageViewsSummary {
   width: 600px;
-  border: 1px solid #cccccc;
-  background-color: #e5e4e4;
+  border: 1px solid $grey-light;
+  background-color: $off-white;
   padding-bottom: 8px;
   margin-bottom: 10px;
 }
@@ -274,7 +274,7 @@ table#pageViewsTable tr.percent td {
 }
 
 #averageViewsSummary .colorbox {
-  border: 1px solid #cccccc;
+  border: 1px solid $grey-light;
   background-color: #01DF01;
   width: 9px;
   height: 9px;
@@ -292,16 +292,16 @@ table#pageViewsTable tr.percent td {
 
 #averageViewsSummary select {
   width: inherit;
-  background-color: #ffffff;
+  background-color: $white;
   border-radius: 4px;
 }
 
 #averageViewsSummary select option {
-  background-color: #ffffff;
+  background-color: $white;
 }
 
 #beta {
-  font: italic bold 10px Arial;
+  font: italic 600 10px Arial;
   color: #00be00;
 }
 
@@ -374,7 +374,7 @@ a.irs {
       float: right;
       text-align: center;
       background-color: #16A127;
-      color: #FFF;
+      color: $white;
       width: 19px;
       display: inline-block;
       margin: 2px 2px 0 0;
@@ -390,31 +390,31 @@ a.irs {
 #article-metrics {
   width: 600px;
   margin-left: 10px;
-  padding-top: 30px;
+  padding-top: $line-height-large;
 }
 
 div.metrics_tile {
   vertical-align: text-top;
   display: inline-block;
-  border: 1px solid #CCCCCC;
+  border: 1px solid $grey-light;
   margin-right: 12px;
   margin-bottom: 12px;
-  background-color: #E5E4E4;
+  background-color: $off-white;
   *zoom: 1; /*  Workaround for IE */
   *display: inline; /*  Workaround for IE */
 }
 
 div.metrics_tile:hover {
-  border: 1px solid #90ABBD;
+  border: 1px solid $grey-med;
   background-color: #C8DFED;
 }
 
 img.metrics_tile_image {
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid $grey-light;
 }
 
 div.metrics_tile:hover .metrics_tile_image {
-  border-bottom: 1px solid #90ABBD;
+  border-bottom: 1px solid $grey-med;
 }
 
 div.metrics_tile_footer {
@@ -424,34 +424,38 @@ div.metrics_tile_footer {
 }
 
 div.metrics_tile_footer a {
-  color: #006699;
+  @extend %brand-color;
   font-size: 1.3em;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  
+  .plosone & {
+    color: $plos-one-purple;
+  }
 }
 
 div.metrics_tile_no_link {
   vertical-align: text-top;
   display: inline-block;
-  border: 1px solid #CCCCCC;
+  border: 1px solid $grey-light;
   margin-right: 12px;
   margin-bottom: 12px;
-  background-color: #E5E4E4;
+  background-color: $off-white;
   *zoom: 1; /*  Workaround for IE */
   *display: inline; /*  Workaround for IE */
 }
 
 div.metrics_tile_footer_no_link {
-  line-height: 1.85em;
+  line-height: $line-height-large;
   text-align: center;
-  color: #999999;
+  color: $grey-med;
   font-size: 1.30em;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 div.metrics_tile:hover .metrics_tile_rating_footer {
-  border-top: 1px solid #90ABBD;
+  border-top: 1px solid $grey-med;
 }
 
 div#article-metrics div#views {

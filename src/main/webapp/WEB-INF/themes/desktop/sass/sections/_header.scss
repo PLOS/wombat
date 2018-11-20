@@ -170,13 +170,9 @@ $width-nav: $block-grid-elements - $width-logo;
     font-size: $txt-size-medium;
     white-space: pre-wrap;
     &:hover {
-      color: $clr-highlight-text;
-      background: $clr-highlight-hover;
+      color: $black;
+      background: $grey-light;
 
-				body.plosone & {
-					color: $white;
-					background: $grey-med;
-				}
       }
     }
 

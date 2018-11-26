@@ -59,15 +59,15 @@ have a fixed width and height (but it's not required).
 // small carousel
 .carousel-wrap.small {
   $icon-height: rem-calc(30);
-  $carousel-width: rem-calc(306);
+  $carousel-width: rem-calc(302);
   // TODO PG-width is set in home.scss
-  // @extend %brand-shading;
+
   @extend .block-card;
-  margin-right: $pad-xsmall;
+  margin-right: $pad-default;
   position: relative;
   .block-header {
     @extend %brand-header;
-    padding-left: $pad-small;
+    padding-left: $pad-default;
 
     .plosone & {
       background-color: $white;
@@ -80,19 +80,19 @@ have a fixed width and height (but it's not required).
     li {
       width: $carousel-width;
       padding: $pad-small;
-      height: 145px;
+      padding-left: $pad-default;
+      height: 170px;
       h3 {
-       // @extend %home-subheader;
-       // @extend  %header-large;
         font-size: rem-calc($txt-size-default);
         font-weight: $bold;
         line-height: $line-height;
         margin-bottom: $line-height-xsmall;
       }
       p {
-        font-size: rem-calc($txt-size-xsmall);
+        font-size: rem-calc($txt-size-small);
         color: $grey-med;
         line-height: $line-height;
+        margin-bottom: 0;
       }
     }
     .plosone & {
@@ -106,8 +106,8 @@ have a fixed width and height (but it's not required).
   .carousel-control {
     position: absolute;
     bottom: $line-height-small;
-    left: 45%;
-    width: 60%;
+    left: 50%;
+    width: 120px;
     margin-left: -50px;
     .jcarousel-prev,
     .jcarousel-next {
@@ -131,7 +131,6 @@ have a fixed width and height (but it's not required).
       @extend .fa-chevron-circle-right;
     }
     .numbers {
-     // @extend %small-italic;
       font-size: $txt-size-xsmall;
       color: $grey-med;
       display: inline-block;

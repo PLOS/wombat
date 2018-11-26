@@ -61,7 +61,7 @@ body {
   }
 
   %width-small {
-    @include plos-grid-column(306);
+    @include plos-grid-column(304);
   }
 
   %width-medium {
@@ -268,7 +268,6 @@ body.plosone {
     margin-right: $pad-xsmall;
     margin-bottom: 0;
     height: ($block-height - ($pad-xsmall));
-
     overflow: hidden;
   }
   // components
@@ -281,14 +280,12 @@ body.plosone {
     color: $grey-med;
   }
   .credits {
-    //@extend %small-italic;
     font-size: $txt-size-xxxsmall;
     line-height: $line-height-small;
     position: absolute;
     bottom: -$pad-xsmall;
     left: ($image-container + $pad-small);
     margin-top: $line-height-small;
-   // margin-left: ($image-container + $pad-xsmall);
     color: $grey-med;
   }
   .category {
@@ -304,7 +301,6 @@ body.plosone {
     }
   }
   .title {
-   // @extend %header-large;
     margin: $line-height-small 0;
     @extend %link-text-body;
     font-size: $txt-size-mediumish;
@@ -327,7 +323,6 @@ body.plosone {
     position: relative;
     padding-right: 0;
     margin-bottom: 0;
-   // font-size: rem-calc($txt-size-xsmall);
   }
 
   &.small {
@@ -427,7 +422,6 @@ body.plosone {
         font-family: $font-face-fancy;
         font-weight: $bold;
         font-size: $txt-size-small;
-       // line-height: $line-height;
         @include link-text($color: $black);
         &:hover {
           @extend %brand-color;
@@ -476,7 +470,7 @@ body.plosone {
     font-family: $font-face-plain;
     color: $grey-med-light;
     font-size: rem-calc($txt-size-medium);
-    line-height: rem-calc(18);
+    line-height: $line-height;
     margin-bottom: $line-height-small;
 
     body.plosone & {
@@ -566,7 +560,6 @@ body.plosone {
 .more-link {
   position: absolute;
   bottom: $pad-small;
- // left: $pad-small;
   right: $pad-small;
   font-family: $font-face-fancy;
   font-size: $txt-size-xxxsmall;
@@ -715,6 +708,8 @@ body.plosone #submission-links {
   border-left: 10px solid $plos-one-pink;
 
   a {
+    background-color: $plos-one-pink;
+    color: $white;
     &:hover {
       @extend %brand-background;
     }

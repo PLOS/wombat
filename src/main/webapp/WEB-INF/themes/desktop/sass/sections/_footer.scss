@@ -23,6 +23,8 @@
 /*
  *      styles for the footer
  */
+ $footer-block-height: rem-calc(180);
+
 #pageftr {
   @extend .hide-for-print;
   @extend %bg-dark;
@@ -35,6 +37,7 @@
     @include blocks($color: $grey-dark, $radius: none, $padding: $line-height-small 0 0, $shadow: none);
     background: inherit;
     border: 0;
+    height: $footer-block-height;
     &.x-small {
       @include plos-grid-column(267);
     }
@@ -44,14 +47,14 @@
   }
   .logo-footer {
     float: right;
-    margin: 0 0;
+    margin: 0 0 0 0;
   }
   .footer-non-profit-statement {
     text-align: right;
     color: $grey-med-light;
     margin-bottom: $line-height-large;
   }
-  
+
   //pseudo elements are for Firefox
   a,
   a:visited,
@@ -68,6 +71,10 @@
       list-style-type: none;
       line-height: $line-height;
       padding: 0;
+      &.ftr-header {
+        font-weight: $bold;
+        margin-bottom: $line-height-small;
+      }
     }
   }
 }

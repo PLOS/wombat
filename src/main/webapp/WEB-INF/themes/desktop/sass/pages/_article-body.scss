@@ -95,7 +95,7 @@ $line-height-small: ($line-height * .5);
 
   .title-small {
     font-size: $txt-size-default;
-    font-weight: 600;
+    font-weight: $bold;
   }
 
   .abstract {
@@ -162,7 +162,7 @@ $line-height-small: ($line-height * .5);
 
     .amendment-link,
     .amendment-date {
-      font-weight: bold;
+      font-weight: $bold;
     }
   }
 
@@ -222,7 +222,7 @@ $line-height-small: ($line-height * .5);
       font-size: $txt-size-xxsmall;
       display: block;
       text-align: right;
-      font-weight: bold;
+      font-weight: $bold;
     }
   }
 
@@ -262,14 +262,14 @@ $line-height-small: ($line-height * .5);
     border-bottom: 1px solid $grey-med;
     li {
       &.amendment-correction {
-        font-weight: bold;
+        font-weight: $bold;
       }
       &.amendment-eoc a {
-        font-weight: bold;
+        font-weight: $bold;
         color: $clr-warning;
       }
       &.amendment-retraction a {
-        font-weight: bold;
+        font-weight: $bold;
         color: $clr-warning;
       }
     }
@@ -438,7 +438,7 @@ $line-height-small: ($line-height * .5);
     margin-top: $pad-small;
     margin-bottom: 0;
     line-height: $line-height;
-    font-weight: bold;
+    font-weight: $bold;
     font-size: $txt-size-small;
   }
   p {
@@ -515,20 +515,20 @@ $line-height-small: ($line-height * .5);
 
     td {
       padding: rem-calc(2);
-      color: #666;
+      color: $grey-med;
       border: 1px solid $grey-med-light;
     }
 
     th {
       border: 1px solid $grey-med-light;
       padding: 8px $line-height;
-      background: #efefef;
+      background: $grey-light;
       text-align: left;
     }
 
     thead tr:first-child {
       background-color: $table-header-bg;
-      font-weight: bold;
+      font-weight: $bold;
     }
 
     thead tr:first-child td {
@@ -536,7 +536,7 @@ $line-height-small: ($line-height * .5);
     }
 
     tbody tr td:first-child {
-      font-weight: bold;
+      font-weight: $bold;
     }
 
     tbody tr:nth-child(odd) {
@@ -556,7 +556,7 @@ $line-height-small: ($line-height * .5);
 
   .table-caption {
     line-height: $line-height;
-    font-weight: bold;
+    font-weight: $bold;
     font-size: $txt-size-small;
   }
 
@@ -640,7 +640,7 @@ ol.references {
     float: left;
     width: rem-calc(20);
     text-align: right;
-    font-weight: bold;
+    font-weight: $bold;
   }
 }
 
@@ -675,7 +675,7 @@ ol.references {
       float: left;
       width: $pad-default;
       text-align: right;
-      font-weight: bold;
+      font-weight: $bold;
     }
 
     .find-nolinks {
@@ -697,7 +697,7 @@ ol.references {
 
   &:after {
     border-color: rgba(255, 255, 255, 0);
-    border-top-color: #fff;
+    border-top-color: $white;
     border-width: rem-calc(12);
     margin-left: rem-calc(-12);
   }

@@ -74,7 +74,7 @@
     @extend %brand-background;
     border: 0 solid transparent;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: $bold;
     font-size: $txt-size-small;
     background-color: $clr-home-subscription-button;
     color: $white;

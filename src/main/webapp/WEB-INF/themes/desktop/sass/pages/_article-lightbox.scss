@@ -159,7 +159,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
     margin-bottom: $pad-default;
     font-family: $font-face-plain;
     font-size: $txt-size-large;
-    font-weight: bold;
+    font-weight: $bold;
     color: $grey-dark;
   }
 
@@ -640,6 +640,3 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
     }
   }
 }
-
-
-

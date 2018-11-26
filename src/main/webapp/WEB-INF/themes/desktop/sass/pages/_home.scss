@@ -296,8 +296,8 @@ body.plosone {
     line-height: $line-height;
     margin-bottom: 0;
     font-size: $txt-size-xxxsmall;
-    letter-spacing: .05rem;
-    font-weight: 600;
+    letter-spacing: $letter-spacing-default;
+    font-weight: $bold;
 
     body.plosone & {
       color: $plos-one-purple;
@@ -308,7 +308,7 @@ body.plosone {
     margin: $line-height-small 0;
     @extend %link-text-body;
     font-size: $txt-size-mediumish;
-    font-weight: 600;
+    font-weight: $bold;
     line-height: $line-height;
     a {
       &:hover {
@@ -334,7 +334,7 @@ body.plosone {
     .title {
       font-size: $txt-size-xxsmall;
       line-height: $line-height;
-      font-weight: 600;
+      font-weight: $bold;
       margin: $line-height 0 0;
     }
     .blurb {
@@ -425,7 +425,7 @@ body.plosone {
       margin: $line-height-small 0;
       a {
         font-family: $font-face-fancy;
-        font-weight: 600;
+        font-weight: $bold;
         font-size: $txt-size-small;
        // line-height: $line-height;
         @include link-text($color: $black);
@@ -495,7 +495,7 @@ body.plosone {
     top: 40%;
     margin-top: rem-calc(-13);
     color: $white;
-    font-weight: 600;
+    font-weight: $bold;
     font-size: rem-calc($txt-size-xsmall);
     text-transform: uppercase;
 
@@ -570,9 +570,9 @@ body.plosone {
   right: $pad-small;
   font-family: $font-face-fancy;
   font-size: $txt-size-xxxsmall;
-  font-weight: 600;
+  font-weight: $bold;
   text-transform: uppercase;
-  letter-spacing: .05rem;
+  letter-spacing: $letter-spacing-default;
   text-align: right;
   > a {
     @extend %brand-color;
@@ -660,23 +660,40 @@ body.plosone {
 }
 
 #submission-links {
-  @include blocks($color: $grey-med-dark, $radius: none, $padding: $pad-small, $shadow: none);
+  @include blocks($color: $white, $radius: none, $padding: $pad-small, $shadow: none);
   @extend %width-small;
-  //padding-top: $pad-small + $pad-xsmall;
+  @extend %brand-border;
+
+  border: 1px solid;
 
   p {
-    text-align: center;
+    text-align: left;
     margin: $pad-default auto $pad-small auto;
   }
+
   a {
-    @include link-text($color: $white, $decoration-hover: underline);
-    font-size: $txt-size-medium;
+    @extend %brand-background;
+    @include border-radius();
+    color: $white;
+    font-size: $txt-size-xxsmall;
     font-family: $font-face-fancy;
-    //margin-top: $line-height-small;
+    text-transform: uppercase;
+    font-weight: $bold;
+    margin-right: $pad-small;
+    line-height: 1;
+    padding: $pad-small $pad-default;
+    &:hover {
+      @extend %brand-background-hover;
+      text-decoration: none;
+    }
   }
+
   h3 {
-  //  @extend %header-bottom-shadow;
-    @extend %header-xlarge-light;
+    @extend %brand-color;
+    text-transform: uppercase;
+    font-size: $txt-size-medium;
+    font-weight: $bold;
+    margin-bottom: $line-height-small;
   }
 
   .split-container {
@@ -686,12 +703,9 @@ body.plosone {
   }
   .split-item {
     margin: 0 !important;
-    width: 50%;
+    width: 90%;
     height: 40px;
     text-align: center;
-    &:first-child {
-     // border-right: 1px solid $grey-med-dark;
-    }
   }
 }
 
@@ -699,54 +713,22 @@ body.plosone #submission-links {
   @include blocks();
   border: 1px solid $plos-one-pink;
   border-left: 10px solid $plos-one-pink;
-  p {
-    text-align: left;
-    margin: $pad-default auto $pad-small auto;
-  }
+
   a {
-    @include border-radius();
-    color: $white;
-    background-color: $plos-one-pink;
-    font-size: $txt-size-xxsmall;
-    font-family: $font-face-fancy;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-right: $pad-small;
-    line-height: 1;
-    padding: $pad-small $pad-default;
     &:hover {
       @extend %brand-background;
-      text-decoration: none;
     }
   }
-
 
   h3 {
     color: $plos-one-purple;
-    text-transform: uppercase;
-    font-size: $txt-size-medium;
-    font-weight: 600;
-    margin-bottom: $line-height-small;
-  }
-  .split-item {
-    margin: 0 !important;
-    width: 90%;
-    height: 40px;
-    text-align: center;
-    .plosone & {
-      &:first-child {
-        display: none;
-      }
-    }
   }
 }
-
 
 #social-links {
   @extend %width-small;
   @extend %brand-background;
   @include blocks($radius: none, $padding: $pad-small, $shadow: none);
-
 
   h3 {
     color: $white;
@@ -854,7 +836,7 @@ body.plosone #submission-links {
         @extend %link-text-body;
         font-family: $font-face-fancy;
         font-size: $txt-size-xsmall;
-        font-weight: 600;
+        font-weight: $bold;
       }
     }
     .postauthor {
@@ -864,7 +846,7 @@ body.plosone #submission-links {
       padding: 0;
       font-family: $font-face-fancy;
       font-size: $txt-size-xxxsmall;
-      letter-spacing: .05rem;
+      letter-spacing: $letter-spacing-default;
       text-transform: uppercase;
       line-height: $line-height-small;
     }
@@ -874,7 +856,7 @@ body.plosone #submission-links {
     bottom: $pad-small;
     right: $pad-small;
     text-align: right;
-    font-weight: 600;
+    font-weight: $bold;
     color: $grey-med;
    // right: ($image-width + ($pad-large + $pad-large));
   }
@@ -896,7 +878,7 @@ body.plosone #blogs {
     background-color: $white;
     a {
       color: $plos-one-purple;
-      font-weight: 600;
+      font-weight: $bold;
     }
   }
 }

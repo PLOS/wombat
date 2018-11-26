@@ -43,7 +43,7 @@ $nav-spacing-full: $nav-spacing;
 
 header {
   background: $off-white;
-  
+
 
   }
 
@@ -161,7 +161,7 @@ $width-nav: $block-grid-elements - $width-logo;
   %nav-header-type {
     font-family: $font-face-navigation;
     font-size: $txt-size-medium;
-    font-weight: 600;
+    font-weight: $bold;
     text-transform:uppercase;
     }
   %nav-element-type {
@@ -367,7 +367,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
     h3 {
       font-size: $txt-size-large;
-      font-weight: 600;
+      font-weight: $bold;
       }
 
     .callout-content {
@@ -405,7 +405,7 @@ $width-nav: $block-grid-elements - $width-logo;
         @extend %brand-color;
         font-family: $font-face-fancy;
         font-size: $txt-size-small;
-        font-weight: 600;
+        font-weight: $bold;
         text-transform:uppercase;
         background: $grey-dark !important; /// This has to stand until i dig out foundation
         white-space: nowrap;
@@ -470,7 +470,7 @@ $width-nav: $block-grid-elements - $width-logo;
      // @include input-placeholder-color();
 
       &.placeholder {
-        @include input-placeholder-color(#999);
+        @include input-placeholder-color($grey-med-light);
         text-transform: uppercase;
         }
 

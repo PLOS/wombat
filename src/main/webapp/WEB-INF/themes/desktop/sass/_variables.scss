@@ -53,15 +53,14 @@ $plos-one-purple: #3e0577;
 $plos-one-pink: #cc00a6;
 $plos-one-teal: #3daca0;
 
-
 //hues for background shading - mostly for signposts for article
 $plos-default-shade1: #f0f0f0;
 $plos-default-shade2: #e0e0e0;
 $plos-default-shade3: #d0d0d0;
 // the shades aren't straight percentages or hue variations, so it is necessary to list each one
-$plos-one-shade1: #f4f6c3;
-$plos-one-shade2: #fbfceb;
-$plos-one-shade3: #ecf09b;
+$plos-one-shade1: #ecf09b;
+$plos-one-shade2: $plos-one;
+$plos-one-shade3: #f4f6c3;
 
 $plos-bio-shade1: #a8e2be;
 $plos-bio-shade2: #92e5ab;
@@ -70,8 +69,6 @@ $plos-bio-shade3: #caeed7;
 $plos-med-shade1: #d4afe0;
 $plos-med-shade2: #c493d4;
 $plos-med-shade3: #decbe4;
-
-
 
 $black: #101010;
 $white: #fff;
@@ -95,7 +92,6 @@ $success: #16a127;
 $clr-brand: $grey-med;
 
 //colors
-
 
 $clr-highlight: $plos-default !default;
 $clr-highlight-hover: $plos-default !default;
@@ -205,6 +201,8 @@ $font-face-roman: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia,
 $font-face-sans-serif: Helvetica, Arial, sans-serif;
 $font-face-monospace: "Courier New", monospace;
 
+$bold: 600;
+
 //Type Sizes
 $txt-size-giant: 32px;
 $txt-size-xxxlarge: 26px;
@@ -235,6 +233,8 @@ $txt-margin-top-h3: 9px;
 
 $sub-alignment: .5ex; //controls sub text
 $sup-alignment: 1ex; //controls super text
+
+$letter-spacing-default: .05rem;
 
 $line-height: 18px; // applies to paragraphs and lists by default
 $line-height-large: ($line-height * 2); //36px

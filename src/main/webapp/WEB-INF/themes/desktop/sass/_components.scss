@@ -50,10 +50,6 @@ category: components
     &:hover {
       background: $clr-link-hover;
 
-    /*  body.plosone & {
-      	background: $plos-one-purple;
-      }*/
-
     }
   } @else {
   }
@@ -75,7 +71,7 @@ category: components
   height: auto;
   line-height: rem-calc(17);
   font-size: $txt-size-xxxsmall;
-  font-weight: 600;
+  font-weight: $bold;
   color: $white;
   text-transform: uppercase;
 }
@@ -90,7 +86,7 @@ category: components
 .button-big{
   @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-small);
   line-height: rem-calc($button-height);
-  font-weight: 600;
+  font-weight: $bold;
   font-size: $txt-size-mediumish;
   text-align: center;
   &.highlighted{
@@ -108,7 +104,7 @@ category: components
 
   body.plosone & {
 	  font-size: $txt-size-small;
-	  font-weight: 600;
+	  font-weight: $bold;
 	  text-transform: uppercase;
 	  background: $plos-one-pink;
 	  color: $white;
@@ -155,11 +151,7 @@ variable  | result   | default
 `$padding: none` |  block has no padding |
 `$padding: NUMBER` | allows you to set the number padding - use variables |
 `$color: COLOR` | sets the background color   |   `$white`
-
 */
-
-
-
 
 @mixin blocks($color: $white, $radius: none, $padding: default, $shadow: none) {
   // set block radius
@@ -169,7 +161,6 @@ variable  | result   | default
      // no radius
   } @if $radius == all {
     border-radius: $border-radius-default;
-
 }
   // set block padding
   @if $padding == default {
@@ -194,22 +185,16 @@ variable  | result   | default
 }
 .block-noshadow{
   @include blocks($shadow: none);
-
 }
 .block-card {
   @include blocks($radius: none, $padding: none);
   @include border-default;
-
 }
 .block-dark{
   @include blocks($radius: none, $color: $grey-dark, $shadow: none)
 }
 
-
-
-
 ///PLACEHOLDER STYLES
-
 @mixin stub() {
   background-color: $grey-med-light;
   color: $white;
@@ -233,7 +218,6 @@ variable  | result   | default
 /// for regular text that gets highlighted. For text that is already highlighted in some way you can
 // just use the sass code that reflects that element.
 
-
 @mixin tooltip-trigger( $padding: $pad-xsmall, $outside-box:none){
   padding: $padding;
   @include single-transition(background-color);
@@ -254,7 +238,7 @@ variable  | result   | default
   }
 }
 
-// creates a standard tooltip blue box etc....
+// creates a standard tooltip blue box etc.
 @mixin tooltip($width: 320, $outside-box:none, $tooltip-padding: $pad-small){
   @include rounded-pill($padding: $tooltip-padding, $hover: false);
   padding-right: $pad-default;   //TODO put padding in closer
@@ -288,11 +272,11 @@ variable  | result   | default
 
 .tooltip-aside{
   @include tooltip($width: 160, $tooltip-padding: rem-calc(15 10 10 20));
-  display:block;
+  display: block;
 
   li {
     font-size: $txt-size-medium-large;
-    font-weight: bold;
+    font-weight: $bold;
     text-align: left;
     list-style-type: disc;
     list-style-position: inside;
@@ -300,7 +284,7 @@ variable  | result   | default
 
     a {
       @extend %link-text-body;
-      font-weight: bold;
+      font-weight: $bold;
       color:$white;
 
       &:hover {
@@ -310,7 +294,6 @@ variable  | result   | default
 
   }
 }
-
 
 //// for JS widgets - these are to separate
 
@@ -385,7 +368,7 @@ variable  | result   | default
        > a {
         @include border-width-adjust($spacing: $spacing-left);
         color: $txt-color-hover;
-        font-weight: bold;
+        font-weight: $bold;
         letter-spacing: -.5px;
       }
       > ul {

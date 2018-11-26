@@ -88,7 +88,7 @@ example | extension
   font-size: rem-calc($txt-size-default);
   line-height: $line-height;
 }
-@mixin text-below{margin-bottom: $line-height-small;}
+@mixin text-below{margin-bottom: $paragraph-spacing;}
 @mixin default-list{
   li{
     @include text-default;
@@ -105,7 +105,7 @@ ol {
   list-style-type: none;
   > li {
     padding-left: $pad-default;
-    margin-bottom: $line-height-small;
+    margin-bottom: $paragraph-spacing;
     position: relative;
   }
   > li:before {
@@ -177,7 +177,7 @@ h4, h5 {
 
 .title-small {
   font-size: $txt-size-default;
-  font-weight: bold;
+  font-weight: $bold;
 }
 
 .title-medium {
@@ -200,7 +200,7 @@ h4, h5 {
     font-family: $font-face-fancy;
     font-size: $txt-size-xxlarge;
     line-height: $line-height-large;
-    font-weight: 600;
+    font-weight: $bold;
 }
 
 .title-secondary{
@@ -209,7 +209,6 @@ h4, h5 {
   line-height: $line-height-large-text;
   margin-bottom: $line-height-medium;
 }
-
 
 
 //callout styles
@@ -269,7 +268,7 @@ blockquote, .pullquote, .block-quote {
 .block-global-alert {
   @extend %callout-default;
   background: $plos-default-shade1;
-  font-weight: bold;
+  font-weight: $bold;
 }
 
 .block-aperta {
@@ -380,12 +379,10 @@ example | extension
 //font decorations and JATS tags
 ///////////////
 
-
 .type{
-  font-weight:600;
+  font-weight:$bold;
   &:after{content: ':'}
 }
-
 
 %small-italic {
   font-size: rem-calc($txt-size-xxxsmall);
@@ -401,7 +398,7 @@ example | extension
 }
 
 .inline-intro {
-  font-weight: 600;
+  font-weight: $bold;
 }
 
 .no-margin {
@@ -421,9 +418,6 @@ example | extension
 .sans-serif {
   font-family: $font-face-sans-serif;
 }
-
-
-
 
 //////////////
 //form styles
@@ -569,7 +563,7 @@ table.table-zebra-stripes {
 %header-medium-bold {
   font-size: rem-calc($txt-size-medium);
   font-family: $font-face-fancy;
-  font-weight: bold;
+  font-weight: $bold;
 }
 
 %header-xlarge-light {

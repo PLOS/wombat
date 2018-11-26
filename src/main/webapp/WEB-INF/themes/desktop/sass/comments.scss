@@ -63,7 +63,7 @@
   }
 
   .userlink {
-    font-weight: bold;
+    font-weight: $bold;
   }
 
 @extend %size-overide;
@@ -76,14 +76,14 @@
   }
 
   p.post_comment {
-   
+
     margin-bottom: $line-height-large;
     padding: 0 $line-height-small;
   }
 
   p.post_comment a {
     @extend %brand-color;
-    
+
     .plosone & {
       color: $plos-one-purple;
     }
@@ -93,7 +93,7 @@
   }
 
   ul#threads {
-    border-top: 1px solid #D1D1D1;
+    border-top: 1px solid $grey-light;
     list-style: none;
     margin: 0;
     padding: 30px 0 0 0;
@@ -111,13 +111,13 @@
 
     li a {
       color: $grey-dark;
-      font-weight: bold;
+      font-weight: $bold;
       text-decoration: underline;
     }
 
     li div.responses {
       border-right: 1px solid #D1D1D1;
-      font-weight: bold;
+      font-weight: $bold;
       padding: 5px 14px;
       text-align: center;
       text-transform: uppercase;
@@ -143,7 +143,7 @@
 
     li div.recent span {
       font-size: .8em;
-      font-weight: bold;
+      font-weight: $bold;
       text-transform: uppercase;
     }
 
@@ -220,7 +220,7 @@
 
 .reply {
   @extend %size-overide;
-  background-color: #333;
+  background-color: $grey-dark;
   padding: 30px 30px 15px 30px;
   position: relative;
   color: $white;
@@ -254,7 +254,7 @@
 
 .reply a:hover {
   text-decoration: none;
-  color: #999;
+  color: $grey-med;
 }
 
 .reply form fieldset {
@@ -339,7 +339,7 @@
 
 .reply form span.btn_cancel {
   background: #636363;
-  color: #FFF;
+  color: $white;
 }
 
 .reply form input[type=submit] {
@@ -351,7 +351,7 @@
 }
 
 .reply .help p {
-  color: #CCC;
+  color: $grey-med;
 }
 
 .reply .help span {
@@ -372,7 +372,7 @@
   background-image: image-url('icon.sprite.close.png');
   @extend %brand-background;
   text-indent: -9999px;
-  border-radius: 3px;
+  border-radius: $border-radius-default;
 }
 
 .reply.review .close_confirm:hover {
@@ -385,7 +385,7 @@
   background-color: $grey-dark;
   p {
     font-style: normal;
-    font-weight: bold;
+    font-weight: $bold;
     color: $warning;
     margin-bottom: 0;
   }

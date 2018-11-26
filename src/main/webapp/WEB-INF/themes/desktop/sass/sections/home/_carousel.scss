@@ -73,7 +73,7 @@ have a fixed width and height (but it's not required).
       background-color: $white;
       color: $plos-one-purple;
       border-bottom: 1px solid $grey-light;
-      font-weight: 600;
+      font-weight: $bold;
     }
   }
   .carousel {  //TODO: do we move this into home?
@@ -85,7 +85,7 @@ have a fixed width and height (but it's not required).
        // @extend %home-subheader;
        // @extend  %header-large;
         font-size: rem-calc($txt-size-default);
-        font-weight: 600;
+        font-weight: $bold;
         line-height: $line-height;
         margin-bottom: $line-height-xsmall;
       }

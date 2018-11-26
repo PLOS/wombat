@@ -242,7 +242,7 @@ body.plosone {
 #search-results .article {
   display: block;
   font-size: 1.167em;
-  font-weight: bold;
+  font-weight: $bold;
   line-height: 1.286;
   margin-bottom: 3px;
 }
@@ -264,7 +264,7 @@ body.plosone {
 #search-results .metrics {
   display: block;
   font-size: 0.917em;
-  font-weight: bold;
+  font-weight: $bold;
   margin-top: 8px;
 }
 

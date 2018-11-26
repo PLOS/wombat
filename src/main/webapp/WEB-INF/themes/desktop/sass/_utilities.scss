@@ -122,8 +122,6 @@ $clr-highlight-text: $white) {
   }
 }
 
-
-
 @mixin highlight-border($clr-highlight: $plos-default, $width: 6px, $position: bottom) {
 
   @if $position == bottom {

@@ -430,10 +430,10 @@ $article-sidebar-width: 160;
 
     a {
       display: block;
-      height: 72px;
+      height: rem-calc(72px);
       padding: $pad-small;  // TEMP-PROD: use $pad-small;
       border-right: 1px solid $white;
-      font-weight: 600;
+      font-weight: $bold;
       color: $white;
 
       &:hover {
@@ -445,7 +445,7 @@ $article-sidebar-width: 160;
       position: relative;
       @extend %brand-background;
       height: 81px;
-      font-weight: 600;
+      font-weight: $bold;
       font-family: $font-face-plain;
 
       &:after {
@@ -608,7 +608,7 @@ $article-sidebar-width: 160;
     float: left;
     line-height: rem-calc(36);
     font-size: $txt-size-small;
-    font-weight: 600;
+    font-weight: $bold;
     color: $white;
 
     &:hover {
@@ -624,7 +624,7 @@ $article-sidebar-width: 160;
   }
 
   .dload-pdf {
-    @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 11), $border-radius: 3px 0 0 3px, $hover: false);
+    @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 11), $border-radius: $border-radius-default 0 0 $border-radius-default, $hover: false);
     width: 79%;
     text-align: center;
     white-space: nowrap;
@@ -640,7 +640,7 @@ $article-sidebar-width: 160;
   }
 
   .dload-hover {
-    @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 8 0 11), $border-radius: 0 3px 3px 0, $hover: false);
+    @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 8 0 11), $border-radius: 0 $border-radius-default $border-radius-default 0, $hover: false);
     @include js-tooltip-container();
     @extend .icon-caret-down;
     width: 20%;
@@ -718,7 +718,7 @@ $article-sidebar-width: 160;
   h3 {
     font-size: $txt-size-small;//$txt-size-h3;
     font-family: $font-face-plain;
-    font-weight: 600;
+    font-weight: $bold;
     line-height: $line-height; // TEMP PROD: use 18px;
     border-bottom: 1px solid $grey-light;
     margin-top: $line-height; // TEMP PROD: use 10px;
@@ -1154,17 +1154,17 @@ body.article .ui-widget-overlay {
 
 section.authors {
   margin-bottom: $line-height-large;
-  
+
   h1, h2, p, dt {
     margin-left: $pad-small;
   }
-  p { 
-    margin-bottom: 0; 
+  p {
+    margin-bottom: 0;
     }
   dt {
     font-size: $txt-size-medium;
     line-height: $line-height;
-    margin-top: $line-height; 
+    margin-top: $line-height;
   }
   dd {
     margin-bottom: $line-height;
@@ -1174,7 +1174,7 @@ section.authors {
       & span.type {
         font-family: $font-face-fancy;
         font-size: $txt-size-xxxsmall;
-        font-weight:600;
+        font-weight:$bold;
         color: $grey-med-dark;
         text-transform:uppercase;
         letter-spacing: 0.05rem;

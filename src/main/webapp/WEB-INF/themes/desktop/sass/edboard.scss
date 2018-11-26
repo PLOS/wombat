@@ -41,7 +41,7 @@
   }
 
   label {
-    font-weight: bold;
+    font-weight: $bold;
   }
   .twitter-typeahead {
     margin-top: rem-calc(-3);
@@ -113,4 +113,3 @@
     }
   }
 }
-

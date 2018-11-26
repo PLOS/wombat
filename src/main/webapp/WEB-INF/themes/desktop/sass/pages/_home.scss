@@ -454,7 +454,7 @@ body.plosone {
   body.plosone & {
     @include blocks($white, $shadow: none, $radius: none);
     border: 1px solid $plos-one-pink;
-    border-left: 10px solid $plos-one-pink;
+    @include highlight-border($clr-highlight: $plos-one-pink, $width: 10px, $position: left);
   }
 
   h3,
@@ -705,7 +705,7 @@ body.plosone {
 body.plosone #submission-links {
   @include blocks();
   border: 1px solid $plos-one-pink;
-  border-left: 10px solid $plos-one-pink;
+  @include highlight-border($clr-highlight: $plos-one-pink, $width: 10px, $position: left);
 
   a {
     background-color: $plos-one-pink;
@@ -853,7 +853,6 @@ body.plosone #submission-links {
     text-align: right;
     font-weight: $bold;
     color: $grey-med;
-   // right: ($image-width + ($pad-large + $pad-large));
   }
 }
 

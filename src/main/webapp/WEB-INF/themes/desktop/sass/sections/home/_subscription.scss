@@ -27,7 +27,7 @@
 
   .plosone & {
     border: 1px solid $plos-one-pink;
-    border-left: 10px solid $plos-one-pink;
+    @include highlight-border($clr-highlight: $plos-one-pink, $width: 10px, $position: left);
     color: $plos-one-purple;
   }
 

@@ -65,7 +65,12 @@ type | value
 */
 
 // hide elements so we dont' get a flash of unstyled content
-p, div, span, li, ul, ol {
+p,
+div,
+span,
+li,
+ul,
+ol {
   [data-visibility= "none"] {
     display: none;
   }
@@ -108,7 +113,7 @@ $default-border-radius: $border-radius-default;
 }
 
 @mixin highlight-background($clr-highlight: $plos-default,
-$clr-highlight-hover: $plos-default,
+$clr-highlight-hover: $grey-med,
 $clr-highlight-text: $white) {
   background: $clr-highlight;
   color: $clr-highlight-text;
@@ -208,25 +213,33 @@ example | extension
   %brand-shading {
     &:first-child {
       .block-header {
-        background-color: darken($setcolor, 18%);
+        background-color: darken($setcolor, 13%);
+
+        body.plos-one & {
+          background-color: $white;
+        }
       }
       .jcarousel-prev,
       .jcarousel-next {
         color: darken($setcolor, 18%);
         &:hover {
-          color: $plos-default;
+          @extend %brand-background-hover;
         }
       }
     }
     &:first-child + .carousel-wrap {
       .block-header {
-        background-color: darken($setcolor, 13%);
+        background-color: darken($setcolor, 0);
+
+        body.plos-one & {
+          background-color: $white;
+        }
       }
       .jcarousel-prev,
       .jcarousel-next {
         color: darken($setcolor, 13%);
         &:hover {
-          color: $plos-default;
+          @extend %brand-background-hover;
         }
       }
     }
@@ -234,7 +247,9 @@ example | extension
 
   %brand-shaded-blocks {
 
-    &:first-child, &:nth-child(2), &:last-child {
+    &:first-child,
+    &:nth-child(2),
+    &:last-child {
       background-color: $shade1;
     }
     &:nth-child(3) {
@@ -244,20 +259,24 @@ example | extension
       background-color: $shade3;
     }
   }
-
 }
 
 // set the journal-specific colors - ps this is a good example of things that can be
 // pulled into themes or a separate scss file when the maven sass compiler is installed & working
-.plosbiology, .ploscompbiol, .plosgenetics {
+.plosbiology,
+.ploscompbiol,
+.plosgenetics {
   @include brandcolor($setcolor: $plos-bio, $shade1: $plos-bio-shade1, $shade2: $plos-bio-shade2, $shade3: $plos-bio-shade3);
 }
 
-.plosmedicine, .plospathogens, .plosntd {
+.plosmedicine,
+.plospathogens,
+.plosntd {
   @include brandcolor($setcolor: $plos-med, $shade1: $plos-med-shade1, $shade2: $plos-med-shade2, $shade3: $plos-med-shade3);
 }
 
-.ploscollections, .plosclinicaltrials {
+.ploscollections,
+.plosclinicaltrials {
   @include brandcolor();
 }
 
@@ -307,8 +326,27 @@ example | extension
         background-position: -130px -20px;
       }
     }
+
   }
 }
+      .plosone #fig-viewer-controls .fig-btn {
+      &.next {
+        .icn {
+          background-position: -140px -20px;
+        }
+        &:hover .icn {
+          background-position: -140px 0;
+        }
+      }
+      &.prev {
+        .icn {
+          background-position: -130px -20px;
+        }
+        &:hover .icn {
+          background-position: -130px 0;
+        }
+      }
+    }
 
 //////////////
 // layout utilities
@@ -330,6 +368,11 @@ example | extension
 <div class="example-box-shadow">i have box-shadow</div> | ` @include box-shadow()`
 
 */
+
+
+@mixin border-default {
+  border: 1px solid $grey-light;
+}
 
 .center-simple {
   margin: 0 auto;

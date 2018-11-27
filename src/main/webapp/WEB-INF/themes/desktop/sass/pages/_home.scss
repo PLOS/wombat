@@ -34,68 +34,82 @@ $image-container: ($image-width + $pad-small);
 //2. use pixel widths - Digital Pulp submitted designs with columns in pixel widths that vary from page to page.
 // questions:
 // I am using foundation settings values.
-.home {
+
+body {
   ///////
   // home specific colors
   /////
-  background: $clr-header;
+  background: $white;
+  &.home {
+    background-color: $off-white;
+  }
+
+  &.plosone {
+    background: $white;
+  }
 
   %width-full {
     @include plos-grid-column($pixelwidth: full-width);
-    }
+  }
 
   %width-xx-small {
     @include plos-grid-column(183);
-    }
+  }
 
   %width-x-small {
     @include plos-grid-column(267);
-    }
+  }
 
   %width-small {
-    @include plos-grid-column(306);
-    }
+    @include plos-grid-column(304);
+  }
 
   %width-medium {
     @include plos-grid-column(470);
-    }
+  }
 
   %width-large {
     @include plos-grid-column(633);
-    }
   }
+}
 
 .carousel-wrap.small {
   //more styling for carousel in _components.scss
   @extend %width-small;
   height: $block-height;
-  }
+}
 
 ////////
 // font sizes and styles
 ////////////
 
 .home main {
-  h1, h2, h3, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h5,
+  h6 {
     font-family: $font-face-fancy;
     line-height: 1;
-    margin-bottom: 0;
-    }
+    margin-bottom: $line-height;
+  }
   h1 {
     font-size: rem-calc($txt-size-giant);
     a:hover {
       text-decoration: none;
-      }
     }
-  h2, h3, h4, h5 {
+  }
+  h2,
+  h3,
+  h4,
+  h5 {
     @extend %home-subheader;
-    }
+  }
   p {
     line-height: rem-calc($txt-size-mediumish);
-    margin-bottom: 0.3125rem;
-    }
-
+    margin-bottom: 0.3125;
   }
+}
 
 ///////
 //page scaffolding
@@ -106,32 +120,32 @@ $image-container: ($image-width + $pad-small);
 .block {
   &.xx-small {
     @extend %width-xx-small;
-    }
+  }
 
   &.x-small {
     @extend %width-x-small;
-    }
+  }
   &.small {
     @extend %width-small;
-    }
+  }
   &.medium {
     @extend %width-medium;
-    }
+  }
   &.large {
     @extend %width-large;
-    }
   }
+}
 
 .row {
   @extend .plos-row;
-  }
+}
 
 .hero {
   @extend %width-full;
   @include blocks($padding: none, $shadow: none);
   position: relative;
   background: transparent;
-  }
+}
 
 .hero {
   // overlay colors
@@ -139,24 +153,24 @@ $image-container: ($image-width + $pad-small);
     @extend .overlay;
     // we are using images here to match lemur.
     background: image-url("gradient-dark_1x364.png") repeat-x bottom;
-    }
+  }
   &.overlay-light > a:before {
     @extend .overlay;
     background: image-url("gradient-light_1x364.png") repeat-x bottom;
-    }
+  }
   img {
-    @include border-top-radius();
+   // @include border-top-radius();
     width: 100%;
-    }
+  }
   // hero colors: default is white text
   color: $white;
   a {
     color: $white;
-    }
+  }
   &.dark-text,
   &.dark-text a {
     color: $clr-body-text;
-    }
+  }
 
   // hero text
   .hero-content {
@@ -165,15 +179,16 @@ $image-container: ($image-width + $pad-small);
     bottom: 0;
     padding: $pad-small $pad-default;
     font-size: rem-calc($txt-size-medium-large);
+
     h4 {
-      font-size: $txt-size-giant;
-      @extend .no-margin;
-      }
+      font-size: $txt-size-medium;
+    /*  @extend .no-margin;*/
+    }
     .authors {
       width: 75%;
       display: inline-block;
       vertical-align: bottom;
-      }
+    }
     p {
       @extend .no-margin;
       font-size: rem-calc($txt-size-medium-large);
@@ -185,81 +200,168 @@ $image-container: ($image-width + $pad-small);
         vertical-align: bottom;
         display: inline-block;
         line-height: 1;
-        }
       }
     }
   }
+}
+
+body.plosone {
+  .hero {
+    &.overlay-dark > a:before {
+      background-image: none;
+    }
+    .hero-content {
+      width: 50%;
+      bottom: $line-height-small;
+      left: 0;
+      right: 50%;
+      font-size: rem-calc($txt-size-medium);
+      background-color: $plos-one-teal;
+
+      .title {
+        font-size: rem-calc($txt-size-large);
+        text-transform: uppercase;
+      }
+      p {
+        &.credit {
+          font-size: $txt-size-small;
+        }
+      }
+
+      .published_at,
+      .authors {
+        font-size: $txt-size-xsmall;
+        width: 100%;
+      }
+    }
+  }
+}
+
 
 .block {
   position: relative;
   height: $block-height;
+  @include border-default;
+
   .blurb {
-    color: $grey-med-dark;
-    a {
-      @include link-text($color: $plos-default, $decoration-hover: underline);
-      }
+    color: $grey-dark;
+    margin: 0 0 $line-height-small 0;
+    p {
+      font-size: rem-calc($txt-size-small);
+      color: $grey-med-dark;
+      line-height: $line-height;
     }
+    a {
+      @extend %brand-color;
+      @include link-text($decoration-hover: underline);
+    }
+  }
   .block-image {
     width: $image-container;
     display: block;
     position: absolute;
-    left: $pad-small;
+    left: $pad-xsmall;
     top: $pad-small;
-
-    }
+  }
   &.image .block-content {
-    margin-left: ($image-container + $pad-small);
-    margin-right: $pad-small;
-    height: ($block-height - ($pad-default));
+    margin-left: ($image-container + $pad-xsmall);
+    margin-right: $pad-xsmall;
+    margin-bottom: 0;
+    height: ($block-height - ($pad-xsmall));
     overflow: hidden;
-    }
+  }
   // components
   .date {
-    @extend %small-italic;
+
     @extend .right;
     //padding-right on block-content needs to be overridden here
-    margin-right: -$pad-default;
-    }
+    margin-right: 0;
+    font-size: $txt-size-xsmall;
+    color: $grey-med;
+  }
   .credits {
-    @extend %small-italic;
+    font-size: $txt-size-xxxsmall;
+    line-height: $line-height-small;
     position: absolute;
-    bottom: $pad-small;
-    left: ($image-container + $pad-default);
-    margin: 0 $pad-small + $pad-xsmall 0 0;
-
-    }
+    bottom: -$pad-xsmall;
+    left: ($image-container + $pad-small);
+    margin-top: $line-height-small;
+    color: $grey-med;
+  }
   .category {
     @extend %brand-title;
-    margin-bottom: $pad-xsmall;
+    line-height: $line-height;
+    margin-bottom: 0;
+    font-size: $txt-size-xxxsmall;
+    letter-spacing: $letter-spacing-default;
+    font-weight: $bold;
+
+    body.plosone & {
+      color: $plos-one-purple;
     }
+  }
   .title {
-    @extend %header-xlarge;
-    margin-bottom: $pad-xsmall;
+    margin: $line-height-small 0;
     @extend %link-text-body;
+    font-size: $txt-size-mediumish;
+    font-weight: $bold;
+    line-height: $line-height;
+    a {
+      &:hover {
+        @extend %brand-color;
+      }
+    }
 
     //in case p tag is added in CMS, need to override global settings
     p {
       font-size: inherit;
       line-height: inherit;
-      }
     }
+  }
 
   .block-content {
     position: relative;
-    padding-right: $pad-default;
-    font-size: rem-calc($txt-size-default);
-    }
+    padding-right: 0;
+    margin-bottom: 0;
+  }
 
   &.small {
     .title {
-      @extend %home-subheader;
-      @extend %header-medium-bold;
-      line-height: 1.1;
-
+      font-size: $txt-size-xxsmall;
+      line-height: $line-height;
+      font-weight: $bold;
+      margin: $line-height 0 0;
+    }
+    .blurb {
+      margin: 0;
+      p {
+        font-size: rem-calc($txt-size-xsmall);
+        color: $grey-med-dark;
+        line-height: $line-height;
       }
     }
-
   }
+}
+
+.plosone .block {
+  .title {
+    a {
+      &:hover {
+        color: $plos-one-purple;
+      }
+    }
+  }
+}
+.plosone .block.image .block-image img,
+.plosone .block.large.image .block-image img,
+.plosone .block.small.image .block-image img {
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(50%); /* Chrome 19+ & Safari 6+ */
+  -moz-filter: grayscale(50%);
+  -ms-filter: grayscale(50%);
+  -o-filter: grayscale(50%);
+  filter: grayscale(50%);
+}
 
 // ROW THREE: is VERY different than the others
 // ROW THREE: overall scaffolding
@@ -267,17 +369,17 @@ $image-container: ($image-width + $pad-small);
   .column {
     &:first-child {
       @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 8); //width + gutter
-      }
+    }
 
     &:first-child + .column.right {
       @include plos-grid-column-nomargin($pixelwidth: columns, $columns: 4); //width + gutter
       position: relative;
       > div > div {
         float: none;
-        }
       }
     }
   }
+}
 
 // ROW THREE: heights
 
@@ -289,72 +391,124 @@ $image-container: ($image-width + $pad-small);
         .block-image {
           height: ($block-height-small - ($pad-default));
           overflow: hidden;
-          }
         }
+      }
       .block.small {
         height: $block-height;
         .block-image {
           height: ($block-height - ($pad-default));
           overflow: hidden;
-          }
         }
       }
     }
   }
+}
 
 // ROW THREE: spacing and other styling details.
 .row.three {
   .row-small-blocks .small {
-    $small-block-spacing: ($pad-xsmall/2);
-    .date, .category {
-      margin-bottom: $small-block-spacing;
-      }
+   // $small-block-spacing: ($pad-xsmall/2);
+    .date,
+    .category {
+      margin-bottom: 0;
+    }
     .date {
-      float: none !important; // sadly have to use this to override the .right on the other blocks
+     // float: none !important; // sadly have to use this to override the .right on the other blocks
       margin-right: 0;
-      }
+    }
     .title {
-      margin-top: $small-block-spacing;
+      margin: $line-height-small 0;
       a {
         font-family: $font-face-fancy;
-        font-weight: bold;
-        font-size: rem-calc($txt-size-medium);
-        @include link-text($color: $grey-med-dark);
+        font-weight: $bold;
+        font-size: $txt-size-small;
+        @include link-text($color: $black);
+        &:hover {
+          @extend %brand-color;
+        }
+      }
+      .blurb {
+        margin: 0 0 0 0;
+      }
+    }
+  }
+}
+.plosone .row.three {
+  .row-small-blocks .small {
+    .title {
+      a {
+        &:hover {
+          color: $plos-one-purple;
         }
       }
     }
   }
+}
 
 // ROW THREE: heights and other styling details.
 #billboard {
   @extend %width-full;
-  @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-small $pad-default);
+  @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-medium);
   position: relative;
-  h3, a {
+
+  body.plosone & {
+    @include blocks($white, $shadow: none, $radius: none);
+    border: 1px solid $plos-one-pink;
+    @include highlight-border($clr-highlight: $plos-one-pink, $width: 10px, $position: left);
+  }
+
+  h3,
+  a {
     color: $white;
-    }
+  }
   h3 {
+    font-family: $font-face-fancy;
     font-size: rem-calc($txt-size-xlarge);
-    }
+    margin: 0;
+  }
   h4 {
     font-family: $font-face-plain;
     color: $grey-med-light;
-    font-size: rem-calc($txt-size-medium-large);
-    line-height: rem-calc(17)
+    font-size: rem-calc($txt-size-medium);
+    line-height: $line-height;
+    margin-bottom: $line-height-small;
 
+    body.plosone & {
+      font-size: $txt-size-medium;
+      color: $plos-one-purple;
     }
+  }
   a {
     //not using rounded-pill: would need too many overrides
     @extend %brand-background-hover;
     border-radius: $border-radius-default;
-    padding: $pad-xsmall $pad-default;
+    padding: $pad-small $pad-medium;
     position: absolute;
     display: inline-block;
     right: $pad-default;
-    top: 50%;
+    top: 40%;
     margin-top: rem-calc(-13);
+    color: $white;
+    font-weight: $bold;
+    font-size: rem-calc($txt-size-xsmall);
+    text-transform: uppercase;
+
+    body.plosone & {
+      background-color: $plos-one-pink;
+      color: $white;
+      &:hover {
+        @extend %brand-background;
+      }
     }
   }
+  body.plosone & {
+    h3 {
+      font-size: rem-calc($txt-size-large);
+      line-height: $line-height-large;
+      color: $plos-one-purple;
+    }
+  }
+}
 
 #article-list {
   height: $block-height;
@@ -364,50 +518,81 @@ $image-container: ($image-width + $pad-small);
 
   h3 {
     @extend %brand-title;
-    }
+    margin: $line-height-small 0;
+  }
 
   ul.list-plain {
     @extend .no-bullet; // from foundation
-    line-height: normal;
+    //line-height: normal;
 
     li {
       color: $clr-body-text;
-      margin-bottom: 15px;
+      margin-bottom: $line-height;
+      line-height: $line-height;
 
       a {
         @extend %link-text-body;
         display: block;
-        font-family: $font-face-fancy;
         font-size: $txt-size-xsmall;
+        &:hover {
+          @extend %brand-color;
+          text-decoration: underline;
         }
       }
     }
-  .truncated-tooltip {
-    @extend .has-tip; //foundation
+    .plosone & {
+      ul.list-plain {
+        li {
+          a {
+            &:hover {
+              color: $plos-one-purple;
+            }
+          }
+        }
+      }
     }
   }
+  .truncated-tooltip {
+    @extend .has-tip; //foundation
+  }
+}
 
 .more-link {
   position: absolute;
   bottom: $pad-small;
-  left: $pad-small;
-  right: auto;
+  right: $pad-small;
+  font-family: $font-face-fancy;
+  font-size: $txt-size-xxxsmall;
+  font-weight: $bold;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-default;
+  text-align: right;
   > a {
-    @extend %link-text-body;
-    @extend %header-allcaps-plain;
+    @extend %brand-color;
+    &:hover {
+      text-decoration: underline;
     }
+  }
   &:after {
     @extend .more-icon;
-    }
-
+    font-size: $txt-size-medium;
   }
+  .plosone & {
+    > a {
+      color: $plos-one-purple;
+    }
+    &:after {
+      color: $plos-one-purple;
+    }
+  }
+}
 
 //Tooltips are added to the bottom of the page & hidden. This class should not be nested.
 .tooltip {
   width: 300px !important;
   @include single-box-shadow();
   border: 1px solid $grey-med-light;
-  }
+}
 
 #issue {
   @extend %width-xx-small;
@@ -416,27 +601,33 @@ $image-container: ($image-width + $pad-small);
   height: $block-height;
   .current-img {
     width: rem-calc(160);
-    }
+  }
   .boxtitle {
-    margin-top: rem-calc(5);
+    margin-top: $line-height-small;
     a {
       @extend %link-text-body;
-      @extend %header-allcaps-xlarge;
-      @extend %condense;
+      font-size: $txt-size-large;
+      text-transform: uppercase;
       display: block;
-      margin-bottom: rem-calc(5);
-      }
+      line-height: $line-height;
+      margin-bottom: $line-height;
+    }
     .subhead {
       font-face: $font-face-plain;
-      font-size: $txt-size-medium-large;
-      }
+      font-size: $txt-size-default;
+      line-height: $line-height;
     }
   }
+}
 
 #twitter {
   @extend %width-small;
-  margin-bottom: rem-calc(16); // non-standard to account for the drop-shadow on adjacent containers
+  margin-bottom: rem-calc(12); // non-standard to account for the drop-shadow on adjacent containers
+
+  body.plosone & {
+    outline: 1px solid $grey-light;
   }
+}
 
 //ISCB box
 .linkbox {
@@ -446,7 +637,7 @@ $image-container: ($image-width + $pad-small);
   .image-header {
     background-color: #1c2e5e;
     text-align: center;
-    }
+  }
   ul {
     @extend .no-bullet; // from foundation
     li {
@@ -456,53 +647,91 @@ $image-container: ($image-width + $pad-small);
       a {
         font-family: $font-face-fancy;
         font-size: rem-calc($txt-size-medium);
-        }
       }
     }
   }
+}
 
 #submission-links {
-  @include blocks($color: $grey-dark, $radius: all, $padding: $pad-small $pad-medium $pad-xsmall $pad-medium, $shadow: none);
+  @include blocks($color: $white, $radius: none, $padding: $pad-small, $shadow: none);
   @extend %width-small;
-  //padding-top: $pad-small + $pad-xsmall;
-  p{text-align: center; margin:$pad-default auto $pad-small auto}
-  a {
-    @include link-text($color: $clr-link-against-dark, $decoration-hover: underline);
-    font-size: $txt-size-medium-large;
-    font-family: $font-face-fancy;
+  @extend %brand-border;
+
+  border: 1px solid;
+
+  p {
+    text-align: left;
+    margin: $pad-default auto $pad-small auto;
   }
-  h3 {
-    @extend %header-bottom-shadow;
-    @extend %header-xlarge-light;
+
+  a {
+    @extend %brand-background;
+    @include border-radius();
+    color: $white;
+    font-size: $txt-size-xxsmall;
+    font-family: $font-face-fancy;
+    text-transform: uppercase;
+    font-weight: $bold;
+    margin-right: $pad-small;
+    line-height: 1;
+    padding: $pad-small $pad-default;
+    &:hover {
+      @extend %brand-background-hover;
+      text-decoration: none;
     }
+  }
+
+  h3 {
+    @extend %brand-color;
+    text-transform: uppercase;
+    font-size: $txt-size-medium;
+    font-weight: $bold;
+    margin-bottom: $line-height-small;
+  }
 
   .split-container {
     @extend .inline-list;
     margin: 0 0 $pad-small;
     line-height: inherit;
-    }
+  }
   .split-item {
     margin: 0 !important;
-    width: 50%;
+    width: 90%;
     height: 40px;
     text-align: center;
-    &:first-child {
-      border-right: 1px solid $grey-med-dark;
-      }
+  }
+}
 
+body.plosone #submission-links {
+  @include blocks();
+  border: 1px solid $plos-one-pink;
+  @include highlight-border($clr-highlight: $plos-one-pink, $width: 10px, $position: left);
+
+  a {
+    background-color: $plos-one-pink;
+    color: $white;
+    &:hover {
+      @extend %brand-background;
     }
   }
 
+  h3 {
+    color: $plos-one-purple;
+  }
+}
 
 #social-links {
   @extend %width-small;
-  @include blocks($color: #04417d, $radius: all, $padding: $pad-xsmall, $shadow: none);
+  @extend %brand-background;
+  @include blocks($radius: none, $padding: $pad-small, $shadow: none);
 
   h3 {
-    @extend %header-xlarge-light;
-    text-indent: $pad-small;
-    margin-bottom: $pad-small;
-    }
+    color: $white;
+    margin: 0 0 $pad-small 0;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: $txt-size-default;
+  }
   ul {
     list-style: none;
     margin: 0 0 0 rem-calc(-4);
@@ -510,31 +739,52 @@ $image-container: ($image-width + $pad-small);
       float: left;
       margin: 0 0 0 rem-calc(4);
       > a {
-        background: $plos-default;
+        @extend %brand-background;
         border-radius: $border-radius-default;
         display: inline-block;
-        height: ($txt-size-xxlarge * 2);
+        height: $txt-size-xlarge;
         text-align: center;
         color: $clr-light-text;
         &:hover {
-          background: $grey-dark;
-          }
-        }
-      .social {
-        width: ($txt-size-xxlarge * 2);
-        }
-      .icon-text {
-        @extend .aria-text;
+          @extend %brand-background-hover;
         }
       }
+
+      .social {
+        width: ($txt-size-xxlarge * 2);
+      }
+      .icon-text {
+        @extend .aria-text;
+      }
+    }
     .social-blogs {
       width: rem-calc(104);
-      line-height: ($txt-size-xxlarge * 2);
-      font-size: rem-calc($txt-size-medium-large);
+      line-height: ($txt-size-large * 2);
+      font-size: rem-calc($txt-size-default);
       font-family: $font-face-fancy;
+    }
+  }
+
+  .plosone & {
+    @include blocks($color: $plos-one-pink);
+
+    h3 {
+      text-transform: uppercase;
+      font-size: $txt-size-medium-large;
+    }
+    ul {
+      > li {
+        > a {
+          background: $plos-one-pink;
+          color: $white;
+          &:hover {
+            background: $plos-one-purple;
+          }
+        }
       }
     }
   }
+}
 
 #blogs {
   $image-width: rem-calc(35px);
@@ -543,20 +793,20 @@ $image-container: ($image-width + $pad-small);
   height: $block-height;
   position: relative;
 
-  &.tall{
+  &.tall {
     height: rem-calc(425);
   }
   .block-header {
     @extend %brand-header;
     @extend %link-text-white;
-    }
+  }
 
   #blogrss {
-    padding: $pad-default $pad-default 0;
+    padding: $pad-xsmall $pad-xsmall 0;
     div {
       @include clearfix();
       margin-bottom: $pad-small;
-      }
+    }
     .postimg {
       float: left;
       height: rem-calc(75px);
@@ -565,37 +815,46 @@ $image-container: ($image-width + $pad-small);
       background-position: center;
       margin-right: $pad-small;
       margin-bottom: 0;
-      }
+    }
     .postdate {
-      margin: 0;
+      margin: 0 0 $line-height-small;
       font-size: $txt-size-xxxsmall;
       font-family: $font-face-plain;
-      color: $clr-muted;
+      color: $grey-med;
       padding: 0;
-      }
+    }
     .posttitle {
-      height: 30px;
-      line-height: 15px;
+      line-height: 1.1;
       overflow: hidden;
-      margin: $pad-xsmall 0;
+      margin: 0;
       a {
         @extend %link-text-body;
         font-family: $font-face-fancy;
-        font-size: $txt-size-small;
-        }
-      }
-    .postauthor {
-      @extend %small-italic;
-      color: $clr-muted;
-      margin: 0;
-      padding: 0;
+        font-size: $txt-size-xsmall;
+        font-weight: $bold;
       }
     }
-  .more-link {
-    bottom: $pad-small;
-    left: ($image-width + ($pad-large + $pad-small));
+    .postauthor {
+/*      @extend %small-italic;*/
+      color: $grey-med;
+      margin: $pad-small 0;
+      padding: 0;
+      font-family: $font-face-fancy;
+      font-size: $txt-size-xxxsmall;
+      letter-spacing: $letter-spacing-default;
+      text-transform: uppercase;
+      line-height: $line-height-small;
     }
   }
+  .more-link {
+    font-size: $txt-size-xxxsmall;
+    bottom: $pad-small;
+    right: $pad-small;
+    text-align: right;
+    font-weight: $bold;
+    color: $grey-med;
+  }
+}
 
 #ad-slot-bottom {
   @extend .plos-row;
@@ -603,9 +862,17 @@ $image-container: ($image-width + $pad-small);
     @extend %width-small;
     text-align: center;
     //@extend .block-card;
-    padding:rem-calc(3);
+    padding: rem-calc(3);
     margin: $pad-default;
-    margin-top:0;
-
+    margin-top: 0;
+  }
+}
+body.plosone #blogs {
+  .block-header {
+    background-color: $white;
+    a {
+      color: $plos-one-purple;
+      font-weight: $bold;
     }
   }
+}

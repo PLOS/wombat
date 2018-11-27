@@ -34,7 +34,7 @@
         <legend>Search</legend>
         <label for="search">Search</label>
         <div class="search-contain">
-          <input id="search" type="text" name="q" placeholder="Search" required/>
+          <input id="search" type="text" name="q" placeholder="SEARCH" required/>
           <button id="headerSearchButton" type="submit"><span class="search-icon"></span></button>
         </div>
       </fieldset>

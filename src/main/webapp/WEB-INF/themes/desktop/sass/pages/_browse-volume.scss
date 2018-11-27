@@ -21,6 +21,9 @@
  */
 
 @include dark-background;
+body.plosone {
+  background-color: $white;
+}
 
 h1 {
   @extend .title-primary-large;
@@ -38,7 +41,7 @@ h2 {
   background: $clr-body-text;
   font-size: 15px;
   line-height: 35px;
-  font-weight: bold;
+  font-weight: $bold;
   color: $white;
   text-align: center;
   padding: 0 10px;
@@ -175,15 +178,9 @@ ul#journal_slides {
         span {
           display: block;
           text-align: center;
-          font-weight: bold;
+          font-weight: $bold;
         }
       }
     }
   }
 }
-
-
-
-
-
-

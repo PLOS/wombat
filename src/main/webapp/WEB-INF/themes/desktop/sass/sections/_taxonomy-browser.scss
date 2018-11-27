@@ -45,10 +45,10 @@ $level-carousel-button-width: rem-calc(35);
 $level-carousel-button-height: rem-calc(41);
 $level-wrapper-width: $level-container-width + rem-calc(88);
 
-$level-selection-bg: $grey-dark;
+$level-selection-bg: $grey-med-dark;
 
 .areas {
-  background: $tabs-base-color;
+  background: $grey-dark;
 
    .wrapper {
     width: $level-wrapper-width;
@@ -70,7 +70,7 @@ $level-selection-bg: $grey-dark;
 .taxonomy-header {
   color: $white;
   font-size: $txt-size-large;
-  font-weight: bold;
+  font-weight: $bold;
   background: image-url('icon-subjAreas.png') no-repeat;
   height: $taxonomy-header-height;
   padding-left: $taxonomy-header-width + rem-calc(3);
@@ -92,7 +92,7 @@ $level-selection-bg: $grey-dark;
 
     a {
       @extend %link-text-white;
-      font-weight: bold;
+      font-weight: $bold;
     }
   }
 
@@ -131,10 +131,7 @@ $level-selection-bg: $grey-dark;
     background-color: $grey-light;
   }
 
-
 }
-
-
 
 .levels {
   padding-left: $level-padding-left;
@@ -190,7 +187,7 @@ $level-selection-bg: $grey-dark;
   float: left;
   width: $level-width;
   height: $level-up-down-height * 2 + $level-scroll-height + $level-margin-bottom;
-  font-weight: bold;
+  font-weight: $bold;
   color: $grey-med-dark;
   margin-right: $level-margin-right;
   position: relative;
@@ -372,14 +369,14 @@ div.inlinePopup {
   height: 180px;
   border: solid 1px #C8DFED;
   padding-bottom: 16px;
-  font: 85% Verdana, Arial, Helvetica, sans-serif;
-  background: #FFFFFF;
+  font-family: $font-face-plain;
+  background: $white;
   z-index: 99999;
 }
 
 div.inlinePopup input[type="button"].primary {
-  background: #F8AF2D;
-  color: #333;
+  background: $plos-default;
+  color: $white;
 }
 
 
@@ -396,12 +393,12 @@ div.inlinePopup div.top-header {
   position: absolute;
   width: 100%;
   height: 40px;
-  background-color: #333333;
-  color: #ffffff;
+  background-color: $grey-dark;
+  color: $white;
 }
 
 div.inlinePopup span.heading {
-  font-weight: bold;
+  font-weight: $bold;
   font-size: 14px;
   position: absolute;
   left: 20px;
@@ -420,7 +417,7 @@ div.inlinePopup div.body-wrapper {
 
 div.inlinePopup .big-box {
   width: 350px;
-  border: solid 1px #606060;
+  border: solid 1px $grey-med-dark;
 }
 
 div.inlinePopup div.check-box {
@@ -432,7 +429,7 @@ div.inlinePopup div.check-box {
 }
 
 div.inlinePopup div.grey-text {
-  color: #606060;
+  color: $plos-default;
   margin-top: 8px;
   width: 370px;
 }
@@ -447,25 +444,25 @@ div.inlinePopup span.errortext {
 }
 
 div.inlinePopup input[type="button"] {
-  background: #333;
-  color: #fff;
+  background: $grey-dark;
+  color: $white;
   margin-right: 2px;
   padding: 9px 10px;
   border: 0;
   display: inline-block;
   border-radius: 4px;
-  font-weight: bold;
+  font-weight: $bold;
   text-align: center;
 }
 
 div.inlinePopup input[type="button"]:hover {
   background: $clr-highlight !important;
-  color: #fff !important;
+  color: $white !important;
 }
 
 #mask {
   display: none;
-  background: #000;
+  background: $black;
   position: fixed;
   left: 0;
   top: 0;

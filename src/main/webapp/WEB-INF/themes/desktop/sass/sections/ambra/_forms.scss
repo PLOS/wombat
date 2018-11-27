@@ -23,14 +23,14 @@
 /* form elements */
 
 form.standard{
-  color: #333;
+  color: $black;
 }
 
 form.standard ul li {
   list-style-type: none;
   padding-left: 0;
   margin-left: 0;
-  margin-bottom: 10px;
+  margin-bottom: $line-height;
   display: block;
 }
 form.standard ul li.short{ }
@@ -41,11 +41,11 @@ form.standard ul {
 }
 
 form.standard input[type="text"],form.standard textarea {
-  font-size: 16px;
-  border: 1px solid #b3b3b3;
-  border-radius: 3px;
+  font-size: $txt-size-default;
+  border: 1px solid $grey-med-light;
+ // border-radius: 3px;
   padding: 8px 10px 6px;
-  box-shadow: inset 3px 3px 3px rgba(0,0,0,0.1);
+ // box-shadow: inset 3px 3px 3px rgba(0,0,0,0.01);
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -68,9 +68,9 @@ form.standard li.small div.last {
 
 form.standard label {
   display: inline-block;
-  font: 12px $font-face-fancy;
-  font-weight: bold;
-  margin-bottom: 2px;
+  font-family: $font-face-fancy;
+  font-weight: 600;
+  margin-bottom: $line-height-small;
 }
 
 
@@ -78,15 +78,16 @@ form.standard input[type="button"],
 form.standard input[type="submit"],
 form.standard .button,
 .ui-dialog .ui-dialog-buttonset .ui-button{
-  background: #333;
-  color: #fff;
+  background: $grey-dark;
+  color: $white;
   margin-right: 2px;
   padding: 9px 10px;
   border: 0;
   display: inline-block;
   border-radius: 4px;
-  font-size: 15px;
-  font-weight: bold;
+  font-size: $txt-size-small;
+  text-transform: uppercase;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -95,15 +96,15 @@ form.standard input[type="submit"]:hover,
 form.standard .button:hover,
 .ui-dialog .ui-dialog-buttonset .ui-button:hover{
   background: $clr-highlight !important;
-  color: #fff !important;
+  color: $white !important;
 }
 
 form.standard input[type="button"].primary,
 form.standard input[type="submit"].primary,
 form.standard .button.primary,
 .ui-dialog .ui-dialog-buttonset .primary.ui-button{
-  background: #f8af2d;
-  color: #333;
+  @extend %brand-background;
+  
 }
 
 form.standard .note{
@@ -147,16 +148,16 @@ a#media-coverage-form-link {
 
 .form-default ol li label {
   display: block;
-  font-size: 12px;
-  color: #333;
+  font-size: $txt-size-default;
+  color: $grey-dark;
   margin-bottom: 6px;
   line-height: normal;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .form-default ol li input[type=text] {
   width: 206px;
-  border: 1px solid #999;
+  border: 1px solid $grey-med-light;
   padding: 2px;
 }
 

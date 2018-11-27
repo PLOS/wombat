@@ -502,7 +502,7 @@ $line-height-small: ($line-height * .5);
 
   div,
   p {
-    margin: 0 0 8px;
+    margin: 0 0 $line-height-small;
   }
 
   table {
@@ -601,8 +601,6 @@ $line-height-small: ($line-height * .5);
     font-size: $txt-size-small;
   }
 }
-
-
 
 .article-content .reflinks,
 #lightbox-refs .reflinks {

@@ -290,7 +290,6 @@ $width-nav: $block-grid-elements - $width-logo;
     font-family: $font-face-plain;
     width: 350px;
     @include arrow-bottom($arrow-color: $white);
-
     }
 
   ul > li.has-dropdown.hover {
@@ -301,7 +300,6 @@ $width-nav: $block-grid-elements - $width-logo;
     // &hover + li is used to account for the padding needed for the
     //  drop shadow. if the color isn't changed it sticks out too much.
     &:hover + li {
-    //  border-left: 1px solid scale-color(#666, $lightness: 82%);
 
       }
     > .dropdown {
@@ -415,7 +413,7 @@ $width-nav: $block-grid-elements - $width-logo;
 
         &:hover {
           background: $grey-dark !important;
-          color: $clr-link; //TODO - use a mixin
+          color: $white; //TODO - use a mixin
           }
         }
       }
@@ -434,7 +432,7 @@ $width-nav: $block-grid-elements - $width-logo;
     //the following is needed because &hover + li is used to account for the
     // padding needed for the drop shadow. if the color isn't changed it sticks
     // out too much.
-   // border-left: 1px solid $grey-light;
+
     form {
       background: $white;
       display: inline-block;
@@ -452,7 +450,6 @@ $width-nav: $block-grid-elements - $width-logo;
         border: none;
         margin: 0;
         padding: 0 $pad-small;
-    //    background-color: $white;
         }
 
       input[type="text"] {

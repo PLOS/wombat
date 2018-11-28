@@ -29,7 +29,6 @@ $article-body-width: 755;
 $article-sidebar-width: 160;
 
 //shared article Styles
-
 .article-tabs {
   h1 {
     @extend .title-primary;
@@ -40,7 +39,6 @@ $article-sidebar-width: 160;
 }
 
 // extensible layout styles
-
 .text-article-intro {
   font-size: $txt-size-default;
   line-height: $line-height;
@@ -105,7 +103,7 @@ $article-sidebar-width: 160;
     vertical-align: middle;
     text-align: center;
     margin: 0;
-    font-weight: bold;
+    font-weight: $bold;
     font-size: $txt-size-medium-large;
     color: $grey-dark;
     width: rem-calc(80);
@@ -355,7 +353,7 @@ $article-sidebar-width: 160;
     h1 {
       @include truncated();
       font-size: $txt-size-medium;
-      font-weight: bold;
+      font-weight: $bold;
       font-family: $font-face-plain;
       line-height: rem-calc(16);
       margin: rem-calc(2) 0;
@@ -502,8 +500,6 @@ $article-sidebar-width: 160;
     @extend .icon-author-address;
   }
 
-
-
   ///print styles
   [data-js-toggle="toggle_trigger"],
   [data-js-toggle="toggle_add"] {
@@ -560,7 +556,6 @@ $article-sidebar-width: 160;
   }
 
   .close {
-
     @extend .closer;
     position: absolute;
     top: $pad-xsmall;
@@ -614,11 +609,12 @@ $article-sidebar-width: 160;
     &:hover {
       @extend %brand-background;
     }
-  }
-  .plosone .dload-menu {
-    div {
-      &:hover {
-        background: $plos-one-purple;
+
+    .plosone & {
+      div {
+        &:hover {
+          color: $black;
+        }
       }
     }
   }
@@ -632,11 +628,22 @@ $article-sidebar-width: 160;
       &:hover {
         @extend %brand-background;
       }
-    }
-
-    a {
+        a {
       color: $white;
     }
+      .plosone & {
+        &:not(.no-pdf) {
+         
+          &:hover,
+          a:hover {
+            color: $black;
+          
+          }
+        }
+      }
+    }
+
+  
   }
 
   .dload-hover {
@@ -648,19 +655,10 @@ $article-sidebar-width: 160;
       cursor: pointer;
       @extend %brand-background;
     }
-  }
-  .plosone & {
-    .dload-hover {
-      &:hover {
-        background: $plos-one-purple;
-        color: $white;
-      }
-    }
-    .dload-pdf {
-      &:not(.no-pdf) {
+    .plosone & {
+      a {
         &:hover {
-          background: $plos-one-purple;
-          color: $white;
+          color: $black;
         }
       }
     }
@@ -826,6 +824,15 @@ body.article .ui-widget-overlay {
       }
     }
   }
+  .plosone & {
+    ul {
+      li {
+        a {
+          color: $plos-one-purple;
+        }
+      }
+    }
+  }
 }
 
 .skyscraper-container {
@@ -939,7 +946,7 @@ body.article .ui-widget-overlay {
           border: none;
           border-radius: 4px;
           font-size: $txt-size-xxsmall;
-          font-weight: bold;
+          font-weight: $bold;
           color: $plos-default;
           cursor: pointer;
         }
@@ -976,13 +983,11 @@ body.article .ui-widget-overlay {
   ul {
     margin-left: 0;
     list-style-type: none;
-
     li {
       margin-left: 0;
       padding-bottom: rem-calc(12);
       font-size: $txt-size-xsmall;
     }
-
     a {
       @extend %brand-color;
       display: block;
@@ -993,7 +998,6 @@ body.article .ui-widget-overlay {
 .twitter-container {
   @extend .aside-container;
   display: none;
-
   h3 {
     background: image-url('icon.twtr.20.png') no-repeat 0 0;
     padding-left: $pad-default + $pad-xsmall;
@@ -1002,17 +1006,14 @@ body.article .ui-widget-overlay {
     margin-bottom: $pad-xsmall;
     font-size: $txt-size-xsmall !important;
   }
-
   #tweetList {
     list-style-type: none;
     margin-left: 0;
-
     li {
       border-top: 1px solid $grey-light;
       margin-bottom: $line-height-small;
       padding-top: $pad-small;
       font-size: $txt-size-xsmall;
-
       .tweet-info {
         a {
           @extend %brand-color;
@@ -1028,6 +1029,7 @@ body.article .ui-widget-overlay {
             }
           }
         }
+
         img {
           display: inline;
           float: left;
@@ -1155,12 +1157,15 @@ body.article .ui-widget-overlay {
 section.authors {
   margin-bottom: $line-height-large;
 
-  h1, h2, p, dt {
+  h1,
+  h2,
+  p,
+  dt {
     margin-left: $pad-small;
   }
   p {
     margin-bottom: 0;
-    }
+  }
   dt {
     font-size: $txt-size-medium;
     line-height: $line-height;
@@ -1174,9 +1179,9 @@ section.authors {
       & span.type {
         font-family: $font-face-fancy;
         font-size: $txt-size-xxxsmall;
-        font-weight:$bold;
+        font-weight: $bold;
         color: $grey-med-dark;
-        text-transform:uppercase;
+        text-transform: uppercase;
         letter-spacing: 0.05rem;
       }
     }

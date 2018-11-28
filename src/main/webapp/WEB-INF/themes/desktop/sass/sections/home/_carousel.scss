@@ -115,6 +115,7 @@ have a fixed width and height (but it's not required).
       font-size: $icon-height;
       &:hover {
         @extend .fa-inverse;
+        @extend %brand-color;
         text-decoration: none;
       }
       .plosone & {

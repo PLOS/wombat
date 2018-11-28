@@ -277,7 +277,7 @@ example | extension
 
 .ploscollections,
 .plosclinicaltrials {
-  @include brandcolor();
+  @include brandcolor($setcolor: $plos-collections);
 }
 
 .generic {
@@ -326,27 +326,26 @@ example | extension
         background-position: -130px -20px;
       }
     }
-
   }
 }
-      .plosone #fig-viewer-controls .fig-btn {
-      &.next {
-        .icn {
-          background-position: -140px -20px;
-        }
-        &:hover .icn {
-          background-position: -140px 0;
-        }
-      }
-      &.prev {
-        .icn {
-          background-position: -130px -20px;
-        }
-        &:hover .icn {
-          background-position: -130px 0;
-        }
-      }
+.plosone #fig-viewer-controls .fig-btn {
+  &.next {
+    .icn {
+      background-position: -140px -20px;
     }
+    &:hover .icn {
+      background-position: -140px 0;
+    }
+  }
+  &.prev {
+    .icn {
+      background-position: -130px -20px;
+    }
+    &:hover .icn {
+      background-position: -130px 0;
+    }
+  }
+}
 
 //////////////
 // layout utilities

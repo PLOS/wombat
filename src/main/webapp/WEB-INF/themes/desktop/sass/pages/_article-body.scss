@@ -283,6 +283,7 @@ $line-height-small: ($line-height * .5);
 
 // specificity is needed to override ul & div styles
 .article-content .figure {
+  background: $off-white;
   div {
     margin-bottom: 0;
   }
@@ -382,7 +383,7 @@ $line-height-small: ($line-height * .5);
         @extend .fa-caret-right;
       }
       &:hover {
-        background-color: $plos-default;
+        @extend %brand-background;
       }
       &:first-child {
         left: $fc-button-pad;
@@ -411,7 +412,7 @@ $line-height-small: ($line-height * .5);
 
 .article-content .figure {
   font-family: $font-face-plain;
-  background: $grey-light;
+  background: $off-white;
   padding: $line-height $pad-default $pad-smallish;
 
   .img-box {
@@ -502,7 +503,7 @@ $line-height-small: ($line-height * .5);
 
   div,
   p {
-    margin: 0 0 8px;
+    margin: 0 0 $line-height-small;
   }
 
   table {
@@ -601,8 +602,6 @@ $line-height-small: ($line-height * .5);
     font-size: $txt-size-small;
   }
 }
-
-
 
 .article-content .reflinks,
 #lightbox-refs .reflinks {

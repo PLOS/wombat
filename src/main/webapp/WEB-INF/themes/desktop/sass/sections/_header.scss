@@ -117,6 +117,7 @@ $width-nav: $block-grid-elements - $width-logo;
       }
     }
   }
+  
 
 .logo {
   @include plos-grid-column($columns: $width-logo);

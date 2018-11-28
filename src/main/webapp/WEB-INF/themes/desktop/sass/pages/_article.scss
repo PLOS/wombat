@@ -609,11 +609,12 @@ $article-sidebar-width: 160;
     &:hover {
       @extend %brand-background;
     }
-  }
-  .plosone .dload-menu {
-    div {
-      &:hover {
-        background: $plos-one-purple;
+
+    .plosone & {
+      div {
+        &:hover {
+          color: $black;
+        }
       }
     }
   }
@@ -627,11 +628,22 @@ $article-sidebar-width: 160;
       &:hover {
         @extend %brand-background;
       }
-    }
-
-    a {
+        a {
       color: $white;
     }
+      .plosone & {
+        &:not(.no-pdf) {
+         
+          &:hover,
+          a:hover {
+            color: $black;
+          
+          }
+        }
+      }
+    }
+
+  
   }
 
   .dload-hover {
@@ -643,19 +655,10 @@ $article-sidebar-width: 160;
       cursor: pointer;
       @extend %brand-background;
     }
-  }
-  .plosone & {
-    .dload-hover {
-      &:hover {
-        background: $plos-one-purple;
-        color: $white;
-      }
-    }
-    .dload-pdf {
-      &:not(.no-pdf) {
+    .plosone & {
+      a {
         &:hover {
-          background: $plos-one-purple;
-          color: $white;
+          color: $black;
         }
       }
     }
@@ -1154,12 +1157,15 @@ body.article .ui-widget-overlay {
 section.authors {
   margin-bottom: $line-height-large;
 
-  h1, h2, p, dt {
+  h1,
+  h2,
+  p,
+  dt {
     margin-left: $pad-small;
   }
   p {
     margin-bottom: 0;
-    }
+  }
   dt {
     font-size: $txt-size-medium;
     line-height: $line-height;
@@ -1173,9 +1179,9 @@ section.authors {
       & span.type {
         font-family: $font-face-fancy;
         font-size: $txt-size-xxxsmall;
-        font-weight:$bold;
+        font-weight: $bold;
         color: $grey-med-dark;
-        text-transform:uppercase;
+        text-transform: uppercase;
         letter-spacing: 0.05rem;
       }
     }

@@ -23,34 +23,34 @@
 
 
 #social-links {
-  @include blocks($color: #04417d, $radius: all, $padding: $pad-xsmall, $shadow: none);
+  @include blocks($radius: none, $padding: $pad-xsmall, $shadow: none);
+  @extend %brand-background;
 
   h3 {
-    @extend %header-xlarge-light;
-    text-indent: $pad-small;
-    margin-bottom: $pad-small;
-    margin-top: $pad-small;
+    color: $white;
+    margin: $pad-small 0;
+    font-family: $font-face-fancy;
     font-weight: normal;
+    text-indent: $pad-small;
   }
   ul {
     list-style: none;
-    margin: 0 0 0 rem-calc(-4);
+    margin: 0 0 0 $pad-small;
     > li {
       float: left;
-      margin: 0 0 0 rem-calc(4);
+      margin: 0 rem-calc(4) 0 0;
       > a {
-        background: $plos-default;
-        border-radius: $border-radius-default;
+        @extend %brand-background;
         display: inline-block;
         height: ($txt-size-xxlarge * 2);
         text-align: center;
-        color: $clr-light-text;
+        color: $white;
         &:hover {
           background: $grey-dark;
         }
       }
       .social {
-        width: ($txt-size-xxlarge * 2);
+        width: ($txt-size-large * 2);
       }
       .icon-text {
         @extend .aria-text;
@@ -59,8 +59,28 @@
     .social-blogs {
       width: rem-calc(104);
       line-height: ($txt-size-xxlarge * 2);
-      font-size: rem-calc($txt-size-medium-large);
+      font-size: rem-calc($txt-size-medium);
       font-family: $font-face-fancy;
+    }
+  }
+  .plosone & {
+    @include blocks($color: $plos-one-pink);
+
+    h3 {
+      text-transform: uppercase;
+      font-size: $txt-size-medium-large;
+      text-indent: $pad-xsmall;
+    }
+    ul {
+      > li {
+        > a {
+          background: $plos-one-pink;
+          color: $white;
+          &:hover {
+            background: $plos-one-purple;
+          }
+        }
+      }
     }
   }
 }

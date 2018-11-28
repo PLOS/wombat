@@ -174,7 +174,7 @@ public class ArticleMetadata {
 
     model.addAttribute("revisionMenu", getRevisionMenu());
 
-    model.addAttribute("peerReview", getPeerReview().toString());
+    model.addAttribute("peerReview", getPeerReview());
     return this;
   }
 
@@ -227,12 +227,16 @@ public class ArticleMetadata {
   /**
    * Get the articleItems that represent peer review decisions and responses.
    */
-  List<Map<String,?>> getPeerReview() {
-    List tprItems = itemTable.values().stream()
+  String getPeerReview() {
+    List peerReviewItems = itemTable.values().stream()
         .filter(itemObj -> ((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter"))
         .collect(Collectors.toList());
 
-    return tprItems;
+    if (peerReviewItems == null || peerReviewItems.isEmpty()) {
+      return null;
+    }
+
+    return peerReviewItems.toString();
   }
 
   /**

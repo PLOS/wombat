@@ -41,3 +41,11 @@
     -webkit-filter: grayscale(0);
   }
 }
+
+.plosone .block-image img {
+  -webkit-filter: grayscale(0.75); /* Chrome 19+ & Safari 6+ */
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(0.75);
+  }

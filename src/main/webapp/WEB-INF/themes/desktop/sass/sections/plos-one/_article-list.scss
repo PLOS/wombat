@@ -20,6 +20,9 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
+body.plosone {
+  background-color: $white;
+}
 /* ARTICLES LIST */
 .subject-cover {
   position: relative;
@@ -31,11 +34,12 @@
 
 .article-block {
   float: left;
-  width: 306px;
-  height: 387px;
+  width: 304px;
+  height: 385px;
   overflow: hidden; /* important for grayscale implementation below */
-  margin: 0 21px 21px 0;
+  margin: 0 21px $line-height-medium 0;
   position: relative;
+  border: 1px solid $grey-med-light;
 }
 
 .article-block-last {
@@ -49,36 +53,64 @@
 /* ensures that images of smaller dimensions in either direction scale up
    to fit the 306x387 article block
 */
-.article-block IMG {
-  min-width: 306px; /* this should always be satisfied because the images are 320px wide */
-  min-height: 387px;
+.article-block img {
+  min-width: 304px; /* this should always be satisfied because the images are 320px wide */
+  min-height: 385px;
 }
 
 .article-block .details {
   @extend %brand-background;
   width: 245px;
   height: 176px;
-  padding: 27px 20px 0;
+  padding: $line-height $pad-default 0;
   position: absolute;
   right: 0;
-  bottom: 40px;
+  bottom: $line-height-large;
   z-index: 2;
   box-sizing: content-box;
+
+  body.plosone & {
+    background-color: $grey-light;
+  }
 }
 
 .article-block .details h2 {
-  @extend .title-medium;
-  line-height: rem-calc(19);
-  margin: 0 0 14px;
+  font-family: $font-face-fancy;
+  font-size: $txt-size-medium;
+  font-weight: 600;
+  line-height: $line-height;
+  margin: 0 0 $line-height-small;
+
+ /* .plosone & {
+    font-size: $txt-size-small;
+    font-weight: 600;
+    line-height: $line-height;
+    margin: 0 0 $line-height;
+  }*/
 }
 
 .article-block .details h2 a {
-  color: #333;
+  color: $grey-dark;
+
+  body.plosone & {
+    color: $plos-one-purple;
+
+    &:hover {
+      color: $black;
+    }
+  }
 }
 
 .article-block .details p {
-  color: #fff;
+  color: $grey-dark;
   margin: 0;
+
+  .plosone & {
+  /*  color: $grey-light;
+    text-transform: uppercase;*/
+    font-size: $txt-size-small;
+    font-weight: 400;
+  }
 }
 
 .article-block .details p span {
@@ -120,8 +152,8 @@
   line-height: 40px;
   text-align: center;
   text-decoration: none;
-  color: #fff;
-  background: #333;
+  color: $white;
+  background: $grey-dark;
 }
 
 .article-block .actions li.disabled {
@@ -210,7 +242,7 @@
 #search-results .article {
   display: block;
   font-size: 1.167em;
-  font-weight: bold;
+  font-weight: $bold;
   line-height: 1.286;
   margin-bottom: 3px;
 }
@@ -232,7 +264,7 @@
 #search-results .metrics {
   display: block;
   font-size: 0.917em;
-  font-weight: bold;
+  font-weight: $bold;
   margin-top: 8px;
 }
 
@@ -311,12 +343,14 @@
 /* METRICS IN BROWSE */
 
 /*Table mini in tooltip*/
-.metricTooltip{@include js-tooltip-target();}
+.metricTooltip {
+  @include js-tooltip-target();
+}
 div.tooltipContainer {
   display: inline-block;
   @include js-tooltip-container();
 }
-.metricTooltip{
+.metricTooltip {
   z-index: 3000;
   border: 0;
   padding: 5px;
@@ -331,4 +365,3 @@ div.tooltipContainer {
 }
 
 /* END METRICS IN BROWSE */
-

@@ -40,21 +40,28 @@ For example: instead of using `font-size: 22px` you should  instead use `font-si
 
 //journal specific
 
-$plos-default: #3c63af; //blue
-$plos-one: #f8af2d; //yellow
+$plos-default: #606060; //grey
+
 $plos-bio: #16a127; //green: biology, comp-bio, genetics
 $plos-med: #891fb1; // purple: medicine, pathogens, ntds
 $plos-currents: #1dbfe0; // light blue
-$generic-brand: #4A1010;
+$generic-brand: #c0c0c0;
+$plos-collections: #3c63af;
 
-//hues for background shading
-$plos-default-shade1: #abc2e8;
-$plos-default-shade2: #93aad0;
-$plos-default-shade3: #c6d7f2;
+// plos one rebrand 2018
+$plos-one: #d7df23; //lime
+$plos-one-purple: #3e0577;
+$plos-one-pink: #cc00a6;
+$plos-one-teal: #3daca0;
+
+//hues for background shading - mostly for signposts for article
+$plos-default-shade1: #f0f0f0;
+$plos-default-shade2: #e0e0e0;
+$plos-default-shade3: #d0d0d0;
 // the shades aren't straight percentages or hue variations, so it is necessary to list each one
-$plos-one-shade1: #fcd5a3;
-$plos-one-shade2: #fbe989;
-$plos-one-shade3: #fadfbe;
+$plos-one-shade1: #ecf09b;
+$plos-one-shade2: $plos-one;
+$plos-one-shade3: #f4f6c3;
 
 $plos-bio-shade1: #a8e2be;
 $plos-bio-shade2: #92e5ab;
@@ -64,25 +71,27 @@ $plos-med-shade1: #d4afe0;
 $plos-med-shade2: #c493d4;
 $plos-med-shade3: #decbe4;
 
-$clr-brand: $plos-default;
 
-$black: #000;
+$black: #101010;
 $white: #fff;
-$grey-dark: #333;
+$off-white: #efefef;
+$grey-dark: #303030;
 
-$grey-med-dark: #666;
-$grey-med: #707070;
+$grey-med-dark: #606060;
+$grey-med: #909090;
 
-$grey-med-light: #ccc;
-$grey-light: #efefef;
+$grey-med-light: #c0c0c0;
+$grey-light: #e0e0e0;
 $grey-tinytext: #bbb;// TEMP PROD: change uses to grey-med-light
 
-$tabs-base-color: #2b2b2b;
+$tabs-base-color: #202020;
 $table-header-bg: #a0a0a0;
 
 $warning: #e53350;
 $alert: #ffd87a;
 $success: #16a127;
+
+$clr-brand: $grey-med;
 
 //colors
 
@@ -90,20 +99,20 @@ $clr-highlight: $plos-default !default;
 $clr-highlight-hover: $plos-default !default;
 $clr-highlight-text: $white !default;
 
-$clr-tooltip-text: #a7bee9;
-$clr-link-against-dark: #89a0d0;
+$clr-tooltip-text: $grey-light;
+$clr-link-against-dark: $white;
 
 $clr-body-bg: $white;
 $clr-panel: $white;
-$clr-header: $grey-light;
+$clr-header: $off-white;
 $clr-separator: $grey-med-light;
 
-$clr-link: $clr-highlight;
-$clr-body-text: $grey-dark;
+$clr-link: $plos-default;
+$clr-body-text: $black;
 $clr-link-hover: $grey-dark;
-$clr-muted: $grey-med-dark;
+$clr-muted: $grey-med;
 $clr-light-text: $white;
-$clr-callout-bg: $grey-light;
+$clr-callout-bg: $off-white;
 $clr-alert: $alert;
 $clr-warning: $warning;
 $clr-warning-bg: #fce2e5;
@@ -112,12 +121,11 @@ $clr-success: $success;
 
 $clr-btn-primary: $clr-highlight;
 $clr-btn-secondary: $grey-dark;
-$clr-btn-disabled: $grey-med-light;
+$clr-btn-disabled: $grey-light;
 $clr-btn-text: $white;
-$clr-callout-bg:  $grey-light;
 
-$clr-input-placeholder: $grey-dark;
-$clr-input-active: $grey-med-dark;
+$clr-input-placeholder: $grey-med-dark;
+$clr-input-active: $grey-dark;
 $clr-input-disabled: $grey-light;
 
 $clr-aperta: #8ecb87;
@@ -148,10 +156,10 @@ $grid-width: 980px;
 $grid-columns: 12;
 
 // layout patterns
-$border-radius-smaller: 2px;
-$border-radius-small: 3px; //icon backgrounds
-$border-radius-default: 5px;
-$border-radius-large: 8px;
+$border-radius-smaller: 1px;
+$border-radius-small: 2px; //icon backgrounds
+$border-radius-default: 3px;
+$border-radius-large: 4px;
 $default-box-shadow-color: rgba(0, 0, 0, 0.15);
 $default-box-shadow-h-offset: 1px;
 $default-box-shadow-v-offset: 1px;
@@ -169,7 +177,7 @@ $target-large-offset: 65px; // this is the amount we want to offset the target t
 // typography
 $pad-xsmall: ($grid-gutter / 4);  //5px
 $pad-small: ($grid-gutter / 2);   //10px
-$pad-smallish: $pad-small + $pad-xsmall; //15px
+$pad-smallish: $pad-small + $pad-small; //15px
 $pad-default: $grid-gutter;       //20px
 $pad-medium: ($grid-gutter * 1.5); //30px
 $pad-large: ($grid-gutter * 2);   //40px
@@ -180,11 +188,11 @@ $pad-highlight: 2px;
 $pad-highlight-x: ($pad-highlight *2);
 $icon-space: 2px;
 
-$pad-inbetween: 8px;
+$pad-inbetween: 9px;
 
 // typography
-$font-face-plain: "arial";
-$font-face-fancy: "Open Sans", Arial, Helvetica, sans-serif;
+$font-face-plain: Helvetica, Arial, sans-serif;
+$font-face-fancy: "Open Sans", Helvetica, Arial, sans-serif;
 $font-face-icons: "icons-fawesome";
 
 $font-face-copy: $font-face-plain;
@@ -192,8 +200,10 @@ $font-face-navigation: $font-face-fancy;
 $font-face-headings: $font-face-fancy;
 // special fonts for article display
 $font-face-roman: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
-$font-face-sans-serif: "Arial Narrow", Arial, Helvetica, sans-serif;
+$font-face-sans-serif: Helvetica, Arial, sans-serif;
 $font-face-monospace: "Courier New", monospace;
+
+$bold: 600;
 
 //Type Sizes
 $txt-size-giant: 32px;
@@ -220,11 +230,13 @@ $txt-size-h5: $txt-size-default; // may not use
 $txt-size-h6: $txt-size-default; // may not use
 $txt-size-note: $txt-size-small;
 
-$txt-margin-bottom-h3: 16px;
-$txt-margin-top-h3: 24px;
+$txt-margin-bottom-h3: 9px;
+$txt-margin-top-h3: 9px;
 
 $sub-alignment: .5ex; //controls sub text
 $sup-alignment: 1ex; //controls super text
+
+$letter-spacing-default: .05rem;
 
 $line-height: 18px; // applies to paragraphs and lists by default
 $line-height-large: ($line-height * 2); //36px
@@ -235,22 +247,22 @@ $line-height-large-text: 1.25;
 $paragraph-spacing: $line-height-small;
 
 $list-spacing: $paragraph-spacing;
-$line-height-icon: rem-calc(35);
+$line-height-icon: rem-calc(36);
 
-$button-height: 35px;
+$button-height: 36px;
 
 // Here we define the breakpoints which will become the upper border for each media size.
 // The function em-calc() calculates the em-value from a px-value.
-$small-breakpoint:  em-calc(640)  !default;
+$small-breakpoint: em-calc(640)  !default;
 $medium-breakpoint: em-calc(1024) !default;
-$large-breakpoint:  em-calc(1440) !default;
+$large-breakpoint: em-calc(1440) !default;
 $xlarge-breakpoint: em-calc(1920) !default;
 
 // Here we define the lower and upper bounds for each media size
-$small-range:   (0, $small-breakpoint) !default; /* 0, 640px */
-$medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint) !default; /* 641px, 1024px */
-$large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint)  !default; /* 1025px, 1440px */
-$xlarge-range:  ($large-breakpoint  + em-calc(1), $xlarge-breakpoint) !default; /* 1441px, 1920px */
+$small-range: (0, $small-breakpoint) !default; /* 0, 640px */
+$medium-range: ($small-breakpoint  + em-calc(1), $medium-breakpoint) !default; /* 641px, 1024px */
+$large-range: ($medium-breakpoint + em-calc(1), $large-breakpoint)  !default; /* 1025px, 1440px */
+$xlarge-range: ($large-breakpoint  + em-calc(1), $xlarge-breakpoint) !default; /* 1441px, 1920px */
 $xxlarge-range: ($xlarge-breakpoint + em-calc(1), em-calc(99999999)) !default; /* 1921px, ... */
 
 /*doc
@@ -291,4 +303,3 @@ option          | result
 `$clr-brand`| sets the journal color
 `$clr-highlight`| sets the plos-default color
                                                                                                                                                      */
-

@@ -59,32 +59,53 @@ have a fixed width and height (but it's not required).
 // small carousel
 .carousel-wrap.small {
   $icon-height: rem-calc(30);
-  $carousel-width: rem-calc(306);
+  $carousel-width: rem-calc(302);
   // TODO PG-width is set in home.scss
-  @extend %brand-shading;
+
   @extend .block-card;
   margin-right: $pad-default;
   position: relative;
   .block-header {
     @extend %brand-header;
+    padding-left: $pad-default;
+
+    .plosone & {
+      background-color: $white;
+      color: $plos-one-purple;
+      border-bottom: 1px solid $grey-light;
+      font-weight: $bold;
+    }
   }
   .carousel {  //TODO: do we move this into home?
     li {
       width: $carousel-width;
-      padding: $pad-default;
-      height: 145px;
+      padding: $pad-small;
+      padding-left: $pad-default;
+      height: 170px;
       h3 {
-        @extend %home-subheader;
-        @extend  %header-large;
+        font-size: rem-calc($txt-size-default);
+        font-weight: $bold;
+        line-height: $line-height;
+        margin-bottom: $line-height-xsmall;
       }
       p {
-        font-size: rem-calc($txt-size-medium);
+        font-size: rem-calc($txt-size-small);
+        color: $grey-med;
+        line-height: $line-height;
+        margin-bottom: 0;
+      }
+    }
+    .plosone & {
+      a {
+        &:hover {
+          color: $plos-one-purple;
+        }
       }
     }
   }
   .carousel-control {
     position: absolute;
-    bottom: 10px;
+    bottom: $line-height-small;
     left: 50%;
     width: 120px;
     margin-left: -50px;
@@ -94,7 +115,14 @@ have a fixed width and height (but it's not required).
       font-size: $icon-height;
       &:hover {
         @extend .fa-inverse;
+        @extend %brand-color;
         text-decoration: none;
+      }
+      .plosone & {
+        color: $grey-med-light;
+        &:hover {
+          color: $plos-one-purple;
+        }
       }
     }
     .jcarousel-prev {
@@ -104,8 +132,8 @@ have a fixed width and height (but it's not required).
       @extend .fa-chevron-circle-right;
     }
     .numbers {
-      @extend %small-italic;
-      color: $grey-med-dark;
+      font-size: $txt-size-xsmall;
+      color: $grey-med;
       display: inline-block;
       padding: 0 $pad-xsmall;
       vertical-align: top;

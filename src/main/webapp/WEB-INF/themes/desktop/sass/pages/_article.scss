@@ -29,17 +29,19 @@ $article-body-width: 755;
 $article-sidebar-width: 160;
 
 //shared article Styles
-
-.article-tabs{
-  h1{@extend .title-primary;}
-  h2{@extend .title-secondary;}
-
+.article-tabs {
+  h1 {
+    @extend .title-primary;
+  }
+  h2 {
+    @extend .title-secondary;
+  }
 }
 
 // extensible layout styles
-
 .text-article-intro {
   font-size: $txt-size-default;
+  line-height: $line-height;
   color: $grey-med-dark;
 
   a {
@@ -81,7 +83,7 @@ $article-sidebar-width: 160;
   }
 
   .anime-hide {
-     opacity: 0;
+    opacity: 0;
   }
   @include plos-grid-column($article-sidebar-width, $gutter: none);
   @extend .inline-list;
@@ -101,7 +103,7 @@ $article-sidebar-width: 160;
     vertical-align: middle;
     text-align: center;
     margin: 0;
-    font-weight: bold;
+    font-weight: $bold;
     font-size: $txt-size-medium-large;
     color: $grey-dark;
     width: rem-calc(80);
@@ -129,7 +131,7 @@ $article-sidebar-width: 160;
 
         &.show-tip {
           background-color: $plos-default;
-          border-radius: $border-radius-default;
+          border-radius: $border-radius-smaller;
           color: $white;
         }
       }
@@ -137,7 +139,7 @@ $article-sidebar-width: 160;
       p {
         @extend %signposts-tooltip-transition;
         background-color: $plos-default;
-        border-radius: $border-radius-default;
+        border-radius: $border-radius-smaller;
         max-width: rem-calc(280);
         position: absolute;
         text-align: left;
@@ -159,7 +161,8 @@ $article-sidebar-width: 160;
       p.citations-tip {
         top: rem-calc(93);
         right: rem-calc(30);
-        .scopus, .crossref {
+        .scopus,
+        .crossref {
           display: none;
         }
       }
@@ -173,37 +176,37 @@ $article-sidebar-width: 160;
       }
     }
   }
-    .unavailable {
-      width: rem-calc($article-sidebar-width);
-      border-right: 0;
-      border-bottom: 0;
-      font-size: $txt-size-xsmall;
-      font-weight: normal;
-      text-align: right;
-      color: $grey-med-dark;
-    }
-    #loadingMetrics {
-      @extend .unavailable;
-      position: relative;
-      height: rem-calc($article-sidebar-width);
+  .unavailable {
+    width: rem-calc($article-sidebar-width);
+    border-right: 0;
+    border-bottom: 0;
+    font-size: $txt-size-xsmall;
+    font-weight: normal;
+    text-align: right;
+    color: $grey-med-dark;
+  }
+  #loadingMetrics {
+    @extend .unavailable;
+    position: relative;
+    height: rem-calc($article-sidebar-width);
 
-      text-align: center;
-      p {
-        padding-top: rem-calc(75);
-        font-size: $txt-size-medium-large;
-      }
-    }
-    #tooSoon {
-      @extend .unavailable;
-      padding: $pad-small $pad-small;
-    }
-    #metricsError {
-      @extend .unavailable;
-      padding: rem-calc(105) $pad-small $pad-small $pad-default;
-      background: $grey-light;
-      height: rem-calc($article-sidebar-width);
+    text-align: center;
+    p {
+      padding-top: rem-calc(75);
+      font-size: $txt-size-medium-large;
     }
   }
+  #tooSoon {
+    @extend .unavailable;
+    padding: $pad-small $pad-small;
+  }
+  #metricsError {
+    @extend .unavailable;
+    padding: rem-calc(105) $pad-small $pad-small $pad-default;
+    background: $grey-light;
+    height: rem-calc($article-sidebar-width);
+  }
+}
 
 .article-meta {
   //  padding-right: $pad-default;
@@ -213,23 +216,24 @@ $article-sidebar-width: 160;
 .classifications {
   @include plos-grid-column($article-body-width, $gutter: none);
   @extend %txt-transform;
-  margin-top: $pad-smallish;
+  margin-top: $line-height;
 
   > p {
     font-size: $txt-size-xxxsmall;
     display: inline-block;
     padding-left: $pad-smallish;
-    line-height: $txt-size-large;
+    line-height: $line-height;
+    margin-bottom: $line-height-small;
   }
 
   .license-short {
-    background: image-url('icon.oa.gif') no-repeat 0 3px;
+    background: image-url('icon.oa.gif') no-repeat 0 2px;
     padding-right: $pad-small;
     font-family: $font-face-fancy;
   }
 
   .peer-reviewed {
-    background: image-url('icon.pr.gif') no-repeat 0 3px;
+    background: image-url('icon.pr.gif') no-repeat 0 2px;
     font-family: $font-face-fancy;
   }
 
@@ -241,6 +245,7 @@ $article-sidebar-width: 160;
       font-size: rem-calc(15);
       margin-right: 3px;
       line-height: rem-calc(15);
+      //line-height: rem-calc(15);
     }
   }
 
@@ -249,50 +254,48 @@ $article-sidebar-width: 160;
       content: '';
       @extend .icon-correction;
     }
-
   }
 
   .article-type {
-    margin-top: $pad-xsmall;
+    //margin-top: $line-height-small;
 
     > p {
-      vertical-align: bottom;
-      line-height: $txt-size-xxxsmall;
+     // vertical-align: bottom;
+      line-height: $line-height;
       font-size: $txt-size-xxxsmall;
+      margin-bottom: $line-height-small;
     }
   }
 }
 
-
-
-
 .article-title-etc {
   @include plos-grid-column($article-body-width, $gutter: none);
-  margin-top: $pad-small;
+  margin-top: $line-height;
 
   h1 {
     @extend .title-primary;
-    margin-bottom: $pad-small;
-    i, italic, named-content {
+    margin-bottom: $line-height-small;
+    i,
+    italic,
+    named-content {
       font-style: italic;
     }
   }
   #revisionMenu {
     display: inline-block;
-
   }
   .date-doi {
     @include clearfix();
     @extend .text-article-intro;
     margin: 0;
-    margin-bottom: ($pad-default + $pad-xsmall);
+    margin-bottom: $line-height;
 
     li {
       float: left;
       margin: 0 $pad-small;
 
-      &.revisionList+li, &:first-child
-      {
+      &.revisionList + li,
+      &:first-child {
         margin: 0 $pad-small 0 0;
         padding-left: 0;
         list-style-type: none;
@@ -350,12 +353,14 @@ $article-sidebar-width: 160;
     h1 {
       @include truncated();
       font-size: $txt-size-medium;
-      font-weight: bold;
+      font-weight: $bold;
       font-family: $font-face-plain;
       line-height: rem-calc(16);
       margin: rem-calc(2) 0;
 
-      i, italic, named-content {
+      i,
+      italic,
+      named-content {
         font-style: italic;
       }
     }
@@ -386,7 +391,7 @@ $article-sidebar-width: 160;
   @extend .hide-for-print;
   display: table;
   table-layout: fixed;
-  margin-bottom: $pad-default;
+  margin-bottom: $line-height-small;
   width: 100%;
   margin-left: 0;
 
@@ -398,29 +403,35 @@ $article-sidebar-width: 160;
 
     a.article-tab-1 {
       background: $tabs-base-color;
+      color: $white;
     }
     a.article-tab-2 {
-      background: lighten($tabs-base-color, 10%);
+      background: lighten($tabs-base-color, 8%);
+      color: $white;
     }
     a.article-tab-3 {
-      background: lighten($tabs-base-color, 20%);
+      background: lighten($tabs-base-color, 16%);
+      color: $white;
     }
     a.article-tab-4 {
-      background: lighten($tabs-base-color, 30%);
+      background: lighten($tabs-base-color, 24%);
+      color: $white;
     }
     a.article-tab-5 {
-      background: lighten($tabs-base-color, 40%);
+      background: lighten($tabs-base-color, 32%);
+      color: $white;
     }
     a.article-tab-6 {
-      background: lighten($tabs-base-color, 50%);
+      background: lighten($tabs-base-color, 40%);
+      color: $white;
     }
 
     a {
       display: block;
-      height: 75px;
-      padding: $temp-pad-tabs;  // TEMP-PROD: use $pad-small;
+      height: rem-calc(72px);
+      padding: $pad-small;  // TEMP-PROD: use $pad-small;
       border-right: 1px solid $white;
-      font-weight: bold;
+      font-weight: $bold;
       color: $white;
 
       &:hover {
@@ -431,12 +442,12 @@ $article-sidebar-width: 160;
     &.active a {
       position: relative;
       @extend %brand-background;
-      height: 83px;
-      font-weight: bold;
+      height: 81px;
+      font-weight: $bold;
       font-family: $font-face-plain;
 
-      &:after{
-        content:"\f103";
+      &:after {
+        content: "\f103";
         position: absolute;
         bottom: $pad-xsmall;
         left: rem-calc(8);
@@ -455,7 +466,7 @@ $article-sidebar-width: 160;
   @extend .text-article-intro;
   overflow: visible;
   margin-left: 0;
-  margin-bottom: $pad-small;
+  margin-bottom: $line-height;
 
   li {
     float: left;
@@ -463,21 +474,21 @@ $article-sidebar-width: 160;
     position: relative;
     margin-left: -($pad-highlight * 1.5);
 
-    &.active{
-      a:hover{text-decoration: none;}
+    &.active {
+      a:hover { text-decoration: none; }
     }
 
-    &[data-js-toggle='toggle_trigger'] a{
+    &[data-js-toggle='toggle_trigger'] a {
       color: $clr-highlight;
     }
 
-    > a, > span{
+    > a,
+    > span {
       display: inline-block;   // needed to overwrite the inline-list
-      padding: $pad-highlight $pad-highlight-x; //TODO line-height;
+      padding: 0 $pad-highlight-x; //TODO line-height;
     }
-
   }
-  .contribute{
+  .contribute {
     @extend .icon-author-contribute;
   }
 
@@ -489,28 +500,27 @@ $article-sidebar-width: 160;
     @extend .icon-author-address;
   }
 
-
-
   ///print styles
-  [data-js-toggle="toggle_trigger"], [data-js-toggle="toggle_add"]{
+  [data-js-toggle="toggle_trigger"],
+  [data-js-toggle="toggle_add"] {
     @extend .hide-for-print;
   }
-  [data-js-toggle="toggle_target"]{
+  [data-js-toggle="toggle_target"] {
     @extend .show-for-print;
   }
 }
 
-.author-info{
+.author-info {
   @extend .pill-small;
   padding-right: ($pad-default);
   width: rem-calc(450);
   top: rem-calc($txt-size-default + 2);   // need to make this a tad more dynamic.
   height: auto;
-  position:absolute;
+  position: absolute;
   margin-top: $pad-small;
   display: none;
 
-  p{
+  p {
     border-top: rem-calc(2) solid $grey-med;
     padding: $pad-small 0;
     &:first-child {
@@ -518,11 +528,12 @@ $article-sidebar-width: 160;
     }
   }
 
-  .email, .rel-footnote {
+  .email,
+  .rel-footnote {
     @include icon-offscreen;
     margin-right: $icon-space;
   }
-  .orcid span.type {display: none;}
+  .orcid span.type { display: none; }
 }
 
 #orcid-id-logo {
@@ -531,7 +542,10 @@ $article-sidebar-width: 160;
 }
 
 .author-list .active {
-  a, a:hover { color: $white; }
+  a,
+  a:hover {
+    color: $white;
+  }
 
   .author-name {
     @include rounded-pill($padding: $pad-highlight $pad-highlight-x,$hover: false);
@@ -542,7 +556,6 @@ $article-sidebar-width: 160;
   }
 
   .close {
-
     @extend .closer;
     position: absolute;
     top: $pad-xsmall;
@@ -553,26 +566,26 @@ $article-sidebar-width: 160;
 .article-type {
   height: auto;
   width: auto;
-  display:table;
+  display: table;
   @include js-tooltip-container();
 }
 
-.type-desc{
+.type-desc {
   @include tooltip();
   @include js-tooltip-target($margintop: rem-calc(35));
   left: 0;
 
-  p{
+  p {
     color: $clr-tooltip-text;
     text-transform: none;
 
-    a{
+    a {
       @extend %link-text-white;
     }
   }
 }
 
-.article-type-tooltip{
+.article-type-tooltip {
   @include tooltip-trigger($outside-box: yes);
   font-family: $font-face-plain;
   font-size: $txt-size-xxxsmall;
@@ -588,40 +601,66 @@ $article-sidebar-width: 160;
   div {
     display: inline;
     float: left;
-    line-height: rem-calc(35);
-    font-size: $txt-size-mediumish;
-    font-weight: bold;
+    line-height: rem-calc(36);
+    font-size: $txt-size-small;
+    font-weight: $bold;
     color: $white;
 
     &:hover {
-      background: $plos-default;
+      @extend %brand-background;
+    }
+
+    .plosone & {
+      div {
+        &:hover {
+          color: $black;
+        }
+      }
     }
   }
 
   .dload-pdf {
-    @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 11), $border-radius: 5px 0 0 5px, $hover: false);
+    @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 11), $border-radius: $border-radius-default 0 0 $border-radius-default, $hover: false);
     width: 79%;
     text-align: center;
     white-space: nowrap;
     &:not(.no-pdf) {
       &:hover {
-        background: $plos-default;
+        @extend %brand-background;
+      }
+        a {
+      color: $white;
+    }
+      .plosone & {
+        &:not(.no-pdf) {
+         
+          &:hover,
+          a:hover {
+            color: $black;
+          
+          }
+        }
       }
     }
 
-    a {
-      color: $white;
-    }
+  
   }
 
   .dload-hover {
-    @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 8 0 11), $border-radius: 0 5px 5px 0, $hover: false);
+    @include rounded-pill($background: $clr-body-text, $padding: rem-calc(0 8 0 11), $border-radius: 0 $border-radius-default $border-radius-default 0, $hover: false);
     @include js-tooltip-container();
     @extend .icon-caret-down;
     width: 20%;
     &:hover {
       cursor: pointer;
-      background: $plos-default;
+      @extend %brand-background;
+    }
+    .plosone & {
+      a {
+        &:hover {
+          color: $black;
+        }
+      }
     }
   }
 
@@ -646,17 +685,19 @@ $article-sidebar-width: 160;
   z-index: map-get($zindex, dropdown);
   left: -127px;
   cursor: default;
+  font-size: $txt-size-small;
 
   a { //firefox
     font-family: $font-face-plain;
   }
 }
 
-.print-article{
+.print-article {
   @extend .button-big;
   @include js-tooltip-container;
   @include plos-grid-column(77, $gutter:right, $gutter-width: 5px);
   cursor: pointer;
+  font-size: $txt-size-small;
 }
 
 .print-options {
@@ -673,15 +714,13 @@ $article-sidebar-width: 160;
   margin-bottom: $pad-default;
 
   h3 {
-    font-size: $txt-size-medium;//$txt-size-h3;
+    font-size: $txt-size-small;//$txt-size-h3;
     font-family: $font-face-plain;
-    font-weight: bold;
-    line-height: rem-calc(17); // TEMP PROD: use 18px;
-    border-bottom: 1px solid #dedede;
-    padding-bottom: $pad-small;
-    margin-bottom: rem-calc(8); // TEMP PROD: use 10px;
+    font-weight: $bold;
+    line-height: $line-height; // TEMP PROD: use 18px;
+    border-bottom: 1px solid $grey-light;
+    margin-top: $line-height; // TEMP PROD: use 10px;
   }
-
 }
 
 .share-article {
@@ -689,6 +728,7 @@ $article-sidebar-width: 160;
   @include js-tooltip-container;
   @include plos-grid-column(77, $gutter: none);
   cursor: pointer;
+  font-size: $txt-size-small;
 }
 
 .share-options {
@@ -703,6 +743,7 @@ $article-sidebar-width: 160;
   li {
     list-style-position: outside; // firefox
     list-style-type: none;
+    font-size: $txt-size-small;
 
     a img {
       width: 16px;
@@ -716,7 +757,7 @@ $article-sidebar-width: 160;
 
 .crossmark-container {
   @extend .aside-container;
-  margin-bottom: $pad-xsmall;
+  margin-bottom: $line-height;
 
   img {
     padding: $pad-small 0;
@@ -757,8 +798,11 @@ body.article .ui-widget-overlay {
   list-style-type: none;
   margin-left: 0;
   li a {
-    @include link-text($plos-default, underline);
+    @extend %brand-color;
     font-size: $txt-size-xsmall;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -770,15 +814,25 @@ body.article .ui-widget-overlay {
     margin-left: 0;
 
     li {
-      margin-bottom: rem-calc(12);// TEMP PROD: use 10 or 15;
-
+      margin-bottom: $line-height;
       a {
-        @extend %link-text-default;
+        @extend %brand-color;
         font-size: $txt-size-xsmall;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
-
+  .plosone & {
+    ul {
+      li {
+        a {
+          color: $plos-one-purple;
+        }
+      }
+    }
+  }
 }
 
 .skyscraper-container {
@@ -850,6 +904,9 @@ body.article .ui-widget-overlay {
 
       .taxo-term {
         @extend .button;
+        @extend %brand-background;
+        color: $white;
+        text-transform: none;
         width: auto;
         float: left;
         //the next three elements are for truncation. width is needed and is being set with js
@@ -889,7 +946,7 @@ body.article .ui-widget-overlay {
           border: none;
           border-radius: 4px;
           font-size: $txt-size-xxsmall;
-          font-weight: bold;
+          font-weight: $bold;
           color: $plos-default;
           cursor: pointer;
         }
@@ -911,11 +968,11 @@ body.article .ui-widget-overlay {
         background: image-url('icon.taxonomy.target.png') no-repeat 0 0;
         cursor: pointer;
 
-        &:hover, &.flagged {
+        &:hover,
+        &.flagged {
           background-position: 0 -16px;
         }
       }
-
     }
   }
 }
@@ -926,15 +983,13 @@ body.article .ui-widget-overlay {
   ul {
     margin-left: 0;
     list-style-type: none;
-
     li {
       margin-left: 0;
       padding-bottom: rem-calc(12);
       font-size: $txt-size-xsmall;
     }
-
     a {
-      @extend %link-text-default;
+      @extend %brand-color;
       display: block;
     }
   }
@@ -943,7 +998,6 @@ body.article .ui-widget-overlay {
 .twitter-container {
   @extend .aside-container;
   display: none;
-
   h3 {
     background: image-url('icon.twtr.20.png') no-repeat 0 0;
     padding-left: $pad-default + $pad-xsmall;
@@ -952,22 +1006,28 @@ body.article .ui-widget-overlay {
     margin-bottom: $pad-xsmall;
     font-size: $txt-size-xsmall !important;
   }
-
   #tweetList {
     list-style-type: none;
     margin-left: 0;
-
     li {
-      border-top: 1px solid #dedede;
-      margin-bottom: $pad-small;
+      border-top: 1px solid $grey-light;
+      margin-bottom: $line-height-small;
       padding-top: $pad-small;
       font-size: $txt-size-xsmall;
-
       .tweet-info {
         a {
-          color: $clr-body-text;
+          @extend %brand-color;
           position: relative;
           @include clearfix;
+        }
+
+        .plosone & {
+          a {
+            color: $plos-one-purple;
+            .tweetText & {
+              color: $plos-one-purple;
+            }
+          }
         }
 
         img {
@@ -985,7 +1045,7 @@ body.article .ui-widget-overlay {
           clear: both;
 
           strong {
-            font-weight: bold;
+            font-weight: 500;
             &:hover {
               text-decoration: underline;
             }
@@ -998,14 +1058,16 @@ body.article .ui-widget-overlay {
     }
   }
 
-  .more-tweets, .placeholderPic {
+  .more-tweets,
+  .placeholderPic {
     display: none;
   }
 
-  .load-more, .view-all {
-    @extend %link-text-default;
+  .load-more,
+  .view-all {
+    @extend %brand-color;
     font-family: $font-face-fancy;
-    font-size: $txt-size-large;
+    font-size: $txt-size-default;
     display: none;
     text-align: center;
     cursor: pointer;
@@ -1025,9 +1087,9 @@ body.article .ui-widget-overlay {
   margin-left: 0;
 
   a {
-    @include link-text($grey-med, underline);
+    @extend %brand-color;
     visibility: hidden;
-    padding-left:0;
+    padding-left: 0;
     padding-right: $pad-small;
     display: inline;
 
@@ -1036,6 +1098,12 @@ body.article .ui-widget-overlay {
       width: rem-calc(17);
       height: rem-calc(15);
       display: inline-block;
+    }
+  }
+
+  .plosone & {
+    a {
+      color: $plos-one-purple;
     }
   }
   .tweet-reply div {
@@ -1065,7 +1133,6 @@ body.article .ui-widget-overlay {
       visibility: visible;
     }
   }
-
 }
 
 @media print {
@@ -1087,10 +1154,38 @@ body.article .ui-widget-overlay {
   }
 }
 
-section.authors{
+section.authors {
   margin-bottom: $line-height-large;
-  p{margin-bottom: rem-calc(3px);}
-  dt{font-size: $txt-size-medium-large; margin-bottom: $line-height-xsmall;}
-  span.rel-footnote{display: none;}
 
+  h1,
+  h2,
+  p,
+  dt {
+    margin-left: $pad-small;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  dt {
+    font-size: $txt-size-medium;
+    line-height: $line-height;
+    margin-top: $line-height;
+  }
+  dd {
+    margin-bottom: $line-height;
+    p {
+      line-height: $line-height;
+      //margin-bottom: $line-height-small;
+      & span.type {
+        font-family: $font-face-fancy;
+        font-size: $txt-size-xxxsmall;
+        font-weight: $bold;
+        color: $grey-med-dark;
+        text-transform: uppercase;
+        letter-spacing: 0.05rem;
+      }
+    }
+  }
+
+  span.rel-footnote { display: none; }
 }

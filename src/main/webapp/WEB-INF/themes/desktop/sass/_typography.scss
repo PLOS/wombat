@@ -86,7 +86,7 @@ example | extension
 /* basic styles  */
 @mixin text-default{
   font-size: rem-calc($txt-size-default);
-  line-height: rem-calc($line-height);
+  line-height: $line-height;
 }
 @mixin text-below{margin-bottom: $paragraph-spacing;}
 @mixin default-list{
@@ -105,7 +105,7 @@ ol {
   list-style-type: none;
   > li {
     padding-left: $pad-default;
-    margin-bottom: rem-calc($line-height-small);
+    margin-bottom: $paragraph-spacing;
     position: relative;
   }
   > li:before {
@@ -143,27 +143,26 @@ h2, h3, h4, h5 {
 
 // font-weights
 h3, h5 {
-  font-weight: bold;
+  font-weight: 400;
 }
 
 h4 {
-  font-weight: normal;
+  font-weight: 400;
 }
 
 //spacing
 h2, h3, h4, h5 {
-  margin-bottom: rem-calc($line-height-small);
-  margin-top: rem-calc($line-height-medium);
-  line-height: normal;
+  margin-bottom: $line-height-small;
+  line-height: $line-height-large;
 }
 
 h2 {
-  margin-bottom: rem-calc($line-height);
+
   font-size: rem-calc($txt-size-h2);
-  font-weight: normal;
+  font-weight: 500;
 }
 
-
+/*
 
 h3 {
   margin-bottom: rem-calc($txt-margin-bottom-h3);
@@ -172,13 +171,13 @@ h3 {
 
 h4, h5 {
   margin-top: rem-calc($line-height-small);
-}
+}*/
 
 //special title styles
 
 .title-small {
   font-size: $txt-size-default;
-  font-weight: bold;
+  font-weight: $bold;
 }
 
 .title-medium {
@@ -199,8 +198,9 @@ h4, h5 {
 
 .title-primary{
     font-family: $font-face-fancy;
-    font-size: $txt-size-xxxlarge;
-    line-height: $line-height-large-text;
+    font-size: $txt-size-xxlarge;
+    line-height: $line-height-large;
+    font-weight: $bold;
 }
 
 .title-secondary{
@@ -211,10 +211,9 @@ h4, h5 {
 }
 
 
-
 //callout styles
 
-@mixin callout($margin-top: rem-calc($line-height-medium),
+@mixin callout($margin-top: rem-calc($line-height),
 $margin-bottom: rem-calc($line-height),
 $padding-x: rem-calc($line-height),
 $padding-y: $pad-default,
@@ -269,7 +268,7 @@ blockquote, .pullquote, .block-quote {
 .block-global-alert {
   @extend %callout-default;
   background: $plos-default-shade1;
-  font-weight: bold;
+  font-weight: $bold;
 }
 
 .block-aperta {
@@ -294,7 +293,7 @@ blockquote, .pullquote, .block-quote {
 %brand-title {
   @extend %header-allcaps;
   @extend %brand-color;
-  margin-bottom: $pad-small;
+  //margin-bottom: $pad-small;
 }
 
 %brand-header {
@@ -345,7 +344,7 @@ example | extension
       text-decoration: none;
     } @else if $decoration-hover == underline {
       @if $color-hover != none {
-        color: $color-hover;
+          @extend %brand-color;
       } @else {
         color: $color;
       }
@@ -380,12 +379,10 @@ example | extension
 //font decorations and JATS tags
 ///////////////
 
-
 .type{
-  font-weight:bold;
+  font-weight:$bold;
   &:after{content: ':'}
 }
-
 
 %small-italic {
   font-size: rem-calc($txt-size-xxxsmall);
@@ -393,7 +390,7 @@ example | extension
 }
 
 %condense {
-  letter-spacing: -0.5px;
+  letter-spacing: -0.5rem;
 }
 
 %txt-transform {
@@ -401,7 +398,7 @@ example | extension
 }
 
 .inline-intro {
-  font-weight: bold;
+  font-weight: $bold;
 }
 
 .no-margin {
@@ -421,9 +418,6 @@ example | extension
 .sans-serif {
   font-family: $font-face-sans-serif;
 }
-
-
-
 
 //////////////
 //form styles
@@ -468,7 +462,7 @@ This is one place not to use @extend, since this is a semantic class name
 */
 
 .note, .caption, figcaption {
-  color: $grey-med-light;
+  color: $grey-med;
 }
 
 /////////
@@ -569,7 +563,7 @@ table.table-zebra-stripes {
 %header-medium-bold {
   font-size: rem-calc($txt-size-medium);
   font-family: $font-face-fancy;
-  font-weight: bold;
+  font-weight: $bold;
 }
 
 %header-xlarge-light {
@@ -599,4 +593,3 @@ table.table-zebra-stripes {
   @extend %header-allcaps-plain;
   font-size: rem-calc($txt-size-xxxsmall);
 }
-

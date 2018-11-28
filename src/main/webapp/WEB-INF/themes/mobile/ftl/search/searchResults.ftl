@@ -34,13 +34,13 @@
   </#if>
         method="get">
   <#if RequestParameters.q??>
-    <input type="hidden" name="q" value="${RequestParameters.q}"/>
+    <input type="hidden" name="q" value="${RequestParameters.q?html}"/>
   </#if>
   <#if RequestParameters.subject??>
-    <input type="hidden" name="subject" value="${RequestParameters.subject}"/>
+    <input type="hidden" name="subject" value="${RequestParameters.subject?html}"/>
   </#if>
   <#if RequestParameters.page?? >
-    <input type="hidden" name="page" value="${RequestParameters.page}"/>
+    <input type="hidden" name="page" value="${RequestParameters.page?html}"/>
   </#if>
     <div class="filter-option date">
       <h5>Filter by date</h5>

@@ -23,61 +23,58 @@
 /*
  *      styles for the footer
  */
-footer {
+ $footer-block-height: rem-calc(180);
+
+#pageftr {
   @extend .hide-for-print;
-  .row {@extend .plos-row;}
-  // widths
-  .brand-column{
-    @extend .plos-column-5 }
-  .link-column{
-    @extend .plos-column-3;
-  }
   @extend %bg-dark;
-  padding: rem-calc(25 0 60); // 25px 0 60px;
-  color: $grey-med-light;
-
+  color: $white;
+  padding: $line-height 0 0;
+  .row {
+    @extend .plos-row;
+  }
+  .block {
+    @include blocks($color: $grey-dark, $radius: none, $padding: $line-height-small 0 0, $shadow: none);
+    background: inherit;
+    border: 0;
+    height: $footer-block-height;
+    &.x-small {
+      @include plos-grid-column(267);
+    }
+    &.xx-small {
+      @include plos-grid-column(183);
+    }
+  }
   .logo-footer {
-    padding-bottom: rem-calc(25);
+    float: right;
+    margin: 0 0 0 0;
   }
+  .footer-non-profit-statement {
+    text-align: right;
+    color: $grey-med-light;
+    margin-bottom: $line-height-large;
+  }
+
   //pseudo elements are for Firefox
-  a, a:visited, a:focus, a:active {
-    @include link-text($color: $grey-med-light, $decoration-hover: underline){
+  a,
+  a:visited,
+  a:focus,
+  a:active {
+    @include link-text($color: $white, $decoration-hover: underline);
   }
+
   .nav {
-    position: relative;
-    }
-  }
-  .nav-aux {
-    @extend .inline-list;
-    margin-top: rem-calc(75);
-    margin-left: 0;
-
-    li {
-      margin-left: rem-calc(10);
-      padding: rem-calc(0 10 0 0);
-      border-right: 1px solid $grey-med-light;
-    }
-    li:first-child {
-      margin-left: 0;
-    }
-    li:last-child {
-      padding-right: none;
-      border-right: none;
-    }
-  }
-  ul {
     list-style: none;
-    padding-left: 0;
-    margin-left: 0;
-  }
-
-  }
-  .nav-special {
-    font-size: $txt-size-xsmall;
-    a {
-      font-weight: bold;
-      color: $clr-light-text
+    padding: 0;
+    margin: 0;
+    li {
+      list-style-type: none;
+      line-height: $line-height;
+      padding: 0;
+      &.ftr-header {
+        font-weight: $bold;
+        margin-bottom: $line-height-small;
+      }
     }
   }
-
-
+}

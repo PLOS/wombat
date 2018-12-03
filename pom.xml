@@ -29,7 +29,7 @@
   <artifactId>wombat</artifactId>
   <name>wombat</name>
   <packaging>war</packaging>
-  <version>3.7.2</version>
+  <version>3.7.3</version>
   <url>https://github.com/PLOS/wombat</url>
   <scm>
     <connection>scm:git:git@github.com:PLOS/wombat.git</connection>
@@ -47,7 +47,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
     <buildDate>${maven.build.timestamp}</buildDate>
-    <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+    <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     <build.timestamp>${maven.build.timestamp}</build.timestamp>
     <build.counter>0</build.counter>
     <maven.tomcat.port>8080</maven.tomcat.port>
@@ -544,7 +544,7 @@
                 <data>
                   <src>${project.build.directory}/${project.build.finalName}.war</src>
                   <type>file</type>
-                  <dst>/opt/plos/wombat/webapps/wombat.war</dst>
+                  <dst>/opt/plos/wombat/webapps/ROOT.war</dst>
                 </data>
 
                 <data>
@@ -572,6 +572,22 @@
         </executions>
       </plugin>
 
+      <plugin>
+        <artifactId>apt-repo</artifactId>
+        <groupId>org.m1theo</groupId>
+        <version>0.3.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>apt-repo</goal>
+            </goals>
+            <configuration>
+              <repoDir>/var/tmp/apt</repoDir>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 

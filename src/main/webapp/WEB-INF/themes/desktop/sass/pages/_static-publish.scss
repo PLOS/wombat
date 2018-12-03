@@ -39,7 +39,7 @@ div#publish_main_content #publish_banner_band {
   width: 100%;
   display: block;
   margin: 0 auto;
-  background-color: black;
+  background-color: $black;
   height: rem-calc(340px);
   overflow:hidden;
   background: image-url('droplet-on-leaf-treated.jpg');

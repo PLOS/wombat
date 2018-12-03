@@ -22,18 +22,21 @@
 
   /* TWEETS */
   #twitter {
-    width: 306px;
-    height: 387px;
+    width: 304px;
+    height: 340px;
     overflow: hidden;
     padding: 0;
-    border: none;
     margin: 0;
     background: #fff;
     position: absolute;
     top: 0;
     right: 0;
     z-index: 1;
+    border: 1px solid $grey-light;
   }
+#twitter a {
+	color: $plos-one-purple;
+}
   /* END TWEETS */
 
 
@@ -43,5 +46,6 @@
     top: 693px;
     right: 0;
     margin: 0;
+    width: 306px;
   }
   /* END CONNECT */

@@ -175,7 +175,28 @@ public class ArticleController extends WombatController {
     return site + "/ftl/article/relatedContent";
   }
 
-  /*
+  /**
+   * Serves the peer review tab content for an article.
+   *
+   * @param model     data to pass to the view
+   * @param site      current site
+   * @param articleId specifies the article
+   * @return path to the template
+   * @throws IOException
+   */
+  @RequestMapping(name = "articlePeerReview", value = "/article/peerReview")
+  public String renderArticlePeerReview(HttpServletRequest request, Model model, @SiteParam Site site,
+                                            RequestedDoiVersion articleId) throws IOException {
+    articleMetadataFactory.get(site, articleId)
+        .validateVisibility("articlePeerReview")
+        .populate(request, model);
+
+    throwIfPeerReviewNotFound(model.asMap());
+
+    return site + "/ftl/article/peerReview";
+  }
+
+  /**
    * Returns a list of figures and tables of a given article; main usage is the figshare tile on the Metrics
    * tab
    *
@@ -238,6 +259,12 @@ public class ArticleController extends WombatController {
     public XmlContent(String html, List<Reference> references) {
       this.html = Objects.requireNonNull(html);
       this.references = ImmutableList.copyOf(references);
+    }
+  }
+  
+  void throwIfPeerReviewNotFound(Map<String, Object> map) {
+    if (null == map.get("peerReview")) {
+      throw new NotFoundException();
     }
   }
 

@@ -26,7 +26,7 @@
       <legend>Search</legend>
       <label for="controlBarSearch">Search</label>
       <input id="controlBarSearch" type="text" pattern=".{1,}" name="q"
-             value="${query}" required/>
+             value="${query?html}" required/>
       <button id="searchFieldButton" type="submit">
         <i class="search-icon"></i>
       </button>

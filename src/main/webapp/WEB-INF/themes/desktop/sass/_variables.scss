@@ -45,8 +45,9 @@ $plos-default: #606060; //grey
 $plos-bio: #16a127; //green: biology, comp-bio, genetics
 $plos-med: #891fb1; // purple: medicine, pathogens, ntds
 $plos-currents: #1dbfe0; // light blue
-$generic-brand: #c0c0c0;
-$plos-collections: #3c63af;
+$plos-blue: #3c63af;
+$plos-collections: $plos-blue;
+$generic-brand: $plos-blue;
 
 // plos one rebrand 2018
 $plos-one: #d7df23; //lime
@@ -203,6 +204,8 @@ $font-face-roman: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia,
 $font-face-sans-serif: Helvetica, Arial, sans-serif;
 $font-face-monospace: "Courier New", monospace;
 
+// font-weights
+$normal: 400;
 $bold: 600;
 
 //Type Sizes
@@ -243,7 +246,7 @@ $line-height-large: ($line-height * 2); //36px
 $line-height-medium: ($line-height * 1.5); //27px
 $line-height-small: ($line-height * .5); //9px
 $line-height-xsmall: 3px;
-$line-height-large-text: 1.25;
+$line-height-large-text: $line-height-medium;
 $paragraph-spacing: $line-height-small;
 
 $list-spacing: $paragraph-spacing;

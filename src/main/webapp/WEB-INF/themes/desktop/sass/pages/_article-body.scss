@@ -68,16 +68,17 @@ $line-height-small: ($line-height * .5);
 /*.article-body.content,*/
 .article-content {
   a {
-    //@extend %link-text-default;
     @extend %brand-color;
+    text-decoration: underline;
     &:hover {
-      text-decoration: underline;
+      color: $black;
     }
   }
 
   .plosone & {
     a {
       color: $plos-one-purple;
+      text-decoration: underline;
     }
   }
 }
@@ -88,7 +89,6 @@ $line-height-small: ($line-height * .5);
 }
 
 .article-content {
-
   .section > div {
     margin-bottom: $line-height;
   }
@@ -417,7 +417,7 @@ $line-height-small: ($line-height * .5);
 
   .img-box {
     display: table-cell;
-    background: #fff;
+    background: $white;
     padding: $pad-small;
     width: rem-calc(320);
     min-height: 120px;
@@ -481,6 +481,7 @@ $line-height-small: ($line-height * .5);
           font-size: $txt-size-xxxxsmall;
           line-height: $txt-size-large;
           &:hover {
+            background: $grey-med-dark;
             text-decoration: none;
           }
         }

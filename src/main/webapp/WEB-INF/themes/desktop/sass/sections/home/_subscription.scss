@@ -187,6 +187,9 @@
 
   &.success {
     background-color: $clr-success !important;
+    .plosone & {
+      border-color: $plos-one-teal;
+    }
     .success-message {
       display: block;
       h2 {

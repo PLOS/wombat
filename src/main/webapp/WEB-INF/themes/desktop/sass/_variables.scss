@@ -89,8 +89,8 @@ $tabs-base-color: #202020;
 $table-header-bg: #a0a0a0;
 
 $warning: #e53350;
-$alert: #ffd87a;
-$success: #16a127;
+$alert: #f4f6c3;
+$success: lighten($plos-one-teal, 50%);
 
 $clr-brand: $grey-med;
 

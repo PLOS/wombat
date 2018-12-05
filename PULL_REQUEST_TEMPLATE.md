@@ -36,7 +36,5 @@ If I made any database changes:
 # Code Reviewer Tasks
 - [ ] I read through the JIRA ticket's AC before doing the rest of the review.
 - [ ] I ran the code (in the review environment or locally). I agree the running code fulfills the Acceptance Criteria as stated on the JIRA ticket. If not practical I have seen some evidence that the code does what it says (tests have passed).
-- [ ] The code adheres to the values and guidelines of the project. (link here)
-- [ ] Security vulnerabilities have been addressed.
 
 ## Project or Language Specific Tasks ###

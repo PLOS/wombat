@@ -58,3 +58,10 @@ form.standard textarea#mcform-comment{
     list-style: none;
   }
 }
+
+#media_coverage {
+  margin-left: $pad-default;
+  a {
+    @extend %brand-color;
+  }
+}

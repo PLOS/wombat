@@ -170,9 +170,9 @@ a#media-coverage-form-link {
 }
 
 .form-default span.note {
-  font-size: 13px;
-  color: #999;
-  font-weight: normal;
+  font-size: $txt-size-default;
+  color: $grey-med;
+  font-weight: $normal;
   text-decoration: none;
 }
 
@@ -180,16 +180,16 @@ a#media-coverage-form-link {
 
   .btn,
   a.btn{
-    background: #333;
+    background: $grey-dark;
     font-size: 15px;
     line-height: 35px;
-    font-weight: bold;
-    color: #FFF;
+    font-weight: $bold;
+    color: $white;
     text-align: center;
     padding: 0 10px;
     display: inline-block;
     border-radius: 4px;
-    font-family: arial;
+    font-family: $font-face-plain;
     border: 0;
     cursor: pointer;
   }
@@ -204,7 +204,7 @@ a#media-coverage-form-link {
   .btn.active,
   .btn:hover{
     background: $clr-highlight;
-    color: #fff;
+    color: $white;
     text-decoration: none;
   }
 

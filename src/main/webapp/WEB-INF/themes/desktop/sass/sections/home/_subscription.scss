@@ -114,6 +114,7 @@
 
       input {
         line-height: rem-calc(33);
+        height: rem-calc(33);
         border: 1px solid $grey-med;
         text-align: left;
         font-size: $txt-size-small;
@@ -122,6 +123,7 @@
         padding: 0 $pad-xsmall;
         &::placeholder {
           text-transform: uppercase;
+          line-height: inherit;
         }
       }
 

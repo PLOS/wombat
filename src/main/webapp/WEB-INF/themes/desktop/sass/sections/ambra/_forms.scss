@@ -69,7 +69,7 @@ form.standard li.small div.last {
 form.standard label {
   display: inline-block;
   font-family: $font-face-fancy;
-  font-weight: 600;
+  font-weight: $bold;
   margin-bottom: $line-height-small;
 }
 
@@ -87,15 +87,16 @@ form.standard .button,
   border-radius: 4px;
   font-size: $txt-size-small;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: $bold;
   text-align: center;
 }
 
 form.standard input[type="button"]:hover,
 form.standard input[type="submit"]:hover,
 form.standard .button:hover,
-.ui-dialog .ui-dialog-buttonset .ui-button:hover{
-  background: $clr-highlight !important;
+.ui-dialog .ui-dialog-buttonset .ui-button:hover {
+   @extend %brand-background;
+  //background: $clr-highlight !important;
   color: $white !important;
 }
 
@@ -152,7 +153,7 @@ a#media-coverage-form-link {
   color: $grey-dark;
   margin-bottom: 6px;
   line-height: normal;
-  font-weight: 600;
+  font-weight: $bold;
 }
 
 .form-default ol li input[type=text] {
@@ -188,7 +189,7 @@ a#media-coverage-form-link {
     text-align: center;
     padding: 0 10px;
     display: inline-block;
-    border-radius: 4px;
+    border-radius: $border-radius-default;
     font-family: $font-face-plain;
     border: 0;
     cursor: pointer;
@@ -196,21 +197,21 @@ a#media-coverage-form-link {
 
   .btn.primary,
   .btn.main{
-    @extend %brand-background;
+    background: $grey-dark;
   }
 
   .btn.primary:hover,
   .btn.primary.active,
   .btn.active,
   .btn:hover{
-    background: $clr-highlight;
+     @extend %brand-background;
     color: $white;
     text-decoration: none;
   }
 
 .btn.inactive {
-    background-color: #646464;
-    color: #FFF;
+    background-color: $grey-med-light;
+    color: $grey-med;
   }
 
   input.btn {
@@ -225,7 +226,7 @@ a#media-coverage-form-link {
   display: block;
   font-size: 12px;
   color: #333;
-  font-weight: bold;
+  font-weight: $bold;
 }
 
 .form-error,
@@ -240,5 +241,5 @@ a#media-coverage-form-link {
 .required {
   color: #f03;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: $bold;
 }

@@ -55,6 +55,9 @@ main nav ul {
   .plosone & {
     a {
       color: $plos-one-purple;
+      &:hover {
+        color: $grey-med;
+      }
     }
   }
 

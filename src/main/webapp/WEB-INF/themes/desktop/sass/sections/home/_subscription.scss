@@ -62,7 +62,7 @@
   }
 
   a {
-    color: $black;
+    @extend %brand-color;
     text-decoration: underline;
 
     body.plosone & {
@@ -159,9 +159,9 @@
         width: 100%;
         line-height: $line-height;
         font-size: $txt-size-small;
-
-        .plosone & {
-          color: $grey-med;
+        a {
+          @extend %brand-color;
+          &:hover { color: $black; }
         }
       }
     }
@@ -215,7 +215,20 @@
 
 .plosone {
   .home-email-subscription {
+
     form {
+      .consent {
+        color: $grey-dark;
+        label.email_consent {
+          a {
+            color: $plos-one-purple;
+            &:hover {
+              color: $grey-med;
+            }
+          }
+        }
+      }
+
       label.error_consent,
       label.error {
         @extend %brand-background;

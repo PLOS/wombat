@@ -40,8 +40,6 @@ For example: instead of using `font-size: 22px` you should  instead use `font-si
 
 //journal specific
 
-$plos-default: #606060; //grey
-
 $plos-bio: #16a127; //green: biology, comp-bio, genetics
 $plos-med: #891fb1; // purple: medicine, pathogens, ntds
 $plos-currents: #1dbfe0; // light blue
@@ -73,7 +71,7 @@ $plos-med-shade2: #c493d4;
 $plos-med-shade3: #decbe4;
 
 
-$black: #101010;
+$black: #202020;
 $white: #fff;
 $off-white: #efefef;
 $grey-dark: #303030;
@@ -85,14 +83,16 @@ $grey-med-light: #c0c0c0;
 $grey-light: #e0e0e0;
 $grey-tinytext: #bbb;// TEMP PROD: change uses to grey-med-light
 
-$tabs-base-color: #202020;
+$plos-default: $grey-dark; 
+
+$tabs-base-color: $grey-dark;
 $table-header-bg: #a0a0a0;
 
 $warning: #e53350;
 $alert: #f4f6c3;
-$success: lighten($plos-one-teal, 50%);
+$success: lighten($plos-one-teal, 30%);
 
-$clr-brand: $grey-med;
+$clr-brand: $grey-dark;
 
 //colors
 

@@ -64,9 +64,6 @@ example | extension
 --------|----------
 <p class="example-condense">I am condensed</p> | `@extend %condense`
 
-
-
-
 */
 
 /*doc
@@ -154,7 +151,7 @@ h5 {
 h2 {
 
   font-size: rem-calc($txt-size-h2);
-  font-weight: 500;
+  font-weight: $normal;
 }
 
 // font-weights
@@ -178,18 +175,6 @@ h5 {
   line-height: $line-height; // 27px
   margin-bottom: $line-height; // 9px
 }
-
-
-/*
-
-h3 {
-  margin-bottom: rem-calc($txt-margin-bottom-h3);
-  margin-top: rem-calc($txt-margin-top-h3);
-}
-
-h4, h5 {
-  margin-top: rem-calc($line-height-small);
-}*/
 
 //special title styles
 
@@ -356,7 +341,7 @@ example | extension
   `$color-hover` will set the color on hover *only if* `$decoration-hover` is underline
   (to preserve backwards compatibility).
 */
-@mixin link-text($color: $clr-body-text, $color-hover: none, $decoration-hover: none, $decoration-text: none) {
+@mixin link-text($color: $clr-body-text, $color-hover: $black, $decoration-hover: none, $decoration-text: none) {
   color: $color;
   text-decoration: $decoration-text;
   @content;
@@ -365,7 +350,7 @@ example | extension
   a:hover,
   &:hover a {
     @if $decoration-hover == none {
-      color: $plos-default;
+      color: $black;
       text-decoration: none;
     } @else if $decoration-hover == underline {
       @if $color-hover != none {

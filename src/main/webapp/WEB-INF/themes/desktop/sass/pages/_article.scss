@@ -129,7 +129,7 @@ $article-sidebar-width: 160;
         margin-bottom: rem-calc(2);
 
         &.show-tip {
-          background-color: $plos-default;
+          @extend %brand-background;
           border-radius: $border-radius-smaller;
           color: $white;
         }
@@ -188,7 +188,6 @@ $article-sidebar-width: 160;
     @extend .unavailable;
     position: relative;
     height: rem-calc($article-sidebar-width);
-
     text-align: center;
     p {
       padding-top: rem-calc(75);
@@ -389,7 +388,7 @@ $article-sidebar-width: 160;
   @extend .hide-for-print;
   display: table;
   table-layout: fixed;
-  margin-bottom: $line-height-small;
+  margin-bottom: $line-height;
   width: 100%;
   margin-left: 0;
 
@@ -404,23 +403,23 @@ $article-sidebar-width: 160;
       color: $white;
     }
     a.article-tab-2 {
-      background: lighten($tabs-base-color, 8%);
+      background: lighten($tabs-base-color, 7%);
       color: $white;
     }
     a.article-tab-3 {
-      background: lighten($tabs-base-color, 16%);
+      background: lighten($tabs-base-color, 14%);
       color: $white;
     }
     a.article-tab-4 {
-      background: lighten($tabs-base-color, 24%);
+      background: lighten($tabs-base-color, 21%);
       color: $white;
     }
     a.article-tab-5 {
-      background: lighten($tabs-base-color, 32%);
+      background: lighten($tabs-base-color, 28%);
       color: $white;
     }
     a.article-tab-6 {
-      background: lighten($tabs-base-color, 40%);
+      background: lighten($tabs-base-color, 35%);
       color: $white;
     }
 
@@ -433,7 +432,7 @@ $article-sidebar-width: 160;
       color: $white;
 
       &:hover {
-        background: $plos-default;
+        background: $black;        
         color: $white;
       }
     }
@@ -453,7 +452,8 @@ $article-sidebar-width: 160;
         font-size: $txt-size-medium-large;
       }
       &:hover {
-        @extend %brand-background;
+         background: $black;
+         color: $white;
         cursor: inherit;
       }
     }

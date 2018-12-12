@@ -138,12 +138,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
 
       // special handling for PLOSOne is in _utilities.scss in the brand color section
       &.tab-active {
-        @extend %brand-background;
-      }
-
-      &:hover {
-        background: $grey-med-dark;
-        color: $white;
+        @extend %brand-background-hover;
       }
     }
   }
@@ -374,6 +369,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
         }
 
         .fig-btn {
+          @extend %brand-background-hover;
           display: block;
           float: right;
           padding: 0 $pad-small;
@@ -402,10 +398,6 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
             width: $lb-small;
             height: rem-calc(11);
             margin-top: rem-calc(15px);
-          }
-          &:hover {
-            background-color: $plos-default;
-            color: $white;
           }
 
           &.reset-zoom-btn {
@@ -631,10 +623,7 @@ $lb-footer-height: $lb-control-bar-height + $lb-description-bar-height + $lb-hea
         }
         .download-btn {
           @extend .button-big;
-        }
-        .item a:hover .download-btn {
-          background: $plos-default;
-          color: $white;
+          @extend %brand-background-hover;
         }
       }
     }

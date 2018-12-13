@@ -799,6 +799,11 @@ body.article .ui-widget-overlay {
       text-decoration: underline;
     }
   }
+  .plosone & {
+    li a {
+      color: $plos-one-purple;
+    }
+  }
 }
 
 .related-articles-container {
@@ -1170,8 +1175,7 @@ section.authors {
     margin-bottom: $line-height;
     p {
       line-height: $line-height;
-      //margin-bottom: $line-height-small;
-      & span.type {
+        & span.type {
         font-family: $font-face-fancy;
         font-size: $txt-size-xxxsmall;
         font-weight: $bold;

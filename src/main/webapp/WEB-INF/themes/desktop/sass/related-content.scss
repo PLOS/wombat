@@ -65,6 +65,13 @@ form.standard textarea#mcform-comment {
       text-decoration: underline;
     }
   }
+  .plosone & {
+    a { color: $plos-one-purple;
+      &:hover {
+        color: $black;
+      }
+    }
+  }
 }
 
 #media-coverage-data {

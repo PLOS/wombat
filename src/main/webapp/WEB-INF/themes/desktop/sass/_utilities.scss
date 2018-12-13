@@ -205,7 +205,7 @@ example | extension
     background-color: $setcolor;
     color: $text-color;
     &:hover {
-      background-color: $plos-default;
+      background-color: darken($setcolor, 10%);
       color: $text-color-hover;
     }
   }
@@ -221,7 +221,7 @@ example | extension
       }
       .jcarousel-prev,
       .jcarousel-next {
-        color: darken($setcolor, 18%);
+        color: darken($setcolor, 20%);
         &:hover {
           @extend %brand-background-hover;
         }
@@ -237,7 +237,7 @@ example | extension
       }
       .jcarousel-prev,
       .jcarousel-next {
-        color: darken($setcolor, 13%);
+        color: darken($setcolor, 10%);
         &:hover {
           @extend %brand-background-hover;
         }
@@ -285,7 +285,6 @@ example | extension
 }
 
 .plosone {
-
   @include brandcolor($setcolor: $plos-one, $shade1: $plos-one-shade1, $shade2: $plos-one-shade2, $shade3: $plos-one-shade3, $text-color: $clr-body-text, $text-color-hover: $white);
 
   .article-content .table-download .definition-label {

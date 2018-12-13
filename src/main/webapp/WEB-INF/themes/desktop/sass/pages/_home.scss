@@ -589,9 +589,10 @@ body.plosone {
 
 //Tooltips are added to the bottom of the page & hidden. This class should not be nested.
 .tooltip {
+  background-color: $white !important;
   width: 300px !important;
-  @include single-box-shadow();
-  border: 1px solid $grey-med-light;
+  border: 1px solid $grey-light;
+  font-size: $txt-size-small;
 }
 
 #issue {
@@ -611,6 +612,9 @@ body.plosone {
       display: block;
       line-height: $line-height;
       margin-bottom: $line-height;
+      &:hover {
+        @extend %brand-color;
+      }
     }
     .subhead {
       font-face: $font-face-plain;
@@ -656,7 +660,6 @@ body.plosone {
   @include blocks($color: $white, $radius: none, $padding: $pad-small, $shadow: none);
   @extend %width-small;
   @extend %brand-border;
-
   border: 1px solid;
 
   p {
@@ -832,11 +835,13 @@ body.plosone #submission-links {
         font-family: $font-face-fancy;
         font-size: $txt-size-xsmall;
         font-weight: $bold;
+        &:hover {
+          @extend %brand-color;
+        }
       }
     }
     .postauthor {
-/*      @extend %small-italic;*/
-      color: $grey-med;
+      color: $grey-med-dark;
       margin: $pad-small 0;
       padding: 0;
       font-family: $font-face-fancy;
@@ -844,6 +849,15 @@ body.plosone #submission-links {
       letter-spacing: $letter-spacing-default;
       text-transform: uppercase;
       line-height: $line-height-small;
+    }
+    .plosone & {
+      .posttitle {
+        a {
+          &:hover {
+            color: $plos-one-purple;
+          }
+        }
+      }
     }
   }
   .more-link {

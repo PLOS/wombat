@@ -23,7 +23,7 @@
 /*
  *      styles for the footer
  */
- $footer-block-height: rem-calc(180);
+$footer-block-height: rem-calc(180);
 
 #pageftr {
   @extend .hide-for-print;
@@ -55,14 +55,6 @@
     margin-bottom: $line-height-large;
   }
 
-  //pseudo elements are for Firefox
-  a,
-  a:visited,
-  a:focus,
-  a:active {
-    @include link-text($color: $white, $decoration-hover: underline);
-  }
-
   .nav {
     list-style: none;
     padding: 0;
@@ -74,6 +66,12 @@
       &.ftr-header {
         font-weight: $bold;
         margin-bottom: $line-height-small;
+      }
+      a {
+        color: $white;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

@@ -801,7 +801,14 @@ body.plosone #submission-links {
   }
   .block-header {
     @extend %brand-header;
-    @extend %link-text-white;
+    a {
+      color: $white;
+      &:hover {
+        color: $white;
+        text-decoration: underline;
+      }
+    }
+    
   }
 
   #blogrss {

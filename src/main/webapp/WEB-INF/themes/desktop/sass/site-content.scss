@@ -27,51 +27,66 @@
 
 
 main {
-    @include layout-two-column;
-  }
+  @include layout-two-column;
+}
 
 /// navigation
 main nav ul {
-    @include nav-enhanced;
-    }
+  @include nav-enhanced;
+}
 
 /// site content specific styles
 @mixin site-content {
 
   p {
     overflow: auto;
-    }
+  }
   //for image floating
 
   a {
     //TODO: redo links so that underline is standard
-    @extend %link-text-default;
+    @extend %brand-color;
+    text-decoration: underline;
+    &:hover {
+      color: $black;
     }
+  }
 
-  img.img-default, img.img-center {
+  .plosone & {
+    a {
+      color: $plos-one-purple;
+      &:hover {
+        color: $grey-med;
+      }
+    }
+  }
+
+  img.img-default,
+  img.img-center {
     display: block;
     clear: both;
     margin: $line-height-small auto;
-    }
+  }
 
   img.img-left {
     display: inline-block;
     margin: 0 $pad-small $line-height-small 0;
     text-align: left;
     float: left;
-    }
+  }
 
   table {
     img.img-default {
       @extend .img-left;
     }
   }
-
-  }
+}
 article {      // to work on ck editor editing
   @include site-content;
-  ul{@extend .list-bullet;}
+  ul {
+    @extend .list-bullet;
   }
+}
 
 .ambra-form {
   @import 'sections/ambra/forms';
@@ -80,11 +95,16 @@ article {      // to work on ck editor editing
 // Special adjustments:
 
 .survey-page {
-  .survey-page-header, .question-number, .survey-footer, .smcx-widget-footer {
+  .survey-page-header,
+  .question-number,
+  .survey-footer,
+  .smcx-widget-footer {
     display: none;
   }
 }
 
-#authorPhone, #authorAffiliation { // honeypot
-  display: none; visibility: hidden;
+#authorPhone,
+#authorAffiliation { // honeypot
+  display: none;
+  visibility: hidden;
 }

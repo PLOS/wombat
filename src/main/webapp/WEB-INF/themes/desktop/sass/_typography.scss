@@ -32,10 +32,14 @@ category: Files
 
 
 p {
+  font-size: $txt-size-default;
+  line-height: $line-height;
+  margin-bottom: $line-height;
   word-wrap: break-word;
 }
 
-sup, sub {
+sup,
+sub {
   vertical-align: 0;
   position: relative;
 }
@@ -60,9 +64,6 @@ example | extension
 --------|----------
 <p class="example-condense">I am condensed</p> | `@extend %condense`
 
-
-
-
 */
 
 /*doc
@@ -84,20 +85,22 @@ example | extension
 */
 
 /* basic styles  */
-@mixin text-default{
+@mixin text-default {
   font-size: rem-calc($txt-size-default);
   line-height: $line-height;
 }
-@mixin text-below{margin-bottom: $paragraph-spacing;}
-@mixin default-list{
-  li{
+@mixin text-below {
+  margin-bottom: $paragraph-spacing;
+}
+@mixin default-list {
+  li {
     @include text-default;
     @include text-below;
   }
 }
 
 ol {
-  padding-left: $pad-default;
+  padding-left: 0;
   @include default-list;
 }
 /// this should be used on a ul but I wanted to make it extensible
@@ -119,8 +122,8 @@ ol {
   }
   // to do put in variables
 }
-.list-bullet-over-ride{
-  li:before{
+.list-bullet-over-ride {
+  li:before {
     content: none;
     font-size: inherit;
     display: inline-block;
@@ -128,56 +131,58 @@ ol {
     position: relative;
   }
 }
-.bulleted {@extend .list-bullet;}    /// used for article pages
-.list-no-bullet{
+.bulleted {
+  @extend .list-bullet;
+}    /// used for article pages
+.list-no-bullet {
   margin-left: 0;
   list-style-type: none;
   @include default-list;
-
 }
 
 /// sizes are set in foundation.
-h2, h3, h4, h5 {
+h2,
+h3,
+h4,
+h5 {
   font-family: $font-face-plain;
-}
-
-// font-weights
-h3, h5 {
-  font-weight: 400;
-}
-
-h4 {
-  font-weight: 400;
-}
-
-//spacing
-h2, h3, h4, h5 {
-  margin-bottom: $line-height-small;
-  line-height: $line-height-large;
 }
 
 h2 {
 
   font-size: rem-calc($txt-size-h2);
-  font-weight: 500;
+  font-weight: $normal;
 }
 
-/*
-
+// font-weights
 h3 {
-  margin-bottom: rem-calc($txt-margin-bottom-h3);
-  margin-top: rem-calc($txt-margin-top-h3);
+  font-weight: $bold;
 }
 
-h4, h5 {
-  margin-top: rem-calc($line-height-small);
-}*/
+h5 {
+  font-weight: $normal;
+}
+
+h4 {
+  font-weight: $normal;
+}
+
+// spacing
+h2,
+h3,
+h4,
+h5 {
+  line-height: $line-height; // 27px
+  margin-bottom: $line-height; // 9px
+}
 
 //special title styles
 
 .title-small {
   font-size: $txt-size-default;
   font-weight: $bold;
+  line-height: $line-height;
+  margin-bottom: 0;
 }
 
 .title-medium {
@@ -185,7 +190,7 @@ h4, h5 {
   font-size: $txt-size-large;
 }
 
-.title-small-sans{
+.title-small-sans {
   @extend .title-small;
   font-family: $font-face-plain;
 }
@@ -193,21 +198,22 @@ h4, h5 {
 .title-primary-large {
   font-family: $font-face-fancy;
   font-size: $txt-size-giant;
-  line-height: $line-height-large-text;
+  line-height: $line-height-medium;
 }
 
-.title-primary{
-    font-family: $font-face-fancy;
-    font-size: $txt-size-xxlarge;
-    line-height: $line-height-large;
-    font-weight: $bold;
+.title-primary {
+  font-family: $font-face-fancy;
+  font-size: $txt-size-xxxlarge;
+  line-height: $line-height-medium;
+  font-weight: $bold;
+  margin-bottom: $line-height-small;
 }
 
-.title-secondary{
+.title-secondary {
   font-family: $font-face-fancy;
   font-size: $txt-size-xxlarge;
-  line-height: $line-height-large-text;
-  margin-bottom: $line-height-medium;
+  line-height: $line-height-medium;
+  margin-bottom: $line-height-small;
 }
 
 
@@ -249,7 +255,9 @@ $icon-width: $pad-medium) {
   @extend blockquote; //for lemur
 }
 
-blockquote, .pullquote, .block-quote {
+blockquote,
+.pullquote,
+.block-quote {
   @include text-default;
   border-left: $pad-xsmall solid $clr-separator;
   margin: rem-calc($line-height-medium 0 $line-height 0);
@@ -333,18 +341,20 @@ example | extension
   `$color-hover` will set the color on hover *only if* `$decoration-hover` is underline
   (to preserve backwards compatibility).
 */
-@mixin link-text($color: $clr-body-text, $color-hover: none, $decoration-hover: none, $decoration-text: none) {
+@mixin link-text($color: $clr-body-text, $color-hover: $black, $decoration-hover: none, $decoration-text: none) {
   color: $color;
   text-decoration: $decoration-text;
   @content;
 
-  &:hover, a:hover, &:hover a {
+  &:hover,
+  a:hover,
+  &:hover a {
     @if $decoration-hover == none {
-      color: $plos-default;
+      color: $black;
       text-decoration: none;
     } @else if $decoration-hover == underline {
       @if $color-hover != none {
-          @extend %brand-color;
+        @extend %brand-color;
       } @else {
         color: $color;
       }
@@ -353,20 +363,24 @@ example | extension
   }
 }
 
-%link-text-body, %link-text-body a {
+%link-text-body,
+%link-text-body a {
   //TODO- should this be link text home?
   @include link-text();
 }
 
-%link-text-white, %link-text-white a {
+%link-text-white,
+%link-text-white a {
   @include link-text($color: $white, $decoration-hover: underline);
 }
 
-%link-text-underline, %link-text-underline a {
+%link-text-underline,
+%link-text-underline a {
   @include link-text($decoration-hover: underline);
 }
 
-%link-text-default, %link-text-default a {
+%link-text-default,
+%link-text-default a {
   @include link-text($color: $plos-default, $decoration-hover: underline);
 }
 
@@ -379,9 +393,9 @@ example | extension
 //font decorations and JATS tags
 ///////////////
 
-.type{
-  font-weight:$bold;
-  &:after{content: ':'}
+.type {
+  font-weight: $bold;
+  &:after { content: ':'; }
 }
 
 %small-italic {
@@ -461,7 +475,9 @@ This is one place not to use @extend, since this is a semantic class name
 
 */
 
-.note, .caption, figcaption {
+.note,
+.caption,
+figcaption {
   color: $grey-med;
 }
 
@@ -488,7 +504,7 @@ table.table-basic {
   }
 
   tbody tr:last-child td {
-    border-bottom: 0
+    border-bottom: 0;
   }
 }
 
@@ -496,7 +512,8 @@ table.table-borders {
   @extend %table-fancy;
   border: $table-separator;
 
-  td, th {
+  td,
+  th {
     border: $table-separator;
   }
 
@@ -509,7 +526,8 @@ table.table-zebra-stripes {
   @extend %table-fancy;
   border-width: 0;
 
-  td, th {
+  td,
+  th {
     border-left: $table-separator-width solid $clr-body-bg;
   }
 

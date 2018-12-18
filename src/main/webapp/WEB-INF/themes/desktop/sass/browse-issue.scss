@@ -47,9 +47,15 @@ h2 {
   @extend .block-dark;
   color: $white;
   padding: $pad-default $pad-large;
+  a {
+    color: $white;
+  }
   .header {
     text-align: center;
-    margin-bottom: $line-height-medium;
+    margin-bottom: $line-height;
+    a {
+      text-decoration: none;
+    }
   }
   .img {
     img {
@@ -57,6 +63,7 @@ h2 {
       height: rem-calc(280);
     }
   }
+
   .credit {
     @extend .note;
     font-size: $txt-size-xxsmall;
@@ -68,84 +75,105 @@ h2 {
   h2 {
     display: block;
     text-align: center;
-    font-weight: normal;
+    font-weight: $normal;
     margin: 0 0 $pad-xsmall 0;
     @extend %link-text-white;
     &:hover {
+      @extend %brand-color;
       text-decoration: none;
     }
 
     strong {
-      font-weight: normal;
+      font-weight: $normal;
     }
   }
   .kicker {
     margin: 0;
     font-size: $txt-size-xxsmall;
+    font-weight: $bold;
+    letter-spacing: .125rem;
   }
 }
 
 .detail-container {
   @extend .plos-row;
+  p > a {
+      color: $white;
+     &:hover {
+       @extend %brand-color;
+     }
+    }
   .img, .txt {
     @include plos-grid-column(320, $gutter-width: $pad-large);
   }
   .txt {
     padding: 0 $pad-small;
     p {
-      font-size: $txt-size-medium;
+      font-size: $txt-size-medium-large;
+      line-height: $line-height-medium;
     }
   }
   .img {
-    border-right: 1px solid $grey-tinytext;
+    border-right: 1px solid $grey-med;
   }
 }
 
 .section h2 {
-  margin: $pad-small 0;
+  font-size: $txt-size-xlarge;
+  margin: $line-height 0 0;
 }
 
 .item {
-  padding: $line-height-small 0;
+  padding: $line-height 0;
   h3 {
-    margin-bottom: $line-height-small;
+    font-size: $txt-size-medium-large;
+    margin-bottom: 0;
 
     a {
-      @extend %link-text-body
+      color: $grey-dark;
+      text-decoration: none;
+      &:hover {
+        @extend %brand-color;
+        text-decoration: underline;
+        }
     }
 
   }
 
   .authors {
-    color: #666;
-    font-size: $txt-size-small;
+    color: $grey-med-dark;
+    font-size: $txt-size-default;
+    margin: 0;
   }
-
+  .article-info {
+    margin: 0;
+    b {
+    font-weight: 500;
+    }
+  }
   h4 {
     font-size: $txt-size-default;
-    color: #666;
-    font-weight: bold;
-    margin-top: 0;
-    margin-bottom: $line-height-xsmall;
+    color: $grey-med;
+    font-weight: $bold;
+    margin: 0;
   }
   p {
-    margin-bottom: $line-height-xsmall;
+    margin-bottom: $line-height-small;
   }
 
   ol {
-    //margin-top: 5px;
     padding-left: 0;
     margin-left: 0;
 
     li {
       @extend .list-bullet-over-ride;
       list-style-type: none;
-      margin-bottom: $line-height-xsmall;
+      margin-bottom: $line-height-small;
     }
   }
 
   .links a {
-    font-weight: bold;
+    font-weight: $bold;
     cursor: pointer;
   }
 }

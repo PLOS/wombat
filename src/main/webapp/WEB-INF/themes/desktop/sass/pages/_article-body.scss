@@ -38,7 +38,7 @@
 /// TODO - PG- This needs to be in more general css. I'm just to work out the kinks so I can check this styling for the amendment notice into master - that work will be done in ticket DPRO-477 which is being worked on concurrently
 //TODO - set up better math for vertical rhythm.
 
-$line-height: rem-calc(18);
+$line-height: 18px;
 $line-height-large: ($line-height * 2);
 $line-height-medium: ($line-height * 1.5);
 $line-height-small: ($line-height * .5);
@@ -68,16 +68,20 @@ $line-height-small: ($line-height * .5);
 /*.article-body.content,*/
 .article-content {
   a {
-    //@extend %link-text-default;
     @extend %brand-color;
+    text-decoration: underline;
     &:hover {
-      text-decoration: underline;
+      color: $black;
     }
   }
 
   .plosone & {
     a {
       color: $plos-one-purple;
+      text-decoration: underline;
+      &:hover {
+        color: $grey-med;
+      }
     }
   }
 }
@@ -88,9 +92,8 @@ $line-height-small: ($line-height * .5);
 }
 
 .article-content {
-
   .section > div {
-    margin-bottom: $line-height;
+    margin: $line-height 0;
   }
 
   .title-small {
@@ -130,8 +133,7 @@ $line-height-small: ($line-height * .5);
   .callout-alert {
     @include callout($clr-warning-bg);
   }
-
-
+  
   .amendment {
     margin-bottom: $line-height-medium;
     position: relative;
@@ -363,6 +365,7 @@ $line-height-small: ($line-height * .5);
   .carousel-control {
     .button {
       @extend .fa;
+      @extend %brand-background-hover;
       top: 50px;
       right: $fc-button-pad;
       display: none;
@@ -378,12 +381,10 @@ $line-height-small: ($line-height * .5);
       color: $white; //TODO- use buttons
       &.previous {
         @extend .fa-caret-left;
+        
       }
       &.next {
         @extend .fa-caret-right;
-      }
-      &:hover {
-        @extend %brand-background;
       }
       &:first-child {
         left: $fc-button-pad;
@@ -417,7 +418,7 @@ $line-height-small: ($line-height * .5);
 
   .img-box {
     display: table-cell;
-    background: #fff;
+    background: $white;
     padding: $pad-small;
     width: rem-calc(320);
     min-height: 120px;
@@ -458,7 +459,6 @@ $line-height-small: ($line-height * .5);
   width: rem-calc(190);
 
   ul {
-
     margin: $pad-xsmall 0 0 $pad-xsmall;
     padding-left: 0;
 
@@ -481,6 +481,7 @@ $line-height-small: ($line-height * .5);
           font-size: $txt-size-xxxxsmall;
           line-height: $txt-size-large;
           &:hover {
+            background: $grey-med-dark;
             text-decoration: none;
           }
         }
@@ -661,10 +662,7 @@ ol.references {
   .ref_tooltip-content {
     border-radius: $border-radius-default;
     background: $white;
-    border-top: 1px solid $grey-light;
-    border-right: 1px solid $grey-light;
-    border-bottom: 1px solid $white;
-    border-left: 1px solid $grey-light;
+    border: 1px solid $grey-light;
     padding: $pad-smallish $pad-default $pad-smallish $pad-large;
     min-height: rem-calc(61);
     z-index: map-get($zindex, dropdown);

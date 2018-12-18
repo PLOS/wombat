@@ -48,7 +48,7 @@ category: components
 
   @if $hover == true {
     &:hover {
-      background: $clr-link-hover;
+      @extend %brand-background;
 
     }
   } @else {
@@ -84,23 +84,25 @@ category: components
 
 // to be used with tooltip_hover.js
 .button-big{
-  @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-small);
+  @include rounded-pill($padding: 0 $pad-small);
+  background: $clr-highlight;
   line-height: rem-calc($button-height);
   font-weight: $bold;
   font-size: $txt-size-mediumish;
   text-align: center;
   &.highlighted{
-    background-color: $clr-highlight;
+    @extend %brand-background;
     }
   }
 
 .button-default{
-  @include rounded-pill($background: $clr-body-text, $padding: 0 $pad-small);
+  @extend %brand-background-hover;
+  @include rounded-pill($padding: 0 $pad-small);
   line-height: rem-calc($button-height);
   font-family: $font-face-plain;
   font-size: $txt-size-medium;
   text-align: center;
-  @extend %brand-background-hover;
+ 
 
   body.plosone & {
 	  font-size: $txt-size-small;
@@ -451,7 +453,7 @@ TypeAhead
     padding: $pad-small/2 0;
   }
   h5 {
-    font-weight: bold;
+    font-weight: $bold;
     padding: $pad-small/2 $pad-small;
     margin: 0;
   }

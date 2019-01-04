@@ -133,7 +133,7 @@ $line-height-small: ($line-height * .5);
   .callout-alert {
     @include callout($clr-warning-bg);
   }
-  
+
   .amendment {
     margin-bottom: $line-height-medium;
     position: relative;
@@ -381,7 +381,6 @@ $line-height-small: ($line-height * .5);
       color: $white; //TODO- use buttons
       &.previous {
         @extend .fa-caret-left;
-        
       }
       &.next {
         @extend .fa-caret-right;
@@ -736,3 +735,31 @@ ol.references {
 .article-id {
   @extend .pad-default-y;
 }
+
+.review-history {
+  width: 100%;
+  border: 1px solid $grey-light;
+  border-collapse: collapse;
+  tbody > tr > th,
+  tbody > tr > td {
+    font-size: $txt-size-default;
+    border: 1px solid $grey-light;
+    padding: $line-height-small;
+    text-align: left;
+  }
+  tbody > tr > th {
+    background-color: $grey-light;
+  }
+  .date {
+    width: 20%;
+    float: right;
+    font-weight: normal;
+  }
+  .version-attachments {
+    padding-top: $line-height-small;
+  }
+}
+.tpr-info {
+  margin-top: $line-height;
+}
+

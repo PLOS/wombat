@@ -21,6 +21,11 @@
 
     <@displayTabList "PeerReview" />
 
+      <h2>Peer Review REAL DATA</h2>
+      ${peerReview?web_safe}
+      <hr/>
+      <h2>Prototype with fake data below</h2>
+      <hr/>
            <h2>Peer Review History</h2>
        <table class="table table-bordered review-history">
       <tbody>

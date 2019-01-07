@@ -35,8 +35,12 @@ import org.ambraproject.wombat.model.ArticleType;
 import org.ambraproject.wombat.service.*;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.util.TextUtil;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -227,16 +231,35 @@ public class ArticleMetadata {
   /**
    * Get the articleItems that represent peer review decisions and responses.
    */
-  String getPeerReview() {
-    List peerReviewItems = itemTable.values().stream()
-        .filter(itemObj -> ((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter"))
-        .collect(Collectors.toList());
+  String getPeerReview() throws IOException {
+//    TODO: sort, organize into revisions
+    List<Map<String, ?>> peerReviewItems = new ArrayList<>();
+    for (Object itemObj : itemTable.values()) {
+      if (((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter")) {
+        peerReviewItems.add((Map<String, ?>) itemObj);
+      }
+    }
 
-    if (peerReviewItems == null || peerReviewItems.isEmpty()) {
+    List<String> peerReviewContents = new ArrayList<>();
+    for (Map<String, ?> itemMetadata : peerReviewItems) {
+      Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
+      Map<String, ?> fileMetadata = (Map<String, ?>) files.get("letter");
+
+      String crepoKey = (String) fileMetadata.get("crepoKey");
+      UUID uuid = UUID.fromString((String) fileMetadata.get("crepoUuid"));
+      ContentKey contentKey = ContentKey.createForUuid(crepoKey, uuid);
+
+      CloseableHttpResponse response = factory.corpusContentApi.request(contentKey, ImmutableList.of());
+      String content = EntityUtils.toString(response.getEntity());
+      peerReviewContents.add(content);
+    }
+
+    if (peerReviewContents == null || peerReviewContents.isEmpty()) {
       return null;
     }
 
-    return peerReviewItems.toString();
+    String peerReviewContent = String.join("", peerReviewContents);
+    return peerReviewContent;
   }
 
   /**

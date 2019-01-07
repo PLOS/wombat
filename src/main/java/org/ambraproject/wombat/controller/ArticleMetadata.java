@@ -232,9 +232,9 @@ public class ArticleMetadata {
    * Get the articleItems that represent peer review decisions and responses.
    */
   String getPeerReview() throws IOException {
-//    TODO: sort, organize into revisions
+//    TODO: organize into revisions
     List<Map<String, ?>> peerReviewItems = new ArrayList<>();
-    for (Object itemObj : itemTable.values()) {
+    for (Object itemObj : new TreeMap(itemTable).values()) {
       if (((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter")) {
         peerReviewItems.add((Map<String, ?>) itemObj);
       }

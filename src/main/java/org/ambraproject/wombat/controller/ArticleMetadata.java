@@ -240,7 +240,7 @@ public class ArticleMetadata {
       }
     }
 
-    List<String> peerReviewContents = new ArrayList<>();
+    List<String> peerReviewFileContents = new ArrayList<>();
     for (Map<String, ?> itemMetadata : peerReviewItems) {
       Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
       Map<String, ?> fileMetadata = (Map<String, ?>) files.get("letter");
@@ -251,14 +251,15 @@ public class ArticleMetadata {
 
       CloseableHttpResponse response = factory.corpusContentApi.request(contentKey, ImmutableList.of());
       String content = EntityUtils.toString(response.getEntity());
-      peerReviewContents.add(content);
+      peerReviewFileContents.add(content);
     }
 
-    if (peerReviewContents == null || peerReviewContents.isEmpty()) {
+    if (peerReviewFileContents == null || peerReviewFileContents.isEmpty()) {
       return null;
     }
 
-    String peerReviewContent = String.join("", peerReviewContents);
+    String peerReviewContent = String.join("", peerReviewFileContents);
+
     return peerReviewContent;
   }
 

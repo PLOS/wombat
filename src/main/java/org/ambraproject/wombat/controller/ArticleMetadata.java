@@ -38,17 +38,27 @@ import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.util.TextUtil;
-import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.io.InputStream;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.sax.SAXSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -232,7 +242,46 @@ public class ArticleMetadata {
    * Get the articleItems that represent peer review decisions and responses.
    */
   String getPeerReview() throws IOException {
-//    TODO: organize into revisions
+    String peerReviewContent = getPeerReviewFileContents();
+    if (peerReviewContent == null) return null;
+    return transformPeerReview(peerReviewContent);
+  }
+
+  private String transformPeerReview(String peerReviewContent) {
+    // TODO: Why is xlink: namespace not recognized by transform?
+    peerReviewContent = peerReviewContent.replaceAll("xlink:", "");
+
+    // TODO: this is a hack to remove html escape sequences from my sample non-typeset ingested content
+    peerReviewContent = peerReviewContent.replaceAll("&", "BLAH");
+
+    StringWriter htmlWriter = new StringWriter();
+    XMLReader xmlReader = null;
+    try {
+      SAXParserFactory spf = SAXParserFactory.newInstance();
+      SAXParser sp = spf.newSAXParser();
+      xmlReader = sp.getXMLReader();
+    } catch (ParserConfigurationException e) {
+      throw new RuntimeException(e);
+    } catch (SAXException e) {
+      throw new RuntimeException(e);
+    }
+
+    try {
+      TransformerFactory tFactory = TransformerFactory.newInstance();
+      StreamSource stylesource = new StreamSource(new File("src/main/webapp/WEB-INF/themes/desktop/xform/peer-review-transform.xsl"));
+      Transformer transformer = tFactory.newTransformer(stylesource);
+
+      SAXSource saxSource = new SAXSource(xmlReader, new InputSource(new StringReader(peerReviewContent)));
+      transformer.transform(saxSource, new StreamResult(htmlWriter));
+    } catch (TransformerException e) {
+      throw new RuntimeException(e);
+    }
+
+    return htmlWriter.toString();
+  }
+
+  private String getPeerReviewFileContents() throws IOException {
+    // TODO: group authorResponse/decision into revisions
     List<Map<String, ?>> peerReviewItems = new ArrayList<>();
     for (Object itemObj : new TreeMap(itemTable).values()) {
       if (((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter")) {
@@ -254,12 +303,12 @@ public class ArticleMetadata {
       peerReviewFileContents.add(content);
     }
 
-    if (peerReviewFileContents == null || peerReviewFileContents.isEmpty()) {
+    if (peerReviewFileContents.isEmpty()) {
       return null;
     }
 
-    String peerReviewContent = String.join("", peerReviewFileContents);
-
+    // wrap it in a root node
+    String peerReviewContent = "<tpr>" + String.join("", peerReviewFileContents) + "</tpr>";
     return peerReviewContent;
   }
 

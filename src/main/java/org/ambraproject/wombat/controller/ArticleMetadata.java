@@ -242,12 +242,18 @@ public class ArticleMetadata {
    * Get the articleItems that represent peer review decisions and responses.
    */
   String getPeerReview() throws IOException {
-    String peerReviewContent = getPeerReviewFileContents();
+    String peerReviewContent = peerReviewXml();
     if (peerReviewContent == null) return null;
-    return transformPeerReview(peerReviewContent);
+    return peerReviewXmlToHtml(peerReviewContent);
   }
 
-  private String transformPeerReview(String peerReviewContent) {
+  /**
+   * Convert peer review XML to HTML
+   *
+   * @param peerReviewContent
+   * @return an HTML representation of peer review content
+   */
+  private String peerReviewXmlToHtml(String peerReviewContent) {
     // TODO: Why is xlink: namespace not recognized by transform?
     peerReviewContent = peerReviewContent.replaceAll("xlink:", "");
 
@@ -280,7 +286,13 @@ public class ArticleMetadata {
     return htmlWriter.toString();
   }
 
-  private String getPeerReviewFileContents() throws IOException {
+  /**
+   * Aggregate the XML for all rounds of Peer Review
+   *
+   * @return XML content
+   * @throws IOException
+   */
+  private String peerReviewXml() throws IOException {
     // TODO: group authorResponse/decision into revisions
     List<Map<String, ?>> peerReviewItems = new ArrayList<>();
     for (Object itemObj : new TreeMap(itemTable).values()) {
@@ -291,15 +303,7 @@ public class ArticleMetadata {
 
     List<String> peerReviewFileContents = new ArrayList<>();
     for (Map<String, ?> itemMetadata : peerReviewItems) {
-      Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
-      Map<String, ?> fileMetadata = (Map<String, ?>) files.get("letter");
-
-      String crepoKey = (String) fileMetadata.get("crepoKey");
-      UUID uuid = UUID.fromString((String) fileMetadata.get("crepoUuid"));
-      ContentKey contentKey = ContentKey.createForUuid(crepoKey, uuid);
-
-      CloseableHttpResponse response = factory.corpusContentApi.request(contentKey, ImmutableList.of());
-      String content = EntityUtils.toString(response.getEntity());
+      String content = peerReviewFileContent(itemMetadata);
       peerReviewFileContents.add(content);
     }
 
@@ -311,6 +315,27 @@ public class ArticleMetadata {
     String peerReviewContent = "<tpr>" + String.join("", peerReviewFileContents) + "</tpr>";
     return peerReviewContent;
   }
+
+  /**
+   * Fetch the content of a peer review asset from the content repository
+   *
+   * @param itemMetadata
+   * @return the content of the peer review asset
+   * @throws IOException
+   */
+  private String peerReviewFileContent(Map<String, ?> itemMetadata) throws IOException {
+    Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
+    Map<String, ?> fileMetadata = (Map<String, ?>) files.get("letter");
+
+    String crepoKey = (String) fileMetadata.get("crepoKey");
+    UUID uuid = UUID.fromString((String) fileMetadata.get("crepoUuid"));
+    ContentKey contentKey = ContentKey.createForUuid(crepoKey, uuid);
+
+    CloseableHttpResponse response = factory.corpusContentApi.request(contentKey, ImmutableList.of());
+    String responseBody = EntityUtils.toString(response.getEntity());
+    return responseBody;
+  }
+
 
   /**
    * Validate that an article ought to be visible to the user. If not, throw an exception indicating that the user

@@ -52,25 +52,22 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     // TODO: this is a hack to remove html escape sequences from my sample non-typeset ingested content
     peerReviewContent = peerReviewContent.replaceAll("&", "BLAH");
 
-    StringWriter htmlWriter = new StringWriter();
     XMLReader xmlReader = null;
     try {
-      SAXParserFactory spf = SAXParserFactory.newInstance();
-      SAXParser sp = spf.newSAXParser();
+      SAXParser sp = SAXParserFactory.newInstance().newSAXParser();
       xmlReader = sp.getXMLReader();
     } catch (ParserConfigurationException e) {
       throw new RuntimeException(e);
     } catch (SAXException e) {
       throw new RuntimeException(e);
     }
+    SAXSource xmlSource = new SAXSource(xmlReader, new InputSource(new StringReader(peerReviewContent)));
 
+    StreamSource xslSource = new StreamSource(new File("src/main/webapp/WEB-INF/themes/desktop/xform/peer-review-transform.xsl"));
+    StringWriter htmlWriter = new StringWriter();
     try {
-      TransformerFactory tFactory = TransformerFactory.newInstance();
-      StreamSource stylesource = new StreamSource(new File("src/main/webapp/WEB-INF/themes/desktop/xform/peer-review-transform.xsl"));
-      Transformer transformer = tFactory.newTransformer(stylesource);
-
-      SAXSource saxSource = new SAXSource(xmlReader, new InputSource(new StringReader(peerReviewContent)));
-      transformer.transform(saxSource, new StreamResult(htmlWriter));
+      Transformer transformer = TransformerFactory.newInstance().newTransformer(xslSource);
+      transformer.transform(xmlSource, new StreamResult(htmlWriter));
     } catch (TransformerException e) {
       throw new RuntimeException(e);
     }

@@ -20,11 +20,15 @@
     <#include "tabs.ftl" />
 
     <@displayTabList "PeerReview" />
-      ${peerReview}
+
+    <#-- HTML representation of Peer Review History -->
+    ${peerReview}
+
+    <#-- This is the reference sample against which we should check our work -->
     <div style="display: none">
       <hr/>
       <hr/>
-      <h2>Sam's Sample Peer Review History</h2>
+      <h2>Sam's Reference Sample for Peer Review History</h2>
       <table class="table table-bordered review-history">
         <tbody>
         <tr>

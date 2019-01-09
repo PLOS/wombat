@@ -2,7 +2,7 @@
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 >
-  <!--<xsl:output method="html" />-->
+  <xsl:output method="html" />
   <xsl:template match="/">
     <h2>Peer Review History</h2>
     <table class="table table-bordered review-history">
@@ -19,19 +19,22 @@
               </xsl:if>
 
               <div class="date">
-                <span class="decision-date">September 29, 2018</span>
+                <span class="decision-date">January 1, 1979</span>
               </div>
             </th>
           </tr>
           <xsl:if test="response/@response-type = 'author-response'">
             <tr>
               <td>
+                <div class="date">
+                  <div class="decision-date">
+                    January 1, 1979
+                  </div>
+                </div>
                 <div class="author-response">
                   <p>
-                    Harcdoded author response text
+                    bogus author response text for <xsl:value-of select="response[@response-type = 'author-response']/front-stub/article-id"/>
                   </p>
-                  <div itemprop="reviewBody" class="collapse" id="decisionLetter">
-                  </div>
                 </div>
               </td>
             </tr>
@@ -57,12 +60,12 @@
                   </span>
                   <div class="date">
                     <div class="decision-date">
-                      October 1, 2018
+                      January 1, 1979
                     </div>
                   </div>
                   <div>
                     <p>
-                      <xsl:value-of select="response/body"/>
+                      <xsl:value-of select="response[@response-type = 'decision-letter']/body"/>
                     </p>
                   </div>
                 </div>

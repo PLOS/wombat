@@ -293,7 +293,6 @@ public class ArticleMetadata {
    * @throws IOException
    */
   private String peerReviewXml() throws IOException {
-    // TODO: group authorResponse/decision into revisions
     List<Map<String, ?>> peerReviewItems = new ArrayList<>();
     for (Object itemObj : new TreeMap(itemTable).values()) {
       if (((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter")) {
@@ -311,8 +310,20 @@ public class ArticleMetadata {
       return null;
     }
 
+    // Group into revisions, all but first include an author response and a decision letter
+    List<String> partitionableResponses = peerReviewFileContents.subList(1, peerReviewFileContents.size());
+    List<List<String>> revisions = new ArrayList<>(Lists.partition(partitionableResponses, 2));
+    List<String> firstSubmission = new ArrayList<>();
+    firstSubmission.add(peerReviewFileContents.get(0));
+    revisions.add(0, firstSubmission);
+
+    String peerReviewContent  = "";
+    for ( List<String> responses : revisions) {
+      peerReviewContent  += "<revision>" + String.join("", responses) + "</revision>";
+    }
+
     // wrap it in a root node
-    String peerReviewContent = "<tpr>" + String.join("", peerReviewFileContents) + "</tpr>";
+    peerReviewContent = "<peer-review>" + peerReviewContent  + "</peer-review>";
     return peerReviewContent;
   }
 

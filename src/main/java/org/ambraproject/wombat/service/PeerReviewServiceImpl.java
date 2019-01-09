@@ -28,29 +28,29 @@ import java.util.*;
 
 
 public class PeerReviewServiceImpl implements PeerReviewService {
+
   @Autowired
   private CorpusContentApi corpusContentApi;
 
-
   public String asHtml(Map<String, ?> itemTable) throws IOException {
-    String xml = toXml(itemTable);
-    return toHtml(xml);
+    String xml = getXml(itemTable);
+    return xmlToHtml(xml);
   }
 
   /**
    * Convert peer review XML to HTML
    *
-   * @param peerReviewContent
+   * @param peerReviewXml
    * @return an HTML representation of peer review content
    */
-  private String toHtml(String peerReviewContent) {
-    if (peerReviewContent == null) return null;
+  private String xmlToHtml(String peerReviewXml) {
+    if (peerReviewXml == null) return null;
 
     // TODO: Why is xlink: namespace not recognized by transform?
-    peerReviewContent = peerReviewContent.replaceAll("xlink:", "");
+    peerReviewXml = peerReviewXml.replaceAll("xlink:", "");
 
     // TODO: this is a hack to remove html escape sequences from my sample non-typeset ingested content
-    peerReviewContent = peerReviewContent.replaceAll("&", "BLAH");
+    peerReviewXml = peerReviewXml.replaceAll("&", "BLAH");
 
     XMLReader xmlReader = null;
     try {
@@ -61,7 +61,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     } catch (SAXException e) {
       throw new RuntimeException(e);
     }
-    SAXSource xmlSource = new SAXSource(xmlReader, new InputSource(new StringReader(peerReviewContent)));
+    SAXSource xmlSource = new SAXSource(xmlReader, new InputSource(new StringReader(peerReviewXml)));
 
     StreamSource xslSource = new StreamSource(new File("src/main/webapp/WEB-INF/themes/desktop/xform/peer-review-transform.xsl"));
     StringWriter htmlWriter = new StringWriter();
@@ -78,11 +78,11 @@ public class PeerReviewServiceImpl implements PeerReviewService {
   /**
    * Aggregate the XML for all rounds of Peer Review
    *
-   * @return XML content
+   * @return entirety of peer review XML content
    * @throws IOException
-   * @param itemTable
+   * @param itemTable an Article's itemTable
    */
-  private String toXml(Map<String, ?> itemTable) throws IOException {
+  private String getXml(Map<String, ?> itemTable) throws IOException {
     List<Map<String, ?>> peerReviewItems = new ArrayList<>();
     for (Object itemObj : new TreeMap(itemTable).values()) {
       if (((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter")) {
@@ -92,7 +92,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
 
     List<String> peerReviewFileContents = new ArrayList<>();
     for (Map<String, ?> itemMetadata : peerReviewItems) {
-      String content = peerReviewFileContent(itemMetadata);
+      String content = getAssetContent(itemMetadata);
       peerReviewFileContents.add(content);
     }
 
@@ -118,13 +118,13 @@ public class PeerReviewServiceImpl implements PeerReviewService {
   }
 
   /**
-   * Fetch the content of a peer review asset from the content repository
+   * Fetch the content of an individual peer review asset from the content repository
    *
    * @param itemMetadata
    * @return the content of the peer review asset
    * @throws IOException
    */
-  private String peerReviewFileContent(Map<String, ?> itemMetadata) throws IOException {
+  private String getAssetContent(Map<String, ?> itemMetadata) throws IOException {
     Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
     Map<String, ?> fileMetadata = (Map<String, ?>) files.get("letter");
 
@@ -136,5 +136,4 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     String responseBody = EntityUtils.toString(response.getEntity());
     return responseBody;
   }
-
 }

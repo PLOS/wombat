@@ -226,7 +226,7 @@ public class ArticleMetadata {
 
 
   /**
-   * Get the articleItems that represent peer review decisions and responses.
+   * Get peer review as an HTML snippet.
    */
   String getPeerReview() throws IOException {
     return factory.peerReviewService.asHtml(itemTable);

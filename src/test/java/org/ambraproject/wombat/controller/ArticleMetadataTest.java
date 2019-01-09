@@ -7,6 +7,7 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ArticleResolutionService;
+import org.ambraproject.wombat.service.PeerReviewService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.mockito.InjectMocks;
@@ -167,67 +168,5 @@ public class ArticleMetadataTest extends AbstractTestNGSpringContextTests {
     List<Map<String, ?>> expectedFigureView = new ArrayList<>();
     expectedFigureView.add(expected);
     assertEquals(articleMetadata.getFigureView(), expectedFigureView);
-  }
-
-  @Test
-  public void testGetPeerReview() {
-    Map<String, String> asset = new HashMap<>();
-    asset.put("doi", "fakeDoi");
-    List<Map<String, String>> assets = new ArrayList<>();
-    assets.add(asset);
-    HashMap<String, List<Map<String, String>>> ingestionMetadata = new HashMap<>();
-    ingestionMetadata.put("assetsLinkedFromManuscript", assets);
-
-    Map<String, String> item = new HashMap<>();
-    item.put("itemType", "reviewLetter");
-    Map<String, Map<String, String>> itemTable = new HashMap<>();
-    itemTable.put("fakeDoi", item);
-
-    Theme theme = mock(Theme.class);
-    HashMap<String, Object> journalAttrs = new HashMap<>();
-    journalAttrs.put("journalKey", "fakeKey");
-    journalAttrs.put("journalName", "fakeName");
-    when(theme.getConfigMap(any())).thenReturn(journalAttrs);
-
-    Site site = new Site("foo", theme, mock(SiteRequestScheme.class), "foo");
-    ArticleMetadata articleMetadata = articleMetadataFactory.newInstance(site,
-        mock(RequestedDoiVersion.class),
-        mock(ArticlePointer.class),
-        ingestionMetadata,
-        itemTable,
-        new HashMap());
-
-    assertNotNull(articleMetadata.getPeerReview());
-  }
-
-  @Test
-  public void testGetPeerReviewReturnsNullWhenNoPeerReviewItems() {
-    Map<String, String> asset = new HashMap<>();
-    asset.put("doi", "fakeDoi");
-    List<Map<String, String>> assets = new ArrayList<>();
-    assets.add(asset);
-    HashMap<String, List<Map<String, String>>> ingestionMetadata = new HashMap<>();
-    ingestionMetadata.put("assetsLinkedFromManuscript", assets);
-
-    Map<String, String> item = new HashMap<>();
-    item.put("itemType", "figure");
-    Map<String, Map<String, String>> itemTable = new HashMap<>();
-    itemTable.put("fakeDoi", item);
-
-    Theme theme = mock(Theme.class);
-    HashMap<String, Object> journalAttrs = new HashMap<>();
-    journalAttrs.put("journalKey", "fakeKey");
-    journalAttrs.put("journalName", "fakeName");
-    when(theme.getConfigMap(any())).thenReturn(journalAttrs);
-
-    Site site = new Site("foo", theme, mock(SiteRequestScheme.class), "foo");
-    ArticleMetadata articleMetadata = articleMetadataFactory.newInstance(site,
-        mock(RequestedDoiVersion.class),
-        mock(ArticlePointer.class),
-        ingestionMetadata,
-        itemTable,
-        new HashMap());
-
-    assertNull(articleMetadata.getPeerReview());
   }
 }

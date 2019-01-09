@@ -90,6 +90,12 @@ public class CommentControllerTest extends ControllerTest {
   }
 
   @Bean
+  protected PeerReviewService peerReviewService() {
+    final PeerReviewService peerReviewService = mock(PeerReviewService.class);
+    return peerReviewService;
+  }
+
+  @Bean
   protected ArticleResolutionService articleResolutionService() {
     final ArticleResolutionService articleResolutionService = mock(ArticleResolutionService.class);
     return articleResolutionService;

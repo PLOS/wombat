@@ -22,6 +22,14 @@
 
 package org.ambraproject.wombat.config;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
@@ -33,14 +41,6 @@ import com.google.gson.GsonBuilder;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
 import org.ambraproject.wombat.config.theme.ThemeSource;
-
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 /**
  * Configuration for the webapp's runtime behavior as read from a YAML file.
@@ -71,11 +71,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     } catch (MalformedURLException e) {
       throw new IllegalStateException("Invalid URL should have been caught at validation", e);
     }
-  }
-
-  @Override
-  public String getCompiledAssetDir() {
-    return input.compiledAssetDir;
   }
 
   @Override

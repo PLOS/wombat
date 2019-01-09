@@ -22,23 +22,6 @@
 
 package org.ambraproject.wombat.freemarker.asset;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import freemarker.core.Environment;
-import freemarker.ext.servlet.HttpRequestHashModel;
-import freemarker.template.TemplateDirectiveModel;
-import freemarker.template.TemplateException;
-import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.site.url.Link;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteResolver;
-import org.ambraproject.wombat.freemarker.SitePageContext;
-import org.ambraproject.wombat.service.AssetService;
-import org.ambraproject.wombat.util.PathUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -49,6 +32,24 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+
+import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.site.SiteResolver;
+import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.freemarker.SitePageContext;
+import org.ambraproject.wombat.service.AssetService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import freemarker.core.Environment;
+import freemarker.ext.servlet.HttpRequestHashModel;
+import freemarker.template.TemplateDirectiveModel;
+import freemarker.template.TemplateException;
+
 /**
  * Abstract superclass of freemarker custom directives that render links to compiled assets. See {@link
  * AssetDirective}.
@@ -57,8 +58,6 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
-  @Autowired
-  private AssetService assetService;
   @Autowired
   private SiteResolver siteResolver;
 
@@ -90,16 +89,8 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
 
     if (assetPaths != null && !assetPaths.isEmpty()) {
       SitePageContext sitePageContext = new SitePageContext(siteResolver, environment);
-      if (runtimeConfiguration.getCompiledAssetDir() == null) {
-        for (String assetPath : assetPaths) {
-          String assetAddress = Link.toLocalSite(sitePageContext.getSite()).toPath(assetPath).get(sitePageContext.getRequest());
-          environment.getOut().write(getHtml(assetAddress));
-        }
-      } else {
-        Site site = sitePageContext.getSite();
-        String assetLink = assetService.getCompiledAssetLink(assetType, assetPaths, site);
-        String path = PathUtil.JOINER.join(AssetService.AssetUrls.RESOURCE_NAMESPACE, assetLink);
-        String assetAddress = Link.toLocalSite(site).toPath(path).get(request);
+      for (String assetPath : assetPaths) {
+        String assetAddress = Link.toLocalSite(sitePageContext.getSite()).toPath(assetPath).get(sitePageContext.getRequest());
         environment.getOut().write(getHtml(assetAddress));
       }
     }

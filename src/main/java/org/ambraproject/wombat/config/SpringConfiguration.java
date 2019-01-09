@@ -22,9 +22,19 @@
 
 package org.ambraproject.wombat.config;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import javax.servlet.ServletContext;
+
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -65,14 +75,10 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.ArticleTransformServiceImpl;
-import org.ambraproject.wombat.service.AssetService;
-import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.BrowseTaxonomyServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
-import org.ambraproject.wombat.service.HoneypotService;
-import org.ambraproject.wombat.service.HoneypotServiceImpl;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CitationDownloadServiceImpl;
 import org.ambraproject.wombat.service.CommentCensorService;
@@ -84,16 +90,18 @@ import org.ambraproject.wombat.service.CommentValidationServiceImpl;
 import org.ambraproject.wombat.service.DoiToJournalResolutionService;
 import org.ambraproject.wombat.service.FreemarkerMailService;
 import org.ambraproject.wombat.service.FreemarkerMailServiceImpl;
+import org.ambraproject.wombat.service.HoneypotService;
+import org.ambraproject.wombat.service.HoneypotServiceImpl;
 import org.ambraproject.wombat.service.ParseReferenceService;
 import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.ParseXmlServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
+import org.ambraproject.wombat.service.SearchFilterService;
 import org.ambraproject.wombat.service.TopLevelLockssManifestService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
-import org.ambraproject.wombat.service.SearchFilterService;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApiImpl;
 import org.ambraproject.wombat.util.GitInfo;
@@ -105,14 +113,6 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
-
-import javax.servlet.ServletContext;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Configuration
 public class SpringConfiguration {
@@ -328,11 +328,6 @@ public class SpringConfiguration {
   @Bean
   public ArticleTransformService articleTransformService() {
     return new ArticleTransformServiceImpl();
-  }
-
-  @Bean
-  public AssetService assetService() {
-    return new AssetServiceImpl();
   }
 
   @Bean

@@ -35,13 +35,6 @@ import java.util.Optional;
  * Interface that represents configurable values that are only known at server startup time.
  */
 public interface RuntimeConfiguration {
-
-  /**
-   * @return the directory in which to write and serve compiled assets (.js and .css), or {@code null} to not compile
-   * assets due to being in dev mode
-   */
-  String getCompiledAssetDir();
-
   interface CacheConfiguration {
     /**
      * @return the memcached host, or null if it is not present in the config

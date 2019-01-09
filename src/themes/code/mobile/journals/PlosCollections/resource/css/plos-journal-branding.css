@@ -1,0 +1,106 @@
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
+body .coloration-white-on-color {
+  background: #3c63af;
+  color: #fff;
+}
+
+body .coloration-text-color {
+  color: #3c63af;
+}
+
+body .coloration-light-text {
+  color: #fff;
+}
+
+body .coloration-border-top {
+  border-top-color: #3c63af;
+}
+
+body .coloration-bg {
+  background: #3c63af;
+}
+
+body .active.color-active {
+  background: #3c63af;
+  color: #fff;
+}
+
+body .expanded .expander.color-active {
+  background: #3c63af;
+  color: #fff;
+}
+
+#page-browse #menu-browse,
+#page-saved-items #menu-saved,
+#page-recent-history #menu-recent {
+  background: #3c63af;
+  color: #fff;
+}
+
+body #site-logo {
+  background-position: 0px -245px;
+  width: 183px;
+  height: 28px;
+  background-repeat: no-repeat;
+  background-image: url('../img/sprites/journals.png');
+  background-size: 450px 288px;
+}
+
+/* Branding on navigation elements */
+.grey-on-gold {
+  background: #3c63af;
+}
+
+.two-btn-container a {
+  color: #3c63af;
+}
+
+.full-menu-container .full-menu-tout h4 {
+  color: #3c63af;
+}
+
+nav.menu-bar li.active {
+  background: #3c63af;
+}
+
+nav.menu-rounded li.active.coloration-white-on-color,
+nav.menu-rounded td.active.coloration-white-on-color {
+  background: #3c63af;
+}
+
+.search-expanded .search-form-container {
+  background: #3c63af;
+}
+
+.filter-box {
+  background: #3c63af;
+}
+
+.main-accordion li.accordion-item.expanded > a {
+  background: #3c63af;
+}
+
+.save-article.full.saved {
+  background: #3c63af;
+}

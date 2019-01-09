@@ -1,0 +1,113 @@
+# The order is significant. When inserting a new type, the placement must be specified by Editorial stakeholders.
+
+types:
+
+  - name:   "Editorial"
+    plural: "Editorials"
+
+  - name:   "Open Highlights"
+    plural: "Open Highlights"
+    code:   "open_highlights"
+    description: >
+      Open Highlights present themed summaries of content from across the PLOS
+      journals and other Open Access sources.
+
+  - name:   "Interview"
+    plural: "Interviews"
+    code:   "interview"
+    description: >
+      Interviews highlight the work of someone who has made a notable
+      contribution to controlling NTDs.
+
+  - name:   "Debate"
+    plural: "Debates"
+    code:   "debate"
+    description: >
+      Debate articles highlight controversial issues in the field of NTDs.
+
+  - name:   "Viewpoints"
+    plural: "Viewpoints"
+    code:   "viewpoints"
+    description: >
+      Viewpoints are opinion pieces grounded in evidence on topics of broad
+      interest to the journal's readership.
+
+  - name:   "Expert Commentary"
+    plural: "Expert Commentaries"
+    code:   "expert_commentary"
+    description: >
+      In an Expert Commentary, authors discuss the clinical, policy, public-
+      health, or research implications of a freely available research article.
+
+  - name:   "Book Review"
+    plural: "Book Reviews"
+
+  - name:   "Obituary"
+    plural: "Obituaries"
+
+  - name:   "Policy Platform"
+    plural: "Policy Platform"
+    code:   "policy_platform"
+    description: >
+      The Policy Platform is for authors to discuss policies that could improve
+      the lives of those at risk of, or affected by, the NTDs.
+
+  - name:   "Historical Profiles and Perspectives"
+    plural: "Historical Profiles and Perspectives"
+    code:   "historical_profiles_and_perspectives"
+    description: >
+      Historical Profiles and Perspectives look back in history to discuss a
+      notable figure or a control program.
+
+  - name:   "From Innovation to Application"
+    plural: "From Innovation to Application"
+    code:   "from_innovation_to_application"
+    description: >
+      From Innovation to Application articles allow authors to discuss new
+      technologies, including drugs, vaccines, and diagnostics.
+
+  - name:   "Photo Quiz"
+    plural: "Photo Quizzes"
+    code:   "photo_quiz"
+    description: >
+      The Photo Quiz presents a clinical image and brief case discussion
+      followed by questions, learning points, and key references.
+
+  - name:   "Symposium"
+    plural: "Symposiums"
+    code:   "symposium"
+    description: >
+      In Symposium articles, authors discuss a real-world problem, from the
+      clinic, laboratory, or community, and how best it can be tackled.
+
+  - name:   "Case Report"
+    plural: "Case Reports"
+
+  - name:   "Review"
+    plural: "Reviews"
+    code:   "review"
+    description: >
+      Review articles summarize the best available evidence on a topic relevant
+      to the NTD community.
+
+  - name:   "Research Article"
+    plural: "Research Articles"
+
+  - name:   "Correction"
+    plural: "Corrections"
+
+  - name:   "Retraction"
+    plural: "Retractions"
+
+  - name:   "Issue Image"
+    plural: "Issue Images"
+
+  - name:   "Formal Comment"
+    plural: "Formal Comments"
+    code:   "formal_comment"
+
+  - name:   "Research Matters"
+    plural: "Research Matters"
+    description: >
+      Research Matters articles provide a forum for scientists to communicate
+      why basic research in their field matters.

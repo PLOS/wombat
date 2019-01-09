@@ -1,0 +1,4 @@
+key: PlosCompBiolContent
+parents:
+  - PlosContent
+  - PlosCompBiol

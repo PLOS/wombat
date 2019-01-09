@@ -1,0 +1,5 @@
+sections:
+  - name: recent
+    resultCount: 7
+  - name: popular
+    resultCount: 7

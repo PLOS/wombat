@@ -1,0 +1,62 @@
+sites:
+
+  - key:   DesktopGeneric
+    theme: DesktopGeneric
+
+  - key:   MobileGeneric
+    theme: MobileGeneric
+
+  - key:   DesktopPlosOne
+    theme: DesktopPlosOne
+
+  - key:   DesktopPlosBiology
+    theme: DesktopPlosBiology
+
+  - key:   DesktopPlosMedicine
+    theme: DesktopPlosMedicine
+
+  - key:   DesktopPlosCompBiol
+    theme: DesktopPlosCompBiol
+
+  - key:   DesktopPlosGenetics
+    theme: DesktopPlosGenetics
+
+  - key:   DesktopPlosPathogens
+    theme: DesktopPlosPathogens
+
+  - key:   DesktopPlosNtds
+    theme: DesktopPlosNtds
+
+  - key:   DesktopPlosCollections
+    theme: DesktopPlosCollections
+
+  - key:   DesktopPlosClinicalTrials
+    theme: DesktopPlosClinicalTrials
+
+  - key:   MobilePlosOne
+    theme: MobilePlosOne
+
+  - key:   MobilePlosBiology
+    theme: MobilePlosBiology
+
+  - key:   MobilePlosMedicine
+    theme: MobilePlosMedicine
+
+  - key:   MobilePlosCompBiol
+    theme: MobilePlosCompBiol
+
+  - key:   MobilePlosGenetics
+    theme: MobilePlosGenetics
+
+  - key:   MobilePlosPathogens
+    theme: MobilePlosPathogens
+
+  - key:   MobilePlosNtds
+    theme: MobilePlosNtds
+
+  - key:   MobilePlosClinicalTrials
+    theme: MobilePlosClinicalTrials
+
+  - key:   DesktopApertaRxiv
+    theme: DesktopApertaRxiv
+    type:  preprints

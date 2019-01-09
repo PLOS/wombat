@@ -1,0 +1,20 @@
+sections:
+  - name: recent
+    resultCount: 7
+    since: 7
+    articleTypes:
+          - "*"
+    articleTypesToExclude:
+          - "Correction"
+          - "Retraction"
+          - "Expression of Concern"
+  - name: popular
+    resultCount: 7
+  - name: curated
+    curatedListType: admin
+    curatedListName: plosone_news
+    resultCount: 7
+
+defaultSelection: plosone_news
+
+showsIssue: false

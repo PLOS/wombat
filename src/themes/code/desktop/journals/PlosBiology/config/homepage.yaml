@@ -1,0 +1,16 @@
+sections:
+  - name: recent
+    resultCount: 3
+    since: 7
+    shuffle: true
+    cacheTtl: 1800  # 30 minutes
+    articleTypes:
+      - "Research Article"
+      - "Meta-Research Article"
+      - "Methods and Resources"
+      - "Short Reports"
+      - "*"
+    articleTypesToExclude:
+      - "Correction"
+      - "Retraction"
+      - "Expression of Concern"

@@ -1,0 +1,74 @@
+# The order is significant. When inserting a new type, the placement must be specified by Editorial stakeholders.
+
+types:
+
+  - name:   "Editorial"
+    plural: "Editorials"
+
+  - name:   "Open Highlights"
+    plural: "Open Highlights"
+    code:   "open_highlights"
+    description: >
+      Open Highlights present themed summaries of content from across the PLOS
+      journals and other Open Access sources.
+
+  - name:   "Viewpoints"
+    plural: "Viewpoints"
+    code:   "viewpoints"
+
+  - name:   "Opinion"
+    plural: "Opinions"
+    code:   "opinion"
+    description: >
+      Opinion articles provide a forum for expression of views, and responses
+      to previous statements, on a range of topical, emerging and controversial
+      issues.
+
+  - name:   "Book Review"
+    plural: "Book Reviews"
+
+  - name:   "Obituary"
+    plural: "Obituaries"
+
+  - name:   "Case Report"
+    plural: "Case Reports"
+
+  - name:   "Pearls"
+    plural: "Pearls"
+    code:   "pearls"
+    description: >
+      Pearls provide concise, practical and educational insights into topics
+      that span the pathogens field.
+
+  - name:   "Review"
+    plural: "Reviews"
+    code:   "review"
+    description: >
+      Review articles synthesize the best available evidence on a topic
+      relevant to the pathogens community.
+
+  - name:   "Research Matters"
+    plural: "Research Matters"
+    description: >
+      Research Matters articles provide a forum for scientists to communicate
+      why basic research in their field matters.
+
+  - name:   "Research Article"
+    plural: "Research Articles"
+
+  - name:   "Correction"
+    plural: "Corrections"
+
+  - name:   "Retraction"
+    plural: "Retractions"
+
+  - name:   "Issue Image"
+    plural: "Issue Images"
+
+  - name:   "Expression of Concern"
+    plural: "Expressions of Concern"
+    code:   "expression_of_concern"
+
+  - name:   "Formal Comment"
+    plural: "Formal Comments"
+    code:   "formal_comment"

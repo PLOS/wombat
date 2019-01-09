@@ -1,0 +1,66 @@
+# The order is significant. When inserting a new type, the placement must be specified by Editorial stakeholders.
+
+types:
+
+  - name:   "Editorial"
+    plural: "Editorials"
+
+  - name:   "Message from ISCB"
+    plural: "Messages from ISCB"
+
+  - name:   "Open Highlights"
+    plural: "Open Highlights"
+    code:   "open_highlights"
+    description: >
+      Open Highlights present themed summaries of content from across the PLOS
+      journals and other Open Access sources.
+
+  - name:   "Education"
+    plural: "Education Articles"
+    code:   "education"
+
+  - name:   "Perspective"
+    plural: "Perspectives"
+    code:   "perspective"
+
+  - name:   "Book Review"
+    plural: "Book Reviews"
+
+  - name:   "Obituary"
+    plural: "Obituaries"
+
+  - name:   "Case Report"
+    plural: "Case Reports"
+
+  - name:   "Topic Page"
+    plural: "Topic Pages"
+    code:   "topic_page"
+
+  - name:   "Review"
+    plural: "Reviews"
+    code:   "review"
+
+  - name:   "Research Article"
+    plural: "Research Articles"
+
+  - name:   "Correspondence"
+    plural: "Correspondence"
+
+  - name:   "Correction"
+    plural: "Corrections"
+
+  - name:   "Retraction"
+    plural: "Retractions"
+
+  - name:   "Issue Image"
+    plural: "Issue Images"
+
+  - name:   "Formal Comment"
+    plural: "Formal Comments"
+    code:   "formal_comment"
+
+  - name:   "Research Matters"
+    plural: "Research Matters"
+    description: >
+      Research Matters articles provide a forum for scientists to communicate
+      why basic research in their field matters.

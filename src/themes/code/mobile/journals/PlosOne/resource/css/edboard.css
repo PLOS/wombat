@@ -1,0 +1,218 @@
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
+
+/************* edboard pages *****************/
+
+div#content article {
+  width: inherit;
+}
+
+div#content article p {
+  font-size: 13px;
+}
+
+#static-wrap-edboard h2 {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+#static-wrap-edboard dt {
+  padding-top: 5px;
+}
+
+#filter_container, #all_editors {
+  *zoom:1;
+}
+
+#filter_container:before, #all_editors:before,
+#filter_container:after, #all_editors:after{
+  content: " ";
+  display: table;
+}
+
+#filter_container:after, #all_editors:after {
+  clear: both;
+}
+
+#all_editors,
+#filter_container {
+  margin-bottom: 18px;
+}
+
+#filter_container #searchBox {
+  width: 202px;
+  padding-right: 22px;
+  font-size: 13px;
+}
+
+#filter_container #searchFor {
+  font-size: 14px;
+}
+
+#filter_container #clearFilter {
+  position: absolute;
+  top: 0;
+  left: 70%;
+  width: 18px;
+  height: 17px;
+  cursor: default;
+  background: #606060  url('../img/ambra/btn.close.png') no-repeat 3px 3px;
+  border-radius: 3px;
+  background-size: 12px 12px;
+}
+
+#filter_container #clearFilter:hover {
+  background: #808080  url('../img/ambra/btn.close.png') no-repeat scroll 3px 3px;
+}
+
+.ui-menu-item .item {
+  line-height: 0.9;
+}
+.ui-menu-item .header {
+  line-height: 2;
+  font-weight: bold;
+}
+.ui-menu-item .more {
+  font-style: italic;
+  color: #707070;
+}
+
+#content ul.editors-list li.item {
+  list-style-type: none;
+  font-size: 13px;
+  line-height: 18px;
+  border-top: 1px solid #999;
+  margin: 0;
+  padding: 1em 0;
+}
+
+#content ul.editors-list li.item a{
+  display: inline-flex;
+}
+
+#content ul.editors-list li.item a img{
+  padding-right: 3px;
+}
+
+.nav-pagination .disabled span{
+  font-size: 1.8em;
+}
+
+
+/*
+TypeAhead
+*/
+.twitter-typeahead .tt-menu {
+  background-color: white;
+  min-width: 100%;
+  border: 1px solid #ccc;
+  border-top-color: transparent;
+  padding: 0.3125rem 0; }
+
+.twitter-typeahead h5 {
+  font-weight: bold;
+  padding: 0.3125rem 0.625rem;
+  margin: 0; }
+
+.twitter-typeahead .tt-suggestion {
+  padding: 0.3125rem 0.625rem;
+  margin: 0; }
+
+.twitter-typeahead .tt-suggestion.tt-cursor, .twitter-typeahead .tt-suggestion:hover {
+  cursor: pointer; }
+
+ .twitter-typeahead .tt-suggestion:hover {
+  background: #f8af2d ; }
+
+.editors-search-filter #loading {
+  color: #707070;
+  font-size: 1rem;
+  line-height: 1;
+  display: none; }
+
+.fa-times:before, .editors-search-filter .editors-search-reset:before {
+  content: "\f00d"; }
+
+.editors-search-filter .editors-search-reset {
+  border: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  background: #666;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 18.9375rem;
+  padding: 0;
+  display: none;
+  border-radius: 0.1875rem; }
+
+.editors-search-filter {
+  width: 100%;
+  display: table;
+  position: relative;
+  margin-bottom: 1.125rem; }
+.editors-search-filter label, .editors-search-filter .twitter-typeahead, .editors-search-filter .editors-search-button, .editors-search-filter #loading {
+  float: left;
+  margin-right: 0.625rem; }
+
+.editors-search-filter label {
+  font-weight: bold; }
+.editors-search-filter .twitter-typeahead {
+  margin-top: -0.1875rem; }
+.editors-search-filter #editors-search-input {
+  font-size: 10px;
+  min-width: 10.375rem;
+  padding-right: 1.25rem; }
+
+.editors-search-filter #loading {
+  color: #707070;
+  font-size: 1rem;
+  line-height: 1;
+  display: none; }
+
+.editors-search-filter .editors-search-reset {
+  border: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  background: #666;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 17.375rem;
+  padding: 0;
+  display: none;
+  border-radius: 0.1875rem; }
+
+ .editors-search-filter .editors-search-reset, .results .editors-list .section-editor-icon {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ }
+ p.counters{
+   padding-bottom: 1em;
+ }
+

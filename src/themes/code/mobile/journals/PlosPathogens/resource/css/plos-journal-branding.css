@@ -1,0 +1,116 @@
+/*
+ * Copyright (c) 2017 Public Library of Science
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
+body .coloration-white-on-color {
+  background: #891fb1;
+  color: #fff;
+}
+
+body .coloration-text-color {
+  color: #891fb1;
+}
+
+body .coloration-light-text {
+  color: #fff;
+}
+
+body .coloration-border-top {
+  border-top-color: #891fb1;
+}
+
+body .coloration-bg {
+  background: #891fb1;
+}
+
+body .active.color-active {
+  background: #891fb1;
+  color: #fff;
+}
+
+body .expanded .expander.color-active {
+  background: #891fb1;
+  color: #fff;
+}
+
+#page-browse #menu-browse,
+#page-saved-items #menu-saved,
+#page-recent-history #menu-recent {
+  background: #891fb1;
+  color: #fff;
+}
+
+body #site-logo,
+.accordion-item .accordion-logo {
+  background-position: 0px -175px;
+  width: 170px;
+  height: 28px;
+  background-repeat: no-repeat;
+  background-image: url('../img/sprites/journals.png');
+  background-size: 450px 288px;
+}
+
+li.accordion-item.expanded .expander {
+  background: #891fb1;
+  color: #fff;
+}
+
+li.accordion-item.expanded .accordion-logo {
+  background-position: -225px -175px;
+}
+
+/* Branding on navigation elements */
+.grey-on-gold {
+  background: #891fb1;
+}
+
+.two-btn-container a {
+  color: #891fb1;
+}
+
+.full-menu-container .full-menu-tout h4 {
+  color: #891fb1;
+}
+
+nav.menu-bar li.active {
+  background: #891fb1;
+}
+
+nav.menu-rounded li.active.coloration-white-on-color,
+nav.menu-rounded td.active.coloration-white-on-color {
+  background: #891fb1;
+}
+
+.search-expanded .search-form-container {
+  background: #891fb1;
+}
+
+.filter-box {
+  background: #891fb1;
+}
+
+.main-accordion li.accordion-item.expanded > a {
+  background: #891fb1;
+}
+
+.save-article.full.saved {
+  background: #891fb1;
+}

@@ -523,7 +523,6 @@
             </goals>
             <configuration>
               <deb>${project.build.directory}/${project.artifactId}_[[version]]+${build.timestamp}-plos${build.counter}.deb</deb>
-              <!-- <snapshotExpand>true</snapshotExpand> -->
               <controlDir>${project.basedir}/src/deb/control</controlDir>
               <dataSet>
 
@@ -552,6 +551,15 @@
                   </mapper>
                 </data>
 
+                <data>
+                  <src>${project.basedir}/src/themes</src>
+                  <type>directory</type>
+                  <mapper>
+                    <type>perm</type>
+                    <prefix>/opt/plos/wombat/var/themes</prefix>
+                    <filemode>664</filemode>
+                  </mapper>
+                </data>
               </dataSet>
             </configuration>
           </execution>

@@ -1,0 +1,85 @@
+# The order is significant. When inserting a new type, the placement must be specified by Editorial stakeholders.
+
+types:
+
+  - name:   "Editorial"
+    plural: "Editorials"
+
+  - name:   "Open Highlights"
+    plural: "Open Highlights"
+    code:   "open_highlights"
+    description: >
+      Open Highlights present themed summaries of content from across the PLOS
+      journals and other Open Access sources.
+
+  - name:   "Interview"
+    plural: "Interviews"
+    code:   "interview"
+
+  - name:   "Viewpoints"
+    plural: "Viewpoints"
+    code:   "viewpoints"
+
+  - name:   "Special Report"
+    plural: "Special Reports"
+
+  - name:   "Perspective"
+    plural: "Perspectives"
+    code:   "perspective"
+
+  - name:   "Book Review"
+    plural: "Book Reviews"
+
+  - name:   "Obituary"
+    plural: "Obituaries"
+
+  - name:   "Case Report"
+    plural: "Case Reports"
+
+  - name:   "Review"
+    plural: "Reviews"
+    code:   "review"
+
+  - name:   "Technical Report"
+    plural: "Technical Reports"
+
+  - name:   "Research Article"
+    plural: "Research Articles"
+
+  - name:   "Correspondence"
+    plural: "Correspondence"
+
+  - name:   "Correction"
+    plural: "Corrections"
+
+  - name:   "Retraction"
+    plural: "Retractions"
+
+  - name:   "Issue Image"
+    plural: "Issue Images"
+
+  - name:   "Expression of Concern"
+    plural: "Expressions of Concern"
+    code:   "expression_of_concern"
+
+  - name:   "Formal Comment"
+    plural: "Formal Comments"
+    code:   "formal_comment"
+
+  - name:   "Deep Reads"
+    plural: "Deep Reads"
+    code:   "deep_reads"
+
+  - name:   "Genetically Thinking"
+    plural: "Genetical Thinking"
+    code:   "genetically_thinking"
+
+  - name:   "Opinion Piece"
+    plural: "Opinion Pieces"
+    code:   "opinion_piece"
+
+  - name:   "Research Matters"
+    plural: "Research Matters"
+    description: >
+      Research Matters articles provide a forum for scientists to communicate
+      why basic research in their field matters.

@@ -1,0 +1,5 @@
+key: MobilePlosGenetics
+parents:
+  - PlosGeneticsContent
+  - MobilePlos
+  - PlosGenetics

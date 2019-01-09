@@ -1,0 +1,5 @@
+key: MobilePlosPathogens
+parents:
+  - PlosPathogensContent
+  - MobilePlos
+  - PlosPathogens

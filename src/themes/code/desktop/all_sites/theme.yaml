@@ -1,0 +1,4 @@
+key: DesktopPlos
+parents:
+  - Plos
+  - .Desktop

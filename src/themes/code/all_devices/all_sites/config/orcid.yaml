@@ -1,0 +1,8 @@
+# We use ORCID as an OAuth provider. We allow corresponding authors to upload a new revision for preprints.
+# ORCID API: https://members.orcid.org/api/
+# ORCID OAuth: https://members.orcid.org/api/oauth/presenting-oauth
+# To add more redirect URIs, email support@orcid.org
+host: https://sandbox.orcid.org
+clientId: APP-4FRJQJO9IDARS7AF
+clientSecret: f34906ba-a7c2-4ce7-a470-c1dbfc379a4e
+redirectUri: http://localhost:8234/wombat/DesktopApertaRxiv/article/uploadPreprintRevision

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="30px" viewBox="0 0 29 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>search_gray</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Article" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="header_1440" transform="translate(-1144.000000, -246.000000)" stroke="#4A4A4A">
+            <g id="Group" transform="translate(260.000000, 176.000000)">
+                <g id="Group-9" transform="translate(0.000000, 61.000000)">
+                    <g id="search_gray" transform="translate(883.000000, 9.000000)">
+                        <g id="Group" transform="translate(2.142857, 1.428571)">
+                            <path d="M17.5,18.2142857 L24.3052144,25.4731811" id="Line" stroke-width="5" stroke-linecap="square"></path>
+                            <circle id="Oval" stroke-width="2" cx="10" cy="10" r="10"></circle>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

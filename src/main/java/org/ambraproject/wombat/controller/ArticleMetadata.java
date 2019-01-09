@@ -35,29 +35,14 @@ import org.ambraproject.wombat.model.ArticleType;
 import org.ambraproject.wombat.service.*;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.util.TextUtil;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.sax.SAXSource;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
@@ -115,6 +100,8 @@ public class ArticleMetadata {
     private ArticleTransformService articleTransformService;
     @Autowired
     private RequestMappingContextDictionary requestMappingContextDictionary;
+    @Autowired
+    private PeerReviewService peerReviewService;
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
       return get(site, id, articleResolutionService.toIngestion(id));
@@ -242,109 +229,7 @@ public class ArticleMetadata {
    * Get the articleItems that represent peer review decisions and responses.
    */
   String getPeerReview() throws IOException {
-    String peerReviewContent = peerReviewXml();
-    if (peerReviewContent == null) return null;
-    return peerReviewXmlToHtml(peerReviewContent);
-  }
-
-  /**
-   * Convert peer review XML to HTML
-   *
-   * @param peerReviewContent
-   * @return an HTML representation of peer review content
-   */
-  private String peerReviewXmlToHtml(String peerReviewContent) {
-    // TODO: Why is xlink: namespace not recognized by transform?
-    peerReviewContent = peerReviewContent.replaceAll("xlink:", "");
-
-    // TODO: this is a hack to remove html escape sequences from my sample non-typeset ingested content
-    peerReviewContent = peerReviewContent.replaceAll("&", "BLAH");
-
-    StringWriter htmlWriter = new StringWriter();
-    XMLReader xmlReader = null;
-    try {
-      SAXParserFactory spf = SAXParserFactory.newInstance();
-      SAXParser sp = spf.newSAXParser();
-      xmlReader = sp.getXMLReader();
-    } catch (ParserConfigurationException e) {
-      throw new RuntimeException(e);
-    } catch (SAXException e) {
-      throw new RuntimeException(e);
-    }
-
-    try {
-      TransformerFactory tFactory = TransformerFactory.newInstance();
-      StreamSource stylesource = new StreamSource(new File("src/main/webapp/WEB-INF/themes/desktop/xform/peer-review-transform.xsl"));
-      Transformer transformer = tFactory.newTransformer(stylesource);
-
-      SAXSource saxSource = new SAXSource(xmlReader, new InputSource(new StringReader(peerReviewContent)));
-      transformer.transform(saxSource, new StreamResult(htmlWriter));
-    } catch (TransformerException e) {
-      throw new RuntimeException(e);
-    }
-
-    return htmlWriter.toString();
-  }
-
-  /**
-   * Aggregate the XML for all rounds of Peer Review
-   *
-   * @return XML content
-   * @throws IOException
-   */
-  private String peerReviewXml() throws IOException {
-    List<Map<String, ?>> peerReviewItems = new ArrayList<>();
-    for (Object itemObj : new TreeMap(itemTable).values()) {
-      if (((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter")) {
-        peerReviewItems.add((Map<String, ?>) itemObj);
-      }
-    }
-
-    List<String> peerReviewFileContents = new ArrayList<>();
-    for (Map<String, ?> itemMetadata : peerReviewItems) {
-      String content = peerReviewFileContent(itemMetadata);
-      peerReviewFileContents.add(content);
-    }
-
-    if (peerReviewFileContents.isEmpty()) {
-      return null;
-    }
-
-    // Group into revisions, all but first include an author response and a decision letter
-    List<String> partitionableResponses = peerReviewFileContents.subList(1, peerReviewFileContents.size());
-    List<List<String>> revisions = new ArrayList<>(Lists.partition(partitionableResponses, 2));
-    List<String> firstSubmission = new ArrayList<>();
-    firstSubmission.add(peerReviewFileContents.get(0));
-    revisions.add(0, firstSubmission);
-
-    String peerReviewContent  = "";
-    for ( List<String> responses : revisions) {
-      peerReviewContent  += "<revision>" + String.join("", responses) + "</revision>";
-    }
-
-    // wrap it in a root node
-    peerReviewContent = "<peer-review>" + peerReviewContent  + "</peer-review>";
-    return peerReviewContent;
-  }
-
-  /**
-   * Fetch the content of a peer review asset from the content repository
-   *
-   * @param itemMetadata
-   * @return the content of the peer review asset
-   * @throws IOException
-   */
-  private String peerReviewFileContent(Map<String, ?> itemMetadata) throws IOException {
-    Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
-    Map<String, ?> fileMetadata = (Map<String, ?>) files.get("letter");
-
-    String crepoKey = (String) fileMetadata.get("crepoKey");
-    UUID uuid = UUID.fromString((String) fileMetadata.get("crepoUuid"));
-    ContentKey contentKey = ContentKey.createForUuid(crepoKey, uuid);
-
-    CloseableHttpResponse response = factory.corpusContentApi.request(contentKey, ImmutableList.of());
-    String responseBody = EntityUtils.toString(response.getEntity());
-    return responseBody;
+    return factory.peerReviewService.asHtml(itemTable);
   }
 
 

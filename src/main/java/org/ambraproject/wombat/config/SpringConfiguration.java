@@ -87,6 +87,8 @@ import org.ambraproject.wombat.service.FreemarkerMailServiceImpl;
 import org.ambraproject.wombat.service.ParseReferenceService;
 import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.ParseXmlServiceImpl;
+import org.ambraproject.wombat.service.PeerReviewService;
+import org.ambraproject.wombat.service.PeerReviewServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
 import org.ambraproject.wombat.service.TopLevelLockssManifestService;
@@ -440,4 +442,8 @@ public class SpringConfiguration {
     return new OrcidApiImpl();
   }
 
+  @Bean
+  public PeerReviewService peerReviewService() {
+    return new PeerReviewServiceImpl();
+  }
 }

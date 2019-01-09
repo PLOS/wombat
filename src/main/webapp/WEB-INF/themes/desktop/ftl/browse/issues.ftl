@@ -47,7 +47,6 @@
 <@js target="resource/js/components/floating_nav.js"/>
 <@js target="resource/js/pages/browse-issues.js"/>
 
-<@renderJs />
 
 </body>
 </html>

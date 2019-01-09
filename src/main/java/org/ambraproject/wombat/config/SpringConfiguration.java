@@ -61,8 +61,6 @@ import org.ambraproject.wombat.freemarker.SiteLinkDirective;
 import org.ambraproject.wombat.freemarker.ThemeConfigDirective;
 import org.ambraproject.wombat.freemarker.asset.CssLinkDirective;
 import org.ambraproject.wombat.freemarker.asset.JsDirective;
-import org.ambraproject.wombat.freemarker.asset.RenderCssLinksDirective;
-import org.ambraproject.wombat.freemarker.asset.RenderJsDirective;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.ambraproject.wombat.model.SearchFilterType;
@@ -174,13 +172,13 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public RenderCssLinksDirective renderCssLinksDirective() {
-    return new RenderCssLinksDirective();
+  public CssLinkDirective cssLinkDirective() {
+    return new CssLinkDirective();
   }
 
   @Bean
-  public RenderJsDirective renderJsDirective() {
-    return new RenderJsDirective();
+  public JsDirective jsDirective() {
+    return new JsDirective();
   }
 
   @Bean
@@ -212,8 +210,8 @@ public class SpringConfiguration {
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
                                            IsDevFeatureEnabledDirective isDevFeatureEnabledDirective,
                                            SiteLinkDirective siteLinkDirective,
-                                           RenderCssLinksDirective renderCssLinksDirective,
-                                           RenderJsDirective renderJsDirective,
+                                           CssLinkDirective cssLinkDirective,
+                                           JsDirective jsDirective,
                                            BuildInfoDirective buildInfoDirective,
                                            FetchHtmlDirective fetchHtmlDirective,
                                            ThemeConfigDirective themeConfigDirective,
@@ -233,10 +231,8 @@ public class SpringConfiguration {
     variables.put("replaceParams", new ReplaceParametersDirective());
     variables.put("siteLink", siteLinkDirective);
     variables.put("isDevFeatureEnabled", isDevFeatureEnabledDirective);
-    variables.put("cssLink", new CssLinkDirective());
-    variables.put("renderCssLinks", renderCssLinksDirective);
-    variables.put("js", new JsDirective());
-    variables.put("renderJs", renderJsDirective);
+    variables.put("cssLink", cssLinkDirective);
+    variables.put("js", jsDirective);
     variables.put("buildInfo", buildInfoDirective);
     variables.put("fetchHtml", fetchHtmlDirective);
     variables.put("themeConfig", themeConfigDirective);

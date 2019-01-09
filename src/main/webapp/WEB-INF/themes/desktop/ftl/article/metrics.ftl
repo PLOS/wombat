@@ -62,7 +62,6 @@
 <#include "metricsJs.ftl" />
 <#include "../common/footer/footer.ftl" />
 
-<@renderJs />
 
 </body>
 </html>

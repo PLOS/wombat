@@ -23,17 +23,14 @@
 package org.ambraproject.wombat.freemarker.asset;
 
 /**
- * Custom freemarker directive that should be used to insert a <script> element. If we are running in dev mode, this
- * will just render the link; otherwise the javascript file specified will be minified and served along with all other
- * .js in the app.
+ * Custom freemarker directive that should be used to insert a <script> element.
  */
 public class JsDirective extends AssetDirective {
-
-  static final String REQUEST_VARIABLE_NAME = "jsFiles";
-
+  /**
+   * {@inheritDoc}
+   */
   @Override
-  protected String getRequestVariableName() {
-    return REQUEST_VARIABLE_NAME;
+  protected String getHtml(String assetAddress) {
+    return String.format("<script src=\"%s\"></script>\n", assetAddress);
   }
-
 }

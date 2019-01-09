@@ -95,9 +95,7 @@ public class WombatControllerTestConfig extends WebMvcConfigurerAdapter {
     variables.put("replaceParams", new ReplaceParametersDirective());
     variables.put("siteLink", getEmptyTemplateDirectiveModel());
     variables.put("cssLink", getEmptyTemplateDirectiveModel());
-    variables.put("renderCssLinks", getEmptyTemplateDirectiveModel());
     variables.put("js", getEmptyTemplateDirectiveModel());
-    variables.put("renderJs", getEmptyTemplateDirectiveModel());
     variables.put("buildInfo", getEmptyTemplateDirectiveModel());
     variables.put("fetchHtml", getEmptyTemplateDirectiveModel());
     variables.put("themeConfig", getEmptyTemplateDirectiveModel());

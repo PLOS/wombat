@@ -43,9 +43,7 @@
 
 <#include "../common/footer/footer.ftl" />
 <@js target="resource/js/components/browse_volumes.js"/>
-<@renderJs />
 
-<@renderCssLinks />
 
 </body>
 </html>

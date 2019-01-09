@@ -100,7 +100,6 @@
 <@js target="resource/js/components/nav_builder.js"/>
 <@js target="resource/js/components/floating_nav.js"/>
 
-<@renderJs />
 
 </body>
 </html>

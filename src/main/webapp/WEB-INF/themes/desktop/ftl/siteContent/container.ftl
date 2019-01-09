@@ -38,7 +38,6 @@
 
 <#include "../common/footer/footer.ftl" />
 
-<@renderJs />
 
 </body>
 </html>

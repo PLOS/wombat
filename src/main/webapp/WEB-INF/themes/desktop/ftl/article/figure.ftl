@@ -68,7 +68,6 @@
 <#include "../common/footer/footer.ftl" />
 
 
-<@renderJs />
 
 <#--
 TODO: move reveal mode & fig-viewer divs to global location when the new lightbox is implemented sitewide

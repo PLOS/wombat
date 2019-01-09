@@ -57,7 +57,6 @@
 
 <#include "../common/footer/footer.ftl" />
 <#include "articleJs.ftl" />
-<@renderJs />
 
 </body>
 </html>

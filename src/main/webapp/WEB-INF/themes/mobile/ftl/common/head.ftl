@@ -75,7 +75,6 @@
   <script src="<@siteLink path="resource/js/vendor/vendor.min.js" />"></script>
 <@js target="resource/js/vendor/underscore-min.js"/>
 <@js target="resource/js/vendor/underscore.string.min.js"/>
-<@renderCssLinks />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <#include "additionalHeadTracking.ftl" />
 

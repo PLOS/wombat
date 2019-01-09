@@ -30,7 +30,6 @@
 <#include "articleJs.ftl" />
 
 
-<@renderJs />
 
 
 </body>

@@ -23,17 +23,10 @@
 package org.ambraproject.wombat.freemarker.asset;
 
 /**
- * Custom freemarker directive that should be used to insert a CSS link element. If we are running in dev mode, this
- * will just render the link; otherwise the CSS file specified will be minified and served along with all other CSS in
- * the app.
+ * Custom freemarker directive that should be used to insert a CSS link element.
  */
 public class CssLinkDirective extends AssetDirective {
-
-  static final String REQUEST_VARIABLE_NAME = "cssFiles";
-
-  @Override
-  protected String getRequestVariableName() {
-    return REQUEST_VARIABLE_NAME;
+  protected String getHtml(String assetAddress) {
+    return String.format("<link rel=\"stylesheet\" href=\"%s\" />\n", assetAddress);
   }
-
 }

@@ -204,7 +204,6 @@
 <@js target="resource/js/components/tooltip_hover.js"/>
 <@js target="resource/js/vendor/jquery.dotdotdot.js" />
 <@js target="resource/js/components/browse_results.js" />
-<@renderJs />
 
 
 <div id="login-box" class="login inlinePopup">

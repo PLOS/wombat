@@ -153,7 +153,6 @@
   </#if>
   <a class="close-reveal-modal" aria-label="Close"></a>
 </div>
-<@renderJs />
 </body>
 
 </html>

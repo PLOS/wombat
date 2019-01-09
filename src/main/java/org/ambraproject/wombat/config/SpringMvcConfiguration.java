@@ -26,7 +26,7 @@ import org.ambraproject.wombat.config.site.SiteHandlerMapping;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.controller.DoiVersionArgumentResolver;
-import org.ambraproject.wombat.service.AssetService;
+import org.ambraproject.wombat.controller.StaticResourceController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -66,8 +66,7 @@ public class SpringMvcConfiguration extends WebMvcConfigurationSupport {
 
   @Override
   protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-    ResourceHandlerRegistration registration = registry.addResourceHandler(AssetService.AssetUrls.RESOURCE_TEMPLATE);
-    registration.addResourceLocations("/" + AssetService.AssetUrls.RESOURCE_NAMESPACE + "/");
+    ResourceHandlerRegistration registration = registry.addResourceHandler(StaticResourceController.RESOURCE_TEMPLATE);
+    registration.addResourceLocations("/" + StaticResourceController.RESOURCE_NAMESPACE + "/");
   }
-
 }

@@ -74,7 +74,6 @@
 
 <#include "../articleJs.ftl" />
 <#include "commentSubmissionJs.ftl" />
-<@renderJs />
 
 
 <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>

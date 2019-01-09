@@ -41,7 +41,6 @@
 
 <@pageCSS/>
 
-  <@renderCssLinks />
 
   <!-- allows for  extra head tags -->
   <#if customHeadTags??>
@@ -56,7 +55,6 @@
     </script>
   <@js target="resource/js/vendor/modernizr-v2.7.1.js" />
   <@js target="resource/js/vendor/detectizr.min.js" />
-  <@renderJs />
 
   <link rel="shortcut icon" href="<@siteLink path="resource/img/favicon.ico"/>" type="image/x-icon"/>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>

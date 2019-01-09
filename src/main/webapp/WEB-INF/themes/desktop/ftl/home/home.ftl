@@ -50,7 +50,6 @@
 
 <@js target="resource/js/pages/home.js" />
 
-<@renderJs />
 
 
 </body>

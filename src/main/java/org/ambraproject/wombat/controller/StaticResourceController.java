@@ -38,7 +38,6 @@ import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.service.AssetService.AssetUrls;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.ambraproject.wombat.util.PathUtil;
 import org.apache.commons.io.IOUtils;
@@ -47,6 +46,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class StaticResourceController extends WombatController {
+  public static final String RESOURCE_NAMESPACE = "resource";
+  public static final String RESOURCE_TEMPLATE = "/" + RESOURCE_NAMESPACE + "/**";
+  
   /**
    * Return a portion of a path from a given token forward.
    *
@@ -65,7 +67,7 @@ public class StaticResourceController extends WombatController {
     return PathUtil.JOINER.join(targetTokens);
   }
 
-  @RequestMapping(name = "staticResource", value = "/" + AssetUrls.RESOURCE_NAMESPACE + "/**")
+  @RequestMapping(name = "staticResource", value = "/" + RESOURCE_NAMESPACE + "/**")
   public void serveResource(HttpServletRequest request, HttpServletResponse response,
                             HttpSession session, @SiteParam Site site)
       throws IOException {
@@ -73,8 +75,8 @@ public class StaticResourceController extends WombatController {
 
     // Kludge to get "resource/**"
     String servletPath = request.getRequestURI();
-    String filePath = pathFrom(servletPath, AssetUrls.RESOURCE_NAMESPACE);
-    if (filePath.length() <= AssetUrls.RESOURCE_NAMESPACE.length() + 1) {
+    String filePath = pathFrom(servletPath, RESOURCE_NAMESPACE);
+    if (filePath.length() <= RESOURCE_NAMESPACE.length() + 1) {
       throw new NotFoundException(); // in case of a request to "resource/" root
     }
 
@@ -91,7 +93,7 @@ public class StaticResourceController extends WombatController {
     List<String> corsPrefixes = (List<String>) resourceConfig.get("cors");
     if (corsPrefixes == null) return false;
 
-    String resourceName = filePath.substring(AssetUrls.RESOURCE_NAMESPACE.length() + 1);
+    String resourceName = filePath.substring(RESOURCE_NAMESPACE.length() + 1);
     for (String prefix : corsPrefixes) {
       if (resourceName.startsWith(prefix)) {
         return true;

@@ -43,4 +43,3 @@
 <@js target="resource/js/vendor/underscore-min.js"/>
 <@js target="resource/js/vendor/underscore.string.min.js"/>
 
-<@renderJs />

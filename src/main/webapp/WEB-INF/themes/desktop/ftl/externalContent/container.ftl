@@ -60,7 +60,6 @@
 
 <#include "../common/footer/footer.ftl" />
 
-<@renderJs />
 
 <#if externalData.js_sources??>
   <#list externalData.js_sources as js_source>

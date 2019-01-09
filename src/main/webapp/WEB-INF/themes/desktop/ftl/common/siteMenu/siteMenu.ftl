@@ -136,6 +136,6 @@ MARKUP: using Foundation Top Bar for navigation -->
   <#include "siteMenuItems.ftl" />
 </#if>
 
-<@js src="resource/js/vendor/jquery.hoverIntent.js"/>
-<@js src="resource/js/components/menu_drop.js"/>
-<@js src="resource/js/components/hover_delay.js"/>
+<@js target="resource/js/vendor/jquery.hoverIntent.js"/>
+<@js target="resource/js/components/menu_drop.js"/>
+<@js target="resource/js/components/hover_delay.js"/>

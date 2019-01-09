@@ -20,7 +20,7 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<@js src="resource/js/taxonomy-browser.js" />
+<@js target="resource/js/taxonomy-browser.js" />
 <div id="taxonomy-browser" class="areas" data-search-url="<@siteLink handlerName="browse"/>">
   <div class="wrapper">
     <div class="taxonomy-header">

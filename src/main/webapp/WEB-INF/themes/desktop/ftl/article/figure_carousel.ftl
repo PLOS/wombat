@@ -54,8 +54,8 @@
     </div>
   </div>
 </div>
-<@js src="resource/js/vendor/jquery.touchswipe.js" />
-<@js src="resource/js/components/figure_carousel.js" />
-<@js src="resource/js/vendor/jquery.dotdotdot.js" />
+<@js target="resource/js/vendor/jquery.touchswipe.js" />
+<@js target="resource/js/components/figure_carousel.js" />
+<@js target="resource/js/vendor/jquery.dotdotdot.js" />
 </#if>
 

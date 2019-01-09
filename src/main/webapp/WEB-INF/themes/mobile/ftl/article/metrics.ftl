@@ -33,10 +33,10 @@
 <#include "../common/configJs.ftl" />
 <#include "../common/almConfigJs.ftl" />
 
-<@js src="resource/js/components/table_open.js"/>
-<@js src="resource/js/components/tooltip_hover.js"/>
-<@js src="resource/js/vendor/hover-enhanced.js"/>
-<@js src="resource/js/highcharts.js"/>
+<@js target="resource/js/components/table_open.js"/>
+<@js target="resource/js/components/tooltip_hover.js"/>
+<@js target="resource/js/vendor/hover-enhanced.js"/>
+<@js target="resource/js/highcharts.js"/>
 <#include "articleData.ftl" />
 <#include "metricsJs.ftl" />
 <@page_footer />

@@ -54,4 +54,4 @@
 <#include "searchJournal.ftl"/>
 
 
-<@js src="resource/js/components/placeholder_style.js"/>
+<@js target="resource/js/components/placeholder_style.js"/>

@@ -46,9 +46,9 @@
 </div>
 
 <#include "../common/footer/footer.ftl" />
-<@js src="resource/js/components/blogfeed.js" />
+<@js target="resource/js/components/blogfeed.js" />
 
-<@js src="resource/js/pages/home.js" />
+<@js target="resource/js/pages/home.js" />
 
 <@renderJs />
 

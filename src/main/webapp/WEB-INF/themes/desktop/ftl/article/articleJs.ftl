@@ -25,18 +25,18 @@
 <#include "../common/almQueryJs.ftl" />
 <#include "../common/almConfigJs.ftl" />
 
-<@js src="resource/js/components/show_onscroll.js"/>
+<@js target="resource/js/components/show_onscroll.js"/>
 
-<@js src="resource/js/util/alm_query.js"/>
+<@js target="resource/js/util/alm_query.js"/>
 
-<@js src="resource/js/components/twitter_module.js"/>
-<@js src="resource/js/vendor/spin.js"/>
+<@js target="resource/js/components/twitter_module.js"/>
+<@js target="resource/js/vendor/spin.js"/>
 
-<@js src="resource/js/pages/article.js"/>
-<@js src="resource/js/pages/article_sidebar.js"/>
+<@js target="resource/js/pages/article.js"/>
+<@js target="resource/js/pages/article_sidebar.js"/>
 
-<@js src="resource/js/pages/article_references.js"/>
-<@js src="resource/js//vendor/foundation/foundation.dropdown.js" />
+<@js target="resource/js/pages/article_references.js"/>
+<@js target="resource/js//vendor/foundation/foundation.dropdown.js" />
 
 
 <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>

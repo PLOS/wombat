@@ -43,4 +43,4 @@
   </div>
 </div>
 
-<@js src="resource/js/pages/related_content.js"/>
+<@js target="resource/js/pages/related_content.js"/>

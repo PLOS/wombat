@@ -32,17 +32,17 @@
 <#include "../common/almQueryJs.ftl" />
 <#include "../common/almConfigJs.ftl" />
 
-<@js src="resource/js/util/class.js"/>
-<@js src="resource/js/util/alm_query.js"/>
-<@js src="resource/js/components/pagination.js"/>
-<@js src="resource/js/components/range_datepicker.js"/>
-<@js src="resource/js/vendor/spin.js"/>
-<@js src="resource/js/vendor/foundation-datepicker.min.js"/>
-<@js src="resource/js/pages/advanced_search.js"/>
-<@js src="resource/js/components/search_results_alm_ajax.js"/>
-<@js src="resource/js/pages/search_results.js"/>
-<@js src="resource/js/components/toggle.js"/>
-<@js src="resource/js/vendor/underscore-min.js"/>
+<@js target="resource/js/util/class.js"/>
+<@js target="resource/js/util/alm_query.js"/>
+<@js target="resource/js/components/pagination.js"/>
+<@js target="resource/js/components/range_datepicker.js"/>
+<@js target="resource/js/vendor/spin.js"/>
+<@js target="resource/js/vendor/foundation-datepicker.min.js"/>
+<@js target="resource/js/pages/advanced_search.js"/>
+<@js target="resource/js/components/search_results_alm_ajax.js"/>
+<@js target="resource/js/pages/search_results.js"/>
+<@js target="resource/js/components/toggle.js"/>
+<@js target="resource/js/vendor/underscore-min.js"/>
 
 <@themeConfig map="journal" value="journalKey" ; v>
   <#assign journalKey = v />

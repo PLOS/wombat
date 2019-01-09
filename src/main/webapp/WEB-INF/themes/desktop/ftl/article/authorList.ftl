@@ -61,5 +61,5 @@
 </#if>
 
 </ul><#-- end div.author-list -->
-<@js src="resource/js/components/tooltip.js" />
+<@js target="resource/js/components/tooltip.js" />
 

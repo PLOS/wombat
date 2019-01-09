@@ -51,9 +51,9 @@ abstract class AssetDirective implements TemplateDirectiveModel {
   @Override
   public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
       throws TemplateException, IOException {
-    Object targetObj = params.get(getParameterName());
+    Object targetObj = params.get("target");
     if (targetObj == null) {
-      throw new TemplateModelException(getParameterName() + " parameter is required");
+      throw new TemplateModelException("target parameter is required");
     }
     String target = targetObj.toString();
 
@@ -64,10 +64,6 @@ abstract class AssetDirective implements TemplateDirectiveModel {
     addAsset(target, dependencies, env);
   }
 
-  /**
-   * @return the constant name of the FreeMarker attribute that supplies the target path
-   */
-  protected abstract String getParameterName();
 
   /**
    * @return the constant name of the request-scoped variable in which to store links of this asset type

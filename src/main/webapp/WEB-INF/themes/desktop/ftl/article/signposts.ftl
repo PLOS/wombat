@@ -26,7 +26,7 @@
 
 <#include "../common/counterJs.ftl" />
 <#include "../common/almQueryJs.ftl" />
-<@js src="resource/js/components/signposts.js"/>
+<@js target="resource/js/components/signposts.js"/>
 
 <ul id="almSignposts" class="signposts">
   <li id="loadingMetrics">

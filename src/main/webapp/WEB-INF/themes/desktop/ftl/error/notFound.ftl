@@ -43,7 +43,7 @@
   </div>
 </article>
 <#include "../common/footer/footer.ftl" />
-<@js src="resource/js/global.js" />
+<@js target="resource/js/global.js" />
 <@renderJs />
 
 </body>

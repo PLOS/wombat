@@ -38,6 +38,6 @@
   </#if>
   </ul>
 </div>
-<@js src="resource/js/components/scroll.js"/>
-<@js src="resource/js/components/nav_builder.js"/>
-<@js src="resource/js/components/floating_nav.js"/>
+<@js target="resource/js/components/scroll.js"/>
+<@js target="resource/js/components/nav_builder.js"/>
+<@js target="resource/js/components/floating_nav.js"/>

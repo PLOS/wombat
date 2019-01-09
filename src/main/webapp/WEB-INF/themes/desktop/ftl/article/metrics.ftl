@@ -52,12 +52,12 @@
 
 <#include "articleJs.ftl" />
 
-<@js src="resource/js/components/table_open.js"/>
-<@js src="resource/js/components/figshare.js"/>
-<@js src="resource/js/components/tooltip_hover.js"/>
+<@js target="resource/js/components/table_open.js"/>
+<@js target="resource/js/components/figshare.js"/>
+<@js target="resource/js/components/tooltip_hover.js"/>
 
-<@js src="resource/js/vendor/hover-enhanced.js"/>
-<@js src="resource/js/highcharts.js"/>
+<@js target="resource/js/vendor/hover-enhanced.js"/>
+<@js target="resource/js/highcharts.js"/>
 
 <#include "metricsJs.ftl" />
 <#include "../common/footer/footer.ftl" />

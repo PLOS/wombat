@@ -194,16 +194,16 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
 
-<@js src="resource/js/vendor/jquery.jsonp-2.4.0.js" />
+<@js target="resource/js/vendor/jquery.jsonp-2.4.0.js" />
 
 <#include "subjectAreaJs.ftl" />
 <#include "../../common/almConfigJs.ftl" />
 
-<@js src="resource/js/util/alm_query.js"/>
-<@js src="resource/js/components/search_results_alm.js"/>
-<@js src="resource/js/components/tooltip_hover.js"/>
-<@js src="resource/js/vendor/jquery.dotdotdot.js" />
-<@js src="resource/js/components/browse_results.js" />
+<@js target="resource/js/util/alm_query.js"/>
+<@js target="resource/js/components/search_results_alm.js"/>
+<@js target="resource/js/components/tooltip_hover.js"/>
+<@js target="resource/js/vendor/jquery.dotdotdot.js" />
+<@js target="resource/js/components/browse_results.js" />
 <@renderJs />
 
 

@@ -32,11 +32,6 @@ public class CssLinkDirective extends AssetDirective {
   static final String REQUEST_VARIABLE_NAME = "cssFiles";
 
   @Override
-  protected String getParameterName() {
-    return "target";
-  }
-
-  @Override
   protected String getRequestVariableName() {
     return REQUEST_VARIABLE_NAME;
   }

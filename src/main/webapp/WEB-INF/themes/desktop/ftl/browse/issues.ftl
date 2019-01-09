@@ -43,9 +43,9 @@
 
 <#include "../common/footer/footer.ftl" />
 
-<@js src="resource/js/components/scroll.js"/>
-<@js src="resource/js/components/floating_nav.js"/>
-<@js src="resource/js/pages/browse-issues.js"/>
+<@js target="resource/js/components/scroll.js"/>
+<@js target="resource/js/components/floating_nav.js"/>
+<@js target="resource/js/pages/browse-issues.js"/>
 
 <@renderJs />
 

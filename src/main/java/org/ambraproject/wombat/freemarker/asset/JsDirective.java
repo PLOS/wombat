@@ -32,11 +32,6 @@ public class JsDirective extends AssetDirective {
   static final String REQUEST_VARIABLE_NAME = "jsFiles";
 
   @Override
-  protected String getParameterName() {
-    return "src";
-  }
-
-  @Override
   protected String getRequestVariableName() {
     return REQUEST_VARIABLE_NAME;
   }

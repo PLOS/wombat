@@ -56,5 +56,5 @@
   -->
   </ul>
 </div>
-<@js src="resource/js/vendor/jquery.dotdotdot.js" />
-<@js src="resource/js/components/article_card.js" />
+<@js target="resource/js/vendor/jquery.dotdotdot.js" />
+<@js target="resource/js/components/article_card.js" />

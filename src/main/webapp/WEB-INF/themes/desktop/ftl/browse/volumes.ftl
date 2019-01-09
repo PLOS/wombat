@@ -42,7 +42,7 @@
     </section>
 
 <#include "../common/footer/footer.ftl" />
-<@js src="resource/js/components/browse_volumes.js"/>
+<@js target="resource/js/components/browse_volumes.js"/>
 <@renderJs />
 
 <@renderCssLinks />

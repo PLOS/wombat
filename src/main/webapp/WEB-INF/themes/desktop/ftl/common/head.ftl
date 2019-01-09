@@ -54,8 +54,8 @@
     <script type="text/javascript">
         var siteUrlPrefix = "<@siteLink path=''/>";
     </script>
-  <@js src="resource/js/vendor/modernizr-v2.7.1.js" />
-  <@js src="resource/js/vendor/detectizr.min.js" />
+  <@js target="resource/js/vendor/modernizr-v2.7.1.js" />
+  <@js target="resource/js/vendor/detectizr.min.js" />
   <@renderJs />
 
   <link rel="shortcut icon" href="<@siteLink path="resource/img/favicon.ico"/>" type="image/x-icon"/>

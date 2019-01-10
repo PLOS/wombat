@@ -83,10 +83,21 @@ concatJs(
    'src/main/webapp/WEB-INF/themes/root/resource/js/components/truncate_elem.js',
    'src/main/webapp/WEB-INF/themes/root/resource/js/components/tooltip_hover.js']);
 
+concatJs(
+  'article.min.js',
+  ['src/main/webapp/WEB-INF/themes/root/resource/js/components/show_onscroll.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/util/alm_query.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/components/twitter_module.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/spin.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/pages/article.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/pages/article_sidebar.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/pages/article_references.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/foundation/foundation.dropdown.js']);
+
 gulp.task('watch', function () {
   gulp.watch(['**/*.scss', '**/*.css'], ['build']);
 });
 
-gulp.task('compress-js', ['alm-query.min.js', 'base.min.js']);
+gulp.task('compress-js', ['alm-query.min.js', 'article.min.js', 'base.min.js']);
 gulp.task('build', ['sass', 'compress-css', 'compress-js']);
 gulp.task('default', ['sass', 'sass:watch', 'compress-css', 'compress-js']);

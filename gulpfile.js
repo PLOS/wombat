@@ -94,10 +94,22 @@ concatJs(
    'src/main/webapp/WEB-INF/themes/root/resource/js/pages/article_references.js',
    'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/foundation/foundation.dropdown.js']);
 
+concatJs(
+  'body.min.js',
+  ['src/main/webapp/WEB-INF/themes/root/resource/js/vendor/moment.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/navigation.js"',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/content.js"',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/share.js"',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/taxonomy.js"',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/util/class.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/underscore-min.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/underscore.string.min.js']);
+
+
 gulp.task('watch', function () {
   gulp.watch(['**/*.scss', '**/*.css'], ['build']);
 });
 
-gulp.task('compress-js', ['alm-query.min.js', 'article.min.js', 'base.min.js']);
+gulp.task('compress-js', ['alm-query.min.js', 'article.min.js', 'base.min.js', 'body.min.js']);
 gulp.task('build', ['sass', 'compress-css', 'compress-js']);
 gulp.task('default', ['sass', 'sass:watch', 'compress-css', 'compress-js']);

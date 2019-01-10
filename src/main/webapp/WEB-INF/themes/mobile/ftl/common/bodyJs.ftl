@@ -33,13 +33,4 @@
 <#--<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>-->
 
 <#--<script>window.jQuery || document.write('<script src="<@siteLink path="resource/js/vendor/jquery-2.1.4.min.js" />""><\/script>')</script>-->
-<@js target="resource/js/vendor/moment.js"/>
-<@js target="resource/js/navigation.js" />
-<@js target="resource/js/content.js" />
-<@js target="resource/js/share.js" />
-<@js target="resource/js/taxonomy.js" />
-<@js target="resource/js/util/class.js"/>
-
-<@js target="resource/js/vendor/underscore-min.js"/>
-<@js target="resource/js/vendor/underscore.string.min.js"/>
-
+<@js target="resource/js/body.min.js"/ >

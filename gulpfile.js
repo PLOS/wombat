@@ -105,11 +105,17 @@ concatJs(
    'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/underscore-min.js',
    'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/underscore.string.min.js']);
 
+concatJs(
+  'counter.min.js',
+  ['src/main/webapp/WEB-INF/themes/root/resource/js/vendor/q.min.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/util/class.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/util/error_factory.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/util/counter_query_promise.js']);
 
 gulp.task('watch', function () {
   gulp.watch(['**/*.scss', '**/*.css'], ['build']);
 });
 
-gulp.task('compress-js', ['alm-query.min.js', 'article.min.js', 'base.min.js', 'body.min.js']);
+gulp.task('compress-js', ['alm-query.min.js', 'article.min.js', 'base.min.js', 'body.min.js', 'counter.min.js']);
 gulp.task('build', ['sass', 'compress-css', 'compress-js']);
 gulp.task('default', ['sass', 'sass:watch', 'compress-css', 'compress-js']);

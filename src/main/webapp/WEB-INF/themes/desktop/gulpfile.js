@@ -35,7 +35,7 @@ gulp.task('sass', function () {
     .pipe(sass({
       sourceComments: 'map',
       sourceMap: 'sass',
-      outputStyle: 'nested'
+      outputStyle: 'compressed'
     }).on('error', sass.logError))
     .pipe(gulp.dest('resource/css'));
 });

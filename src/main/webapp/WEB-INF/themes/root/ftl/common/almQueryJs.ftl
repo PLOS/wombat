@@ -22,7 +22,4 @@
 
 <#include "almConfigJs.ftl" />
 
-<@js target="resource/js/vendor/q.min.js"/>
-<@js target="resource/js/util/class.js"/>
-<@js target="resource/js/util/error_factory.js"/>
-<@js target="resource/js/util/alm_query_promise.js"/>
+<@js target="resource/js/alm-query.min.js" />

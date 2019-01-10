@@ -49,10 +49,26 @@ gulp.task('compress-css', function () {
     .pipe(gulp.dest(process.env['OUTPUT_DIR']));
 });
 
+function concatJs(target, srcs) {
+  gulp.task(target, function() {
+    gulp.src(srcs)
+      .pipe(gulpif('!**/*.min.js', uglify({mangle: false})))
+      .pipe(concat(target))
+      .pipe(gulp.dest(process.env['OUTPUT_DIR'] + 'WEB-INF/themes/root/resource/js/'))
+  });
+}
+
+concatJs('alm-query.min.js',
+         ['src/main/webapp/WEB-INF/themes/root/resource/js/vendor/q.min.js',
+          'src/main/webapp/WEB-INF/themes/root/resource/js/util/class.js',
+          'src/main/webapp/WEB-INF/themes/root/resource/js/util/error_factory.js',
+          'src/main/webapp/WEB-INF/themes/root/resource/js/util/alm_query_promise.js'
+         ]);
+
 gulp.task('watch', function () {
   gulp.watch(['**/*.scss', '**/*.css'], ['build']);
 });
 
-gulp.task('compress-js', []);
+gulp.task('compress-js', ['alm-query.min.js']);
 gulp.task('build', ['sass', 'compress-css', 'compress-js']);
 gulp.task('default', ['sass', 'sass:watch', 'compress-css', 'compress-js']);

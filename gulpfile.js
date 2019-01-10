@@ -29,6 +29,9 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var gulpif = require('gulp-if');
 
 gulp.task('sass', function () {
   return gulp.src('src/main/webapp/WEB-INF/themes/desktop/sass/*.scss')
@@ -50,6 +53,6 @@ gulp.task('watch', function () {
   gulp.watch(['**/*.scss', '**/*.css'], ['build']);
 });
 
-gulp.task('build', ['sass', 'compress-css']);
-
-gulp.task('default', ['sass', 'sass:watch', 'compress-css']);
+gulp.task('compress-js', []);
+gulp.task('build', ['sass', 'compress-css', 'compress-js']);
+gulp.task('default', ['sass', 'sass:watch', 'compress-css', 'compress-js']);

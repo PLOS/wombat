@@ -1,9 +1,0 @@
-# Reserve this directory as the build target for sass-maven-plugin
-# Exclude all files except this one and jquery-ui css from source control
-/*
-/*/
-!/.gitignore
-!/jquery-ui.min.css
-
-# External CSS is temporarily in source control in the style guide repo
-

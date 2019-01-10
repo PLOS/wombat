@@ -31,13 +31,13 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 
 gulp.task('sass', function () {
-  return gulp.src('./sass/*.scss')
+  return gulp.src('src/main/webapp/WEB-INF/themes/desktop/sass/*.scss')
     .pipe(sass({
       sourceComments: 'map',
       sourceMap: 'sass',
       outputStyle: 'compressed'
     }).on('error', sass.logError))
-    .pipe(gulp.dest('resource/css'));
+    .pipe(gulp.dest(process.env['OUTPUT_DIR'] + '/WEB-INF/themes/desktop/resource/css'));
 });
 
 gulp.task('sass:watch', function () {

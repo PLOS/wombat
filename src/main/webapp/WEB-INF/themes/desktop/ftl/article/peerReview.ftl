@@ -78,12 +78,12 @@
                 <!-- reviewer attachments -->
                 <dl class="review-files">
                   <dt>Attachments</dt>
-                  <dd><a itemprop="url" href="#" target="_blank" title="Download .docx file">Attachment 1</a>  (532KB)
+                  <dd><a itemprop="url" href="#" target="_blank" title="Download .docx file">Attachment</a>  
                   <br>Submitted filename: <i>This is my file name.docx</i>
                   </dd>
-                  <dd><a itemprop="url" href="#" target="_blank" title="Download .docx file">Attachment 2</a>  (946 KB)<br>Submitted filename: <i>Shall I compare thee to a summers day.docx</i></dd>
-                  <dd><a itemprop="url" href="#" target="_blank" title="Download .docx file">Attachment 3</a>  (772 KB)<br>Submitted filename: <i>So much depends upon a red wheelbarrow.docx</i></dd>
-                  <dd><a itemprop="url" href="#" target="_blank" title="Download .csv file">Attachment 4</a> (1.1 MB)<br>Submitted filename: <i>One Data File 2018-09-27T11_53_36-0700.csv</i></dd>
+                  <dd><a itemprop="url" href="#" target="_blank" title="Download .docx file">Attachment</a>  <br>Submitted filename: <i>Shall I compare thee to a summers day.docx</i></dd>
+                  <dd><a itemprop="url" href="#" target="_blank" title="Download .docx file">Attachment</a><br>Submitted filename: <i>So much depends upon a red wheelbarrow.docx</i></dd>
+                  <dd><a itemprop="url" href="#" target="_blank" title="Download .csv file">Attachment</a><br>Submitted filename: <i>One Data File 2018-09-27T11_53_36-0700.csv</i></dd>
                 </dl>
             </div>
             <!-- end accordion container -->
@@ -92,7 +92,7 @@
           </td>
         </tr>
           <tr>
-          <th>Resubmission - Version 2 </th>
+          <th>Revision 1</th>
         </tr>
      <tr>
           <td>
@@ -157,7 +157,7 @@
           </td>
         </tr> 
         <tr>
-          <th>Resubmission - Version 3  </th>
+          <th>Revision 2 </th>
         </tr>
         <tr>
                     <td>
@@ -220,7 +220,50 @@
           </td>
         </tr>
        <tr>
-          <th>Accepted </th>
+          <th>Formally Accepted </th>
+        </tr>
+        <tr>
+          <td>         <div class="decision-letter" itemscope 
+               itemtype="http://schema.org/Review">
+             <div itemprop="itemReviewed" itemscope
+               itemtype="http://schema.org/ScholarlyArticle">
+                 
+                <@siteLink handlerName="article" absoluteLink=true queryParameters={"id" : article.doi} ; articleUrl>
+                <meta itemprop="url" content="${articleUrl}" />
+                </@siteLink>
+              
+            </div>
+                  <!-- trigger for expand and collapse -->
+            <a data-toggle="collapse" 
+              href="#decisionLetter4" 
+              role="button" 
+              aria-expanded="false" 
+              aria-controls="decisionLetter3">
+              Decision Letter
+            </a> 
+            <!-- end trigger for expand and collapse -->
+            - <span itemprop="author" itemscope 
+              itemtype="http://schema.org/Person">
+                <span itemprop="name">
+                Katie Hickling
+                </span>
+                </span>, Editor 
+              <div class="date">
+              <time class="decision-date" 
+                itemprop="dateCreated"
+                datetime="2019-01-01">
+                January 8, 2019
+              </time>
+            </div>
+            
+            <!-- accordion container -->
+            <div itemprop="reviewBody" class="collapse" id="decisionLetter4">
+                <p>[decisionLetter.contents]</p>
+            </div>
+            <!-- end accordion container -->
+          </div>
+          </td>
+
         </tr>
      
       </tbody>

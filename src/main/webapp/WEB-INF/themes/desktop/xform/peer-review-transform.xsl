@@ -2,7 +2,7 @@
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 >
-  <xsl:output method="html" />
+  <!--<xsl:output method="html" />-->
   <xsl:template match="/">
     <h2>Peer Review History</h2>
     <table class="table table-bordered review-history">
@@ -15,7 +15,7 @@
               </xsl:if>
               <xsl:if test="position() != 1">
                 Resubmission - Version
-                <xsl:value-of select="position() + 1"/>
+                <xsl:value-of select="position()"/>
               </xsl:if>
 
               <div class="date">
@@ -23,7 +23,7 @@
               </div>
             </th>
           </tr>
-          <xsl:if test="response/@response-type = 'author-response'">
+          <xsl:if test="sub-article/@article-type = 'author-comment'">
             <tr>
               <td>
                 <div class="date">
@@ -33,13 +33,13 @@
                 </div>
                 <div class="author-response">
                   <p>
-                    bogus author response text for <xsl:value-of select="response[@response-type = 'author-response']/front-stub/article-id"/>
+                    bogus author response text for <xsl:value-of select="sub-article[@article-type = 'author-comment']/front-stub/article-id"/>
                   </p>
                 </div>
               </td>
             </tr>
           </xsl:if>
-          <xsl:if test="response/@response-type = 'decision-letter'">
+          <xsl:if test="sub-article/@specific-use = 'decision-letter'">
             <tr>
               <td>
                 <div class="decision-letter">
@@ -65,7 +65,7 @@
                   </div>
                   <div>
                     <p>
-                      <xsl:value-of select="response[@response-type = 'decision-letter']/body"/>
+                      <xsl:value-of select="sub-article[@specific-use = 'decision-letter']/body"/>
                     </p>
                   </div>
                 </div>

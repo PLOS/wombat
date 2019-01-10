@@ -46,12 +46,6 @@ public class PeerReviewServiceImpl implements PeerReviewService {
   private String xmlToHtml(String peerReviewXml) {
     if (peerReviewXml == null) return null;
 
-    // TODO: Why is xlink: namespace not recognized by transform?
-    peerReviewXml = peerReviewXml.replaceAll("xlink:", "");
-
-    // TODO: this is a hack to remove html escape sequences from my sample non-typeset ingested content
-    peerReviewXml = peerReviewXml.replaceAll("&", "BLAH");
-
     XMLReader xmlReader = null;
     try {
       SAXParser sp = SAXParserFactory.newInstance().newSAXParser();
@@ -93,6 +87,14 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     List<String> peerReviewFileContents = new ArrayList<>();
     for (Map<String, ?> itemMetadata : peerReviewItems) {
       String content = getAssetContent(itemMetadata);
+
+      // TODO: include formal accept letter (specific-use="acceptance-letter"), though for now we haven't figured out how to display it.
+      if (!(content.contains("article-type=\"author-comment\"") || content.contains("specific-use=\"decision-letter\""))) {
+        continue;
+      }
+
+      // strip the XML declaration, which is not allowed when these are aggregated
+      content = content.replaceAll("<\\?xml(.+?)\\?>", "");
       peerReviewFileContents.add(content);
     }
 

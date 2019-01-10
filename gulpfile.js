@@ -40,10 +40,16 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(process.env['OUTPUT_DIR'] + '/WEB-INF/themes/desktop/resource/css'));
 });
 
-gulp.task('sass:watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+gulp.task('compress-css', function () {
+  return gulp.src('src/main/webapp/**/*.css')
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(gulp.dest(process.env['OUTPUT_DIR']));
 });
 
-gulp.task('build', ['sass']);
+gulp.task('watch', function () {
+  gulp.watch(['**/*.scss', '**/*.css'], ['build']);
+});
 
-gulp.task('default', ['sass', 'sass:watch']);
+gulp.task('build', ['sass', 'compress-css']);
+
+gulp.task('default', ['sass', 'sass:watch', 'compress-css']);

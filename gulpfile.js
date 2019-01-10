@@ -52,7 +52,7 @@ gulp.task('compress-css', function () {
 function concatJs(target, srcs) {
   gulp.task(target, function() {
     gulp.src(srcs)
-      .pipe(gulpif('!**/*.min.js', uglify({mangle: false})))
+      .pipe(gulpif('!**/*min.js', uglify({mangle: false})))
       .pipe(concat(target))
       .pipe(gulp.dest(process.env['OUTPUT_DIR'] + 'WEB-INF/themes/root/resource/js/'))
   });
@@ -65,10 +65,28 @@ concatJs('alm-query.min.js',
           'src/main/webapp/WEB-INF/themes/root/resource/js/util/alm_query_promise.js'
          ]);
 
+concatJs(
+  'base.min.js',
+  ['src/main/webapp/WEB-INF/themes/root/resource/js/vendor/fastclick/lib/fastclick.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/foundation/foundation.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/underscore-min.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/underscore.string.min.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/moment.js"',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/jquery-ui-effects.min.js"',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/foundation/foundation.tooltip.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/foundation/foundation.dropdown.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/foundation/foundation.tab.js"',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/foundation/foundation.reveal.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/foundation/foundation.slider.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/imagesLoaded.js"',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/components/toggle.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/components/truncate_elem.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/components/tooltip_hover.js']);
+
 gulp.task('watch', function () {
   gulp.watch(['**/*.scss', '**/*.css'], ['build']);
 });
 
-gulp.task('compress-js', ['alm-query.min.js']);
+gulp.task('compress-js', ['alm-query.min.js', 'base.min.js']);
 gulp.task('build', ['sass', 'compress-css', 'compress-js']);
 gulp.task('default', ['sass', 'sass:watch', 'compress-css', 'compress-js']);

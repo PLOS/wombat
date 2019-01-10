@@ -33,36 +33,4 @@
     </@themeConfig>
 </#if>
 
-<#--//
-fast click is required for mobile interactions for foundation.
--->
-<@js target="resource/js/vendor/fastclick/lib/fastclick.js"/>
-<@js target="resource/js/vendor/foundation/foundation.js"/>
-<@js target="resource/js/vendor/underscore-min.js"/>
-<@js target="resource/js/vendor/underscore.string.min.js"/>
-<@js target="resource/js/vendor/moment.js" />
-
-
-<#--//
-The jQuery UI effects core is needed for some components
--->
-<@js target="resource/js/vendor/jquery-ui-effects.min.js" />
-
-<#--//include foundation js widgets here *
-* unless you are absolutely sure they will only be in one scenario - then you
-should include it in the ftl file that needs it. -->
-<@js target="resource/js/vendor/foundation/foundation.tooltip.js"/>
-<@js target="resource/js/vendor/foundation/foundation.dropdown.js"/>
-<@js target="resource/js/vendor/foundation/foundation.tab.js" />
-<@js target="resource/js/vendor/foundation/foundation.reveal.js"/>
-<@js target="resource/js/vendor/foundation/foundation.slider.js"/>
-<@js target="resource/js/vendor/imagesLoaded.js" />
-
-<#-- // include components used universally here -->
-<@js target="resource/js/components/toggle.js"/>
-<@js target="resource/js/components/truncate_elem.js"/>
-<@js target="resource/js/components/tooltip_hover.js"/>
-
-
-
-
+<@js target="resource/js/base.min.js" />

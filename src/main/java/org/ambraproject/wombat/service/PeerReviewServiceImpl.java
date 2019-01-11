@@ -140,7 +140,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     ContentKey contentKey = ContentKey.createForUuid(crepoKey, uuid);
 
     CloseableHttpResponse response = corpusContentApi.request(contentKey, ImmutableList.of());
-    String letterContent = EntityUtils.toString(response.getEntity());
+    String letterContent = EntityUtils.toString(response.getEntity(), "UTF-8");
     return letterContent;
   }
 }

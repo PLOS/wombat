@@ -22,102 +22,73 @@
 
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.service.remote.CorpusContentApi;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import com.google.common.collect.ImmutableMap;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
-import static junit.framework.TestCase.assertNull;
+import static junit.framework.TestCase.assertTrue;
 
 @ContextConfiguration(classes = {PeerReviewServiceTest.class})
 public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
-  @Mock
-  public CorpusContentApi corpusContentApi;
-
-  @InjectMocks
-  private PeerReviewService peerReviewService = new PeerReviewServiceImpl();
-
-  @BeforeMethod
-  public void initMocks() {
-    MockitoAnnotations.initMocks(this);
-  }
-
   @Test
   public void testAsHtml() throws IOException {
-    Map<String, ?> stringMap = new HashMap<>();
-    String s = peerReviewService.asHtml(stringMap);
-    assertNull(s);
-  }
+    ImmutableMap<String, ? extends Map<String, ?>> itemTable = ImmutableMap.of(
+        "10.1371/journal.pone.0207232.r001", ImmutableMap.of(
+            "doi", "10.1371/journal.pone.0207232.r001",
+            "itemType", "reviewLetter",
+            "files", ImmutableMap.of("letter", ImmutableMap.of(
+                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r001.xml"
+            ))
+        ),
+        "10.1371/journal.pone.0207232.r002", ImmutableMap.of(
+            "doi", "10.1371/journal.pone.0207232.r001",
+            "itemType", "reviewLetter",
+            "files", ImmutableMap.of("letter", ImmutableMap.of(
+                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r002.xml"
+            ))
+        ),
+        "10.1371/journal.pone.0207232.r003", ImmutableMap.of(
+            "doi", "10.1371/journal.pone.0207232.r003",
+            "itemType", "reviewLetter",
+            "files", ImmutableMap.of("letter", ImmutableMap.of(
+                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r003.xml"
+            ))
+        )
+        );
 
-//
-//  @Test
-//  public void testGetPeerReview() throws IOException {
-//    Map<String, String> asset = new HashMap<>();
-//    asset.put("doi", "fakeDoi");
-//    List<Map<String, String>> assets = new ArrayList<>();
-//    assets.add(asset);
-//    HashMap<String, List<Map<String, String>>> ingestionMetadata = new HashMap<>();
-//    ingestionMetadata.put("assetsLinkedFromManuscript", assets);
-//
-//    Map<String, String> item = new HashMap<>();
-//    item.put("itemType", "reviewLetter");
-//    Map<String, Map<String, String>> itemTable = new HashMap<>();
-//    itemTable.put("fakeDoi", item);
-//
-//    Theme theme = mock(Theme.class);
-//    HashMap<String, Object> journalAttrs = new HashMap<>();
-//    journalAttrs.put("journalKey", "fakeKey");
-//    journalAttrs.put("journalName", "fakeName");
-//    when(theme.getConfigMap(any())).thenReturn(journalAttrs);
-//
-//    Site site = new Site("foo", theme, mock(SiteRequestScheme.class), "foo");
-//    ArticleMetadata articleMetadata = articleMetadataFactory.newInstance(site,
-//        mock(RequestedDoiVersion.class),
-//        mock(ArticlePointer.class),
-//        ingestionMetadata,
-//        itemTable,
-//        new HashMap());
-//
-//    assertNotNull(articleMetadata.getPeerReview());
-//  }
-//
-//  @Test
-//  public void testGetPeerReviewReturnsNullWhenNoPeerReviewItems() throws IOException {
-//    Map<String, String> asset = new HashMap<>();
-//    asset.put("doi", "fakeDoi");
-//    List<Map<String, String>> assets = new ArrayList<>();
-//    assets.add(asset);
-//    HashMap<String, List<Map<String, String>>> ingestionMetadata = new HashMap<>();
-//    ingestionMetadata.put("assetsLinkedFromManuscript", assets);
-//
-//    Map<String, String> item = new HashMap<>();
-//    item.put("itemType", "figure");
-//    Map<String, Map<String, String>> itemTable = new HashMap<>();
-//    itemTable.put("fakeDoi", item);
-//
-//    Theme theme = mock(Theme.class);
-//    HashMap<String, Object> journalAttrs = new HashMap<>();
-//    journalAttrs.put("journalKey", "fakeKey");
-//    journalAttrs.put("journalName", "fakeName");
-//    when(theme.getConfigMap(any())).thenReturn(journalAttrs);
-//
-//    Site site = new Site("foo", theme, mock(SiteRequestScheme.class), "foo");
-//    ArticleMetadata articleMetadata = articleMetadataFactory.newInstance(site,
-//        mock(RequestedDoiVersion.class),
-//        mock(ArticlePointer.class),
-//        ingestionMetadata,
-//        itemTable,
-//        new HashMap());
-//
-//    assertNull(articleMetadata.getPeerReview());
-//  }
+
+    PeerReviewService service = new PeerReviewServiceImpl() {
+      @Override
+      String getAssetContent(Map<String, ?> itemMetadata) throws IOException {
+        Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
+        Map<String, ?> letter = (Map<String, ?>) files.get("letter");
+        String crepoKey = (String) letter.get("crepoKey");
+
+        String letterContent = null;
+        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r001.xml") {
+          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\"><body>InitialDecisionLetterSampleBody</body></sub-article>";
+        }
+        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r002.xml") {
+          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article article-type=\"author-comment\"><body>FirstRoundAuthorResponseSampleBody</body></sub-article>";
+        }
+        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r003.xml") {
+          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\"><body>FirstRoundDecisionLetterSampleBody</body></sub-article>";
+        }
+        return letterContent;
+      }
+    };
+
+    String html = service.asHtml(itemTable);
+    assertTrue(html.contains("Original Submission"));
+    assertTrue(html.contains("InitialDecisionLetterSampleBody"));
+    assertTrue(html.contains("Resubmission - Version 2"));
+    assertTrue(html.contains("FirstRoundAuthorResponseSampleBody"));
+    assertTrue(html.contains("FirstRoundDecisionLetterSampleBody"));
+
+  }
 }

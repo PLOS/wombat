@@ -14,8 +14,8 @@
                 Original Submission
               </xsl:if>
               <xsl:if test="position() != 1">
-                Resubmission - Version
-                <xsl:value-of select="position()"/>
+                Resubmission - Version <xsl:value-of select="position()"/>
+
               </xsl:if>
 
               <div class="date">

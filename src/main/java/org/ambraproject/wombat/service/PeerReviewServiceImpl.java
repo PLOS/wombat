@@ -89,7 +89,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
       String content = getAssetContent(itemMetadata);
 
       // TODO: include formal accept letter (specific-use="acceptance-letter"), though for now we haven't figured out how to display it.
-      if (!(content.contains("article-type=\"author-comment\"") || content.contains("specific-use=\"decision-letter\""))) {
+      if (content.contains("specific-use=\"acceptance-letter\"")) {
         continue;
       }
 
@@ -126,12 +126,12 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * @return the content of the peer review asset
    * @throws IOException
    */
-  private String getAssetContent(Map<String, ?> itemMetadata) throws IOException {
+  String getAssetContent(Map<String, ?> itemMetadata) throws IOException {
     Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
-    Map<String, ?> fileMetadata = (Map<String, ?>) files.get("letter");
+    Map<String, ?> letter = (Map<String, ?>) files.get("letter");
 
-    String crepoKey = (String) fileMetadata.get("crepoKey");
-    UUID uuid = UUID.fromString((String) fileMetadata.get("crepoUuid"));
+    String crepoKey = (String) letter.get("crepoKey");
+    UUID uuid = UUID.fromString((String) letter.get("crepoUuid"));
     ContentKey contentKey = ContentKey.createForUuid(crepoKey, uuid);
 
     CloseableHttpResponse response = corpusContentApi.request(contentKey, ImmutableList.of());

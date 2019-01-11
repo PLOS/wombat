@@ -90,16 +90,7 @@
 
 <#include "../articleJs.ftl" />
 
-<@js target="resource/js/components/table_open.js"/>
-<@js target="resource/js/components/tooltip_hover.js"/>
-
-<@js target="resource/js/vendor/jquery.jsonp-2.4.0.js"/>
-<@js target="resource/js/vendor/hover-enhanced.js"/>
-<@js target="resource/js/highcharts.js"/>
-
-<@js target="resource/js/components/nav_builder.js"/>
-<@js target="resource/js/components/floating_nav.js"/>
-
+<@js target="resource/js/comments.min.js"/>
 
 </body>
 </html>

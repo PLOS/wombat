@@ -80,18 +80,10 @@
   <#include "../common/footer/footer.ftl" />
 
   <#include "articleJs.ftl" />
-  <@js target="resource/js/components/table_open.js"/>
   <#if !hasLaterVersion()>
     <#include "../common/figshareJs.ftl" />
   </#if>
-  <#--TODO: move article_lightbox.js to baseJs.ftl when the new lightbox is implemented sitewide -->
-  <@js target="resource/js/vendor/jquery.panzoom.min.js"/>
-  <@js target="resource/js/vendor/jquery.mousewheel.js"/>
-
-  <@js target="resource/js/components/lightbox.js"/>
-
-  <@js target="resource/js/pages/article_body.js"/>
-
+  <@js target="resource/js/research-article.min.js"/>
   <#include "mathjax.ftl">
 
 <#--

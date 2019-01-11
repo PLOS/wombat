@@ -122,11 +122,19 @@ concatJs(
    'src/main/webapp/WEB-INF/themes/root/resource/js/components/nav_builder.js',
    'src/main/webapp/WEB-INF/themes/root/resource/js/components/floating_nav.js']);
 
+concatJs(
+  'research-article.min.js',
+  ['src/main/webapp/WEB-INF/themes/root/resource/js/components/table_open.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/jquery.panzoom.min.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/vendor/jquery.mousewheel.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/components/lightbox.js',
+   'src/main/webapp/WEB-INF/themes/root/resource/js/pages/article_body.js']);
 
 gulp.task('watch', function () {
   gulp.watch(['**/*.scss', '**/*.css'], ['build']);
 });
 
-gulp.task('compress-js', ['alm-query.min.js', 'article.min.js', 'base.min.js', 'body.min.js', 'comments.min.js', 'counter.min.js']);
+gulp.task('compress-js', ['alm-query.min.js', 'article.min.js', 'base.min.js', 'body.min.js', 'comments.min.js', 'counter.min.js',
+                          'research-article.min.js']);
 gulp.task('build', ['sass', 'compress-css', 'compress-js']);
 gulp.task('default', ['sass', 'sass:watch', 'compress-css', 'compress-js']);

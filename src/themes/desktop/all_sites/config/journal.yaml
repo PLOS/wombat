@@ -7,6 +7,5 @@ otherJournals: {
   "PLoSNTD": "DesktopPlosNtds",
   "PLoSONE": "DesktopPlosOne",
   "PLoSPathogens": "DesktopPlosPathogens",
-  "PLoSClinicalTrials": "DesktopPlosClinicalTrials",
-  "ApertaRxiv": "DesktopApertaRxiv",
+  "PLoSClinicalTrials": "DesktopPlosClinicalTrials"
 }

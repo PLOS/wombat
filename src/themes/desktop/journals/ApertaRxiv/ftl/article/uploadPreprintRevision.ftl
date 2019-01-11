@@ -1,1 +1,0 @@
-User successfully authenticated with ORCID ID: ${orcidId}

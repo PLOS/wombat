@@ -13,9 +13,8 @@
               <xsl:if test="position() = 1">
                 Original Submission
               </xsl:if>
-              <xsl:if test="position() != 1">
-                Resubmission - Version <xsl:value-of select="position()"/>
-
+              <xsl:if test="position() > 1">
+                Revision <xsl:value-of select="position() - 1"/>
               </xsl:if>
 
               <div class="date">
@@ -34,6 +33,7 @@
                 <div class="author-response">
                   <p>
                     bogus author response text for <xsl:value-of select="sub-article[@article-type = 'author-comment']/front-stub/article-id"/>
+                    <!--TODO: show author responses (next ticket) <xsl:value-of select="sub-article[@article-type = 'author-comment']/body"/>-->
                   </p>
                 </div>
               </td>
@@ -76,7 +76,7 @@
         </xsl:for-each>
 
         <tr>
-          <th>Accepted</th>
+          <th>Formally Accepted</th>
         </tr>
       </tbody>
     </table>

@@ -22,6 +22,9 @@
 
 package org.ambraproject.wombat.service;
 
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.containsString;
+
 import com.google.common.collect.ImmutableMap;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -84,11 +87,11 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     };
 
     String html = service.asHtml(itemTable);
-    assertTrue(html.contains("Original Submission"));
-    assertTrue(html.contains("InitialDecisionLetterSampleBody"));
-    assertTrue(html.contains("Resubmission - Version 2"));
-    assertTrue(html.contains("FirstRoundAuthorResponseSampleBody"));
-    assertTrue(html.contains("FirstRoundDecisionLetterSampleBody"));
+    assertThat(html, containsString("Original Submission"));
+    assertThat(html, containsString("InitialDecisionLetterSampleBody"));
+    assertThat(html, containsString("Revision 1"));
+//    assertThat(html, containsString("FirstRoundAuthorResponseSampleBody"));
+    assertThat(html, containsString("FirstRoundDecisionLetterSampleBody"));
 
   }
 }

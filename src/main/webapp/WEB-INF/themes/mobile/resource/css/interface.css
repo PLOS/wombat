@@ -406,9 +406,8 @@ section.spotlight .spotlight-item .item-link {
   background: #525252;
 }
 
-.two-btn-container {
+.two-btn-container a {
   width: 100%;
-  background: #333333;
   -webkit-border-top-right-radius: 5px;
   -webkit-border-bottom-right-radius: 5px;
   -webkit-border-bottom-left-radius: 5px;
@@ -426,20 +425,8 @@ section.spotlight .spotlight-item .item-link {
   background-clip: padding-box;
   text-align: center;
   color: #fff;
-}
-
-.two-btn-container a {
-  width: 50%;
-  color: #4A1010;
-  display: inline-block;
-  font-family: Verdana, 'Arial', sans-serif;
   font-size: 1.4em;
   text-align: center;
-}
-
-.two-btn-container .btn-left {
-  border-right: 5px solid #fff;
-  margin-left: -5px;
 }
 
 .rounded {
@@ -462,16 +449,16 @@ section.spotlight .spotlight-item .item-link {
   background-clip: padding-box;
   background: #333333;
   color: #fff;
-  font-size: 1.1em;
+  font-size: 1.4em;
 }
 
 .button-pair a.rounded {
   float: left;
 }
 
-.button-pair a.rounded:last-child {
+/*.button-pair a.rounded:last-child {
   float: right;
-}
+}*/
 
 .close {
   width: 20px;
@@ -510,11 +497,12 @@ section.spotlight .spotlight-item .item-link {
 
 .buttongroup > button {
   padding: 0 10px;
-  height: 35px;
-  line-height: 35px;
+  height: 44px;
+  line-height: 44px;
   background: #333333;
   color: #fff;
   display: table-cell;
+  font-size: 1.4em;
 }
 
 .buttongroup > button:first-child {
@@ -558,11 +546,12 @@ section.spotlight .spotlight-item .item-link {
 }
 
 .filter-button {
-  font-size: 1em;
+  font-size: 1.4em;
   font-family: 'Arial', sans-serif;
   font-weight: bold;
   padding: 0 10px;
-  height: 30px;
+  height: 44px;
+  line-height: 44px;
 }
 
 .filter-button span {
@@ -608,7 +597,7 @@ section.spotlight .spotlight-item .item-link {
   padding-bottom: 20px;
 }
 
-.full-menu-container nav.full-menu {
+.expander {
   padding: 0 10px;
 }
 
@@ -629,7 +618,7 @@ section.spotlight .spotlight-item .item-link {
   margin-top: -4px;
   position: absolute;
   top: 50%;
-  right: 0;
+  right: 10px;
   overflow: hidden;
   text-indent: -1000px;
   display: block;
@@ -981,15 +970,6 @@ nav.footer-secondary-menu li a {
   margin-top: 1em;
 }
 
-/*
-  Font specs from PSD:
-  * H1 (Article title) Open Sans Bold 20
-  * H2 (Accordion items) Open Sans Regular 18
-  * H3 Arial Bold 16
-  * H4 Arial Regular 16
-  * H5 Arial Bold 15
-  * H6 Arial Regular 15
-*/
 .article-item h2 {
   font-size: 1.8em;
   margin-top: 1em;
@@ -1156,7 +1136,6 @@ nav.footer-secondary-menu li a {
   right: 0;
   top: 0;
   width: 35px;
-  border-left: 7px solid #fff;
   overflow: hidden;
   text-indent: -1000px;
   display: block;
@@ -1565,7 +1544,7 @@ nav.footer-secondary-menu li a {
 }
 
 .save-article.full.saved {
-  background: #f8af2d;
+  background: #d7df23;
   color: #333333;
 }
 

@@ -148,9 +148,10 @@
 
 #article-content .article-save-options a.rounded {
   font-weight: bold;
-  font-size: 1em;
-  padding: 10px;
+  font-size: 1.4em;
+  padding: 1em;
   text-align: center;
+  text-transform: uppercase;
 }
 
 #article-content .article-save-options a.rounded.full {
@@ -158,7 +159,7 @@
 }
 
 #article-content .article-save-options .button-row + .button-row {
-  margin-top: 10px;
+  margin-top: 1em;
 }
 
 #article-content .article-save-options .button-row + .button-row:last-child {
@@ -217,16 +218,17 @@ margin-bottom: 5px;}
 #page-results .filter-container {
   border-bottom: 1px solid #d3d3d3;
   padding: 10px;
+  text-align: center;
 }
 
 #page-results .filter-container h3 {
-  font-size: 1.5em;
-  float: left;
-  line-height: 30px;
+  font-size: 1.2em;
+ /* float: left;*/
+  line-height: 44px;
 }
 
 #page-results .filter-container .filter-button {
-  float: right;
+  width: 90%;
 }
 
 #page-results #display-options {

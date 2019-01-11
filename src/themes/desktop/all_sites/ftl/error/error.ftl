@@ -60,7 +60,6 @@
 
 <#include "../common/footer/footer.ftl" />
 <@js target="resource/js/global.js" />
-<@renderJs />
 
 </body>
 </html>

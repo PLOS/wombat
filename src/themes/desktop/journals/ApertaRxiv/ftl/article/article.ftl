@@ -157,7 +157,6 @@
 <@js target="resource/js/aperta_article.js"></@js>
 <@js target="resource/js/aperta_counter.js"></@js>
 <@js target="resource/js/pages/comments.js" />
-<@renderJs />
 
 </body>
 </html>

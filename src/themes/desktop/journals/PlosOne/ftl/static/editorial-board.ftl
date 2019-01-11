@@ -39,6 +39,5 @@
 
 <@js target="resource/js/global.js" />
 <#include "../common/edboardJS.ftl" />
-<@renderJs />
 </body>
 </html>

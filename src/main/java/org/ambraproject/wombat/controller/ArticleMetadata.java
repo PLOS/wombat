@@ -175,7 +175,7 @@ public class ArticleMetadata {
 
     model.addAttribute("revisionMenu", getRevisionMenu());
 
-    model.addAttribute("peerReview", getPeerReview());
+    model.addAttribute("peerReview", getPeerReviewHtml());
     return this;
   }
 
@@ -228,7 +228,7 @@ public class ArticleMetadata {
   /**
    * Get peer review as an HTML snippet.
    */
-  String getPeerReview() throws IOException {
+  String getPeerReviewHtml() throws IOException {
     return factory.peerReviewService.asHtml(itemTable);
   }
 

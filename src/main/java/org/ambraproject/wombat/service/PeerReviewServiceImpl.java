@@ -86,7 +86,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
 
     List<String> peerReviewFileContents = new ArrayList<>();
     for (Map<String, ?> itemMetadata : peerReviewItems) {
-      String content = getAssetContent(itemMetadata);
+      String content = getReviewLetterContent(itemMetadata);
 
       // TODO: include formal accept letter (specific-use="acceptance-letter"), though for now we haven't figured out how to display it.
       if (content.contains("specific-use=\"acceptance-letter\"")) {
@@ -103,15 +103,16 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     }
 
     // Group into revisions, all but first include an author response and a decision letter
-    List<String> partitionableResponses = peerReviewFileContents.subList(1, peerReviewFileContents.size());
-    List<List<String>> revisions = new ArrayList<>(Lists.partition(partitionableResponses, 2));
+    // TODO: Group on revision number, which is in the letter XML
+    List<String> partitionableReviewLetters = peerReviewFileContents.subList(1, peerReviewFileContents.size());
+    List<List<String>> revisions = new ArrayList<>(Lists.partition(partitionableReviewLetters, 2));
     List<String> firstSubmission = new ArrayList<>();
     firstSubmission.add(peerReviewFileContents.get(0));
     revisions.add(0, firstSubmission);
 
     String peerReviewContent  = "";
-    for ( List<String> responses : revisions) {
-      peerReviewContent  += "<revision>" + String.join("", responses) + "</revision>";
+    for ( List<String> revisionLetters : revisions) {
+      peerReviewContent  += "<revision>" + String.join("", revisionLetters) + "</revision>";
     }
 
     // wrap it in a root node
@@ -126,7 +127,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * @return the content of the peer review asset
    * @throws IOException
    */
-  String getAssetContent(Map<String, ?> itemMetadata) throws IOException {
+  String getReviewLetterContent(Map<String, ?> itemMetadata) throws IOException {
     Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
     Map<String, ?> letter = (Map<String, ?>) files.get("letter");
 
@@ -135,7 +136,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     ContentKey contentKey = ContentKey.createForUuid(crepoKey, uuid);
 
     CloseableHttpResponse response = corpusContentApi.request(contentKey, ImmutableList.of());
-    String responseBody = EntityUtils.toString(response.getEntity());
-    return responseBody;
+    String letterContent = EntityUtils.toString(response.getEntity());
+    return letterContent;
   }
 }

@@ -65,9 +65,9 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
         );
 
 
-    PeerReviewService service = new PeerReviewServiceImpl() {
+    PeerReviewService serviceWithMockedContent = new PeerReviewServiceImpl() {
       @Override
-      String getAssetContent(Map<String, ?> itemMetadata) throws IOException {
+      String getReviewLetterContent(Map<String, ?> itemMetadata) throws IOException {
         Map<String, ?> files = (Map<String, ?>) itemMetadata.get("files");
         Map<String, ?> letter = (Map<String, ?>) files.get("letter");
         String crepoKey = (String) letter.get("crepoKey");
@@ -86,7 +86,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
       }
     };
 
-    String html = service.asHtml(itemTable);
+    String html = serviceWithMockedContent.asHtml(itemTable);
     assertThat(html, containsString("Original Submission"));
     assertThat(html, containsString("InitialDecisionLetterSampleBody"));
     assertThat(html, containsString("Revision 1"));

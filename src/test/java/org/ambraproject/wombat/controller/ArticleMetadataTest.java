@@ -7,7 +7,6 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ArticleResolutionService;
-import org.ambraproject.wombat.service.PeerReviewService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.mockito.InjectMocks;
@@ -67,7 +66,7 @@ public class ArticleMetadataTest extends AbstractTestNGSpringContextTests {
     doReturn(null).when(articleMetadata).getCategoryTerms();
     doReturn(null).when(articleMetadata).getRelatedArticles();
     doReturn(null).when(articleMetadata).getRevisionMenu();
-    doReturn(null).when(articleMetadata).getPeerReview();
+    doReturn(null).when(articleMetadata).getPeerReviewHtml();
     doNothing().when(articleMetadata).populateAuthors(any());
 
     articleMetadata.populate(mock(HttpServletRequest.class), mock(Model.class));
@@ -78,7 +77,7 @@ public class ArticleMetadataTest extends AbstractTestNGSpringContextTests {
     verify(articleMetadata).getCategoryTerms();
     verify(articleMetadata).getRelatedArticles();
     verify(articleMetadata).getRevisionMenu();
-    verify(articleMetadata).getPeerReview();
+    verify(articleMetadata).getPeerReviewHtml();
     verify(articleMetadata).populateAuthors(any());
   }
 

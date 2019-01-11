@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
+import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.*;
@@ -57,7 +58,10 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     }
     SAXSource xmlSource = new SAXSource(xmlReader, new InputSource(new StringReader(peerReviewXml)));
 
-    StreamSource xslSource = new StreamSource(new File("src/main/webapp/WEB-INF/themes/desktop/xform/peer-review-transform.xsl"));
+    ClassLoader classLoader = getClass().getClassLoader();
+    InputStream stream = classLoader.getResourceAsStream("peer-review-transform.xsl");
+    StreamSource xslSource = new StreamSource(stream);
+
     StringWriter htmlWriter = new StringWriter();
     try {
       Transformer transformer = TransformerFactory.newInstance().newTransformer(xslSource);

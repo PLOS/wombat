@@ -59,9 +59,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     try {
       SAXParser sp = SAXParserFactory.newInstance().newSAXParser();
       xmlReader = sp.getXMLReader();
-    } catch (ParserConfigurationException e) {
-      throw new RuntimeException(e);
-    } catch (SAXException e) {
+    } catch (ParserConfigurationException | SAXException e) {
       throw new RuntimeException(e);
     }
     SAXSource xmlSource = new SAXSource(xmlReader, new InputSource(new StringReader(allReviewsXml)));

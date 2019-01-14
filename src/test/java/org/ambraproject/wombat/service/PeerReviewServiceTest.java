@@ -30,7 +30,6 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.Map;
 
-import static junit.framework.TestCase.assertEquals;
 import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
 import static org.ambraproject.wombat.util.FileUtils.read;
 import static org.hamcrest.CoreMatchers.containsString;
@@ -64,7 +63,6 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
             ))
         )
     );
-
 
     PeerReviewService serviceWithMockedContent = new PeerReviewServiceImpl() {
       @Override
@@ -111,12 +109,5 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     assertThat(html.replaceAll("\\s+", ""),  // strip all whitespace
         containsString("<h2>PeerReviewHistory</h2>"));
-  }
-
-  @Test
-  public void testGetRevisionNumber() throws IOException {
-    Integer revisionNumber = new PeerReviewServiceImpl().getRevisionNumber("<sub-article><front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>5</meta-value></custom-meta></custom-meta-group></front-stub><body></body></sub-article>");
-    assertEquals(5, revisionNumber.intValue());
-
   }
 }

@@ -119,7 +119,9 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     // group letters by revision
     Map<Integer, List<String>> lettersByRevision = new TreeMap<>();
     for (String letter : reviewLetters) {
-      Integer revisionNumber = getRevisionNumber(letter);
+      String revisionAsString = XmlUtil.extractText(XmlUtil.extractElement(letter, "meta-value"));
+      Integer revisionNumber = new Integer(revisionAsString);
+
       if (lettersByRevision.get(revisionNumber) == null) {
         lettersByRevision.put(revisionNumber, new ArrayList<>());
       }
@@ -134,17 +136,6 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     // wrap it in a root node
     peerReviewContent = "<peer-review>" + peerReviewContent + "</peer-review>";
     return peerReviewContent;
-  }
-
-  /**
-   * Parse the revision number from the review letter XML
-   *
-   * @param reviewLetterXml
-   * @return
-   */
-  Integer getRevisionNumber(String reviewLetterXml) throws IOException {
-    String s = XmlUtil.extractText(XmlUtil.extractElement(reviewLetterXml, "meta-value"));
-    return new Integer(s);
   }
 
   /**

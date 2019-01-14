@@ -19,9 +19,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -40,6 +37,12 @@ public class PeerReviewServiceImpl implements PeerReviewService {
   @Autowired
   private CorpusContentApi corpusContentApi;
 
+  /**
+   * Given an article's items, generates an HTML snippet representing the Peer Review tab of an article page.
+   * @param itemTable a list of article items as per ArticleService.getItemTable
+   * @return an HTML snippet
+   * @throws IOException
+   */
   public String asHtml(Map<String, ?> itemTable) throws IOException {
     String xml = getAllReviewsXml(itemTable);
     String html = xmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
@@ -50,6 +53,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * Convert peer review XML to HTML
    *
    * @param allReviewsXml
+   * @param xsl
    * @return an HTML representation of peer review content
    */
   String xmlToHtml(String allReviewsXml, String xsl) {
@@ -113,17 +117,17 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     }
 
     // group letters by revision
-    Map<Integer,List<String>> lettersByRevision = new TreeMap<>();
+    Map<Integer, List<String>> lettersByRevision = new TreeMap<>();
     for (String letter : reviewLetters) {
       Integer revisionNumber = getRevisionNumber(letter);
-      if(lettersByRevision.get(revisionNumber) == null) {
+      if (lettersByRevision.get(revisionNumber) == null) {
         lettersByRevision.put(revisionNumber, new ArrayList<>());
       }
       lettersByRevision.get(revisionNumber).add(letter);
     }
 
     String peerReviewContent = "";
-    for( List<String> revisionLetters: lettersByRevision.values()){
+    for (List<String> revisionLetters : lettersByRevision.values()) {
       peerReviewContent += "<revision>" + String.join("", revisionLetters) + "</revision>";
     }
 
@@ -134,6 +138,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
 
   /**
    * Parse the revision number from the review letter XML
+   *
    * @param reviewLetterXml
    * @return
    */

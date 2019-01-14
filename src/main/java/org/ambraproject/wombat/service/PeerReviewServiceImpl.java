@@ -24,7 +24,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.UUID;
 
 
 public class PeerReviewServiceImpl implements PeerReviewService {
@@ -78,9 +82,9 @@ public class PeerReviewServiceImpl implements PeerReviewService {
   /**
    * Aggregate the XML for all rounds of Peer Review
    *
+   * @param itemTable an Article's itemTable
    * @return entirety of peer review XML content
    * @throws IOException
-   * @param itemTable an Article's itemTable
    */
   private String getAllReviewsXml(Map<String, ?> itemTable) throws IOException {
     List<Map<String, ?>> reviewLetterItems = new ArrayList<>();
@@ -116,13 +120,13 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     firstSubmission.add(reviewLetters.get(0));
     revisions.add(0, firstSubmission);
 
-    String peerReviewContent  = "";
-    for ( List<String> revisionLetters : revisions) {
-      peerReviewContent  += "<revision>" + String.join("", revisionLetters) + "</revision>";
+    String peerReviewContent = "";
+    for (List<String> revisionLetters : revisions) {
+      peerReviewContent += "<revision>" + String.join("", revisionLetters) + "</revision>";
     }
 
     // wrap it in a root node
-    peerReviewContent = "<peer-review>" + peerReviewContent  + "</peer-review>";
+    peerReviewContent = "<peer-review>" + peerReviewContent + "</peer-review>";
     return peerReviewContent;
   }
 

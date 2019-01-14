@@ -10,12 +10,14 @@
         <xsl:for-each select="peer-review/revision">
           <tr>
             <th>
-              <xsl:if test="position() = 1">
-                Original Submission
-              </xsl:if>
-              <xsl:if test="position() > 1">
-                Revision <xsl:value-of select="position() - 1"/>
-              </xsl:if>
+              <xsl:choose>
+                <xsl:when test="position() = 1">
+                  Original Submission
+                </xsl:when>
+                <xsl:otherwise>
+                  Revision <xsl:value-of select="position() - 1"/>
+                </xsl:otherwise>
+              </xsl:choose>
 
               <div class="date">
                 <span class="decision-date">January 1, 1979</span>

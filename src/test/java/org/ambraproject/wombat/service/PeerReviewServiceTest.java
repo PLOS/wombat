@@ -22,12 +22,6 @@
 
 package org.ambraproject.wombat.service;
 
-import static junit.framework.TestCase.assertEquals;
-import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
-import static org.ambraproject.wombat.util.FileUtils.*;
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.junit.Assert.assertThat;
-
 import com.google.common.collect.ImmutableMap;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -36,7 +30,11 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.Map;
 
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.assertEquals;
+import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
+import static org.ambraproject.wombat.util.FileUtils.read;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertThat;
 
 @ContextConfiguration(classes = {PeerReviewServiceTest.class})
 public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
@@ -65,7 +63,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
                 "crepoKey", "info:doi/10.1371/journal.pone.0207232.r003.xml"
             ))
         )
-        );
+    );
 
 
     PeerReviewService serviceWithMockedContent = new PeerReviewServiceImpl() {
@@ -111,12 +109,12 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
     String html = svc.xmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
 
-    assertThat(html.replaceAll("\\s+",""),  // strip all whitespace
-      containsString("<h2>PeerReviewHistory</h2>"));
+    assertThat(html.replaceAll("\\s+", ""),  // strip all whitespace
+        containsString("<h2>PeerReviewHistory</h2>"));
   }
 
   @Test
-  public void testGetRevisionNumber() {
+  public void testGetRevisionNumber() throws IOException {
     Integer revisionNumber = new PeerReviewServiceImpl().getRevisionNumber("<sub-article><front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>5</meta-value></custom-meta></custom-meta-group></front-stub><body></body></sub-article>");
     assertEquals(5, revisionNumber.intValue());
 

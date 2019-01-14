@@ -139,18 +139,9 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * @param reviewLetterXml
    * @return
    */
-  Integer getRevisionNumber(String reviewLetterXml) {
-    XPathFactory xpathFactory = XPathFactory.newInstance();
-    XPath xpath = xpathFactory.newXPath();
-
-    InputSource source = new InputSource(new StringReader(reviewLetterXml));
-    String revision;
-    try {
-      revision = xpath.evaluate("/sub-article/front-stub/custom-meta-group/custom-meta/meta-value", source);
-    } catch (XPathExpressionException e) {
-      throw new RuntimeException(e);
-    }
-    return new Integer(revision);
+  Integer getRevisionNumber(String reviewLetterXml) throws IOException {
+    String s = XmlUtil.extractText(XmlUtil.extractElement(reviewLetterXml, "meta-value"));
+    return new Integer(s);
   }
 
   /**

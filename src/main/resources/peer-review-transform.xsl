@@ -32,8 +32,8 @@
                 </div>
                 <div class="author-response">
                   <p>
-                     <!--<xsl:value-of select="sub-article[@article-type = 'author-comment']/front-stub/article-id"/>-->
-                    <xsl:copy-of select="sub-article[@article-type = 'author-comment']/body"/>
+                     bogus author response text for: <xsl:value-of select="sub-article[@article-type = 'author-comment']/front-stub/article-id"/>
+                    <!--<xsl:copy-of select="sub-article[@article-type = 'author-comment']/body"/>-->
                   </p>
                 </div>
               </td>

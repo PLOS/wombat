@@ -32,8 +32,8 @@
                 </div>
                 <div class="author-response">
                   <p>
-                    bogus author response text for <xsl:value-of select="sub-article[@article-type = 'author-comment']/front-stub/article-id"/>
-                    <!--TODO: show author responses (next ticket) <xsl:value-of select="sub-article[@article-type = 'author-comment']/body"/>-->
+                     <!--<xsl:value-of select="sub-article[@article-type = 'author-comment']/front-stub/article-id"/>-->
+                    <xsl:copy-of select="sub-article[@article-type = 'author-comment']/body"/>
                   </p>
                 </div>
               </td>
@@ -65,7 +65,7 @@
                   </div>
                   <div>
                     <p>
-                      <xsl:value-of select="sub-article[@specific-use = 'decision-letter']/body"/>
+                      <xsl:copy-of select="sub-article[@specific-use = 'decision-letter']/body"/>
                     </p>
                   </div>
                 </div>

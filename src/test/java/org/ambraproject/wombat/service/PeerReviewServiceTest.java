@@ -22,8 +22,10 @@
 
 package org.ambraproject.wombat.service;
 
-import static org.junit.Assert.assertThat;
+import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
+import static org.ambraproject.wombat.util.FileUtils.*;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertThat;
 
 import com.google.common.collect.ImmutableMap;
 import org.springframework.test.context.ContextConfiguration;
@@ -93,5 +95,16 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 //    assertThat(html, containsString("FirstRoundAuthorResponseSampleBody"));
     assertThat(html, containsString("FirstRoundDecisionLetterSampleBody"));
 
+  }
+
+  @Test
+  public void testXslt() {
+    String xml = read("xsl/peer-review/pone.0207232.xml");
+
+    PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
+    String html = svc.xmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+
+    assertThat(html.replaceAll("\\s+",""),  // strip all whitespace
+      containsString("<h2>PeerReviewHistory</h2>"));
   }
 }

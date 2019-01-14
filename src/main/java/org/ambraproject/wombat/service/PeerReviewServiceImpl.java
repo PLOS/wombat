@@ -29,12 +29,14 @@ import java.util.*;
 
 public class PeerReviewServiceImpl implements PeerReviewService {
 
+  public static final String DEFAULT_PEER_REVIEW_XSL = "peer-review-transform.xsl";
+
   @Autowired
   private CorpusContentApi corpusContentApi;
 
   public String asHtml(Map<String, ?> itemTable) throws IOException {
     String xml = getAllReviewsXml(itemTable);
-    String html = xmlToHtml(xml);
+    String html = xmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
     return html;
   }
 
@@ -44,7 +46,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * @param allReviewsXml
    * @return an HTML representation of peer review content
    */
-  private String xmlToHtml(String allReviewsXml) {
+  String xmlToHtml(String allReviewsXml, String xsl) {
     if (allReviewsXml == null) return null;
 
     XMLReader xmlReader = null;
@@ -59,7 +61,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     SAXSource xmlSource = new SAXSource(xmlReader, new InputSource(new StringReader(allReviewsXml)));
 
     ClassLoader classLoader = getClass().getClassLoader();
-    InputStream stream = classLoader.getResourceAsStream("peer-review-transform.xsl");
+    InputStream stream = classLoader.getResourceAsStream(xsl);
     StreamSource xslSource = new StreamSource(stream);
 
     StringWriter htmlWriter = new StringWriter();

@@ -1,7 +1,6 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -20,6 +19,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -112,22 +114,43 @@ public class PeerReviewServiceImpl implements PeerReviewService {
       return null;
     }
 
-    // Group into revisions, all but first include an author response and a decision letter
-    // TODO: Group on revision number, which is in the letter XML
-    List<String> partitionableReviewLetters = reviewLetters.subList(1, reviewLetters.size());
-    List<List<String>> revisions = new ArrayList<>(Lists.partition(partitionableReviewLetters, 2));
-    List<String> firstSubmission = new ArrayList<>();
-    firstSubmission.add(reviewLetters.get(0));
-    revisions.add(0, firstSubmission);
+    // group letters by revision
+    Map<Integer,List<String>> lettersByRevision = new TreeMap<>();
+    for (String letter : reviewLetters) {
+      Integer revisionNumber = getRevisionNumber(letter);
+      if(lettersByRevision.get(revisionNumber) == null) {
+        lettersByRevision.put(revisionNumber, new ArrayList<>());
+      }
+      lettersByRevision.get(revisionNumber).add(letter);
+    }
 
     String peerReviewContent = "";
-    for (List<String> revisionLetters : revisions) {
+    for( List<String> revisionLetters: lettersByRevision.values()){
       peerReviewContent += "<revision>" + String.join("", revisionLetters) + "</revision>";
     }
 
     // wrap it in a root node
     peerReviewContent = "<peer-review>" + peerReviewContent + "</peer-review>";
     return peerReviewContent;
+  }
+
+  /**
+   * Parse the revision number from the review letter XML
+   * @param reviewLetterXml
+   * @return
+   */
+  Integer getRevisionNumber(String reviewLetterXml) {
+    XPathFactory xpathFactory = XPathFactory.newInstance();
+    XPath xpath = xpathFactory.newXPath();
+
+    InputSource source = new InputSource(new StringReader(reviewLetterXml));
+    String revision;
+    try {
+      revision = xpath.evaluate("/sub-article/front-stub/custom-meta-group/custom-meta/meta-value", source);
+    } catch (XPathExpressionException e) {
+      throw new RuntimeException(e);
+    }
+    return new Integer(revision);
   }
 
   /**

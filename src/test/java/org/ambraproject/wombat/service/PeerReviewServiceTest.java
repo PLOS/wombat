@@ -30,9 +30,11 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.Map;
 
+import static junit.framework.TestCase.assertNull;
 import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
 import static org.ambraproject.wombat.util.FileUtils.read;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 @ContextConfiguration(classes = {PeerReviewServiceTest.class})
@@ -49,7 +51,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
             ))
         ),
         "10.1371/journal.pone.0207232.r002", ImmutableMap.of(
-            "doi", "10.1371/journal.pone.0207232.r001",
+            "doi", "10.1371/journal.pone.0207232.r002",
             "itemType", "reviewLetter",
             "files", ImmutableMap.of("letter", ImmutableMap.of(
                 "crepoKey", "info:doi/10.1371/journal.pone.0207232.r002.xml"
@@ -101,11 +103,23 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
   }
 
   @Test
+  public void testAsHtmlHandlesNoPeerReviewItems() throws IOException {
+    ImmutableMap<String, ? extends Map<String, ?>> itemTable = ImmutableMap.of(
+        "10.1371/journal.pone.0207232.t001", ImmutableMap.of(
+            "doi", "10.1371/journal.pone.0207232.t001",
+            "itemType", "table"
+        )
+    );
+    String html = new PeerReviewServiceImpl().asHtml(itemTable);
+    assertNull(html);
+  }
+
+  @Test
   public void testXslt() {
     String xml = read("xsl/peer-review/pone.0207232.xml");
 
     PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
-    String html = svc.xmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+    String html = svc.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
 
     assertThat(html.replaceAll("\\s+", ""),  // strip all whitespace
         containsString("<h2>PeerReviewHistory</h2>"));

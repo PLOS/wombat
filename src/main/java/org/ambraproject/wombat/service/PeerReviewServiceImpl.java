@@ -44,8 +44,11 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * @throws IOException
    */
   public String asHtml(Map<String, ?> itemTable) throws IOException {
-    String xml = getAllReviewsXml(itemTable);
-    String html = xmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+    List<Map<String, ?>> reviewLetterItems = getReviewItems(itemTable);
+    if (reviewLetterItems.isEmpty()) return null;
+
+    String xml = getAllReviewsAsXml(reviewLetterItems);
+    String html = transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
     return html;
   }
 
@@ -56,9 +59,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * @param xsl
    * @return an HTML representation of peer review content
    */
-  String xmlToHtml(String allReviewsXml, String xsl) {
-    if (allReviewsXml == null) return null;
-
+  String transformXmlToHtml(String allReviewsXml, String xsl) {
     XMLReader xmlReader = null;
     try {
       SAXParser sp = SAXParserFactory.newInstance().newSAXParser();
@@ -86,34 +87,21 @@ public class PeerReviewServiceImpl implements PeerReviewService {
   /**
    * Aggregate the XML for all rounds of Peer Review
    *
-   * @param itemTable an Article's itemTable
+   * @param reviewLetterItems metadata about review letters
    * @return entirety of peer review XML content
    * @throws IOException
    */
-  private String getAllReviewsXml(Map<String, ?> itemTable) throws IOException {
-    List<Map<String, ?>> reviewLetterItems = new ArrayList<>();
-    for (Object itemObj : new TreeMap(itemTable).values()) {
-      if (((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter")) {
-        reviewLetterItems.add((Map<String, ?>) itemObj);
-      }
-    }
-
+  private String getAllReviewsAsXml(List<Map<String, ?>> reviewLetterItems) throws IOException {
     List<String> reviewLetters = new ArrayList<>();
-    for (Map<String, ?> reviewLetterMetadata : reviewLetterItems) {
-      String content = getReviewXml(reviewLetterMetadata);
+    for (Map<String, ?> reviewLetterItem : reviewLetterItems) {
+      String xml = getReviewXml(reviewLetterItem);
 
       // TODO: include formal accept letter (specific-use="acceptance-letter"), though for now we haven't figured out how to display it.
-      if (content.contains("specific-use=\"acceptance-letter\"")) {
-        continue;
-      }
+      if (xml.contains("specific-use=\"acceptance-letter\"")) continue;
 
       // strip the XML declaration, which is not allowed when these are aggregated
-      content = content.replaceAll("<\\?xml(.+?)\\?>", "");
-      reviewLetters.add(content);
-    }
-
-    if (reviewLetters.isEmpty()) {
-      return null;
+      xml = xml.replaceAll("<\\?xml(.+?)\\?>", "");
+      reviewLetters.add(xml);
     }
 
     // group letters by revision
@@ -136,6 +124,21 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     // wrap it in a root node
     peerReviewContent = "<peer-review>" + peerReviewContent + "</peer-review>";
     return peerReviewContent;
+  }
+
+  /**
+   * Get the sublist of those items which contain peer review content
+   * @param itemTable
+   * @return a list of review item
+   */
+  private List<Map<String, ?>> getReviewItems(Map<String, ?> itemTable) {
+    List<Map<String, ?>> reviewLetterItems = new ArrayList<>();
+    for (Object itemObj : new TreeMap(itemTable).values()) {
+      if (((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter")) {
+        reviewLetterItems.add((Map<String, ?>) itemObj);
+      }
+    }
+    return reviewLetterItems;
   }
 
   /**

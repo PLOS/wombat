@@ -77,17 +77,17 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
         if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r001.xml") {
           letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\">" +
               "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>0</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body>InitialDecisionLetterSampleBody</body></sub-article>";
+              "<body><p>InitialDecisionLetterSampleBody</p></body></sub-article>";
         }
         if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r002.xml") {
           letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article article-type=\"author-comment\">" +
               "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>1</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body>FirstRoundAuthorResponseSampleBody</body></sub-article>";
+              "<body><p>FirstRoundAuthorResponseSampleBody</p></body></sub-article>";
         }
         if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r003.xml") {
           letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\">" +
               "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>1</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body>FirstRoundDecisionLetterSampleBody</body></sub-article>";
+              "<body><p>FirstRoundDecisionLetterSampleBody</p></body></sub-article>";
         }
         return letterContent;
       }

@@ -2,13 +2,13 @@
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 >
-  <xsl:output method="html" />
+  <xsl:output method="html"/>
 
   <xsl:template match="/">
     <h2>Peer Review History</h2>
     <table class="table table-bordered review-history">
       <tbody>
-        <xsl:apply-templates />
+        <xsl:apply-templates/>
         <tr>
           <th>Formally Accepted</th>
         </tr>
@@ -51,58 +51,12 @@
         </div>
       </th>
     </tr>
-    <xsl:if test="sub-article/@article-type = 'author-comment'">
-      <tr>
-        <td>
-          <div class="date">
-            <div class="decision-date">
-              January 1, 1979
-            </div>
-          </div>
-          <div class="author-response">
-            <p>
-              bogus author response text for: <xsl:value-of select="sub-article[@article-type = 'author-comment']/front-stub/article-id"/>
-            </p>
-          </div>
-        </td>
-      </tr>
-    </xsl:if>
-    <xsl:if test="sub-article/@specific-use = 'decision-letter'">
-      <tr>
-        <td>
-          <div class="decision-letter">
-            <!-- trigger for expand and collapse -->
-            <a data-toggle="collapse"
-               href="#decisionLetter"
-               role="button"
-               aria-expanded="false"
-               aria-controls="decisionLetter">
-              Decision Letter
-            </a>
-            <!-- end trigger for expand and collapse -->
-            -
-            <span class="author">
-              <span class="name">
-                Lauren Bianchini, Editor
-              </span>
-            </span>
-            <div class="date">
-              <div class="decision-date">
-                January 1, 1979
-              </div>
-            </div>
-            <div class="decision-letter-body">
-              <xsl:apply-templates select="sub-article[@specific-use = 'decision-letter']/body"/>
-            </div>
-          </div>
-        </td>
-      </tr>
-    </xsl:if>
+    <xsl:apply-templates/>
   </xsl:template>
 
   <xsl:template match="body">
-      <xsl:copy-of select="p" />
-      <xsl:apply-templates select="supplementary-material" />
+    <xsl:copy-of select="p"/>
+    <xsl:apply-templates select="supplementary-material"/>
   </xsl:template>
 
   <xsl:template match="supplementary-material">
@@ -114,5 +68,55 @@
         <xsl:value-of select="caption"/>
       </div>
     </div>
+  </xsl:template>
+
+  <xsl:template match="sub-article[@article-type = 'author-comment']">
+    <tr>
+      <td>
+        <div class="date">
+          <div class="decision-date">
+            January 1, 1979
+          </div>
+        </div>
+        <div class="author-response">
+          <p>
+            bogus author response text for:
+            <xsl:value-of select="front-stub/article-id"/>
+          </p>
+        </div>
+      </td>
+    </tr>
+  </xsl:template>
+
+  <xsl:template match="sub-article[@specific-use = 'decision-letter']">
+    <tr>
+      <td>
+        <div class="decision-letter">
+          <!-- trigger for expand and collapse -->
+          <a data-toggle="collapse"
+             href="#decisionLetter"
+             role="button"
+             aria-expanded="false"
+             aria-controls="decisionLetter">
+            Decision Letter
+          </a>
+          <!-- end trigger for expand and collapse -->
+          -
+          <span class="author">
+            <span class="name">
+              Lauren Bianchini, Editor
+            </span>
+          </span>
+          <div class="date">
+            <div class="decision-date">
+              January 1, 1979
+            </div>
+          </div>
+          <div class="decision-letter-body">
+            <xsl:apply-templates select="body"/>
+          </div>
+        </div>
+      </td>
+    </tr>
   </xsl:template>
 </xsl:stylesheet>

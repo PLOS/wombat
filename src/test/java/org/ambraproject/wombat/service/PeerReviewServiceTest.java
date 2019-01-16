@@ -23,6 +23,8 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableMap;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
@@ -94,12 +96,13 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     };
 
     String html = serviceWithMockedContent.asHtml(itemTable);
-    assertThat(html, containsString("Original Submission"));
-    assertThat(html, containsString("InitialDecisionLetterSampleBody"));
-    assertThat(html, containsString("Revision 1"));
-//    assertThat(html, containsString("FirstRoundAuthorResponseSampleBody"));
-    assertThat(html, containsString("FirstRoundDecisionLetterSampleBody"));
+    Document d = Jsoup.parse(html);
 
+    assertThat(d.select(".review-history th").get(0).text(), containsString("Original Submission"));
+    assertThat(d.select(".review-history th").get(1).text(), containsString("Revision 1"));
+    assertThat(d.select(".review-history .decision-letter").get(0).text(), containsString("InitialDecisionLetterSampleBody"));
+    assertThat(d.select(".review-history .decision-letter").get(1).text(), containsString("FirstRoundDecisionLetterSampleBody"));
+    assertThat(d.select(".review-history .author-response").get(0).text(), containsString("bogus"));
   }
 
   @Test

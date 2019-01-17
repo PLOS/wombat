@@ -58,7 +58,7 @@
   </xsl:template>
 
   <xsl:template match="body">
-    <xsl:apply-templates/>
+    <xsl:apply-templates select="*[not(self::supplementary-material)]"/>
     <xsl:if test="supplementary-material">
       <dl class="review-files">
         <dt>Attachments</dt>

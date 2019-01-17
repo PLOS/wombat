@@ -22,7 +22,7 @@
 
 /* Home */
 #home-content {
-  padding: 0px;
+  padding: 0;
 }
 
 #home-content #article-pagination {
@@ -76,7 +76,7 @@
 
 #article-content .correction-alert {
   font-size: 1.4em;
-  background-position: 0px 2px;
+  background-position: 0 2px;
   margin-top: 15px;
 }
 
@@ -198,10 +198,12 @@
   margin: 20px 0;
 }
 
-#author-content dd {margin-bottom: 10px;}
-#author-content dt {font-weight: bold;
-margin-bottom: 5px;}
-#author-content dl span.type {font-weight: bold;}
+#author-content dd { margin-bottom: 10px; }
+#author-content dt {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#author-content dl span.type { font-weight: bold; }
 
 
 /* Results */
@@ -612,7 +614,7 @@ html:not(.positionfixed) #page-figure #site-header-container {
   overflow: hidden;
   text-indent: -1000px;
   display: block;
-  background-position: -275px 0px;
+  background-position: -275px 0;
   width: 9px;
   height: 6px;
   background-repeat: no-repeat;
@@ -883,8 +885,6 @@ ol.references li {
 }
 
 ol.references li span.label {
-  /* margin-left: -26px; */
-  /* float: left; */
   width: 20px;
   text-align: right;
   position: absolute;
@@ -910,6 +910,6 @@ ol.references ul.find li {
 }
 
 ol.references ul.find li:first-child {
-  margin-left: 0px;
+  margin-left: 0;
   list-style-type: none;
 }

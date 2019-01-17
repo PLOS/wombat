@@ -57,89 +57,6 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="body">
-    <xsl:apply-templates select="*[not(self::supplementary-material)]"/>
-    <xsl:if test="supplementary-material">
-      <dl class="review-files">
-        <dt>Attachments</dt>
-        <xsl:apply-templates select="supplementary-material"/>
-      </dl>
-    </xsl:if>
-  </xsl:template>
-
-  <xsl:template match="p">
-    <xsl:copy>
-      <xsl:apply-templates/>
-    </xsl:copy>
-  </xsl:template>
-
-  <xsl:template match="list">
-    <ul>
-      <xsl:apply-templates/>
-    </ul>
-  </xsl:template>
-
-  <xsl:template match="list-item">
-    <li>
-      <xsl:copy-of select="node()"/>
-    </li>
-  </xsl:template>
-
-  <xsl:template match="ext-link">
-    <a>
-      <xsl:attribute name="href">
-        <xsl:value-of select="@xlink:href"/>
-      </xsl:attribute>
-      <xsl:value-of select="text()"/>>
-    </a>
-  </xsl:template>
-
-  <xsl:template match="supplementary-material">
-    <dd class="supplementary-material">
-      <a class="sm-label" href="#">
-        <xsl:value-of select="label"/>
-      </a>
-      <div class="sm-caption">
-        <xsl:copy-of select="caption/p/text()"/>
-        <i>
-          <xsl:value-of select="caption/p/named-content"/>
-        </i>
-      </div>
-    </dd>
-  </xsl:template>
-
-  <xsl:template match="sub-article[@article-type = 'author-comment']">
-    <tr>
-
-      <td>
-        <!-- author response -->
-        <a data-toggle="collapse"
-           href="#decisionLetter2"
-           role="button"
-           aria-expanded="false"
-           aria-controls="decisionLetter2">
-          [Author Response expand/collapse]
-        </a>
-        <div class="date">
-          <time class="response-date">
-            ---
-          </time>
-        </div>
-
-        <!-- accordion container -->
-        <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
-          <div class="author-response">
-            <p>
-              bogus author response text for:
-              <xsl:value-of select="front-stub/article-id"/>
-            </p>
-          </div>
-        </div>
-        <!-- end accordion container -->
-      </td>
-    </tr>
-  </xsl:template>
-
   <xsl:template match="sub-article[@specific-use = 'decision-letter']">
     <tr>
       <td>
@@ -187,6 +104,89 @@
         </div>
       </td>
     </tr>
+  </xsl:template>
+
+  <xsl:template match="sub-article[@article-type = 'author-comment']">
+    <tr>
+
+      <td>
+        <!-- author response -->
+        <a data-toggle="collapse"
+           href="#decisionLetter2"
+           role="button"
+           aria-expanded="false"
+           aria-controls="decisionLetter2">
+          [Author Response expand/collapse]
+        </a>
+        <div class="date">
+          <time class="response-date">
+            ---
+          </time>
+        </div>
+
+        <!-- accordion container -->
+        <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
+          <div class="author-response">
+            <p>
+              bogus author response text for:
+              <xsl:value-of select="front-stub/article-id"/>
+            </p>
+          </div>
+        </div>
+        <!-- end accordion container -->
+      </td>
+    </tr>
+  </xsl:template>
+
+  <xsl:template match="body">
+    <xsl:apply-templates select="*[not(self::supplementary-material)]"/>
+    <xsl:if test="supplementary-material">
+      <dl class="review-files">
+        <dt>Attachments</dt>
+        <xsl:apply-templates select="supplementary-material"/>
+      </dl>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="p">
+    <xsl:copy>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="supplementary-material">
+    <dd class="supplementary-material">
+      <a class="sm-label" href="#">
+        <xsl:value-of select="label"/>
+      </a>
+      <div class="sm-caption">
+        <xsl:copy-of select="caption/p/text()"/>
+        <i>
+          <xsl:value-of select="caption/p/named-content"/>
+        </i>
+      </div>
+    </dd>
+  </xsl:template>
+
+  <xsl:template match="list">
+    <ul>
+      <xsl:apply-templates/>
+    </ul>
+  </xsl:template>
+
+  <xsl:template match="list-item">
+    <li>
+      <xsl:copy-of select="node()"/>
+    </li>
+  </xsl:template>
+
+  <xsl:template match="ext-link">
+    <a>
+      <xsl:attribute name="href">
+        <xsl:value-of select="@xlink:href"/>
+      </xsl:attribute>
+      <xsl:value-of select="text()"/>>
+    </a>
   </xsl:template>
 
   <xsl:template match = "named-content"/>

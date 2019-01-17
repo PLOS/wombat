@@ -48,7 +48,9 @@
           </xsl:otherwise>
         </xsl:choose>
         <div class="date">
-          <span class="decision-date">January 1, 1979</span>
+          <span class="decision-date">
+            <xsl:value-of select=".//named-content[@content-type = 'letter-date']"/>
+          </span>
         </div>
       </th>
     </tr>
@@ -120,7 +122,7 @@
         </a>
         <div class="date">
           <time class="response-date">
-            January 1, 1979
+            ---
           </time>
         </div>
 
@@ -168,8 +170,8 @@
           <div class="date">
             <time class="decision-date"
                   itemprop="dateCreated"
-                  datetime="2018-11-01">
-              January 1, 1979
+                  datetime="">
+              <xsl:value-of select=".//named-content[@content-type = 'letter-date']"/>
             </time>
           </div>
 

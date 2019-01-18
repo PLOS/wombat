@@ -22,15 +22,14 @@
 
 
 <script type="text/template" id="articleRelatedContentSectionTemplate">
-  <h3><%= section.title %></h3>
+  <h4><%= section.title %></h4>
   <ul>
     <% _.each(items, function(item) { %>
     <li>
-      <b><%= item.publication %></b>:
-      "<a href="<%= item.referral %>"><%= item.title %></a>"
+      <span class="item item-publication"><%= item.publication %></span>: 
+      <span class="item item-title">"<a href="<%= item.referral %>"><%= item.title %></a>"</span>
       <% if (!_.isEmpty(item.published_on)) { %>
-        &nbsp;&nbsp;
-        <%= moment(item.published_on).format("DD MMM YYYY") %>
+      <span class="item item-date"><%= moment(item.published_on).format("DD MMM, YYYY") %></span>
       <% } %>
     </li>
     <% }); %>

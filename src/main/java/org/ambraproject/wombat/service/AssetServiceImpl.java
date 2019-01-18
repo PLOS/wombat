@@ -22,9 +22,13 @@
 
 package org.ambraproject.wombat.service;
 
+import java.util.concurrent.locks.Lock;
+
 import com.google.common.base.Preconditions;
+import com.google.common.util.concurrent.Striped;
 import com.yahoo.platform.yui.compressor.CssCompressor;
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
+
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
@@ -49,7 +53,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.List;
-
 public class AssetServiceImpl implements AssetService {
 
   private static final Logger logger = LoggerFactory.getLogger(AssetServiceImpl.class);
@@ -76,7 +79,7 @@ public class AssetServiceImpl implements AssetService {
   @Autowired
   private Cache cache;
 
-  private static final Object ASSET_COMPILATION_LOCK = new Object();
+  private static Striped<Lock> lockStripes = Striped.lock(10);
 
   /*
    * We cache data at two steps in the process of compiling assets:
@@ -91,22 +94,9 @@ public class AssetServiceImpl implements AssetService {
    * A hash representing a list of asset source filenames (and the site they belong to).
    * Cached in order to tell whether we need to compile them.
    */
-  private static class SourceFilenamesDigest {
-    private final AssetType assetType;
-    private final Site site;
-    private final List<String> filenames;
-
-    private SourceFilenamesDigest(AssetType assetType, Site site, List<String> filenames) {
-      this.assetType = assetType;
-      this.site = site;
-      this.filenames = filenames;
-    }
-
-    private String generateCacheKey() {
-      String filenameDigest = CacheKey.createKeyHash(filenames);
-
-      return String.format("%sFile:%s:%s", assetType.name().toLowerCase(), site, filenameDigest);
-    }
+  private String generateCacheKey(AssetType assetType, Site site, List<String> filenames) {
+    String filenameDigest = CacheKey.createKeyHash(filenames);
+    return String.format("%sFile:%s:%s", assetType.name().toLowerCase(), site, filenameDigest);
   }
 
   /*
@@ -152,35 +142,40 @@ public class AssetServiceImpl implements AssetService {
   @Override
   public String getCompiledAssetLink(AssetType assetType, List<String> filenames, Site site)
       throws IOException {
+    String sourceCacheKey = generateCacheKey(assetType, site, filenames);
+    String compiledFilename = cache.get(sourceCacheKey);
+    if (compiledFilename == null) {
+      // Keep a lock on asset compilation. We do this because we've
+      // had a problem when we bring up wombat, and all the requests
+      // attempt to compile assets simultaneously, leading to high
+      // load.
+      Lock lock = lockStripes.get(sourceCacheKey);
+      try {
+        lock.lock();
+        // Check again in case another thread built this while we were
+        // waiting for the lock.
+        compiledFilename = cache.get(sourceCacheKey);
+        if (compiledFilename == null) {
+          File concatenated = concatenateFiles(filenames, site, assetType.getExtension());
+          CompiledAsset compiled = compileAsset(assetType, concatenated);
+          concatenated.delete();
+          compiledFilename = compiled.digest.getFile().getName();
 
-    // Keep a global lock on asset compilation.  We do this because we've had a problem when we
-    // bring up wombat, and all the requests attempt to compile assets simultaneously, leading
-    // to high load.
-    // It might be possible to lock in a more granular fashion here (such as by assetType or
-    // sourceCacheKey), but that might be prone to deadlock.
-    synchronized (ASSET_COMPILATION_LOCK) {
-      SourceFilenamesDigest sourceFilenamesDigest = new SourceFilenamesDigest(assetType, site, filenames);
-      String sourceCacheKey = sourceFilenamesDigest.generateCacheKey();
-
-      String compiledFilename = cache.get(sourceCacheKey);
-      if (compiledFilename == null) {
-        File concatenated = concatenateFiles(filenames, site, assetType.getExtension());
-        CompiledAsset compiled = compileAsset(assetType, concatenated);
-        concatenated.delete();
-        compiledFilename = compiled.digest.getFile().getName();
-
-        // We cache both the file name and the file contents (if it is small enough) in memcache.
-        // In an ideal world, we would use the filename (including the hash of its contents) as
-        // the only cache key.  However, it's potentially expensive to calculate that key since
-        // you need the contents of the compiled file, which is why we do it this way.
-        cache.put(sourceCacheKey, compiledFilename, CACHE_TTL);
-        if (compiled.contents.length < MAX_ASSET_SIZE_TO_CACHE) {
-          String contentsCacheKey = compiled.digest.getCacheKey();
-          cache.put(contentsCacheKey, compiled.contents, CACHE_TTL);
+          // We cache both the file name and the file contents (if it is small enough) in memcache.
+          // In an ideal world, we would use the filename (including the hash of its contents) as
+          // the only cache key.  However, it's potentially expensive to calculate that key since
+          // you need the contents of the compiled file, which is why we do it this way.
+          cache.put(sourceCacheKey, compiledFilename, CACHE_TTL);
+          if (compiled.contents.length < MAX_ASSET_SIZE_TO_CACHE) {
+            String contentsCacheKey = compiled.digest.getCacheKey();
+            cache.put(contentsCacheKey, compiled.contents, CACHE_TTL);
+          }
         }
+      } finally {
+        lock.unlock();
       }
-      return AssetUrls.COMPILED_PATH_PREFIX + compiledFilename;
     }
+    return AssetUrls.COMPILED_PATH_PREFIX + compiledFilename;
   }
 
   /**

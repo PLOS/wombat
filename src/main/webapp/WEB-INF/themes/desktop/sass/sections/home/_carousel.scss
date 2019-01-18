@@ -112,6 +112,7 @@ have a fixed width and height (but it's not required).
     .jcarousel-prev,
     .jcarousel-next {
       @extend .fa;
+      color: $grey-med;
       font-size: $icon-height;
       &:hover {
         @extend .fa-inverse;

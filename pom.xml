@@ -29,7 +29,7 @@
   <artifactId>wombat</artifactId>
   <name>wombat</name>
   <packaging>war</packaging>
-  <version>3.7.3</version>
+  <version>3.7.5</version>
   <url>https://github.com/PLOS/wombat</url>
   <scm>
     <connection>scm:git:git@github.com:PLOS/wombat.git</connection>
@@ -367,8 +367,8 @@
     <plugins>
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat6-maven-plugin</artifactId>
-        <version>2.1</version>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
         <configuration>
           <path>/</path>
           <systemProperties>
@@ -378,13 +378,6 @@
             <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
           </systemProperties>
         </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>juli</artifactId>
-            <version>6.0.29</version>
-          </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <artifactId>maven-eclipse-plugin</artifactId>

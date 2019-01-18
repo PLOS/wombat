@@ -62,7 +62,7 @@
   }
 
   a {
-    color: $black;
+    @extend %brand-color;
     text-decoration: underline;
 
     body.plosone & {
@@ -114,6 +114,7 @@
 
       input {
         line-height: rem-calc(33);
+        height: rem-calc(33);
         border: 1px solid $grey-med;
         text-align: left;
         font-size: $txt-size-small;
@@ -122,6 +123,7 @@
         padding: 0 $pad-xsmall;
         &::placeholder {
           text-transform: uppercase;
+          line-height: inherit;
         }
       }
 
@@ -157,9 +159,9 @@
         width: 100%;
         line-height: $line-height;
         font-size: $txt-size-small;
-
-        .plosone & {
-          color: $grey-med;
+        a {
+          @extend %brand-color;
+          &:hover { color: $black; }
         }
       }
     }
@@ -187,6 +189,9 @@
 
   &.success {
     background-color: $clr-success !important;
+    .plosone & {
+      border-color: $plos-one-teal;
+    }
     .success-message {
       display: block;
       h2 {
@@ -210,7 +215,20 @@
 
 .plosone {
   .home-email-subscription {
+
     form {
+      .consent {
+        color: $grey-dark;
+        label.email_consent {
+          a {
+            color: $plos-one-purple;
+            &:hover {
+              color: $grey-med;
+            }
+          }
+        }
+      }
+
       label.error_consent,
       label.error {
         @extend %brand-background;

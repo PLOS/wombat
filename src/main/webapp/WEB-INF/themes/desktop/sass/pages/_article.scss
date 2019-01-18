@@ -41,7 +41,6 @@ $article-sidebar-width: 160;
 // extensible layout styles
 .text-article-intro {
   font-size: $txt-size-default;
-  line-height: $line-height;
   color: $grey-med-dark;
 
   a {
@@ -130,7 +129,7 @@ $article-sidebar-width: 160;
         margin-bottom: rem-calc(2);
 
         &.show-tip {
-          background-color: $plos-default;
+          @extend %brand-background;
           border-radius: $border-radius-smaller;
           color: $white;
         }
@@ -189,7 +188,6 @@ $article-sidebar-width: 160;
     @extend .unavailable;
     position: relative;
     height: rem-calc($article-sidebar-width);
-
     text-align: center;
     p {
       padding-top: rem-calc(75);
@@ -274,7 +272,6 @@ $article-sidebar-width: 160;
 
   h1 {
     @extend .title-primary;
-    margin-bottom: $line-height-small;
     i,
     italic,
     named-content {
@@ -391,7 +388,7 @@ $article-sidebar-width: 160;
   @extend .hide-for-print;
   display: table;
   table-layout: fixed;
-  margin-bottom: $line-height-small;
+  margin-bottom: $line-height;
   width: 100%;
   margin-left: 0;
 
@@ -406,23 +403,23 @@ $article-sidebar-width: 160;
       color: $white;
     }
     a.article-tab-2 {
-      background: lighten($tabs-base-color, 8%);
+      background: lighten($tabs-base-color, 7%);
       color: $white;
     }
     a.article-tab-3 {
-      background: lighten($tabs-base-color, 16%);
+      background: lighten($tabs-base-color, 14%);
       color: $white;
     }
     a.article-tab-4 {
-      background: lighten($tabs-base-color, 24%);
+      background: lighten($tabs-base-color, 21%);
       color: $white;
     }
     a.article-tab-5 {
-      background: lighten($tabs-base-color, 32%);
+      background: lighten($tabs-base-color, 28%);
       color: $white;
     }
     a.article-tab-6 {
-      background: lighten($tabs-base-color, 40%);
+      background: lighten($tabs-base-color, 35%);
       color: $white;
     }
 
@@ -435,7 +432,7 @@ $article-sidebar-width: 160;
       color: $white;
 
       &:hover {
-        background: $plos-default;
+        background: $black;        
         color: $white;
       }
     }
@@ -455,7 +452,8 @@ $article-sidebar-width: 160;
         font-size: $txt-size-medium-large;
       }
       &:hover {
-        @extend %brand-background;
+         background: $black;
+         color: $white;
         cursor: inherit;
       }
     }
@@ -466,7 +464,7 @@ $article-sidebar-width: 160;
   @extend .text-article-intro;
   overflow: visible;
   margin-left: 0;
-  margin-bottom: $line-height;
+  margin-bottom: $pad-small;
 
   li {
     float: left;
@@ -485,7 +483,7 @@ $article-sidebar-width: 160;
     > a,
     > span {
       display: inline-block;   // needed to overwrite the inline-list
-      padding: 0 $pad-highlight-x; //TODO line-height;
+      padding: $pad-highlight $pad-highlight-x; //TODO line-height;
     }
   }
   .contribute {
@@ -628,22 +626,19 @@ $article-sidebar-width: 160;
       &:hover {
         @extend %brand-background;
       }
-        a {
-      color: $white;
-    }
+      a {
+        color: $white;
+      }
       .plosone & {
         &:not(.no-pdf) {
-         
+
           &:hover,
           a:hover {
             color: $black;
-          
           }
         }
       }
     }
-
-  
   }
 
   .dload-hover {
@@ -802,6 +797,11 @@ body.article .ui-widget-overlay {
     font-size: $txt-size-xsmall;
     &:hover {
       text-decoration: underline;
+    }
+  }
+  .plosone & {
+    li a {
+      color: $plos-one-purple;
     }
   }
 }
@@ -1175,8 +1175,7 @@ section.authors {
     margin-bottom: $line-height;
     p {
       line-height: $line-height;
-      //margin-bottom: $line-height-small;
-      & span.type {
+        & span.type {
         font-family: $font-face-fancy;
         font-size: $txt-size-xxxsmall;
         font-weight: $bold;

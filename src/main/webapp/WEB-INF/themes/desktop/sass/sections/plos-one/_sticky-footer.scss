@@ -51,9 +51,8 @@
 
 
   h3 {
-    line-height: 28px;
-    width: 680px;
-    text-align: center;
+    line-height: $line-height;
+    text-align: left;
     a {
       @extend %brand-color;
     }

@@ -71,7 +71,7 @@ public class ArticleAssetController extends WombatController {
 
   static enum AssetUrlStyle {
     FIGURE_IMAGE("figureImage", "size", new String[]{"figure", "table", "standaloneStrikingImage"}),
-    ASSET_FILE("assetFile", "type", new String[]{"article", "supplementaryMaterial", "graphic"});
+    ASSET_FILE("assetFile", "type", new String[]{"article", "supplementaryMaterial", "graphic", "reviewLetter"});
 
     private final String handlerName;
     private final String typeParameterName;

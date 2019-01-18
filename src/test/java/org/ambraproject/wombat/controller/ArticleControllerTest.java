@@ -102,6 +102,12 @@ public class ArticleControllerTest extends ControllerTest {
   }
 
   @Bean
+  protected PeerReviewService peerReviewService() {
+    final PeerReviewService peerReviewService = mock(PeerReviewService.class);
+    return peerReviewService;
+  }
+
+  @Bean
   protected ParseReferenceService parseReferenceService() {
     final ParseReferenceService parseReferenceService = new ParseReferenceService();
     return parseReferenceService;

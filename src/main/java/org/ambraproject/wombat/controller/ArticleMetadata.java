@@ -24,7 +24,13 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
-import com.google.common.collect.*;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.LinkedListMultimap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -32,7 +38,12 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleType;
-import org.ambraproject.wombat.service.*;
+import org.ambraproject.wombat.service.ArticleResolutionService;
+import org.ambraproject.wombat.service.ArticleService;
+import org.ambraproject.wombat.service.ArticleTransformService;
+import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.PeerReviewService;
+import org.ambraproject.wombat.service.XmlUtil;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
@@ -46,7 +57,18 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class ArticleMetadata {
@@ -101,6 +123,8 @@ public class ArticleMetadata {
     private ArticleTransformService articleTransformService;
     @Autowired
     private RequestMappingContextDictionary requestMappingContextDictionary;
+    @Autowired
+    private PeerReviewService peerReviewService;
 
     public ArticleMetadata get(Site site, RequestedDoiVersion id) throws IOException {
       return get(site, id, articleResolutionService.toIngestion(id));
@@ -174,7 +198,7 @@ public class ArticleMetadata {
 
     model.addAttribute("revisionMenu", getRevisionMenu());
 
-    model.addAttribute("peerReview", getPeerReview());
+    model.addAttribute("peerReview", getPeerReviewHtml());
     return this;
   }
 
@@ -225,19 +249,12 @@ public class ArticleMetadata {
 
 
   /**
-   * Get the articleItems that represent peer review decisions and responses.
+   * Get peer review as an HTML snippet.
    */
-  String getPeerReview() {
-    List peerReviewItems = itemTable.values().stream()
-        .filter(itemObj -> ((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter"))
-        .collect(Collectors.toList());
-
-    if (peerReviewItems == null || peerReviewItems.isEmpty()) {
-      return null;
-    }
-
-    return peerReviewItems.toString();
+  String getPeerReviewHtml() throws IOException {
+    return factory.peerReviewService.asHtml(itemTable);
   }
+
 
   /**
    * Validate that an article ought to be visible to the user. If not, throw an exception indicating that the user

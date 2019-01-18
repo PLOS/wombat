@@ -33,10 +33,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import static junit.framework.TestCase.assertNull;
-import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
-import static org.ambraproject.wombat.util.FileUtils.read;
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 @ContextConfiguration(classes = {PeerReviewServiceTest.class})
@@ -115,16 +112,5 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     );
     String html = new PeerReviewServiceImpl().asHtml(itemTable);
     assertNull(html);
-  }
-
-  @Test
-  public void testXslt() {
-    String xml = read("xsl/peer-review/pone.0207232.xml");
-
-    PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
-    String html = svc.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
-
-    assertThat(html.replaceAll("\\s+", ""),  // strip all whitespace
-        containsString("<h2>PeerReviewHistory</h2>"));
   }
 }

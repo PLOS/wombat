@@ -93,7 +93,7 @@
           </div>
 
           <!-- accordion container -->
-          <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
+          <div itemprop="reviewBody" class="collapse" id="decisionLetterX">
             <div class="decision-letter-body">
               <p>
                 <xsl:apply-templates select="body"/>
@@ -125,10 +125,10 @@
         </div>
 
         <!-- accordion container -->
-        <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
+        <div itemprop="reviewBody" class="collapse" id="authorResponseY">
           <div class="author-response">
             <p>
-              <xsl:copy-of select="body"/>
+              <xsl:apply-templates select="body"/>
             </p>
           </div>
         </div>

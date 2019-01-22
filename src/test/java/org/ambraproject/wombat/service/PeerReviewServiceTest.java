@@ -127,35 +127,14 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
  
     PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
     String html = svc.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
- 
-    // verify author response. we'll spot-check these spots.
-    //  <div class="author-response">
-    //    ...
-    //    <named-content content-type="author-response-date">
-    //    ...
-    //    <supplementary-material id="pone.0207232.s003" ...>
-    //      <label>Attachment</label>
 
     Document doc = Jsoup.parseBodyFragment(html);
 
     Element authorResponseDiv = doc.select("div[class=author-response").first();
 
-    Element authorResponseDateElem = authorResponseDiv.select(
-      "named-content[content-type=author-response-date]").first();
-    assertThat(authorResponseDateElem.text(), is("4 Oct 2018"));
+    assertThat(authorResponseDiv.text(), containsString("[Response to Reviewers]"));
 
-    Elements attachmentElem = authorResponseDiv.select(
-      "supplementary-material[id=pone.0207232.s003] > label");
-    assertThat(attachmentElem.size(), is(1));
-
-    // xml tags which unintentionally map to html elements. fail on these if find.
-
-    Elements htmlBodyElem = authorResponseDiv.select(
-      "body[xmlns:xlink=http://www.w3.org/1999/xlink]");
-    if (htmlBodyElem.size() > 0) Assert.fail("Found html body tag!");
-
-    Elements tableCaptionElem = authorResponseDiv.select("caption");
-    if (tableCaptionElem.size() > 0) 
-      Assert.fail("Found html table caption tag!");
+    Element attachmentElem = authorResponseDiv.select(".review-files .supplementary-material").first();
+    assertThat(attachmentElem.text(), containsString("Response to Reviewers.docx"));
   }
 }

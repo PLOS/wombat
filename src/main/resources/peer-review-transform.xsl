@@ -120,7 +120,7 @@
         </a>
         <div class="date">
           <time class="response-date">
-            ---
+            <xsl:value-of select=".//named-content[@content-type = 'author-response-date']"/>
           </time>
         </div>
 

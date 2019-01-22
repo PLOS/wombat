@@ -26,8 +26,6 @@ import com.google.common.collect.ImmutableMap;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import org.junit.Assert;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
@@ -39,7 +37,6 @@ import static junit.framework.TestCase.assertNull;
 import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
 import static org.ambraproject.wombat.util.FileUtils.read;
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 
@@ -131,7 +128,6 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     Document doc = Jsoup.parseBodyFragment(html);
 
     Element authorResponseDiv = doc.select("div[class=author-response").first();
-
     assertThat(authorResponseDiv.text(), containsString("[Response to Reviewers]"));
 
     Element attachmentElem = authorResponseDiv.select(".review-files .supplementary-material").first();

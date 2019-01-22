@@ -25,6 +25,9 @@ package org.ambraproject.wombat.service;
 import com.google.common.collect.ImmutableMap;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.junit.Assert;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
@@ -33,8 +36,12 @@ import java.io.IOException;
 import java.util.Map;
 
 import static junit.framework.TestCase.assertNull;
+import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
+import static org.ambraproject.wombat.util.FileUtils.read;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+
 
 @ContextConfiguration(classes = {PeerReviewServiceTest.class})
 public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
@@ -99,7 +106,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     assertThat(d.select(".review-history th").get(1).text(), containsString("Revision 1"));
     assertThat(d.select(".review-history .decision-letter").get(0).text(), containsString("InitialDecisionLetterSampleBody"));
     assertThat(d.select(".review-history .decision-letter").get(1).text(), containsString("FirstRoundDecisionLetterSampleBody"));
-    assertThat(d.select(".review-history .author-response").get(0).text(), containsString("bogus"));
+    assertThat(d.select(".review-history .author-response").get(0).text(), containsString("FirstRoundAuthorResponseSampleBody"));
   }
 
   @Test
@@ -112,5 +119,43 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     );
     String html = new PeerReviewServiceImpl().asHtml(itemTable);
     assertNull(html);
+  }
+
+  @Test
+  public void testAuthorResponse() {
+    String xml = read("xsl/peer-review/pone.0207232.xml");
+ 
+    PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
+    String html = svc.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+ 
+    // verify author response. we'll spot-check these spots.
+    //  <div class="author-response">
+    //    ...
+    //    <named-content content-type="author-response-date">
+    //    ...
+    //    <supplementary-material id="pone.0207232.s003" ...>
+    //      <label>Attachment</label>
+
+    Document doc = Jsoup.parseBodyFragment(html);
+
+    Element authorResponseDiv = doc.select("div[class=author-response").first();
+
+    Element authorResponseDateElem = authorResponseDiv.select(
+      "named-content[content-type=author-response-date]").first();
+    assertThat(authorResponseDateElem.text(), is("4 Oct 2018"));
+
+    Elements attachmentElem = authorResponseDiv.select(
+      "supplementary-material[id=pone.0207232.s003] > label");
+    assertThat(attachmentElem.size(), is(1));
+
+    // xml tags which unintentionally map to html elements. fail on these if find.
+
+    Elements htmlBodyElem = authorResponseDiv.select(
+      "body[xmlns:xlink=http://www.w3.org/1999/xlink]");
+    if (htmlBodyElem.size() > 0) Assert.fail("Found html body tag!");
+
+    Elements tableCaptionElem = authorResponseDiv.select("caption");
+    if (tableCaptionElem.size() > 0) 
+      Assert.fail("Found html table caption tag!");
   }
 }

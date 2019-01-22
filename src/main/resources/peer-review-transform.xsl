@@ -128,8 +128,7 @@
         <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
           <div class="author-response">
             <p>
-              bogus author response text for:
-              <xsl:value-of select="front-stub/article-id"/>
+              <xsl:copy-of select="body"/>
             </p>
           </div>
         </div>

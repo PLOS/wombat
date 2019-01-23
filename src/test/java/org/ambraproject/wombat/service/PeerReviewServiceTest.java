@@ -25,6 +25,7 @@ package org.ambraproject.wombat.service;
 import com.google.common.collect.ImmutableMap;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
@@ -33,8 +34,11 @@ import java.io.IOException;
 import java.util.Map;
 
 import static junit.framework.TestCase.assertNull;
+import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
+import static org.ambraproject.wombat.util.FileUtils.read;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
+
 
 @ContextConfiguration(classes = {PeerReviewServiceTest.class})
 public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
@@ -99,7 +103,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     assertThat(d.select(".review-history th").get(1).text(), containsString("Revision 1"));
     assertThat(d.select(".review-history .decision-letter").get(0).text(), containsString("InitialDecisionLetterSampleBody"));
     assertThat(d.select(".review-history .decision-letter").get(1).text(), containsString("FirstRoundDecisionLetterSampleBody"));
-    assertThat(d.select(".review-history .author-response").get(0).text(), containsString("bogus"));
+    assertThat(d.select(".review-history .author-response").get(0).text(), containsString("FirstRoundAuthorResponseSampleBody"));
   }
 
   @Test
@@ -112,5 +116,23 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     );
     String html = new PeerReviewServiceImpl().asHtml(itemTable);
     assertNull(html);
+  }
+
+  @Test
+  public void testAuthorResponse() {
+    String xml = read("xsl/peer-review/pone.0207232.xml");
+ 
+    PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
+    String html = svc.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+
+    Document doc = Jsoup.parse(html);
+
+    assertThat(doc.select(".review-history .response-date").get(0).text(), containsString("4 Oct 2018"));
+
+    Element authorResponseDiv = doc.select("div[class=author-response").first();
+    assertThat(authorResponseDiv.text(), containsString("[Response to Reviewers]"));
+
+    Element attachmentElem = authorResponseDiv.select(".review-files .supplementary-material").first();
+    assertThat(attachmentElem.text(), containsString("Response to Reviewers.docx"));
   }
 }

@@ -93,7 +93,7 @@
           </div>
 
           <!-- accordion container -->
-          <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
+          <div itemprop="reviewBody" class="collapse" id="decisionLetterX">
             <div class="decision-letter-body">
               <p>
                 <xsl:apply-templates select="body"/>
@@ -120,16 +120,15 @@
         </a>
         <div class="date">
           <time class="response-date">
-            ---
+            <xsl:value-of select=".//named-content[@content-type = 'author-response-date']"/>
           </time>
         </div>
 
         <!-- accordion container -->
-        <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
+        <div itemprop="reviewBody" class="collapse" id="authorResponseY">
           <div class="author-response">
             <p>
-              bogus author response text for:
-              <xsl:value-of select="front-stub/article-id"/>
+              <xsl:apply-templates select="body"/>
             </p>
           </div>
         </div>

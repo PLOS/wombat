@@ -39,6 +39,11 @@
   <xsl:template match="revision">
     <tr>
       <th>
+        <div class="date">
+          <span class="decision-date">
+            <xsl:value-of select=".//named-content[@content-type = 'letter-date']"/>
+          </span>
+        </div>
         <xsl:choose>
           <xsl:when test="position() = 1">
             Original Submission
@@ -47,11 +52,6 @@
             Revision <xsl:value-of select="position() - 1"/>
           </xsl:otherwise>
         </xsl:choose>
-        <div class="date">
-          <span class="decision-date">
-            <xsl:value-of select=".//named-content[@content-type = 'letter-date']"/>
-          </span>
-        </div>
       </th>
     </tr>
     <xsl:apply-templates/>
@@ -65,6 +65,14 @@
           <div itemprop="itemReviewed" itemscope=""
                itemtype="http://schema.org/ScholarlyArticle">
             <meta itemprop="url" content="articleUrl" />
+          </div>
+
+          <div class="date">
+            <time class="decision-date"
+                  itemprop="dateCreated"
+                  datetime="">
+              <xsl:value-of select=".//named-content[@content-type = 'letter-date']"/>
+            </time>
           </div>
 
           <!-- trigger for expand and collapse -->
@@ -84,13 +92,6 @@
             </span>
           </span>
           , Editor
-          <div class="date">
-            <time class="decision-date"
-                  itemprop="dateCreated"
-                  datetime="">
-              <xsl:value-of select=".//named-content[@content-type = 'letter-date']"/>
-            </time>
-          </div>
 
           <!-- accordion container -->
           <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
@@ -111,6 +112,12 @@
 
       <td>
         <!-- author response -->
+        <div class="date">
+          <time class="response-date">
+            ---
+          </time>
+        </div>
+
         <a data-toggle="collapse"
            href="#decisionLetter2"
            role="button"
@@ -118,11 +125,6 @@
            aria-controls="decisionLetter2">
           [Author Response expand/collapse]
         </a>
-        <div class="date">
-          <time class="response-date">
-            ---
-          </time>
-        </div>
 
         <!-- accordion container -->
         <div itemprop="reviewBody" class="collapse" id="decisionLetter3">

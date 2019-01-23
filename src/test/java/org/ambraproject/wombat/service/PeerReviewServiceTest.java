@@ -125,7 +125,9 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
     String html = svc.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
 
-    Document doc = Jsoup.parseBodyFragment(html);
+    Document doc = Jsoup.parse(html);
+
+    assertThat(doc.select(".review-history .response-date").get(0).text(), containsString("4 Oct 2018"));
 
     Element authorResponseDiv = doc.select("div[class=author-response").first();
     assertThat(authorResponseDiv.text(), containsString("[Response to Reviewers]"));

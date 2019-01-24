@@ -6,7 +6,7 @@
   <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
   <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
   <Listener className="org.apache.catalina.mbeans.JmxRemoteLifecycleListener"
-            rmiRegistryPortPlatform="21212" rmiServerPortPlatform="21213"
+            rmiRegistryPortPlatform="0" rmiServerPortPlatform="0"
             useLocalPorts="true" />
   <GlobalNamingResources>
     <Resource name="UserDatabase" auth="Container"

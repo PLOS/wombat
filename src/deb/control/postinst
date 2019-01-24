@@ -49,7 +49,6 @@ case "$1" in
   # Fetching configuration from debconf
 
   $GET/wombat_port && export WOMBAT_PORT=$RET
-  $GET/control_port && export CONTROL_PORT=$RET
   $GET/tomcat_admin_user && export TOMCAT_ADMIN_USER=$RET
   $GET/tomcat_admin_password && export TOMCAT_ADMIN_PASSWORD=$RET
 

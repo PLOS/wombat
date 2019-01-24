@@ -1,25 +1,3 @@
-/*!
- * Copyright (c) 2017 Public Library of Science
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- */
-
 /*
  *       These are the header styles
   header
@@ -29,7 +7,7 @@
        nav-main (foundation)
          logo
          top-bar-section  (foundation)
-             ul.nav-elements /
+             .nav-elements /
              li:
                'browse'
                'for authors'
@@ -43,8 +21,6 @@ $nav-spacing-full: $nav-spacing;
 
 header {
   background: $off-white;
-
-
   }
 
 .head-top {
@@ -98,12 +74,12 @@ $width-nav: $block-grid-elements - $width-logo;
 
         }
       }
-    li.highlighted {
+    .highlighted {
       > a {
         @extend %brand-background;
         color: $clr-highlight-text;
 
-        body.plosone & {
+        .plosone & {
           color: $black;
 
           &:hover {
@@ -189,7 +165,7 @@ $width-nav: $block-grid-elements - $width-logo;
   .dropdown li{
     background: $white;
   }
-  ul.nav-elements {
+  .nav-elements {
     @extend .right; // foundation
     padding-right: 0;
     > li {
@@ -198,12 +174,12 @@ $width-nav: $block-grid-elements - $width-logo;
       line-height: rem-calc(40);
       padding: rem-calc(0 $nav-spacing);
       }
-    ul.dropdown li a, ul.dropdowncallout li a {
+    .dropdown li a, .dropdowncallout li a {
       line-height: 1.5em !important; // this line is needed to overide foundation stuff.
       }
     }
 
-  ul.nav-elements > li {
+  .nav-elements > li {
     float: left;
     //  cursor: pointer;
     &:last-child {
@@ -216,7 +192,7 @@ $width-nav: $block-grid-elements - $width-logo;
       }
     }
 
-  ul.nav-elements {
+  .nav-elements {
     .menu-section-header {
       @extend %nav-header-type;
       color: $black;
@@ -293,7 +269,7 @@ $width-nav: $block-grid-elements - $width-logo;
     @include arrow-bottom($arrow-color: $white);
     }
 
-  ul > li.has-dropdown.hover {
+  ul > .has-dropdown.hover {
     @include border-top-radius();
     box-shadow: $nav-main-box-shadow;
     background: $white;
@@ -318,16 +294,16 @@ $width-nav: $block-grid-elements - $width-logo;
       left: rem-calc(-594); //TODO- where do we get this value from should be more dynamic?
       position: relative;
       padding-bottom: 0;
-      body.plosone & {
+      .plosone & {
         left: rem-calc(-480);
       }
     }
 
-    ul.dropdown li a {
+    .dropdown li a {
       @extend .dropdownanchor;
       }
 
-    ul.multi-col {
+    .multi-col {
       display: table;
       background: $white;
       > li {
@@ -490,14 +466,14 @@ $width-nav: $block-grid-elements - $width-logo;
     }
 
   //overrides for top-bar styles
-  ul > li.head-search:not(.has-form) > a {
+  ul > .head-search:not(.has-form) > a {
     line-height: 32px;
     padding: 0;
     font-size: rem-calc($txt-size-small);
     @include link-text($black, underline);
     }
   // this is the only way I could find to override the white background on hover
-  ul > li.head-search:hover:not(.has-form) > a {
+  ul > .head-search:hover:not(.has-form) > a {
    background: $clr-header;
     color: $plos-default;
 

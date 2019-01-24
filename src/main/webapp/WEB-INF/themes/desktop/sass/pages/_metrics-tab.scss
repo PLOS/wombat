@@ -1,25 +1,3 @@
-/*!
- * Copyright (c) 2017 Public Library of Science
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- */
-
 h2 {
   border-bottom: none;
 }
@@ -44,7 +22,7 @@ h2 {
 }
 
 /*ALM cumulative graph rollover*/
-table#mini {
+#mini {
   background-color: $grey-light;
   width: 200px;
   font-size: 9px;
@@ -54,8 +32,8 @@ table#mini {
   box-shadow: 5px 5px 5px #888;
 }
 
-table#mini th,
-table#mini td {
+#mini th,
+#mini td {
   text-align: left;
   vertical-align: bottom;
   background-color: transparent;
@@ -65,33 +43,33 @@ table#mini td {
   padding-bottom: 3px;
 }
 
-table#mini th.header1 {
+#mini .header1 {
   color: $white;
   background-color: $clr-highlight;
 }
 
-table#mini th.header2 {
+#mini .header2 {
   color: $white;
   background-color: #6d84bf;
 }
 
-table#mini td.data1 {
+#mini .data1 {
   color: $white;
   font-weight: $bold;
   background-color: $clr-highlight;
 }
 
-table#mini td.data2 {
+#mini .data2 {
   color: $white;
   font-weight: $bold;
   background-color: #6d84bf;
 }
 
-table#mini tbody {
+#mini tbody {
   margin: 3px 0;
 }
 
-table#mini tfoot td {
+#mini tfoot td {
   border-top: 1px solid $grey-med;
   border-bottom: 0;
 }
@@ -111,15 +89,15 @@ table#mini tfoot td {
 }
 
 
-table.tile_mini {
+.tile_mini {
   margin: 0;
   font-size: .8em;
   float: left;
   border-collapse: collapse;
 }
 
-table.tile_mini th,
-table.tile_mini td {
+.tile_mini th,
+.tile_mini td {
   text-align: left;
   vertical-align: bottom;
   background: #efefef;
@@ -129,25 +107,25 @@ table.tile_mini td {
   padding-bottom: 1px;
 }
 
-table.tile_mini th.header1 {
+.tile_mini .header1 {
   text-align: center;
   color: $white;
   background-color: $clr-highlight;
 }
 
-table.tile_mini th.header2 {
+.tile_mini .header2 {
   text-align: center;
   color: $white;
   background-color: #6d84bf;
 }
 
-table.tile_mini td.data1 {
+.tile_mini .data1 {
   color: $white;
   font-weight: $bold;
   background-color: $clr-highlight;
 }
 
-table.tile_mini td.data2 {
+.tile_mini .data2 {
   color: $white;
   font-weight: $bold;
   background-color: #6d84bf;
@@ -170,7 +148,7 @@ table.tile_mini td.data2 {
 }
 
 /* pageViewsSummary table */
-div#pageViewsSummary {
+#pageViewsSummary {
   width: 600px;
   display: table;
   border: 1px solid $grey-med;
@@ -178,24 +156,24 @@ div#pageViewsSummary {
   padding: 0;
 }
 
-div#pageViewsSummary div#left {
+#pageViewsSummary #left {
   float: left;
   padding: 8px;
   border: 0;
 }
 
-div#pageViewsSummary div#right {
+#pageViewsSummary #right {
   float: right;
   padding: 0;
   border: 0;
 }
 
-div#pageViewsSummary div.header {
+#pageViewsSummary .header {
   font-size: 14px;
   color: $grey-dark;
 }
 
-div#pageViewsSummary div.totalCount {
+#pageViewsSummary .totalCount {
   padding-top: 3px;
   padding-bottom: 5px;
   font-size: 18px;
@@ -203,22 +181,22 @@ div#pageViewsSummary div.totalCount {
   color: $grey-dark;
 }
 
-div#pageViewsSummary div.pubDates {
+#pageViewsSummary .pubDates {
   font-size: 9px;
   font-weight: $bold;
   color: $grey-med-dark;
   line-height: 11px;
 }
 
-table#pageViewsTable {
+#pageViewsTable {
   border-width: 1px 1px 0 0;
   border-spacing: 0;
   padding: 0;
   margin: 0;
 }
 
-table#pageViewsTable th,
-table#pageViewsTable td {
+#pageViewsTable th,
+#pageViewsTable td {
   border-width: 0 0 1px 1px;
   border-color: $off-white;
   border-style: solid;
@@ -229,34 +207,34 @@ table#pageViewsTable td {
   font-weight: $bold;
 }
 
-table#pageViewsTable th {
+#pageViewsTable th {
   background-color: $off-white;
   color: $grey-med-dark;
 }
 
-table#pageViewsTable td {
+#pageViewsTable td {
   background-color: white;
   color: $grey-med;
 }
 
-table#pageViewsTable td.source1 {
+#pageViewsTable .source1 {
   background-color: $clr-highlight;
   font-weight: $bold;
   color: $white;
 }
 
-table#pageViewsTable td.source2 {
+#pageViewsTable .source2 {
   background-color: #6d84bf;
   font-weight: $bold;
   color: $white;
 }
 
-table#pageViewsTable td.total {
+#pageViewsTable .total {
   font-weight: $bold;
   color: $black;
 }
 
-table#pageViewsTable tr.percent td {
+#pageViewsTable tr.percent td {
   color: $black;
 }
 
@@ -383,8 +361,6 @@ a.irs {
   }
 }
 
-
-
 /************* Article Metrics page: Metrics Tiles and Rating Tile *****************/
 
 #article-metrics {
@@ -393,7 +369,7 @@ a.irs {
   padding-top: $line-height-large;
 }
 
-div.metrics_tile {
+.metrics_tile {
   vertical-align: text-top;
   display: inline-block;
   border: 1px solid $grey-light;
@@ -404,7 +380,7 @@ div.metrics_tile {
   *display: inline; /*  Workaround for IE */
 }
 
-div.metrics_tile:hover {
+.metrics_tile:hover {
   border: 1px solid $grey-med;
   background-color: #C8DFED;
 }
@@ -413,17 +389,17 @@ img.metrics_tile_image {
   border-bottom: 1px solid $grey-light;
 }
 
-div.metrics_tile:hover .metrics_tile_image {
+.metrics_tile:hover .metrics_tile_image {
   border-bottom: 1px solid $grey-med;
 }
 
-div.metrics_tile_footer {
+.metrics_tile_footer {
   line-height: 2.4em;
   text-align: center;
   display: block;
 }
 
-div.metrics_tile_footer a {
+.metrics_tile_footer a {
   @extend %brand-color;
   font-size: 1.3em;
   text-decoration: none;
@@ -434,7 +410,7 @@ div.metrics_tile_footer a {
   }
 }
 
-div.metrics_tile_no_link {
+.metrics_tile_no_link {
   vertical-align: text-top;
   display: inline-block;
   border: 1px solid $grey-light;
@@ -445,7 +421,7 @@ div.metrics_tile_no_link {
   *display: inline; /*  Workaround for IE */
 }
 
-div.metrics_tile_footer_no_link {
+.metrics_tile_footer_no_link {
   line-height: $line-height-large;
   text-align: center;
   color: $grey-med;
@@ -454,11 +430,11 @@ div.metrics_tile_footer_no_link {
   font-weight: $bold;
 }
 
-div.metrics_tile:hover .metrics_tile_rating_footer {
+.metrics_tile:hover .metrics_tile_rating_footer {
   border-top: 1px solid $grey-med;
 }
 
-div#article-metrics div#views {
+#article-metrics #views {
   margin-top: 40px;
 }
 #figshareOnArticleMetricsTab .tile_mini {

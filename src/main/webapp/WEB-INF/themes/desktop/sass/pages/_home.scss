@@ -1,25 +1,3 @@
-/*!
- * Copyright (c) 2017 Public Library of Science
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- */
-
 // HOME CONTENT
 
 $block-height: rem-calc(250);
@@ -205,7 +183,7 @@ body {
   }
 }
 
-body.plosone {
+.plosone {
   .hero {
     &.overlay-dark > a:before {
       background-image: none;
@@ -296,7 +274,7 @@ body.plosone {
     letter-spacing: $letter-spacing-default;
     font-weight: $bold;
 
-    body.plosone & {
+    .plosone & {
       color: $plos-one-purple;
     }
   }
@@ -451,7 +429,7 @@ body.plosone {
   @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-medium);
   position: relative;
 
-  body.plosone & {
+  .plosone & {
     @include blocks($white, $shadow: none, $radius: none);
     border: 1px solid $plos-one-pink;
     @include highlight-border($clr-highlight: $plos-one-pink, $width: 10px, $position: left);
@@ -473,7 +451,7 @@ body.plosone {
     line-height: $line-height;
     margin-bottom: $line-height-small;
 
-    body.plosone & {
+    .plosone & {
       font-size: $txt-size-medium;
       color: $plos-one-purple;
     }
@@ -493,7 +471,7 @@ body.plosone {
     font-size: rem-calc($txt-size-xsmall);
     text-transform: uppercase;
 
-    body.plosone & {
+    .plosone & {
       background-color: $plos-one-pink;
       color: $white;
       &:hover {
@@ -501,7 +479,7 @@ body.plosone {
       }
     }
   }
-  body.plosone & {
+  .plosone & {
     h3 {
       font-size: rem-calc($txt-size-large);
       line-height: $line-height-large;
@@ -628,7 +606,7 @@ body.plosone {
   @extend %width-small;
   margin-bottom: rem-calc(12); // non-standard to account for the drop-shadow on adjacent containers
 
-  body.plosone & {
+  .plosone & {
     outline: 1px solid $grey-light;
   }
 }
@@ -705,7 +683,7 @@ body.plosone {
   }
 }
 
-body.plosone #submission-links {
+.plosone #submission-links {
   @include blocks();
   border: 1px solid $plos-one-pink;
   @include highlight-border($clr-highlight: $plos-one-pink, $width: 10px, $position: left);
@@ -888,7 +866,7 @@ body.plosone #submission-links {
     margin-top: 0;
   }
 }
-body.plosone #blogs {
+.plosone #blogs {
   .block-header {
     background-color: $white;
     a {

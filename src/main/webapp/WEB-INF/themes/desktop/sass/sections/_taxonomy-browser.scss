@@ -1,25 +1,3 @@
-/*!
- * Copyright (c) 2017 Public Library of Science
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- */
-
 $level-title-height: rem-calc(14);
 $level-title-margin-bottom: rem-calc(9);
 $level-top-height: $pad-medium;
@@ -359,7 +337,7 @@ a.hide-active-scroll {
   Shadow box and mask for search alerts
 */
 
-div.inlinePopup {
+.inlinePopup {
   display: none;
   position: fixed;
   box-sizing: content-box;
@@ -374,7 +352,7 @@ div.inlinePopup {
   z-index: 99999;
 }
 
-div.inlinePopup input[type="button"].primary {
+.inlinePopup input[type="button"].primary {
   background: $plos-default;
   color: $white;
 }
@@ -389,7 +367,7 @@ div#login-box.login {
   height: 110px;
 }
 
-div.inlinePopup div.top-header {
+.inlinePopup .top-header {
   position: absolute;
   width: 100%;
   height: 40px;
@@ -397,7 +375,7 @@ div.inlinePopup div.top-header {
   color: $white;
 }
 
-div.inlinePopup span.heading {
+.inlinePopup span.heading {
   font-weight: $bold;
   font-size: 14px;
   position: absolute;
@@ -405,7 +383,7 @@ div.inlinePopup span.heading {
   top: 10px;
 }
 
-div.inlinePopup div.body-wrapper {
+.inlinePopup .body-wrapper {
   position: absolute;
   top: 40px;
   bottom: 40px;
@@ -415,12 +393,12 @@ div.inlinePopup div.body-wrapper {
   font-size: 12px;
 }
 
-div.inlinePopup .big-box {
+.inlinePopup .big-box {
   width: 350px;
   border: solid 1px $grey-med-dark;
 }
 
-div.inlinePopup div.check-box {
+.inlinePopup .check-box {
   padding-top: 4px;
   width: 370px;
   overflow: hidden;
@@ -428,22 +406,22 @@ div.inlinePopup div.check-box {
   white-space: nowrap;
 }
 
-div.inlinePopup div.grey-text {
+.inlinePopup .grey-text {
   color: $plos-default;
   margin-top: 8px;
   width: 370px;
 }
 
-div.inlinePopup div.button-wrapper {
+.inlinePopup .button-wrapper {
   margin-top: 10px;
   cursor: pointer;
 }
 
-div.inlinePopup span.errortext {
+.inlinePopup span.errortext {
   color: #ff0000;
 }
 
-div.inlinePopup input[type="button"] {
+.inlinePopup input[type="button"] {
   background: $grey-dark;
   color: $white;
   margin-right: 2px;
@@ -455,7 +433,7 @@ div.inlinePopup input[type="button"] {
   text-align: center;
 }
 
-div.inlinePopup input[type="button"]:hover {
+.inlinePopup input[type="button"]:hover {
   background: $clr-highlight !important;
   color: $white !important;
 }

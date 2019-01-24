@@ -1,51 +1,27 @@
-/*!
- * Copyright (c) 2017 Public Library of Science
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- */
-
 /* form elements */
 
-form.standard{
+.standard{
   color: $black;
 }
 
-form.standard ul li {
+.standard ul li {
   list-style-type: none;
   padding-left: 0;
   margin-left: 0;
   margin-bottom: $line-height;
   display: block;
 }
-form.standard ul li.short{ }
-form.standard ul {
+.standard ul .short{ }
+.standard ul {
   list-style-type: none;
   padding-left: 0;
   margin-left: 0;
 }
 
-form.standard input[type="text"],form.standard textarea {
+.standard input[type="text"],.standard textarea {
   font-size: $txt-size-default;
   border: 1px solid $grey-med-light;
- // border-radius: 3px;
   padding: 8px 10px 6px;
- // box-shadow: inset 3px 3px 3px rgba(0,0,0,0.01);
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -53,20 +29,20 @@ form.standard input[type="text"],form.standard textarea {
 }
 
 
-form.standard textarea {
+.standard textarea {
   height: 10.5em;
 }
 
-form.standard li.small div{
+.standard .small div{
   width: 48%;
   float: left;
 }
 
-form.standard li.small div.last {
+.standard .small .last {
   float: right;
 }
 
-form.standard label {
+.standard label {
   display: inline-block;
   font-family: $font-face-fancy;
   font-weight: $bold;
@@ -74,9 +50,9 @@ form.standard label {
 }
 
 
-form.standard input[type="button"],
-form.standard input[type="submit"],
-form.standard .button,
+.standard input[type="button"],
+.standard input[type="submit"],
+.standard .button,
 .ui-dialog .ui-dialog-buttonset .ui-button{
   background: $grey-dark;
   color: $white;
@@ -91,24 +67,24 @@ form.standard .button,
   text-align: center;
 }
 
-form.standard input[type="button"]:hover,
-form.standard input[type="submit"]:hover,
-form.standard .button:hover,
+.standard input[type="button"]:hover,
+.standard input[type="submit"]:hover,
+.standard .button:hover,
 .ui-dialog .ui-dialog-buttonset .ui-button:hover {
    @extend %brand-background;
   //background: $clr-highlight !important;
   color: $white !important;
 }
 
-form.standard input[type="button"].primary,
-form.standard input[type="submit"].primary,
-form.standard .button.primary,
+.standard input[type="button"].primary,
+.standard input[type="submit"].primary,
+.standard .button.primary,
 .ui-dialog .ui-dialog-buttonset .primary.ui-button{
   @extend %brand-background;
   
 }
 
-form.standard .note{
+.standard .note{
   font-size: 11px;
 }
 

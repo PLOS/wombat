@@ -387,12 +387,14 @@
               <groupId>org.ambraproject</groupId>
               <artifactId>wombat</artifactId>
               <type>war</type>
+              <location>${project.build.directory}/${project.build.finalName}</location>
               <properties>
                 <context>/</context>
               </properties>
             </deployable>
           </deployables>
           <configuration>
+            <type>standalone</type>
             <properties>
               <cargo.servlet.port>8080</cargo.servlet.port>
             </properties>

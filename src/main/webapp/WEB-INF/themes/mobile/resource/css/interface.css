@@ -604,6 +604,7 @@ section.spotlight .spotlight-item .item-link {
 
 .expander {
   padding: 0 10px;
+  font-weight: 600;
 }
 
 .full-menu-container nav.full-menu ul.primary li.accordion-item {

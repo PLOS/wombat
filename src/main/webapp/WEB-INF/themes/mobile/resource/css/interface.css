@@ -1298,7 +1298,6 @@ nav.footer-secondary-menu li a {
 }
 
 .modal-info-window .modal-header {
-  background: url('../img/bg/divider-fade.png') no-repeat center bottom;
   background-size: 100% 9px;
   padding: 10px;
   height: 50px;
@@ -1331,20 +1330,18 @@ nav.footer-secondary-menu li a {
 }
 
 .modal-info-window .modal-content h4 {
-  font-family: 'Arial', sans-serif;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 16px;
   margin-bottom: 1em;
 }
 
 .modal-info-window .modal-content p {
-  margin-bottom: 1em;
-  font-size: 1em;
+  margin-bottom: 1rem;
+  font-size: 14px;
 }
 
 .modal-info-window .modal-search {
-  position: absolute;
-  bottom: 0;
+display: none;
 }
 
 .modal-info-window.active .modal-content {

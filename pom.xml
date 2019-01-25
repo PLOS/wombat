@@ -50,7 +50,6 @@
     <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     <build.timestamp>${maven.build.timestamp}</build.timestamp>
     <build.counter>0</build.counter>
-    <maven.tomcat.port>8080</maven.tomcat.port>
     <google.truth.version>0.39</google.truth.version>
   </properties>
   <repositories>
@@ -366,17 +365,38 @@
     </resources>
     <plugins>
       <plugin>
-        <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>2.2</version>
+        <groupId>org.codehaus.cargo</groupId>
+        <artifactId>cargo-maven2-plugin</artifactId>
+        <version>1.7.1</version>
         <configuration>
-          <path>/</path>
-          <systemProperties>
-            <java.util.logging.manager>org.apache.juli.ClassLoaderLogManager</java.util.logging.manager>
-            <org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>true
-            </org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>
-            <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
-          </systemProperties>
+          <container>
+            <containerId>tomcat8x</containerId>
+            <zipUrlInstaller>
+              <url>http://repo1.maven.org/maven2/org/apache/tomcat/tomcat/8.5.37/tomcat-8.5.37.zip</url>
+            </zipUrlInstaller>
+            <systemProperties>
+              <java.util.logging.manager>org.apache.juli.ClassLoaderLogManager</java.util.logging.manager>
+              <org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>true</org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>
+              <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+              <!-- Needed to pass on system properties to child process -->
+              <wombat.configDir>${wombat.configDir}</wombat.configDir>
+            </systemProperties>
+          </container>
+          <deployables>
+            <deployable>
+              <groupId>org.ambraproject</groupId>
+              <artifactId>wombat</artifactId>
+              <type>war</type>
+              <properties>
+                <context>/</context>
+              </properties>
+            </deployable>
+          </deployables>
+          <configuration>
+            <properties>
+              <cargo.servlet.port>8082</cargo.servlet.port>
+            </properties>
+          </configuration>
         </configuration>
       </plugin>
       <plugin>
@@ -541,7 +561,7 @@
                 </data>
 
                 <data>
-                  <src>${project.basedir}/src/deb/tomcat7</src>
+                  <src>${project.basedir}/src/deb/tomcat8</src>
                   <type>directory</type>
                   <mapper>
                     <type>perm</type>

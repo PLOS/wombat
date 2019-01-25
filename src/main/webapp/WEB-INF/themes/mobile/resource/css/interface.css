@@ -67,7 +67,7 @@
 }
 
 .clearfix {
-  *zoom: 1;
+  zoom: 1;
 }
 
 .bold {
@@ -87,14 +87,17 @@
   font-size: 1.5em;
   font-family: Verdana, 'Arial', sans-serif;
   font-weight: normal;
-  }
+}
 
-.pad-below{
-    margin-bottom: 20px;
-  }
+.pad-below {
+  margin-bottom: 20px;
+}
 
 /* GENERAL STYLES AND RESETS */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: Verdana, 'Arial', sans-serif;
   font-weight: normal;
 }
@@ -159,7 +162,7 @@ a {
 
 #site-header-container #site-menu-button {
   float: left;
-  background-position: -112px 0px;
+  background-position: -112px 0;
   width: 27px;
   height: 21px;
   background-repeat: no-repeat;
@@ -183,7 +186,7 @@ a {
   overflow: hidden;
   text-indent: -1000px;
   display: block;
-  background-position: -187px 0px;
+  background-position: -187px 0;
   width: 23px;
   height: 18px;
   background-repeat: no-repeat;
@@ -250,11 +253,13 @@ ul.results li:last-child {
 }
 
 /* Alerts */
-.red-alert, .amendment-uncorrected-proof {
+.red-alert,
+.amendment-uncorrected-proof {
   background: #fce2e5;
 }
 
-.red-alert h3, .amendment-uncorrected-proof h2 {
+.red-alert h3,
+.amendment-uncorrected-proof h2 {
   color: #e53350;
 }
 
@@ -350,7 +355,7 @@ section.tweets .tweets-container .tweet .tweet-content .tweet-time {
 }
 
 section.tweets .tweets-container .tweet:last-child {
-  border-bottom: 0px;
+  border-bottom: 0;
 }
 
 /* Spotlight */
@@ -406,9 +411,8 @@ section.spotlight .spotlight-item .item-link {
   background: #525252;
 }
 
-.two-btn-container {
+.two-btn-container a {
   width: 100%;
-  background: #333333;
   -webkit-border-top-right-radius: 5px;
   -webkit-border-bottom-right-radius: 5px;
   -webkit-border-bottom-left-radius: 5px;
@@ -426,20 +430,8 @@ section.spotlight .spotlight-item .item-link {
   background-clip: padding-box;
   text-align: center;
   color: #fff;
-}
-
-.two-btn-container a {
-  width: 50%;
-  color: #4A1010;
-  display: inline-block;
-  font-family: Verdana, 'Arial', sans-serif;
   font-size: 1.4em;
   text-align: center;
-}
-
-.two-btn-container .btn-left {
-  border-right: 5px solid #fff;
-  margin-left: -5px;
 }
 
 .rounded {
@@ -462,16 +454,16 @@ section.spotlight .spotlight-item .item-link {
   background-clip: padding-box;
   background: #333333;
   color: #fff;
-  font-size: 1.1em;
+  font-size: 1.4em;
 }
 
 .button-pair a.rounded {
   float: left;
 }
 
-.button-pair a.rounded:last-child {
+/*.button-pair a.rounded:last-child {
   float: right;
-}
+}*/
 
 .close {
   width: 20px;
@@ -510,11 +502,12 @@ section.spotlight .spotlight-item .item-link {
 
 .buttongroup > button {
   padding: 0 10px;
-  height: 35px;
-  line-height: 35px;
+  height: 44px;
+  line-height: 44px;
   background: #333333;
   color: #fff;
   display: table-cell;
+  font-size: 1.4em;
 }
 
 .buttongroup > button:first-child {
@@ -558,11 +551,12 @@ section.spotlight .spotlight-item .item-link {
 }
 
 .filter-button {
-  font-size: 1em;
+  font-size: 1.4em;
   font-family: 'Arial', sans-serif;
   font-weight: bold;
   padding: 0 10px;
-  height: 30px;
+  height: 44px;
+  line-height: 44px;
 }
 
 .filter-button span {
@@ -573,7 +567,7 @@ section.spotlight .spotlight-item .item-link {
   overflow: hidden;
   text-indent: -1000px;
   display: block;
-  background-position: -290px 0px;
+  background-position: -290px 0;
   width: 9px;
   height: 6px;
   background-repeat: no-repeat;
@@ -608,8 +602,9 @@ section.spotlight .spotlight-item .item-link {
   padding-bottom: 20px;
 }
 
-.full-menu-container nav.full-menu {
+.expander {
   padding: 0 10px;
+  font-weight: 600;
 }
 
 .full-menu-container nav.full-menu ul.primary li.accordion-item {
@@ -629,7 +624,7 @@ section.spotlight .spotlight-item .item-link {
   margin-top: -4px;
   position: absolute;
   top: 50%;
-  right: 0;
+  right: 10px;
   overflow: hidden;
   text-indent: -1000px;
   display: block;
@@ -647,7 +642,7 @@ section.spotlight .spotlight-item .item-link {
 }
 
 .full-menu-container nav.full-menu ul.primary li.accordion-item.expanded .arrow {
-  background-position: -276px 0px;
+  background-position: -276px 0;
   width: 7px;
   height: 6px;
   background-repeat: no-repeat;
@@ -735,7 +730,7 @@ nav.menu-bar li.active a {
 }
 
 nav.menu-bar li:last-child {
-  border-right: 0px;
+  border-right: 0;
 }
 
 nav.menu-rounded ul,
@@ -814,13 +809,13 @@ nav.article-menu-bottom .btn-top-container .btn {
   overflow: hidden;
   text-indent: -1000px;
   display: block;
-  background-position: -225px 0px;
+  background-position: -225px 0;
   width: 40px;
   height: 39px;
   background-repeat: no-repeat;
   background-image: url('../img/sprites/structure.png');
   background-size: 300px 75px;
-  margin: 5px auto 0px auto;
+  margin: 5px auto 0 auto;
 }
 
 nav.footer-menu {
@@ -851,7 +846,7 @@ nav.footer-menu li a {
 }
 
 nav.footer-menu li:last-child a {
-  border-right: 0px;
+  border-right: 0;
 }
 
 nav.footer-secondary-menu ul {
@@ -941,13 +936,12 @@ nav.footer-secondary-menu li a {
 
 /* Article Item */
 
-.article-item .lead-in{
+.article-item .lead-in {
   margin-top: 20px;
 }
 
 .article-item .article-title,
-.article-item #revisionMenu
-{
+.article-item #revisionMenu {
   margin-top: 10px;
 }
 
@@ -960,7 +954,8 @@ nav.footer-secondary-menu li a {
   font-size: 1.5em;
 }
 
-.article-item .author-list .more-authors-list, .article-item .author-list a.author-less {
+.article-item .author-list .more-authors-list,
+.article-item .author-list a.author-less {
   display: none;
 }
 
@@ -981,15 +976,6 @@ nav.footer-secondary-menu li a {
   margin-top: 1em;
 }
 
-/*
-  Font specs from PSD:
-  * H1 (Article title) Open Sans Bold 20
-  * H2 (Accordion items) Open Sans Regular 18
-  * H3 Arial Bold 16
-  * H4 Arial Regular 16
-  * H5 Arial Bold 15
-  * H6 Arial Regular 15
-*/
 .article-item h2 {
   font-size: 1.8em;
   margin-top: 1em;
@@ -1156,7 +1142,6 @@ nav.footer-secondary-menu li a {
   right: 0;
   top: 0;
   width: 35px;
-  border-left: 7px solid #fff;
   overflow: hidden;
   text-indent: -1000px;
   display: block;
@@ -1250,8 +1235,7 @@ nav.footer-secondary-menu li a {
 }
 
 .accordion-content p {
-  font-size: 1.5em; /* TODO: Generalize beyond <p> and <li> */
-  /* padding: 10px 15px; */
+  font-size: 1.5em;
   margin: 1em 0;
 }
 
@@ -1342,7 +1326,6 @@ nav.footer-secondary-menu li a {
   -khtml-opacity: 0;
   -webkit-opacity: 0;
   opacity: 0;
-  /*-ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0); TODO Syntax error? */
   filter: alpha(opacity=0);
   -webkit-overflow-scrolling: touch;
 }
@@ -1359,10 +1342,6 @@ nav.footer-secondary-menu li a {
   font-size: 1em;
 }
 
-/*.modal-info-window .modal-content.no-button {
-  height: 230px;
-}*/
-
 .modal-info-window .modal-search {
   position: absolute;
   bottom: 0;
@@ -1373,7 +1352,6 @@ nav.footer-secondary-menu li a {
   -khtml-opacity: 1;
   -webkit-opacity: 1;
   opacity: 1;
-  /*-ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=100); TODO Syntax error? */
   filter: alpha(opacity=100);
 }
 
@@ -1483,7 +1461,7 @@ nav.footer-secondary-menu li a {
 }
 
 #share-methods .reddit .icon {
-  background-position: -50px 0px;
+  background-position: -50px 0;
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
@@ -1492,7 +1470,7 @@ nav.footer-secondary-menu li a {
 }
 
 #share-methods .google .icon {
-  background-position: -75px 0px;
+  background-position: -75px 0;
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
@@ -1501,7 +1479,7 @@ nav.footer-secondary-menu li a {
 }
 
 #share-methods .facebook .icon {
-  background-position: 0px 0px;
+  background-position: 0 0;
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
@@ -1519,7 +1497,7 @@ nav.footer-secondary-menu li a {
 }
 
 #share-methods .stumble .icon {
-  background-position: -25px 0px;
+  background-position: -25px 0;
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
@@ -1528,7 +1506,7 @@ nav.footer-secondary-menu li a {
 }
 
 #share-methods .mendeley .icon {
-  background-position: 0px -25px;
+  background-position: 0 -25px;
   width: 25px;
   height: 50px;
   background-repeat: no-repeat;
@@ -1537,7 +1515,7 @@ nav.footer-secondary-menu li a {
 }
 
 #share-methods .connotea .icon {
-  background-position: -100px 0px;
+  background-position: -100px 0;
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
@@ -1565,7 +1543,7 @@ nav.footer-secondary-menu li a {
 }
 
 .save-article.full.saved {
-  background: #f8af2d;
+  background: #d7df23;
   color: #333333;
 }
 
@@ -1742,7 +1720,6 @@ nav.footer-secondary-menu li a {
     display: none;
     /* Hide this for more room for content in landscape */
   }
-
 }
 
 .error {
@@ -1797,5 +1774,5 @@ nav.footer-secondary-menu li a {
 }
 
 .author-full-name {
-  padding: 0px 0px 10px 0px;
+  padding: 0 0 10px 0;
 }

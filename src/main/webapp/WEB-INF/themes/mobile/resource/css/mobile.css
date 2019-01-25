@@ -22,7 +22,7 @@
 
 /* Home */
 #home-content {
-  padding: 0px;
+  padding: 0;
 }
 
 #home-content #article-pagination {
@@ -34,12 +34,15 @@
   padding: 25px 10px;
 }
 
-#article-post-options #submission-buttons {
-  margin-top: 5px;
-}
 
 #article-post-options #submission-buttons a {
-  padding: 10px 0;
+  background: #000;
+  width: 100%;
+  display: block;
+  padding: 12px 0;
+  margin: 1rem 0;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 #article-content .retraction {
@@ -76,7 +79,7 @@
 
 #article-content .correction-alert {
   font-size: 1.4em;
-  background-position: 0px 2px;
+  background-position: 0 2px;
   margin-top: 15px;
 }
 
@@ -148,9 +151,10 @@
 
 #article-content .article-save-options a.rounded {
   font-weight: bold;
-  font-size: 1em;
-  padding: 10px;
+  font-size: 1.4em;
+  padding: 1em;
   text-align: center;
+  text-transform: uppercase;
 }
 
 #article-content .article-save-options a.rounded.full {
@@ -158,7 +162,7 @@
 }
 
 #article-content .article-save-options .button-row + .button-row {
-  margin-top: 10px;
+  margin-top: 1em;
 }
 
 #article-content .article-save-options .button-row + .button-row:last-child {
@@ -197,10 +201,12 @@
   margin: 20px 0;
 }
 
-#author-content dd {margin-bottom: 10px;}
-#author-content dt {font-weight: bold;
-margin-bottom: 5px;}
-#author-content dl span.type {font-weight: bold;}
+#author-content dd { margin-bottom: 10px; }
+#author-content dt {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#author-content dl span.type { font-weight: bold; }
 
 
 /* Results */
@@ -217,16 +223,16 @@ margin-bottom: 5px;}
 #page-results .filter-container {
   border-bottom: 1px solid #d3d3d3;
   padding: 10px;
+  text-align: center;
 }
 
 #page-results .filter-container h3 {
-  font-size: 1.5em;
-  float: left;
-  line-height: 30px;
+  font-size: 1.2em;
+  line-height: 44px;
 }
 
 #page-results .filter-container .filter-button {
-  float: right;
+  width: 90%;
 }
 
 #page-results #display-options {
@@ -610,7 +616,7 @@ html:not(.positionfixed) #page-figure #site-header-container {
   overflow: hidden;
   text-indent: -1000px;
   display: block;
-  background-position: -275px 0px;
+  background-position: -275px 0;
   width: 9px;
   height: 6px;
   background-repeat: no-repeat;
@@ -881,8 +887,6 @@ ol.references li {
 }
 
 ol.references li span.label {
-  /* margin-left: -26px; */
-  /* float: left; */
   width: 20px;
   text-align: right;
   position: absolute;
@@ -908,6 +912,6 @@ ol.references ul.find li {
 }
 
 ol.references ul.find li:first-child {
-  margin-left: 0px;
+  margin-left: 0;
   list-style-type: none;
 }

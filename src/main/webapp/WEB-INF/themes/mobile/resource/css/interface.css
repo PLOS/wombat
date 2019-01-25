@@ -1352,6 +1352,7 @@ nav.footer-secondary-menu li a {
   font-size: 14px;
 }
 
+/* Hiding author search button for now, as the functionality is broken */
 .modal-info-window .modal-search {
   display: none;
 }
@@ -1721,7 +1722,7 @@ nav.footer-secondary-menu li a {
     padding-bottom: 60px; /* necessary for inconsistencies in iOS zoom behavior among versions */
   }
 
-  .modal-info-window #emove-article {
+  .modal-info-window #remove-article {
     margin-bottom: 60px;
   }
 

@@ -372,7 +372,7 @@
           <container>
             <containerId>tomcat8x</containerId>
             <zipUrlInstaller>
-              <url>http://repo1.maven.org/maven2/org/apache/tomcat/tomcat/8.5.37/tomcat-8.5.37.zip</url>
+              <url>http://repo1.maven.org/maven2/org/apache/tomcat/tomcat/8.0.32/tomcat-8.0.32.zip</url>
             </zipUrlInstaller>
             <systemProperties>
               <java.util.logging.manager>org.apache.juli.ClassLoaderLogManager</java.util.logging.manager>
@@ -387,14 +387,16 @@
               <groupId>org.ambraproject</groupId>
               <artifactId>wombat</artifactId>
               <type>war</type>
+              <location>${project.build.directory}/${project.build.finalName}</location>
               <properties>
                 <context>/</context>
               </properties>
             </deployable>
           </deployables>
           <configuration>
+            <type>standalone</type>
             <properties>
-              <cargo.servlet.port>8082</cargo.servlet.port>
+              <cargo.servlet.port>8080</cargo.servlet.port>
             </properties>
           </configuration>
         </configuration>
@@ -591,7 +593,7 @@
         <version>0.3.0</version>
         <executions>
           <execution>
-            <phase>package</phase>
+            <phase>install</phase>
             <goals>
               <goal>apt-repo</goal>
             </goals>

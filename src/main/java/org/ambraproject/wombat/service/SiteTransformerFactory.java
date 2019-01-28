@@ -43,7 +43,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class SiteTransformerFactory {
 
-  private static TransformerFactory newTransformerFactory() {
+  static TransformerFactory newTransformerFactory() {
     // This implementation is required for XSLT features, so just hard-code it here
     // Preferred over TransformerFactory.newInstance because Java system properties can burn in hell
     return new net.sf.saxon.TransformerFactoryImpl();

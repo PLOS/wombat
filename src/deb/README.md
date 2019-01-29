@@ -24,9 +24,9 @@ The pom.xml file contains the configuration for the jdeb plugin, and controls th
 * defining a name for the Debian package using the following format: [artifactId]_[version]+[datestamp]-plos[buildNumber].deb
   (e.g. wombat_3.3.0+20170315-plos1234.deb). The build number defaults to 0 for local builds, but is otherwise passed as a mvn
   command line property by Team City.
-* extracting the tomcat8 config files (rendered with debconf-provided values as described below) into the install directory
+* extracting the tomcat7 config files (rendered with debconf-provided values as described below) into the install directory
 * placing the built wombat.war file into the webapps sub-folder within the install directory
-* moving the src/deb/tomcat8/wombat.sysv startup script into /etc/init.d/wombat
+* moving the src/deb/tomcat7/wombat.sysv startup script into /etc/init.d/wombat
 
 NOTE: for more configuration options, see https://github.com/tcurdt/jdeb/blob/master/docs/maven.md
 
@@ -35,7 +35,7 @@ NOTE: for more configuration options, see https://github.com/tcurdt/jdeb/blob/ma
 The src/deb/control directory contains the configuration files necessary for building a Debian package under
 control of the jdeb Maven plugin.
 * control:      package metadata including the version (which needs to match the version and suffix string format defined
-                in pom.xml) and any package dependencies (most notably, tomcat8-common and debconf)
+                in pom.xml) and any package dependencies (most notably, tomcat7-common and debconf)
 * preinst:      contains the input commands to use for the debconf wizard of format `dbinput [priority] [question]`
                 (e.g. `db_input high wombat/wombat_port`) where [question] is a reference to a template (see below)
 * templates:    contains the questions for the debconf wizard to ask during the install, and default values
@@ -44,9 +44,9 @@ control of the jdeb Maven plugin.
 * prerm/postrm: scripts that run prior to and after package removal
 
 
-## src/deb/tomcat8 directory ##
+## src/deb/tomcat7 directory ##
 
-Config files and directory structure required for the Tomcat8 private instance.
+Config files and directory structure required for the Tomcat7 private instance.
 * bin/:         directory containing startup scripts
 * conf/:        directory containing the main config files. Only server.xml and context.xml contain environment
                 variables provided by the debconf wizard

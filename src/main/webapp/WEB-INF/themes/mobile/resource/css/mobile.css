@@ -149,7 +149,7 @@
   width: 300px;
 }
 
-#article-content .article-save-options a.rounded {
+.rounded {
   font-weight: bold;
   font-size: 1.4em;
   padding: 1em;

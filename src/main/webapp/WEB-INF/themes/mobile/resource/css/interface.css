@@ -818,62 +818,35 @@ nav.article-menu-bottom .btn-top-container .btn {
   margin: 5px auto 0 auto;
 }
 
-nav.footer-menu {
-  height: 44px;
-}
 
-nav.footer-menu ul {
-  display: table;
+nav.footer-menu ul,
+nav.footer-secondary-menu ul {
   text-align: center;
   margin: 0 auto;
 }
 
-nav.footer-menu li {
-  display: inline-block;
+nav.footer-menu li,
+nav.footer-secondary-menu li {
+  display: block;
+    height: 44px;
+  line-height:44px;
 }
 
-nav.footer-menu li a {
-  display: table-cell;
-  vertical-align: middle;
-  padding: 0 20px;
-  border-right: 1px solid #666666;
+nav.footer-menu li a,
+nav.footer-secondary-menu li a {
   color: #fff;
   font-size: 1.3em;
   font-family: Arial, sans-serif;
-  height: 20px;
-  line-height: 1.8em;
 }
 
-nav.footer-menu li:last-child a {
-  border-right: 0;
-}
 
-nav.footer-secondary-menu ul {
-  display: table;
-  margin: 12px auto 5px auto;
-}
-
-nav.footer-secondary-menu li {
-  display: table-cell;
-  padding: 0 10px;
-  border-right: 1px solid #666666;
-}
-
-nav.footer-secondary-menu li:last-child {
-  border-right: 0;
-}
-
-nav.footer-secondary-menu li a {
-  font-size: 14px;
-  color: #fff;
-}
 
 .footer-non-profit-statement {
   width: 100%;
   color: white;
   font-size: 12px;
   text-align: center;
-  margin: 5px 0;
+  margin:12px 0;
 }
 
 /* Search */

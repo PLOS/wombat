@@ -167,7 +167,7 @@
 
   <xsl:template match="supplementary-material">
     <dd class="review-asset">
-      <a class="review-asset-label rounded" href="#">
+      <a class="review-asset-label coloration-white-on-color" href="#">
         <xsl:value-of select="label"/>
       </a>
       <div class="review-asset-caption">

@@ -21,8 +21,7 @@
   -->
 
 <#include "../baseTemplates/articleSection.ftl" />
-<#assign mainclass = "peer-review" />
-<#assign mainId = "content" />
+<#assign mainId = "peer-review" />
 
 <#assign title = article.title />
 <#assign cssFile = 'peer-review.css' />

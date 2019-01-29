@@ -67,10 +67,10 @@
 <@cssLink target="resource/css/base.css" />
 <@cssLink target="resource/css/interface.css" />
 <@cssLink target="resource/css/mobile.css" />
+<#include "../cssLinks.ftl" />
 <#if cssFile?has_content>
   <@cssLink target="resource/css/${cssFile}" />
 </#if>
-<#include "../cssLinks.ftl" />
 
   <script src="<@siteLink path="resource/js/vendor/vendor.min.js" />"></script>
 <@js src="resource/js/vendor/underscore-min.js"/>

@@ -1,0 +1,64 @@
+#peer-review {
+  margin: 0 1rem;
+}
+
+.page-title,
+.section-title {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.review-history {
+  margin: 2em 0;
+}
+
+.decision-letter-body p,
+.author-response p,
+.review-history span,
+.decision-title,
+.review-history .date,
+.tpr-info p,
+.review-files-title,
+.review-asset {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.review-history p,
+.author-response p,
+.tpr-info p,
+.review-files-title,
+.review-asset {
+  margin: 12px 0;
+}
+
+.review-files-title {
+  font-weight: 600;
+}
+
+.review-asset-label {
+  
+}
+
+#peer-review .review-history th {
+  background: #f9f9f9;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+  text-align: left;
+}
+
+.review-history .date {
+  width: 20%;
+  text-align: right;
+  display: inline;
+}
+
+.review-history .decision-title {
+  width: 70%;
+  float: left;
+  margin-right: 5%;
+  display: inline;
+  }

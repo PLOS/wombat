@@ -65,9 +65,9 @@
 
   <xsl:template match="sub-article[@specific-use = 'decision-letter']">
     <tr>
-      <td class="decision-letter">
+      <td class="version">
         
-        <div itemscope="" 
+        <div class="decision-letter" itemscope="" 
           itemtype="http://schema.org/Review">
             
           <div itemprop="itemReviewed" itemscope="" 
@@ -136,13 +136,13 @@
         </div>
 
          <!-- accordion container -->
-        <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
-          <div class="author-response">
+        <div itemprop="reviewBody" class="collapse author-response" id="decisionLetter3">
+          
             <p>
               bogus author response text for:
               <xsl:value-of select="front-stub/article-id"/>
             </p>
-          </div>
+         
         </div>
         <!-- end accordion container -->
       </td>

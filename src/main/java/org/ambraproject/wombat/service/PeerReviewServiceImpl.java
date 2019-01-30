@@ -75,7 +75,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
 
     StringWriter htmlWriter = new StringWriter();
     try {
-      Transformer transformer = TransformerFactory.newInstance().newTransformer(xslSource);
+      Transformer transformer = SiteTransformerFactory.newTransformerFactory().newTransformer(xslSource);
       transformer.transform(xmlSource, new StreamResult(htmlWriter));
     } catch (TransformerException e) {
       throw new RuntimeException(e);

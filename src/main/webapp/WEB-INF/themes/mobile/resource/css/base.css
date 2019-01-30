@@ -21,7 +21,7 @@
  */
 
 html {
-  font-size: 100%;
+  font-size: 62.5%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
@@ -90,8 +90,9 @@ dl, menu, ol, ul {
   margin: 0;
 }
 
-dd {
-  margin: 0 0 0 40px;
+dt,dd {
+  margin: 0;
+  font-size: 14px;
 }
 
 form {

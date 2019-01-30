@@ -6,8 +6,8 @@ set -o errexit
 
 NAME=wombat
 
-TOMCAT8_USER=$NAME
-TOMCAT8_GROUP=$NAME
+TOMCAT7_USER=$NAME
+TOMCAT7_GROUP=$NAME
 HOME=/opt/plos/$NAME
 
 function process_env_template {
@@ -29,17 +29,17 @@ case "$1" in
 
   # create user/group
 
-	if ! getent group "$TOMCAT8_GROUP" > /dev/null 2>&1 ; then
-	    addgroup --system "$TOMCAT8_GROUP" --quiet
+	if ! getent group "$TOMCAT7_GROUP" > /dev/null 2>&1 ; then
+	    addgroup --system "$TOMCAT7_GROUP" --quiet
 	fi
-	if ! id $TOMCAT8_USER > /dev/null 2>&1 ; then
+	if ! id $TOMCAT7_USER > /dev/null 2>&1 ; then
 	    adduser --system --home $HOME --no-create-home \
-		--ingroup "$TOMCAT8_GROUP" --disabled-password --shell /bin/false \
-		"$TOMCAT8_USER"
+		--ingroup "$TOMCAT7_GROUP" --disabled-password --shell /bin/false \
+		"$TOMCAT7_USER"
 	fi
 
 	chmod +x $HOME/bin/*.sh
-	chown -Rh $TOMCAT8_USER:$TOMCAT8_GROUP $HOME
+	chown -Rh $TOMCAT7_USER:$TOMCAT7_GROUP $HOME
 
 	echo "Fetching configuration from debconf"
 	GET="db_get [[artifactId]]"

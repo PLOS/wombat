@@ -4,13 +4,13 @@ set -e
 
 NAME=wombat
 
-TOMCAT8_USER=$NAME
+TOMCAT7_USER=$NAME
 
 case "$1" in
   remove|upgrade|deconfigure)
     [ -f /etc/default/$NAME ] && . /etc/default/$NAME
-    # Remove auth for tomcat8 to open privileged ports via authbind.
-    TOMCAT_UID="`id -u $TOMCAT8_USER`"
+    # Remove auth for tomcat7 to open privileged ports via authbind.
+    TOMCAT_UID="`id -u $TOMCAT7_USER`"
     if [ -f "/etc/authbind/byuid/$TOMCAT_UID" ]; then
       rm -f /etc/authbind/byuid/$TOMCAT_UID
     fi

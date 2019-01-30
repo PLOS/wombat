@@ -24,11 +24,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
 
-  <link rel="stylesheet" type="text/css"
+ <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i">
 <#if article??>
   <#if article.date??>
@@ -52,15 +52,18 @@
 
   <style type='text/css'>
     @-ms-viewport {
-      width: device-width;
+      zoom: 0.86;
+      width: auto;
     }
 
     @-o-viewport {
-      width: device-width;
+      zoom: 0.86;
+      width: auto;
     }
 
     @viewport {
-      width: device-width;
+      zoom: 0.86;
+      width: auto;
     }
   </style>
   <title><@titleFormat removeTags(title) /></title>

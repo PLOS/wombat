@@ -36,10 +36,6 @@
   margin: 0 0 0 1rem;
 }
 
-.decision-letter__body,
-.author-response {
-  margin: 24px 0;
-}
 
 .decision-letter__body,
 .author-response { color:#999;}

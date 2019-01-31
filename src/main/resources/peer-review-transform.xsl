@@ -6,17 +6,19 @@
   <xsl:output method="html"/>
 
   <xsl:template match="/">
-    <h2>Peer Review History</h2>
-    <table class="table table-bordered review-history">
+     <h2 class="page-title">Peer Review History</h2>
+    <table class="review-history">
       <tbody>
         <xsl:apply-templates/>
         <tr>
-          <th>Formally Accepted</th>
+          <th class="version">
+            <span class="decision-letter__title">Formally Accepted</span>
+          </th>
         </tr>
       </tbody>
     </table>
     <div class="tpr-info">
-      <h3>Open letter on the publication of peer review reports</h3>
+      <h3 class="section-title">Open letter on the publication of peer review reports</h3>
       <p>PLOS recognizes the benefits of transparency in the peer review process. Therefore, we enable the publication
         of
         all
@@ -38,18 +40,21 @@
 
   <xsl:template match="revision">
     <tr>
-      <th>
-        <div class="date">
-          <span class="decision-date">
+      <th class="version">
+          <span class="decision__date">
             <xsl:value-of select=".//named-content[@content-type = 'letter-date']"/>
           </span>
-        </div>
         <xsl:choose>
           <xsl:when test="position() = 1">
+           <span class="decision-letter__title">
             Original Submission
+             </span>
+
           </xsl:when>
           <xsl:otherwise>
+             <span class="decision-letter__title">
             Revision <xsl:value-of select="position() - 1"/>
+             </span>
           </xsl:otherwise>
         </xsl:choose>
       </th>
@@ -59,43 +64,36 @@
 
   <xsl:template match="sub-article[@specific-use = 'decision-letter']">
     <tr>
-      <td>
+      <td class="decision">
         <div class="decision-letter" itemscope=""
              itemtype="http://schema.org/Review">
           <div itemprop="itemReviewed" itemscope=""
                itemtype="http://schema.org/ScholarlyArticle">
             <meta itemprop="url" content="articleUrl" />
-          </div>
-
-          <div class="date">
-            <time class="decision-date"
+         
+            <time class="decision-letter__date"
                   itemprop="dateCreated"
                   datetime="">
               <xsl:value-of select=".//named-content[@content-type = 'letter-date']"/>
             </time>
-          </div>
-
+<div class="decision-letter__label">
           <!-- trigger for expand and collapse -->
-          <a data-toggle="collapse"
-             href="#decisionLetter3"
-             role="button"
-             aria-expanded="false"
-             aria-controls="decisionLetter3">
-            [Decision Letter expand/collapse]
+          <a data-toggle="collapse" href="#decisionLetter3">
+            [Decision Letter]
           </a>
           <!-- end trigger for expand and collapse -->
           -
-          <span itemprop="author" itemscope=""
+          <span itemprop="decision-letter__author" itemscope=""
                 itemtype="http://schema.org/Person">
             <span itemprop="name">
               Nico Donkelope
             </span>
           </span>
           , Editor
-
+</div>
           <!-- accordion container -->
           <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
-            <div class="decision-letter-body">
+            <div class="decision-letter__body">
               <p>
                 <xsl:apply-templates select="body"/>
               </p>
@@ -103,6 +101,7 @@
           </div>
           <!-- end accordion container -->
         </div>
+         </div>
       </td>
     </tr>
   </xsl:template>
@@ -111,6 +110,7 @@
     <tr>
 
       <td>
+        <div class="author-response">
         <!-- author response -->
         <div class="date">
           <time class="response-date">
@@ -118,17 +118,13 @@
           </time>
         </div>
 
-        <a data-toggle="collapse"
-           href="#decisionLetter2"
-           role="button"
-           aria-expanded="false"
-           aria-controls="decisionLetter2">
+        <a data-toggle="collapse" href="#decisionLetter2">
           [Author Response expand/collapse]
         </a>
 
         <!-- accordion container -->
         <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
-          <div class="author-response">
+          
             <p>
               bogus author response text for:
               <xsl:value-of select="front-stub/article-id"/>
@@ -144,7 +140,7 @@
     <xsl:apply-templates select="*[not(self::supplementary-material)]"/>
     <xsl:if test="supplementary-material">
       <dl class="review-files">
-        <dt>Attachments</dt>
+        <dt class="review-files__title">Attachments</dt>
         <xsl:apply-templates select="supplementary-material"/>
       </dl>
     </xsl:if>
@@ -158,10 +154,10 @@
 
   <xsl:template match="supplementary-material">
     <dd class="supplementary-material">
-      <a class="sm-label" href="#">
+      <a class="supplementary-material__label coloration-white-on-color" href="#">
         <xsl:value-of select="label"/>
       </a>
-      <div class="sm-caption">
+      <div class="supplementary-material__caption">
         <xsl:copy-of select="caption/p/text()"/>
         <i>
           <xsl:value-of select="caption/p/named-content"/>

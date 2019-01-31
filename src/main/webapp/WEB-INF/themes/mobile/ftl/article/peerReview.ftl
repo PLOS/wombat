@@ -22,7 +22,7 @@
 
 <#include "../baseTemplates/articleSection.ftl" />
 <#assign mainId = "peer-review" />
-
+<#assign mainClass = "content" />
 <#assign title = article.title />
 <#assign cssFile = 'peer-review.css' />
 

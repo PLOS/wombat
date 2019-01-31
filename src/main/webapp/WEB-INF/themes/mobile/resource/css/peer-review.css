@@ -4,60 +4,67 @@
 
 .page-title,
 .section-title {
-  font-size: 22px;
-  line-height: 28px;
-  font-weight: 600;
-  margin: 24px 0 12px;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 400;
+  margin: 12px 0 24px;
   font-family: Arial, sans-serif;
 }
 
 .page-title {
   margin-left: 1rem;
 }
-
 .review-history {
-  margin: 2em 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-top: 1px solid #eee;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+.review-history,
+.supplementary-material,
+.tpr-info  {
+    font-size: 14px;
+  line-height: 18px;
 }
 
-.review-history td,
+.decision-letter,
+.author-response,
 .tpr-info {
-  padding: 12px 1em;
+  padding: 12px 0;
+  margin: 0 0 0 1rem;
 }
 
-.decision-letter-body,
+.decision-letter__body,
 .author-response {
   margin: 24px 0;
 }
 
-.decision-letter-body p,
-.author-response p,
-.review-history span,
-.decision-title,
-.review-history .date,
-.tpr-info p,
-.review-files-title,
-.review-asset,
-.letter-label {
-  font-size: 14px;
-  line-height: 18px;
+.decision-letter__body,
+.author-response { color:#999;}
+
+.decision-letter__label {
+  display: block;
+  width: 100%;
 }
 
 .review-history p,
 .author-response p,
 .tpr-info p,
-.review-files-title,
-.review-asset-caption {
+.review-files__title,
+.supplementary-material__caption {
   margin: 12px 0;
 }
 
-.review-files-title {
+.review-files__title {
   font-weight: 600;
 }
 
-.review-asset {
+.supplementary-material__caption {
   margin: 0 0 24px;
 }
-.review-asset-label {
+.supplementary-material__label  {
   font-weight: 600;
   text-transform: uppercase;
   padding: .5em 1em;
@@ -79,30 +86,29 @@
 
 }
 
-#peer-review .review-history th {
-  background: #f9f9f9;
-  border-top: 1px solid #eee;
+.review-history tr {
   border-bottom: 1px solid #eee;
-  padding: 12px 0;
-  text-align: left;
 }
 
-.review-history .date {
-  width: 20%;
-  text-align: right;
-  display: inline;
-  float: right;
-  margin-right: 1rem;
+.version {
+    background: #f9f9f9;
+    padding: 12px 0;
 }
 
-.review-history .decision-title {
-  width: 70%;
-  float: left;
-  margin-right: 2rem;
-  display: inline;
-  margin-left: 1rem;
+.decision-letter__date,
+.decision__date {
+  width:100%;
+  display: block;
+}
+
+.decision__date {
+    font-weight: 400;
+    text-indent: 1rem;
+}
+
+.decision-letter__title {
+  width: 100%;
+  display: block;
+  text-indent: 1rem;
   }
   
-.tpr-info {
-  margin: 24px 0;
-}

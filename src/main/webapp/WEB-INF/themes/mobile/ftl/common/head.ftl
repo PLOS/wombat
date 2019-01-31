@@ -24,7 +24,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, minimum-scale=1">
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
 
@@ -52,17 +52,17 @@
 
   <style type='text/css'>
     @-ms-viewport {
-      zoom: 0.86;
+      zoom: 1;
       width: auto;
     }
 
     @-o-viewport {
-      zoom: 0.86;
+      zoom: 1;
       width: auto;
     }
 
     @viewport {
-      zoom: 0.86;
+      zoom: 1;
       width: auto;
     }
   </style>

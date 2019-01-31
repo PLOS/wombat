@@ -29,10 +29,10 @@
   </@globalConfig>
   <#if isSolrServerConfigured>
 
-    <form name="searchForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
-      <fieldset>
-        <legend>Search</legend>
-        <label for="search">Search</label>
+    <form class="form-element" name="searchForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
+      <fieldset class="form-element__fieldset">
+        <legend class="form-element__legend">Search</legend>
+        <label class="form-element__label" for="search">Search</label>
         <div class="search-contain">
           <input id="search" type="text" name="q" placeholder="SEARCH" required/>
           <button id="headerSearchButton" type="submit"><span class="search-icon"></span></button>

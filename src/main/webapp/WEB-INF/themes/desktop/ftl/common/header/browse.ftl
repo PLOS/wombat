@@ -37,8 +37,8 @@
       <div class="levels-container cf">
         <div class="levels-position"></div>
       </div>
-      <a href="#" class="prev"></a>
-      <a href="#" class="next active"></a>
+      <a href="#" class="levels-container_prev"></a>
+      <a href="#" class="levels-container_next active"></a>
     </div>
   </div>
   <div class="taxonomy-browser-border-bottom"></div>

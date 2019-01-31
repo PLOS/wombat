@@ -32,7 +32,7 @@
   <div id="user" class="nav">
     <ul class="nav-user">
     <#macro navTopItem href highlighted=false>
-      <li <#if highlighted>class="highlighted"</#if>><a href="${href}"><#nested/></a></li>
+      <li class="nav-user__list-item<#if highlighted> highlighted</#if>"><a href="${href}"><#nested/></a></li>
     </#macro>
     <#include "navTop.ftl" />
     </ul>

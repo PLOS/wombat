@@ -155,10 +155,8 @@
 
   <xsl:template match="supplementary-material">
       <dd class="supplementary-material">
-        <a>
-          <xsl:attribute name="href">
-            <xsl:value-of select="@xlink:href"/>
-          </xsl:attribute>
+        <a href="{concat('file?id=10.1371/journal.',@id,'&amp;type=supplementary')}" 
+           target="_blank">
           <xsl:value-of select="label"/>
         </a>
       <div class="sm-caption">

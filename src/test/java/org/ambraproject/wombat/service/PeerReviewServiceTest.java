@@ -124,6 +124,26 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
   }
 
   @Test
+  public void testAttachmentLink() throws IOException {
+
+    PeerReviewServiceImpl spy = spy(new PeerReviewServiceImpl());
+
+    doAnswer(invocation -> read(prefix(getFilename(invocation.getArgument(0).toString()))))
+      .when(spy).getContent(any(ContentKey.class));
+
+    Map<String,?> itemTable = (Map<String,?>) deserialize(getFile(prefix("item-table.pone.0207232.ser")));
+
+    String html = spy.asHtml(itemTable);
+
+    Document doc = Jsoup.parse(html);
+
+    Element firstAttachment = doc.select(".review-history .review-files .supplementary-material").first();
+    Element anchorElement = firstAttachment.select("a").first();
+
+    assertThat(anchorElement.attr("href"), containsString("file?id=10.1371/journal.pone.0207232.s001&type=supplementary"));
+  }
+
+  @Test
   public void testAuthorResponse() {
     String xml = read(prefix("peer-review.pone.0207232.xml"));
  
@@ -139,21 +159,6 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     Element attachmentElem = authorResponseDiv.select(".review-files .supplementary-material").first();
     assertThat(attachmentElem.text(), containsString("Response to Reviewers.docx"));
-  }
-
-  @Test
-  public void testUpdatingSourceXml() throws IOException {
-
-    PeerReviewServiceImpl spy = spy(new PeerReviewServiceImpl());
-
-    doAnswer(invocation -> read(prefix(getFilename(invocation.getArgument(0).toString()))))
-      .when(spy).getContent(any(ContentKey.class));
-
-    Map<String,?> itemTable = (Map<String,?>) deserialize(getFile(prefix("item-table.pone.0207232.ser")));
-
-    List<Map<String,?>> reviewLetterItems = spy.getReviewItems(itemTable);
-
-    String xml = spy.getAllReviewsAsXml(reviewLetterItems);
   }
 
   private String getFilename(String uuidKey) {

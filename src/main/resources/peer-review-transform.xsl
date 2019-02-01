@@ -10,9 +10,6 @@
     <table class="table table-bordered review-history">
       <tbody>
         <xsl:apply-templates/>
-        <tr>
-          <th>Formally Accepted</th>
-        </tr>
       </tbody>
     </table>
     <div class="tpr-info">
@@ -95,6 +92,47 @@
           <!-- accordion container -->
           <div itemprop="reviewBody" class="collapse" id="decisionLetterX">
             <div class="decision-letter-body">
+              <p>
+                <xsl:apply-templates select="body"/>
+              </p>
+            </div>
+          </div>
+          <!-- end accordion container -->
+        </div>
+      </td>
+    </tr>
+  </xsl:template>
+
+  <xsl:template match="sub-article[@specific-use = 'acceptance-letter']">
+    <tr>
+      <th>Formally Accepted</th>
+    </tr>
+    <tr>
+      <td>
+        <div class="acceptance-letter" itemscope=""
+             itemtype="http://schema.org/Review">
+          <div itemprop="itemReviewed" itemscope=""
+               itemtype="http://schema.org/ScholarlyArticle">
+            <meta itemprop="url" content="articleUrl" />
+          </div>
+
+          <!-- trigger for expand and collapse -->
+          <a href="#">
+            [Acceptance Letter expand/collapse]
+          </a>
+          <!-- end trigger for expand and collapse -->
+          -
+          <div class="date">
+            <time class="acceptance-date"
+                  itemprop="dateCreated"
+                  datetime="">
+              <xsl:value-of select=".//named-content[@content-type = 'letter-date']"/>
+            </time>
+          </div>
+
+          <!-- accordion container -->
+          <div itemprop="reviewBody">
+            <div class="acceptance-letter-body">
               <p>
                 <xsl:apply-templates select="body"/>
               </p>

@@ -93,14 +93,17 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    */
   private String getAllReviewsAsXml(List<Map<String, ?>> reviewLetterItems) throws IOException {
     List<String> reviewLetters = new ArrayList<>();
+    String acceptanceLetter = "";
     for (Map<String, ?> reviewLetterItem : reviewLetterItems) {
       String xml = getReviewXml(reviewLetterItem);
 
-      // TODO: include formal accept letter (specific-use="acceptance-letter"), though for now we haven't figured out how to display it.
-      if (xml.contains("specific-use=\"acceptance-letter\"")) continue;
-
       // strip the XML declaration, which is not allowed when these are aggregated
       xml = xml.replaceAll("<\\?xml(.+?)\\?>", "");
+
+      if (xml.contains("specific-use=\"acceptance-letter\"")) {
+        acceptanceLetter = xml;
+        continue;
+      }
       reviewLetters.add(xml);
     }
 
@@ -120,6 +123,9 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     for (List<String> revisionLetters : lettersByRevision.values()) {
       peerReviewContent += "<revision>" + String.join("", revisionLetters) + "</revision>";
     }
+
+    // append the acceptance letter
+    peerReviewContent += acceptanceLetter;
 
     // wrap it in a root node
     peerReviewContent = "<peer-review>" + peerReviewContent + "</peer-review>";

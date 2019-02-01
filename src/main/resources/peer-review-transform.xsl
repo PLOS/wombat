@@ -154,10 +154,13 @@
   </xsl:template>
 
   <xsl:template match="supplementary-material">
-    <dd class="supplementary-material">
-      <a class="sm-label" href="#">
-        <xsl:value-of select="label"/>
-      </a>
+      <dd class="supplementary-material">
+        <a>
+          <xsl:attribute name="href">
+            <xsl:value-of select="@xlink:href"/>
+          </xsl:attribute>
+          <xsl:value-of select="label"/>
+        </a>
       <div class="sm-caption">
         <xsl:copy-of select="caption/p/text()"/>
         <i>

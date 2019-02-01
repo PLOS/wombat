@@ -23,6 +23,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.service.remote.ContentKey;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -31,11 +32,15 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import static org.mockito.Mockito.*;
 import static junit.framework.TestCase.assertNull;
 import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
 import static org.ambraproject.wombat.util.FileUtils.read;
+import static org.ambraproject.wombat.util.FileUtils.deserialize;
+import static org.ambraproject.wombat.util.FileUtils.getFile;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
 
@@ -120,7 +125,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
   @Test
   public void testAuthorResponse() {
-    String xml = read("xsl/peer-review/pone.0207232.xml");
+    String xml = read(prefix("peer-review.pone.0207232.xml"));
  
     PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
     String html = svc.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
@@ -134,5 +139,29 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     Element attachmentElem = authorResponseDiv.select(".review-files .supplementary-material").first();
     assertThat(attachmentElem.text(), containsString("Response to Reviewers.docx"));
+  }
+
+  @Test
+  public void testUpdatingSourceXml() throws IOException {
+
+    PeerReviewServiceImpl spy = spy(new PeerReviewServiceImpl());
+
+    doAnswer(invocation -> read(prefix(getFilename(invocation.getArgument(0).toString()))))
+      .when(spy).getContent(any(ContentKey.class));
+
+    Map<String,?> itemTable = (Map<String,?>) deserialize(getFile(prefix("item-table.pone.0207232.ser")));
+
+    List<Map<String,?>> reviewLetterItems = spy.getReviewItems(itemTable);
+
+    String xml = spy.getAllReviewsAsXml(reviewLetterItems);
+  }
+
+  private String getFilename(String uuidKey) {
+    // [key: info:doi/10.1371/journal.pone.0207232.r001.xml, uuid: cbcdde53-66f4-4885-85b0-50966be2ba28]
+    return uuidKey.substring(uuidKey.indexOf("10.1371/journal.")+16, uuidKey.lastIndexOf(", uuid:"));
+  }
+
+  private String prefix(String file) {
+    return "peer-review/" + file;
   }
 }

@@ -6,19 +6,12 @@ import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.sax.SAXSource;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -28,6 +21,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
+import javax.ws.rs.core.MediaType;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.sax.SAXSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 
 
 public class PeerReviewServiceImpl implements PeerReviewService {
@@ -36,6 +39,10 @@ public class PeerReviewServiceImpl implements PeerReviewService {
 
   @Autowired
   private CorpusContentApi corpusContentApi;
+
+  //TODO:FIX
+  //@Autowired private ParseXmlService parseXmlService;
+  private ParseXmlService parseXmlService = new ParseXmlServiceImpl();
 
   /**
    * Given an article's items, generates an HTML snippet representing the Peer Review tab of an article page.
@@ -91,10 +98,10 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * @return entirety of peer review XML content
    * @throws IOException
    */
-  private String getAllReviewsAsXml(List<Map<String, ?>> reviewLetterItems) throws IOException {
+  String getAllReviewsAsXml(List<Map<String, ?>> reviewLetterItems) throws IOException {
     List<String> reviewLetters = new ArrayList<>();
     for (Map<String, ?> reviewLetterItem : reviewLetterItems) {
-      String xml = getReviewXml(reviewLetterItem);
+      String xml = addAssetMetadata(getReviewXml(reviewLetterItem));
 
       // TODO: include formal accept letter (specific-use="acceptance-letter"), though for now we haven't figured out how to display it.
       if (xml.contains("specific-use=\"acceptance-letter\"")) continue;
@@ -131,7 +138,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * @param itemTable
    * @return a list of review item
    */
-  private List<Map<String, ?>> getReviewItems(Map<String, ?> itemTable) {
+  List<Map<String, ?>> getReviewItems(Map<String, ?> itemTable) {
     List<Map<String, ?>> reviewLetterItems = new ArrayList<>();
     for (Object itemObj : new TreeMap(itemTable).values()) {
       if (((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter")) {
@@ -139,6 +146,23 @@ public class PeerReviewServiceImpl implements PeerReviewService {
       }
     }
     return reviewLetterItems;
+  }
+
+  /** 
+   * Adds asset metadata to peer review xml.
+   *
+   * @param reviewXml peer review xml retrieved from content-repo. 
+   * @return peer review xml with additional metadata.
+   */
+  String addAssetMetadata(String reviewXml) throws IOException {
+
+    InputStream is = new ByteArrayInputStream(reviewXml.getBytes());
+
+    Document doc = parseXmlService.getDocument(is);
+    Object o = doc.getElementsByTagName("supplementary-material");
+    //List<Node> refListNodes = NodeListAdapter.wrap(doc.getElementsByTagName("ref-list"));
+
+    return reviewXml;
   }
 
   /**
@@ -156,8 +180,28 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     UUID uuid = UUID.fromString((String) contentRepoMetadata.get("crepoUuid"));
     ContentKey contentKey = ContentKey.createForUuid(crepoKey, uuid);
 
+    return getContent(contentKey);
+  }
+
+  String getContent(ContentKey contentKey) throws IOException {
     CloseableHttpResponse response = corpusContentApi.request(contentKey, ImmutableList.of());
     String letterContent = EntityUtils.toString(response.getEntity(), "UTF-8");
     return letterContent;
+  }
+
+  //TODO: refactor and use Link class?
+  private String assetPathAndQuery(String doi, String mimeType) {
+    StringBuilder sb = new StringBuilder();
+
+    sb.append("file");              // path components
+
+    sb.append("?id=").append(doi);  // query string
+
+    switch (mimeType) {
+      case MediaType.APPLICATION_JSON: sb.append("&amp;type=printable") ; break;
+      case MediaType.APPLICATION_XML : sb.append("&amp;type=manuscript"); break;
+      default: // do nothing
+    }
+    return sb.toString();
   }
 }

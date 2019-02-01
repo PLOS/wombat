@@ -114,7 +114,7 @@
         <!-- author response -->
         <div class="date">
           <time class="response-date">
-            ---
+            <xsl:value-of select=".//named-content[@content-type = 'author-response-date']"/>
           </time>
         </div>
 
@@ -124,12 +124,12 @@
 
         <!-- accordion container -->
         <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
-          
+          <div class="author-comment__body">
             <p>
-              bogus author response text for:
-              <xsl:value-of select="front-stub/article-id"/>
+              <xsl:apply-templates select="body"/>
             </p>
           </div>
+        </div>
         </div>
         <!-- end accordion container -->
       </td>

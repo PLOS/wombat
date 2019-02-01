@@ -141,6 +141,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     Element anchorElement = firstAttachment.select("a").first();
 
     assertThat(anchorElement.attr("href"), containsString("file?id=10.1371/journal.pone.0207232.s001&type=supplementary"));
+    assertThat(anchorElement.attr("title"), containsString("Download pone.0207232.s001.pdf file"));
   }
 
   @Test

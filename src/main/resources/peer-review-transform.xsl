@@ -156,6 +156,7 @@
   <xsl:template match="supplementary-material">
       <dd class="supplementary-material">
         <a href="{concat('file?id=10.1371/journal.',@id,'&amp;type=supplementary')}" 
+           title="{concat('Download ',@xlink:href,' file')}"
            target="_blank">
           <xsl:value-of select="label"/>
         </a>

@@ -5,19 +5,19 @@
 .page-title,
 .section-title {
   font-size: 24px;
-  line-height: 36px;
+  line-height: 32px;
   font-weight: 400;
   margin: 12px 0 24px;
   font-family: Arial, sans-serif;
 }
 
 .page-title {
-  margin-left: 1rem;
+  margin-left: 2rem;
 }
 .review-history {
   border-collapse: collapse;
   border-spacing: 0;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #ddd;
   width: 100%;
   margin: 0;
   text-align: left;
@@ -33,24 +33,21 @@
 .author-response,
 .tpr-info {
   padding: 12px 0;
-  margin: 0 0 0 1rem;
+  margin: 0 2rem;
 }
 
-.decision-letter__body,
-.author-response {
-  color: #999;
+.letter__body {
+  color: #666;
 }
 
-.decision-letter__label {
+.letter__label {
   display: block;
   width: 100%;
 }
 
-.review-history p,
-.author-response p,
+.letter__body p,
 .tpr-info p,
-.review-files__title,
-.supplementary-material__caption {
+.review-files__title {
   margin: 12px 0;
 }
 
@@ -59,7 +56,8 @@
 }
 
 .supplementary-material__caption {
-  margin: 0 0 24px;
+  display: block;
+  margin: 12px 0 24px;
 }
 .supplementary-material__label {
   font-weight: 600;
@@ -83,28 +81,21 @@
 }
 
 .review-history tr {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
 }
 
 .version {
-  background: #f9f9f9;
-  padding: 12px 0;
+  background: #f2f2f2;
+  padding: 12px 2rem;
 }
 
-.decision-letter__date,
-.decision__date {
+.letter__date,
+.letter__title  {
   width: 100%;
   display: block;
-}
-
-.decision__date {
   font-weight: 400;
-  text-indent: 1rem;
 }
 
-.decision-letter__title {
-  width: 100%;
-  display: block;
-  text-indent: 1rem;
-}
-  
+.letter__title {
+  font-weight: 600;
+}  

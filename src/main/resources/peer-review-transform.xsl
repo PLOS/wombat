@@ -12,7 +12,7 @@
         <xsl:apply-templates/>
         <tr>
           <th class="version">
-            <span class="decision-letter__title">Formally Accepted</span>
+            <span class="letter__title">Formally Accepted</span>
           </th>
         </tr>
       </tbody>
@@ -41,18 +41,18 @@
   <xsl:template match="revision">
     <tr>
       <th class="version">
-        <span class="decision__date">
+        <span class="letter__date">
           <xsl:value-of select=".//named-content[@content-type = 'letter-date']"/>
         </span>
         <xsl:choose>
           <xsl:when test="position() = 1">
-            <span class="decision-letter__title">
+            <span class="letter__title">
               Original Submission
             </span>
 
           </xsl:when>
           <xsl:otherwise>
-            <span class="decision-letter__title">
+            <span class="letter__title">
               Revision
               <xsl:value-of select="position() - 1"/>
             </span>
@@ -65,26 +65,26 @@
 
   <xsl:template match="sub-article[@specific-use = 'decision-letter']">
     <tr>
-      <td class="decision">
+      <td class="letter">
         <div class="decision-letter" itemscope=""
              itemtype="http://schema.org/Review">
           <div itemprop="itemReviewed" itemscope=""
                itemtype="http://schema.org/ScholarlyArticle">
             <meta itemprop="url" content="articleUrl"/>
 
-            <time class="decision-letter__date"
+            <time class="letter__date"
                   itemprop="dateCreated"
                   datetime="">
               <xsl:value-of select=".//named-content[@content-type = 'letter-date']"/>
             </time>
-            <div class="decision-letter__label">
+            <div class="letter__title">
               <!-- trigger for expand and collapse -->
-              <a data-toggle="collapse" href="#decisionLetter3">
+              <a class="letter-toggle" data-toggle="collapse" href="#decisionLetter3">
                 [Decision Letter]
               </a>
               <!-- end trigger for expand and collapse -->
               -
-              <span itemprop="decision-letter__author" itemscope=""
+              <span itemprop="author" itemscope=""
                     itemtype="http://schema.org/Person">
                 <span itemprop="name">
                   Nico Donkelope
@@ -94,7 +94,7 @@
             </div>
             <!-- accordion container -->
             <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
-              <div class="decision-letter__body">
+              <div class="letter__body">
                 <p>
                   <xsl:apply-templates select="body"/>
                 </p>
@@ -110,22 +110,20 @@
   <xsl:template match="sub-article[@article-type = 'author-comment']">
     <tr>
 
-      <td>
+      <td class="letter">
         <div class="author-response">
           <!-- author response -->
-          <div class="date">
-            <time class="response-date">
-              <xsl:value-of select=".//named-content[@content-type = 'author-response-date']"/>
-            </time>
+          <time class="letter__date">
+            <xsl:value-of select=".//named-content[@content-type = 'author-response-date']"/>
+          </time>
+          <div class="letter__title">
+            <a class="letter--toggle" data-toggle="collapse" href="#decisionLetter2">
+              [Author Response]
+            </a>
           </div>
-
-          <a data-toggle="collapse" href="#decisionLetter2">
-            [Author Response]
-          </a>
-
           <!-- accordion container -->
           <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
-            <div class="author-comment__body">
+            <div class="letter__body">
               <p>
                 <xsl:apply-templates select="body"/>
               </p>

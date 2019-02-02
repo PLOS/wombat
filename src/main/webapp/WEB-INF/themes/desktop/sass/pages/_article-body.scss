@@ -740,17 +740,18 @@ ol.references {
   width: 100%;
   border: 1px solid $grey-light;
   border-collapse: collapse;
-  tbody > tr > th,
-  tbody > tr > td {
+  }
+  .version,
+  .letter {
     font-size: $txt-size-default;
     border: 1px solid $grey-light;
     padding: $line-height-small;
     text-align: left;
   }
-  tbody > tr > th {
+  .version {
     background-color: $grey-light;
   }
-  .date {
+  .letter__date {
     width: 20%;
     float: right;
     font-weight: normal;
@@ -758,7 +759,6 @@ ol.references {
   .version-attachments {
     padding-top: $line-height-small;
   }
-}
 .tpr-info {
   margin-top: $line-height;
 }

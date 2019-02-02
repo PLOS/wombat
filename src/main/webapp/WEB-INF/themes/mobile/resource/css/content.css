@@ -1,22 +1,11 @@
-#content .site-content-nav{
+#content .site-content-nav {
    display: none;
   }
 
-#content article{
-  
+#content article{ 
   margin-bottom: 1em;
   width: 96%;
   }
-
-/*#content p, 
-#content ul, 
-#content ol, 
-#content table{
-  font-size: 14px;
-  line-height: 18px;
-  margin-bottom: .5em;
-  margin-top: .5em;
-  }*/
 
 #content h1,
 #content h2,
@@ -24,13 +13,13 @@
 #content h4, 
 #content h5 {
   margin-bottom: .5em;
-  margin-top: .75em;
+  margin-top: 1em;
   }
 
 #content h2,
 #content h3, 
 #content h4 {
- font-family: 'Arial', sans-serif;
+ font-family: Arial, sans-serif;
   font-weight: bold;
   }
 
@@ -46,27 +35,6 @@ font-size: 2.25rem;
 #content h3, h4, h5 {
   font-size: 1.25rem;
   }
-
-/*#content table {
-  padding: .25em;
-  border-spacing: 0px  !important;
-  border-collapse: collapse !important;
-  border-color: #fff !important;
-  margin-bottom: 1.5em;
-  }
-
-#content table td,
-#content table th {
-  padding: .5em;
-  }
-
-#content table th {
-  text-align: left;
-  }
-
-#content table tr {
-  border-bottom: 1px solid #999;
-  }*/
 
 #content ul, #content ol {
   margin: .5em;

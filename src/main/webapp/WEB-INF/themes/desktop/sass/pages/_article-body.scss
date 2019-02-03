@@ -740,26 +740,41 @@ ol.references {
   width: 100%;
   border: 1px solid $grey-light;
   border-collapse: collapse;
+  & a {
+    @extend %brand-color;
+    text-decoration: underline;
   }
-  .version,
-  .letter {
-    font-size: $txt-size-default;
-    border: 1px solid $grey-light;
-    padding: $line-height-small;
-    text-align: left;
+}
+.tpr-info a {
+  @extend %brand-color;
+  text-decoration: underline;
+}
+.plosone .review-history a,
+.plosone .tpr-info a {
+  color: $plos-one-purple;
+  text-decoration: underline;
+  &:hover {
+    color: $grey-med;
   }
-  .version {
-    background-color: $grey-light;
-  }
-  .letter__date {
-    width: 20%;
-    float: right;
-    font-weight: normal;
-  }
-  .version-attachments {
-    padding-top: $line-height-small;
-  }
+}
+.version,
+.letter {
+  font-size: $txt-size-default;
+  border: 1px solid $grey-light;
+  padding: $line-height-small;
+  text-align: left;
+}
+.version {
+  background-color: $grey-light;
+}
+.letter__date {
+  width: 20%;
+  float: right;
+  font-weight: normal;
+}
+.version-attachments {
+  padding-top: $line-height-small;
+}
 .tpr-info {
   margin-top: $line-height;
 }
-

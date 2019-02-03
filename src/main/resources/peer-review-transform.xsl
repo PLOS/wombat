@@ -62,7 +62,7 @@
             </time>
             <div class="letter__title">
               <!-- trigger for expand and collapse -->
-              <a class="letter-toggle" data-toggle="collapse" href="#decisionLetter3">[Decision Letter]</a>
+              <a class="letter--toggle" data-toggle="collapse" href="#decisionLetter3">[Decision Letter]</a>
               <!-- end trigger for expand and collapse -->
               -
               <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">

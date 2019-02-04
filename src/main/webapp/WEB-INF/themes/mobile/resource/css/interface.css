@@ -49,11 +49,11 @@
 }
 
 .arial {
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .verdana {
-  font-family: Verdana, 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .clearfix:before,
@@ -67,7 +67,7 @@
 }
 
 .clearfix {
-  *zoom: 1;
+  zoom: 1;
 }
 
 .bold {
@@ -84,18 +84,21 @@
 }
 
 .header-style {
-  font-size: 1.5em;
-  font-family: Verdana, 'Arial', sans-serif;
+  font-size: 1.3em;
+  font-family: Arial, sans-serif;
   font-weight: normal;
-  }
+}
 
-.pad-below{
-    margin-bottom: 20px;
-  }
+.pad-below {
+  margin-bottom: 20px;
+}
 
 /* GENERAL STYLES AND RESETS */
-h1, h2, h3, h4 {
-  font-family: Verdana, 'Arial', sans-serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: Arial, sans-serif;
   font-weight: normal;
 }
 
@@ -137,16 +140,17 @@ a {
 }
 
 .item-title {
-  font-size: 1.2em;
+  font-size: 1.3em;
   color: #333333;
   font-weight: normal;
   text-transform: uppercase;
 }
 
 .article-title {
-  font-family: Verdana, 'Arial', sans-serif;
-  font-size: 2em;
-  line-height: 1.2em;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
 }
 
 /* Header */
@@ -159,7 +163,7 @@ a {
 
 #site-header-container #site-menu-button {
   float: left;
-  background-position: -112px 0px;
+  background-position: -112px 0;
   width: 27px;
   height: 21px;
   background-repeat: no-repeat;
@@ -183,7 +187,7 @@ a {
   overflow: hidden;
   text-indent: -1000px;
   display: block;
-  background-position: -187px 0px;
+  background-position: -187px 0;
   width: 23px;
   height: 18px;
   background-repeat: no-repeat;
@@ -206,7 +210,7 @@ ul.results li {
 
 ul.results li a,
 ul.results li .error {
-  font-size: 1.5em;
+  font-size: 1.3em;
   display: block;
   padding-right: 2.5em;
 }
@@ -239,7 +243,7 @@ ul.results li:last-child {
 
 .footer .footer-credits {
   color: #fff;
-  font-size: .9em;
+  font-size: 1em;
   text-align: center;
   line-height: 1.4em;
   margin-top: 6px;
@@ -250,11 +254,13 @@ ul.results li:last-child {
 }
 
 /* Alerts */
-.red-alert, .amendment-uncorrected-proof {
+.red-alert,
+.amendment-uncorrected-proof {
   background: #fce2e5;
 }
 
-.red-alert h3, .amendment-uncorrected-proof h2 {
+.red-alert h3,
+.amendment-uncorrected-proof h2 {
   color: #e53350;
 }
 
@@ -285,7 +291,7 @@ section.tweets .tweet-heading .tweet-icon {
 }
 
 section.tweets .tweet-heading .tweet-heading {
-  font-size: 1.8em;
+  font-size: 1.3em;
   margin-left: 4px;
   float: left;
 }
@@ -293,7 +299,7 @@ section.tweets .tweet-heading .tweet-heading {
 section.tweets .tweet-heading .tweet-handle {
   float: right;
   color: #336699;
-  font-size: 1.8em;
+  font-size: 1.3em;
   letter-spacing: -0.1em;
 }
 
@@ -327,7 +333,7 @@ section.tweets .tweets-container .tweet .tweet-content a {
 
 section.tweets .tweets-container .tweet .tweet-content .tweet-handle {
   font-weight: normal;
-  font-size: 1.4em;
+  font-size: 1.3em;
 }
 
 section.tweets .tweets-container .tweet .tweet-content .tweet-handle a {
@@ -335,7 +341,7 @@ section.tweets .tweets-container .tweet .tweet-content .tweet-handle a {
 }
 
 section.tweets .tweets-container .tweet .tweet-content .tweet-text {
-  font-size: 1.4em;
+  font-size: 1.3em;
   margin-top: .2em;
 }
 
@@ -350,7 +356,7 @@ section.tweets .tweets-container .tweet .tweet-content .tweet-time {
 }
 
 section.tweets .tweets-container .tweet:last-child {
-  border-bottom: 0px;
+  border-bottom: 0;
 }
 
 /* Spotlight */
@@ -370,8 +376,8 @@ section.spotlight .spotlight-item {
 
 section.spotlight .spotlight-item .item-link {
   color: #336699;
-  font-family: Verdana, 'Arial', sans-serif;
-  font-size: 1.5em;
+  font-family: Arial, sans-serif;
+  font-size: 1.3em;
   line-height: 1.15em;
 }
 
@@ -395,20 +401,19 @@ section.spotlight .spotlight-item .item-link {
   -moz-background-clip: padding-box;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  font-family: Verdana, 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   color: #fff;
   display: block;
   text-align: center;
-  font-size: 1.8em;
+  font-size: 1.3em;
 }
 
 .btn-lg.med {
   background: #525252;
 }
 
-.two-btn-container {
+.two-btn-container a {
   width: 100%;
-  background: #333333;
   -webkit-border-top-right-radius: 5px;
   -webkit-border-bottom-right-radius: 5px;
   -webkit-border-bottom-left-radius: 5px;
@@ -426,20 +431,8 @@ section.spotlight .spotlight-item .item-link {
   background-clip: padding-box;
   text-align: center;
   color: #fff;
-}
-
-.two-btn-container a {
-  width: 50%;
-  color: #4A1010;
-  display: inline-block;
-  font-family: Verdana, 'Arial', sans-serif;
-  font-size: 1.4em;
+  font-size: 1.3em;
   text-align: center;
-}
-
-.two-btn-container .btn-left {
-  border-right: 5px solid #fff;
-  margin-left: -5px;
 }
 
 .rounded {
@@ -462,16 +455,16 @@ section.spotlight .spotlight-item .item-link {
   background-clip: padding-box;
   background: #333333;
   color: #fff;
-  font-size: 1.1em;
+  font-size: 1.3em;
 }
 
 .button-pair a.rounded {
   float: left;
 }
 
-.button-pair a.rounded:last-child {
+/*.button-pair a.rounded:last-child {
   float: right;
-}
+}*/
 
 .close {
   width: 20px;
@@ -510,11 +503,12 @@ section.spotlight .spotlight-item .item-link {
 
 .buttongroup > button {
   padding: 0 10px;
-  height: 35px;
-  line-height: 35px;
+  height: 44px;
+  line-height: 44px;
   background: #333333;
   color: #fff;
   display: table-cell;
+  font-size: 1.3em;
 }
 
 .buttongroup > button:first-child {
@@ -558,11 +552,12 @@ section.spotlight .spotlight-item .item-link {
 }
 
 .filter-button {
-  font-size: 1em;
-  font-family: 'Arial', sans-serif;
+  font-size: 1.3em;
+  font-family: Arial, sans-serif;
   font-weight: bold;
   padding: 0 10px;
-  height: 30px;
+  height: 44px;
+  line-height: 44px;
 }
 
 .filter-button span {
@@ -573,7 +568,7 @@ section.spotlight .spotlight-item .item-link {
   overflow: hidden;
   text-indent: -1000px;
   display: block;
-  background-position: -290px 0px;
+  background-position: -290px 0;
   width: 9px;
   height: 6px;
   background-repeat: no-repeat;
@@ -608,8 +603,9 @@ section.spotlight .spotlight-item .item-link {
   padding-bottom: 20px;
 }
 
-.full-menu-container nav.full-menu {
+.expander {
   padding: 0 10px;
+  font-weight: 600;
 }
 
 .full-menu-container nav.full-menu ul.primary li.accordion-item {
@@ -620,8 +616,8 @@ section.spotlight .spotlight-item .item-link {
   position: relative;
   display: block;
   color: #fff;
-  font-family: 'Arial', sans-serif;
-  font-size: 1.6em;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
   line-height: 50px;
 }
 
@@ -629,7 +625,7 @@ section.spotlight .spotlight-item .item-link {
   margin-top: -4px;
   position: absolute;
   top: 50%;
-  right: 0;
+  right: 10px;
   overflow: hidden;
   text-indent: -1000px;
   display: block;
@@ -647,7 +643,7 @@ section.spotlight .spotlight-item .item-link {
 }
 
 .full-menu-container nav.full-menu ul.primary li.accordion-item.expanded .arrow {
-  background-position: -276px 0px;
+  background-position: -276px 0;
   width: 7px;
   height: 6px;
   background-repeat: no-repeat;
@@ -662,9 +658,9 @@ section.spotlight .spotlight-item .item-link {
 .full-menu-container nav.full-menu ul.secondary .btn-lg {
   margin-bottom: 10px;
   text-align: left;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   background: #373737;
-  font-size: 1.2em;
+  font-size: 14px;
   padding: 15px;
 }
 
@@ -677,16 +673,15 @@ section.spotlight .spotlight-item .item-link {
 }
 
 .full-menu-container .full-menu-tout h4 {
-  font-family: Verdana, 'Arial', sans-serif;
-  font-size: 1.5em;
+  font-family: Arial, sans-serif;
+  font-size: 1.3em;
   color: #4A1010;
-  padding-bottom: 15px;
-  background: url('../img/bg/full-menu-line.png') no-repeat left bottom;
+  padding-bottom: 12px;
 }
 
 .full-menu-container .full-menu-tout ul.std li {
-  font-size: 1.2em;
-  line-height: 1.5em;
+  font-size: 1.3em;
+  line-height: 1.3em;
 }
 
 .full-menu-container .full-menu-tout ul.std li:last-child {
@@ -719,9 +714,9 @@ nav.menu-bar li {
 }
 
 nav.menu-bar li a {
-  font-family: Verdana, 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   color: #fff;
-  font-size: 1.25em;
+  font-size: 1.3em;
   line-height: 40px;
   display: block;
 }
@@ -735,7 +730,7 @@ nav.menu-bar li.active a {
 }
 
 nav.menu-bar li:last-child {
-  border-right: 0px;
+  border-right: 0;
 }
 
 nav.menu-rounded ul,
@@ -743,7 +738,7 @@ nav.menu-rounded table {
   text-align: center;
   display: table;
   margin: 0 auto;
-  border-spacing: 11px 14px;
+  border-spacing: 12px 14px;
 }
 
 nav.menu-rounded li,
@@ -805,27 +800,26 @@ nav.article-menu-bottom .btn-top-container {
 }
 
 nav.article-menu-bottom .btn-top-container .btn-text {
-  font-family: Verdana, 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   font-style: italic;
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 nav.article-menu-bottom .btn-top-container .btn {
   overflow: hidden;
   text-indent: -1000px;
   display: block;
-  background-position: -225px 0px;
+  background-position: -225px 0;
   width: 40px;
   height: 39px;
   background-repeat: no-repeat;
   background-image: url('../img/sprites/structure.png');
   background-size: 300px 75px;
-  margin: 5px auto 0px auto;
+  margin: 5px auto 0 auto;
 }
 
 nav.footer-menu {
-  height: 35px;
-  background: url('../img/bg/divider-fade.png') no-repeat center bottom;
+  height: 44px;
 }
 
 nav.footer-menu ul {
@@ -844,14 +838,14 @@ nav.footer-menu li a {
   padding: 0 20px;
   border-right: 1px solid #666666;
   color: #fff;
-  font-size: 1.2em;
-  font-family: Verdana, 'Arial', sans-serif;
+  font-size: 1.3em;
+  font-family: Arial, sans-serif;
   height: 20px;
-  line-height: 1.6em;
+  line-height: 1.8em;
 }
 
 nav.footer-menu li:last-child a {
-  border-right: 0px;
+  border-right: 0;
 }
 
 nav.footer-secondary-menu ul {
@@ -870,14 +864,14 @@ nav.footer-secondary-menu li:last-child {
 }
 
 nav.footer-secondary-menu li a {
-  font-size: .9em;
+  font-size: 14px;
   color: #fff;
 }
 
 .footer-non-profit-statement {
   width: 100%;
   color: white;
-  font-size: .9em;
+  font-size: 12px;
   text-align: center;
   margin: 5px 0;
 }
@@ -941,32 +935,32 @@ nav.footer-secondary-menu li a {
 
 /* Article Item */
 
-.article-item .lead-in{
-  margin-top: 20px;
+.article-item .lead-in {
+  margin: 12px 0;
 }
 
 .article-item .article-title,
-.article-item #revisionMenu
-{
-  margin-top: 10px;
+.article-item #revisionMenu {
+  margin-top: 12px;
 }
 
 .article-item .author-list {
-  margin-top: 10px;
+  margin-top: 12px;
+  font-size: 14px;
 }
 
 .article-item .author-list a {
   color: #336699;
-  font-size: 1.5em;
 }
 
-.article-item .author-list .more-authors-list, .article-item .author-list a.author-less {
+.article-item .author-list .more-authors-list,
+.article-item .author-list a.author-less {
   display: none;
 }
 
 .article-item .citation {
   margin-top: 25px;
-  font-size: 1.2em;
+  font-size: 1.3em;
   line-height: 1.3em;
   color: #666666;
 }
@@ -977,47 +971,42 @@ nav.footer-secondary-menu li a {
 }
 
 .article-item .article-body p {
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin-top: 1em;
 }
 
-/*
-  Font specs from PSD:
-  * H1 (Article title) Open Sans Bold 20
-  * H2 (Accordion items) Open Sans Regular 18
-  * H3 Arial Bold 16
-  * H4 Arial Regular 16
-  * H5 Arial Bold 15
-  * H6 Arial Regular 15
-*/
 .article-item h2 {
-  font-size: 1.8em;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
   margin-top: 1em;
 }
 
 .article-item h3 {
   font-family: Arial, sans-serif;
-  font-size: 1.6em;
+  font-size: 1.4em;
   font-weight: bold;
-  margin-top: 1.5em;
+  margin-top: 1.3em;
 }
 
 .article-item h4 {
   font-family: Arial, sans-serif;
-  font-size: 1.6em;
+  font-size: 1.3em;
   margin-top: 1em;
 }
 
 .article-item h5 {
   font-family: Arial, sans-serif;
-  font-size: 1.5em;
-  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 600;
   margin-top: 1em;
 }
 
 .article-item h6 {
   font-family: Arial, sans-serif;
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin-top: 1em;
 }
 
@@ -1044,25 +1033,31 @@ nav.footer-secondary-menu li a {
 
 /* Filter Box */
 .filter-box {
-  background: #4A1010;
+  background: #eee;
   color: #333333;
-  padding: 20px 10px;
+  padding: 12px 10px;
   width: 100%;
+}
+#filter-results-container,
+.filter-button {
+  background: #eee;
 }
 
 .filter-box .filter-option {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .filter-box .filter-option h5 {
-  font-size: 1.4em;
-  font-family: Verdana, 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
 }
 
 .filter-box .filter-option select {
-  margin-top: 5px;
-  font-size: 1.4em;
-  padding: 0 10px;
+  background: #fff;
+  margin-top: 12px;
+  font-size: 14px;
+  padding: 5px;
   width: 100%;
 }
 
@@ -1146,7 +1141,7 @@ nav.footer-secondary-menu li a {
   -moz-background-clip: padding-box;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  font-size: 1.5em;
+  font-size: 1.3em;
   width: 100%;
   padding: 0 40px 0 20px;
 }
@@ -1156,7 +1151,6 @@ nav.footer-secondary-menu li a {
   right: 0;
   top: 0;
   width: 35px;
-  border-left: 7px solid #fff;
   overflow: hidden;
   text-indent: -1000px;
   display: block;
@@ -1207,8 +1201,8 @@ nav.footer-secondary-menu li a {
   min-height: 40px;
   display: block;
   padding: 0.666em 15px;
-  font-family: Verdana, 'Arial', sans-serif;
-  font-size: 1.8em;
+  font-family: Arial, sans-serif;
+  font-size: 1.4em;
   cursor: pointer;
   color: #333;
 }
@@ -1250,17 +1244,16 @@ nav.footer-secondary-menu li a {
 }
 
 .accordion-content p {
-  font-size: 1.5em; /* TODO: Generalize beyond <p> and <li> */
-  /* padding: 10px 15px; */
+  font-size: 1.3em;
   margin: 1em 0;
 }
 
 .accordion-content li {
-  margin: 0 0 0 2.5em;
+  margin: 0;
 }
 
 .accordion-content li :not(.references *) {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 /* Headers */
@@ -1273,8 +1266,11 @@ nav.footer-secondary-menu li a {
 
 .back-header a.back {
   display: block;
-  font-family: Verdana, 'Arial', sans-serif;
-  font-size: 1.5em;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
   position: relative;
   padding: 15px 5px 15px 30px;
 }
@@ -1291,8 +1287,8 @@ nav.footer-secondary-menu li a {
 
 .section-header {
   padding: 0 15px;
-  font-size: 1.5em;
-  font-family: Verdana, 'Arial', sans-serif;
+  font-size: 1.3em;
+  font-family: Arial, sans-serif;
   display: block;
   border-bottom: 1px solid #d3d3d3;
 }
@@ -1314,7 +1310,6 @@ nav.footer-secondary-menu li a {
 }
 
 .modal-info-window .modal-header {
-  background: url('../img/bg/divider-fade.png') no-repeat center bottom;
   background-size: 100% 9px;
   padding: 10px;
   height: 50px;
@@ -1342,30 +1337,24 @@ nav.footer-secondary-menu li a {
   -khtml-opacity: 0;
   -webkit-opacity: 0;
   opacity: 0;
-  /*-ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0); TODO Syntax error? */
   filter: alpha(opacity=0);
   -webkit-overflow-scrolling: touch;
 }
 
 .modal-info-window .modal-content h4 {
-  font-family: 'Arial', sans-serif;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 16px;
   margin-bottom: 1em;
 }
 
 .modal-info-window .modal-content p {
   margin-bottom: 1em;
-  font-size: 1em;
+  font-size: 14px;
 }
 
-/*.modal-info-window .modal-content.no-button {
-  height: 230px;
-}*/
-
+/* Hiding author search button for now, as the functionality is broken */
 .modal-info-window .modal-search {
-  position: absolute;
-  bottom: 0;
+  display: none;
 }
 
 .modal-info-window.active .modal-content {
@@ -1373,7 +1362,6 @@ nav.footer-secondary-menu li a {
   -khtml-opacity: 1;
   -webkit-opacity: 1;
   opacity: 1;
-  /*-ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=100); TODO Syntax error? */
   filter: alpha(opacity=100);
 }
 
@@ -1391,7 +1379,7 @@ nav.footer-secondary-menu li a {
 }
 
 .modal-info-window.top .modal-content h3 {
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 1.4em;
   font-weight: bold;
   margin-bottom: 20px;
@@ -1405,7 +1393,7 @@ nav.footer-secondary-menu li a {
 
 .modal-info-window.top .modal-content p,
 .modal-info-window.top .modal-content li {
-  font-size: 1.2em;
+  font-size: 1.3em;
   line-height: 1.3em;
 }
 
@@ -1427,7 +1415,7 @@ nav.footer-secondary-menu li a {
 }
 
 .modal-info-window.top .modal-content .radio-group {
-  font-size: 1.2em;
+  font-size: 1.3em;
   color: #fff;
 }
 
@@ -1472,7 +1460,7 @@ nav.footer-secondary-menu li a {
 #share-methods > li a {
   display: block;
   height: 25px;
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: #fff;
   line-height: 25px;
 }
@@ -1483,7 +1471,7 @@ nav.footer-secondary-menu li a {
 }
 
 #share-methods .reddit .icon {
-  background-position: -50px 0px;
+  background-position: -50px 0;
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
@@ -1492,7 +1480,7 @@ nav.footer-secondary-menu li a {
 }
 
 #share-methods .google .icon {
-  background-position: -75px 0px;
+  background-position: -75px 0;
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
@@ -1501,7 +1489,7 @@ nav.footer-secondary-menu li a {
 }
 
 #share-methods .facebook .icon {
-  background-position: 0px 0px;
+  background-position: 0 0;
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
@@ -1519,7 +1507,7 @@ nav.footer-secondary-menu li a {
 }
 
 #share-methods .stumble .icon {
-  background-position: -25px 0px;
+  background-position: -25px 0;
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
@@ -1528,7 +1516,7 @@ nav.footer-secondary-menu li a {
 }
 
 #share-methods .mendeley .icon {
-  background-position: 0px -25px;
+  background-position: 0 -25px;
   width: 25px;
   height: 50px;
   background-repeat: no-repeat;
@@ -1537,7 +1525,7 @@ nav.footer-secondary-menu li a {
 }
 
 #share-methods .connotea .icon {
-  background-position: -100px 0px;
+  background-position: -100px 0;
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
@@ -1565,7 +1553,7 @@ nav.footer-secondary-menu li a {
 }
 
 .save-article.full.saved {
-  background: #f8af2d;
+  background: #d7df23;
   color: #333333;
 }
 
@@ -1574,7 +1562,7 @@ nav.footer-secondary-menu li a {
 .standard-form input,
 .standard-form textarea,
 .standard-form p {
-  font-size: 1.2em;
+  font-size: 1.3em;
   margin-bottom: 15px;
 }
 
@@ -1616,7 +1604,7 @@ nav.footer-secondary-menu li a {
 .nav-pagination .previous {
   background-position: -187px -55px;
   width: 7px;
-  height: 13px;
+  height: 44px;
   background-repeat: no-repeat;
   background-image: url('../img/sprites/structure.png');
   background-size: 300px 75px;
@@ -1642,7 +1630,7 @@ nav.footer-secondary-menu li a {
 
 .nav-pagination > a,
 .nav-pagination .skip {
-  font-size: 1.8em;
+  font-size: 1.4em;
   font-weight: bold;
   margin-left: 10px;
 }
@@ -1658,7 +1646,7 @@ nav.footer-secondary-menu li a {
 .content.from-modal textarea,
 .content.from-modal input,
 .content.from-modal li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .content.from-modal h3 {
@@ -1666,7 +1654,7 @@ nav.footer-secondary-menu li a {
 }
 
 .content.from-modal p {
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
 .content.from-modal textarea {
@@ -1742,7 +1730,6 @@ nav.footer-secondary-menu li a {
     display: none;
     /* Hide this for more room for content in landscape */
   }
-
 }
 
 .error {
@@ -1758,8 +1745,6 @@ nav.footer-secondary-menu li a {
   font-size: 1.3em;
 }
 
-.collapsible {
-}
 
 .collapsible-title {
   cursor: pointer;
@@ -1774,14 +1759,12 @@ nav.footer-secondary-menu li a {
   padding: 10px;
 }
 
-/*
- * The next two classes are a small subset of JQuery UI.  It's only being used
+/* * The next two classes are a small subset of JQuery UI.  It's only being used
  * on the custom 500 page, so I didn't think it was worth including all of JQuery
- * UI.  If we ever do, though, remove these two.
- */
+ * UI.  If we ever do, though, remove these two. */
 
 .ui-widget {
-  font-family: Verdana, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 1.1em;
 }
 
@@ -1793,9 +1776,9 @@ nav.footer-secondary-menu li a {
 }
 
 .about-author {
-  padding: 10px 10px 10px 10px;
+  padding: 10px;
 }
 
 .author-full-name {
-  padding: 0px 0px 10px 0px;
+  padding: 0 0 10px;
 }

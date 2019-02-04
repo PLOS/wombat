@@ -127,7 +127,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     Document doc = Jsoup.parse(html);
 
-    assertThat(doc.select(".review-history .response-date").get(0).text(), containsString("4 Oct 2018"));
+    assertThat(doc.select(".review-history .letter__date").get(0).text(), containsString("12 Sep 2018"));
 
     Element authorResponseDiv = doc.select(".author-response").first();
     assertThat(authorResponseDiv.text(), containsString("Author Response"));

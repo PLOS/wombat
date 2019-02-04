@@ -24,11 +24,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, minimum-scale=1">
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
 
-  <link rel="stylesheet" type="text/css"
+ <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i">
 <#if article??>
   <#if article.date??>
@@ -52,25 +52,28 @@
 
   <style type='text/css'>
     @-ms-viewport {
-      width: device-width;
+      zoom: 1;
+      width: auto;
     }
 
     @-o-viewport {
-      width: device-width;
+      zoom: 1;
+      width: auto;
     }
 
     @viewport {
-      width: device-width;
+      zoom: 1;
+      width: auto;
     }
   </style>
   <title><@titleFormat removeTags(title) /></title>
 <@cssLink target="resource/css/base.css" />
 <@cssLink target="resource/css/interface.css" />
 <@cssLink target="resource/css/mobile.css" />
+<#include "../cssLinks.ftl" />
 <#if cssFile?has_content>
   <@cssLink target="resource/css/${cssFile}" />
 </#if>
-<#include "../cssLinks.ftl" />
 
   <script src="<@siteLink path="resource/js/vendor/vendor.min.js" />"></script>
 <@js src="resource/js/vendor/underscore-min.js"/>

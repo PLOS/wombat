@@ -1,0 +1,101 @@
+#peer-review {
+  margin: 0;
+}
+
+.page-title,
+.section-title {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+  margin: 12px 0 24px;
+  font-family: Arial, sans-serif;
+}
+
+.page-title {
+  margin-left: 2rem;
+}
+.review-history {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-top: 1px solid #ddd;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+.review-history,
+.supplementary-material,
+.tpr-info {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.decision-letter,
+.author-response,
+.tpr-info {
+  padding: 12px 0;
+  margin: 0 2rem;
+}
+
+.letter__body {
+  color: #666;
+}
+
+.letter__label {
+  display: block;
+  width: 100%;
+}
+
+.letter__body p,
+.tpr-info p,
+.review-files__title {
+  margin: 12px 0;
+}
+
+.review-files__title {
+  font-weight: 600;
+}
+
+.supplementary-material__caption {
+  display: block;
+  margin: 12px 0 24px;
+}
+.supplementary-material__label {
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: .5em 1em;
+  text-align: center;
+  display: inline-block;
+  line-height: 24px;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.review-history tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.version {
+  background: #f2f2f2;
+  padding: 12px 2rem;
+}
+
+.letter__date,
+.letter__title  {
+  width: 100%;
+  display: block;
+  font-weight: 400;
+}
+
+.letter__title {
+  font-weight: 600;
+}  

@@ -5,6 +5,10 @@ import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.parser.Parser;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -100,10 +104,13 @@ public class PeerReviewServiceImpl implements PeerReviewService {
       // strip the XML declaration, which is not allowed when these are aggregated
       xml = xml.replaceAll("<\\?xml(.+?)\\?>", "");
 
-      if (xml.contains("specific-use=\"acceptance-letter\"")) {
+      Document parsed = Jsoup.parse(xml, "", Parser.xmlParser());
+      Elements subArticle = parsed.select("sub-article");
+      if(!subArticle.isEmpty() && subArticle.attr("specific-use").equals("acceptance-letter")){
         acceptanceLetter = xml;
         continue;
       }
+
       reviewLetters.add(xml);
     }
 

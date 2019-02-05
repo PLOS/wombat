@@ -10,14 +10,9 @@
     <table class="review-history">
       <tbody>
         <xsl:apply-templates />
-        <tr>
-          <th class="version">
-            <span class="letter__title">Formally Accepted</span>
-          </th>
-        </tr>
       </tbody>
     </table>
-    <div class="tpr-info">
+    <div class="peer-review-open-letter">
       <h3 class="section-title">Open letter on the publication of peer review reports</h3>
       <p>PLOS recognizes the benefits of transparency in the peer review process. Therefore, we enable the publication of all of the content of peer review and author responses alongside final, published articles. Reviewers remain anonymous, unless they choose to reveal their names.</p>
       <p>We encourage other journals to join us in this initiative. We hope that our action inspires the community, including researchers, research funders, and research institutions, to recognize the benefits of published peer review reports for all parts of the research system.</p>
@@ -31,7 +26,7 @@
   
   <xsl:template match="revision">
     <tr>
-      <th class="version">
+      <th class="revision">
         <span class="letter__date">
           <xsl:value-of select=".//named-content[@content-type = 'letter-date']" />
         </span>
@@ -73,9 +68,7 @@
             <!-- accordion container -->
             <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
               <div class="letter__body">
-                <p>
                   <xsl:apply-templates select="body" />
-                </p>
               </div>
             </div>
             <!-- end accordion container -->
@@ -84,7 +77,39 @@
       </td>
     </tr>
   </xsl:template>
-  
+
+  <xsl:template match="sub-article[@specific-use = 'acceptance-letter']">
+    <tr>
+      <th class="revision">
+        <span class="letter__title">Formally Accepted</span>
+      </th>
+    </tr>
+    <tr>
+      <td class="letter">
+        <div class="acceptance-letter" itemscope="" itemtype="http://schema.org/Review">
+          <div itemprop="itemReviewed" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
+            <meta itemprop="url" content="articleUrl" />
+            <time class="letter__date" itemprop="dateCreated" datetime="">
+              <xsl:value-of select=".//named-content[@content-type = 'letter-date']" />
+            </time>
+            <div class="letter__title">
+              <!-- trigger for expand and collapse -->
+              <a class="letter--toggle" data-toggle="collapse" href="#">[Acceptance Letter]</a>
+              <!-- end trigger for expand and collapse -->
+            </div>
+            <!-- accordion container -->
+            <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
+              <div class="letter__body">
+                  <xsl:apply-templates select="body" />
+              </div>
+            </div>
+            <!-- end accordion container -->
+          </div>
+        </div>
+      </td>
+    </tr>
+  </xsl:template>
+
   <xsl:template match="sub-article[@article-type = 'author-comment']">
     <tr>
       <td class="letter">
@@ -99,9 +124,7 @@
           <!-- accordion container -->
           <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
             <div class="letter__body">
-              <p>
                 <xsl:apply-templates select="body" />
-              </p>
             </div>
           </div>
           <!-- end accordion container -->

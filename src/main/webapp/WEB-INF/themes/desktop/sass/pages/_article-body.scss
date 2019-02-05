@@ -745,26 +745,26 @@ ol.references {
     text-decoration: underline;
   }
 }
-.tpr-info a {
+.peer-review-open-letter a {
   @extend %brand-color;
   text-decoration: underline;
 }
 .plosone .review-history a,
-.plosone .tpr-info a {
+.plosone .peer-review-open-letter a {
   color: $plos-one-purple;
   text-decoration: underline;
   &:hover {
     color: $grey-med;
   }
 }
-.version,
+.revision,
 .letter {
   font-size: $txt-size-default;
   border: 1px solid $grey-light;
   padding: $line-height-small;
   text-align: left;
 }
-.version {
+.revision {
   background-color: $grey-light;
 }
 .letter__date {
@@ -772,9 +772,9 @@ ol.references {
   float: right;
   font-weight: normal;
 }
-.version-attachments {
+.revision-attachments {
   padding-top: $line-height-small;
 }
-.tpr-info {
+.peer-review-open-letter {
   margin-top: $line-height;
 }

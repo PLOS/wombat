@@ -24,14 +24,15 @@
 }
 .review-history,
 .supplementary-material,
-.tpr-info {
+.peer-review-open-letter {
   font-size: 14px;
   line-height: 18px;
 }
 
 .decision-letter,
 .author-response,
-.tpr-info {
+.acceptance-letter
+.peer-review-open-letter {
   padding: 12px 0;
   margin: 0 2rem;
 }
@@ -46,7 +47,7 @@
 }
 
 .letter__body p,
-.tpr-info p,
+.peer-review-open-letter p,
 .review-files__title {
   margin: 12px 0;
 }
@@ -84,7 +85,7 @@
   border-bottom: 1px solid #ddd;
 }
 
-.version {
+.revision {
   background: #f2f2f2;
   padding: 12px 2rem;
 }

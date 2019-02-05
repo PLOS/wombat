@@ -12,7 +12,7 @@
         <xsl:apply-templates />
       </tbody>
     </table>
-    <div class="tpr-info">
+    <div class="peer-review-open-letter">
       <h3 class="section-title">Open letter on the publication of peer review reports</h3>
       <p>PLOS recognizes the benefits of transparency in the peer review process. Therefore, we enable the publication of all of the content of peer review and author responses alongside final, published articles. Reviewers remain anonymous, unless they choose to reveal their names.</p>
       <p>We encourage other journals to join us in this initiative. We hope that our action inspires the community, including researchers, research funders, and research institutions, to recognize the benefits of published peer review reports for all parts of the research system.</p>

@@ -745,12 +745,12 @@ ol.references {
     text-decoration: underline;
   }
 }
-.tpr-info a {
+.peer-review-open-letter a {
   @extend %brand-color;
   text-decoration: underline;
 }
 .plosone .review-history a,
-.plosone .tpr-info a {
+.plosone .peer-review-open-letter a {
   color: $plos-one-purple;
   text-decoration: underline;
   &:hover {
@@ -775,6 +775,6 @@ ol.references {
 .version-attachments {
   padding-top: $line-height-small;
 }
-.tpr-info {
+.peer-review-open-letter {
   margin-top: $line-height;
 }

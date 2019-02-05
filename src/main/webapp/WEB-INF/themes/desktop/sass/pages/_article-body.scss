@@ -757,14 +757,14 @@ ol.references {
     color: $grey-med;
   }
 }
-.version,
+.revision,
 .letter {
   font-size: $txt-size-default;
   border: 1px solid $grey-light;
   padding: $line-height-small;
   text-align: left;
 }
-.version {
+.revision {
   background-color: $grey-light;
 }
 .letter__date {
@@ -772,7 +772,7 @@ ol.references {
   float: right;
   font-weight: normal;
 }
-.version-attachments {
+.revision-attachments {
   padding-top: $line-height-small;
 }
 .peer-review-open-letter {

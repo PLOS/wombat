@@ -26,7 +26,7 @@
   
   <xsl:template match="revision">
     <tr>
-      <th class="version">
+      <th class="revision">
         <span class="letter__date">
           <xsl:value-of select=".//named-content[@content-type = 'letter-date']" />
         </span>
@@ -80,7 +80,7 @@
 
   <xsl:template match="sub-article[@specific-use = 'acceptance-letter']">
     <tr>
-      <th class="version">
+      <th class="revision">
         <span class="letter__title">Formally Accepted</span>
       </th>
     </tr>

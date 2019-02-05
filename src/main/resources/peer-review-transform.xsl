@@ -88,7 +88,7 @@
     </tr>
     <tr>
       <td class="letter">
-        <div class="decision-letter" itemscope="" itemtype="http://schema.org/Review">
+        <div class="acceptance-letter" itemscope="" itemtype="http://schema.org/Review">
           <div itemprop="itemReviewed" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
             <meta itemprop="url" content="articleUrl" />
             <time class="letter__date" itemprop="dateCreated" datetime="">

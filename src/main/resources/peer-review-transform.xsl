@@ -68,9 +68,7 @@
             <!-- accordion container -->
             <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
               <div class="letter__body">
-                <p>
                   <xsl:apply-templates select="body" />
-                </p>
               </div>
             </div>
             <!-- end accordion container -->
@@ -102,9 +100,7 @@
             <!-- accordion container -->
             <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
               <div class="letter__body">
-                <p>
                   <xsl:apply-templates select="body" />
-                </p>
               </div>
             </div>
             <!-- end accordion container -->
@@ -128,9 +124,7 @@
           <!-- accordion container -->
           <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
             <div class="letter__body">
-              <p>
                 <xsl:apply-templates select="body" />
-              </p>
             </div>
           </div>
           <!-- end accordion container -->

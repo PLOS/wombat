@@ -32,8 +32,7 @@
 
 <#include "../common/footer/footer.ftl" />
 <#include "articleJs.ftl" />
-
-<@js src="resource/js/pages/peer_review.js" />
+<@js src="resource/js/pages/peer-review.js" />
 
 <@renderJs />
 

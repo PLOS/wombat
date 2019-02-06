@@ -228,23 +228,6 @@ var AmbraNavigation = function () {
     }
   };
 
-  self.togglePeerReviewAccordion = function (expandLink) {
-    var accordionItem = expandLink.parents(".peer-review-accordion-item");
-    var accordionContent = accordionItem.find('.peer-review-accordion-content');
-    if (accordionItem.hasClass('expanded')) {
-          accordionItem.removeClass('expanded');
-          accordionContent.slideUp(animation_time);
-        } else {
-          accordionItem.addClass('expanded');
-          accordionContent.slideDown(animation_time);
-        }
-  };
-
-  $('.peer-review-accordion-expander').click(function (e) {
-    e.preventDefault();
-    self.togglePeerReviewAccordion($(this));
-  });
-
   self.scrollToTop = function () {
     if (Modernizr.android && !Modernizr.positionfixed) { //account for an infrequent Android < 3 bug where window animates to the top, but then jumps back to the bottom
       $('body').scrollTop(0);

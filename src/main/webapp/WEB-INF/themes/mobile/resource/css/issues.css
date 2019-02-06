@@ -34,14 +34,14 @@
 
 #container-main h1 {
   text-align: center;
-  font-size: 28px;
+  ;
   padding-bottom: 5px
 }
 
 #issue-articles-container p {
   font-family: inherit;
   font-weight: normal;
-  font-size: 13px;
+  ;
   line-height: 18px;
   margin-bottom: 3px;
   text-rendering: optimizeLegibility;
@@ -51,7 +51,7 @@
   display: block;
   font-weight: normal;
   font-family: 'Open Sans', sans-serif;
-  font-size: 27px;
+  ;
   margin: 12px 0;
 }
 
@@ -98,17 +98,17 @@
 
 #issue-articles-container .section h2 {
   font-family: 'Open Sans', sans-serif;
-  font-size: 27px;
+  ;
   margin: 0;
 }
 
 #issue-articles-container .section .item {
-  font-size: 13px;
+  ;
   margin-top: 27px;
 }
 
 #issue-articles-container .section .item h3 {
-  font-size: 16px;
+  ;
   margin-bottom: 9px;
 }
 
@@ -117,9 +117,9 @@
 }
 
 #issue-articles-container .section .item h4 {
-  font-size: 13px;
+  ;
   color: #666;
-  font-weight: bold;
+  font-weight: 600;
   margin-top: 0;
   margin-bottom: 3px;
 }
@@ -130,5 +130,5 @@
 }
 
 #issue-articles-container .section .item ol li a {
-  font-size: 14px;
+  ;
 }

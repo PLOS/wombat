@@ -21,9 +21,9 @@
  */
 
 
-.card { font-size: 13px;}
+.card { ;}
 .card h2 {
-  font-size: 1.5em;
+  ;
 }
 
 #container-main, body{
@@ -61,21 +61,21 @@ div#pageViewsSummary div#right {
 }
 
 div#pageViewsSummary div.header {
-  font-size: 14px;
+  ;
   color: #333;
 }
 
 div#pageViewsSummary div.totalCount {
   padding-top: 3px;
   padding-bottom: 5px;
-  font-size: 18px;
-  font-weight: bold;
+  ;
+  font-weight: 600;
   color: #333
 }
 
 div#pageViewsSummary div.pubDates {
-  font-size: 1em;
-  font-weight: bold;
+  
+  font-weight: 600;
   color: #666;
 }
 
@@ -97,8 +97,8 @@ table th,
   padding: 3px 8px 2px 8px;
   vertical-align: middle;
   height: 17px;
-  font-size: 1em;
-  font-weight: bold;
+  
+  font-weight: 600;
 }
 
 table th {
@@ -114,18 +114,18 @@ table#pageViewsTable td {
 
 table#pageViewsTable .source1 {
   background-color: #3c63af;
-  font-weight: bold;
+  font-weight: 600;
   color: #fff;
 }
 
 table#pageViewsTable .source2 {
   background-color: #6d84bf;
-  font-weight: bold;
+  font-weight: 600;
   color: #fff;
 }
 
 table#pageViewsTable .total {
-  font-weight: bold;
+  font-weight: 600;
   color: black;
 }
 
@@ -174,7 +174,7 @@ table#pageViewsTable tr.percent td {
 }
 
 #beta {
-  font: italic bold 10px Arial;
+  font: italic 600 10px Arial;
   color: #00be00;
 }
 
@@ -200,9 +200,9 @@ div.metrics_tile_footer {
 }
 
 div.metrics_tile_footer{
-  font-size: 1em;
+  
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 div.metrics_tile_no_link {
@@ -218,9 +218,9 @@ div.metrics_tile_no_link {
 div.metrics_tile_footer_no_link {
   line-height: 1.85em;
   color: #999999;
-  font-size: 1em;
+  
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 div.metrics_tile:hover .metrics_tile_rating_footer {

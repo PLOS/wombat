@@ -1,25 +1,3 @@
-/*
- * Copyright (c) 2017 Public Library of Science
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- */
-
 /* Home */
 #home-content {
   padding: 0;
@@ -51,9 +29,9 @@
 }
 
 #article-content .retraction h3 {
-  font-size: 1.3em;
-  font-weight: bold;
-  font-family: 'Arial', sans-serif;
+  
+  font-weight: 600;
+  font-family: Arial, sans-serif;
   margin-top: 0;
   display: inline;
 }
@@ -63,12 +41,12 @@
 }
 
 #article-content .retraction span {
-  font-size: 1.3em;
+  
   padding-top: 20px;
 }
 
 #article-content .retraction ol {
-  font-size: 1.5em;
+  
   margin: 1em 0;
   padding: 0 0 0 45px;
 }
@@ -78,58 +56,58 @@
 }
 
 #article-content .correction-alert {
-  font-size: 1.4em;
+  
   background-position: 0 2px;
   margin-top: 15px;
 }
 
-#article-content ul.article-tags {
+#article-content .article-tags {
   margin-top: 15px;
 }
 
-#article-content ul.article-tags .article-tag {
+#article-content .article-tags .article-tag {
   float: left;
   margin-left: 15px;
 }
 
-#article-content ul.article-tags .article-tag:first-child {
+#article-content .article-tags .article-tag:first-child {
   margin-left: 0;
 }
 
-#article-content ul.article-tags .peer-reviewed {
+#article-content .article-tags .peer-reviewed {
   width: 123px;
   height: 15px;
 }
 
-#article-content ul.article-tags .open-access {
+#article-content .article-tags .open-access {
   width: 155px;
   height: 15px;
 }
 
-#article-content ul.main-accordion {
+#article-content .main-accordion {
   margin-top: 30px;
 }
 
-#article-content ul.article-buttons {
+#article-content .article-buttons {
   margin-top: 25px;
 }
 
-#article-content ul.article-buttons li {
+#article-content .article-buttons li {
   margin-bottom: 10px;
 }
 
-#article-content ul.article-buttons li:last-child {
+#article-content .article-buttons li:last-child {
   margin-bottom: 0;
 }
 
-#article-content ul.article-buttons li a {
+#article-content .article-buttons li a {
   padding: 15px 20px;
-  font-size: 1.5em;
+  
   text-align: left;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
-#article-content ul.article-buttons li a .arrow {
+#article-content .article-buttons li a .arrow {
   overflow: hidden;
   text-indent: -1000px;
   display: block;
@@ -150,8 +128,8 @@
 }
 
 .rounded {
-  font-weight: bold;
-  font-size: 1.4em;
+  font-weight: 600;
+  
   padding: 1em;
   text-align: center;
   text-transform: uppercase;
@@ -201,18 +179,24 @@
   margin: 20px 0;
 }
 
-#author-content dd { margin-bottom: 10px; }
+
 #author-content dt {
-  font-weight: bold;
-  margin-bottom: 5px;
+    font-weight: 600;
 }
-#author-content dl span.type { font-weight: bold; }
+#author-content dd {
+margin-bottom: 1em;
+}
+#author-content .type { 
+  color: #666;
+  font-size: 80%;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
 
 
 /* Results */
 #page-results .filter-box {
   position: absolute;
-  top: 130px;
+  top: 50px;
   display: none;
 }
 
@@ -222,27 +206,21 @@
 
 #page-results .filter-container {
   border-bottom: 1px solid #d3d3d3;
-  padding: 10px;
+  padding: 2%;
   text-align: center;
 }
 
-#page-results .filter-container h3 {
-  font-size: 1.2em;
-  line-height: 44px;
+#page-results .filter-container .filter-button,
+#display-options {
+  margin: 2rem auto;
+  width: 96%;
 }
 
-#page-results .filter-container .filter-button {
-  width: 90%;
-}
-
-#page-results #display-options {
-  padding: 20px;
-}
 
 #page-results .article-item {
   border-bottom: 1px solid #d3d3d3;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding-bottom:2rem;
+  margin-bottom: 2rem;
 }
 
 #page-results #article-items.title-only .article-item .author-list,
@@ -283,15 +261,15 @@
 }
 
 /* Saved Items */
-#page-saved-items h3.section-header {
+#page-saved-items .section-header {
   font-style: italic;
 }
 
-#page-saved-items #saved-list-options {
-  font-weight: bold;
+#saved-list-options {
+  font-weight: 600;
 }
 
-#page-saved-items #saved-list-options.inactive .optionitem {
+#saved-list-options.inactive .optionitem {
   background: #d3d3d3;
   color: #fff;
 }
@@ -308,7 +286,7 @@
   margin: 25px 0;
 }
 
-#page-saved-items #article-items .save-article.circular {
+.save-article.circular {
   display: none;
 }
 
@@ -321,11 +299,11 @@
 }
 
 #page-saved-items .modal-content {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 #page-saved-items .modal-content p.confirm-text {
-  font-size: 1.5em;
+  
   margin: 18px 0 25px 0;
 }
 
@@ -334,13 +312,13 @@
 }
 
 /* Recent History */
-#page-recent-history #recent-searches {
+#recent-searches {
   padding: 20px 10px;
   border-bottom: 1px solid #d3d3d3;
 }
 
-#page-recent-history .history-title {
-  font-size: 1.5em;
+.history-title {
+  
   margin-bottom: 20px;
 }
 
@@ -353,9 +331,9 @@
 }
 
 #page-recent-history .recent-search-list > li a {
-  color: #336699;
-  font-size: 1.5em;
-  font-family: Verdana, 'Arial', sans-serif;
+  color: #369;
+  
+  font-family: Arial, sans-serif;
 }
 
 #page-recent-history #article-items {
@@ -364,8 +342,8 @@
 
 /* Journals */
 .lead-in.journal {
-  font-size: 1.5em;
-  font-family: Verdana, 'Arial', sans-serif;
+  
+  font-family: Arial, sans-serif;
   text-transform: none;
   margin-top: 10px;
 }
@@ -385,7 +363,7 @@
 }
 
 #page-table-of-contents .toc-image figcaption {
-  font-size: 1.2em;
+  
 }
 
 #page-table-of-contents .main-accordion {
@@ -413,9 +391,9 @@
 }
 
 .journal-month-container h4 {
-  font-size: 1.5em;
-  font-family: 'Arial', sans-serif;
-  font-weight: bold;
+  
+  font-family: Arial, sans-serif;
+  font-weight: 600;
   text-align: center;
   margin-top: 5px;
   margin-bottom: 20px;
@@ -447,10 +425,10 @@
   display: block;
   background: #333333;
   color: #fff;
-  font-size: 2.3em;
+  
   text-align: center;
   line-height: 53px;
-  font-weight: bold;
+  font-weight: 600;
   float: left;
   margin-left: 10px;
   margin-bottom: 15px;
@@ -502,11 +480,11 @@
 }
 
 #page-featured-collection .accordion-content ul li {
-  font-size: 1.3em;
+  
 }
 
-#page-featured-collection ul.collection-list > li {
-  font-weight: bold;
+#page-featured-collection .collection-list > li {
+  font-weight: 600;
   margin-bottom: 10px;
 }
 
@@ -522,20 +500,20 @@
 }
 
 .figure-small figcaption {
-  font-weight: bold;
-  font-size: 1.2em;
+  font-weight: 600;
+  
   margin-bottom: 1em;
 }
 
 .figure-small figcaption .caption-body * {
   font-weight: normal;
-  font-size: 1em;
+  
   margin-top: 0;
 }
 
 .figure-small figcaption a {
   font-weight: normal;
-  color: #336699;
+  color: #369;
 }
 
 .figure-small .figure-expand {
@@ -572,7 +550,7 @@
 
 /* Figures */
 .accordion-content figure {
-  background: #EFEFEF;
+  background: #efefef;
   margin: 30px -10px;
   padding: 15px 20px 25px;
 }
@@ -609,7 +587,7 @@ html:not(.positionfixed) #page-figure #site-header-container {
   -moz-background-clip: padding-box;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  font-size: 1.5em;
+  
 }
 
 #figure-info-window .modal-tab .arrow {
@@ -627,26 +605,23 @@ html:not(.positionfixed) #page-figure #site-header-container {
 }
 
 #figure-info-window .modal-content h3 {
-  font-family: 'Arial', sans-serif;
-  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
 }
 
 #figure-info-window .modal-content p.article-id {
-  font-size: 1.2em;
+  
 }
 
 /* Email Article */
-#email-article-content h3.page-title {
-  font-size: 1.5em;
-}
 
 #email-article-content .spotlight {
-  font-size: 1.5em;
+  
   line-height: 1.3em;
 }
 
 #email-article-content .spotlight .item-link {
-  color: #336699;
+  color: #369;
 }
 
 #email-article-form {
@@ -654,24 +629,24 @@ html:not(.positionfixed) #page-figure #site-header-container {
 }
 
 #privacy-link {
-  color: #336699;
-  font-size: 1.5em;
+  color: #369;
+  
   margin: 25px 0;
   display: block;
 }
 
 /* Comments */
 #comment-content h3.comments-header {
-  font-size: 1.5em;
+  
 }
 
 #comment-content .post-comment {
-  font-size: 1.2em;
+  
   color: #666666;
 }
 
 #comment-content .post-comment a {
-  color: #336699;
+  color: #369;
 }
 
 #comment-content .comments {
@@ -685,19 +660,19 @@ html:not(.positionfixed) #page-figure #site-header-container {
 }
 
 #comment-content .comments .comment .context a.expand {
-  font-size: 1.3em;
-  font-weight: bold;
+  
+  font-weight: 600;
   text-decoration: underline;
 }
 
 #comment-content .comments .comment .context .details {
-  font-size: 1.2em;
+  
   margin-top: 2px;
 }
 
 #comment-content .comments .comment .context .details a.member {
-  color: #336699;
-  font-weight: bold;
+  color: #369;
+  font-weight: 600;
 }
 
 #comment-content .comments .comment .responses {
@@ -708,7 +683,7 @@ html:not(.positionfixed) #page-figure #site-header-container {
 }
 
 #comment-content .comments .comment .responses .response-header {
-  font-size: 1.2em;
+  
 }
 
 #comment-content .comments .comment .responses:last-child {
@@ -737,7 +712,7 @@ html:not(.positionfixed) #page-figure #site-header-container {
 }
 
 #page-comments-individual #comment-content .comments .comment .response > p {
-  font-size: 1.4em;
+  
   line-height: 1.3em;
 }
 
@@ -750,11 +725,11 @@ html:not(.positionfixed) #page-figure #site-header-container {
 #page-comments-individual #comment-content .comments .comment .response-menu > a {
   height: 20px;
   line-height: 20px;
-  font-size: 1.3em;
-  color: #336699;
+  
+  color: #369;
   display: inline-block;
   text-align: left;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 #page-comments-individual #comment-content .comments .comment .response-menu .flag-link {
@@ -812,33 +787,33 @@ html:not(.positionfixed) #page-figure #site-header-container {
 }
 
 .modal-content .comment-markup {
-  font-size: 1.1em;
+  
   margin-bottom: 20px;
 }
 
 .modal-content .comment-markup em,
 .modal-content .comment-markup strong {
-  font-weight: bold;
+  font-weight: 600;
   color: #fff;
 }
 
 .modal-content .submission-button-container .button {
   float: right;
-  font-weight: bold;
+  font-weight: 600;
   margin-left: 5px;
-  font-size: 1em;
+  
 }
 
 /* taxonomy hierarchy colors */
 .grey-on-gold {
   background: #4A1010;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* Journal-neutral coloring */
 body .coloration-white-on-color {
   background: #4A1010;
-  color: #ffffff;
+  color: #fff;
 }
 
 body .coloration-text-color {
@@ -855,7 +830,7 @@ body .coloration-border-top {
 
 body .active.color-active {
   background: #4A1010;
-  color: #ffffff;
+  color: #fff;
 }
 
 body .coloration-bg {
@@ -870,48 +845,48 @@ body .active.text-color {
 #page-saved-items #menu-saved,
 #page-recent-history #menu-recent {
   background: #4A1010;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* References */
-ol.references {
+.references {
   margin: 1em 0;
-  padding: 0 0 0 2em;
-  font-size: 1.2em;
+  padding: 0 0 0 1rem;
+  
 }
 
-ol.references li {
+.references li {
   list-style-type: none;
   position: relative;
   margin-bottom: 1em;
 }
 
-ol.references li span.label {
+.references li span.label {
   width: 20px;
   text-align: right;
   position: absolute;
   left: -2em;
 }
 
-ol.references ul.find-nolinks {
+.references .find-nolinks {
   margin: 0;
   padding: 0;
   height: 0;
 }
 
-ol.references ul.find {
+.references .find {
   margin: 0;
   padding: 0;
   min-height: 1em;
 }
 
-ol.references ul.find li {
+.references .find li {
   float: left;
   margin: 0 4px 0 20px;
   list-style-type: disc;
 }
 
-ol.references ul.find li:first-child {
+.references .find li:first-child {
   margin-left: 0;
   list-style-type: none;
 }

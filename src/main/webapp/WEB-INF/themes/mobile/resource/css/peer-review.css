@@ -1,7 +1,3 @@
-#peer-review {
-  margin: 0;
-}
-
 .page-title,
 .section-title {
   font-size: 24px;
@@ -18,8 +14,8 @@
   border-collapse: collapse;
   border-spacing: 0;
   border-top: 1px solid #ddd;
-  width: 100%;
-  margin: 0;
+ /* width: 90%;
+  margin: 0 auto;*/
   text-align: left;
 }
 .review-history,
@@ -31,10 +27,10 @@
 
 .decision-letter,
 .author-response,
-.acceptance-letter
+.acceptance-letter,
 .peer-review-open-letter {
-  padding: 12px 0;
-  margin: 0 2rem;
+  padding: 12px 2rem;
+ /* margin: 0 2rem;*/
 }
 
 .letter__body {
@@ -42,8 +38,8 @@
 }
 
 .letter__label {
-  display: block;
-  width: 100%;
+  display: inline-block;
+ /* width: 100%;*/
 }
 
 .letter__body p,
@@ -65,7 +61,7 @@
   text-transform: uppercase;
   padding: .5em 1em;
   text-align: center;
-  display: inline-block;
+ /* display: inline-block;*/
   line-height: 24px;
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
@@ -87,7 +83,7 @@
 
 .revision {
   background: #f2f2f2;
-  padding: 12px 2rem;
+  padding: 12px 0;
 }
 
 .letter__date,

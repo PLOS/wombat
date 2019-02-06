@@ -20,7 +20,7 @@
 #content h3, 
 #content h4 {
  font-family: Arial, sans-serif;
-  font-weight: bold;
+  font-weight: 600;
   }
 
 #content h1 {
@@ -32,9 +32,6 @@ font-size: 2.25rem;
   font-weight: normal;
   }
 
-#content h3, h4, h5 {
-  font-size: 1.25rem;
-  }
 
 #content ul, #content ol {
   margin: .5em;
@@ -61,15 +58,15 @@ font-size: 2.25rem;
   }
 
 #content dt {
-  font-weight: bold;
-  font-size: 1.3em;
+  font-weight: 600;
+  
   line-height: 1.3em;
   padding-bottom: 0.5em;
   text-rendering: optimizeLegibility;
 }
 
 #content dd {
-  font-size: 1.3em;
+  
   line-height: 1.3em;
   padding-bottom: 1.1em;
   text-rendering: optimizeLegibility;
@@ -99,7 +96,7 @@ font-size: 2.25rem;
   padding: .5em .5em .75em .5em;
   background: #abc2e8;
   padding: .5em;
-  font-weight: bold;
+  font-weight: 600;
   }
 
 #content .block-tip {

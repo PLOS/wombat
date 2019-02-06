@@ -24,7 +24,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, minimum-scale=1">
+  <meta name="viewport" content="width=300, initial-scale=1, minimum-scale=1">
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
 

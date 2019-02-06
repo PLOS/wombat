@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0" 
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-  xmlns:xlink="http://www.w3.org/1999/xlink"
+<xsl:stylesheet version="2.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:plos="http://plos.org"
 >
-  <xsl:output method="html" />
-  
+  <xsl:function name="plos:get-file-extension">
+    <xsl:param name="input" as="xs:string"/>
+    <xsl:sequence 
+        select="if (contains($input,'.'))
+                then concat('.', tokenize($input,'\.')[last()])
+                else $input"/>
+  </xsl:function>
+
+  <xsl:output method="html"/>
+
   <xsl:template match="/">
     <h2 class="page-title">Peer Review History</h2>
     <table class="review-history">
@@ -150,12 +160,15 @@
   </xsl:template>
   
   <xsl:template match="supplementary-material">
-    <dd class="supplementary-material">
-      <a class="supplementary-material__label coloration-white-on-color" href="#">
-        <xsl:value-of select="label" />
-      </a>
+      <dd class="supplementary-material">
+        <a class="supplementary-material__label coloration-white-on-color" 
+           href="{concat('file?id=10.1371/journal.',@id,'&amp;type=supplementary')}" 
+           title="{string-join(('Download',plos:get-file-extension(normalize-space(caption/p/named-content)),'file'),' ')}"
+           target="_blank">
+          <xsl:value-of select="label"/>
+        </a>
       <div class="supplementary-material__caption">
-        <xsl:copy-of select="caption/p/text()" />
+        <xsl:copy-of select="caption/p/text()"/>
         <i>
           <xsl:value-of select="caption/p/named-content" />
         </i>

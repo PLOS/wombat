@@ -1229,6 +1229,10 @@ nav.footer-secondary-menu li a {
   font-size: 1.3em;
 }
 
+.peer-review-accordion-content {
+  display: none;
+}
+
 /* Headers */
 .back-header {
   background: #fff !important;

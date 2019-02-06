@@ -2,7 +2,17 @@
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:plos="http://plos.org"
 >
+  <xsl:function name="plos:get-file-extension">
+    <xsl:param name="input" as="xs:string"/>
+    <xsl:sequence 
+        select="if (contains($input,'.'))
+                then concat('.', tokenize($input,'\.')[last()])
+                else $input"/>
+  </xsl:function>
+
   <xsl:output method="html"/>
 
   <xsl:template match="/">
@@ -156,7 +166,7 @@
   <xsl:template match="supplementary-material">
       <dd class="supplementary-material">
         <a href="{concat('file?id=10.1371/journal.',@id,'&amp;type=supplementary')}" 
-           title="{concat('Download ',@xlink:href,' file')}"
+           title="{concat('Download ',plos:get-file-extension(normalize-space(caption/p/named-content)),' file')}"
            target="_blank">
           <xsl:value-of select="label"/>
         </a>
@@ -191,4 +201,5 @@
   </xsl:template>
 
   <xsl:template match = "named-content"/>
+
 </xsl:stylesheet>

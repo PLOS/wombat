@@ -35,6 +35,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.String.format;
 import static org.mockito.Mockito.*;
 import static junit.framework.TestCase.assertNull;
 import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
@@ -141,7 +142,27 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     Element anchorElement = firstAttachment.select("a").first();
 
     assertThat(anchorElement.attr("href"), containsString("file?id=10.1371/journal.pone.0207232.s001&type=supplementary"));
-    assertThat(anchorElement.attr("title"), containsString("Download pone.0207232.s001.pdf file"));
+    assertThat(anchorElement.attr("title"), containsString("Download .pdf file"));
+  }
+
+  @Test
+  public void testAttachmentAnchorTitles() throws IOException {
+
+    String xml = read(prefix("peer-review-attachment-filenames.pone.0207232.xml"));
+ 
+    PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
+    String html = svc.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+
+    Document doc = Jsoup.parse(html);
+
+    String[] expectedAnchorTitles = { "docwithnodotspdf", ".docx", ".docx" };
+
+    for (int i=0; i<3; ++i) {
+      Element attachment = doc.select(".review-history .review-files .supplementary-material").get(i);
+      Element anchor = attachment.select("a").first();
+      assertThat(anchor.attr("href"), containsString(format("file?id=10.1371/journal.pone.0207232.s00%d&type=supplementary",(i+1))));
+      assertThat(anchor.attr("title"), containsString(format("Download %s file", expectedAnchorTitles[i])));
+    }
   }
 
   @Test

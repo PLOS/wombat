@@ -161,10 +161,7 @@ textarea {
   vertical-align: top;
 }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
+
 
 /* Correct `block` display not defined in IE 6/7/8/9 and Firefox 3. */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
@@ -188,6 +185,12 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockqu
   margin: 0;
   padding: 0;
   direction: ltr;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 12px 2%;
 }
 
 /* img and obj */

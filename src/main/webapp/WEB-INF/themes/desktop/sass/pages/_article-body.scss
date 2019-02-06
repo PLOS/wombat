@@ -740,26 +740,41 @@ ol.references {
   width: 100%;
   border: 1px solid $grey-light;
   border-collapse: collapse;
-  tbody > tr > th,
-  tbody > tr > td {
-    font-size: $txt-size-default;
-    border: 1px solid $grey-light;
-    padding: $line-height-small;
-    text-align: left;
-  }
-  tbody > tr > th {
-    background-color: $grey-light;
-  }
-  .date {
-    width: 20%;
-    float: right;
-    font-weight: normal;
-  }
-  .version-attachments {
-    padding-top: $line-height-small;
+  & a {
+    @extend %brand-color;
+    text-decoration: underline;
   }
 }
-.tpr-info {
+.peer-review-open-letter a {
+  @extend %brand-color;
+  text-decoration: underline;
+}
+.plosone .review-history a,
+.plosone .peer-review-open-letter a {
+  color: $plos-one-purple;
+  text-decoration: underline;
+  &:hover {
+    color: $grey-med;
+  }
+}
+.revision,
+.letter {
+  font-size: $txt-size-default;
+  border: 1px solid $grey-light;
+  padding: $line-height-small;
+  text-align: left;
+}
+.revision {
+  background-color: $grey-light;
+}
+.letter__date {
+  width: 20%;
+  float: right;
+  font-weight: normal;
+}
+.revision-attachments {
+  padding-top: $line-height-small;
+}
+.peer-review-open-letter {
   margin-top: $line-height;
 }
-

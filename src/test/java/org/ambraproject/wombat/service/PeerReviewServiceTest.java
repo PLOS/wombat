@@ -72,6 +72,13 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
             "files", ImmutableMap.of("letter", ImmutableMap.of(
                 "crepoKey", "info:doi/10.1371/journal.pone.0207232.r003.xml"
             ))
+        ),
+        "10.1371/journal.pone.0207232.r004", ImmutableMap.of(
+            "doi", "10.1371/journal.pone.0207232.r004",
+            "itemType", "reviewLetter",
+            "files", ImmutableMap.of("letter", ImmutableMap.of(
+                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r004.xml"
+            ))
         )
     );
 
@@ -98,6 +105,11 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
               "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>1</meta-value></custom-meta></custom-meta-group></front-stub>" +
               "<body><p>FirstRoundDecisionLetterSampleBody</p></body></sub-article>";
         }
+        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r004.xml") {
+          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"acceptance-letter\">" +
+              "<front-stub></front-stub>" +
+              "<body><p>AcceptanceLetterSampleBody</p></body></sub-article>";
+        }
         return letterContent;
       }
     };
@@ -107,9 +119,11 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     assertThat(d.select(".review-history th").get(0).text(), containsString("Original Submission"));
     assertThat(d.select(".review-history th").get(1).text(), containsString("Revision 1"));
+    assertThat(d.select(".review-history th").get(2).text(), containsString("Formally Accepted"));
     assertThat(d.select(".review-history .decision-letter").get(0).text(), containsString("InitialDecisionLetterSampleBody"));
     assertThat(d.select(".review-history .decision-letter").get(1).text(), containsString("FirstRoundDecisionLetterSampleBody"));
     assertThat(d.select(".review-history .author-response").get(0).text(), containsString("FirstRoundAuthorResponseSampleBody"));
+    assertThat(d.select(".review-history .acceptance-letter").get(0).text(), containsString("AcceptanceLetterSampleBody"));
   }
 
   @Test
@@ -174,10 +188,10 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     Document doc = Jsoup.parse(html);
 
-    assertThat(doc.select(".review-history .response-date").get(0).text(), containsString("4 Oct 2018"));
+    assertThat(doc.select(".review-history .letter__date").get(0).text(), containsString("12 Sep 2018"));
 
-    Element authorResponseDiv = doc.select("div[class=author-response").first();
-    assertThat(authorResponseDiv.text(), containsString("[Response to Reviewers]"));
+    Element authorResponseDiv = doc.select(".author-response").first();
+    assertThat(authorResponseDiv.text(), containsString("Author Response"));
 
     Element attachmentElem = authorResponseDiv.select(".review-files .supplementary-material").first();
     assertThat(attachmentElem.text(), containsString("Response to Reviewers.docx"));

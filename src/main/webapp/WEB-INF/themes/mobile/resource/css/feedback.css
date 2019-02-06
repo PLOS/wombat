@@ -12,16 +12,14 @@
   list-style-type: none;
 }
 
-#feedbackCreate li,
-#emailThisArticleForm li {
-  margin-top: 12px;
+.form-group {
+  margin: 1rem 0 2rem;
 }
-
 #feedbackCreate label,
 #emailThisArticleForm label {
   width: 100%;
   display: inline-block;
-  line-height: 2;
+  font-weight: 600;
 }
 
 #emailThisArticleForm input[type="text"],
@@ -29,7 +27,7 @@
 #feedbackCreate input[type="text"],
 #emailThisArticleForm textarea {
   width: 100%;
-  border: 1px solid #333;
+  border: 1px solid #999;
   line-height: 44px;
 }
 
@@ -46,9 +44,10 @@
 }
 
 
-.form-consent label,
+#feedbackCreate .form-consent label,
 .form-consent input {
   text-align: left;
+  font-weight: 400;
 }
 .form-consent input[type="checkbox"] {
   display: inline;

@@ -1,7 +1,7 @@
 /* Issue */
 
 #container-main {
-  background: #efefef;
+ 
 }
 
 #container-main #nav-toc {
@@ -24,12 +24,11 @@
 #issue-articles-container #issue-title {
   display: block;
   font-weight: 400;
-  font-family: 'Open Sans', sans-serif;
   margin: 12px 0;
 }
 
 #issue-articles-container #issue-title a {
-  color: #333333;
+  color: #333;
 }
 
 #issue-articles-container .cover {
@@ -39,7 +38,7 @@
 
 #issue-articles-container .header {
   text-align: center;
-  background-color: white;
+  background-color: #fff;
   padding: 12px 3%;
 }
 
@@ -49,7 +48,7 @@
 
 #issue-articles-container .detail-container {
   text-align: center;
-  background: white;
+  background: #fff;
 }
 
 #issue-articles-container .detail-container img {
@@ -58,13 +57,13 @@
 
 #issue-articles-container .detail-container .txt {
   padding: 10px 0;
-  background-color: white;
+  background-color: #fff;
   padding: 12px 3%;
   margin-top: -3px;
 }
 
 #issue-articles-container .section {
-  background-color: white;
+  background-color: #fff;
   padding: 18px 3%;
   margin: 18px 0;
 }

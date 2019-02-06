@@ -1,6 +1,5 @@
 .page-title,
 .section-title {
-  font-size: 24px;
   line-height: 32px;
   font-weight: 400;
   margin: 12px 0 24px;
@@ -14,14 +13,11 @@
   border-collapse: collapse;
   border-spacing: 0;
   border-top: 1px solid #ddd;
- /* width: 90%;
-  margin: 0 auto;*/
   text-align: left;
 }
 .review-history,
 .supplementary-material,
 .peer-review-open-letter {
-  font-size: 14px;
   line-height: 18px;
 }
 
@@ -30,7 +26,6 @@
 .acceptance-letter,
 .peer-review-open-letter {
   padding: 12px 2rem;
- /* margin: 0 2rem;*/
 }
 
 .letter__body {
@@ -39,7 +34,6 @@
 
 .letter__label {
   display: inline-block;
- /* width: 100%;*/
 }
 
 .letter__body p,
@@ -61,7 +55,6 @@
   text-transform: uppercase;
   padding: .5em 1em;
   text-align: center;
- /* display: inline-block;*/
   line-height: 24px;
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
@@ -87,7 +80,7 @@
 }
 
 .letter__date,
-.letter__title  {
+.letter__title {
   width: 100%;
   display: block;
   font-weight: 400;

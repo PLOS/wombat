@@ -303,7 +303,6 @@ margin-bottom: 1em;
 }
 
 #page-saved-items .modal-content p.confirm-text {
-  
   margin: 18px 0 25px 0;
 }
 
@@ -318,7 +317,6 @@ margin-bottom: 1em;
 }
 
 .history-title {
-  
   margin-bottom: 20px;
 }
 
@@ -341,8 +339,7 @@ margin-bottom: 1em;
 }
 
 /* Journals */
-.lead-in.journal {
-  
+.lead-in.journal { 
   font-family: Arial, sans-serif;
   text-transform: none;
   margin-top: 10px;
@@ -360,10 +357,6 @@ margin-bottom: 1em;
 #page-table-of-contents .toc-image figure,
 #page-table-of-contents .toc-image figcaption {
   margin-top: 20px;
-}
-
-#page-table-of-contents .toc-image figcaption {
-  
 }
 
 #page-table-of-contents .main-accordion {
@@ -391,7 +384,6 @@ margin-bottom: 1em;
 }
 
 .journal-month-container h4 {
-  
   font-family: Arial, sans-serif;
   font-weight: 600;
   text-align: center;
@@ -479,9 +471,6 @@ margin-bottom: 1em;
   list-style-position: inside;
 }
 
-#page-featured-collection .accordion-content ul li {
-  
-}
 
 #page-featured-collection .collection-list > li {
   font-weight: 600;
@@ -500,19 +489,18 @@ margin-bottom: 1em;
 }
 
 .figure-small figcaption {
-  font-weight: 600;
-  
+  font-weight: 600;  
   margin-bottom: 1em;
 }
 
 .figure-small figcaption .caption-body * {
-  font-weight: normal;
+  font-weight: 400;
   
   margin-top: 0;
 }
 
 .figure-small figcaption a {
-  font-weight: normal;
+  font-weight: 400;
   color: #369;
 }
 

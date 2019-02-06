@@ -23,7 +23,8 @@ a:focus {
   outline: thin dotted;
 }
 
-a:active, a:hover {
+a:active,
+a:hover {
   outline: 0;
 }
 
@@ -31,11 +32,13 @@ abbr[title] {
   border-bottom: 1px dotted;
 }
 
-b, strong {
+b,
+strong {
   font-weight: 600;
 }
 
-p, pre {
+p,
+pre {
   margin: 0;
 }
 
@@ -49,7 +52,8 @@ small {
   font-size: 80%;
 }
 
-sub, sup {
+sub,
+sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -64,11 +68,15 @@ sub {
   bottom: -0.25em;
 }
 
-dl, menu, ol, ul {
+dl,
+menu,
+ol,
+ul {
   margin: 0;
 }
 
-dt,dd {
+dt,
+dd {
   margin: 0;
 }
 
@@ -86,7 +94,7 @@ legend {
   border: 0;
   padding: 0;
   white-space: normal;
-  *margin-left: -7px;
+  margin-left: -7px;
 }
 
 button,
@@ -100,10 +108,17 @@ textarea {
   margin: 0; /* 2 */
 }
 
-
-
 /* Correct `block` display not defined in IE 6/7/8/9 and Firefox 3. */
-article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+sdetails,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
   display: block;
 }
 
@@ -113,14 +128,35 @@ figure {
 }
 
 /* Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3. */
-audio, canvas, video {
+audio,
+canvas,
+video {
   display: inline-block;
-  *display: inline;
-  *zoom: 1;
+  display: inline;
+  zoom: 1;
 }
 
 /* Base Type Styles Using Modular Scale */
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+th,
+td {
   margin: 0;
   padding: 0;
   direction: ltr;
@@ -132,13 +168,16 @@ table {
 }
 
 /* img and obj */
-img, object, embed {
+img,
+object,
+embed {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-object, embed {
+object,
+embed {
   height: 100%;
 }
 
@@ -162,8 +201,12 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5 {
-  font-weight: normal;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 400;
 }
 
 .attrib {
@@ -192,7 +235,7 @@ figure .attrib {
 }
 
 .simple {
-    list-style-type: none;
+  list-style-type: none;
 }
 .txt-medium {
   font-size: 1.25rem;
@@ -204,15 +247,15 @@ figure .attrib {
 
 /*utilities*/
 
-.center-text{
-  text-align:center;
+.center-text {
+  text-align: center;
 }
-.center-block{
-  margin-left:auto;
-  margin-right:auto;
+.center-block {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.pad-small-y{padding: 5px 0}
-.pad-small-x{padding: 0 5px}
+.pad-small-y { padding: 5px 0; }
+.pad-small-x { padding: 0 5px; }
 
-italic {font-style: italic;} /*sometimes this is in the transform*/
+italic { font-style: italic; } /*sometimes this is in the transform*/

@@ -1,23 +1,23 @@
 /* Feedback and Email this Article */
-#feedback-form-container, 
+#feedback-form-container,
 #set-grid {
   text-align: left;
   margin: 2rem 2%;
 }
 
-#feedbackCreate ol, 
+#feedbackCreate ol,
 #emailThisArticleForm ol {
   margin-top: 12px;
   text-align: left;
   list-style-type: none;
 }
 
-#feedbackCreate li, 
+#feedbackCreate li,
 #emailThisArticleForm li {
   margin-top: 12px;
 }
 
-#feedbackCreate label, 
+#feedbackCreate label,
 #emailThisArticleForm label {
   width: 100%;
   display: inline-block;
@@ -25,8 +25,8 @@
 }
 
 #emailThisArticleForm input[type="text"],
-#feedbackCreate textarea, 
-#feedbackCreate input[type="text"], 
+#feedbackCreate textarea,
+#feedbackCreate input[type="text"],
 #emailThisArticleForm textarea {
   width: 100%;
   border: 1px solid #333;
@@ -35,20 +35,20 @@
 
 #security-check-label {
   margin: 20px 0 0;
-  width:100%;
+  width: 100%;
   text-align: center;
 }
 
-#submit-feedback-btn, 
-#sendButton  {
+#submit-feedback-btn,
+#sendButton {
   margin: 2rem 0;
-  width:96%;
+  width: 96%;
 }
 
 
 .form-consent label,
-.form-consent input  {
-  text-align:left;
+.form-consent input {
+  text-align: left;
 }
 .form-consent input[type="checkbox"] {
   display: inline;
@@ -56,14 +56,15 @@
 }
 
 #emailThisArticleForm .error {
-    margin-left: 24%;
-    padding: 5px 5px 5px 8px;
-    display: block;
-    text-align:left;
+  margin-left: 24%;
+  padding: 5px 5px 5px 8px;
+  display: block;
+  text-align: left;
 }
 
-.error, .required {
-    color: #e53350;
+.error,
+.required {
+  color: #e53350;
 }
 
 /* Feedback and Email this Article Success */
@@ -76,25 +77,8 @@
   padding: 5% 0;
 }
 
-#authorPhone, #authorAffiliation { 
-display: none; visibility: hidden;
+#authorPhone,
+#authorAffiliation {
+  display: none;
+  visibility: hidden;
 }
-
-/*@media (max-width: 550px) {
-  #feedbackCreate li {
-    position: relative;
-    padding-left: 5%; padding-right: 5%;
-    box-sizing: border-box;
-  }
-  #feedbackCreate label,
-  #feedbackCreate input,
-  #feedbackCreate textarea {
-    width: 100%;
-    text-align: inherit;
-    margin-right: inherit;
-  }
-  #feedbackCreate label {
-    font-weight: 600;
-  }
-
-}*/

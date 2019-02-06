@@ -7,7 +7,7 @@
   font-family: 'ambraSymbols';
   src: url('../fonts/ambraSymbols.eot');
   src: url('../fonts/ambraSymbols.eot?#iefix') format('embedded-opentype'), url('../fonts/ambraSymbols.woff') format('woff'), url('../fonts/ambraSymbols.ttf') format('truetype'), url('../fonts/ambraSymbols.svg#plos') format('svg');
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -27,11 +27,9 @@
 }
 
 .arial {
-
 }
 
 .verdana {
-
 }
 
 .clearfix:before,
@@ -62,7 +60,7 @@
 }
 
 .header-style {
-  
+
 
   font-weight: 400;
 }
@@ -108,14 +106,14 @@ a {
 }
 
 .item-title {
-  
-  font-weight: normal;
+
+  font-weight: 400;
   text-transform: uppercase;
 }
 
 .article-title {
 
-  
+
   line-height: 24px;
   font-weight: 600;
 }
@@ -177,7 +175,7 @@ a {
 
 .results li a,
 .results li .error {
-  
+
   display: block;
   padding-right: 2.5em;
 }
@@ -210,7 +208,7 @@ a {
 
 .footer .footer-credits {
   color: #fff;
-  
+
   text-align: center;
   line-height: 1.4em;
   margin-top: 6px;
@@ -258,7 +256,7 @@ a {
 }
 
 .tweets .tweet-heading .tweet-heading {
-  
+
   margin-left: 4px;
   float: left;
 }
@@ -266,7 +264,7 @@ a {
 .tweets .tweet-heading .tweet-handle {
   float: right;
   color: #336699;
-  
+
   letter-spacing: -0.1em;
 }
 
@@ -299,8 +297,7 @@ a {
 }
 
 .tweets .tweets-container .tweet .tweet-content .tweet-handle {
-  font-weight: normal;
-  
+  font-weight: 400;
 }
 
 .tweets .tweets-container .tweet .tweet-content .tweet-handle a {
@@ -308,7 +305,7 @@ a {
 }
 
 .tweets .tweets-container .tweet .tweet-content .tweet-text {
-  
+
   margin-top: .2em;
 }
 
@@ -318,7 +315,7 @@ a {
 
 .tweets .tweets-container .tweet .tweet-content .tweet-time {
   color: #999999;
-  
+
   margin-top: .2em;
 }
 
@@ -334,7 +331,6 @@ a {
 }
 
 .spotlight h2.spotlight-heading {
-  
 }
 
 .spotlight .spotlight-item {
@@ -344,7 +340,7 @@ a {
 .spotlight .spotlight-item .item-link {
   color: #336699;
 
-  
+
   line-height: 1.15em;
 }
 
@@ -372,7 +368,6 @@ a {
   color: #fff;
   display: block;
   text-align: center;
-  
 }
 
 .btn-lg.med {
@@ -398,7 +393,7 @@ a {
   background-clip: padding-box;
   text-align: center;
   color: #fff;
-  
+
   text-align: center;
 }
 
@@ -422,7 +417,6 @@ a {
   background-clip: padding-box;
   background: #333;
   color: #fff;
-  
 }
 
 .button-pair a.rounded {
@@ -433,7 +427,7 @@ a {
   width: 20px;
   height: 20px;
   display: block;
-  
+
   font-family: 'ambraSymbols', sans-serif;
   cursor: pointer;
 }
@@ -459,7 +453,6 @@ a {
   background: #333;
   color: #fff;
   display: table-cell;
-  
 }
 
 .buttongroup > button:first-child {
@@ -503,7 +496,7 @@ a {
 }
 
 .filter-button {
-  
+
 
   font-weight: 600;
   padding: 0 12px;
@@ -568,7 +561,7 @@ a {
   display: block;
   color: #fff;
 
-  
+
   line-height: 50px;
 }
 
@@ -611,7 +604,7 @@ a {
   text-align: left;
 
   background: #373737;
-  
+
   padding: 15px;
 }
 
@@ -624,13 +617,13 @@ a {
 }
 
 .full-menu-container .full-menu-tout h4 {
-  
+
   color: #4A1010;
   padding-bottom: 12px;
 }
 
 .full-menu-container .full-menu-tout .std li {
-  
+
   line-height: 1.3em;
 }
 
@@ -666,7 +659,7 @@ a {
 .menu-bar li a {
 
   color: #fff;
-  
+
   line-height: 40px;
   display: block;
 }
@@ -752,7 +745,6 @@ a {
 .article-menu-bottom .btn-top-container .btn-text {
 
   font-style: italic;
-  
 }
 
 .article-menu-bottom .btn-top-container .btn {
@@ -778,15 +770,13 @@ a {
 .footer-menu li,
 .footer-secondary-menu li {
   display: block;
-    height: 44px;
-  line-height:44px;
+  height: 44px;
+  line-height: 44px;
 }
 
 .footer-menu li a,
 .footer-secondary-menu li a {
   color: #fff;
-  
-
 }
 
 
@@ -794,9 +784,9 @@ a {
 .footer-non-profit-statement {
   width: 100%;
   color: white;
-  
+
   text-align: center;
-  margin:12px 0;
+  margin: 12px 0;
 }
 
 /* Search */
@@ -825,10 +815,10 @@ a {
   padding: 4px;
   height: 44px;
   line-height: 44px;
-  display:inline;
+  display: inline;
   margin: 0 auto;
-  border-color:#333;
-  width:94%;
+  border-color: #333;
+  width: 94%;
 }
 
 .search-expanded .search-form-container .search-field::-webkit-input-placeholder {
@@ -873,7 +863,6 @@ a {
 
 .article-item .author-list {
   margin-top: 12px;
-  
 }
 
 .article-item .author-list a {
@@ -887,7 +876,7 @@ a {
 
 .article-item .citation {
   margin-top: 25px;
-  
+
   line-height: 1.3em;
   color: #666;
 }
@@ -898,12 +887,12 @@ a {
 }
 
 .article-item .article-body p {
-  
+
   margin-top: 1em;
 }
 
 .article-item h2 {
-  
+
   line-height: 24px;
   font-weight: 600;
   margin-top: 1em;
@@ -911,20 +900,20 @@ a {
 
 .article-item h3 {
 
-  
+
   font-weight: 600;
   margin-top: 1.3em;
 }
 
 .article-item h4 {
 
-  
+
   margin-top: 1em;
 }
 
 .article-item h5 {
 
-  
+
   letter-spacing: .1em;
   text-transform: uppercase;
   font-weight: 600;
@@ -933,7 +922,7 @@ a {
 
 .article-item h6 {
 
-  
+
   margin-top: 1em;
 }
 
@@ -943,7 +932,7 @@ a {
 }
 
 .article-item .article-options-menu > a {
-  
+
   font-weight: 600;
   display: inline-block;
   float: left;
@@ -976,7 +965,6 @@ a {
 
 .filter-box .filter-option h5 {
   font-weight: 600;
-
 }
 
 .filter-box .filter-option select {
@@ -1129,7 +1117,7 @@ a {
   display: block;
   padding: 0.666em 15px;
 
-  
+
   cursor: pointer;
   color: #333;
 }
@@ -1171,7 +1159,7 @@ a {
 }
 
 .accordion-content p {
-  
+
   margin: 1em 0;
 }
 
@@ -1180,7 +1168,6 @@ a {
 }
 
 .accordion-content li :not(.references *) {
-  
 }
 
 /* Headers */
@@ -1206,7 +1193,7 @@ a {
 
 .section-header {
   padding: 0 15px;
-  
+
 
   display: block;
   border-bottom: 1px solid #d3d3d3;
@@ -1262,13 +1249,12 @@ a {
 
 .modal-info-window .modal-content h4 {
   font-weight: 600;
-  
+
   margin-bottom: 1em;
 }
 
 .modal-info-window .modal-content p {
   margin-bottom: 1em;
-  
 }
 
 /* Hiding author search button for now, as the functionality is broken */
@@ -1299,7 +1285,7 @@ a {
 
 .modal-info-window.top .modal-content h3 {
 
-  
+
   font-weight: 600;
   margin-bottom: 20px;
   color: #fff;
@@ -1312,7 +1298,7 @@ a {
 
 .modal-info-window.top .modal-content p,
 .modal-info-window.top .modal-content li {
-  
+
   line-height: 1.3em;
 }
 
@@ -1323,7 +1309,7 @@ a {
 .modal-info-window.top .modal-content textarea,
 .modal-info-window.top .modal-content input:not([type='radio']) {
   width: 100%;
-  
+
   padding: 12px;
   display: block;
 }
@@ -1334,7 +1320,7 @@ a {
 }
 
 .modal-info-window.top .modal-content .radio-group {
-  
+
   color: #fff;
 }
 
@@ -1379,7 +1365,7 @@ a {
 #share-methods > li a {
   display: block;
   height: 25px;
-  
+
   color: #fff;
   line-height: 25px;
 }
@@ -1466,7 +1452,7 @@ a {
   float: right;
   width: 30px;
   height: 30px;
-  
+
   margin: 0 0 5px 5px;
   font-family: 'ambraSymbols', sans-serif;
 }
@@ -1481,7 +1467,7 @@ a {
 .standard-form input,
 .standard-form textarea,
 .standard-form p {
-  
+
   margin-bottom: 2rem;
 }
 
@@ -1551,7 +1537,7 @@ a {
 
 .nav-pagination > a,
 .nav-pagination .skip {
-  
+
   font-weight: 600;
   margin-left: 12px;
 }
@@ -1594,7 +1580,7 @@ a {
   min-height: 2em;
   background: #333;
   color: #fff;
-  
+
   padding: 12px;
   box-shadow: 0 0 12px 5px #666;
 }
@@ -1656,7 +1642,6 @@ a {
 
 .error p {
   margin-bottom: 1em;
-  
 }
 
 
@@ -1678,8 +1663,6 @@ a {
  * UI.  If we ever do, though, remove these two. */
 
 .ui-widget {
-
-  
 }
 
 .ui-widget-header {

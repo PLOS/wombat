@@ -31,7 +31,7 @@
 
 .decision-letter,
 .author-response,
-.acceptance-letter
+.acceptance-letter,
 .peer-review-open-letter {
   padding: 12px 0;
   margin: 0 2rem;
@@ -99,4 +99,8 @@
 
 .letter__title {
   font-weight: 600;
+}
+
+.peer-review-accordion-content {
+  display: none;
 }

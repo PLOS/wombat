@@ -1,0 +1,45 @@
+.review-history {
+  width: 100%;
+  border: 1px solid $grey-light;
+  border-collapse: collapse;
+  & a {
+    @extend %brand-color;
+    text-decoration: underline;
+  }
+}
+.peer-review-open-letter a {
+  @extend %brand-color;
+  text-decoration: underline;
+}
+.plosone .review-history a,
+.plosone .peer-review-open-letter a {
+  color: $plos-one-purple;
+  text-decoration: underline;
+  &:hover {
+    color: $grey-med;
+  }
+}
+.revision,
+.letter {
+  font-size: $txt-size-default;
+  border: 1px solid $grey-light;
+  padding: $line-height-small;
+  text-align: left;
+}
+.revision {
+  background-color: $grey-light;
+}
+.letter__date {
+  width: 20%;
+  float: right;
+  font-weight: normal;
+}
+.revision-attachments {
+  padding-top: $line-height-small;
+}
+.peer-review-open-letter {
+  margin-top: $line-height;
+}
+.peer-review-accordion-content {
+  display: none;
+}

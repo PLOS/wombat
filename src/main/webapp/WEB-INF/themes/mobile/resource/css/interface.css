@@ -1,3 +1,6 @@
+main {
+  margin: 0 2%;
+}
 /* Special symbol font */
 .ambra-symbols-font {
   font-family: 'ambraSymbols', sans-serif;
@@ -74,11 +77,10 @@ a {
 }
 
 #container-main {
-  width: 96%;
   min-width: 319px;
   z-index: 999;
   background: #fff;
-  margin: 0 2%;
+  margin: 0;
 }
 
 #container-main.inactive {
@@ -204,6 +206,7 @@ a {
 .footer {
   background: #333;
   padding: 12px;
+  margin-top: 2rem;
 }
 
 .footer .footer-credits {

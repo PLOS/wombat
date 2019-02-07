@@ -14,8 +14,8 @@
 
 
 #article-post-options #submission-buttons a {
-  background: #000;
   width: 100%;
+  color: #fff;
   display: block;
   padding: 12px 0;
   margin: 1rem 0;
@@ -798,8 +798,7 @@ html:not(.positionfixed) #page-figure #site-header-container {
   color: #fff;
 }
 
-/* Journal-neutral coloring */
-body .coloration-white-on-color {
+/* Journal-neutral coloringbody .coloration-white-on-color {
   background: #4A1010;
   color: #fff;
 }

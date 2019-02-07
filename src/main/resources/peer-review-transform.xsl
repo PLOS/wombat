@@ -18,7 +18,7 @@
   <xsl:template match="/">
     <h2 class="page-title">Peer Review History</h2>
     <table class="review-history">
-      <tbody>
+      <tbody class="peer-review-accordion">
         <xsl:apply-templates />
       </tbody>
     </table>
@@ -57,7 +57,7 @@
   </xsl:template>
   
   <xsl:template match="sub-article[@specific-use = 'decision-letter']">
-    <tr>
+    <tr class="peer-review-accordion-item">
       <td class="letter">
         <div class="decision-letter" itemscope="" itemtype="http://schema.org/Review">
           <div itemprop="itemReviewed" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
@@ -66,22 +66,18 @@
               <xsl:value-of select=".//named-content[@content-type = 'letter-date']" />
             </time>
             <div class="letter__title">
-              <!-- trigger for expand and collapse -->
-              <a class="letter--toggle" data-toggle="collapse" href="#decisionLetter3">[Decision Letter]</a>
-              <!-- end trigger for expand and collapse -->
+              <a class="peer-review-accordion-expander" href="#">Decision Letter</a>
               -
               <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                 <span itemprop="name">Nico Donkelope</span>
               </span>
               , Editor
             </div>
-            <!-- accordion container -->
-            <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
+            <div itemprop="reviewBody" class="peer-review-accordion-content">
               <div class="letter__body">
                   <xsl:apply-templates select="body" />
               </div>
             </div>
-            <!-- end accordion container -->
           </div>
         </div>
       </td>
@@ -94,7 +90,7 @@
         <span class="letter__title">Formally Accepted</span>
       </th>
     </tr>
-    <tr>
+    <tr class="peer-review-accordion-item">
       <td class="letter">
         <div class="acceptance-letter" itemscope="" itemtype="http://schema.org/Review">
           <div itemprop="itemReviewed" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
@@ -103,17 +99,14 @@
               <xsl:value-of select=".//named-content[@content-type = 'letter-date']" />
             </time>
             <div class="letter__title">
-              <!-- trigger for expand and collapse -->
-              <a class="letter--toggle" data-toggle="collapse" href="#">[Acceptance Letter]</a>
-              <!-- end trigger for expand and collapse -->
+              <a class="peer-review-accordion-expander" href="#">Acceptance Letter</a>
             </div>
             <!-- accordion container -->
-            <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
+            <div itemprop="reviewBody" class="peer-review-accordion-content">
               <div class="letter__body">
                   <xsl:apply-templates select="body" />
               </div>
             </div>
-            <!-- end accordion container -->
           </div>
         </div>
       </td>
@@ -121,23 +114,20 @@
   </xsl:template>
 
   <xsl:template match="sub-article[@article-type = 'author-comment']">
-    <tr>
+    <tr class="peer-review-accordion-item">
       <td class="letter">
         <div class="author-response">
-          <!-- author response -->
           <time class="letter__date">
             <xsl:value-of select=".//named-content[@content-type = 'author-response-date']" />
           </time>
           <div class="letter__title">
-            <a class="letter--toggle" data-toggle="collapse" href="#decisionLetter2">[Author Response]</a>
+            <a class="peer-review-accordion-expander" href="#">Author Response</a>
           </div>
-          <!-- accordion container -->
-          <div itemprop="reviewBody" class="collapse" id="decisionLetter3">
+          <div itemprop="reviewBody" class="peer-review-accordion-content">
             <div class="letter__body">
                 <xsl:apply-templates select="body" />
             </div>
           </div>
-          <!-- end accordion container -->
         </div>
       </td>
     </tr>

@@ -1,28 +1,7 @@
-/*
- * Copyright (c) 2017 Public Library of Science
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- */
-
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableMap;
+import org.ambraproject.wombat.service.remote.ContentKey;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -33,11 +12,17 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.Map;
 
+import static java.lang.String.format;
 import static junit.framework.TestCase.assertNull;
 import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
+import static org.ambraproject.wombat.util.FileUtils.deserialize;
+import static org.ambraproject.wombat.util.FileUtils.getFile;
 import static org.ambraproject.wombat.util.FileUtils.read;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.spy;
 
 
 @ContextConfiguration(classes = {PeerReviewServiceTest.class})
@@ -133,8 +118,49 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
   }
 
   @Test
+  public void testAttachmentLink() throws IOException {
+
+    PeerReviewServiceImpl spy = spy(new PeerReviewServiceImpl());
+
+    doAnswer(invocation -> read(prefix(getFilename(invocation.getArgument(0).toString()))))
+      .when(spy).getContent(any(ContentKey.class));
+
+    Map<String,?> itemTable = (Map<String,?>) deserialize(getFile(prefix("item-table.pone.0207232.ser")));
+
+    String html = spy.asHtml(itemTable);
+
+    Document doc = Jsoup.parse(html);
+
+    Element firstAttachment = doc.select(".review-history .review-files .supplementary-material").first();
+    Element anchorElement = firstAttachment.select("a").first();
+
+    assertThat(anchorElement.attr("href"), containsString("file?id=10.1371/journal.pone.0207232.s001&type=supplementary"));
+    assertThat(anchorElement.attr("title"), containsString("Download .pdf file"));
+  }
+
+  @Test
+  public void testAttachmentAnchorTitles() throws IOException {
+
+    String xml = read(prefix("peer-review-attachment-filenames.pone.0207232.xml"));
+ 
+    PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
+    String html = svc.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+
+    Document doc = Jsoup.parse(html);
+
+    String[] expectedAnchorTitles = { "docwithnodotspdf", ".docx", ".docx" };
+
+    for (int i=0; i<3; ++i) {
+      Element attachment = doc.select(".review-history .review-files .supplementary-material").get(i);
+      Element anchor = attachment.select("a").first();
+      assertThat(anchor.attr("href"), containsString(format("file?id=10.1371/journal.pone.0207232.s00%d&type=supplementary",(i+1))));
+      assertThat(anchor.attr("title"), containsString(format("Download %s file", expectedAnchorTitles[i])));
+    }
+  }
+
+  @Test
   public void testAuthorResponse() {
-    String xml = read("xsl/peer-review/pone.0207232.xml");
+    String xml = read(prefix("peer-review.pone.0207232.xml"));
  
     PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
     String html = svc.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
@@ -148,5 +174,14 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     Element attachmentElem = authorResponseDiv.select(".review-files .supplementary-material").first();
     assertThat(attachmentElem.text(), containsString("Response to Reviewers.docx"));
+  }
+
+  private String getFilename(String uuidKey) {
+    // [key: info:doi/10.1371/journal.pone.0207232.r001.xml, uuid: cbcdde53-66f4-4885-85b0-50966be2ba28]
+    return uuidKey.substring(uuidKey.indexOf("10.1371/journal.")+16, uuidKey.lastIndexOf(", uuid:"));
+  }
+
+  private String prefix(String file) {
+    return "peer-review/" + file;
   }
 }

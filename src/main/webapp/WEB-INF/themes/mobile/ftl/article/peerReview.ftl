@@ -25,7 +25,7 @@
 <#assign mainClass = "content" />
 <#assign title = article.title />
 <#assign cssFile = 'peer-review.css' />
-
+<@js src="resource/js/pages/peer-review.js" />
 <@page_header />
 
 <#-- HTML representation of Peer Review History -->

@@ -14,15 +14,6 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.sax.SAXSource;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -32,6 +23,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.sax.SAXSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 
 
 public class PeerReviewServiceImpl implements PeerReviewService {
@@ -95,7 +95,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * @return entirety of peer review XML content
    * @throws IOException
    */
-  private String getAllReviewsAsXml(List<Map<String, ?>> reviewLetterItems) throws IOException {
+  String getAllReviewsAsXml(List<Map<String, ?>> reviewLetterItems) throws IOException {
     List<String> reviewLetters = new ArrayList<>();
     String acceptanceLetter = "";
     for (Map<String, ?> reviewLetterItem : reviewLetterItems) {
@@ -144,7 +144,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * @param itemTable
    * @return a list of review item
    */
-  private List<Map<String, ?>> getReviewItems(Map<String, ?> itemTable) {
+  List<Map<String, ?>> getReviewItems(Map<String, ?> itemTable) {
     List<Map<String, ?>> reviewLetterItems = new ArrayList<>();
     for (Object itemObj : new TreeMap(itemTable).values()) {
       if (((Map<String, ?>) itemObj).get("itemType").equals("reviewLetter")) {
@@ -169,6 +169,10 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     UUID uuid = UUID.fromString((String) contentRepoMetadata.get("crepoUuid"));
     ContentKey contentKey = ContentKey.createForUuid(crepoKey, uuid);
 
+    return getContent(contentKey);
+  }
+
+  String getContent(ContentKey contentKey) throws IOException {
     CloseableHttpResponse response = corpusContentApi.request(contentKey, ImmutableList.of());
     String letterContent = EntityUtils.toString(response.getEntity(), "UTF-8");
     return letterContent;

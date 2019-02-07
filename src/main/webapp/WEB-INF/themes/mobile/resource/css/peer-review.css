@@ -88,4 +88,8 @@
 
 .letter__title {
   font-weight: 600;
-}  
+}
+
+.peer-review-accordion-content {
+  display: none;
+}

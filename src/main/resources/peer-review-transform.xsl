@@ -66,7 +66,7 @@
               <xsl:value-of select=".//named-content[@content-type = 'letter-date']" />
             </time>
             <div class="letter__title">
-              <a class="peer-review-accordion-expander" href="#">[Decision Letter]</a>
+              <a class="peer-review-accordion-expander" href="#">Decision Letter</a>
               -
               <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                 <span itemprop="name">Nico Donkelope</span>
@@ -99,7 +99,7 @@
               <xsl:value-of select=".//named-content[@content-type = 'letter-date']" />
             </time>
             <div class="letter__title">
-              <a class="peer-review-accordion-expander" href="#">[Acceptance Letter]</a>
+              <a class="peer-review-accordion-expander" href="#">Acceptance Letter</a>
             </div>
             <!-- accordion container -->
             <div itemprop="reviewBody" class="peer-review-accordion-content">
@@ -121,7 +121,7 @@
             <xsl:value-of select=".//named-content[@content-type = 'author-response-date']" />
           </time>
           <div class="letter__title">
-            <a class="peer-review-accordion-expander" href="#">[Author Response]</a>
+            <a class="peer-review-accordion-expander" href="#">Author Response</a>
           </div>
           <div itemprop="reviewBody" class="peer-review-accordion-content">
             <div class="letter__body">

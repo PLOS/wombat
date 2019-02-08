@@ -28,8 +28,6 @@
 <#include "../macro/removeTags.ftl" />
 <#include "title/titleFormat.ftl" />
 
- <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i">
 <#if article??>
   <#if article.date??>
     <meta name="citation_date" content="${article.date?date("yyyy-MM-dd")}"/>
@@ -79,7 +77,7 @@
 <@js src="resource/js/vendor/underscore-min.js"/>
 <@js src="resource/js/vendor/underscore.string.min.js"/>
 <@renderCssLinks />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 <#include "additionalHeadTracking.ftl" />
 
 </head>

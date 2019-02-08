@@ -1,14 +1,21 @@
+#peer-review {
+  margin: 0 5%;
+  width: 90%;
+  display: block;
+}
 .page-title,
 .section-title {
-  line-height: 32px;
+  margin: 1rem 0;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
-  margin: 12px 0 24px;
-  font-family: Arial, sans-serif;
+  line-height: 1.15;
 }
 
 .page-title {
-  margin-left: 2rem;
+  margin-left: -1rem;
+  margin-right: 1rem;
 }
+
 .review-history {
   border-collapse: collapse;
   border-spacing: 0;
@@ -18,28 +25,17 @@
 .review-history,
 .supplementary-material,
 .peer-review-open-letter {
-  line-height: 18px;
-}
-
-.decision-letter,
-.author-response,
-.acceptance-letter,
-.peer-review-open-letter {
-  padding: 12px 0;
+  line-height: 1.25em;
+  margin: 1rem -1rem;
+  width: 100%;
 }
 
 .letter__body {
-  color: #333;
+  color: #222;
 }
 
 .letter__label {
   display: inline-block;
-}
-
-.letter__body p,
-.peer-review-open-letter p,
-.review-files__title {
-  margin: 12px 0;
 }
 
 .review-files__title {
@@ -75,20 +71,38 @@
   border-bottom: 1px solid #ddd;
 }
 
+.revision,
+.letter {
+  padding: 1.25rem 1rem;
+  display: block;
+  width: 100%;
+}
+
 .revision {
   background: #f2f2f2;
-  padding: 12px 0;
+}
+
+.letter__date {
+  margin-bottom: .55rem;
 }
 
 .letter__date,
 .letter__title {
   width: 100%;
   display: block;
+  line-height: 1.25em;
   font-weight: 400;
-  line-height: 1.11111111;
-  margin-bottom: 0.55555556em;
+}
+
+.revision .letter__title {
+  font-weight: 600;
 }
 
 .peer-review-accordion-content {
   display: none;
+}
+
+.peer-review-accordion-expander {
+  font-weight: 600;
+  text-decoration: underline;
 }

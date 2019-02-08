@@ -43,8 +43,8 @@
     <input type="hidden" name="page" value="${RequestParameters.page?html}"/>
   </#if>
     <div class="filter-option date">
-      <h5>Filter by date</h5>
-      <select name="dateRange">
+      <label for="date-range">Filter by date</label>
+      <select name="dateRange" id="date-range">
       <#list dateRanges as dateRange>
         <option value="${dateRange}" <#if (selectedDateRange == dateRange)>
                 selected="selected"</#if>>${dateRange.description}</option>
@@ -53,8 +53,8 @@
     </div>
 
     <div class="filter-option sort">
-      <h5>Sort by</h5>
-      <select name="sortOrder">
+      <label for="sort-order">Sort by</label>
+      <select name="sortOrder" id="sort-order">
       <#list sortOrders as sortOrder>
         <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)>
                 selected="selected"</#if>>${sortOrder.description}</option>
@@ -131,7 +131,7 @@
 
       <nav class="article-options-menu clearfix">
         <@siteLink handlerName="figuresPage" queryParameters={"id": doc.id} ; href>
-          <a href="${href}">Figures</a>
+          <a href="${href}" class="article-option">Figures</a>
         </@siteLink>
         <@siteLink handlerName="article" queryParameters={"id": doc.id} ; href>
           <a href="${href}#abstract">Abstract</a>
@@ -139,10 +139,10 @@
 
       <#-- TODO: what does this link mean?  Do we need to expand all accordion sections?  -->
         <@siteLink handlerName="article" queryParameters={"id": doc.id} ; href>
-          <a href="${href}">Full text</a>
+          <a href="${href}" class="article-option">Full text</a>
         </@siteLink>
         <@siteLink handlerName="assetFile" queryParameters={"type": "printable", "id": doc.id} ; href>
-          <a href="${href}">PDF</a> <#-- TODO: Not all articles have PDF files. May want to suppress if possible. -->
+          <a href="${href}" class="article-option">PDF</a> <#-- TODO: Not all articles have PDF files. May want to suppress if possible. -->
         </@siteLink>
       </nav><#--end article-options-menu-->
 
@@ -161,7 +161,7 @@
 <section id="article-info-window" class="modal-info-window">
 
   <div class="modal-header clearfix">
-    <a class="close coloration-text-color">v</a>
+    <a class="close coloration-text-color">X</a>
   </div>
 
   <div class="modal-content">

@@ -2,11 +2,9 @@
   display: none;
 }
 
-#content h1,
 h1 {
   font-size: 2em;
   letter-spacing: -1px;
-  /* tighten up 'display type' headers on smaller displays */
   line-height: 1.25;
   margin-top: 0.9375em;
   margin-bottom: 0.3125em;
@@ -18,7 +16,8 @@ h2 {
   margin-bottom: 0.38461539em;
 }
 
-h3 {
+h3,
+.figure-title {
   font-size: 1.375em;
   line-height: 1.13636364;
   margin-top: 1.36363637em;
@@ -37,11 +36,10 @@ p {
   line-height: 1.25;
 }
 
-
 #content ul,
 #content ol {
   margin: .5em;
-  margin-bottom: 1em;
+  margin-bottom: 1.25em;
 }
 
 #content ul {

@@ -17,6 +17,7 @@ html {
 body {
   font-family: Arial, sans-serif;
   background: #fff;
+  word-wrap: break-word;
 }
 
 a:focus {
@@ -109,7 +110,7 @@ textarea {
 }
 
 /* Correct `block` display not defined in IE 6/7/8/9 and Firefox 3. */
-sdetails,
+details,
 figcaption,
 figure,
 footer,
@@ -201,14 +202,6 @@ a {
   text-decoration: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-weight: 400;
-}
-
 .attrib {
   text-align: right;
 }
@@ -237,16 +230,8 @@ figure .attrib {
 .simple {
   list-style-type: none;
 }
-.txt-medium {
-  font-size: 1.25rem;
-}
-.txt-large {
-  font-size: 1.5rem;
-}
 
-
-/*utilities*/
-
+/* utilities */
 .center-text {
   text-align: center;
 }
@@ -254,8 +239,3 @@ figure .attrib {
   margin-left: auto;
   margin-right: auto;
 }
-
-.pad-small-y { padding: 5px 0; }
-.pad-small-x { padding: 0 5px; }
-
-italic { font-style: italic; } /*sometimes this is in the transform*/

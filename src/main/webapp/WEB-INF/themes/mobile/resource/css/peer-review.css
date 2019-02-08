@@ -25,11 +25,11 @@
 .author-response,
 .acceptance-letter,
 .peer-review-open-letter {
-  padding: 12px 2rem;
+  padding: 12px 0;
 }
 
 .letter__body {
-  color: #666;
+  color: #333;
 }
 
 .letter__label {
@@ -53,9 +53,10 @@
 .supplementary-material__label {
   font-weight: 600;
   text-transform: uppercase;
-  padding: .5em 1em;
+  padding: 1rem 2rem;
   text-align: center;
-  line-height: 24px;
+  line-height: 44px;
+  height: 44px;
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
   -webkit-border-bottom-left-radius: 3px;
@@ -84,10 +85,8 @@
   width: 100%;
   display: block;
   font-weight: 400;
-}
-
-.letter__title {
-  font-weight: 600;
+  line-height: 1.11111111;
+  margin-bottom: 0.55555556em;
 }
 
 .peer-review-accordion-content {

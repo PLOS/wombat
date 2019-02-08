@@ -74,6 +74,10 @@
   color: #369;
 }
 
+.content .coloration-white-on-color,
+.content .btn-lg {
+  color: #fff;
+}
 #container-main.inactive {
   position: fixed;
   overflow: hidden;
@@ -624,7 +628,7 @@
   position: absolute;
   z-index: 10;
   margin-top: 50px;
-  width: 96%;
+  width: 100%;
   display: none;
   text-align: center;
 }

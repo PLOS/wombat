@@ -4,8 +4,8 @@ set -e
 
 NAME=wombat
 
-TOMCAT8_USER=$NAME
-TOMCAT8_GROUP=$NAME
+TOMCAT7_USER=$NAME
+TOMCAT7_GROUP=$NAME
 HOME=/opt/plos/$NAME
 CONFFILE=/etc/default/$NAME
 
@@ -32,8 +32,8 @@ case "$1" in
     rm -rf $HOME
     rm -f $CONFFILE
 
-    deluser $TOMCAT8_USER
-    delgroup $TOMCAT8_GROUP
+    deluser $TOMCAT7_USER
+    delgroup $TOMCAT7_GROUP
 
     set -e
   ;;

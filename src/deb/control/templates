@@ -12,3 +12,8 @@ Template: [[artifactId]]/wombat_port
 Type: string
 Default: 8015
 Description: The HTTP port you would like Wombat to be accessible from
+
+Template: [[artifactId]]/control_port
+Type: string
+Default: 8014
+Description: The TCP port to use for Tomcat shutdown control port

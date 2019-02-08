@@ -5,5 +5,5 @@ Architecture: all
 Section: web
 Priority: optional
 Maintainer: Ambra Project Dev Team <dev@ambraproject.org>
-Depends: java8-runtime, tomcat8-common, adduser, debconf, bash, libmysql-java, mysql-client
+Depends: java8-runtime, tomcat7-common, adduser, debconf, bash, libmysql-java, mysql-client
 Homepage: https://github.com/PLOS/wombat

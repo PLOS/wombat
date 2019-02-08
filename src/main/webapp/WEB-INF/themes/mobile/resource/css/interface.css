@@ -396,9 +396,10 @@
   padding-bottom: 20px;
 }
 
-.expander {
+.full-menu-container .expander {
   padding: 0 .5em;
   font-weight: 600;
+  font-size: .8em;
 }
 
 .full-menu-container .full-menu .primary .accordion-item {
@@ -442,18 +443,11 @@
   background-size: 300px 75px;
 }
 
-.full-menu-container .full-menu .primary .accordion-item:last-child {
-  margin-bottom: 20px;
-}
 
 .full-menu-container .full-menu .secondary .btn-lg {
   margin-bottom: 1em;
   text-align: left;
   background: #333;
-}
-
-.full-menu-container .full-menu .secondary li:last-child .btn-lg {
-  margin-bottom: 2em;
 }
 
 .full-menu-container .full-menu-tout {

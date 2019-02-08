@@ -25,7 +25,7 @@
 <#assign bodyId = 'page-results' />
 
 <@page_header />
-<div id="filter-results-container" class="filter-box coloration-white-on-color" data-function="date-and-sort">
+<div id="filter-results-container" class="filter-box" data-function="date-and-sort">
   <form id="sortAndFilterSearchResults"
   <#if isBrowse??>
         action="<@siteLink handlerName='browseSubjectArea' pathVariables={"subject":subject}/>"
@@ -43,7 +43,7 @@
     <input type="hidden" name="page" value="${RequestParameters.page?html}"/>
   </#if>
     <div class="filter-option date">
-      <label for="date-range">Filter by date</label>
+      <label for="date-range" class="filter-label">Filter by date</label>
       <select name="dateRange" id="date-range">
       <#list dateRanges as dateRange>
         <option value="${dateRange}" <#if (selectedDateRange == dateRange)>
@@ -53,7 +53,7 @@
     </div>
 
     <div class="filter-option sort">
-      <label for="sort-order">Sort by</label>
+      <label for="sort-order" class="filter-label">Sort by</label>
       <select name="sortOrder" id="sort-order">
       <#list sortOrders as sortOrder>
         <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)>
@@ -105,7 +105,7 @@
 
     <#-- We rely here on the fact that search in wombat is always restricted to the current
          journal.  If this changes, we'll have to pass in the site in the href.  -->
-      <a href="${doc.link}" class="article-title">${doc.title}</a>
+      <h5><a href="${doc.link}" class="article-title">${doc.title}</a></h5>
 
       <p class="author-list">
         <#list doc.author_display![] as author>
@@ -114,7 +114,7 @@
       </p>
 
       <p class="citation">
-      ${doc.article_type}<br/>
+      <small class="lead-in">${doc.article_type}</small>
         published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" />
         | ${doc.journal_name[0]}<br/>
       ${doc.id}<br/>
@@ -123,10 +123,10 @@
         <#assign citations = doc.alm_scopusCiteCount!0 />
         <#assign saves = doc.alm_citeulikeCount!0 + doc.alm_mendeleyCount!0 />
         <#assign shares = doc.alm_twitterCount!0 + doc.alm_facebookCount!0 />
-        <a>Views: ${views}</a> |
-        <a>Citations: ${(citations > 0)?string("Yes", "none")}</a> |
-        <a>Saves: ${(saves > 0)?string("Yes", "none")}</a> |
-        <a>Shares: ${(shares > 0)?string("Yes", "none")}</a>
+        <a><small class="small-caps">Views:</small> <b>${views}</b></a> 
+        <a><small class="small-caps">Citations:</small> <b>${(citations > 0)?string("Yes", "none")}</b></a> 
+        <a><small class="small-caps">Saves:</small> <b>${(saves > 0)?string("Yes", "none")}</b></a> 
+        <a><small class="small-caps">Shares:</small> <b>${(shares > 0)?string("Yes", "none")}</b></a>
       </p><#--end full citation-->
 
       <nav class="article-options-menu clearfix">
@@ -134,7 +134,7 @@
           <a href="${href}" class="article-option">Figures</a>
         </@siteLink>
         <@siteLink handlerName="article" queryParameters={"id": doc.id} ; href>
-          <a href="${href}#abstract">Abstract</a>
+          <a href="${href}#abstract" class="article-option">Abstract</a>
         </@siteLink>
 
       <#-- TODO: what does this link mean?  Do we need to expand all accordion sections?  -->

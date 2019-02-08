@@ -88,7 +88,7 @@
 }
 
 .article-buttons li {
-  margin-bottom: 10px;
+    margin: 1em -1em;
 }
 
 .article-buttons li:last-child {
@@ -98,6 +98,7 @@
 .article-buttons li a {
   line-height: 44px;
   padding: 0 20px;
+
   text-align: left;
   font-family: Arial, sans-serif;
 }

@@ -7,14 +7,14 @@
 
 #feedbackCreate ol,
 #emailThisArticleForm ol {
-  margin-top: 12px;
   text-align: left;
   list-style-type: none;
 }
 
 .form-group {
-  margin: 1rem 0 2rem;
+  margin: 2.75rem 0 1rem;
 }
+
 #feedbackCreate label,
 #emailThisArticleForm label {
   width: 100%;

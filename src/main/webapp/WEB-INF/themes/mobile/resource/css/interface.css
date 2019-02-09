@@ -874,7 +874,8 @@
     display: block;
     padding: 1em;
     margin: 0 -1em;
-    color: #333;
+    color: #222;
+    font-weight: 600;
 }
 
 .main-accordion .accordion-item .arrow {
@@ -920,7 +921,7 @@
 }
 
 .section {
-  margin: 1.25rem auto;
+  margin:0 auto;
 }
 
 /* Headers */

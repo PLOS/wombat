@@ -713,6 +713,7 @@ html:not(.positionfixed) #page-figure #site-header-container {
   list-style-type: none;
   position: relative;
   margin-bottom: 1em;
+  line-height: 1em;
 }
 
 .references .label {

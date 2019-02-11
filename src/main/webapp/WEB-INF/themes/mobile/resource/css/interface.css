@@ -1,4 +1,5 @@
-.content {
+.content,
+.twitter-widget {
   box-sizing: content-box;
   max-width: 1114px;
   max-width: 69.625rem;

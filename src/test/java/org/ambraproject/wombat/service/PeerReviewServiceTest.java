@@ -1,17 +1,21 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableMap;
-import org.ambraproject.wombat.service.remote.ContentKey;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-import java.util.Map;
-
+import org.ambraproject.wombat.service.remote.ContentKey;
 import static java.lang.String.format;
 import static junit.framework.TestCase.assertNull;
 import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
@@ -62,10 +66,18 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     );
 
     PeerReviewService serviceWithMockedContent = new PeerReviewServiceImpl() {
+
       @Override
-      String getReviewXml(Map<String, ?> metadata) throws IOException {
+      Map<String,String> getArticleMetadata(Map<String,?> itemTable) throws IOException {
+        Map<String,String> metadata = new HashMap<>();
+        metadata.put("receivedDate", "1 Jun 2018");
+        return metadata;
+      }
+
+      @Override
+      String getContentXml(Map<String, ?> metadata, String itemType) throws IOException {
         Map<String, ?> files = (Map<String, ?>) metadata.get("files");
-        Map<String, ?> letter = (Map<String, ?>) files.get("letter");
+        Map<String, ?> letter = (Map<String, ?>) files.get(itemType);
         String crepoKey = (String) letter.get("crepoKey");
 
         String letterContent = null;
@@ -96,6 +108,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     String html = serviceWithMockedContent.asHtml(itemTable);
     Document d = Jsoup.parse(html);
 
+    //assertThat(d.select(".review-history th").get(0).text(), containsString("1 Jun 2018Original Submission"));
     assertThat(d.select(".review-history th").get(0).text(), containsString("Original Submission"));
     assertThat(d.select(".review-history th").get(1).text(), containsString("Revision 1"));
     assertThat(d.select(".review-history th").get(2).text(), containsString("Formally Accepted"));
@@ -122,7 +135,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     PeerReviewServiceImpl spy = spy(new PeerReviewServiceImpl());
 
-    doAnswer(invocation -> read(prefix(getFilename(invocation.getArgument(0).toString()))))
+    doAnswer(invocation -> read(prefix(getFilename(invocation.getArgument(0).toString()).toLowerCase())))
       .when(spy).getContent(any(ContentKey.class));
 
     Map<String,?> itemTable = (Map<String,?>) deserialize(getFile(prefix("item-table.pone.0207232.ser")));

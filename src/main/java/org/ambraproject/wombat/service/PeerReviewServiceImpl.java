@@ -1,29 +1,23 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableList;
-import org.ambraproject.wombat.service.remote.ContentKey;
-import org.ambraproject.wombat.service.remote.CorpusContentApi;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.util.EntityUtils;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.parser.Parser;
-import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.UUID;
 import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.Transformer;
@@ -32,6 +26,21 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+import org.xml.sax.XMLReader;
+
+import org.apache.http.client.methods.CloseableHttpResponse;
+
+import org.apache.http.util.EntityUtils;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.parser.Parser;
+import org.jsoup.select.Elements;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.ambraproject.wombat.service.remote.ContentKey;
+import org.ambraproject.wombat.service.remote.CorpusContentApi;
 
 
 public class PeerReviewServiceImpl implements PeerReviewService {
@@ -51,7 +60,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     List<Map<String, ?>> reviewLetterItems = getReviewItems(itemTable);
     if (reviewLetterItems.isEmpty()) return null;
 
-    String xml = getAllReviewsAsXml(reviewLetterItems);
+    String xml = getAllReviewsAsXml(reviewLetterItems, getArticleMetadata(itemTable));
     String html = transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
     return html;
   }
@@ -92,14 +101,15 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * Aggregate the XML for all rounds of Peer Review
    *
    * @param reviewLetterItems metadata about review letters
+   * @param articleMetadata metadata about article
    * @return entirety of peer review XML content
    * @throws IOException
    */
-  String getAllReviewsAsXml(List<Map<String, ?>> reviewLetterItems) throws IOException {
+  String getAllReviewsAsXml(List<Map<String, ?>> reviewLetterItems, Map<String,?> articleMetadata) throws IOException {
     List<String> reviewLetters = new ArrayList<>();
     String acceptanceLetter = "";
     for (Map<String, ?> reviewLetterItem : reviewLetterItems) {
-      String xml = getReviewXml(reviewLetterItem);
+      String xml = getContentXml(reviewLetterItem, "letter");
 
       // strip the XML declaration, which is not allowed when these are aggregated
       xml = xml.replaceAll("<\\?xml(.+?)\\?>", "");
@@ -134,9 +144,32 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     // append the acceptance letter
     peerReviewContent += acceptanceLetter;
 
+    peerReviewContent += "<received-date>" + articleMetadata.get("receivedDate") + "</received-date>";
+
     // wrap it in a root node
     peerReviewContent = "<peer-review>" + peerReviewContent + "</peer-review>";
     return peerReviewContent;
+  }
+
+   /**
+   * Get article metadata to include in peer review history, such as the
+   * received date (aka, the original submission date).
+   *
+   * @param itemTable
+   * @return map with article metadata. 
+   */
+  Map<String,String> getArticleMetadata(Map<String,?> itemTable) throws IOException {
+    Map<String,String> metadata = new HashMap<>();
+
+    for (Object itemObj : new TreeMap(itemTable).values()) {
+
+      if (((Map<String,?>) itemObj).get("itemType").equals("article")) {
+        String articleXml = getContentXml((Map<String,?>)itemObj, "manuscript");
+        metadata.put("receivedDate", getReceivedDate(articleXml));
+        break;  //TODO: at most 1 article type in payload? 
+      }
+    }
+    return metadata;
   }
 
   /**
@@ -155,15 +188,15 @@ public class PeerReviewServiceImpl implements PeerReviewService {
   }
 
   /**
-   * Fetch the content of an individual peer review asset from the content repository
+   * Fetch content from the content repository.
    *
-   * @param metadata
-   * @return the content of the peer review asset
-   * @throws IOException
+   * @param metadata metadata contains lookup identifiers
+   * @param itemType content type to fetch
+   * @return the content for specified key and type.
    */
-  String getReviewXml(Map<String, ?> metadata) throws IOException {
+  String getContentXml(Map<String, ?> metadata, String itemType) throws IOException {
     Map<String, ?> files = (Map<String, ?>) metadata.get("files");
-    Map<String, ?> contentRepoMetadata = (Map<String, ?>) files.get("letter");
+    Map<String, ?> contentRepoMetadata = (Map<String, ?>) files.get(itemType);
 
     String crepoKey = (String) contentRepoMetadata.get("crepoKey");
     UUID uuid = UUID.fromString((String) contentRepoMetadata.get("crepoUuid"));
@@ -174,7 +207,29 @@ public class PeerReviewServiceImpl implements PeerReviewService {
 
   String getContent(ContentKey contentKey) throws IOException {
     CloseableHttpResponse response = corpusContentApi.request(contentKey, ImmutableList.of());
-    String letterContent = EntityUtils.toString(response.getEntity(), "UTF-8");
-    return letterContent;
+    String content = EntityUtils.toString(response.getEntity(), "UTF-8");
+    return content;
+  }
+
+  /**
+   * Extract received date from article xml.
+   * @param xml article xml
+   * @return received date.
+   */
+  String getReceivedDate(String xml) throws IOException {
+
+    String receiveDateXml = XmlUtil.extractElement(xml, "date", "date-type", "received");
+
+    String receivedDateString = String.format("%s %s %s",
+      XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "month")),
+      XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "day")),
+      XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "year")));
+
+    DateTimeFormatter parseFormatter   = DateTimeFormatter.ofPattern("M d yyyy");
+    DateTimeFormatter displayFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
+
+    LocalDate receivedDate = LocalDate.parse(receivedDateString, parseFormatter);
+
+    return receivedDate.format(displayFormatter);
   }
 }

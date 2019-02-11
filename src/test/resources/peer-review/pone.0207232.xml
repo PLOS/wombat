@@ -1,0 +1,1799 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article article-type="research-article" dtd-version="1.1d3" xml:lang="en" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0207232</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-18-18642</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+</article-categories>
+<title-group>
+<article-title>Dosimetric and radiobiological comparison in different dose calculation grid sizes between Acuros XB and anisotropic analytical algorithm for prostate VMAT</article-title>
+<alt-title alt-title-type="running-head">Impact of dose calculation grid and algorithms on prostate VMAT</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Kim</surname>
+<given-names>Kyeong-Hyeon</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Validation</role>
+<role content-type="http://credit.casrai.org/">Visualization</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" equal-contrib="yes" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0003-2668-3906</contrib-id>
+<name name-style="western">
+<surname>Chung</surname>
+<given-names>Jin-Beom</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Project administration</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" equal-contrib="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Suh</surname>
+<given-names>Tae Suk</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Funding acquisition</role>
+<role content-type="http://credit.casrai.org/">Project administration</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Kang</surname>
+<given-names>Sang-Won</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Kang</surname>
+<given-names>Seong-Hee</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Software</role>
+<role content-type="http://credit.casrai.org/">Validation</role>
+<role content-type="http://credit.casrai.org/">Visualization</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Eom</surname>
+<given-names>Keun-Yong</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Funding acquisition</role>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Song</surname>
+<given-names>Changhoon</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Kim</surname>
+<given-names>In-Ah</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Kim</surname>
+<given-names>Jae-Sung</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Department of Biomedicine &amp; Health Sciences, Research Institute of Biomedical Engineering, College of Medicine, the Catholic University of Korea, Seoul, Korea</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Department of Radiation Oncology, Seoul National University Bundang Hospital, Seongnam, Korea</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Zhang</surname>
+<given-names>Qinghui</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>North Shore Long Island Jewish Health System, UNITED STATES</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">jbchung1213@gmail.com</email> (JBC); <email xlink:type="simple">suhsanta@catholic.ac.kr</email> (TSS)</corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>12</day>
+<month>11</month>
+<year>2018</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2018</year>
+</pub-date>
+<volume>13</volume>
+<issue>11</issue>
+<elocation-id>e0207232</elocation-id>
+<history>
+<date date-type="received">
+<day>22</day>
+<month>6</month>
+<year>2018</year>
+</date>
+<date date-type="accepted">
+<day>27</day>
+<month>10</month>
+<year>2018</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2018</copyright-year>
+<copyright-holder>Kim et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0207232"/>
+<abstract>
+<p>To investigate feasible treatment planning parameters, we aimed to evaluate the dosimetric and radiobiological impact of the dose calculation algorithm and grid size in the volumetric modulated arc therapy (VMAT) plan for prostate cancer. Twenty patients were selected, and the treatment plans were initially generated with anisotropic analytical algorithm (AAA) and recalculated with Acuros XB (AXB) algorithm. Various dose grids were used for AXB (1, 2, and 3 mm) and AAA (1, 3, and 5 mm) plan. Dosimetric parameters such as homogeneity index (HI) and conformity index (CI), and radiobiological parameters such as tumor control probability (TCP) and normal tissue complication probability (NTCP) were calculated. Significant differences were observed in the planning target volume (PTV) coverage between both algorithms, and the V<sub>95%</sub>, HI, and CI of AAA were significantly affected by grid (p &lt; 0.01). On 1 mm grid, the mean rectal dose difference between both algorithms was 2.87% of the prescription dose (p &lt; 0.01), which was the highest among the critical organs. The TCP and NTCP of the AAA were higher than those of AXB (p &lt; 0.01). Compared to AXB with 1 mm grid, the 2 mm grid showed comparable dose calculation accuracy with short calculation time. This study found that the PTV and rectum show significant differences according to dose calculation algorithm and grid. Considering the dose calculation performance for heterogeneous area, we recommend AXB with 2 mm grid for improving treatment efficiency of prostate VMAT.</p>
+</abstract>
+<funding-group>
+<award-group id="award001">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/501100003710</institution-id>
+<institution>Korea Health Industry Development Institute</institution>
+</institution-wrap>
+</funding-source>
+<award-id>HI15C0638</award-id>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Kim</surname>
+<given-names>Kyeong-Hyeon</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<award-group id="award002">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/501100003710</institution-id>
+<institution>Korea Health Industry Development Institute</institution>
+</institution-wrap>
+</funding-source>
+<award-id>HI15C0638</award-id>
+<principal-award-recipient>
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0003-2668-3906</contrib-id>
+<name name-style="western">
+<surname>Chung</surname>
+<given-names>Jin-Beom</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<award-group id="award003">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/501100003710</institution-id>
+<institution>Korea Health Industry Development Institute</institution>
+</institution-wrap>
+</funding-source>
+<award-id>HI15C0638</award-id>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Kang</surname>
+<given-names>Sang-Won</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<award-group id="award004">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/501100003710</institution-id>
+<institution>Korea Health Industry Development Institute</institution>
+</institution-wrap>
+</funding-source>
+<award-id>HI15C0638</award-id>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Eom</surname>
+<given-names>Keun-Yong</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<award-group id="award005">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/501100003725</institution-id>
+<institution>National Research Foundation of Korea</institution>
+</institution-wrap>
+</funding-source>
+<award-id>2015M2A2A7038291</award-id>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Kim</surname>
+<given-names>Kyeong-Hyeon</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<award-group id="award006">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/501100003725</institution-id>
+<institution>National Research Foundation of Korea</institution>
+</institution-wrap>
+</funding-source>
+<award-id>2015M2A2A7038291</award-id>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Suh</surname>
+<given-names>Tae Suk</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<award-group id="award007">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/501100003725</institution-id>
+<institution>National Research Foundation of Korea</institution>
+</institution-wrap>
+</funding-source>
+<award-id>2015M2A2A7038291</award-id>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Kang</surname>
+<given-names>Sang-Won</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<funding-statement>This research was supported by a grant of the Korea Health Technology R&amp;D Project through the Korea Health Industry Development Institute (KHIDI), funded by the Ministry of Health and Welfare, Republic of Korea (Grant Number: HI15C0638) and the National Research Foundation of Korea Grant funded by the Korean Government (NRF-2017M2A2A7A01021264). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="5"/>
+<table-count count="8"/>
+<page-count count="18"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>Clinical use of volumetric-modulated arc therapy (VMAT) [<xref ref-type="bibr" rid="pone.0207232.ref001">1</xref>] has grown extremely since its debut in 2008. The application of VMAT for prostate cancer has been well-demonstrated for both plan quality and efficiency [<xref ref-type="bibr" rid="pone.0207232.ref002">2</xref>, <xref ref-type="bibr" rid="pone.0207232.ref003">3</xref>]. A well-known advantage of VMAT is its ability to deliver faster treatment, which makes treatments patient-friendly and improves treatment accuracy because intrafractional motion is reduced. A previous study reported that VMAT produces comparable and higher conformal dose distribution and accurate dose delivery in comparison to intensity modulated radiotherapy (IMRT) [<xref ref-type="bibr" rid="pone.0207232.ref004">4</xref>–<xref ref-type="bibr" rid="pone.0207232.ref006">6</xref>].</p>
+<p>In order to obtain effective treatment outcomes, minimal toxicity and complications should be achieved through reducing the radiation dose to organs at risks (OARs) near the prostate, such as the bladder, the femur, and the rectum. The endorectal balloon (ERB) for prostate radiotherapy can be implemented for sparing the rectal wall and reducing the intrafraction motion [<xref ref-type="bibr" rid="pone.0207232.ref007">7</xref>–<xref ref-type="bibr" rid="pone.0207232.ref010">10</xref>]. However, its use might introduce the heterogeneous region due to the generation of an air cavity in rectum, which will compromise the treatment efficacy, and therefore, accurate dose calculation is extremely important.</p>
+<p>The Anisotropic Analytical Algorithm (AAA; Varian Medical Systems, Palo Alto, CA, USA) [<xref ref-type="bibr" rid="pone.0207232.ref011">11</xref>] is a convolution/superposition model for photon dose calculation. The AAA has improved accuracy of calculation compared to previous algorithms and is widely used at various treatment sites. The AAA calculates a dose accounting for lateral electron transport and, performs simplified density scaling of the kernels calculated in water. The AAA uses a kernel of water instead of a kernel with medium-specific characteristics, therefore it has limitation on accuracy of dose calculation. The Acuros XB (AXB; Varian Medical Systems, Palo Alto, CA, USA) [<xref ref-type="bibr" rid="pone.0207232.ref012">12</xref>], advanced dose calculation algorithm has been implemented for clinical use. The AXB uses the multiple-source model derived for the AAA, and performs dose calculation by explicitly solving the linear Boltzmann transport equation (LBTE). A mass density as well as material type was reflected to each given voxel in the AXB dose calculation. In other words, the AXB can reflect the radiation interaction according to each material property, and have been reported more accurate dose prediction in the heterogeneous region than the AAA in previous studies. Koo et al. [<xref ref-type="bibr" rid="pone.0207232.ref013">13</xref>] evaluated the dosimetric effect of AXB and AAA algorithms for prostate cancer and reported that dose calculation in the air cavity with AXB was more accurate than that of AAA. Kroon et al. [<xref ref-type="bibr" rid="pone.0207232.ref014">14</xref>] also investigated the performances of the dose calculation algorithm in the air cavity of non-small cell lung cancer (NSCLC). They have shown that the AXB with 2.5 mm calculated dose accurately, compared to the AAA. Kan et al. [<xref ref-type="bibr" rid="pone.0207232.ref015">15</xref>] analyzed dosimetric impacts of AXB and AAA on intensity modulated stereotactic radiotherapy (IMSRT) plans for nasopharyngeal carcinoma (NPC), and recommended the AXB as a standard reference for IMSRT boost for NPC. In most of studies, AXB showed generally low target coverage and OAR dose. In addition, previous studies have reported that dose distribution with AXB is more accurate and consistent with the Monte Carlo simulation in the heterogeneous region than that of AAA [<xref ref-type="bibr" rid="pone.0207232.ref016">16</xref>–<xref ref-type="bibr" rid="pone.0207232.ref018">18</xref>].</p>
+<p>Since AAA uses the discretized kernel in lateral directions [<xref ref-type="bibr" rid="pone.0207232.ref019">19</xref>] and AXB also discretizes solution variables (space, angle, and energy) with material composition of voxels from the CT Hounsfield unit, both dose calculation algorithms are affected by the dose grid size. Although the error due to discretization may be smaller than the error obtained by the algorithm, the influence may be different depending on the algorithm and also be significant in some clinical cases. In general, the calculated dose distribution at fine grid is considered more accurately, however it is time consuming and may not feasible in the clinic. It is important to optimize the dose calculation algorithm and grid size at a reasonable calculation time without significantly compromising accuracy.</p>
+<p>In other words, the calculated dose distributions of treatment planning system (TPS) are affected by the dose grid size, and the presence of a dosimetric influence according to the calculated grid size has been reported in IMRT and VMAT [<xref ref-type="bibr" rid="pone.0207232.ref020">20</xref>, <xref ref-type="bibr" rid="pone.0207232.ref021">21</xref>]. Huang et al. [<xref ref-type="bibr" rid="pone.0207232.ref022">22</xref>] assessed the potential impact of grid size on dose calculation using AXB and AAA algorithms for stereotactic body radiotherapy for NSCLC, and showed that the dose difference between the two algorithms using a 2.5 mm grid was greater than that of a 1 mm grid on low density planning target volume (PTV). Previous studies have reported that the dose difference can be significant for radiobiological factors such as normal tissue complication probability (NTCP) and tumor control probability (TCP) [<xref ref-type="bibr" rid="pone.0207232.ref020">20</xref>, <xref ref-type="bibr" rid="pone.0207232.ref023">23</xref>], which may affect radiotherapy quality and treatment success. Shiv P. Srivastava et al. [<xref ref-type="bibr" rid="pone.0207232.ref020">20</xref>] analyzed the radiobiological effects and dosimetric impacts of plans, according to calculation grid sizes, in head and neck cancers. They showed that a smaller calculation grid provides superior dosimetric outcomes with improved TCP and reduced NTCP.</p>
+<p>In our previous study, we've confirm the AXB and AAA performance in a rectangular acryl phantom with an air cavity by EBT3 film dosimetry [<xref ref-type="bibr" rid="pone.0207232.ref013">13</xref>]. As a result, we confirmed that AXB had more similar results than AAA to film measurements in the air cavity and air-material interface in phantom. Unlike the phantom, patients have various anatomies, and the treatment plan for patient is more complicate than the phantom study. The influence of dose calculation grids and algorithms were not clearly identified in some clinical cases, and it is important for efficient patient care. No previous study has evaluated the impact on prostate VMAT plans by different dosimetric and radiological effects (TCP, NTCP) obtained by different algorithms under different grid sizes. In this study, we investigate the dosimetric and radiological impact on prostate VMAT plans with ERB from the dose calculation algorithms with different grid sizes.</p>
+</sec>
+<sec id="sec002" sec-type="materials|methods">
+<title>Materials and methods</title>
+<sec id="sec003">
+<title>Patient selection and treatment planning</title>
+<p>All experimental methods of this study were performed in accordance with the relevant guidelines and regulations. The Institutional Review Board of the Seoul National University Bundang Hospital approved the data collection and analysis (B-1802/451-106), and informed consent of the participants was waived by the IRB. All patient data used in the study were anonymized. Twenty patients who received prostate VMAT in our institution from April 2016 to April 2017 were randomly selected retrospectively. The average age of the patients was 64 (58−84) and the average weight was 73.1 kg (49.4−82.5 kg).</p>
+<p>Prior to the planning computed tomography (CT) simulation, all patients were asked to drink 300 ml of water before the start of the one-hour of simulation, to ensure that their bladders were completely filled. An EBR was inserted into the rectum and inflated with approximately 70 cm<sup>3</sup> with air. After 1 minute, the EBR was pulled toward the patient’s anal sphincter to the pre-marked position on the EBR catheter [<xref ref-type="bibr" rid="pone.0207232.ref024">24</xref>]. CT was performed using a Philips Big Bore CT scanner (Philips Medical Systems, Amsterdam, Netherlands).</p>
+<p>The clinical target volume (CTV) on the planning CT was delineated from the prostate volume using magnetic resonance imaging. CTV included gross tumor and subclinical microscopic disease. The PTV was created from the CTV by expanding 5 mm posteriorly and 7 mm elsewhere. The rectum, bladder, left femoral head, and right femoral head were delineated as the OARs. Varian couch is modelled in our TPS and was inserted into each treatment plan (used for dose calculation).</p>
+<p>The prostate VMAT plans were created using Eclipse TPS (version 11.0.34, Varian Medical System, Palo Alto, CA, USA) under the same dose prescription (78 Gy/39 fractions) and dose–volume criteria (<xref ref-type="table" rid="pone.0207232.t001">Table 1</xref>). The aim of the planning optimization was to cover at least 95% of the PTV with 95% of the prescription dose. Two full arc techniques using a 10 MV beam from a Varian TrueBeam STX linear accelerator were used for optimal target coverage.</p>
+<table-wrap id="pone.0207232.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.t001</object-id>
+<label>Table 1</label> <caption><title>Dose volume constraints for prostate volumetric modulated arc therapy plans.</title></caption>
+<alternatives>
+<graphic id="pone.0207232.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" style="background-color:#F2F2F2">Structure</th>
+<th align="center">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" rowspan="2" style="background-color:#F2F2F2"><bold>Rectum</bold></td>
+<td align="center" style="background-color:#F2F2F2">V<sub>30%</sub> &lt; 7000 cGy</td>
+</tr>
+<tr>
+<td align="center">V<sub>50%</sub> &lt; 5430 cGy</td>
+</tr>
+<tr>
+<td align="center" rowspan="2" style="background-color:#F2F2F2"><bold>Bladder</bold></td>
+<td align="center" style="background-color:#F2F2F2">V<sub>30%</sub> &lt; 7000 cGy</td>
+</tr>
+<tr>
+<td align="center">V<sub>50%</sub> &lt; 5430 cGy</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>Femoral heads</bold></td>
+<td align="center" style="background-color:#F2F2F2">V<sub>5%</sub> &lt; 5430 cGy</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>GTV</bold></td>
+<td align="center">V<sub>99%</sub> &gt; 7800 cGy</td>
+</tr>
+<tr>
+<td align="center" rowspan="4" style="background-color:#F2F2F2"><bold>PTV</bold></td>
+<td align="center" style="background-color:#F2F2F2">V<sub>0%</sub> &lt; 8190 cGy</td>
+</tr>
+<tr>
+<td align="center">V<sub>2%</sub> &lt; 8100 cGy</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>97%</sub> &gt; 7650 cGy</td>
+</tr>
+<tr>
+<td align="center">V<sub>99%</sub> &gt; 7410 cGy</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>All prostate VMAT plans were optimized initially with the AAA algorithm and recalculated with the AXB algorithm. In our TPS, the grid size can be up to 3 mm for AXB, and up to 5 mm for AAA. In order to investigate the trend of dosimetric and radiobiological parameters as the grid increases, a grid size of 1, 3, and 5 mm for AAA and 1, 2, and 3 mm for AXB were adopted.</p>
+</sec>
+<sec id="sec004">
+<title>Dosimetric and radiobiological parameters</title>
+<p>In order to evaluate the dosimetric and radiobiological parameters, cumulative dose-volume histograms (DVHs) were calculated for each plan. Dosimetric parameters such as median, mean, maximum, minimum dose and V<sub>95%</sub> (percent volume irradiated by 95% of the prescription dose) for PTV were analyzed. V<sub>95%</sub> of PTV was used as a measure of the target coverage in this study. To evaluate the target dose of each VMAT plan, homogeneity index (HI), conformity index (CI), and conformation number (CN) were calculated for PTV. HI was calculated by Eq (<xref ref-type="disp-formula" rid="pone.0207232.e001">1</xref>):
+<disp-formula id="pone.0207232.e001">
+<alternatives>
+<graphic id="pone.0207232.e001g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0207232.e001" xlink:type="simple"/>
+<mml:math display="block" id="M1">
+<mml:mi mathvariant="normal">H</mml:mi><mml:mi mathvariant="normal">I</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:mi>D</mml:mi><mml:mn>2</mml:mn><mml:mo>−</mml:mo><mml:mi>D</mml:mi><mml:mn>98</mml:mn></mml:mrow><mml:mrow><mml:mi>D</mml:mi><mml:mn>50</mml:mn></mml:mrow></mml:mfrac>
+</mml:math>
+</alternatives>
+<label>(1)</label>
+</disp-formula>
+Where D2, D98<sub>,</sub> and D50 represent the dose to 2%, 98%, and 50% volume for the PTV, respectively. A lower HI means that the plan has a more homogeneous target dose. CI was calculated by Eq (<xref ref-type="disp-formula" rid="pone.0207232.e002">2</xref>):
+<disp-formula id="pone.0207232.e002">
+<alternatives>
+<graphic id="pone.0207232.e002g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0207232.e002" xlink:type="simple"/>
+<mml:math display="block" id="M2">
+<mml:mi mathvariant="normal">C</mml:mi><mml:mi mathvariant="normal">I</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi>V</mml:mi></mml:mrow><mml:mrow><mml:mi>R</mml:mi><mml:mi>I</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mi>T</mml:mi><mml:mi>V</mml:mi></mml:mrow></mml:mfrac>
+</mml:math>
+</alternatives>
+<label>(2)</label>
+</disp-formula>
+Where V<sub>RI</sub> is the volume of reference isodose on body, and TV is the physical volume of PTV. The CI refers to the degree of isodose conformity, and it is ideal for the CI to remain close to 1. To assess conformity to target dose and the healthy tissue irradiation, CN was evaluated by Eq (<xref ref-type="disp-formula" rid="pone.0207232.e003">3</xref>):
+<disp-formula id="pone.0207232.e003">
+<alternatives>
+<graphic id="pone.0207232.e003g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0207232.e003" xlink:type="simple"/>
+<mml:math display="block" id="M3">
+<mml:mi mathvariant="normal">C</mml:mi><mml:mi mathvariant="normal">N</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi>T</mml:mi><mml:mi>V</mml:mi></mml:mrow><mml:mrow><mml:mi>R</mml:mi><mml:mi>I</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mi>T</mml:mi><mml:mi>V</mml:mi></mml:mrow></mml:mfrac><mml:mo>×</mml:mo><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi>T</mml:mi><mml:mi>V</mml:mi></mml:mrow><mml:mrow><mml:mi>R</mml:mi><mml:mi>I</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:msub><mml:mrow><mml:mi>V</mml:mi></mml:mrow><mml:mrow><mml:mi>R</mml:mi><mml:mi>I</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfrac>
+</mml:math>
+</alternatives>
+<label>(3)</label>
+</disp-formula>
+Where TV<sub>RI</sub> represents the PTV volume covered with the reference isodose. The first term of CN refers to the target coverage, and the second terms indicate the degree of delivered dose on normal tissue.</p>
+<p>For OARs, dosimetric parameter included the median, maximum, and minimum dose and a set of V<sub>x%</sub>, which is the volume of the organ receiving x% or more of the prescription dose.</p>
+<p>In order to investigate the radiobiological impact on the PTV and various OARs, the values of TCP and NTCP were calculated from the DVH of planning data using a different dose calculation grid size and algorithm [<xref ref-type="bibr" rid="pone.0207232.ref025">25</xref>]. Equivalent uniform dose (EUD) is defined as the dose that when distributed uniformly over a structure would produce the same effect as the dose specified by the DVH. EUDs were calculated using Niemierko’s phenomenological model [<xref ref-type="bibr" rid="pone.0207232.ref026">26</xref>] by Eq (<xref ref-type="disp-formula" rid="pone.0207232.e004">4</xref>):
+<disp-formula id="pone.0207232.e004">
+<alternatives>
+<graphic id="pone.0207232.e004g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0207232.e004" xlink:type="simple"/>
+<mml:math display="block" id="M4">
+<mml:mi mathvariant="normal">E</mml:mi><mml:mi mathvariant="normal">U</mml:mi><mml:mi mathvariant="normal">D</mml:mi><mml:mo>=</mml:mo><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mrow><mml:mstyle displaystyle="false"><mml:msub><mml:mo>∑</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:msub></mml:mstyle><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mrow><mml:mi>v</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:msubsup><mml:mrow><mml:mi>D</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow><mml:mrow><mml:mi>a</mml:mi></mml:mrow></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mfrac><mml:mrow><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>a</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:msup>
+</mml:math>
+</alternatives>
+<label>(4)</label>
+</disp-formula>
+The EUD model can be used in both PTV and normal tissue by applying different input parameters. The <italic>a</italic> is a unitless parameter derived specifically from normal tissue or tumor properties. The <italic>v</italic><sub><italic>i</italic></sub> represents the relative sub-volume of the i-th that received a dose of <italic>D</italic><sub><italic>i</italic></sub>, in Gy units. Therefore, the sum of all <italic>v</italic><sub><italic>i</italic></sub> is equal to 1 in the above EUD formula. Differential DVHs were obtained from a given VMAT plan to obtain the <italic>D</italic><sub><italic>i</italic></sub> and <italic>v</italic><sub><italic>i</italic></sub> at each structure. NTCP and TCP are expressed by Eqs (<xref ref-type="disp-formula" rid="pone.0207232.e005">5</xref>) and (<xref ref-type="disp-formula" rid="pone.0207232.e006">6</xref>):
+<disp-formula id="pone.0207232.e005">
+<alternatives>
+<graphic id="pone.0207232.e005g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0207232.e005" xlink:type="simple"/>
+<mml:math display="block" id="M5">
+<mml:mi mathvariant="normal">N</mml:mi><mml:mi mathvariant="normal">T</mml:mi><mml:mi mathvariant="normal">C</mml:mi><mml:mi mathvariant="normal">P</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mn>1</mml:mn><mml:mo>+</mml:mo><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi>T</mml:mi><mml:mi>D</mml:mi></mml:mrow><mml:mrow><mml:mn>50</mml:mn></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mi>E</mml:mi><mml:mi>U</mml:mi><mml:mi>D</mml:mi></mml:mrow></mml:mfrac></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mn>4</mml:mn><mml:msub><mml:mrow><mml:mi>γ</mml:mi></mml:mrow><mml:mrow><mml:mn>50</mml:mn></mml:mrow></mml:msub></mml:mrow></mml:msup></mml:mrow></mml:mfrac>
+</mml:math>
+</alternatives>
+<label>(5)</label>
+</disp-formula>
+<disp-formula id="pone.0207232.e006">
+<alternatives>
+<graphic id="pone.0207232.e006g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0207232.e006" xlink:type="simple"/>
+<mml:math display="block" id="M6">
+<mml:mi mathvariant="normal">T</mml:mi><mml:mi mathvariant="normal">C</mml:mi><mml:mi mathvariant="normal">P</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mn>1</mml:mn><mml:mo>+</mml:mo><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi>T</mml:mi><mml:mi>C</mml:mi><mml:mi>D</mml:mi></mml:mrow><mml:mrow><mml:mn>50</mml:mn></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mi>E</mml:mi><mml:mi>U</mml:mi><mml:mi>D</mml:mi></mml:mrow></mml:mfrac></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mn>4</mml:mn><mml:msub><mml:mrow><mml:mi>γ</mml:mi></mml:mrow><mml:mrow><mml:mn>50</mml:mn></mml:mrow></mml:msub></mml:mrow></mml:msup></mml:mrow></mml:mfrac>
+</mml:math>
+</alternatives>
+<label>(6)</label>
+</disp-formula>
+The TD<sub>50</sub> is the tolerance dose for 50% complication probability within a specific time interval. The TCD<sub>50</sub> is the tumor dose to control 50% of the tumor when irradiated homogeneously, and <italic>γ</italic><sub>50</sub> is a unitless parameter derived from the slope of the dose-response curve that is specific to the organ or tumor. <xref ref-type="table" rid="pone.0207232.t002">Table 2</xref> lists the input parameters for calculating TCP and NTCP, and these parameters were referenced to other studies [<xref ref-type="bibr" rid="pone.0207232.ref023">23</xref>, <xref ref-type="bibr" rid="pone.0207232.ref025">25</xref>].</p>
+<table-wrap id="pone.0207232.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.t002</object-id>
+<label>Table 2</label> <caption><title>Parameters used to calculate tumor control probability (TCP) and normal tissue complication probability (NTCP).</title></caption>
+<alternatives>
+<graphic id="pone.0207232.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" style="background-color:#F2F2F2">Type</th>
+<th align="center">Organ</th>
+<th align="center"><italic>a</italic></th>
+<th align="center">γ50</th>
+<th align="center">TCD50 | TD50</th>
+<th align="center">α/β</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>Tumor</bold></td>
+<td align="center" style="background-color:#F2F2F2">Prostate</td>
+<td align="center" style="background-color:#F2F2F2">-13</td>
+<td align="center" style="background-color:#F2F2F2">2.2</td>
+<td align="center" style="background-color:#F2F2F2">67.5</td>
+<td align="center" style="background-color:#F2F2F2">1.5</td>
+</tr>
+<tr>
+<td align="center" rowspan="4" style="background-color:#F2F2F2"><bold>Critical Organ</bold></td>
+<td align="center">Rectum</td>
+<td align="center">8.33</td>
+<td align="center">2.66</td>
+<td align="center">80</td>
+<td align="center">5.4</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Bladder</td>
+<td align="center" style="background-color:#F2F2F2">2</td>
+<td align="center" style="background-color:#F2F2F2">3.63</td>
+<td align="center" style="background-color:#F2F2F2">80</td>
+<td align="center" style="background-color:#F2F2F2">7.5</td>
+</tr>
+<tr>
+<td align="center">Lt femur head</td>
+<td align="center">13</td>
+<td align="center">2.7</td>
+<td align="center">65</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Rt femur head</td>
+<td align="center" style="background-color:#F2F2F2">13</td>
+<td align="center" style="background-color:#F2F2F2">2.7</td>
+<td align="center" style="background-color:#F2F2F2">65</td>
+<td align="center" style="background-color:#F2F2F2">3</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>In order to evaluate the feasibility of grid sizes and algorithms in clinical practice, we calculated the deviations of the mean, median, maximum, and minimum dose to the PTV and OARs. The deviations were compared between the VMAT plans and evaluated with the dose calculation times. The deviations are expressed by Eq (<xref ref-type="disp-formula" rid="pone.0207232.e007">7</xref>):
+<disp-formula id="pone.0207232.e007">
+<alternatives>
+<graphic id="pone.0207232.e007g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0207232.e007" xlink:type="simple"/>
+<mml:math display="block" id="M7">
+<mml:mi mathvariant="normal">D</mml:mi><mml:mi mathvariant="normal">e</mml:mi><mml:mi mathvariant="normal">v</mml:mi><mml:mi mathvariant="normal">i</mml:mi><mml:mi mathvariant="normal">a</mml:mi><mml:mi mathvariant="normal">t</mml:mi><mml:mi mathvariant="normal">i</mml:mi><mml:mi mathvariant="normal">o</mml:mi><mml:mi mathvariant="normal">n</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:mo>|</mml:mo><mml:mrow><mml:mi>R</mml:mi><mml:mi>e</mml:mi><mml:mi>f</mml:mi><mml:mo>−</mml:mo><mml:mi>E</mml:mi><mml:mi>v</mml:mi><mml:mi>a</mml:mi><mml:mi>l</mml:mi></mml:mrow><mml:mo>|</mml:mo></mml:mrow><mml:mrow><mml:mi>R</mml:mi><mml:mi>e</mml:mi><mml:mi>f</mml:mi></mml:mrow></mml:mfrac><mml:mo>×</mml:mo><mml:mn>100</mml:mn>
+</mml:math>
+</alternatives>
+<label>(7)</label>
+</disp-formula>
+Where, <italic>Ref</italic> represents the reference dosimetric parameter and <italic>Eval</italic> refers to the dosimetric parameters of evaluated plans. The parameters with the AXB and a 1 mm grid size (AXB1) were selected as <italic>Ref</italic>, which is the combination for the most accurate algorithm and dose grid in this study. AXB have been reported as superior dose calculation algorithm in heterogeneous region and the general consensus is that finer dose calculation grid would produce more accurate dose. <italic>Eval</italic> were rest of plans such as AAA1, AAA3, AXB2, et cetera.</p>
+<p>To clearly show the dose difference according to the algorithms, the AXB1 and AAA1 plans of one patient were imported into the Computational Environment for Radiotherapy Research (CERR version 4.6) [<xref ref-type="bibr" rid="pone.0207232.ref027">27</xref>], and we subtracted the dose distribution of AAA1 from that of AXB1. CERR is a programming package of MATLAB (MathWorks, Inc., Natick, USA), and has many functions for radiotherapy research such as the CT slice viewer, contouring tool, DVH calculation, dose distribution subtraction tool, et cetera. In addition, we subtracted the distribution of the 3 mm grid from that of the 1 mm grid for both algorithms to evaluate the grid effect on the VMAT plan.</p>
+</sec>
+<sec id="sec005">
+<title>Statistical analysis and comparison of dose calculation time</title>
+<p>Statistical analysis were performed using SPSS Statistics 19 (IBM SPSS, Chicago, IL) to assess statistical significance between algorithm type and grid size. The Wilcoxon signed rank test [<xref ref-type="bibr" rid="pone.0207232.ref028">28</xref>] was used in this study, and differences were considered statistically significant at p-values &lt; 0.05. The calculation time of all AAA and AXB plans were also recorded to investigate the feasible grid sizes and algorithms in prostate VMAT.</p>
+</sec>
+</sec>
+<sec id="sec006" sec-type="results">
+<title>Results</title>
+<sec id="sec007">
+<title>Dosimetric comparison</title>
+<p><xref ref-type="table" rid="pone.0207232.t003">Table 3</xref> shows the mean and standard deviation of dosimetric parameters to PTV on plans using different dose calculation grid sizes and algorithms. For PTV, the V<sub>95%</sub> with the AXB1 was 96.65%, whereas the V<sub>95%</sub> was 99.03% with AAA1. The difference in average V<sub>95%</sub> between AAA1 and AAA3 mm was 1.22%, and that between AXB1 and AXB3 was 0.29%. The V<sub>95%</sub> for AXB2 was 96.60%, and the V<sub>95%</sub> difference between AXB1 and AXB2 was small (only 0.05%). The median dose slightly decreased over the change from AAA1 to AAA5. Contrary to the AAA trends, the median dose increased by 0.66 Gy (0.84% of prescription) over the variation from AXB1 to AXB3. A similar trend was observed for the mean and maximum dose of PTV over the transition from AAA1 to AAA5, and the mean dose decreased by 1.25 Gy accordingly. The CI value of AXB3 was 1.03, the closest to one in all cases. The HI of AAA5 was 0.14, which was the highest among all cases. <xref ref-type="fig" rid="pone.0207232.g001">Fig 1</xref> shows the average DVH of PTV and different OARs on prostate VMAT plans using various calculation grid sizes and algorithms.</p>
+<fig id="pone.0207232.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>The average dose volume histograms of the planning target volume, bladder, rectum, and femoral heads on prostate VMAT plan using various calculation grid sizes and algorithms.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.g001" xlink:type="simple"/>
+</fig>
+<table-wrap id="pone.0207232.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.t003</object-id>
+<label>Table 3</label> <caption><title>Mean and standard deviation of dosimetric parameters for planning target volume (PTV).</title></caption>
+<alternatives>
+<graphic id="pone.0207232.t003g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.t003" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" rowspan="2" style="background-color:#F2F2F2"/>
+<th align="center" colspan="3">AAA−Mean(SD)</th>
+<th align="center" colspan="3">AXB−Mean(SD)</th>
+</tr>
+<tr>
+<th align="center" style="background-color:#F2F2F2">1 mm</th>
+<th align="center" style="background-color:#F2F2F2">3 mm</th>
+<th align="center" style="background-color:#F2F2F2">5 mm</th>
+<th align="center" style="background-color:#F2F2F2">1 mm</th>
+<th align="center" style="background-color:#F2F2F2">2 mm</th>
+<th align="center" style="background-color:#F2F2F2">3 mm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>V<sub>95%</sub> (%)</bold></td>
+<td align="center">99.03 (0.43)</td>
+<td align="center">97.81 (0.42)</td>
+<td align="center">91.28 (1.15)</td>
+<td align="center">96.65 (0.73)</td>
+<td align="center">96.60 (0.72)</td>
+<td align="center">96.94 (0.71)</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>D<sub>median</sub> (Gy)</bold></td>
+<td align="center" style="background-color:#F2F2F2">80.25 (0.20)</td>
+<td align="center" style="background-color:#F2F2F2">80.16 (0.20)</td>
+<td align="center" style="background-color:#F2F2F2">79.66 (0.27)</td>
+<td align="center" style="background-color:#F2F2F2">79.54 (0.19)</td>
+<td align="center" style="background-color:#F2F2F2">79.53 (0.18)</td>
+<td align="center" style="background-color:#F2F2F2">80.20 (0.24)</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>D<sub>mean</sub> (Gy)</bold></td>
+<td align="center">79.85 (0.18)</td>
+<td align="center">79.51 (0.18)</td>
+<td align="center">78.60 (0.23)</td>
+<td align="center">79.10 (0.20)</td>
+<td align="center">79.01 (0.18)</td>
+<td align="center">79.53 (0.22)</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>D<sub>max</sub> (Gy)</bold></td>
+<td align="center" style="background-color:#F2F2F2">84.42 (0.70)</td>
+<td align="center" style="background-color:#F2F2F2">83.30 (0.39)</td>
+<td align="center" style="background-color:#F2F2F2">82.70 (0.53)</td>
+<td align="center" style="background-color:#F2F2F2">84.98 (0.76)</td>
+<td align="center" style="background-color:#F2F2F2">84.24 (0.73)</td>
+<td align="center" style="background-color:#F2F2F2">84.45 (0.77)</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>D<sub>min</sub></bold><break/><bold>(Gy)</bold></td>
+<td align="center">64.99<break/>(5.13)</td>
+<td align="center">64.65<break/>(4.77)</td>
+<td align="center">61.17<break/>(3.87)</td>
+<td align="center">58.34<break/>(4.95)</td>
+<td align="center">59.48<break/>(4.69)</td>
+<td align="center">61.75<break/>(4.84)</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>CI</bold></td>
+<td align="center" style="background-color:#F2F2F2">1.09<break/>(0.02)</td>
+<td align="center" style="background-color:#F2F2F2">1.04<break/>(0.02)</td>
+<td align="center" style="background-color:#F2F2F2">0.93<break/>(0.02)</td>
+<td align="center" style="background-color:#F2F2F2">1.04<break/>(0.02)</td>
+<td align="center" style="background-color:#F2F2F2">1.03<break/>(0.02)</td>
+<td align="center" style="background-color:#F2F2F2">1.03<break/>(0.02)</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>CN</bold></td>
+<td align="center">0.90<break/>(0.01)</td>
+<td align="center">0.92<break/>(0.01)</td>
+<td align="center">0.90<break/>(0.01)</td>
+<td align="center">0.90<break/>(0.01)</td>
+<td align="center">0.91<break/>(0.01)</td>
+<td align="center">0.92<break/>(0.01)</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>HI</bold></td>
+<td align="center" style="background-color:#F2F2F2">0.09<break/>(0.01)</td>
+<td align="center" style="background-color:#F2F2F2">0.10<break/>(0.00)</td>
+<td align="center" style="background-color:#F2F2F2">0.14<break/>(0.01)</td>
+<td align="center" style="background-color:#F2F2F2">0.12<break/>(0.01)</td>
+<td align="center" style="background-color:#F2F2F2">0.11<break/>(0.01)</td>
+<td align="center" style="background-color:#F2F2F2">0.11<break/>(0.01)</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t003fn001"><p>SD: standard deviation</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>For different OARs, the average dosimetric parameters are listed in <xref ref-type="table" rid="pone.0207232.t004">Table 4</xref>, and the V<sub>X%</sub> are shown in <xref ref-type="fig" rid="pone.0207232.g002">Fig 2</xref>. As shown in <xref ref-type="table" rid="pone.0207232.t004">Table 4</xref>, the median and mean dose of rectum was higher in AAA1 than in AXB1, and the differences were 2.07% and 2.87% of prescription dose by simply subtracting those values in <xref ref-type="table" rid="pone.0207232.t004">Table 4</xref>. Using a 1 mm dose grid, the difference of Vx% of rectum dose between the two algorithms was high in the region ranging from V<sub>40%</sub> to V<sub>90%</sub> (2.63% − 5.78%). V<sub>20%</sub>, V<sub>30%</sub>, and maximum dose was lower in AAA compared to AXB, and all other parameters were higher in AAA than in AXB at the same grid size. The difference in bladder dosimetric parameters for the two algorithms was less than 1% of the reference values, which were the bladder volume for Vx<sub>%</sub> and the prescription dose for the other parameters. In left and right femoral heads, only V<sub>20%</sub> to V<sub>40%</sub> showed a difference greater than 1% of reference values between AAA1 and AXB1, and only V<sub>30%</sub> showed a difference greater than 1% between AAA3 and AXB3. AAA predicted higher dosimetric parameters than AXB for both femoral heads.</p>
+<fig id="pone.0207232.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Percentage volumes receiving at least X% of prescription dose (V<sub>X%</sub>) of organs at risk.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.g002" xlink:type="simple"/>
+</fig>
+<table-wrap id="pone.0207232.t004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.t004</object-id>
+<label>Table 4</label> <caption><title>Dosimetric data of organs at risk.</title></caption>
+<alternatives>
+<graphic id="pone.0207232.t004g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.t004" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<tbody>
+<tr>
+<td align="left" colspan="2" rowspan="2" style="background-color:#F2F2F2"/>
+<td align="left" colspan="4">Bladder</td>
+<td align="left" colspan="4">Rectum</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Maximum<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Minimum<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Mean<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Median<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Maximum<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Minimum<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Mean<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Median<break/>dose (%)</td>
+</tr>
+<tr>
+<td align="left" rowspan="3" style="background-color:#F2F2F2"><bold>AAA</bold></td>
+<td align="left" style="background-color:#F2F2F2">1 mm</td>
+<td align="center">107.33</td>
+<td align="center">1.40</td>
+<td align="center">27.97</td>
+<td align="center">14.27</td>
+<td align="center">104.54</td>
+<td align="center">2.33</td>
+<td align="center">51.69</td>
+<td align="center">49.14</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">3 mm</td>
+<td align="center" style="background-color:#F2F2F2">106.19</td>
+<td align="center" style="background-color:#F2F2F2">1.44</td>
+<td align="center" style="background-color:#F2F2F2">28.18</td>
+<td align="center" style="background-color:#F2F2F2">14.83</td>
+<td align="center" style="background-color:#F2F2F2">103.71</td>
+<td align="center" style="background-color:#F2F2F2">2.38</td>
+<td align="center" style="background-color:#F2F2F2">51.50</td>
+<td align="center" style="background-color:#F2F2F2">48.94</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">5 mm</td>
+<td align="center">105.18</td>
+<td align="center">1.47</td>
+<td align="center">28.27</td>
+<td align="center">15.53</td>
+<td align="center">103.01</td>
+<td align="center">2.42</td>
+<td align="center">50.91</td>
+<td align="center">48.37</td>
+</tr>
+<tr>
+<td align="left" rowspan="3" style="background-color:#F2F2F2"><bold>AXB</bold></td>
+<td align="left" style="background-color:#F2F2F2">1 mm</td>
+<td align="center" style="background-color:#F2F2F2">107.19</td>
+<td align="center" style="background-color:#F2F2F2">1.34</td>
+<td align="center" style="background-color:#F2F2F2">27.49</td>
+<td align="center" style="background-color:#F2F2F2">13.73</td>
+<td align="center" style="background-color:#F2F2F2">105.16</td>
+<td align="center" style="background-color:#F2F2F2">2.21</td>
+<td align="center" style="background-color:#F2F2F2">48.82</td>
+<td align="center" style="background-color:#F2F2F2">47.07</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">2 mm</td>
+<td align="center">106.55</td>
+<td align="center">1.34</td>
+<td align="center">27.48</td>
+<td align="center">13.80</td>
+<td align="center">104.41</td>
+<td align="center">2.21</td>
+<td align="center">49.02</td>
+<td align="center">47.14</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">3 mm</td>
+<td align="center" style="background-color:#F2F2F2">106.70</td>
+<td align="center" style="background-color:#F2F2F2">1.36</td>
+<td align="center" style="background-color:#F2F2F2">27.79</td>
+<td align="center" style="background-color:#F2F2F2">14.18</td>
+<td align="center" style="background-color:#F2F2F2">104.81</td>
+<td align="center" style="background-color:#F2F2F2">2.26</td>
+<td align="center" style="background-color:#F2F2F2">49.59</td>
+<td align="center" style="background-color:#F2F2F2">47.52</td>
+</tr>
+<tr>
+<td align="left" colspan="2" rowspan="2" style="background-color:#F2F2F2"/>
+<td align="left" colspan="4"><bold>Right femoral head</bold></td>
+<td align="left" colspan="4"><bold>Left femoral head</bold></td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Maximum<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Minimum<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Mean<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Median<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Maximum<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Minimum<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Mean<break/>dose (%)</td>
+<td align="center" style="background-color:#F2F2F2">Median<break/>dose (%)</td>
+</tr>
+<tr>
+<td align="left" rowspan="3" style="background-color:#F2F2F2"><bold>AAA</bold></td>
+<td align="left" style="background-color:#F2F2F2">1 mm</td>
+<td align="center">47.71</td>
+<td align="center">5.63</td>
+<td align="center">27.83</td>
+<td align="center">28.58</td>
+<td align="center">47.17</td>
+<td align="center">4.90</td>
+<td align="center">26.30</td>
+<td align="center">27.25</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">3 mm</td>
+<td align="center" style="background-color:#F2F2F2">47.54</td>
+<td align="center" style="background-color:#F2F2F2">5.93</td>
+<td align="center" style="background-color:#F2F2F2">27.87</td>
+<td align="center" style="background-color:#F2F2F2">28.56</td>
+<td align="center" style="background-color:#F2F2F2">46.88</td>
+<td align="center" style="background-color:#F2F2F2">5.09</td>
+<td align="center" style="background-color:#F2F2F2">26.36</td>
+<td align="center" style="background-color:#F2F2F2">27.26</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">5 mm</td>
+<td align="center">47.21</td>
+<td align="center">6.33</td>
+<td align="center">27.76</td>
+<td align="center">28.39</td>
+<td align="center">46.59</td>
+<td align="center">5.33</td>
+<td align="center">26.28</td>
+<td align="center">27.06</td>
+</tr>
+<tr>
+<td align="left" rowspan="3" style="background-color:#F2F2F2"><bold>AXB</bold></td>
+<td align="left" style="background-color:#F2F2F2">1 mm</td>
+<td align="center" style="background-color:#F2F2F2">47.11</td>
+<td align="center" style="background-color:#F2F2F2">5.27</td>
+<td align="center" style="background-color:#F2F2F2">27.25</td>
+<td align="center" style="background-color:#F2F2F2">28.00</td>
+<td align="center" style="background-color:#F2F2F2">46.48</td>
+<td align="center" style="background-color:#F2F2F2">4.64</td>
+<td align="center" style="background-color:#F2F2F2">25.74</td>
+<td align="center" style="background-color:#F2F2F2">26.71</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">2 mm</td>
+<td align="center">47.11</td>
+<td align="center">5.36</td>
+<td align="center">27.25</td>
+<td align="center">27.99</td>
+<td align="center">46.44</td>
+<td align="center">4.67</td>
+<td align="center">25.74</td>
+<td align="center">26.71</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">3 mm</td>
+<td align="center" style="background-color:#F2F2F2">47.23</td>
+<td align="center" style="background-color:#F2F2F2">5.58</td>
+<td align="center" style="background-color:#F2F2F2">27.46</td>
+<td align="center" style="background-color:#F2F2F2">28.19</td>
+<td align="center" style="background-color:#F2F2F2">46.42</td>
+<td align="center" style="background-color:#F2F2F2">4.81</td>
+<td align="center" style="background-color:#F2F2F2">25.95</td>
+<td align="center" style="background-color:#F2F2F2">26.89</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>The deviation of average dosimetric parameters depending on the algorithms and grid size is shown in <xref ref-type="table" rid="pone.0207232.t005">Table 5</xref>. Almost AXB2 parameters were within 1% deviation, except the minimum dose to the PTV (1.95%) and right femoral head (1.71%). In the comparison with AXB3, the minimum dose of all structures except the bladder and the median dose to the bladder were different with AXB1 over 2%. However, most of the parameters of OARs were in excess of 2% different in comparison with AAA.</p>
+<table-wrap id="pone.0207232.t005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.t005</object-id>
+<label>Table 5</label> <caption><title>The deviation of average dosimetric parameters depending on the algorithms and grid size.</title> <p>The reference is AXB plan with 1 mm grid, and the deviation is calculated by dividing the difference of dosimetric parameters between the reference and evaluation one by that of the reference.</p></caption>
+<alternatives>
+<graphic id="pone.0207232.t005g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.t005" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="justify" colspan="3" style="background-color:#F2F2F2"/>
+<th align="center">Maximum dose (%)</th>
+<th align="center">Minimum dose (%)</th>
+<th align="center">Mean dose (%)</th>
+<th align="center">Median dose (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="5" style="background-color:#F2F2F2"><bold>PTV</bold></td>
+<td align="left" rowspan="3" style="background-color:#F2F2F2">AAA</td>
+<td align="left" style="background-color:#F2F2F2">1 mm</td>
+<td align="center" style="background-color:#F2F2F2">0.67</td>
+<td align="center" style="background-color:#F2F2F2">11.38</td>
+<td align="center" style="background-color:#F2F2F2">0.95</td>
+<td align="center" style="background-color:#F2F2F2">0.89</td>
+</tr>
+<tr>
+<td align="left">3 mm</td>
+<td align="center">1.99</td>
+<td align="center">10.8</td>
+<td align="center">0.52</td>
+<td align="center">0.78</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">5 mm</td>
+<td align="center" style="background-color:#F2F2F2">2.68</td>
+<td align="center" style="background-color:#F2F2F2">4.84</td>
+<td align="center" style="background-color:#F2F2F2">0.64</td>
+<td align="center" style="background-color:#F2F2F2">0.15</td>
+</tr>
+<tr>
+<td align="left" rowspan="2" style="background-color:#F2F2F2">AXB</td>
+<td align="left">2 mm</td>
+<td align="center">0.88</td>
+<td align="center">1.95</td>
+<td align="center">0.11</td>
+<td align="center">0.01</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">3 mm</td>
+<td align="center" style="background-color:#F2F2F2">0.63</td>
+<td align="center" style="background-color:#F2F2F2">5.84</td>
+<td align="center" style="background-color:#F2F2F2">0.55</td>
+<td align="center" style="background-color:#F2F2F2">0.82</td>
+</tr>
+<tr>
+<td align="left" rowspan="5" style="background-color:#F2F2F2"><bold>Bladder</bold></td>
+<td align="left" rowspan="3" style="background-color:#F2F2F2">AAA</td>
+<td align="left">1 mm</td>
+<td align="center">0.13</td>
+<td align="center">4.48</td>
+<td align="center">1.75</td>
+<td align="center">3.93</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">3 mm</td>
+<td align="center" style="background-color:#F2F2F2">0.93</td>
+<td align="center" style="background-color:#F2F2F2">7.46</td>
+<td align="center" style="background-color:#F2F2F2">2.51</td>
+<td align="center" style="background-color:#F2F2F2">8.01</td>
+</tr>
+<tr>
+<td align="left">5 mm</td>
+<td align="center">1.88</td>
+<td align="center">9.70</td>
+<td align="center">2.84</td>
+<td align="center">13.11</td>
+</tr>
+<tr>
+<td align="left" rowspan="2" style="background-color:#F2F2F2">AXB</td>
+<td align="left" style="background-color:#F2F2F2">2 mm</td>
+<td align="center" style="background-color:#F2F2F2">0.60</td>
+<td align="center" style="background-color:#F2F2F2">0.00</td>
+<td align="center" style="background-color:#F2F2F2">0.04</td>
+<td align="center" style="background-color:#F2F2F2">0.51</td>
+</tr>
+<tr>
+<td align="left">3 mm</td>
+<td align="center">0.46</td>
+<td align="center">1.49</td>
+<td align="center">1.09</td>
+<td align="center">3.28</td>
+</tr>
+<tr>
+<td align="left" rowspan="5" style="background-color:#F2F2F2"><bold>Rectum</bold></td>
+<td align="left" rowspan="3" style="background-color:#F2F2F2">AAA</td>
+<td align="left" style="background-color:#F2F2F2">1 mm</td>
+<td align="center" style="background-color:#F2F2F2">0.59</td>
+<td align="center" style="background-color:#F2F2F2">5.43</td>
+<td align="center" style="background-color:#F2F2F2">5.88</td>
+<td align="center" style="background-color:#F2F2F2">4.40</td>
+</tr>
+<tr>
+<td align="left">3 mm</td>
+<td align="center">1.38</td>
+<td align="center">7.69</td>
+<td align="center">5.49</td>
+<td align="center">3.97</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">5 mm</td>
+<td align="center" style="background-color:#F2F2F2">2.04</td>
+<td align="center" style="background-color:#F2F2F2">9.50</td>
+<td align="center" style="background-color:#F2F2F2">4.28</td>
+<td align="center" style="background-color:#F2F2F2">2.76</td>
+</tr>
+<tr>
+<td align="left" rowspan="2" style="background-color:#F2F2F2">AXB</td>
+<td align="left">2 mm</td>
+<td align="center">0.71</td>
+<td align="center">0.00</td>
+<td align="center">0.41</td>
+<td align="center">0.15</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">3 mm</td>
+<td align="center" style="background-color:#F2F2F2">0.33</td>
+<td align="center" style="background-color:#F2F2F2">2.26</td>
+<td align="center" style="background-color:#F2F2F2">1.58</td>
+<td align="center" style="background-color:#F2F2F2">0.96</td>
+</tr>
+<tr>
+<td align="left" rowspan="5" style="background-color:#F2F2F2"><bold>Right</bold><break/><bold>femoral</bold><break/><bold>head</bold></td>
+<td align="left" rowspan="3" style="background-color:#F2F2F2">AAA</td>
+<td align="left">1 mm</td>
+<td align="center">1.27</td>
+<td align="center">6.83</td>
+<td align="center">2.13</td>
+<td align="center">2.07</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">3 mm</td>
+<td align="center" style="background-color:#F2F2F2">0.91</td>
+<td align="center" style="background-color:#F2F2F2">12.52</td>
+<td align="center" style="background-color:#F2F2F2">2.28</td>
+<td align="center" style="background-color:#F2F2F2">2.00</td>
+</tr>
+<tr>
+<td align="left">5 mm</td>
+<td align="center">0.21</td>
+<td align="center">20.11</td>
+<td align="center">1.87</td>
+<td align="center">1.39</td>
+</tr>
+<tr>
+<td align="left" rowspan="2" style="background-color:#F2F2F2">AXB</td>
+<td align="left" style="background-color:#F2F2F2">2 mm</td>
+<td align="center" style="background-color:#F2F2F2">0.00</td>
+<td align="center" style="background-color:#F2F2F2">1.71</td>
+<td align="center" style="background-color:#F2F2F2">0.00</td>
+<td align="center" style="background-color:#F2F2F2">0.04</td>
+</tr>
+<tr>
+<td align="left">3 mm</td>
+<td align="center">0.25</td>
+<td align="center">5.88</td>
+<td align="center">0.77</td>
+<td align="center">0.68</td>
+</tr>
+<tr>
+<td align="left" rowspan="5" style="background-color:#F2F2F2"><bold>Left</bold><break/><bold>femoral</bold><break/><bold>head</bold></td>
+<td align="left" rowspan="3" style="background-color:#F2F2F2">AAA</td>
+<td align="left" style="background-color:#F2F2F2">1 mm</td>
+<td align="center" style="background-color:#F2F2F2">1.48</td>
+<td align="center" style="background-color:#F2F2F2">5.60</td>
+<td align="center" style="background-color:#F2F2F2">2.18</td>
+<td align="center" style="background-color:#F2F2F2">2.02</td>
+</tr>
+<tr>
+<td align="left">3 mm</td>
+<td align="center">0.86</td>
+<td align="center">9.70</td>
+<td align="center">2.41</td>
+<td align="center">2.06</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">5 mm</td>
+<td align="center" style="background-color:#F2F2F2">0.24</td>
+<td align="center" style="background-color:#F2F2F2">14.87</td>
+<td align="center" style="background-color:#F2F2F2">2.10</td>
+<td align="center" style="background-color:#F2F2F2">1.31</td>
+</tr>
+<tr>
+<td align="left" rowspan="2" style="background-color:#F2F2F2">AXB</td>
+<td align="left">2 mm</td>
+<td align="center">0.09</td>
+<td align="center">0.65</td>
+<td align="center">0.00</td>
+<td align="center">0.00</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">3 mm</td>
+<td align="center" style="background-color:#F2F2F2">0.13</td>
+<td align="center" style="background-color:#F2F2F2">3.66</td>
+<td align="center" style="background-color:#F2F2F2">0.82</td>
+<td align="center" style="background-color:#F2F2F2">0.67</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>The subtracted, AXB1 and AAA1 dose distribution of one patient are shown in <xref ref-type="fig" rid="pone.0207232.g003">Fig 3</xref>. Likewise, Figs <xref ref-type="fig" rid="pone.0207232.g004">4</xref> and <xref ref-type="fig" rid="pone.0207232.g005">5</xref> show the subtracted distributions between 1 and 3 mm dose grid plan of AAA and AXB, respectively. The red, blue, yellow, green, and orange lines refer to the PTV, femoral heads, rectum, bladder, and body contour, respectively.</p>
+<fig id="pone.0207232.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>The dose distributions of one patient.</title>
+<p>The top line shows the dose distributions of the AXB plan minus AAA at 1 mm grid size. The median line shows the dose distributions of the AXB plan with 1 mm grid, and the bottom line shows the dose distributions of the AAA plan with 1 mm grid. The image planes of each line are axial, sagittal, and coronal view in that order.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.g003" xlink:type="simple"/>
+</fig>
+<fig id="pone.0207232.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title>Dose distribution subtracted the plan with 1 mm grid from that of 3 mm in AAA.</title>
+<p>Each image are axial plane of one patient from the top of planning target volume to the bottom of that at 12 mm intervals.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.g004" xlink:type="simple"/>
+</fig>
+<fig id="pone.0207232.g005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.g005</object-id>
+<label>Fig 5</label>
+<caption>
+<title>Dose distribution subtracted the plan with 1 mm grid from that of 3 mm in AXB.</title>
+<p>Each image are axial plane of one patient from the top of planning target volume to the bottom of that at 12 mm intervals.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.g005" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec008">
+<title>Radiobiological comparison</title>
+<p>The average TCP and NTCP values with respect to algorithm and grid size are shown in <xref ref-type="table" rid="pone.0207232.t006">Table 6</xref>. The difference of TCP values between AAA1 and AXB1 was 4.05%, and the difference between AAA3 and AXB3 was 0.9%. The largest NTCP of the rectum was 6.11% for AAA1, and the lowest NTCP was 3.23% for AXB1. In the bladder and the two femoral heads, no apparent NTCP values were observed, and all average NTCPs of the bladder and femoral heads were less than 1%, in all cases.</p>
+<table-wrap id="pone.0207232.t006" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.t006</object-id>
+<label>Table 6</label> <caption><title>Average and standard deviations of tumor control probability (TCP) and normal tissue complication probability (NTCP) values depending on the algorithms and grid size.</title></caption>
+<alternatives>
+<graphic id="pone.0207232.t006g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.t006" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" colspan="2" rowspan="2" style="background-color:#F2F2F2"/>
+<th align="center" colspan="3">AAA</th>
+<th align="center" colspan="3">AXB</th>
+</tr>
+<tr>
+<th align="center" style="background-color:#F2F2F2">1 mm<break/>Average<break/>(SD)</th>
+<th align="center" style="background-color:#F2F2F2">3 mm<break/>Average<break/>(SD)</th>
+<th align="center" style="background-color:#F2F2F2">5 mm<break/>Average<break/>(SD)</th>
+<th align="center" style="background-color:#F2F2F2">1 mm<break/>Average<break/>(SD)</th>
+<th align="center" style="background-color:#F2F2F2">2 mm<break/>Average<break/>(SD)</th>
+<th align="center" style="background-color:#F2F2F2">3 mm<break/>Average<break/>(SD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>TCP (%)</bold></td>
+<td align="center" style="background-color:#F2F2F2">Prostate (PTV)</td>
+<td align="center">87.49 (2.02)</td>
+<td align="center">86.59 (2.14)</td>
+<td align="center">82.37 (3.07)</td>
+<td align="center">83.44 (3.06)</td>
+<td align="center">84.32 (2.44)</td>
+<td align="center">85.69 (2.23)</td>
+</tr>
+<tr>
+<td align="center" rowspan="4" style="background-color:#F2F2F2"><bold>NTCP (%)</bold></td>
+<td align="center" style="background-color:#F2F2F2">Bladder</td>
+<td align="center" style="background-color:#F2F2F2">0.05 (0.18)</td>
+<td align="center" style="background-color:#F2F2F2">0.05 (0.19)</td>
+<td align="center" style="background-color:#F2F2F2">0.04 (0.15)</td>
+<td align="center" style="background-color:#F2F2F2">0.05 (0.18)</td>
+<td align="center" style="background-color:#F2F2F2">0.05 (0.18)</td>
+<td align="center" style="background-color:#F2F2F2">0.05 (0.19)</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Rectum</td>
+<td align="center">6.11 (3.18)</td>
+<td align="center">5.55 (2.79)</td>
+<td align="center">4.77 (2.52)</td>
+<td align="center">3.23 (1.58)</td>
+<td align="center">3.42 (1.66)</td>
+<td align="center">3.99 (1.93)</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Rt femoral head</td>
+<td align="center" style="background-color:#F2F2F2">0.04 (0.11)</td>
+<td align="center" style="background-color:#F2F2F2">0.04 (0.11)</td>
+<td align="center" style="background-color:#F2F2F2">0.04 (0.10)</td>
+<td align="center" style="background-color:#F2F2F2">0.03 (0.08)</td>
+<td align="center" style="background-color:#F2F2F2">0.03 (0.09)</td>
+<td align="center" style="background-color:#F2F2F2">0.03 (0.09)</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Lt femoral haed</td>
+<td align="center">0.05 (0.14)</td>
+<td align="center">0.05 (0.13)</td>
+<td align="center">0.04 (0.12)</td>
+<td align="center">0.03 (0.10)</td>
+<td align="center">0.03 (0.10)</td>
+<td align="center">0.04 (0.11)</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t006fn001"><p>SD: standard deviation</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+<sec id="sec009">
+<title>Statistical analysis and dose calculation time comparison</title>
+<p>The p values for various comparative groups are shown in <xref ref-type="table" rid="pone.0207232.t007">Table 7</xref>, and p values &lt; .05 were observed in several dosimetric and radiobiological parameters. In the comparison between AXB1 and AAA1, most of the parameters had p-values of less than 0.05 and showed statistically significant differences. In the comparison between AAA3 and AXB3, the p-values of the mean and median PTV doses exceeded 0.05 compared to the 1 mm group. In the AAA plan comparison of grid size, a statistically significant difference between the 1 mm grid and the others were found for all PTV parameters. In OARs, the p-value of V<sub>30%</sub> of rectum was higher than 0.05 according to grid size in the AAA case. The median dose and V<sub>95%</sub> of the PTV for the AXB plans were not statistically significant between 1 and 2 mm grids, and a statistically significant difference was found for all rectum parameters between AXB1 and AXB2.</p>
+<table-wrap id="pone.0207232.t007" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.t007</object-id>
+<label>Table 7</label> <caption><title>Statistical analysis results depending on the dose calculation algorithms and grid size.</title> <p>The comparison groups are (AAA1 vs AXB1), (AAA3 vs AXB3), (AAA1 vs AAA3), (AAA1 vs AAA5), (AXB1 vs AXB2), (AXB1 vs AXB3) from the left.</p></caption>
+<alternatives>
+<graphic id="pone.0207232.t007g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.t007" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" rowspan="2" style="background-color:#F2F2F2"/>
+<th align="center" style="background-color:#F2F2F2">Algorithm</th>
+<th align="center" colspan="2">AAA vs AXB</th>
+<th align="center" colspan="2">AAA</th>
+<th align="center" colspan="2">AXB</th>
+</tr>
+<tr>
+<th align="center" style="background-color:#F2F2F2">Grid size</th>
+<th align="center" style="background-color:#F2F2F2">1 mm</th>
+<th align="center" style="background-color:#F2F2F2">3 mm</th>
+<th align="center" style="background-color:#F2F2F2">1 vs 3 mm</th>
+<th align="center" style="background-color:#F2F2F2">1 vs 5 mm</th>
+<th align="center" style="background-color:#F2F2F2">1 vs 2 mm</th>
+<th align="center" style="background-color:#F2F2F2">1 vs 3 mm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" rowspan="7" style="background-color:#F2F2F2"><bold>PTV</bold></td>
+<td align="center" style="background-color:#F2F2F2">Mean dose</td>
+<td align="center">&lt; .01</td>
+<td align="center">0.58</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Median dose</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">0.52</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">0.26</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">TCP</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>95%</sub></td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">0.16</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">HI</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">CI</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">CN</td>
+<td align="center">0.391</td>
+<td align="center">0.852</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" rowspan="7" style="background-color:#F2F2F2"><bold>Bladder</bold></td>
+<td align="center" style="background-color:#F2F2F2">Mean dose</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">0.56</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Median dose</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">0.01</td>
+<td align="center">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Maximum dose</td>
+<td align="center" style="background-color:#F2F2F2">0.42</td>
+<td align="center" style="background-color:#F2F2F2">0.01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>30%</sub></td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>50%</sub></td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">0.25</td>
+<td align="center" style="background-color:#F2F2F2">0.01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>70%</sub></td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">0.09</td>
+<td align="center">0.37</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">NTCP</td>
+<td align="center" style="background-color:#F2F2F2">0.59</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">0.26</td>
+<td align="center" style="background-color:#F2F2F2">0.03</td>
+<td align="center" style="background-color:#F2F2F2">0.52</td>
+</tr>
+<tr>
+<td align="center" rowspan="7" style="background-color:#F2F2F2"><bold>Rectum</bold></td>
+<td align="center" style="background-color:#F2F2F2">Mean dose</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Median dose</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">0.02</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Maximum dose</td>
+<td align="center">0.01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">0.01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>30%</sub></td>
+<td align="center" style="background-color:#F2F2F2">0.71</td>
+<td align="center" style="background-color:#F2F2F2">0.911</td>
+<td align="center" style="background-color:#F2F2F2">0.50</td>
+<td align="center" style="background-color:#F2F2F2">0.20</td>
+<td align="center" style="background-color:#F2F2F2">0.02</td>
+<td align="center" style="background-color:#F2F2F2">0.63</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>50%</sub></td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>70%</sub></td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">NTCP</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" rowspan="7" style="background-color:#F2F2F2"><bold>Right femoral head</bold></td>
+<td align="center" style="background-color:#F2F2F2">Mean dose</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">0.02</td>
+<td align="center" style="background-color:#F2F2F2">1.00</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Median dose</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">0.16</td>
+<td align="center">&lt; .01</td>
+<td align="center">0.32</td>
+<td align="center">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Maximum dose</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">0.02</td>
+<td align="center" style="background-color:#F2F2F2">0.01</td>
+<td align="center" style="background-color:#F2F2F2">0.90</td>
+<td align="center" style="background-color:#F2F2F2">0.51</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>30%</sub></td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">0.17</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>50%</sub></td>
+<td align="center" style="background-color:#F2F2F2">0.04</td>
+<td align="center" style="background-color:#F2F2F2">0.04</td>
+<td align="center" style="background-color:#F2F2F2">0.35</td>
+<td align="center" style="background-color:#F2F2F2">0.43</td>
+<td align="center" style="background-color:#F2F2F2">0.35</td>
+<td align="center" style="background-color:#F2F2F2">0.08</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>70%</sub></td>
+<td align="center">0.18</td>
+<td align="center">0.18</td>
+<td align="center">0.66</td>
+<td align="center">0.66</td>
+<td align="center">0.18</td>
+<td align="center">0.18</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">NTCP</td>
+<td align="center" style="background-color:#F2F2F2">0.01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">0.86</td>
+<td align="center" style="background-color:#F2F2F2">0.09</td>
+<td align="center" style="background-color:#F2F2F2">0.04</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" rowspan="7" style="background-color:#F2F2F2"><bold>Left femoral head</bold></td>
+<td align="center" style="background-color:#F2F2F2">Mean dose</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">0.40</td>
+<td align="center">1.00</td>
+<td align="center">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Median dose</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">0.59</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">1.00</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">Maximum dose</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">&lt; .01</td>
+<td align="center">0.38</td>
+<td align="center">0.72</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>30%</sub></td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">0.77</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+<td align="center" style="background-color:#F2F2F2">&lt; .01</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>50%</sub></td>
+<td align="center">0.04</td>
+<td align="center">0.04</td>
+<td align="center">0.89</td>
+<td align="center">0.04</td>
+<td align="center">0.08</td>
+<td align="center">0.04</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">V<sub>70%</sub></td>
+<td align="center" style="background-color:#F2F2F2">0.18</td>
+<td align="center" style="background-color:#F2F2F2">0.18</td>
+<td align="center" style="background-color:#F2F2F2">0.18</td>
+<td align="center" style="background-color:#F2F2F2">0.18</td>
+<td align="center" style="background-color:#F2F2F2">0.18</td>
+<td align="center" style="background-color:#F2F2F2">0.18</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#F2F2F2">NTCP</td>
+<td align="center">0.01</td>
+<td align="center">&lt; .01</td>
+<td align="center">0.17</td>
+<td align="center">0.06</td>
+<td align="center">0.02</td>
+<td align="center">&lt; .01</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>The average calculation times according to type of algorithm and grid size are shown in <xref ref-type="table" rid="pone.0207232.t008">Table 8</xref>. With AXB, it took 4061 seconds to calculate the dose at the 1 mm grid size, which was 1850 seconds longer than the 2211 seconds of AAA. In the 3 mm grid, the calculation time difference between the two algorithms is 17 seconds.</p>
+<table-wrap id="pone.0207232.t008" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0207232.t008</object-id>
+<label>Table 8</label> <caption><title>Average and standard deviation of dose calculation times recorded at different algorithms and grid size.</title></caption>
+<alternatives>
+<graphic id="pone.0207232.t008g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.t008" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" rowspan="2" style="background-color:#F2F2F2"/>
+<th align="center" colspan="3">AAA</th>
+<th align="center" colspan="3">AXB</th>
+</tr>
+<tr>
+<th align="center" style="background-color:#F2F2F2">1 mm<break/>Average (SD)</th>
+<th align="center" style="background-color:#F2F2F2">3 mm<break/>Average (SD)</th>
+<th align="center" style="background-color:#F2F2F2">5 mm<break/>Average (SD)</th>
+<th align="center" style="background-color:#F2F2F2">1 mm<break/>Average (SD)</th>
+<th align="center" style="background-color:#F2F2F2">2 mm<break/>Average (SD)</th>
+<th align="center" style="background-color:#F2F2F2">3 mm<break/>Average (SD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" style="background-color:#F2F2F2"><bold>Time (s)</bold></td>
+<td align="center">2211 (155)</td>
+<td align="center">245 (27)</td>
+<td align="center">130 (10)</td>
+<td align="center">4061 (922)</td>
+<td align="center">671 (91)</td>
+<td align="center">262 (26)</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t008fn001"><p>SD: standard deviation</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+</sec>
+<sec id="sec010" sec-type="conclusions">
+<title>Discussion</title>
+<p>In several studies, AXB has been reported to predict more accurate doses in heterogeneous medium than AAA, considering tissue specific interactions of photons [<xref ref-type="bibr" rid="pone.0207232.ref029">29</xref>–<xref ref-type="bibr" rid="pone.0207232.ref031">31</xref>]. In our results, the V<sub>95%</sub> of the PTV was higher in the AAA than the AXB, and the differences for both algorithms were statistically significant (p values &lt; 0.01). By using the ERB, an air cavity is usually generated in the rectum structure, which may cause a region of overlap between the PTV and air cavity. As a result, the AAA predicted a higher dose to the air cavity within the PTV and could consequently estimate better target coverage than AXB. PTV may contain a portion of the ballooned rectum, where AAA overestimates the dose. However, this portion did not actually contain much dose, because this was air. Therefore, target coverage was estimated better than AXB when using the AAA.</p>
+<p>Although the differences of median and mean doses to the PTV were statistically significant with respect to the type of algorithm at 1 mm grid size, these were less than 1% of the prescribed dose. At 3 mm grid size, the differences were not statistically significant and less than 1% of the prescription dose. The average V<sub>95%</sub> of the PTV for the AAA plan decreased with increasing grid size, whereas V<sub>95%</sub> for the plan with AXB increased slightly. For dose calculation, AXB discretizes the resolution in space, angle, and energy, and requires the material composition of voxels in the CT image by converting the Hounsfield unit to material derived mass density value. The automatic material composition is implemented with five biological materials divided according to the Hounsfield unit. When this material composition is performed on each dose voxel, the conversion of CT values might be affected by the size of the grid systematically. In our results, the p-value of the V<sub>95%</sub> between AXB1 and AXB3 was less than 0.01, and the increased V<sub>95%</sub> was 0.29% of the PTV volume. This means that the difference of dose grid size can produce systematic errors on target coverage of the PTV. However, it was not apparently changed. We think that the dose grid size may affect on each of the sub-procedure of the AXB dose calculation. Further study is needed to clarify these issues. The plans using AAA are more strongly influenced by the dose grid size compared to those using AXB. Due to the dramatic dose falloff near the PTV, the dose grid factors such as discrete sampling and volumetric averaging effects can work differently between both algorithms. As shown in <xref ref-type="fig" rid="pone.0207232.g004">Fig 4</xref>, a high dose difference was observed around the PTV, which is expressed in yellow. In general, AAA1 achieves a more precise dose prediction than AAA3 by using a fine dose grid, and this caused a sampling and volumetric averaging effect. Therefore, AAA1 may have a higher dose in the dose falloff region than AAA3. In comparison to Figs <xref ref-type="fig" rid="pone.0207232.g004">4</xref> and <xref ref-type="fig" rid="pone.0207232.g005">5</xref>, the grid effect appears to have a relatively larger influence on AAA than on AXB around the PTV, which affects target coverage relative to the grid size.</p>
+<p>To compare plan qualities in greater detail, the CI and HI showed statistically significant differences according to algorithms using the same grid size. The average CI of AAA was higher than that of AXB and far from the ideal value of one. This means that the volume above the prescribed dose is greater than the target volume when using AAA, and treatment plan could be evaluated to have worse conformity with AAA than AXB. However, the HI of AAA was less than that of AXB, and the AAA plan evaluations were more homogeneous than those of AXB. This, specifically, was the reason for the low dose in the air cavity of the PTV when using AXB. High doses in PTV air caused the increase in D98, leading to the decrease in HI. However, the dose overestimated by AAA in PTV air was not appropriate, and HI reduction of AAA did not guarantee the quality of a better treatment plan. Finally, AAA and AXB did not significantly differ with respect to the CN at the same grid size, as the average value was not apparently different between both algorithms.</p>
+<p>As shown in <xref ref-type="fig" rid="pone.0207232.g003">Fig 3</xref>, the rectal dose was higher in AAA1 than in AXB1, and the dose of overlapped region between the PTV and the rectum was also higher in AAA1 compared with AXB1. In the subtracted dose distributions, dose difference between AAA1 and AXB1 were apparently large in only the rectum region, and AXB1 showed higher doses than AAA1 in the upper region of the rectum. Other studies have reported that the accuracy of AXB was superior to that of AAA in low density media [<xref ref-type="bibr" rid="pone.0207232.ref014">14</xref>, <xref ref-type="bibr" rid="pone.0207232.ref015">15</xref>, <xref ref-type="bibr" rid="pone.0207232.ref017">17</xref>, <xref ref-type="bibr" rid="pone.0207232.ref018">18</xref>] and that AXB predicted higher doses of penumbra than the AAA in the air cavity [<xref ref-type="bibr" rid="pone.0207232.ref032">32</xref>, <xref ref-type="bibr" rid="pone.0207232.ref033">33</xref>]. Based on the LBTE, AXB can consider the transport of photons and electrons through matter. Unlike AAA that uses a kernel of water with simplified density scaling for heterogeneous region, AXB use material library including five biologic materials (lung, adipose tissue, muscle, cartilage, and bone) and 16 non-biologic materials with a maximum density of steel. By using this, AXB can reflect characteristics of a various materials on dose calculation. Therefore, AXB is possible to correctly estimate the dose to a heterogeneous region such as the rectum. However, the dose calculation of AAA was associated with lateral and depth-directed components [<xref ref-type="bibr" rid="pone.0207232.ref034">34</xref>], and this algorithm cannot properly approximate the dose in the air due to the use of lateral scattering terms derived from Monte Carlo simulations in water [<xref ref-type="bibr" rid="pone.0207232.ref017">17</xref>]. The AAA compensates the heterogeneity by the inhomogeneity correction factor based on media density. As a result, AXB1 showed the predicted dose more correctly and estimated the higher rectum dose of the outside field, in comparison with AAA1.</p>
+<p>The dosimetric difference of rectum was the largest among all OARs, and this largely depended on the algorithm. The average median and mean doses to the rectum were more than 2% higher in AAA1 compared with AXB1, and this dosimetric discrepancy has been reported to significantly influence radiobiological evaluation [<xref ref-type="bibr" rid="pone.0207232.ref035">35</xref>]. Likewise, we observed that the average NTCP in the rectum was heavily influenced by the respective algorithm. The rectum V<sub>40%</sub> to V<sub>90%</sub> showed large differences that depended on the algorithm rather than the dose grid. This was caused by the overlap between the PTV and rectum, which was induced in the optimization process to receive a high dose. In the bladder, most parameters showed statistically significant changes with both algorithms, however the changes were less than 1% of reference. Both femoral heads showed significant differences according to the algorithm and grid size, however the differences were not apparent.</p>
+<p>In our results, the TCP differences according to algorithm and grid size were statistically different, and the TCP decreased as grid size increased with AAA. In contrast, the TCPs of AXB1 and AXB2 showed similar values, and the TCPs increased about 1%, in comparison with AXB1, as dose grid size increased to 3 mm. Under the same grid size, the average TCP of AAA was higher than that of AXB. By using the AAA, the target coverage (V<sub>95%</sub>) was superior to that of AXB. Therefore, the calculated TCP of AAA was relatively higher than that of AXB, and the TCP differences among the algorithms showed a quite large variations (4.05%), which were statistically significant (p-value &lt;0.01). We used EUD-based TCP models. As described above, AAA predicted doses with overestimated errors in the air inside PTV than for AXB. This leads to the increase in EUD and TCP of AAA compared with AXB. The NTCP difference of the rectum was the largest among all the OARs, and this depended on the algorithm. The average NTCP of AAA was higher than that of AXB, and the average NTCP of the rectum decreased with increasing dose grid in the case of AAA, and inversely increased with AXB. In addition, all p-values of the rectum were less than 0.01, depending on the algorithm and grid size. This means that the rectum was influenced significantly by both algorithm and dose grid. Although we performed the statistical analysis depending on the algorithms and grid sizes, the impact of these factors on the bladder and both femoral heads was not clearly predictable due to very low NTCP values.</p>
+<p>Rectal complications in radiation therapy are mainly caused by rectal tissue damage, and the dose deposited in air may not contribute to rectal toxicity from a clinical viewpoint. Our results for NTCP and dosimetric parameters in rectum contoured with air include may not have a direct impact on the clinical significance. Streller et al. [<xref ref-type="bibr" rid="pone.0207232.ref036">36</xref>] evaluated the impact of ERB on rectal wall dose by using AAA algorithm. However, dosimetric properties of two algorithms were different at the interface between air and matter, and the AXB showed more similar dose distribution to film measurement than AAA at the interface [<xref ref-type="bibr" rid="pone.0207232.ref033">33</xref>]. In addition, the dose rebuild-up has been reported with AXB [<xref ref-type="bibr" rid="pone.0207232.ref033">33</xref>]. The dose rebuild-up causes a large dose increase from air to matter, which can have a significant impact on dose calculations. Therefore, as a future study, additional analysis of the rectal well according to the algorithm and grid is necessary to perform monitoring of the control/complications of patients.</p>
+<p>The International Commission on Radiation Units recommends 5% of overall absorbed dose delivery accuracy, and the American Association of Physicists in Medicine recommends a 2% dose calculation accuracy [<xref ref-type="bibr" rid="pone.0207232.ref035">35</xref>, <xref ref-type="bibr" rid="pone.0207232.ref037">37</xref>]. Considering the calculation time, the use of a 1 mm grid is not feasible in the clinical practice. In the previous reported studies, the use of a 2.5 mm grid should be recommended to reduce the dose distribution error, and 2 mm should be recommended at least in high dose gradients [<xref ref-type="bibr" rid="pone.0207232.ref038">38</xref>, <xref ref-type="bibr" rid="pone.0207232.ref039">39</xref>]. Therefore, from our results, we recommended a 2 mm grid with AXB, considering the relatively short dose calculation time and calculation accuracy for prostate VMAT.</p>
+</sec>
+<sec id="sec011" sec-type="conclusions">
+<title>Conclusion</title>
+<p>The AXB and AAA showed statically significant difference in dosimetric and radiobiological parameters. Our study demonstrated that the calculated grid size worked sufficiently enough to influence the plan quality evaluation. As previously reported, the AXB and fine dose grid provided significantly accurate dose calculations in air cavity regions, and our results indicated that AXB2 had sufficient accuracy and was reasonable, in terms of dose calculation time, compared the AXB1. So, we suggest employing AXB algorithm and 2 mm grid for improving treatment efficiency of VMAT plans for prostate cancer.</p>
+</sec>
+</body>
+<back>
+<ref-list>
+<title>References</title>
+<ref id="pone.0207232.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Otto</surname> <given-names>K</given-names></name>. <article-title>Volumetric modulated arc therapy: IMRT in a single gantry arc</article-title>. <source>Medical physics</source>. <year>2008</year>;<volume>35</volume>(<issue>1</issue>):<fpage>310</fpage>–<lpage>7</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1118/1.2818738" xlink:type="simple">10.1118/1.2818738</ext-link></comment> <object-id pub-id-type="pmid">18293586</object-id></mixed-citation></ref>
+<ref id="pone.0207232.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jiang</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Zhou</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Xu</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Zhou</surname> <given-names>X</given-names></name>, <etal>et al</etal>. <article-title>Planning analysis for locally advanced lung cancer: dosimetric and efficiency comparisons between intensity-modulated radiotherapy (IMRT), single-arc/partial-arc volumetric modulated arc therapy (SA/PA-VMAT)</article-title>. <source>Radiation Oncology</source>. <year>2011</year>;<volume>6</volume>(<issue>1</issue>):<fpage>140</fpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rong</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Evans</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Xu-Welliver</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Pickett</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Jia</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>Q</given-names></name>, <etal>et al</etal>. <article-title>Dosimetric evaluation of intensity-modulated radiotherapy, volumetric modulated arc therapy, and helical tomotherapy for hippocampal-avoidance whole brain radiotherapy</article-title>. <source>PloS one</source>. <year>2015</year>;<volume>10</volume>(<issue>4</issue>):<fpage>e0126222</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0126222" xlink:type="simple">10.1371/journal.pone.0126222</ext-link></comment> <object-id pub-id-type="pmid">25894615</object-id></mixed-citation></ref>
+<ref id="pone.0207232.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhang</surname> <given-names>W-Z</given-names></name>, <name name-style="western"><surname>Zhai</surname> <given-names>T-T</given-names></name>, <name name-style="western"><surname>Lu</surname> <given-names>J-Y</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>J-Z</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>Z-J</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>D-R</given-names></name>, <etal>et al</etal>. <article-title>Volumetric modulated arc therapy vs. c-IMRT for the treatment of upper thoracic esophageal cancer</article-title>. <source>PloS one</source>. <year>2015</year>;<volume>10</volume>(<issue>3</issue>):<fpage>e0121385</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0121385" xlink:type="simple">10.1371/journal.pone.0121385</ext-link></comment> <object-id pub-id-type="pmid">25815477</object-id></mixed-citation></ref>
+<ref id="pone.0207232.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ostheimer</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Hübsch</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Janich</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Gerlach</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Vordermark</surname> <given-names>D</given-names></name>. <article-title>Dosimetric comparison of intensity-modulated radiotherapy (IMRT) and volumetric modulated arc therapy (VMAT) in total scalp irradiation: a single institutional experience</article-title>. <source>Radiation oncology journal</source>. <year>2016</year>;<volume>34</volume>(<issue>4</issue>):<fpage>313</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.3857/roj.2016.01935" xlink:type="simple">10.3857/roj.2016.01935</ext-link></comment> <object-id pub-id-type="pmid">27951625</object-id></mixed-citation></ref>
+<ref id="pone.0207232.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Quan</surname> <given-names>EM</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Kudchadker</surname> <given-names>RJ</given-names></name>, <name name-style="western"><surname>Johnson</surname> <given-names>JL</given-names></name>, <etal>et al</etal>. <article-title>A comprehensive comparison of IMRT and VMAT plan quality for prostate cancer treatment</article-title>. <source>International Journal of Radiation Oncology• Biology• Physics</source>. <year>2012</year>;<volume>83</volume>(<issue>4</issue>):<fpage>1169</fpage>–<lpage>78</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>van Lin</surname> <given-names>ENT</given-names></name>, <name name-style="western"><surname>van der Vight</surname> <given-names>LP</given-names></name>, <name name-style="western"><surname>Witjes</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Huisman</surname> <given-names>HJ</given-names></name>, <name name-style="western"><surname>Leer</surname> <given-names>JW</given-names></name>, <name name-style="western"><surname>Visser</surname> <given-names>AG</given-names></name>. <article-title>The effect of an endorectal balloon and off-line correction on the interfraction systematic and random prostate position variations: a comparative study</article-title>. <source>International Journal of Radiation Oncology• Biology• Physics</source>. <year>2005</year>;<volume>61</volume>(<issue>1</issue>):<fpage>278</fpage>–<lpage>88</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vanneste</surname> <given-names>BG</given-names></name>, <name name-style="western"><surname>van Wijk</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Lutgens</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Van Limbergen</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>van Lin</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>van de Beek</surname> <given-names>K</given-names></name>, <etal>et al</etal>. <article-title>Dynamics of rectal balloon implant shrinkage in prostate VMAT</article-title> Dynamiken eines schrumpfenden rektalen Ballonimplantats während Prostata-VMAT. <source>Strahlentherapie und Onkologie</source>. <year>2018</year>;<volume>194</volume>(<issue>1</issue>):<fpage>31</fpage>–<lpage>40</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/s00066-017-1222-x" xlink:type="simple">10.1007/s00066-017-1222-x</ext-link></comment> <object-id pub-id-type="pmid">29038832</object-id></mixed-citation></ref>
+<ref id="pone.0207232.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Both</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>KK-H</given-names></name>, <name name-style="western"><surname>Plastaras</surname> <given-names>JP</given-names></name>, <name name-style="western"><surname>Deville</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Ad</surname> <given-names>VB</given-names></name>, <name name-style="western"><surname>Tochner</surname> <given-names>Z</given-names></name>, <etal>et al</etal>. <article-title>Real-time study of prostate intrafraction motion during external beam radiotherapy with daily endorectal balloon</article-title>. <source>International Journal of Radiation Oncology• Biology• Physics</source>. <year>2011</year>;<volume>81</volume>(<issue>5</issue>):<fpage>1302</fpage>–<lpage>9</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Smeenk</surname> <given-names>RJ</given-names></name>, <name name-style="western"><surname>Louwe</surname> <given-names>RJ</given-names></name>, <name name-style="western"><surname>Langen</surname> <given-names>KM</given-names></name>, <name name-style="western"><surname>Shah</surname> <given-names>AP</given-names></name>, <name name-style="western"><surname>Kupelian</surname> <given-names>PA</given-names></name>, <name name-style="western"><surname>van Lin</surname> <given-names>ENT</given-names></name>, <etal>et al</etal>. <article-title>An endorectal balloon reduces intrafraction prostate motion during radiotherapy</article-title>. <source>International Journal of Radiation Oncology• Biology• Physics</source>. <year>2012</year>;<volume>83</volume>(<issue>2</issue>):<fpage>661</fpage>–<lpage>9</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref011"><label>11</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Sievinen</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Ulmer</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Kaissl</surname> <given-names>W</given-names></name>. <source>AAA photon dose calculation model in Eclipse</source>. <publisher-loc>Palo Alto, CA</publisher-loc>: <publisher-name>Varian Medical Systems</publisher-name>. <year>2005</year>;<volume>118</volume>:<fpage>2894</fpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref012"><label>12</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Failla</surname> <given-names>GA</given-names></name>, <name name-style="western"><surname>Wareing</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Archambault</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Thompson</surname> <given-names>S</given-names></name>. <source>Acuros XB advanced dose calculation for the Eclipse treatment planning system</source>. <publisher-loc>Palo Alto, CA</publisher-loc>: <publisher-name>Varian Medical Systems</publisher-name>. <year>2010</year>.</mixed-citation></ref>
+<ref id="pone.0207232.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Koo</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Chung</surname> <given-names>J-B</given-names></name>, <name name-style="western"><surname>Eom</surname> <given-names>K-Y</given-names></name>, <name name-style="western"><surname>Seok</surname> <given-names>J-Y</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>I-A</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>J-S</given-names></name>. <article-title>Dosimetric effects of the acuros XB and anisotropic analytical algorithm on volumetric modulated arc therapy planning for prostate cancer using an endorectal balloon</article-title>. <source>Radiation Oncology</source>. <year>2015</year>;<volume>10</volume>(<issue>1</issue>):<fpage>48</fpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kroon</surname> <given-names>PS</given-names></name>, <name name-style="western"><surname>Hol</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Essers</surname> <given-names>M</given-names></name>. <article-title>Dosimetric accuracy and clinical quality of Acuros XB and AAA dose calculation algorithm for stereotactic and conventional lung volumetric modulated arc therapy plans</article-title>. <source>Radiation Oncology</source>. <year>2013</year>;<volume>8</volume>(<issue>1</issue>):<fpage>149</fpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kan</surname> <given-names>MW</given-names></name>, <name name-style="western"><surname>Leung</surname> <given-names>LH</given-names></name>, <name name-style="western"><surname>Yu</surname> <given-names>PK</given-names></name>. <article-title>Verification and dosimetric impact of Acuros XB algorithm on intensity modulated stereotactic radiotherapy for locally persistent nasopharyngeal carcinoma</article-title>. <source>Medical physics</source>. <year>2012</year>;<volume>39</volume>(<issue>8</issue>):<fpage>4705</fpage>–<lpage>14</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1118/1.4736819" xlink:type="simple">10.1118/1.4736819</ext-link></comment> <object-id pub-id-type="pmid">22894395</object-id></mixed-citation></ref>
+<ref id="pone.0207232.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vassiliev</surname> <given-names>ON</given-names></name>, <name name-style="western"><surname>Wareing</surname> <given-names>TA</given-names></name>, <name name-style="western"><surname>McGhee</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Failla</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Salehpour</surname> <given-names>MR</given-names></name>, <name name-style="western"><surname>Mourtada</surname> <given-names>F</given-names></name>. <article-title>Validation of a new grid-based Boltzmann equation solver for dose calculation in radiotherapy with photon beams</article-title>. <source>Physics in Medicine &amp; Biology</source>. <year>2010</year>;<volume>55</volume>(<issue>3</issue>):<fpage>581</fpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bush</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Gagne</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Zavgorodni</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Ansbacher</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Beckham</surname> <given-names>W</given-names></name>. <article-title>Dosimetric validation of Acuros® XB with Monte Carlo methods for photon dose calculations</article-title>. <source>Medical physics</source>. <year>2011</year>;<volume>38</volume>(<issue>4</issue>):<fpage>2208</fpage>–<lpage>21</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1118/1.3567146" xlink:type="simple">10.1118/1.3567146</ext-link></comment> <object-id pub-id-type="pmid">21626955</object-id></mixed-citation></ref>
+<ref id="pone.0207232.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fogliata</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Nicolini</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Clivio</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Vanetti</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Cozzi</surname> <given-names>L</given-names></name>. <article-title>Critical appraisal of Acuros XB and Anisotropic Analytic Algorithm dose calculation in advanced non-small-cell lung cancer treatments</article-title>. <source>International Journal of Radiation Oncology• Biology• Physics</source>. <year>2012</year>;<volume>83</volume>(<issue>5</issue>):<fpage>1587</fpage>–<lpage>95</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hasenbalg</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Neuenschwander</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Mini</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Born</surname> <given-names>EJ</given-names></name>. <article-title>Collapsed cone convolution and analytical anisotropic algorithm dose calculations compared to VMC++ Monte Carlo simulations in clinical cases</article-title>. <source>Physics in Medicine &amp; Biology</source>, (<year>2007</year>);<volume>52</volume>(<issue>13</issue>):<fpage>3679</fpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Srivastava</surname> <given-names>SP</given-names></name>, <name name-style="western"><surname>Cheng</surname> <given-names>C-W</given-names></name>, <name name-style="western"><surname>Das</surname> <given-names>IJ</given-names></name>. <article-title>The dosimetric and radiobiological impact of calculation grid size on head and neck IMRT</article-title>. <source>Practical radiation oncology</source>. <year>2017</year>;<volume>7</volume>(<issue>3</issue>):<fpage>209</fpage>–<lpage>17</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.prro.2016.10.001" xlink:type="simple">10.1016/j.prro.2016.10.001</ext-link></comment> <object-id pub-id-type="pmid">27847266</object-id></mixed-citation></ref>
+<ref id="pone.0207232.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Park</surname> <given-names>JM</given-names></name>, <name name-style="western"><surname>Park</surname> <given-names>S-Y</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>J-i</given-names></name>, <name name-style="western"><surname>Carlson</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>JH</given-names></name>. <article-title>The influence of the dose calculation resolution of VMAT plans on the calculated dose for eye lens and optic pathway</article-title>. <source>Australasian physical &amp; engineering sciences in medicine</source>. <year>2017</year>;<volume>40</volume>(<issue>1</issue>):<fpage>209</fpage>–<lpage>17</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Huang</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Lin</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>C</given-names></name>. <article-title>Dose calculation of Acuros XB and Anisotropic Analytical Algorithm in lung stereotactic body radiotherapy treatment with flattening filter free beams and the potential role of calculation grid size</article-title>. <source>Radiation Oncology</source>. <year>2015</year>;<volume>10</volume>(<issue>1</issue>):<fpage>53</fpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kang</surname> <given-names>SW</given-names></name>, <name name-style="western"><surname>Suh</surname> <given-names>TS</given-names></name>, <name name-style="western"><surname>Chung</surname> <given-names>JB</given-names></name>, <name name-style="western"><surname>Eom</surname> <given-names>KY</given-names></name>, <name name-style="western"><surname>Song</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>IA</given-names></name>, <etal>et al</etal>. <article-title>Comparison of dosimetric and radiobiological parameters on plans for prostate stereotactic body radiotherapy using an endorectal balloon for different dose-calculation algorithms and delivery-beam modes</article-title>. <source>Journal of the Korean Physical Society</source>. <year>2017</year>;<volume>70</volume>(<issue>4</issue>):<fpage>424</fpage>–<lpage>30</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kim</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Chung</surname> <given-names>JB</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>IA</given-names></name>, <name name-style="western"><surname>Eom</surname> <given-names>KY</given-names></name>. <article-title>Dosimetric effects of endorectal balloons on intensity-modulated radiation therapy plans for prostate cancer</article-title>. <source>Journal of the Korean Physical Society</source>. <year>2013</year>;<volume>63</volume>(<issue>8</issue>):<fpage>1637</fpage>–<lpage>43</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gay</surname> <given-names>HA</given-names></name>, <name name-style="western"><surname>Niemierko</surname> <given-names>A</given-names></name>. <article-title>A free program for calculating EUD-based NTCP and TCP in external beam radiotherapy</article-title>. <source>Physica Medica: European Journal of Medical Physics</source>. <year>2007</year>;<volume>23</volume>(<issue>3</issue>):<fpage>115</fpage>–<lpage>25</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Niemierko</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Michael</surname> <given-names>G</given-names></name>. <article-title>Modeling of normal tissue response to radiation: the critical volume model</article-title>. <source>International Journal of Radiation Oncology• Biology• Physics</source>. <year>1993</year>;<volume>25</volume>(<issue>1</issue>):<fpage>135</fpage>–<lpage>145</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Deasy</surname> <given-names>JO</given-names></name>, <name name-style="western"><surname>Blanco</surname> <given-names>AI</given-names></name>, <name name-style="western"><surname>Clark</surname> <given-names>VH</given-names></name>. <article-title>CERR: a computational environment for radiotherapy research</article-title>. <source>Medical physics</source>. <year>2003</year>;<volume>30</volume>(<issue>5</issue>):<fpage>979</fpage>–<lpage>85</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1118/1.1568978" xlink:type="simple">10.1118/1.1568978</ext-link></comment> <object-id pub-id-type="pmid">12773007</object-id></mixed-citation></ref>
+<ref id="pone.0207232.ref028"><label>28</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wilcoxon</surname> <given-names>F</given-names></name>. <article-title>Individual comparisons by ranking methods</article-title>. <source>Biometrics bulletin</source>. <year>1945</year>;<volume>1</volume>(<issue>6</issue>):<fpage>80</fpage>–<lpage>83</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kan</surname> <given-names>MW</given-names></name>, <name name-style="western"><surname>Leung</surname> <given-names>LH</given-names></name>, <name name-style="western"><surname>So</surname> <given-names>RW</given-names></name>, <name name-style="western"><surname>Yu</surname> <given-names>PK</given-names></name>. <article-title>Experimental verification of the Acuros XB and AAA dose calculation adjacent to heterogeneous media for IMRT and RapidArc of nasopharygeal carcinoma</article-title>. <source>Medical physics</source>. <year>2013</year>;<fpage>40</fpage>(3).</mixed-citation></ref>
+<ref id="pone.0207232.ref030"><label>30</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kan</surname> <given-names>MW</given-names></name>, <name name-style="western"><surname>Leung</surname> <given-names>LH</given-names></name>, <name name-style="western"><surname>Peter</surname> <given-names>K</given-names></name>. <article-title>Dosimetric impact of using the Acuros XB algorithm for intensity modulated radiation therapy and RapidArc planning in nasopharyngeal carcinomas</article-title>. <source>International Journal of Radiation Oncology• Biology• Physics</source>. <year>2013</year>;<volume>85</volume>(<issue>1</issue>):<fpage>e73</fpage>–<lpage>e80</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref031"><label>31</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rana</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Rogers</surname> <given-names>K</given-names></name>. <article-title>Dosimetric evaluation of Acuros XB dose calculation algorithm with measurements in predicting doses beyond different air gap thickness for smaller and larger field sizes</article-title>. <source>Journal of medical physics/Association of Medical Physicists of India</source>. <year>2013</year>;<volume>38</volume>(<issue>1</issue>):<fpage>9</fpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref032"><label>32</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kang</surname> <given-names>S-W</given-names></name>, <name name-style="western"><surname>Suh</surname> <given-names>T-S</given-names></name>, <name name-style="western"><surname>Chung</surname> <given-names>J-B</given-names></name>, <name name-style="western"><surname>Eom</surname> <given-names>K-Y</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>I-A</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>J-S</given-names></name>, <etal>et al</etal>. <article-title>Dosimetric accuracy of AAA and acuros XB dose calculations within an air cavity for small fields of a 6-MV flattening filter-free beam</article-title>. <source>Journal of the Korean Physical Society</source>. <year>2015</year>;<volume>67</volume>(<issue>12</issue>):<fpage>2138</fpage>–<lpage>45</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kang</surname> <given-names>SW</given-names></name>, <name name-style="western"><surname>Chung</surname> <given-names>JB</given-names></name>, <name name-style="western"><surname>Lee</surname> <given-names>JW</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>YL</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>JS</given-names></name>, <etal>et al</etal>. <article-title>Dosimetric accuracy of the Acuros XB and Anisotropic analytical algorithm near interface of the different density media for the small fields of a 6- MV flattening -filter-free beam</article-title>. <source>International Journal of Radiation Research</source>. <year>2017</year>;<volume>15</volume>(<issue>2</issue>):<fpage>157</fpage>–<lpage>65</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tillikainen</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Helminen</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Torsti</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Siljamäki</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Alakuijala</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Pyyry</surname> <given-names>J</given-names></name>, <etal>et al</etal>. <article-title>A 3D pencil-beam-based superposition algorithm for photon dose calculation in heterogeneous media</article-title>. <source>Physics in Medicine &amp; Biology</source>. <year>2008</year>;<volume>53</volume>(<issue>14</issue>):<fpage>3821</fpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref035"><label>35</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Papanikolaou</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Battista</surname> <given-names>JJ</given-names></name>, <name name-style="western"><surname>Boyer</surname> <given-names>AL</given-names></name>, <name name-style="western"><surname>Kappas</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Klein</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Mackie</surname> <given-names>TR</given-names></name>, <etal>et al</etal>. <article-title>Tissue inhomogeneity corrections for megavoltage photon beams</article-title>. <source>AAPM Task Group</source>. <year>2004</year>;<volume>65</volume>:<fpage>1</fpage>–<lpage>142</lpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref036"><label>36</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Streller</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Rusch</surname> <given-names>U</given-names></name>, <name name-style="western"><surname>Herraiz Lablanca</surname> <given-names>MD</given-names></name>, <name name-style="western"><surname>Minneken</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Najafi</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Shrestha</surname> <given-names>B</given-names></name>, <etal>et al</etal>. <article-title>The effect of endorectal balloon on anorectal dose during postoperative volumetric arc radiotherapy of prostate cancer</article-title>. <source>Radiotherapy and Oncology</source>. <year>2017</year>;<volume>123</volume>(<issue>3</issue>):<fpage>454</fpage>–<lpage>8</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.radonc.2017.04.014" xlink:type="simple">10.1016/j.radonc.2017.04.014</ext-link></comment> <object-id pub-id-type="pmid">28464996</object-id></mixed-citation></ref>
+<ref id="pone.0207232.ref037"><label>37</label><mixed-citation publication-type="other" xlink:type="simple">Report 24. Journal of the International Commission on Radiation Units and Measurements. 1976;os13(1):NP-NP.</mixed-citation></ref>
+<ref id="pone.0207232.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chung</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Jin</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Palta</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Suh</surname> <given-names>TS</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>S</given-names></name>. <article-title>Dose variations with varying calculation grid size in head and neck IMRT</article-title>. <source>Physics in Medicine &amp; Biology</source>. <year>2006</year>;<volume>51</volume>(<issue>19</issue>):<fpage>4841</fpage>.</mixed-citation></ref>
+<ref id="pone.0207232.ref039"><label>39</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dempsey</surname> <given-names>JF</given-names></name>, <name name-style="western"><surname>Romeijn</surname> <given-names>HE</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>JG</given-names></name>, <name name-style="western"><surname>Low</surname> <given-names>DA</given-names></name>, <name name-style="western"><surname>Palta</surname> <given-names>JR</given-names></name>. <article-title>A Fourier analysis of the dose grid resolution required for accurate IMRT fluence map optimization</article-title>. <source>Medical physics</source>. <year>2005</year>;<volume>32</volume>(<issue>2</issue>):<fpage>380</fpage>–<lpage>8</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1118/1.1843354" xlink:type="simple">10.1118/1.1843354</ext-link></comment> <object-id pub-id-type="pmid">15789583</object-id></mixed-citation></ref>
+</ref-list>
+</back>
+<sub-article article-type="aggregated-review-documents" id="pone.0207232.r001" specific-use="decision-letter">
+<front-stub>
+<article-id pub-id-type="doi">10.1371/journal.pone.0207232.r001</article-id>
+<title-group>
+<article-title>Decision Letter 0</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<name name-style="western">
+<surname>Zhang</surname>
+<given-names>Qinghui</given-names>
+</name>
+<role>Academic Editor</role>
+</contrib>
+</contrib-group>
+<permissions>
+<copyright-year>2018</copyright-year>
+<copyright-holder>Qinghui Zhang</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<related-object document-id="10.1371/journal.pone.0207232" document-id-type="doi" document-type="article" id="rel-obj001" link-type="peer-reviewed-article"/>
+<custom-meta-group>
+<custom-meta>
+<meta-name>Submission Version</meta-name>
+<meta-value>0</meta-value>
+</custom-meta>
+</custom-meta-group>
+</front-stub>
+<body>
+<p><named-content content-type="letter-date">12 Sep 2018</named-content></p>
+<p>PONE-D-18-18642</p><p>Dosimetric and radiobiological comparison in different dose calculation grid sizes between Acuros XB and anisotropic analytical algorithm for prostate VMAT</p><p>PLOS ONE</p><p>Dear Prof. Chung,</p><p>Thank you for submitting your manuscript to PLOS ONE. After careful consideration, we feel that it has merit but does not fully meet PLOS ONE’s publication criteria as it currently stands. Therefore, we invite you to submit a revised version of the manuscript that addresses the points raised during the review process.</p><p>We would appreciate receiving your revised manuscript by Oct 27 2018 11:59PM. When you are ready to submit your revision, log on to <ext-link ext-link-type="uri" xlink:href="https://pone.editorialmanager.com/" xlink:type="simple">https://pone.editorialmanager.com/</ext-link> and select the 'Submissions Needing Revision' folder to locate your manuscript file.</p><p>If you would like to make changes to your financial disclosure, please include your updated statement in your cover letter.</p><p>To enhance the reproducibility of your results, we recommend that if applicable you deposit your laboratory protocols in protocols.io, where a protocol can be assigned its own identifier (DOI) such that it can be cited independently in the future. For instructions see: <ext-link ext-link-type="uri" xlink:href="http://journals.plos.org/plosone/s/submission-guidelines#loc-laboratory-protocols" xlink:type="simple">http://journals.plos.org/plosone/s/submission-guidelines#loc-laboratory-protocols</ext-link></p><p>Please include the following items when submitting your revised manuscript:</p>
+<list list-type="bullet">
+<list-item><p>A rebuttal letter that responds to each point raised by the academic editor and reviewer(s). This letter should be uploaded as separate file and labeled 'Response to Reviewers'.</p></list-item>
+<list-item><p>A marked-up copy of your manuscript that highlights changes made to the original version. This file should be uploaded as separate file and labeled 'Revised Manuscript with Track Changes'.</p></list-item>
+<list-item><p>An unmarked version of your revised paper without tracked changes. This file should be uploaded as separate file and labeled 'Manuscript'.</p></list-item>
+</list>
+<p>We look forward to receiving your revised manuscript.</p><p>Kind regards,</p><p>Qinghui Zhang</p><p>Academic Editor</p><p>PLOS ONE</p><p>Journal requirements:</p><p>When submitting your revision, we need you to address these additional requirements.</p><p>1. Please ensure that your manuscript meets PLOS ONE's style requirements, including those for file naming. The PLOS ONE style templates can be found at</p><p><ext-link ext-link-type="uri" xlink:href="http://www.journals.plos.org/plosone/s/file?id=wjVg/PLOSOne_formatting_sample_main_body.pdf" xlink:type="simple">http://www.journals.plos.org/plosone/s/file?id=wjVg/PLOSOne_formatting_sample_main_body.pdf</ext-link> and <ext-link ext-link-type="uri" xlink:href="http://www.journals.plos.org/plosone/s/file?id=ba62/PLOSOne_formatting_sample_title_authors_affiliations.pdf" xlink:type="simple">http://www.journals.plos.org/plosone/s/file?id=ba62/PLOSOne_formatting_sample_title_authors_affiliations.pdf</ext-link></p><p>2. We suggest you thoroughly copyedit your manuscript for language usage, spelling, and grammar. If you do not know anyone who can help you do this, you may wish to consider employing a professional scientific editing service.  </p><p>Whilst you may use any professional scientific editing service of your choice, PLOS has partnered with both American Journal Experts (AJE) and Editage to provide discounted services to PLOS authors. Both organizations have experience helping authors meet PLOS guidelines and can provide language editing, translation, manuscript formatting, and figure formatting to ensure your manuscript meets our submission guidelines. To take advantage of our partnership with AJE, visit the AJE website (<ext-link ext-link-type="uri" xlink:href="http://learn.aje.com/plos/" xlink:type="simple">http://learn.aje.com/plos/</ext-link>) for a 15% discount off AJE services. To take advantage of our partnership with Editage, visit the Editage website (<ext-link ext-link-type="uri" xlink:href="http://www.editage.com" xlink:type="simple">www.editage.com</ext-link>) and enter referral code PLOSEDIT for a 15% discount off Editage services.  If the PLOS editorial team finds any language issues in text that either AJE or Editage has edited, the service provider will re-edit the text for free.</p><p>Upon resubmission, please provide the following:</p><p>•    The name of the colleague or the details of the professional service that edited your manuscript</p><p>•    A copy of your manuscript showing your changes by either highlighting them or using track changes (uploaded as a *supporting information* file)</p><p>•    A clean copy of the edited manuscript (uploaded as the new *manuscript* file)</p><p>3. Please provide additional information about the patient records used in your retrospective study. Specifically, please ensure that you have discussed whether all data were fully anonymized before you accessed them or whether the IRB or ethics committee waived the requirement for informed consent.</p><p>[Note: HTML markup is below. Please do not edit.]</p><p>Reviewers' comments:</p><p>Reviewer's Responses to Questions</p><p><!-- <font color="black"> --><bold>Comments to the Author</bold></p><p>1. Is the manuscript technically sound, and do the data support the conclusions?</p><p>The manuscript must describe a technically sound piece of scientific research with data that supports the conclusions. Experiments must have been conducted rigorously, with appropriate controls, replication, and sample sizes. The conclusions must be drawn appropriately based on the data presented. <!-- </font> --></p><p>Reviewer #1: Partly</p><p>Reviewer #2: Yes</p><p> **********</p><p><!-- <font color="black"> -->2. Has the statistical analysis been performed appropriately and rigorously? <!-- </font> --></p><p>Reviewer #1: Yes</p><p>Reviewer #2: Yes</p><p> **********</p><p><!-- <font color="black"> -->3. Have the authors made all data underlying the findings in their manuscript fully available?</p><p>The <ext-link ext-link-type="uri" xlink:href="http://www.plosone.org/static/policies.action#sharing" xlink:type="simple">PLOS Data policy</ext-link> requires authors to make all data underlying the findings described in their manuscript fully available without restriction, with rare exception (please refer to the Data Availability Statement in the manuscript PDF file). The data should be provided as part of the manuscript or its supporting information, or deposited to a public repository. For example, in addition to summary statistics, the data points behind means, medians and variance measures should be available. If there are restrictions on publicly sharing data—e.g. participant privacy or use of data from a third party—those must be specified.<!-- </font> --></p><p>Reviewer #1: Yes</p><p>Reviewer #2: Yes</p><p> **********</p><p><!-- <font color="black"> -->4. Is the manuscript presented in an intelligible fashion and written in standard English?</p><p>PLOS ONE does not copyedit accepted manuscripts, so the language in submitted articles must be clear, correct, and unambiguous. Any typographical or grammatical errors should be corrected at revision, so please note any specific errors here.<!-- </font> --></p><p>Reviewer #1: No</p><p>Reviewer #2: Yes</p><p> **********</p><p><!-- <font color="black"> -->5. Review Comments to the Author</p><p>Please use the space provided to explain your answers to the questions above. You may also include additional comments for the author, including concerns about dual publication, research ethics, or publication ethics. (Please upload your review as an attachment if it exceeds 20,000 characters)<!-- </font> --></p><p>Reviewer #1: The authors present a method to compare two commonly used algorithms, AAA and AXB, in treatment planning system for calculating the dose. The authors present the details of calculation results of using both algorithms under different grid sizes. The authors position the manuscript as a paper comparing the dose calculation results for the prostate cancer treatment with ERB, and the authors state that the AXB with 2 mm grid size is an endeavour worth undertaking for achieving the dose calculation accuracy and speed for prostate cancer treatment. However, the authors fail to make a clear and logical comparison for the results of two algorithms on their defined treatment plan. Overall, this manuscript reads like an experiment report with plain and simple analysis. Quite less insight and conclusion are made for the why and how the algorithm selection is made, instead, the authors spend a great deal of efforts to present and data in tables and figures. Moreover, the potential contradictions for reasoning the algorithm selection process are not considered. For instance, the authors state “As a result, the AAA predicted a higher dose to the air cavity within the PTV and could consequently estimate better target coverage than AXB.”, “Therefore, the calculated TCP of AAA was relatively higher than that of AXB, and the TCP differences among the algorithms showed a quite large variations (4.05%), which were statistically significant (p-value &lt;0.01).”, and “However, the HI of AAA was less than that of AXB, and the AAA plan evaluations were more homogeneous than those of AXB. This, specifically, was the reason for the low dose in the air cavity of the PTV when using AXB.</p><p>”, etc., these observations apparently show that AAA can have merits on some perspective that the authors introduced for evaluating its performance. So, does that mean that the better performance of AAA algorithm in these perspectives is not enough to consider applying it to this defined treatment study? If so, what is the premise of making this selection? The authors seem to need to design a well-defined evaluation structure to compare the performance of the algorithm, such as making a rank for different evaluation parameters as the authors introduced in the paper or weighting the performance of the algorithm on these parameters. The authors need to tell the potential readers what the premise of is comparing two algorithms, and why and how to make a reasonable and sound selection for them. Based on the presentation in this manuscript, however, the authors’ effort alone now is sufficient to justify publication as an article for recommending a dose calculation algorithm for the prostate cancer treatment.</p><p>By applying the two algorithms in the prostate treatment with ERB and comparing the performances of the selected algorithm from many perspectives is a good idea, will certainly be of interest to the readership of the Plos One. However, the authors fall short of their goal to provide a systematical and logical comparison of two algorithms. With substantial revisions, including attending to English grammar, a demonstration of the comparison standards, more sound algorithm selection rules, this article could be reconsidered for publication.</p><p>Some minor comments are made in the manuscript, the author may read them.</p><p>Reviewer #2: Grid size is an important parameter in treatment planning. The authors generated VMAT plans using anisotropic analytical algorithm and Acuros XB algorithm with different grid sizes, and compared the dosimetric and radiobiological parameters. The paper is manuscript is well-organized.</p><p>1. Page 4. Materials and methods. Can you provide the weight of these prostate patients? If possible, provide some information about the variations of inter-patient anatomy. Is the anatomy related with the performance of algorithms and grid sizes? Or your selected patients can be representatives for most clinical cases?</p><p>2. line 169. Why did you select AXB1 as reference plans? Why not AAA1? Do you have specific reasons?</p><p>3. Table 3. In V95%, Dmedian, Dmean, Dmin and CN, AXB3 is larger than AXB1 and AXB2.</p><p>AAA1 is mostly larger than AAA3 and AAA5, which makes sense to me, longer calculation time generate more accurate results. Can you explain why AXB has different trends along the grid size, compared with AAA? Shorter time, but more accurate results (AXB3 )?</p><p>4. It would be solid if you have dosimetric measurement or Monte Carlo calculation. Given so many plan calculation data, it is not easy to determine which one is more accurate.</p><p>5. Table 4. Too many data were listed. It would be better to present them in a more readable way, which also leads to a conclusion.</p><p>6. Table 8. Why did you compared AAA 1mm with AXB 3 mm? Why not AAA 1 mm and AXB 1mm? Please explain this.</p><p>7. Figure 2,3,4. It may confuse reader using so many colors in the subtraction image (AXB-AAA). The image resolution is not good enough. Please use a high quality figure or use two figure (without negative dose) to present AXB&gt;AAA and AXB&lt;aaa, respectively.=""&gt;</p><p>**********</p><p><!-- <font color="black"> -->6. If you would like your identity to be revealed to the authors, please include your name here (optional).</p><p>Your name and review will not be published with the manuscript. <!-- </font> --></p><p>Reviewer #1: (No Response)</p><p>Reviewer #2: (No Response)</p><p>[NOTE: If reviewer comments were submitted as an attachment file, they will be attached to this email and accessible via the submission site. Please log into your account, locate the manuscript record, and check for the action link "View Attachments". If this link does not appear, there are no attachment files to be viewed.]</p><p>While revising your submission, please upload your figure files to the Preflight Analysis and Conversion Engine (PACE) digital diagnostic tool, <ext-link ext-link-type="uri" xlink:href="http://pacev2.apexcovantage.com/" xlink:type="simple">http://pacev2.apexcovantage.com/</ext-link>. PACE helps ensure that figures meet PLOS requirements. To use PACE, you must first register as a user. Registration is free. Then, login and navigate to the UPLOAD tab, where you will find detailed instructions on how to use the tool. If you encounter any issues or have any questions when using PACE, please email us at <email xlink:type="simple">figures@plos.org</email>. Please note that Supporting Information files do not need this step.</p><p> &lt;/aaa,&gt;</p>
+<supplementary-material id="pone.0207232.s001" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.s001" xlink:type="simple">
+<label>Attachment</label>
+<caption>
+<p>Submitted filename: <named-content content-type="submitted-filename">PONE-D-18-18642_Review.pdf</named-content></p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0207232.s002" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.s002" xlink:type="simple">
+<label>Attachment</label>
+<caption>
+<p>Submitted filename: <named-content content-type="submitted-filename">Review.docx</named-content></p>
+</caption>
+</supplementary-material>
+</body>
+</sub-article>
+<sub-article article-type="author-comment" id="pone.0207232.r002">
+<front-stub>
+<article-id pub-id-type="doi">10.1371/journal.pone.0207232.r002</article-id>
+<title-group>
+<article-title>Author response to Decision Letter 0</article-title>
+</title-group>
+<related-object document-id="10.1371/journal.pone.0207232" document-id-type="doi" document-type="peer-reviewed-article" id="rel-obj002" link-type="rebutted-decision-letter" object-id="10.1371/journal.pone.0207232.r001" object-id-type="doi" object-type="decision-letter"/>
+<custom-meta-group>
+<custom-meta>
+<meta-name>Submission Version</meta-name>
+<meta-value>1</meta-value>
+</custom-meta>
+</custom-meta-group>
+</front-stub>
+<body>
+<p><named-content content-type="author-response-date">4 Oct 2018</named-content></p>
+<p>[Response to Reviewers]</p><p>Title: Dosimetric and radiobiological comparison in different dose calculation grid sizes between Acuros XB and anisotropic analytical algorithm for prostate VMAT</p><p>Manuscript Number: PONE-D-18-18642</p><p>Reviewer #1: The authors present a method to compare two commonly used algorithms, AAA and AXB, in treatment planning system for calculating the dose. The authors present the details of calculation results of using both algorithms under different grid sizes. The authors position the manuscript as a paper comparing the dose calculation results for the prostate cancer treatment with ERB, and the authors state that the AXB with 2 mm grid size is an endeavour worth undertaking for achieving the dose calculation accuracy and speed for prostate cancer treatment. However, the authors fail to make a clear and logical comparison for the results of two algorithms on their defined treatment plan. Overall, this manuscript reads like an experiment report with plain and simple analysis. Quite less insight and conclusion are made for the why and how the algorithm selection is made, instead, the authors spend a great deal of efforts to present and data in tables and figures. Moreover, the potential contradictions for reasoning the algorithm selection process are not considered. For instance, the authors state “As a result, the AAA predicted a higher dose to the air cavity within the PTV and could consequently estimate better target coverage than AXB.”, “Therefore, the calculated TCP of AAA was relatively higher than that of AXB, and the TCP differences among the algorithms showed a quite large variations (4.05%), which were statistically significant (p-value &lt;0.01).”, and “However, the HI of AAA was less than that of AXB, and the AAA plan evaluations were more homogeneous than those of AXB. This, specifically, was the reason for the low dose in the air cavity of the PTV when using AXB.”, etc., these observations apparently show that AAA can have merits on some perspective that the authors introduced for evaluating its performance. So, does that mean that the better performance of AAA algorithm in these perspectives is not enough to consider applying it to this defined treatment study? If so, what is the premise of making this selection? The authors seem to need to design a well-defined evaluation structure to compare the performance of the algorithm, such as making a rank for different evaluation parameters as the authors introduced in the paper or weighting the performance of the algorithm on these parameters. The authors need to tell the potential readers what the premise of is comparing two algorithms, and why and how to make a reasonable and sound selection for them. Based on the presentation in this manuscript, however, the authors’ effort alone now is sufficient to justify publication as an article for recommending a dose calculation algorithm for the prostate cancer treatment.</p><p>By applying the two algorithms in the prostate treatment with ERB and comparing the performances of the selected algorithm from many perspectives is a good idea, will certainly be of interest to the readership of the Plos One. However, the authors fall short of their goal to provide a systematical and logical comparison of two algorithms. With substantial revisions, including attending to English grammar, a demonstration of the comparison standards, more sound algorithm selection rules, this article could be reconsidered for publication.</p><p>Some minor comments are made in the manuscript, the author may read them.</p><p>Our response:</p><p>Thank you for your thoughtful advice. We compared the dose calculation algorithms embedded in commercialized Eclipse treatment planning system (Varian Medical Systems, Palo Alto, CA, USA), and the prerequisite of this study is that AXB has a more accurate dose calculation capability than AAA. Actually, we've already confirm the AXB and AAA performance in a rectangular acryl phantom with an air cavity by EBT3 film dosimetry in our previous studies. However, unlike the phantom, patients have various anatomy, and the treatment plan is also complicate depending on treatment technique, cancer type, and treatment site. Although AXB has been found to be more accurate in previous studies, due to those complexities in practice, dose calculation performance of both algorithms may be affected, as well as, also AXB dose calculation times are longer than AAA. Those are important clinical considerations in practice. Therefore, we selected the prostate cancer VMAT to investigate the appropriate algorithm for the clinics at a reasonable calculation time without significantly compromising accuracy. Next, we explained the meaning of the problematic sentence again.</p><p>“As a result, the AAA predicted a higher dose to the air cavity within the PTV and could consequently estimate better target coverage than AXB.”</p><p> Our response: As reported in previous studies, it has been confirmed that AAA overestimate the dose when compared to the measured values at the air cavity and air-material interface. In the prostate VMAT with endorectal balloon, PTV may contain a portion of the ballooned rectum, where AAA overestimates the dose. However, this portion did not actually contain much dose, because this was air. Therefore, when using the AAA, target coverage is better than AXB, but in fact it is overestimation.</p><p>“Therefore, the calculated TCP of AAA was relatively higher than that of AXB, and the TCP differences among the algorithms showed a quite large variations (4.05%), which were statistically significant (p-value &lt;0.01).”</p><p> Our response: We used EUD-based TCP models. As described above, AAA predicted doses with overestimated errors in the air inside PTV than for AXB. This leads to the increase in EUD and TCP of AAA compared with AXB.</p><p>“However, the HI of AAA was less than that of AXB, and the AAA plan evaluations were more homogeneous than those of AXB. This, specifically, was the reason for the low dose in the air cavity of the PTV when using AXB.”</p><p> Our response: HI=  (D2- D98)/D50 , where 2, D98, and D50 represent the dose to 2%, 98%, and 50% volume for the PTV. High doses in PTV air caused the increase in D98, leading to the decrease in HI. However, the dose overestimated by AAA in PTV air is not accurate, therefore HI reduction of AAA did not guarantee the quality of a better treatment plan.</p><p>In addition, we have refined some English grammar and expressions and reflected all minor comments.</p><p>Another reminder: The corrected part can be identified as finding the yellow highlight marking in the manuscript. Thank you.</p><p>Reviewer #2: Grid size is an important parameter in treatment planning. The authors generated VMAT plans using anisotropic analytical algorithm and Acuros XB algorithm with different grid sizes, and compared the dosimetric and radiobiological parameters. The paper is manuscript is well-organized.</p><p>1. Page 4. Materials and methods. Can you provide the weight of these prostate patients? If possible, provide some information about the variations of inter-patient anatomy. Is the anatomy related with the performance of algorithms and grid sizes? Or your selected patients can be representatives for most clinical cases?</p><p>Our response:</p><p>The hypothesis that your anatomy can be related to the performance of algorithms and grid size has plenty of potential and is a good idea to improve the quality of this study. However, we did not observe the internal anatomy of the patient and it is difficult to analyze it. Therefore, future studies about the above contents will be planned and carried out. As your comments, we have presented the patient’s weight and related information in the manuscript. Patients who received VMAT for prostate cancer in our institution from April 2016 to April 2017 were randomly selected for analysis. Thank you. </p><p>2. line 169. Why did you select AXB1 as reference plans? Why not AAA1? Do you have specific reasons?</p><p>Our response:</p><p>In this study, we intended to investigate appropriate dose grid size and algorithm for clinical use. We have confirmed that AXB is superior to AAA in dose calculation in heterogeneous media through previous studies. In general, a finer dose grid is recommended in dose calculation for precise and accurate dose prediction. Therefore, the most accurate AXB1 were selected as reference and compared with other cases (AXB2, AXB3, AAA1, AAA3, AAA5). The manuscript was modified to express the above contents well. Thank you.</p><p> 3. Table 3. In V95%, Dmedian, Dmean, Dmin and CN, AXB3 is larger than AXB1 and AXB2. AAA1 is mostly larger than AAA3 and AAA5, which makes sense to me, longer calculation time generate more accurate results. Can you explain why AXB has different trends along the grid size, compared with AAA? Shorter time, but more accurate results (AXB3)?</p><p>Our response:</p><p>Actually, it is difficult to explain clearly the trend of AXB through the results of this study. Possible causes we guess is as follows. It may be derived from the material composition process of the AXB.  AXB required the material composition of voxels in the CT image by converting the Hounsfield unit to material derived mass density value. The automatic material composition is implemented with five biological materials divided according to the Hounsfield unit. When this material composition is performed on each dose voxel, the conversion of CT values might be affected by the size of the grid systematically. To clearly confirm this, well-designed studies should be conducted to assess this effect. This contents will included in discussion section.</p><p>The general consensus was that finer dose calculation grid would produce more accurate dose at the cost of calculation time. Therefore, it is important to determine the optimized number of dose grid at a reasonable calculation time without significantly compromising accuracy. Comparing with a reference (AXB1), AXB3 showed dose calculation accuracy without significantly compromising accuracy, while the accuracy of AAA is clearly reduced. In addition, dose calculation time of AXB3 (262 s) was comparable with that of AAA3 (245 s). Thank you.</p><p>4. It would be solid if you have dosimetric measurement or Monte Carlo calculation. Given so many plan calculation data, it is not easy to determine which one is more accurate.</p><p>Our response:</p><p>Thank you for your valuable comment. We have already compared the dose calculation performance of AXB and AAA in the air cavity by using a phantom with the EBT film measurement in our previous studies. As a result, we confirmed that AXB had more similar results than AAA to film measurements in the air cavity and air-material interface in phantom. However, the influence of dose calculation grids and algorithms were not clearly identified in some clinical cases, and may affect differently the plan quality depending on treatment scheme (planning complexity, treatment techniques, cancer, degree of inhomogeneity, etc.). To clarify the above and to evaluate the clinical usefulness, we intended to extend previous study in prostate cancer VMAT. In this study, we designed plan study to analyze the effects of dose calculation algorithm and grid on prostate VMAT. </p><p> 5. Table 4. Too many data were listed. It would be better to present them in a more readable way, which also leads to a conclusion.</p><p>Our response:</p><p>Thank you for your comment. We decided to change the table to plotting with consideration for readable data representation.</p><p>6. Table 8. Why did you compared AAA 1mm with AXB 3 mm? Why not AAA 1 mm and AXB 1mm? Please explain this.</p><p>Our response: </p><p>The comparisons in Table 8 were as follows. </p><p> (AAA1 vs AXB1), (AAA3 vs AXB3) ; between algorithms with same dose grid</p><p> (AAA1 vs AAA3), (AAA1 vs AAA5) ; between AAAs with different dose grid</p><p> (AXB1 vs AXB2), (AXB1 vs AXB3) ; between AXBs with different dose grid</p><p>Since Table 8 was somewhat confusing, we described more details in the Table caption. Thank you.</p><p>7. Figure 2,3,4. It may confuse reader using so many colors in the subtraction image (AXB-AAA). The image resolution is not good enough. Please use a high quality figure or use two figure (without negative dose) to present AXB&gt;AAA and AXB</p><p>Our response:</p><p>Depending on your comment, we will limit the color of the figure and submit a high-quality figure. In PDF version, the figures showed poor in spite of high-quality of originals. You can download a high-quality figure by clicking the link in the upper right corner of the figure page of the PDF.  We uploaded the figure files to the Preflight Analysis and Conversion Engine (PACE) digital diagnostic tool to ensure that figures meet PLOS requirements. Thank you.</p><p>Another reminder: The corrected part can be identified as finding the yellow highlight marking in the manuscript. Thank you.</p>
+<supplementary-material id="pone.0207232.s003" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0207232.s003" xlink:type="simple">
+<label>Attachment</label>
+<caption>
+<p>Submitted filename: <named-content content-type="submitted-filename">Response to Reviewers.docx</named-content></p>
+</caption>
+</supplementary-material>
+</body>
+</sub-article>
+<sub-article article-type="aggregated-review-documents" id="pone.0207232.r003" specific-use="decision-letter">
+<front-stub>
+<article-id pub-id-type="doi">10.1371/journal.pone.0207232.r003</article-id>
+<title-group>
+<article-title>Decision Letter 1</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<name name-style="western">
+<surname>Zhang</surname>
+<given-names>Qinghui</given-names>
+</name>
+<role>Academic Editor</role>
+</contrib>
+</contrib-group>
+<permissions>
+<copyright-year>2018</copyright-year>
+<copyright-holder>Qinghui Zhang</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<related-object document-id="10.1371/journal.pone.0207232" document-id-type="doi" document-type="article" id="rel-obj003" link-type="peer-reviewed-article"/>
+<custom-meta-group>
+<custom-meta>
+<meta-name>Submission Version</meta-name>
+<meta-value>1</meta-value>
+</custom-meta>
+</custom-meta-group>
+</front-stub>
+<body>
+<p><named-content content-type="letter-date">29 Oct 2018</named-content></p>
+<p>Dosimetric and radiobiological comparison in different dose calculation grid sizes between Acuros XB and anisotropic analytical algorithm for prostate VMAT</p><p>PONE-D-18-18642R1</p><p>Dear Dr. Chung,</p><p>We are pleased to inform you that your manuscript has been judged scientifically suitable for publication and will be formally accepted for publication once it complies with all outstanding technical requirements.</p><p>Within one week, you will receive an e-mail containing information on the amendments required prior to publication. When all required modifications have been addressed, you will receive a formal acceptance letter and your manuscript will proceed to our production department and be scheduled for publication.</p><p>Shortly after the formal acceptance letter is sent, an invoice for payment will follow. To ensure an efficient production and billing process, please log into Editorial Manager at <ext-link ext-link-type="uri" xlink:href="https://www.editorialmanager.com/pone/" xlink:type="simple">https://www.editorialmanager.com/pone/</ext-link>, click the "Update My Information" link at the top of the page, and update your user information. If you have any billing related questions, please contact our Author Billing department directly at authorbilling@plos.org.</p><p>If your institution or institutions have a press office, please notify them about your upcoming paper to enable them to help maximize its impact. If they will be preparing press materials for this manuscript, you must inform our press team as soon as possible and no later than 48 hours after receiving the formal acceptance. Your manuscript will remain under strict press embargo until 2 pm Eastern Time on the date of publication. For more information, please contact onepress@plos.org.</p><p>With kind regards,</p><p>Qinghui Zhang</p><p>Academic Editor</p><p>PLOS ONE</p><p>Additional Editor Comments (optional):</p><p>Reviewers' comments:</p><p>Reviewer's Responses to Questions</p><p><!-- <font color="black"> --><bold>Comments to the Author</bold></p><p>1. If the authors have adequately addressed your comments raised in a previous round of review and you feel that this manuscript is now acceptable for publication, you may indicate that here to bypass the “Comments to the Author” section, enter your conflict of interest statement in the “Confidential to Editor” section, and submit your "Accept" recommendation.<!-- </font> --></p><p>Reviewer #1: All comments have been addressed</p><p>Reviewer #2: All comments have been addressed</p><p> **********</p><p><!-- <font color="black"> -->2. Is the manuscript technically sound, and do the data support the conclusions?</p><p>The manuscript must describe a technically sound piece of scientific research with data that supports the conclusions. Experiments must have been conducted rigorously, with appropriate controls, replication, and sample sizes. The conclusions must be drawn appropriately based on the data presented. <!-- </font> --></p><p>Reviewer #1: Yes</p><p>Reviewer #2: Yes</p><p> **********</p><p><!-- <font color="black"> -->3. Has the statistical analysis been performed appropriately and rigorously? <!-- </font> --></p><p>Reviewer #1: N/A</p><p>Reviewer #2: Yes</p><p> **********</p><p><!-- <font color="black"> -->4. Have the authors made all data underlying the findings in their manuscript fully available?</p><p>The <ext-link ext-link-type="uri" xlink:href="http://www.plosone.org/static/policies.action#sharing" xlink:type="simple">PLOS Data policy</ext-link> requires authors to make all data underlying the findings described in their manuscript fully available without restriction, with rare exception (please refer to the Data Availability Statement in the manuscript PDF file). The data should be provided as part of the manuscript or its supporting information, or deposited to a public repository. For example, in addition to summary statistics, the data points behind means, medians and variance measures should be available. If there are restrictions on publicly sharing data—e.g. participant privacy or use of data from a third party—those must be specified.<!-- </font> --></p><p>Reviewer #1: Yes</p><p>Reviewer #2: Yes</p><p> **********</p><p><!-- <font color="black"> -->5. Is the manuscript presented in an intelligible fashion and written in standard English?</p><p>PLOS ONE does not copyedit accepted manuscripts, so the language in submitted articles must be clear, correct, and unambiguous. Any typographical or grammatical errors should be corrected at revision, so please note any specific errors here.<!-- </font> --></p><p>Reviewer #1: Yes</p><p>Reviewer #2: Yes</p><p> **********</p><p><!-- <font color="black"> -->6. Review Comments to the Author</p><p>Please use the space provided to explain your answers to the questions above. You may also include additional comments for the author, including concerns about dual publication, research ethics, or publication ethics. (Please upload your review as an attachment if it exceeds 20,000 characters)<!-- </font> --></p><p>Reviewer #1: After the revision by the authors, the paper has a sound argument for what they proposed to investigating two well known dose calculation algorithms. Over all, the paper is in a good shape, and I would suggest a publication for this paper in Plos One.</p><p>Reviewer #2: (No Response)</p><p> **********</p><p><!-- <font color="black"> -->7. If you would like your identity to be revealed to the authors, please include your name here (optional).</p><p>Your name and review will not be published with the manuscript. <!-- </font> --></p><p>Reviewer #1: (No Response)</p><p>Reviewer #2: (No Response)</p>
+</body>
+</sub-article>
+<sub-article article-type="editor-report" id="pone.0207232.r004" specific-use="acceptance-letter">
+<front-stub>
+<article-id pub-id-type="doi">10.1371/journal.pone.0207232.r004</article-id>
+<title-group>
+<article-title>Acceptance letter</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<name name-style="western">
+<surname>Zhang</surname>
+<given-names>Qinghui</given-names>
+</name>
+<role>Academic Editor</role>
+</contrib>
+</contrib-group>
+<permissions>
+<copyright-year>2018</copyright-year>
+<copyright-holder>Qinghui Zhang</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<related-object document-id="10.1371/journal.pone.0207232" document-id-type="doi" document-type="article" id="rel-obj004" link-type="peer-reviewed-article"/>
+</front-stub>
+<body>
+<p><named-content content-type="letter-date">1 Nov 2018</named-content></p>
+<p>PONE-D-18-18642R1 </p><p>Dosimetric and radiobiological comparison in different dose calculation grid sizes between Acuros XB and anisotropic analytical algorithm for prostate VMAT </p><p>Dear Dr. Chung:</p><p>I am pleased to inform you that your manuscript has been deemed suitable for publication in PLOS ONE. Congratulations! Your manuscript is now with our production department. </p><p>If your institution or institutions have a press office, please notify them about your upcoming paper at this point, to enable them to help maximize its impact. If they will be preparing press materials for this manuscript, please inform our press team within the next 48 hours. Your manuscript will remain under strict press embargo until 2 pm Eastern Time on the date of publication. For more information please contact onepress@plos.org.</p><p>For any other questions or concerns, please email plosone@plos.org. </p><p>Thank you for submitting your work to PLOS ONE.</p><p>With kind regards,</p><p>PLOS ONE Editorial Office Staff</p><p>on behalf of</p><p>Dr. Qinghui Zhang  </p><p>Academic Editor</p><p>PLOS ONE</p>
+</body>
+</sub-article>
+</article>

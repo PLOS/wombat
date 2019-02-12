@@ -58,7 +58,7 @@
     </tr>
     <xsl:apply-templates />
   </xsl:template>
-  
+
   <xsl:template match="sub-article[@specific-use = 'decision-letter']">
     <tr class="peer-review-accordion-item">
       <xsl:attribute name="data-doi"><xsl:value-of select="current()/@id" /></xsl:attribute>
@@ -73,9 +73,11 @@
               <a class="peer-review-accordion-expander" href="#">Decision Letter</a>
               -
               <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                <span itemprop="name">Nico Donkelope</span>
+                <span itemprop="name">
+                  <!-- decision letter editor -->
+                  <xsl:apply-templates select="front-stub/contrib-group" />, Editor
+                </span>
               </span>
-              , Editor
             </div>
             <div itemprop="reviewBody" class="peer-review-accordion-content">
               <div class="letter__body">
@@ -86,6 +88,12 @@
         </div>
       </td>
     </tr>
+  </xsl:template>
+
+  <xsl:template match="contrib-group">
+    <xsl:value-of select="./contrib/name/given-names" />
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="./contrib/name/surname" />
   </xsl:template>
 
   <xsl:template match="sub-article[@specific-use = 'acceptance-letter']">

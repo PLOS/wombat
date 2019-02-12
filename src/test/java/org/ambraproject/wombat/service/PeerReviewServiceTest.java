@@ -108,8 +108,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     String html = serviceWithMockedContent.asHtml(itemTable);
     Document d = Jsoup.parse(html);
 
-    //assertThat(d.select(".review-history th").get(0).text(), containsString("1 Jun 2018Original Submission"));
-    assertThat(d.select(".review-history th").get(0).text(), containsString("Original Submission"));
+    assertThat(d.select(".review-history th").get(0).text(), containsString("Original Submission1 Jun 2018"));
     assertThat(d.select(".review-history th").get(1).text(), containsString("Revision 1"));
     assertThat(d.select(".review-history th").get(2).text(), containsString("Formally Accepted"));
     assertThat(d.select(".review-history .decision-letter").get(0).text(), containsString("InitialDecisionLetterSampleBody"));
@@ -180,8 +179,15 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     Document doc = Jsoup.parse(html);
 
+    // ORIGINAL SUBMISSION 
+
     assertThat(doc.select(".review-history .revision .letter__title").get(0).text(), containsString("Original Submission"));
     assertThat(doc.select(".review-history .revision .letter__date").get(0).text(), containsString("1 Jun 2018"));
+
+    assertThat(doc.select(".review-history .decision-letter .letter__date").get(0).text(), containsString("12 Sep 2018"));
+    assertThat(doc.select(".review-history .decision-letter span[itemprop=name]").get(0).text(), containsString("Qinghui Zhang, Editor"));
+
+    // REVISION 1
 
     assertThat(doc.select(".review-history .revision .letter__title").get(1).text(), containsString("Revision 1"));
 
@@ -190,6 +196,9 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     Element attachmentElem = authorResponseDiv.select(".review-files .supplementary-material").first();
     assertThat(attachmentElem.text(), containsString("Response to Reviewers.docx"));
+
+    assertThat(doc.select(".review-history .decision-letter .letter__date").get(1).text(), containsString("29 Oct 2018"));
+    assertThat(doc.select(".review-history .decision-letter span[itemprop=name]").get(1).text(), containsString("Qinghui Zhang, Editor"));
   }
 
   private String getFilename(String uuidKey) {

@@ -50,7 +50,7 @@
   zoom: 1;
 }
 
-.600 {
+.bold {
   font-weight: 600;
 }
 
@@ -60,7 +60,7 @@
 
 .grey-on-gold {
   background: #4A1010;
-  color: #ffffff;
+  color: #fff;
 }
 
 .header-style {
@@ -305,42 +305,30 @@
   background: #333;
   color: #fff;
   display: table-cell;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
 }
 
 .buttongroup > button:first-child {
   -webkit-border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 0;
-  -webkit-border-bottom-left-radius: 3px;
-  -webkit-border-top-left-radius: 3px;
   -moz-border-radius-topright: 0;
   -moz-border-radius-bottomright: 0;
-  -moz-border-radius-bottomleft: 3px;
-  -moz-border-radius-topleft: 3px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
-  -moz-background-clip: padding-box;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
 }
 
 .buttongroup > button:last-child {
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
   -webkit-border-bottom-left-radius: 0;
   -webkit-border-top-left-radius: 0;
-  -moz-border-radius-topright: 3px;
-  -moz-border-radius-bottomright: 3px;
   -moz-border-radius-bottomleft: 0;
   -moz-border-radius-topleft: 0;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
-  -moz-background-clip: padding-box;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
 }
 
 .buttongroup > button.active {
@@ -482,7 +470,9 @@
   text-align: center;
 }
 
-.menu-bar li {
+.menu-bar li,
+.menu-rounded li,
+.menu-rounded td {
   -webkit-transition: background-color 100ms linear;
   -moz-transition: background-color 100ms linear;
   -o-transition: background-color 100ms linear;
@@ -490,9 +480,11 @@
   transition: background-color 100ms linear;
   display: table-cell;
   background: #333;
-  border-right: 1px solid #737373;
 }
 
+.menu-bar li {
+    border-right: 1px solid #737373;
+}
 .menu-bar li a {
   color: #fff;
   line-height: 40px;
@@ -521,27 +513,12 @@
 
 .menu-rounded li,
 .menu-rounded td {
-  -webkit-transition: background-color 100ms linear;
-  -moz-transition: background-color 100ms linear;
-  -o-transition: background-color 100ms linear;
-  -ms-transition: background-color 100ms linear;
-  transition: background-color 100ms linear;
-  cursor: pointer;
   font-weight: 600;
   display: table-cell;
   padding: 12px 5px;
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -webkit-border-top-left-radius: 3px;
-  -moz-border-radius-topright: 3px;
-  -moz-border-radius-bottomright: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  -moz-border-radius-topleft: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
   -moz-background-clip: padding-box;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
@@ -816,18 +793,9 @@
 
 .browse-left,
 .browse-right {
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -webkit-border-top-left-radius: 3px;
-  -moz-border-radius-topright: 3px;
-  -moz-border-radius-bottomright: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  -moz-border-radius-topleft: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
   -moz-background-clip: padding-box;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
@@ -871,12 +839,12 @@
 }
 
 .main-accordion .accordion-item > a {
-    min-height: 40px;
-    display: block;
-    padding: 1em;
-    margin: 0 -1em;
-    color: #222;
-    font-weight: 600;
+  min-height: 40px;
+  display: block;
+  padding: 1em;
+  margin: 0 -1em;
+  color: #222;
+  font-weight: 600;
 }
 
 .main-accordion .accordion-item .arrow {
@@ -1261,13 +1229,10 @@
  * on the custom 500 page, so I didn't think it was worth including all of JQuery
  * UI.  If we ever do, though, remove these two. */
 
-.ui-widget {
-}
-
 .ui-widget-header {
-  border: 1px solid #aaaaaa;
+  border: 1px solid #aaa;
   background: #ccc;
-  color: #222222;
+  color: #222;
   font-weight: 600;
 }
 

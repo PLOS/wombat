@@ -33,21 +33,24 @@
       </p>
     </div>
   </xsl:template>
-  
+
   <xsl:template match="revision">
+    <xsl:variable name="revision-row">
+      <xsl:number />  
+    </xsl:variable>
     <tr>
       <th class="revision">
-        <span class="letter__date">
-          <xsl:value-of select=".//named-content[@content-type = 'letter-date']" />
-        </span>
         <xsl:choose>
-          <xsl:when test="position() = 1">
+          <xsl:when test="$revision-row = 1">
             <span class="letter__title">Original Submission</span>
+            <span class="letter__date">
+              <xsl:value-of select="/peer-review/received-date" />
+            </span>
           </xsl:when>
           <xsl:otherwise>
             <span class="letter__title">
               Revision
-              <xsl:value-of select="position() - 1" />
+              <xsl:value-of select="$revision-row - 1" />
             </span>
           </xsl:otherwise>
         </xsl:choose>

@@ -203,4 +203,9 @@
   </xsl:template>
   
   <xsl:template match="named-content" />
+
+  <!-- ignore received date found during template processing.
+       date is referenced directly in revision #0 block --> 
+  <xsl:template match="received-date" />
+
 </xsl:stylesheet>

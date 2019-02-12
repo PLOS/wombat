@@ -27,7 +27,7 @@
     <a class="save-article circular coloration-text-color" data-list-type="individual">x</a>
     -->
 
-      <h5 class="item-title lead-in">${articleType.name}</h5>
+      <small class="item-title lead-in">${articleType.name}</small>
       <h2 class="article-title"><@xform xml=article.title/></h2>
 
       <p class="author-list">
@@ -81,7 +81,7 @@
       || (author.customFootnotes?? && author.customFootnotes?size gt 0) />
       <#if hasMeta>
         <div id="author-meta-${author_index?c}" style="display:none;">
-          <h2 class="author-full-name">${author.fullName}<#if author.onBehalfOf??>, on behalf of ${author.onBehalfOf}</#if></h2>
+          <h5 class="author-full-name">${author.fullName}<#if author.onBehalfOf??>, on behalf of ${author.onBehalfOf}</#if></h5>
           <#if author.equalContrib>
             <p>
               Contributed equally to this work with:
@@ -93,7 +93,7 @@
           <#if author.deceased><p>† Deceased.</p></#if>
           <#if author.corresponding??><p>${author.corresponding}</p></#if>
           <#if author.affiliations?? && author.affiliations?size gt 0>
-            <p><#if author.affiliations?size gt 1>Affiliations:<#else>Affiliation:</#if>
+            <p><#if author.affiliations?size gt 1><small class="lead-in">Affiliations:</small><#else><small class="lead-in">Affiliation:</small></#if>
               <#list author.affiliations as affil>
               ${affil}<#if affil_has_next>, </#if>
               </#list>
@@ -124,7 +124,7 @@
 
     <#macro amendment amendmentObjects amendmentType>
       <div class="retraction red-alert">
-        <span><h3>
+        <span><h5>
           <#nested/>
           <#if amendmentObjects?size == 1>
             <a href="article?id=${amendmentObjects[0].doi}">
@@ -137,7 +137,7 @@
               ${amendmentType} ${amendmentObject_index + 1}</a><#if amendmentObject_has_next>,</#if>
             </#list>
           </#if>
-        </h3></span>
+        </h5></span>
       </div>
     </#macro>
     <#list amendments as amendmentGroup>

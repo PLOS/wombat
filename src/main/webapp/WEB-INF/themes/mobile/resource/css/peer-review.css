@@ -1,55 +1,41 @@
 #peer-review {
-  margin: 0;
+  margin: 0 5%;
+  width: 90%;
+  display: block;
 }
-
 .page-title,
 .section-title {
-  font-size: 24px;
-  line-height: 32px;
+  margin: 1rem 0;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
-  margin: 12px 0 24px;
-  font-family: Arial, sans-serif;
+  line-height: 1.15;
 }
 
 .page-title {
-  margin-left: 2rem;
+  margin-left: -1rem;
+  margin-right: 1rem;
 }
+
 .review-history {
   border-collapse: collapse;
   border-spacing: 0;
   border-top: 1px solid #ddd;
-  width: 100%;
-  margin: 0;
   text-align: left;
 }
 .review-history,
 .supplementary-material,
 .peer-review-open-letter {
-  font-size: 14px;
-  line-height: 18px;
-}
-
-.decision-letter,
-.author-response,
-.acceptance-letter,
-.peer-review-open-letter {
-  padding: 12px 0;
-  margin: 0 2rem;
-}
-
-.letter__body {
-  color: #666;
-}
-
-.letter__label {
-  display: block;
+  line-height: 1.25em;
+  margin: 1rem -1rem;
   width: 100%;
 }
 
-.letter__body p,
-.peer-review-open-letter p,
-.review-files__title {
-  margin: 12px 0;
+.letter__body {
+  color: #222;
+}
+
+.letter__label {
+  display: inline-block;
 }
 
 .review-files__title {
@@ -63,10 +49,10 @@
 .supplementary-material__label {
   font-weight: 600;
   text-transform: uppercase;
-  padding: .5em 1em;
+  padding: 1rem 2rem;
   text-align: center;
-  display: inline-block;
-  line-height: 24px;
+  line-height: 44px;
+  height: 44px;
   -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
   -webkit-border-bottom-left-radius: 3px;
@@ -85,22 +71,38 @@
   border-bottom: 1px solid #ddd;
 }
 
+.revision,
+.letter {
+  padding: 1.25rem 1rem;
+  display: block;
+  width: 100%;
+}
+
 .revision {
   background: #f2f2f2;
-  padding: 12px 2rem;
+}
+
+.letter__date {
+  margin-bottom: .55rem;
 }
 
 .letter__date,
-.letter__title  {
+.letter__title {
   width: 100%;
   display: block;
+  line-height: 1.25em;
   font-weight: 400;
 }
 
-.letter__title {
+.revision .letter__title {
   font-weight: 600;
 }
 
 .peer-review-accordion-content {
   display: none;
+}
+
+.peer-review-accordion-expander {
+  font-weight: 600;
+  text-decoration: underline;
 }

@@ -101,31 +101,32 @@
 
   <div class="full-menu-tout">
     <#macro siteMenuCalloutHeadline>
-      <h4 id="callout-headline" class="coloration-light-text"><#nested/></h4>
+      <p><small id="callout-headline" class="lead-in"><#nested/></small></p>
     </#macro>
     <#macro siteMenuCalloutDescription>
 
-        <h5 id="callout-description"  class="pad-below"><#nested/></h5>
+       <p> <small id="callout-description" class="pad-below"><#nested/></small></p>
 
     </#macro>
     <#macro siteMenuCalloutButton href>
-      <div><a class="rounded coloration-white-on-color" href="<@siteLink path='s/' + href/>" id="callout-button">
+  
+      <p><a class="coloration-light-text" href="<@siteLink path='s/' + href/>" id="callout-button">
         <#nested/>
-      </a></div>
+      </a></p>
     </#macro>
     <#macro siteMenuCalloutSpecial  buttonText buttonTarget linkText linkTarget >
-      <div>
-        <p class="pad-below">
-          <a class="rounded coloration-white-on-color"  id="callout-button" href="${buttonTarget}">
+     
+      <p>
+          <a id="callout-button" class="coloration-light-text" href="${buttonTarget}"> &raquo;
           ${buttonText}
           </a>
         </p>
         <p>
-          <a class="coloration-light-text header-style" id="callout-link" href="${linkTarget}">
+          <a class="rounded coloration-light-text header-style" id="callout-link" href="${linkTarget}">
           ${linkText}
           </a>
         </p>
-      </div>
+     
 
     </#macro>
 

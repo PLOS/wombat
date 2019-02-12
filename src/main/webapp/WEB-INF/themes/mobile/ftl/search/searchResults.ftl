@@ -25,7 +25,7 @@
 <#assign bodyId = 'page-results' />
 
 <@page_header />
-<div id="filter-results-container" class="filter-box coloration-white-on-color" data-function="date-and-sort">
+<div id="filter-results-container" class="filter-box" data-function="date-and-sort">
   <form id="sortAndFilterSearchResults"
   <#if isBrowse??>
         action="<@siteLink handlerName='browseSubjectArea' pathVariables={"subject":subject}/>"
@@ -43,8 +43,8 @@
     <input type="hidden" name="page" value="${RequestParameters.page?html}"/>
   </#if>
     <div class="filter-option date">
-      <h5>Filter by date</h5>
-      <select name="dateRange">
+      <label for="date-range" class="filter-label">Filter by date</label>
+      <select name="dateRange" id="date-range">
       <#list dateRanges as dateRange>
         <option value="${dateRange}" <#if (selectedDateRange == dateRange)>
                 selected="selected"</#if>>${dateRange.description}</option>
@@ -53,8 +53,8 @@
     </div>
 
     <div class="filter-option sort">
-      <h5>Sort by</h5>
-      <select name="sortOrder">
+      <label for="sort-order" class="filter-label">Sort by</label>
+      <select name="sortOrder" id="sort-order">
       <#list sortOrders as sortOrder>
         <option value="${sortOrder}" <#if (selectedSortOrder == sortOrder)>
                 selected="selected"</#if>>${sortOrder.description}</option>
@@ -105,7 +105,7 @@
 
     <#-- We rely here on the fact that search in wombat is always restricted to the current
          journal.  If this changes, we'll have to pass in the site in the href.  -->
-      <a href="${doc.link}" class="article-title">${doc.title}</a>
+      <h5><a href="${doc.link}" class="article-title">${doc.title}</a></h5>
 
       <p class="author-list">
         <#list doc.author_display![] as author>
@@ -114,7 +114,7 @@
       </p>
 
       <p class="citation">
-      ${doc.article_type}<br/>
+      <small class="lead-in">${doc.article_type}</small>
         published <@formatJsonDate date="${doc.publication_date}" format="dd MMM yyyy" />
         | ${doc.journal_name[0]}<br/>
       ${doc.id}<br/>
@@ -123,26 +123,26 @@
         <#assign citations = doc.alm_scopusCiteCount!0 />
         <#assign saves = doc.alm_citeulikeCount!0 + doc.alm_mendeleyCount!0 />
         <#assign shares = doc.alm_twitterCount!0 + doc.alm_facebookCount!0 />
-        <a>Views: ${views}</a> |
-        <a>Citations: ${(citations > 0)?string("Yes", "none")}</a> |
-        <a>Saves: ${(saves > 0)?string("Yes", "none")}</a> |
-        <a>Shares: ${(shares > 0)?string("Yes", "none")}</a>
+        <a><small class="small-caps">Views:</small> <b>${views}</b></a> 
+        <a><small class="small-caps">Citations:</small> <b>${(citations > 0)?string("Yes", "none")}</b></a> 
+        <a><small class="small-caps">Saves:</small> <b>${(saves > 0)?string("Yes", "none")}</b></a> 
+        <a><small class="small-caps">Shares:</small> <b>${(shares > 0)?string("Yes", "none")}</b></a>
       </p><#--end full citation-->
 
       <nav class="article-options-menu clearfix">
         <@siteLink handlerName="figuresPage" queryParameters={"id": doc.id} ; href>
-          <a href="${href}">Figures</a>
+          <a href="${href}" class="article-option">Figures</a>
         </@siteLink>
         <@siteLink handlerName="article" queryParameters={"id": doc.id} ; href>
-          <a href="${href}#abstract">Abstract</a>
+          <a href="${href}#abstract" class="article-option">Abstract</a>
         </@siteLink>
 
       <#-- TODO: what does this link mean?  Do we need to expand all accordion sections?  -->
         <@siteLink handlerName="article" queryParameters={"id": doc.id} ; href>
-          <a href="${href}">Full text</a>
+          <a href="${href}" class="article-option">Full text</a>
         </@siteLink>
         <@siteLink handlerName="assetFile" queryParameters={"type": "printable", "id": doc.id} ; href>
-          <a href="${href}">PDF</a> <#-- TODO: Not all articles have PDF files. May want to suppress if possible. -->
+          <a href="${href}" class="article-option">PDF</a> <#-- TODO: Not all articles have PDF files. May want to suppress if possible. -->
         </@siteLink>
       </nav><#--end article-options-menu-->
 
@@ -161,7 +161,7 @@
 <section id="article-info-window" class="modal-info-window">
 
   <div class="modal-header clearfix">
-    <a class="close coloration-text-color">v</a>
+    <a class="close coloration-text-color">X</a>
   </div>
 
   <div class="modal-content">

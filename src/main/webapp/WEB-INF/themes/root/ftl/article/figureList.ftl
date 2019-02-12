@@ -3,12 +3,14 @@
   <figure class="figure-small">
     <figcaption>
       <#if hasTitle>
+      <h3 class="figure-title">
       ${figure.title}.
+      </h3>
       </#if>
-      <div class="figure-description">
+      <p class="figure-description">
       ${figure.descriptionHtml}
-      </div>
-      <a href="figure?id=${figure.doi}">More »</a>
+      </p>
+      <p><a href="figure?id=${figure.doi}">More &raquo;</a></p>
     </figcaption>
   
     <a class="figure-link" href="figure?id=${figure.doi}">

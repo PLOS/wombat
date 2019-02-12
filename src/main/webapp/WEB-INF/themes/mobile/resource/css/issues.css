@@ -1,31 +1,6 @@
-/*
- * Copyright (c) 2017 Public Library of Science
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- */
-
-
-
 /* Issue */
 
 #container-main {
-  background: #efefef;
 }
 
 #container-main #nav-toc {
@@ -34,14 +9,12 @@
 
 #container-main h1 {
   text-align: center;
-  font-size: 28px;
-  padding-bottom: 5px
+  padding-bottom: 5px;
 }
 
 #issue-articles-container p {
   font-family: inherit;
-  font-weight: normal;
-  font-size: 13px;
+  font-weight: 400;
   line-height: 18px;
   margin-bottom: 3px;
   text-rendering: optimizeLegibility;
@@ -49,14 +22,12 @@
 
 #issue-articles-container #issue-title {
   display: block;
-  font-weight: normal;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 27px;
+  font-weight: 400;
   margin: 12px 0;
 }
 
 #issue-articles-container #issue-title a {
-  color: #333333;
+  color: #333;
 }
 
 #issue-articles-container .cover {
@@ -66,7 +37,7 @@
 
 #issue-articles-container .header {
   text-align: center;
-  background-color: white;
+  background-color: #fff;
   padding: 12px 3%;
 }
 
@@ -76,7 +47,7 @@
 
 #issue-articles-container .detail-container {
   text-align: center;
-  background: white;
+  background: #fff;
 }
 
 #issue-articles-container .detail-container img {
@@ -85,30 +56,26 @@
 
 #issue-articles-container .detail-container .txt {
   padding: 10px 0;
-  background-color: white;
+  background-color: #fff;
   padding: 12px 3%;
   margin-top: -3px;
 }
 
 #issue-articles-container .section {
-  background-color: white;
+  background-color: #fff;
   padding: 18px 3%;
   margin: 18px 0;
 }
 
 #issue-articles-container .section h2 {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 27px;
   margin: 0;
 }
 
 #issue-articles-container .section .item {
-  font-size: 13px;
   margin-top: 27px;
 }
 
 #issue-articles-container .section .item h3 {
-  font-size: 16px;
   margin-bottom: 9px;
 }
 
@@ -117,9 +84,8 @@
 }
 
 #issue-articles-container .section .item h4 {
-  font-size: 13px;
   color: #666;
-  font-weight: bold;
+  font-weight: 600;
   margin-top: 0;
   margin-bottom: 3px;
 }
@@ -127,8 +93,4 @@
 #issue-articles-container .section .item ol li {
   list-style-type: none;
   margin-bottom: 3px;
-}
-
-#issue-articles-container .section .item ol li a {
-  font-size: 14px;
 }

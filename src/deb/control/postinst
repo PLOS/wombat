@@ -6,8 +6,8 @@ set -o errexit
 
 NAME=wombat
 
-TOMCAT7_USER=$NAME
-TOMCAT7_GROUP=$NAME
+TOMCAT8_USER=$NAME
+TOMCAT8_GROUP=$NAME
 HOME=/opt/plos/$NAME
 
 function process_env_template {
@@ -29,17 +29,17 @@ case "$1" in
 
   # create user/group
 
-	if ! getent group "$TOMCAT7_GROUP" > /dev/null 2>&1 ; then
-	    addgroup --system "$TOMCAT7_GROUP" --quiet
+	if ! getent group "$TOMCAT8_GROUP" > /dev/null 2>&1 ; then
+	    addgroup --system "$TOMCAT8_GROUP" --quiet
 	fi
-	if ! id $TOMCAT7_USER > /dev/null 2>&1 ; then
+	if ! id $TOMCAT8_USER > /dev/null 2>&1 ; then
 	    adduser --system --home $HOME --no-create-home \
-		--ingroup "$TOMCAT7_GROUP" --disabled-password --shell /bin/false \
-		"$TOMCAT7_USER"
+		--ingroup "$TOMCAT8_GROUP" --disabled-password --shell /bin/false \
+		"$TOMCAT8_USER"
 	fi
 
 	chmod +x $HOME/bin/*.sh
-	chown -Rh $TOMCAT7_USER:$TOMCAT7_GROUP $HOME
+	chown -Rh $TOMCAT8_USER:$TOMCAT8_GROUP $HOME
 
 	echo "Fetching configuration from debconf"
 	GET="db_get [[artifactId]]"
@@ -49,7 +49,6 @@ case "$1" in
   # Fetching configuration from debconf
 
   $GET/wombat_port && export WOMBAT_PORT=$RET
-  $GET/control_port && export CONTROL_PORT=$RET
   $GET/tomcat_admin_user && export TOMCAT_ADMIN_USER=$RET
   $GET/tomcat_admin_password && export TOMCAT_ADMIN_PASSWORD=$RET
 

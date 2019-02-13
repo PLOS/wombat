@@ -20,13 +20,13 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<!-- 1/4/12: nlm contains xml version, we added encoding -->
+<!-- nlm contains xml version, we added encoding -->
 
-<!-- 1/4/12: Ambra-specific stylesheet. contains Ambra-specific templates and modified nlm templates. imports and overrides nlm. -->
+<!-- Ambra-specific stylesheet. contains Ambra-specific templates and modified nlm templates. imports and overrides nlm. -->
 
-<!-- 1/4/12: nlm contains informational comments (system, purpose, input, output) -->
+<!-- nlm contains informational comments (system, purpose, input, output) -->
 
-<!-- 1/4/12: Ambra modifications -->
+<!-- Ambra modifications -->
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -37,19 +37,19 @@
                 xmlns:dc="http://purl.org/dc/elements/1.1/"
                 exclude-result-prefixes="util xsl xlink mml xs aml dc">
 
-  <!-- 1/4/12: Ambra-specific instruction. import nlm -->
+  <!-- Ambra-specific instruction. import nlm -->
   <xsl:import href="jpub3-html.xsl"/>
 
-  <!-- 1/4/12: Ambra modifications, we output doctype statement via templates -->
+  <!-- Ambra modifications, we output doctype statement via templates -->
   <xsl:output doctype-public=" " doctype-system=" "
               method="html"
               indent="no"
               encoding="UTF-8"
               omit-xml-declaration="yes"/>
 
-  <!-- 1/4/12: nlm contains strip-space, preserve-space, param (css), and keys (element-by-id, xref-by-rid) -->
+  <!-- nlm contains strip-space, preserve-space, param (css), and keys (element-by-id, xref-by-rid) -->
 
-  <!-- 1/4/12: Ambra-specific global param (pub config, passed into stylesheet from elsewhere in the pipeline) -->
+  <!-- Ambra-specific global param (pub config, passed into stylesheet from elsewhere in the pipeline) -->
   <xsl:param name="pubAppContext"/>
 
   <!-- 11/26/14: Secondary XML data source generated from xml in wombat
@@ -62,28 +62,28 @@
   <!--  ROOT TEMPLATE - HANDLES HTML FRAMEWORK                       -->
   <!-- ============================================================= -->
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="/">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="make-html-header"/>
 
   <!-- ============================================================= -->
   <!--  TOP LEVEL                                                    -->
   <!-- ============================================================= -->
 
-  <!-- 1/4/12: nlm contains template article, which calls make-article -->
+  <!-- nlm contains template article, which calls make-article -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="sub-article | response"/>
 
   <!-- ============================================================= -->
   <!--  "make-article" for the document architecture                 -->
   <!-- ============================================================= -->
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template name="version-notes">
     <div class="amendment-retraction">
     <xsl:choose>
@@ -135,10 +135,10 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use (we replace with make-front) -->
+  <!-- suppress, we don't use (we replace with make-front) -->
   <xsl:template match="front | front-stub"/>
 
-  <!-- 1/4/12: Ambra-specific template (creates author byline, affiliations, abstracts)  -->
+  <!-- Ambra-specific template (creates author byline, affiliations, abstracts)  -->
   <xsl:template name="make-front">
     <xsl:call-template name="newline1"/>
     <!-- change context to front/article-meta -->
@@ -156,7 +156,7 @@
     <xsl:call-template name="newline2"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (creates article metadata) -->
+  <!-- Ambra-specific template (creates article metadata) -->
   <xsl:template name="make-article-meta">
     <xsl:for-each select="front/article-meta">
       <!-- article citation -->
@@ -174,7 +174,7 @@
                   <xsl:apply-templates select="collab"/>
                 </xsl:when>
                 <xsl:otherwise>
-                  <!-- 1/4/12: we'll need to adjust this when we add name-style eastern-->
+                  <!-- we'll need to adjust this when we add name-style eastern-->
                   <xsl:apply-templates select="name/surname"/>
                   <xsl:if test="name/given-names">
                     <xsl:text> </xsl:text>
@@ -358,7 +358,7 @@
     </xsl:for-each>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (creates editors summary) -->
+  <!-- Ambra-specific template (creates editors summary) -->
   <xsl:template name="make-editors-summary">
     <xsl:for-each select="front/article-meta/abstract[@abstract-type='editor']">
       <div class="box">
@@ -368,7 +368,7 @@
     </xsl:for-each>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (replaces for-each select="body" section in nlm make-article) -->
+  <!-- Ambra-specific template (replaces for-each select="body" section in nlm make-article) -->
   <xsl:template name="make-body">
     <xsl:for-each select="body">
       <xsl:call-template name="newline1"/>
@@ -388,14 +388,14 @@
     </xsl:for-each>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="footer-metadata"/>
 
   <!-- ============================================================= -->
   <!--  METADATA PROCESSING                                          -->
   <!-- ============================================================= -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="journal-id" mode="metadata"/>
   <xsl:template match="journal-title-group" mode="metadata"/>
   <xsl:template match="issn" mode="metadata"/>
@@ -425,17 +425,17 @@
   </xsl:template>
 
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="license" mode="metadata">
     <xsl:apply-templates mode="metadata"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="license-p" mode="metadata">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="history/date" mode="metadata"/>
   <xsl:template match="pub-date" mode="metadata"/>
   <xsl:template name="volume-info"/>
@@ -474,48 +474,48 @@
   <xsl:template match="principal-award-recipient" mode="metadata"/>
   <xsl:template match="principal-investigator" mode="metadata"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="funding-statement" mode="metadata">
     <strong>Funding:&#032;</strong>
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="open-access" mode="metadata"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="title-group" mode="metadata">
     <xsl:apply-templates select="subtitle" mode="metadata"/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use (article title comes from ambra) -->
+  <!-- suppress, we don't use (article title comes from ambra) -->
   <xsl:template match="title-group/article-title" mode="metadata"/>
 
-  <!-- 1/4/12: Ambra-specific template (pushes article-title children, enables display of italics in citation) -->
+  <!-- Ambra-specific template (pushes article-title children, enables display of italics in citation) -->
   <xsl:template match="title-group/article-title" mode="metadata-citation">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (part 1: fixes stray spaces in article citation, accounting for mixed element content) -->
+  <!-- Ambra-specific template (part 1: fixes stray spaces in article citation, accounting for mixed element content) -->
   <xsl:template match="title-group/article-title/node()[last()][self::text()]" mode="metadata-citation">
     <xsl:variable name="x" select="normalize-space(concat(.,'x'))"/>
     <xsl:value-of select="substring(normalize-space(concat('x',.)),2)"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (part 2: fixes stray spaces in article citation, accounting for mixed element content) -->
-  <!-- 1/4/12: added priority to disambiguate from "title-group/article-title" above -->
+  <!-- Ambra-specific template (part 2: fixes stray spaces in article citation, accounting for mixed element content) -->
+  <!-- added priority to disambiguate from "title-group/article-title" above -->
   <xsl:template match="title-group/article-title[not(*)]" mode="metadata-citation" priority="1">
     <xsl:value-of select="normalize-space(.)"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="title-group/subtitle" mode="metadata">
     <h2>
       <xsl:apply-templates/>
     </h2>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="title-group/trans-title-group" mode="metadata"/>
   <xsl:template match="trans-title-group/trans-title" mode="metadata"/>
   <xsl:template match="title-group/alt-title" mode="metadata"/>
@@ -524,20 +524,20 @@
   <xsl:template name="contrib-identify"/>
   <xsl:template match="anonymous" mode="metadata"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="collab" mode="metadata">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (suppresses group author contributor names in author byline) -->
+  <!-- Ambra-specific template (suppresses group author contributor names in author byline) -->
   <xsl:template match="collab/contrib-group"/>
 
-  <!-- 1/4/12: Ambra modifications (formats names in author byline) -->
+  <!-- Ambra modifications (formats names in author byline) -->
   <xsl:template match="contrib/name" mode="metadata">
     <xsl:call-template name="write-name"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (creates first names in author byline) -->
+  <!-- Ambra-specific template (creates first names in author byline) -->
   <xsl:template match="given-names" mode="contrib-abbr">
     <xsl:call-template name="abbreviate-name">
       <xsl:with-param name="n" select="."/>
@@ -545,7 +545,7 @@
     <xsl:text> </xsl:text>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (creates period after initial in given-name in author byline) -->
+  <!-- Ambra-specific template (creates period after initial in given-name in author byline) -->
   <xsl:template name="abbreviate-name">
     <xsl:param name="n"/>
     <xsl:variable name="x" select="normalize-space($n)"/>
@@ -556,7 +556,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (adds xref symbols to author byline) -->
+  <!-- Ambra-specific template (adds xref symbols to author byline) -->
   <xsl:template match="name" mode="metadata-inline">
     <xsl:apply-templates select="../xref[@ref-type='aff']" mode="metadata-inline"/>
     <xsl:if test="../@equal-contrib='yes'">
@@ -576,12 +576,12 @@
     <xsl:apply-templates select="../xref[@ref-type='author-notes']" mode="metadata-inline"/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="contrib-amend"/>
   <xsl:template match="degrees" mode="metadata-inline"/>
   <xsl:template match="xref" mode="metadata-inline"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="xref[@ref-type='author-notes']" mode="metadata-inline">
     <xsl:choose>
       <xsl:when test="not(.//italic) and not (.//sup)">
@@ -611,7 +611,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="xref[@ref-type='corresp']" mode="metadata-inline">
     <xsl:if test="./sup">
       <sup>
@@ -625,7 +625,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="xref[@ref-type='aff']" mode="metadata-inline">
     <xsl:if test="./sup">
       <sup>
@@ -641,7 +641,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="xref[@ref-type='fn']" mode="metadata-inline">
     <xsl:if test="./sup">
       <sup>
@@ -657,27 +657,27 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="contrib-info"/>
   <xsl:template mode="metadata" match="address[not(addr-line) or not(*[2])]"/>
   <xsl:template match="address" mode="metadata"/>
   <xsl:template mode="metadata" priority="2" match="address/*"/>
 
-  <!-- 1/4/12: Ambra-specific template (part 1: fixes stray spaces in addr-line after enabling display of italics and other formatting, accounting for mixed element content) -->
+  <!-- Ambra-specific template (part 1: fixes stray spaces in addr-line after enabling display of italics and other formatting, accounting for mixed element content) -->
   <xsl:template match="addr-line/node()[last()][self::text()]">
     <xsl:variable name="x" select="normalize-space(concat(.,'x'))"/>
     <xsl:value-of select="substring(normalize-space(concat('x',.)),2)"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (part 2: fixes stray spaces in addr-line after enabling display of italics and other formatting, accounting for mixed element content) -->
+  <!-- Ambra-specific template (part 2: fixes stray spaces in addr-line after enabling display of italics and other formatting, accounting for mixed element content) -->
   <xsl:template match="addr-line[not(*)]">
     <xsl:value-of select="normalize-space(.)"/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="aff" mode="metadata"/>
 
-  <!-- 1/4/12: Ambra-specific template (creates editor list in citation) -->
+  <!-- Ambra-specific template (creates editor list in citation) -->
   <xsl:template name="editors-list">
     <xsl:param name="r"/>
     <xsl:if test="$r">
@@ -729,12 +729,12 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="aff" mode="editor-metadata">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (creates author initials in citation) -->
+  <!-- Ambra-specific template (creates author initials in citation) -->
   <xsl:template name="makeInitials">
     <xsl:param name="x"/>
     <xsl:for-each select="tokenize($x,'\s+')">
@@ -752,11 +752,11 @@
     </xsl:for-each>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="author-comment" mode="metadata"/>
   <xsl:template match="bio" mode="metadata"/>
 
-  <!-- 1/4/12: Ambra modifications  -->
+  <!-- Ambra modifications  -->
   <xsl:template match="on-behalf-of" mode="metadata">
     <xsl:if test="not(../following-sibling::contrib)">
       <xsl:text>, </xsl:text>
@@ -764,11 +764,11 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="role" mode="metadata"/>
   <xsl:template match="author-notes" mode="metadata"/>
 
-  <!-- 1/4/12: Ambra modifications (creates corresponding author footnote) -->
+  <!-- Ambra modifications (creates corresponding author footnote) -->
   <xsl:template match="author-notes/corresp" mode="metadata">
     <xsl:element name="a">
       <xsl:attribute name="name">
@@ -779,10 +779,10 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use. removed author-notes/fn from list, we process independently -->
+  <!-- suppress, we don't use. removed author-notes/fn from list, we process independently -->
   <xsl:template match="author-notes/p" mode="metadata"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="author-notes/fn[@fn-type='current-aff']" mode="metadata">
     <xsl:element name="a">
       <xsl:attribute name="name">
@@ -792,7 +792,7 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="author-notes/fn[@fn-type='deceased']" mode="metadata">
     <xsl:element name="a">
       <xsl:attribute name="name">
@@ -802,7 +802,7 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="author-notes/fn[@fn-type='other']" mode="metadata">
     <xsl:element name="a">
       <xsl:attribute name="name">
@@ -812,7 +812,7 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="supplementary-material" mode="metadata"/>
   <xsl:template match="article-categories" mode="metadata"/>
   <xsl:template match="article-categories/subj-group" mode="metadata"/>
@@ -843,7 +843,7 @@
   <!--  REGULAR (DEFAULT) MODE                                       -->
   <!-- ============================================================= -->
 
-  <!-- 1/4/12: Ambra-specific template (creates section numbering in body) -->
+  <!-- Ambra-specific template (creates section numbering in body) -->
   <xsl:template name="make-section-id">
     <xsl:attribute name="id">
       <xsl:value-of select="concat('section',count(preceding-sibling::sec)+1)"/>
@@ -858,7 +858,7 @@
     <xsl:attribute name="class">section toc-section body-section</xsl:attribute>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="*/sec">
     <xsl:call-template name="newline1"/>
     <div>
@@ -888,19 +888,19 @@
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="sec">
     <xsl:apply-templates/>
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="*" mode="drop-title"/>
   <xsl:template match="title | sec-meta" mode="drop-title"/>
   <xsl:template match="app"/>
 
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="ref-list" name="ref-list">
     <div class="toc-section">
       <xsl:choose>
@@ -1085,7 +1085,7 @@
     </div>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="sec-meta"/>
   <xsl:template match="sec-meta/contrib-group"/>
   <xsl:template match="sec-meta/kwd-group"/>
@@ -1094,12 +1094,12 @@
   <!--  Titles                                                       -->
   <!-- ============================================================= -->
 
-  <!-- 1/4/12: MAIN TITLE TEMPLATES  -->
+  <!-- MAIN TITLE TEMPLATES  -->
 
-  <!-- 1/4/12: suppress, we don't use. removed abstract/title, body/*/title, back[not(title)]/*/title from list (we process independently) -->
+  <!-- suppress, we don't use. removed abstract/title, body/*/title, back[not(title)]/*/title from list (we process independently) -->
   <xsl:template name="main-title" match="back/title"/>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="abstract/title">
     <xsl:call-template name="newline1"/>
     <h2>
@@ -1108,7 +1108,7 @@
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (creates main level section headings) -->
+  <!-- Ambra-specific template (creates main level section headings) -->
   <xsl:template match="body/sec/title">
     <!-- only output an h3 if the body/sec/title has content -->
     <xsl:if test="string(.)">
@@ -1118,12 +1118,12 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: SECTION TITLE TEMPLATES -->
+  <!-- SECTION TITLE TEMPLATES -->
 
-  <!-- 1/4/12: suppress, we don't use. removed abstract/sec/title, body/*/*/title, back[not(title)]/*/*/title from list (we process independently) -->
+  <!-- suppress, we don't use. removed abstract/sec/title, body/*/*/title, back[not(title)]/*/*/title from list (we process independently) -->
   <xsl:template name="section-title" match="back[title]/*/title"/>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="abstract/sec/title">
     <xsl:call-template name="newline1"/>
     <!-- only output an h3 if the abstract title has content -->
@@ -1135,7 +1135,7 @@
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template name="abstract-title">
     <xsl:variable name="idx" select="count(preceding-sibling::abstract)"/>
     <xsl:variable name="abs_id">abstract<xsl:value-of select="$idx"/>
@@ -1182,7 +1182,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (creates article second-level heading) -->
+  <!-- Ambra-specific template (creates article second-level heading) -->
   <xsl:template match="body/sec/sec/title">
     <xsl:call-template name="newline1"/>
     <h3>
@@ -1191,13 +1191,13 @@
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
-  <!-- 1/4/12: SUBSECTION TITLES -->
+  <!-- SUBSECTION TITLES -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="subsection-title"
                 match="abstract/*/*/title | back[title]/*/*/title | back[not(title) and not(ack)]/*/*/*/title"/>
 
-  <!-- 1/4/12: Ambra-specific template (creates article third-level heading) -->
+  <!-- Ambra-specific template (creates article third-level heading) -->
   <xsl:template match="body/sec/sec/sec/title">
     <h4>
       <xsl:apply-templates/>
@@ -1205,9 +1205,9 @@
     </h4>
   </xsl:template>
 
-  <!-- 1/4/12: BLOCK AND MISC TITLES -->
+  <!-- BLOCK AND MISC TITLES -->
 
-  <!-- 1/4/12: suppress, we don't use. removed boxed-text/title from list (we process independently) -->
+  <!-- suppress, we don't use. removed boxed-text/title from list (we process independently) -->
   <xsl:template name="block-title" priority="2"
                 match="list/title | def-list/title | boxed-text/title | verse-group/title | glossary/title | kwd-group/title"/>
 
@@ -1220,7 +1220,7 @@
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="ref-list[not(ancestor::back)]/title">
     <a>
       <xsl:attribute name="id">
@@ -1236,7 +1236,7 @@
     </h2>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="back/ref-list/title">
     <a>
       <xsl:attribute name="id">
@@ -1265,14 +1265,14 @@
     </h2>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="notes/sec/title">
     <h2>
       <xsl:value-of select="."/>
     </h2>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications (creates any other titles not already specified) -->
+  <!-- Ambra modifications (creates any other titles not already specified) -->
   <xsl:template match="title">
     <xsl:choose>
       <!-- if there's a title, use it -->
@@ -1293,24 +1293,24 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="subtitle"/>
 
   <!-- ============================================================= -->
   <!--  Figures, lists and block-level objects                       -->
   <!-- ============================================================= -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="address"/>
   <xsl:template name="address-line"/>
   <xsl:template match="address/*"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="alternatives">
     <xsl:apply-templates select="graphic"/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template
     match="array | disp-formula-group | fig-group | fn-group | license | long-desc | open-access | sig-block | table-wrap-foot | table-wrap-group"/>
 
@@ -1320,10 +1320,10 @@
     </p>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use (removed fig, table-wrap, and boxed-text here, process them independently) -->
+  <!-- suppress, we don't use (removed fig, table-wrap, and boxed-text here, process them independently) -->
   <xsl:template match="chem-struct-wrap"/>
 
-  <!-- 1/4/12: Ambra-specific template (creates box for figs/tables within article body, creates slideshow window) -->
+  <!-- Ambra-specific template (creates box for figs/tables within article body, creates slideshow window) -->
   <xsl:template match="fig | table-wrap">
     <xsl:variable name="figId">
       <xsl:value-of select="@id"/>
@@ -1547,7 +1547,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="boxed-text">
     <xsl:element name="a">
       <xsl:attribute name="name">
@@ -1564,20 +1564,20 @@
     </xsl:element>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="caption">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="caption/title">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use (removed disp-formula here, handle it separately) -->
+  <!-- suppress, we don't use (removed disp-formula here, handle it separately) -->
   <xsl:template match="statement"/>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="disp-formula">
     <xsl:element name="a">
       <xsl:attribute name="name">
@@ -1595,12 +1595,12 @@
     </span>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="glossary"/>
   <xsl:template match="textual-form"/>
   <xsl:template match="glossary/glossary"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="graphic | inline-graphic">
     <xsl:element name="img">
       <xsl:if test="@xlink:href">
@@ -1617,9 +1617,9 @@
     </xsl:element>
   </xsl:template>
 
-  <!-- 1/4/12: nlm contains alt-text (suppressed here, processed within graphic|inline-graphic) -->
+  <!-- nlm contains alt-text (suppressed here, processed within graphic|inline-graphic) -->
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
     <xsl:template match="list">
         <xsl:call-template name="newline1"/>
         <xsl:if test="title">
@@ -1645,12 +1645,12 @@
         </xsl:choose>
     </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template priority="2" mode="list" match="list[@list-type='simple' or list-item/label]"/>
   <xsl:template match="list[@list-type='bullet' or not(@list-type)]" mode="list"/>
   <xsl:template match="list" mode="list"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="list-item">
     <xsl:call-template name="newline1"/>
     <li>
@@ -1663,7 +1663,7 @@
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="list-item/label">
     <span class="list-label">
       <xsl:apply-templates/>
@@ -1671,12 +1671,12 @@
     </span>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="media"/>
   <xsl:template match="license-p"/>
-  <!-- 1/4/12: removed p from list, we process independently -->
+  <!-- removed p from list, we process independently -->
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <!--if this changes, the two templates below, "preSiClass", and "postSiClass" have to change, too-->
   <xsl:template match="p">
     <a>
@@ -1712,10 +1712,10 @@
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="@content-type"/>
 
-  <!-- 1/4/12: Ambra-specific template (overrides nlm list-item/p[not(preceding-sibling::*[not(self::label)])]) -->
+  <!-- Ambra-specific template (overrides nlm list-item/p[not(preceding-sibling::*[not(self::label)])]) -->
   <xsl:template match="list-item/p">
     <xsl:apply-templates/>
     <xsl:if test="following-sibling::p">
@@ -1723,16 +1723,16 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: nlm contains list-item/p[not(preceding-sibling::*[not(self::label)])]". we override with list-item/label, can't suppress, causes p to disappear -->
+  <!-- nlm contains list-item/p[not(preceding-sibling::*[not(self::label)])]". we override with list-item/label, can't suppress, causes p to disappear -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="product"/>
   <xsl:template match="permissions"/>
   <xsl:template match="copyright-statement"/>
   <xsl:template match="def-list"/>
   <xsl:template match="def-item"/>
 
-  <!-- 1/4/12: Ambra-specific template (creates def-list in the body, differs from def-list in metadata glossary) -->
+  <!-- Ambra-specific template (creates def-list in the body, differs from def-list in metadata glossary) -->
   <xsl:template match="body//def-list">
     <dl>
       <xsl:for-each select="def-item">
@@ -1746,36 +1746,36 @@
     </dl>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="def-item//p">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="def-item//named-content">
     <span class="{@content-type}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="def-item//sup | def-item//sub | def-item//em | def-item//strong">
     <xsl:element name="{local-name()}">
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="term">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="def">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="disp-quote">
     <xsl:call-template name="newline1"/>
     <blockquote>
@@ -1785,7 +1785,7 @@
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="preformat">
     <pre>
       <xsl:call-template name="assign-id"/>
@@ -1793,11 +1793,11 @@
     </pre>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="ref"/>
   <xsl:template match="ref/*" priority="-1"/>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="mixed-citation">
     <xsl:param name="doi"/>
     <xsl:apply-templates/>
@@ -1807,7 +1807,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (formats mixed-citation names, most mixed-citation formatting is in the xml) -->
+  <!-- Ambra-specific template (formats mixed-citation names, most mixed-citation formatting is in the xml) -->
   <xsl:template match="mixed-citation/name">
     <xsl:apply-templates select="surname"/>
     <xsl:text> </xsl:text>
@@ -1818,7 +1818,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific templates for legacy references (element-citation: journal/no citation, book/other, supporting templates -->
+  <!-- Ambra-specific templates for legacy references (element-citation: journal/no citation, book/other, supporting templates -->
 
   <!-- 6/8/12: Ambra-specific template: legacy nlm-citation references (need separate transform to account for different tag order) -->
   <xsl:template match="nlm-citation">
@@ -1832,7 +1832,7 @@
     <xsl:call-template name="citationComment"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template: legacy references (publication-type journal and no publication-type) -->
+  <!-- Ambra-specific template: legacy references (publication-type journal and no publication-type) -->
   <xsl:template match="element-citation">
     <xsl:apply-templates select="person-group" mode="book"/>
     <xsl:apply-templates select="collab" mode="book"/>
@@ -1842,7 +1842,7 @@
     <xsl:call-template name="citationComment"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template: legacy references (publication-types book and other) -->
+  <!-- Ambra-specific template: legacy references (publication-types book and other) -->
   <!-- 6/23/12: add nlm-citation and page-count for nlm-citation-->
   <xsl:template match="element-citation[@publication-type='book'] | element-citation[@publication-type='other'] |
                          nlm-citation[@publication-type='book'] | nlm-citation[@publication-type='other']">
@@ -1911,7 +1911,7 @@
     <xsl:call-template name="citationComment"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="year" mode="none">
     <xsl:choose>
       <xsl:when test="../month">
@@ -1926,14 +1926,14 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <!-- 6/8/12: comment out call-template: don't need? -->
   <xsl:template match="article-title" mode="none">
     <xsl:apply-templates/>
     <!--<xsl:call-template name="punctuation" />  -->
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="source" mode="none">
     <xsl:text> </xsl:text>
     <xsl:apply-templates/>
@@ -1957,7 +1957,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="volume" mode="none">
     <xsl:text> </xsl:text>
     <xsl:apply-templates/>
@@ -1966,7 +1966,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="issue" mode="none">
     <xsl:if test="not(starts-with(normalize-space(),'('))">
       <xsl:text>(</xsl:text>
@@ -1985,13 +1985,13 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="elocation-id" mode="none">
     <xsl:apply-templates/>
     <xsl:text>. </xsl:text>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="fpage" mode="none">
     <xsl:apply-templates/>
     <xsl:choose>
@@ -2004,13 +2004,13 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="lpage" mode="none">
     <xsl:apply-templates/>
     <xsl:text>.</xsl:text>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="publisher-loc" mode="none">
     <xsl:apply-templates/>
     <xsl:choose>
@@ -2023,7 +2023,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="publisher-name" mode="none">
     <xsl:apply-templates/>
     <xsl:text>. </xsl:text>
@@ -2047,12 +2047,12 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="person-group" mode="book">
     <xsl:apply-templates mode="book"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="person-group[@person-group-type='editor']" mode="book">
     <xsl:text> </xsl:text>
     <xsl:apply-templates mode="book"/>
@@ -2066,7 +2066,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="name" mode="book">
     <xsl:apply-templates select="surname"/>
     <xsl:text> </xsl:text>
@@ -2091,7 +2091,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="collab" mode="book">
     <xsl:apply-templates/>
     <xsl:if test="following-sibling::collab">
@@ -2099,7 +2099,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="etal" mode="book">
     <xsl:text>et al.</xsl:text>
     <xsl:choose>
@@ -2117,7 +2117,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="year" mode="book">
     <xsl:choose>
       <xsl:when test="../month">
@@ -2132,7 +2132,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="month" mode="book">
     <xsl:variable name="month" select="."/>
     <xsl:choose>
@@ -2159,34 +2159,34 @@
     <xsl:text>. </xsl:text>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="article-title" mode="book">
     <xsl:apply-templates/>
     <xsl:call-template name="punctuation"/>
     <xsl:text> </xsl:text>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="article-title" mode="editedbook">
     <xsl:text> </xsl:text>
     <xsl:apply-templates/>
     <xsl:call-template name="punctuation"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="source" mode="book">
     <xsl:apply-templates/>
     <xsl:call-template name="punctuation"/>
     <xsl:text> </xsl:text>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="volume | edition" mode="book">
     <xsl:apply-templates/>
     <xsl:text>. </xsl:text>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="fpage" mode="book">
     <xsl:if test="../lpage">
       <!-- handle old journal articles that were coded as type other, but actually had a volume, source and page numbers -->
@@ -2203,7 +2203,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="lpage" mode="book">
     <xsl:if test="../fpage">
       <xsl:apply-templates/>
@@ -2211,7 +2211,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="size" mode="book">
     <xsl:apply-templates/>
     <xsl:text> p.</xsl:text>
@@ -2258,7 +2258,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template name="citationComment">
     <!-- only output a single comment tag that appears as the very last child of the citation -->
     <xsl:variable name="x" select="child::comment[position()=last()]"/>
@@ -2268,16 +2268,16 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: end legacy reference section -->
+  <!-- end legacy reference section -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="ref/note" priority="2"/>
   <xsl:template
     match="app/related-article | app-group/related-article | bio/related-article | body/related-article | boxed-text/related-article | disp-quote/related-article | glossary/related-article | ref-list/related-article | sec/related-article"/>
   <xsl:template
     match="app/related-object | app-group/related-object | bio/related-object | body/related-object | boxed-text/related-object | disp-quote/related-object | glossary/related-object | ref-list/related-object | sec/related-object"/>
   <xsl:template match="speech"/>
-  <!-- 1/4/12: speech/speaker mode speech already suppressed in nlm -->
+  <!-- speech/speaker mode speech already suppressed in nlm -->
   <xsl:template match="speech/p" mode="speech"/>
   <xsl:template match="speech/speaker"/>
 
@@ -2292,7 +2292,7 @@
     <xsl:call-template name="supplementary-material"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="supplementary-material" name="supplementary-material">
     <div class="supplementary-material">
     <xsl:variable name="the-label">
@@ -2399,10 +2399,10 @@
   </div>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="tex-math"/>
 
-  <!-- 1/4/12: Ambra modifications (remove mml prefix from all math elements, required for MathJax to work) -->
+  <!-- Ambra modifications (remove mml prefix from all math elements, required for MathJax to work) -->
   <xsl:template match="mml:*">
     <xsl:element name="{local-name()}">
       <xsl:copy-of copy-namespaces="no" select="@*"/>
@@ -2410,37 +2410,37 @@
     </xsl:element>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="verse-group"/>
   <xsl:template match="verse-line"/>
 
-  <!-- 1/4/12: suppress, we don't use. (removed aff/label, we process independently) -->
+  <!-- suppress, we don't use. (removed aff/label, we process independently) -->
   <xsl:template match="corresp/label | chem-struct/label | element-citation/label | mixed-citation/label"/>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="aff/label">
     <strong>
       <xsl:apply-templates/>
     </strong>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use. (removed fn, fig, supplementary-material, disp-formula, table-wrap, we process independently) -->
+  <!-- suppress, we don't use. (removed fn, fig, supplementary-material, disp-formula, table-wrap, we process independently) -->
   <xsl:template match="app/label | boxed-text/label | chem-struct-wrap/label | ref/label | statement/label"
                 priority="2"/>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="author-notes/fn/label">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="disp-formula//label">
     <span class="note">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications (all labels not otherwise specified) -->
+  <!-- Ambra modifications (all labels not otherwise specified) -->
   <xsl:template match="label" name="label">
     <xsl:apply-templates/>
     <xsl:text>. </xsl:text>
@@ -2452,7 +2452,7 @@
 
   <!-- Tables are already in XHTML, and can simply be copied through -->
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="table | thead | tbody | col | colgroup | tr | th | td">
     <xsl:copy copy-namespaces="no">
       <xsl:apply-templates select="@*" mode="table-copy"/>
@@ -2461,11 +2461,11 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="tfoot"/>
   <xsl:template match="array/tbody"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="@*" mode="table-copy">
     <xsl:copy-of copy-namespaces="no" select="."/>
   </xsl:template>
@@ -2477,7 +2477,7 @@
   <!-- ============================================================= -->
   <!--  Templates strictly for formatting follow; these are templates to handle various inline structures -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="abbrev"/>
   <xsl:template match="abbrev/def"/>
   <xsl:template match="p/address | license-p/address | named-content/p | styled-content/p"/>
@@ -2486,9 +2486,9 @@
   <xsl:template match="award-id[normalize-space(@rid)]"/>
   <xsl:template match="break"/>
 
-  <!-- 1/4/12: nlm contains email -->
+  <!-- nlm contains email -->
 
-  <!-- 1/4/12: suppress, we don't use. removed ext-link from list (we process independently) -->
+  <!-- suppress, we don't use. removed ext-link from list (we process independently) -->
   <xsl:template match="uri | inline-supplementary-material"/>
 
   <!-- 10/28/13: suppress, we don't use -->
@@ -2517,18 +2517,18 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use  -->
+  <!-- suppress, we don't use  -->
   <xsl:template match="funding-source"/>
   <xsl:template match="hr"/>
   <xsl:template match="chem-struct"/>
 
-  <!-- 1/4/12: nlm contains inline-formula (along with chem-struct, we only suppress chem-struct portion) -->
+  <!-- nlm contains inline-formula (along with chem-struct, we only suppress chem-struct portion) -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="chem-struct-wrap/chem-struct"/>
   <xsl:template match="milestone-start | milestone-end"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="object-id">
     <xsl:choose>
       <xsl:when test="@pub-id-type">
@@ -2544,12 +2544,12 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="sig"/>
   <xsl:template match="target"/>
   <xsl:template match="styled-content"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="named-content">
     <xsl:choose>
       <xsl:when test="@xlink:href">
@@ -2571,14 +2571,14 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="private-char"/>
   <xsl:template match="glyph-data | glyph-ref"/>
   <xsl:template match="related-article"/>
   <xsl:template match="related-object"/>
   <xsl:template match="xref[not(normalize-space())]" priority="-1"/>
 
-  <!-- 1/4/12: Ambra modifications (default if not one of the following ref-types (covers ref-type supplementary-material)) -->
+  <!-- Ambra modifications (default if not one of the following ref-types (covers ref-type supplementary-material)) -->
   <xsl:template match="xref">
     <xsl:call-template name="assign-id"/>
     <a href="#{@rid}">
@@ -2595,7 +2595,7 @@
     </a>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (superscript fn xrefs) -->
+  <!-- Ambra-specific template (superscript fn xrefs) -->
   <xsl:template match="xref[@ref-type='fn']">
     <span class="xref">
       <xsl:call-template name="assign-id"/>
@@ -2629,7 +2629,7 @@
     </span>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <xsl:template match="xref[@ref-type='bibr']">
     <!-- if immediately-preceding sibling was an xref, punctuate (otherwise assume desired punctuation is in the source) -->
     <xsl:if test="local-name(preceding-sibling::node()[1])='xref'">
@@ -2640,14 +2640,14 @@
     </a>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template -->
+  <!-- Ambra-specific template -->
   <!-- 6/13/12: added translate so names and ids of figs have dashes (for figure enhancement) -->
   <xsl:template match="xref[@ref-type='fig'] | xref[@ref-type='table']">
     <a href="#{translate(@rid, '.', '-')}">
       <xsl:apply-templates/>
     </a>
   </xsl:template>
-  <!-- 1/4/12: Ambra modifications (transform to <strong> instead of <b>) -->
+  <!-- Ambra modifications (transform to <strong> instead of <b>) -->
   <xsl:template match="bold">
     <strong>
       <xsl:apply-templates/>
@@ -2658,48 +2658,48 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications (transform to <em> instead of <i>) -->
+  <!-- Ambra modifications (transform to <em> instead of <i>) -->
   <xsl:template match="italic">
     <em>
       <xsl:apply-templates/>
     </em>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="monospace">
     <span class="monospace">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="overline">
     <span class="overline">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="price"/>
   <xsl:template match="roman"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="sc">
     <span class="small-caps">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="strike">
     <span class="strike">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
-  <!-- 1/4/12: nlm contains templates for sub and sup -->
+  <!-- nlm contains templates for sub and sup -->
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="underline">
     <span class="underline">
       <xsl:apply-templates/>
@@ -2711,9 +2711,9 @@
   <!--  BACK MATTER                                                  -->
   <!-- ============================================================= -->
 
-  <!-- 1/4/12: nlm contains variable loose-footnotes. we don't use -->
+  <!-- nlm contains variable loose-footnotes. we don't use -->
 
-  <!-- 1/4/12: Ambra modifications (creates back section) -->
+  <!-- Ambra modifications (creates back section) -->
   <xsl:template name="make-back">
     <xsl:for-each select="back">
       <xsl:apply-templates select="ack"/>
@@ -2734,7 +2734,7 @@
     </xsl:for-each>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (creates author contributions section) -->
+  <!-- Ambra-specific template (creates author contributions section) -->
   <xsl:template name="author-contrib">
     <xsl:if test="../front/article-meta/author-notes/fn[@fn-type='con']">
       <div class="contributions toc-section">
@@ -2748,11 +2748,11 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="back"/>
   <xsl:template name="footnotes"/>
 
-  <!-- 1/4/12: Ambra modifications (creates acknowledgments section) -->
+  <!-- Ambra modifications (creates acknowledgments section) -->
   <xsl:template match="ack">
     <xsl:call-template name="newline1"/>
     <xsl:if test="position()>1">
@@ -2770,18 +2770,18 @@
     </div>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="app-group"/>
   <xsl:template match="back/bio"/>
   <xsl:template match="back/fn-group"/>
   <xsl:template match="back/glossary"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="back/ref-list">
     <xsl:call-template name="ref-list"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="back/notes">
     <xsl:call-template name="newline1"/>
     <xsl:if test="position()>1">
@@ -2795,7 +2795,7 @@
     </div>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="backmatter-section"/>
 
 
@@ -2803,16 +2803,16 @@
   <!--  FOOTNOTES                                                    -->
   <!-- ============================================================= -->
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="fn">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="fn-group/fn | table-wrap-foot/fn | table-wrap-foot/fn-group/fn"/>
   <xsl:template match="fn" mode="footnote"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="fn/p">
     <xsl:apply-templates/>
   </xsl:template>
@@ -2822,9 +2822,9 @@
       Generates label text for elements and their cross-references -->
   <!-- ============================================================= -->
 
-  <!-- 1/4/12: nlm contains a bunch of variables, we don't use -->
+  <!-- nlm contains a bunch of variables, we don't use -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template mode="label" match="*" name="block-label"/>
   <xsl:template mode="label" match="ref"/>
   <xsl:template match="app" mode="label-text"/>
@@ -2849,8 +2849,8 @@
 
   <!-- Called when displaying structured names in metadata         -->
 
-  <!-- 1/4/12: Ambra modifications (creates author names in metadata) -->
-  <!-- 1/4/12: commented out logic for eastern/western names. edit when we implement name-style eastern -->
+  <!-- Ambra modifications (creates author names in metadata) -->
+  <!-- commented out logic for eastern/western names. edit when we implement name-style eastern -->
   <xsl:template name="write-name" match="name">
     <xsl:apply-templates select="prefix" mode="inline-name"/>
     <!-- <xsl:apply-templates select="surname[../@name-style='eastern']" mode="inline-name"/> -->
@@ -2860,14 +2860,14 @@
     <xsl:apply-templates select="suffix" mode="inline-name"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="prefix" mode="inline-name">
     <xsl:apply-templates/>
     <xsl:text> </xsl:text>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
-  <!-- 1/4/12: commented out eastern/western logic. edit when we implement name-style eastern (possibly use generic nlm) -->
+  <!-- Ambra modifications -->
+  <!-- commented out eastern/western logic. edit when we implement name-style eastern (possibly use generic nlm) -->
   <xsl:template match="given-names" mode="inline-name">
     <xsl:apply-templates/>
     <xsl:text> </xsl:text>
@@ -2876,8 +2876,8 @@
     </xsl:if>-->
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications (overrides both nlm contrib/name/surname mode inline-name and surname mode inline-name (identical in nlm)) -->
-  <!-- 1/4/12: edit when we implement name-style eastern, maybe use nlm version -->
+  <!-- Ambra modifications (overrides both nlm contrib/name/surname mode inline-name and surname mode inline-name (identical in nlm)) -->
+  <!-- edit when we implement name-style eastern, maybe use nlm version -->
   <xsl:template match="surname" mode="inline-name">
     <xsl:apply-templates/>
     <!--<xsl:if test="../given-names[../@name-style='eastern'] | ../suffix">
@@ -2885,13 +2885,13 @@
     </xsl:if>-->
   </xsl:template>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template match="suffix" mode="inline-name">
     <xsl:text> </xsl:text>
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="string-name"/>
 
   <!-- ============================================================= -->
@@ -2947,7 +2947,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (prevents double punctuation if xml contains valid punctuation already) -->
+  <!-- Ambra-specific template (prevents double punctuation if xml contains valid punctuation already) -->
   <xsl:template name="punctuation">
     <xsl:if
       test="not(ends-with(normalize-space(),'.')) and not(ends-with(normalize-space(),'?')) and not(ends-with(normalize-space(),'!'))">
@@ -2955,7 +2955,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (used for displaying annotations) -->
+  <!-- Ambra-specific template (used for displaying annotations) -->
   <xsl:template name="createAnnotationSpan">
     <xsl:variable name="regionId" select="@aml:id"/>
     <xsl:variable name="regionNumComments"
@@ -3037,30 +3037,30 @@
     </xsl:element>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (used for displaying annotations (xml is coming from ambra, not article xml)) -->
+  <!-- Ambra-specific template (used for displaying annotations (xml is coming from ambra, not article xml)) -->
   <xsl:template match="aml:annotated">
     <xsl:call-template name="createAnnotationSpan"/>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (creates newlines for legibility of source html) -->
+  <!-- Ambra-specific template (creates newlines for legibility of source html) -->
   <xsl:template name="newline1">
     <xsl:text>&#xA;</xsl:text>
   </xsl:template>
 
-  <!-- 1/4/12: Ambra-specific template (creates newlines for legibility of source html) -->
+  <!-- Ambra-specific template (creates newlines for legibility of source html) -->
   <xsl:template name="newline2">
     <xsl:text>&#xA;</xsl:text>
     <xsl:text>&#xA;</xsl:text>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="append-pub-type"/>
   <xsl:template name="metadata-labeled-entry"/>
   <xsl:template name="metadata-entry"/>
   <xsl:template name="metadata-area"/>
   <xsl:template name="make-label-text"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template name="assign-id">
     <xsl:if test="@id">
       <xsl:attribute name="id">
@@ -3069,10 +3069,10 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="assign-src"/>
 
-  <!-- 1/4/12: Ambra modifications -->
+  <!-- Ambra modifications -->
   <xsl:template name="assign-href">
     <xsl:if test="@xlink:href">
       <xsl:attribute name="href">
@@ -3081,7 +3081,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="named-anchor"/>
 
   <!-- ============================================================= -->
@@ -3089,7 +3089,7 @@
   <!-- ============================================================= -->
   <!-- Generates a list of warnings to be reported due to processing anomalies. -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="process-warnings"/>
 
   <!-- ============================================================= -->
@@ -3097,7 +3097,7 @@
   <!-- ============================================================= -->
   <!-- An id can be derived for any element. If an @id is given, it is presumed unique and copied. If not, one is generated.   -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template match="*" mode="id"/>
   <xsl:template match="article | sub-article | response" mode="id"/>
 
@@ -3106,24 +3106,24 @@
   <!-- ============================================================= -->
   <!-- Maps a structured date element to a string -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="format-date"/>
   <xsl:template match="day | season | year" mode="map"/>
 
-  <!-- 1/4/12: nlm contains month mode map -->
+  <!-- nlm contains month mode map -->
 
   <!-- ============================================================= -->
   <!--  "author-string" writes authors' names in sequence            -->
   <!-- ============================================================= -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="author-string"/>
 
   <!-- ============================================================= -->
   <!--  Footer branding                                              -->
   <!-- ============================================================= -->
 
-  <!-- 1/4/12: suppress, we don't use -->
+  <!-- suppress, we don't use -->
   <xsl:template name="footer-branding"/>
 
 

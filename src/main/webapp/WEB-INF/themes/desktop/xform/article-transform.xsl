@@ -86,27 +86,30 @@
   <!-- Ambra modifications -->
   <xsl:template name="version-notes">
     <div class="amendment-retraction">
-    <xsl:choose>
-      <xsl:when test="front/notes[@notes-type='version-unavailable']">
+      <xsl:choose>
+        <xsl:when test="front/notes[@notes-type='version-unavailable']">
           <h2> Version no longer available.</h2>
-      </xsl:when>
-      <xsl:when test="front/notes[@notes-type='article-temporarily-unavailable']">
+        </xsl:when>
+        <xsl:when test="front/notes[@notes-type='article-temporarily-unavailable']">
           <h2> Article temporarily unavailable.</h2>
-      </xsl:when>
-      <xsl:when test="front/notes[@notes-type='custom']">
+        </xsl:when>
+        <xsl:when test="front/notes[@notes-type='custom']">
           <xsl:apply-templates select="front/notes/title"/>
-      </xsl:when>
+        </xsl:when>
+      </xsl:choose>
 
-    </xsl:choose>
       <xsl:apply-templates select="front/notes/p" />
       <xsl:apply-templates select="front/notes/ext-link"/>
     </div>
   </xsl:template>
 
+  <!-- Ambra modifications -->
 
   <xsl:template name="make-article">
+
     <xsl:call-template name="newline2"/>
     <xsl:call-template name="newline1"/>
+
     <xsl:call-template name="make-front"/>
     <xsl:call-template name="newline1"/>
     <xsl:if test="front/notes">
@@ -229,7 +232,7 @@
         <xsl:variable name="at" select="normalize-space(title-group/article-title)"/>
         <!-- add a period unless there's other valid punctuation -->
         <xsl:if
-          test="substring($at,string-length($at))!='?' and substring($at,string-length($at))!='!' and substring($at,string-length($at))!='.'">
+            test="substring($at,string-length($at))!='?' and substring($at,string-length($at))!='!' and substring($at,string-length($at))!='.'">
           <xsl:text>.</xsl:text>
         </xsl:if>
         <xsl:text> </xsl:text>
@@ -424,7 +427,6 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-
   <!-- Ambra modifications -->
   <xsl:template match="license" mode="metadata">
     <xsl:apply-templates mode="metadata"/>
@@ -567,7 +569,7 @@
     <xsl:apply-templates select="../xref[@ref-type='fn']" mode="metadata-inline"/>
     <!-- if the deceased attribute is set and there isn't already a deceased footnote, output a dagger -->
     <xsl:if
-      test="../@deceased='yes' and not(../xref/sup='‡') and not(../ref/sup='&amp;dagger;') and not(../ref/sup='&amp;Dagger;')">
+        test="../@deceased='yes' and not(../xref/sup='‡') and not(../ref/sup='&amp;dagger;') and not(../ref/sup='&amp;Dagger;')">
       <sup>
         <a href="#deceased">&#x2020;</a>
       </sup>
@@ -899,7 +901,6 @@
   <xsl:template match="title | sec-meta" mode="drop-title"/>
   <xsl:template match="app"/>
 
-
   <!-- Ambra modifications -->
   <xsl:template match="ref-list" name="ref-list">
     <div class="toc-section">
@@ -946,7 +947,6 @@
               <xsl:with-param name="doi" select="$doi"/>
             </xsl:apply-templates>
             <xsl:text> </xsl:text>
-
             <xsl:if test="$cit[@publication-type='journal']">
               <!-- create reference links -->
               <!-- if refs parameter has not been set, fail gracefully and use XML-based data for links -->
@@ -1072,7 +1072,7 @@
                       Google Scholar
                     </xsl:element>
                   </xsl:element>
-              </xsl:element>
+                </xsl:element>
               </xsl:if>
             <xsl:if test="$cit[@publication-type!='journal']">
               <xsl:element name="ul">
@@ -1211,7 +1211,6 @@
   <xsl:template name="block-title" priority="2"
                 match="list/title | def-list/title | boxed-text/title | verse-group/title | glossary/title | kwd-group/title"/>
 
-
   <xsl:template match="ack//sec/title">
     <xsl:call-template name="newline1"/>
     <xsl:element name="h{count(ancestor::sec) + 2}">
@@ -1312,7 +1311,7 @@
 
   <!-- suppress, we don't use -->
   <xsl:template
-    match="array | disp-formula-group | fig-group | fn-group | license | long-desc | open-access | sig-block | table-wrap-foot | table-wrap-group"/>
+      match="array | disp-formula-group | fig-group | fn-group | license | long-desc | open-access | sig-block | table-wrap-foot | table-wrap-group"/>
 
   <xsl:template match="attrib">
     <p class="attrib">
@@ -1620,30 +1619,30 @@
   <!-- nlm contains alt-text (suppressed here, processed within graphic|inline-graphic) -->
 
   <!-- Ambra modifications -->
-    <xsl:template match="list">
+  <xsl:template match="list">
+    <xsl:call-template name="newline1"/>
+    <xsl:if test="title">
+      <h5><xsl:value-of select="title"/></h5>
+    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="@list-type='bullet'">
         <xsl:call-template name="newline1"/>
-        <xsl:if test="title">
-          <h5><xsl:value-of select="title"/></h5>
-        </xsl:if>
-        <xsl:choose>
-            <xsl:when test="@list-type='bullet'">
-                <xsl:call-template name="newline1"/>
-                <ul class="bulleted">
-                    <xsl:call-template name="newline1"/>
-                    <xsl:apply-templates/>
-                    <xsl:call-template name="newline1"/>
-                </ul>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:call-template name="newline1"/>
-                <ol class="{@list-type}">
-                    <xsl:call-template name="newline1"/>
-                    <xsl:apply-templates/>
-                    <xsl:call-template name="newline1"/>
-                </ol>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
+        <ul class="bulleted">
+          <xsl:call-template name="newline1"/>
+          <xsl:apply-templates/>
+          <xsl:call-template name="newline1"/>
+        </ul>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="newline1"/>
+        <ol class="{@list-type}">
+          <xsl:call-template name="newline1"/>
+          <xsl:apply-templates/>
+          <xsl:call-template name="newline1"/>
+        </ol>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
   <!-- suppress, we don't use -->
   <xsl:template priority="2" mode="list" match="list[@list-type='simple' or list-item/label]"/>
@@ -2273,9 +2272,9 @@
   <!-- suppress, we don't use -->
   <xsl:template match="ref/note" priority="2"/>
   <xsl:template
-    match="app/related-article | app-group/related-article | bio/related-article | body/related-article | boxed-text/related-article | disp-quote/related-article | glossary/related-article | ref-list/related-article | sec/related-article"/>
+      match="app/related-article | app-group/related-article | bio/related-article | body/related-article | boxed-text/related-article | disp-quote/related-article | glossary/related-article | ref-list/related-article | sec/related-article"/>
   <xsl:template
-    match="app/related-object | app-group/related-object | bio/related-object | body/related-object | boxed-text/related-object | disp-quote/related-object | glossary/related-object | ref-list/related-object | sec/related-object"/>
+      match="app/related-object | app-group/related-object | bio/related-object | body/related-object | boxed-text/related-object | disp-quote/related-object | glossary/related-object | ref-list/related-object | sec/related-object"/>
   <xsl:template match="speech"/>
   <!-- speech/speaker mode speech already suppressed in nlm -->
   <xsl:template match="speech/p" mode="speech"/>
@@ -2318,7 +2317,6 @@
       <xsl:value-of select="@xlink:href"/>
     </xsl:variable>
     <h3 class="siTitle title-small">
-
         <xsl:element name="a">
           <xsl:attribute name="href">
             <xsl:value-of select="concat('article/file?type=supplementary&amp;id=', $objURI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
@@ -2470,8 +2468,6 @@
     <xsl:copy-of copy-namespaces="no" select="."/>
   </xsl:template>
 
-
-
   <!-- ============================================================= -->
   <!--  INLINE MISCELLANEOUS                                         -->
   <!-- ============================================================= -->
@@ -2491,7 +2487,6 @@
   <!-- suppress, we don't use. removed ext-link from list (we process independently) -->
   <xsl:template match="uri | inline-supplementary-material"/>
 
-  <!-- 10/28/13: suppress, we don't use -->
   <xsl:template match="ext-link">
     <xsl:variable name="previousText">
       <xsl:value-of select="lower-case(normalize-space(preceding::text()[1]))"/>
@@ -2647,6 +2642,7 @@
       <xsl:apply-templates/>
     </a>
   </xsl:template>
+
   <!-- Ambra modifications (transform to <strong> instead of <b>) -->
   <xsl:template match="bold">
     <strong>
@@ -2720,7 +2716,7 @@
       <xsl:call-template name="author-contrib"/>
       <xsl:apply-templates select="notes"/>
       <xsl:apply-templates
-        select="*[not(self::title) and not(self::fn-group) and not(self::ack) and not(self::notes)]"/>
+          select="*[not(self::title) and not(self::fn-group) and not(self::ack) and not(self::notes)]"/>
       <xsl:call-template name="newline1"/>
       <xsl:for-each select="//abstract[@abstract-type='patient']">
         <div class="patient toc-section">
@@ -2950,7 +2946,7 @@
   <!-- Ambra-specific template (prevents double punctuation if xml contains valid punctuation already) -->
   <xsl:template name="punctuation">
     <xsl:if
-      test="not(ends-with(normalize-space(),'.')) and not(ends-with(normalize-space(),'?')) and not(ends-with(normalize-space(),'!'))">
+        test="not(ends-with(normalize-space(),'.')) and not(ends-with(normalize-space(),'?')) and not(ends-with(normalize-space(),'!'))">
       <xsl:text>.</xsl:text>
     </xsl:if>
   </xsl:template>

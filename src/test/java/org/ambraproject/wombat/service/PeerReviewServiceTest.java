@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -34,36 +35,56 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
   @Test
   public void testAsHtml() throws IOException {
-    ImmutableMap<String, ? extends Map<String, ?>> itemTable = ImmutableMap.of(
-        "10.1371/journal.pone.0207232.r001", ImmutableMap.of(
+    ImmutableMap<String, ? extends Map<String, ?>> itemTable = new ImmutableMap.Builder<String, Map<String, ?>>()
+        .put("10.1371/journal.pone.0207232.r001", ImmutableMap.of(
             "doi", "10.1371/journal.pone.0207232.r001",
             "itemType", "reviewLetter",
             "files", ImmutableMap.of("letter", ImmutableMap.of(
-                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r001.xml"
+                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r001.xml",
+                "crepoUuid", UUID.randomUUID().toString()
             ))
-        ),
-        "10.1371/journal.pone.0207232.r002", ImmutableMap.of(
+        ))
+        .put("10.1371/journal.pone.0207232.r002", ImmutableMap.of(
             "doi", "10.1371/journal.pone.0207232.r002",
             "itemType", "reviewLetter",
             "files", ImmutableMap.of("letter", ImmutableMap.of(
-                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r002.xml"
+                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r002.xml",
+                "crepoUuid", UUID.randomUUID().toString()
             ))
-        ),
-        "10.1371/journal.pone.0207232.r003", ImmutableMap.of(
+        ))
+        .put("10.1371/journal.pone.0207232.r003", ImmutableMap.of(
             "doi", "10.1371/journal.pone.0207232.r003",
             "itemType", "reviewLetter",
             "files", ImmutableMap.of("letter", ImmutableMap.of(
-                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r003.xml"
+                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r003.xml",
+                "crepoUuid", UUID.randomUUID().toString()
             ))
-        ),
-        "10.1371/journal.pone.0207232.r004", ImmutableMap.of(
+        ))
+        .put("10.1371/journal.pone.0207232.r004", ImmutableMap.of(
             "doi", "10.1371/journal.pone.0207232.r004",
             "itemType", "reviewLetter",
             "files", ImmutableMap.of("letter", ImmutableMap.of(
-                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r004.xml"
+                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r004.xml",
+                "crepoUuid", UUID.randomUUID().toString()
             ))
-        )
-    );
+        ))
+        .put("10.1371/journal.pone.0207232.r005", ImmutableMap.of(
+            "doi", "10.1371/journal.pone.0207232.r005",
+            "itemType", "reviewLetter",
+            "files", ImmutableMap.of("letter", ImmutableMap.of(
+                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r005.xml",
+                "crepoUuid", UUID.randomUUID().toString()
+            ))
+        ))
+        .put("10.1371/journal.pone.0207232.r006", ImmutableMap.of(
+            "doi", "10.1371/journal.pone.0207232.r006",
+            "itemType", "reviewLetter",
+            "files", ImmutableMap.of("letter", ImmutableMap.of(
+                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r006.xml",
+                "crepoUuid", UUID.randomUUID().toString()
+            ))
+        )).build();
+
 
     PeerReviewService serviceWithMockedContent = new PeerReviewServiceImpl() {
 
@@ -75,11 +96,9 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
       }
 
       @Override
-      String getContentXml(Map<String, ?> metadata, String itemType) throws IOException {
-        Map<String, ?> files = (Map<String, ?>) metadata.get("files");
-        Map<String, ?> letter = (Map<String, ?>) files.get(itemType);
-        String crepoKey = (String) letter.get("crepoKey");
-
+      String getContent(ContentKey contentKey) throws IOException {
+        String crepoKey = (String) contentKey.getKey();
+        
         String letterContent = null;
         if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r001.xml") {
           letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\">" +
@@ -97,6 +116,16 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
               "<body><p>FirstRoundDecisionLetterSampleBody</p></body></sub-article>";
         }
         if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r004.xml") {
+          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article article-type=\"author-comment\">" +
+              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>2</meta-value></custom-meta></custom-meta-group></front-stub>" +
+              "<body><p>SecondRoundAuthorResponseSampleBody</p></body></sub-article>";
+        }
+        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r005.xml") {
+          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\">" +
+              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>2</meta-value></custom-meta></custom-meta-group></front-stub>" +
+              "<body><p>SecondRoundDecisionLetterSampleBody</p></body></sub-article>";
+        }
+        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r006.xml") {
           letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"acceptance-letter\">" +
               "<front-stub></front-stub>" +
               "<body><p>AcceptanceLetterSampleBody</p></body></sub-article>";
@@ -108,12 +137,16 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     String html = serviceWithMockedContent.asHtml(itemTable);
     Document d = Jsoup.parse(html);
 
-    assertThat(d.select(".review-history th").get(0).text(), containsString("Original Submission1 Jun 2018"));
-    assertThat(d.select(".review-history th").get(1).text(), containsString("Revision 1"));
-    assertThat(d.select(".review-history th").get(2).text(), containsString("Formally Accepted"));
+    assertThat(d.select(".review-history .revision").get(0).text(), containsString("Original Submission"));
+    assertThat(d.select(".review-history .revision").get(0).text(), containsString("1 Jun 2018"));
     assertThat(d.select(".review-history .decision-letter").get(0).text(), containsString("InitialDecisionLetterSampleBody"));
-    assertThat(d.select(".review-history .decision-letter").get(1).text(), containsString("FirstRoundDecisionLetterSampleBody"));
+    assertThat(d.select(".review-history .revision").get(1).text(), containsString("Revision 1"));
     assertThat(d.select(".review-history .author-response").get(0).text(), containsString("FirstRoundAuthorResponseSampleBody"));
+    assertThat(d.select(".review-history .decision-letter").get(1).text(), containsString("FirstRoundDecisionLetterSampleBody"));
+    assertThat(d.select(".review-history .revision").get(2).text(), containsString("Revision 2"));
+    assertThat(d.select(".review-history .author-response").get(1).text(), containsString("SecondRoundAuthorResponseSampleBody"));
+    assertThat(d.select(".review-history .decision-letter").get(2).text(), containsString("SecondRoundDecisionLetterSampleBody"));
+    assertThat(d.select(".review-history .revision").get(3).text(), containsString("Formally Accepted"));
     assertThat(d.select(".review-history .acceptance-letter").get(0).text(), containsString("AcceptanceLetterSampleBody"));
   }
 

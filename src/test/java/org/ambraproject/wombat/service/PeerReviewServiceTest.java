@@ -24,6 +24,7 @@ import static org.ambraproject.wombat.util.FileUtils.deserialize;
 import static org.ambraproject.wombat.util.FileUtils.getFile;
 import static org.ambraproject.wombat.util.FileUtils.read;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.doAnswer;
@@ -32,6 +33,8 @@ import static org.mockito.Mockito.spy;
 
 @ContextConfiguration(classes = {PeerReviewServiceTest.class})
 public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
+
+  private PeerReviewServiceImpl service = new PeerReviewServiceImpl();
 
   @Test
   public void testAsHtml() throws IOException {
@@ -89,10 +92,8 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     PeerReviewService serviceWithMockedContent = new PeerReviewServiceImpl() {
 
       @Override
-      Map<String,String> getArticleMetadata(Map<String,?> itemTable) throws IOException {
-        Map<String,String> metadata = new HashMap<>();
-        metadata.put("receivedDate", "1 Jun 2018");
-        return metadata;
+      String getArticleReceivedDate(Map<String,?> itemTable) throws IOException {
+        return "1 Jun 2018";
       }
 
       @Override
@@ -158,14 +159,14 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
             "itemType", "table"
         )
     );
-    String html = new PeerReviewServiceImpl().asHtml(itemTable);
+    String html = service.asHtml(itemTable);
     assertNull(html);
   }
 
   @Test
   public void testAttachmentLink() throws IOException {
 
-    PeerReviewServiceImpl spy = spy(new PeerReviewServiceImpl());
+    PeerReviewServiceImpl spy = spy(service);
 
     doAnswer(invocation -> read(prefix(getFilename(invocation.getArgument(0).toString()).toLowerCase())))
       .when(spy).getContent(any(ContentKey.class));
@@ -188,8 +189,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     String xml = read(prefix("peer-review-attachment-filenames.pone.0207232.xml"));
  
-    PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
-    String html = svc.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+    String html = service.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
 
     Document doc = Jsoup.parse(html);
 
@@ -207,8 +207,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
   public void testAuthorResponse() {
     String xml = read(prefix("peer-review.pone.0207232.xml"));
  
-    PeerReviewServiceImpl svc = new PeerReviewServiceImpl();
-    String html = svc.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+    String html = service.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
 
     Document doc = Jsoup.parse(html);
 
@@ -232,6 +231,21 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     assertThat(doc.select(".review-history .decision-letter .letter__date").get(1).text(), containsString("29 Oct 2018"));
     assertThat(doc.select(".review-history .decision-letter span[itemprop=name]").get(1).text(), containsString("Qinghui Zhang, Editor"));
+  }
+
+  @Test
+  public void testGetReceivedDate() throws IOException {
+    String expectedDate[] = {
+      "1 Jan 2018",
+      "10 Jan 2018",
+      "1 Oct 2018",
+      "10 Oct 2018"
+    };
+
+    for (int i=0; i < expectedDate.length; ++i) {
+      String receivedDate = read(prefix("article-received-date/" + format("received-date.%d.xml",i)));
+      assertThat(service.getReceivedDate(receivedDate), is(expectedDate[i]));
+    }
   }
 
   private String getFilename(String uuidKey) {

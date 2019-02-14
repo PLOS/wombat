@@ -1,6 +1,7 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.MoreCollectors;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,6 +48,8 @@ public class PeerReviewServiceImpl implements PeerReviewService {
 
   public static final String DEFAULT_PEER_REVIEW_XSL = "peer-review-transform.xsl";
 
+  public static final String APEX_DATE_FORMAT = "d MMM yyyy";
+
   @Autowired
   private CorpusContentApi corpusContentApi;
 
@@ -60,7 +63,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     List<Map<String, ?>> reviewLetterItems = getReviewItems(itemTable);
     if (reviewLetterItems.isEmpty()) return null;
 
-    String xml = getAllReviewsAsXml(reviewLetterItems, getArticleMetadata(itemTable));
+    String xml = getAllReviewsAsXml(reviewLetterItems, getArticleReceivedDate(itemTable));
     String html = transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
     return html;
   }
@@ -105,7 +108,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * @return entirety of peer review XML content
    * @throws IOException
    */
-  String getAllReviewsAsXml(List<Map<String, ?>> reviewLetterItems, Map<String,?> articleMetadata) throws IOException {
+  String getAllReviewsAsXml(List<Map<String, ?>> reviewLetterItems, String articleReceivedDate) throws IOException {
     List<String> reviewLetters = new ArrayList<>();
     String acceptanceLetter = "";
     for (Map<String, ?> reviewLetterItem : reviewLetterItems) {
@@ -144,7 +147,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     // append the acceptance letter
     peerReviewContent += acceptanceLetter;
 
-    peerReviewContent += "<received-date>" + articleMetadata.get("receivedDate") + "</received-date>";
+    peerReviewContent += "<article-received-date>" + articleReceivedDate + "</article-received-date>";
 
     // wrap it in a root node
     peerReviewContent = "<peer-review>" + peerReviewContent + "</peer-review>";
@@ -152,24 +155,41 @@ public class PeerReviewServiceImpl implements PeerReviewService {
   }
 
    /**
-   * Get article metadata to include in peer review history, such as the
-   * received date (aka, the original submission date).
-   *
+   * Get received date (aka, original submission date) from article manuscript.
    * @param itemTable
-   * @return map with article metadata. 
+   * @return article received date (as a string)
    */
-  Map<String,String> getArticleMetadata(Map<String,?> itemTable) throws IOException {
-    Map<String,String> metadata = new HashMap<>();
+  String getArticleReceivedDate(Map<String,?> itemTable) throws IOException {
 
-    for (Object itemObj : new TreeMap(itemTable).values()) {
+    Map<String, ?> articleItem = (Map<String, ?>) itemTable.values().stream()
+      .filter(itemObj -> ((Map<String, ?>) itemObj).get("itemType").equals("article"))
+      .collect(MoreCollectors.onlyElement());
 
-      if (((Map<String,?>) itemObj).get("itemType").equals("article")) {
-        String articleXml = getContentXml((Map<String,?>)itemObj, "manuscript");
-        metadata.put("receivedDate", getReceivedDate(articleXml));
-        break;  //TODO: at most 1 article type in payload? 
-      }
-    }
-    return metadata;
+    String articleXml = getContentXml(articleItem, "manuscript");
+
+    return getReceivedDate(articleXml);
+  }
+
+  /**
+   * Extract received date from article xml.
+   * @param xml article xml
+   * @return received date.
+   */
+  String getReceivedDate(String xml) throws IOException {
+
+    String receiveDateXml = XmlUtil.extractElement(xml, "date", "date-type", "received");
+
+    String receivedDateString = String.format("%s %s %s",
+      XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "month")),
+      XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "day")),
+      XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "year")));
+
+    DateTimeFormatter parseFormatter   = DateTimeFormatter.ofPattern("M d yyyy");
+    DateTimeFormatter displayFormatter = DateTimeFormatter.ofPattern(APEX_DATE_FORMAT);
+
+    LocalDate receivedDate = LocalDate.parse(receivedDateString, parseFormatter);
+
+    return receivedDate.format(displayFormatter);
   }
 
   /**
@@ -209,27 +229,5 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     CloseableHttpResponse response = corpusContentApi.request(contentKey, ImmutableList.of());
     String content = EntityUtils.toString(response.getEntity(), "UTF-8");
     return content;
-  }
-
-  /**
-   * Extract received date from article xml.
-   * @param xml article xml
-   * @return received date.
-   */
-  String getReceivedDate(String xml) throws IOException {
-
-    String receiveDateXml = XmlUtil.extractElement(xml, "date", "date-type", "received");
-
-    String receivedDateString = String.format("%s %s %s",
-      XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "month")),
-      XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "day")),
-      XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "year")));
-
-    DateTimeFormatter parseFormatter   = DateTimeFormatter.ofPattern("M d yyyy");
-    DateTimeFormatter displayFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
-
-    LocalDate receivedDate = LocalDate.parse(receivedDateString, parseFormatter);
-
-    return receivedDate.format(displayFormatter);
   }
 }

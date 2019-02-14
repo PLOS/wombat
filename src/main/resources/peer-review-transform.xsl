@@ -44,7 +44,7 @@
           <xsl:when test="$revision-row = 1">
             <span class="letter__title">Original Submission</span>
             <span class="letter__date">
-              <xsl:value-of select="/peer-review/received-date" />
+              <xsl:value-of select="/peer-review/article-received-date" />
             </span>
           </xsl:when>
           <xsl:otherwise>
@@ -206,6 +206,6 @@
 
   <!-- ignore received date found during template processing.
        date is referenced directly in revision #0 block --> 
-  <xsl:template match="received-date" />
+  <xsl:template match="article-received-date" />
 
 </xsl:stylesheet>

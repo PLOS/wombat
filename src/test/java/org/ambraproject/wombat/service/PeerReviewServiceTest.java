@@ -216,7 +216,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     assertThat(doc.select(".review-history .revision .letter__title").get(0).text(), containsString("Original Submission"));
     assertThat(doc.select(".review-history .revision .letter__date").get(0).text(), containsString("June 1, 2018"));
 
-    assertThat(doc.select(".review-history .decision-letter .letter__date").get(0).text(), containsString("12 Sep 2018"));
+    assertThat(doc.select(".review-history .decision-letter .letter__date").get(0).text(), containsString("September 12, 2018"));
     assertThat(doc.select(".review-history .decision-letter span[itemprop=name]").get(0).text(), containsString("Qinghui Zhang, Editor"));
 
     // REVISION 1
@@ -229,7 +229,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     Element attachmentElem = authorResponseDiv.select(".review-files .supplementary-material").first();
     assertThat(attachmentElem.text(), containsString("Response to Reviewers.docx"));
 
-    assertThat(doc.select(".review-history .decision-letter .letter__date").get(1).text(), containsString("29 Oct 2018"));
+    assertThat(doc.select(".review-history .decision-letter .letter__date").get(1).text(), containsString("October 29, 2018"));
     assertThat(doc.select(".review-history .decision-letter span[itemprop=name]").get(1).text(), containsString("Qinghui Zhang, Editor"));
   }
 

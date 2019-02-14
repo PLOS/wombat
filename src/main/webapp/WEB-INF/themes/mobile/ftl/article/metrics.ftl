@@ -26,6 +26,7 @@
 <#assign bodyId = 'page-authors' />
 <#assign cssFile = 'metrics.css' />
 <#assign mainId = "pjax-container" />
+<#assign mainClass = "content" />
 
 <@page_header />
 <#include "metricsBody.ftl"/>

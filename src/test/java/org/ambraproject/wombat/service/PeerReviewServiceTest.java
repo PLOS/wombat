@@ -93,7 +93,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
       @Override
       String getArticleReceivedDate(Map<String,?> itemTable) throws IOException {
-        return "1 Jun 2018";
+        return "June 1, 2018";
       }
 
       @Override
@@ -139,7 +139,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     Document d = Jsoup.parse(html);
 
     assertThat(d.select(".review-history .revision").get(0).text(), containsString("Original Submission"));
-    assertThat(d.select(".review-history .revision").get(0).text(), containsString("1 Jun 2018"));
+    assertThat(d.select(".review-history .revision").get(0).text(), containsString("June 1, 2018"));
     assertThat(d.select(".review-history .decision-letter").get(0).text(), containsString("InitialDecisionLetterSampleBody"));
     assertThat(d.select(".review-history .revision").get(1).text(), containsString("Revision 1"));
     assertThat(d.select(".review-history .author-response").get(0).text(), containsString("FirstRoundAuthorResponseSampleBody"));
@@ -214,7 +214,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     // ORIGINAL SUBMISSION 
 
     assertThat(doc.select(".review-history .revision .letter__title").get(0).text(), containsString("Original Submission"));
-    assertThat(doc.select(".review-history .revision .letter__date").get(0).text(), containsString("1 Jun 2018"));
+    assertThat(doc.select(".review-history .revision .letter__date").get(0).text(), containsString("June 1, 2018"));
 
     assertThat(doc.select(".review-history .decision-letter .letter__date").get(0).text(), containsString("12 Sep 2018"));
     assertThat(doc.select(".review-history .decision-letter span[itemprop=name]").get(0).text(), containsString("Qinghui Zhang, Editor"));
@@ -236,10 +236,10 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
   @Test
   public void testGetReceivedDate() throws IOException {
     String expectedDate[] = {
-      "1 Jan 2018",
-      "10 Jan 2018",
-      "1 Oct 2018",
-      "10 Oct 2018"
+      "January 1, 2018",
+      "January 10, 2018",
+      "October 1, 2018",
+      "October 10, 2018"
     };
 
     for (int i=0; i < expectedDate.length; ++i) {

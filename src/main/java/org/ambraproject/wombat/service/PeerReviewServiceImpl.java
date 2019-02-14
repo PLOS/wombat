@@ -18,6 +18,7 @@ import org.xml.sax.SAXException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.UUID;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -47,8 +48,6 @@ import org.ambraproject.wombat.service.remote.CorpusContentApi;
 public class PeerReviewServiceImpl implements PeerReviewService {
 
   public static final String DEFAULT_PEER_REVIEW_XSL = "peer-review-transform.xsl";
-
-  public static final String APEX_DATE_FORMAT = "d MMM yyyy";
 
   @Autowired
   private CorpusContentApi corpusContentApi;
@@ -184,12 +183,11 @@ public class PeerReviewServiceImpl implements PeerReviewService {
       XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "day")),
       XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "year")));
 
-    DateTimeFormatter parseFormatter   = DateTimeFormatter.ofPattern("M d yyyy");
-    DateTimeFormatter displayFormatter = DateTimeFormatter.ofPattern(APEX_DATE_FORMAT);
-
+    DateTimeFormatter parseFormatter = DateTimeFormatter.ofPattern("M d yyyy");
     LocalDate receivedDate = LocalDate.parse(receivedDateString, parseFormatter);
 
-    return receivedDate.format(displayFormatter);
+    // ex: January 1, 2018
+    return DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).format(receivedDate);
   }
 
   /**

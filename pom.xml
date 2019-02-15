@@ -39,7 +39,7 @@
   <properties>
     <java-version>1.8</java-version>
     <org.springframework-version>4.1.6.RELEASE</org.springframework-version>
-    <org.springsecurity-version>4.0.1.RELEASE</org.springsecurity-version>
+    <org.springsecurity-version>4.1.5.RELEASE</org.springsecurity-version>
     <org.aspectj-version>1.6.10</org.aspectj-version>
     <org.slf4j-version>1.6.6</org.slf4j-version>
     <rhombat.version>1.0.1</rhombat.version>

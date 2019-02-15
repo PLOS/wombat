@@ -1,23 +1,21 @@
 #container-main {
-  background: #e5e4e4;
+  background: #eee;
 }
 .highcharts-container {
   overflow: visible !important;
 }
 
 .card {
-  background-color: white;
+  background-color: #fff;
   padding: 10px;
   border-radius: 3px;
-  margin: 20px;
+  margin: 2rem .5rem;
+}
+
+#article-metrics h2 {
+  margin: 1rem 0;
 }
 /* pageViewsSummary table */
-#pageViewsSummary {
-  width: 100%;
-  display: table;
-
-  padding: 0;
-}
 
 #pageViewsSummary #left {
   float: none;
@@ -38,13 +36,11 @@
 #pageViewsSummary .totalCount {
   padding-top: 3px;
   padding-bottom: 5px;
-
   font-weight: 600;
   color: #333;
 }
 
 #pageViewsSummary .pubDates {
-
   font-weight: 600;
   color: #666;
 }
@@ -67,7 +63,6 @@ table th,
   padding: 3px 8px 2px 8px;
   vertical-align: middle;
   height: 17px;
-
   font-weight: 600;
 }
 
@@ -78,7 +73,7 @@ table th {
 }
 
 #pageViewsTable td {
-  background-color: white;
+  background-color: #fff;
   color: #999;
 }
 
@@ -144,7 +139,7 @@ table th {
 }
 
 #beta {
-  font: italic 600 10px Arial;
+  font: 10px italic bold Arial;
   color: #00be00;
 }
 
@@ -169,7 +164,6 @@ img.metrics_tile_image {
 }
 
 .metrics_tile_footer {
-
   text-decoration: none;
   font-weight: 600;
 }

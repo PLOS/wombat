@@ -4,8 +4,8 @@
   max-width: 1114px;
   max-width: 69.625rem;
   margin: auto;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 4%;
+  padding-right: 4%;
 }
 
 /* Special symbol font */
@@ -188,7 +188,7 @@
 /* Footer */
 .footer {
   background: #333;
-  padding: 12px;
+  padding: 2rem 1rem 4rem;
   margin-top: 2rem;
 }
 
@@ -592,7 +592,7 @@
   width: 100%;
   color: white;
   text-align: center;
-  margin: 12px 0;
+  margin: 2rem auto 4rem;
 }
 
 /* Search */

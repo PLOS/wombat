@@ -235,16 +235,51 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
   @Test
   public void testGetReceivedDate() throws IOException {
-    String expectedDate[] = {
+    String expectedDates[] = {
       "January 1, 2018",
       "January 10, 2018",
       "October 1, 2018",
       "October 10, 2018"
     };
 
-    for (int i=0; i < expectedDate.length; ++i) {
+    for (int i=0; i < expectedDates.length; ++i) {
       String receivedDate = read(prefix("article-received-date/" + format("received-date.%d.xml",i)));
-      assertThat(service.getReceivedDate(receivedDate), is(expectedDate[i]));
+      assertThat(service.getReceivedDate(receivedDate), is(expectedDates[i]));
+    }
+  }
+
+  @Test
+  public void testFormatDate() {
+    String acceptedDates[] = {
+      "9 Oct 2018",
+      "15 Nov 2018",
+      "1 1 2000",
+      "11 15 2010",
+      "   10\r\n Feb\t\t 1999 "
+    };
+
+    String expectedDates[] = {
+      "October 9, 2018",
+      "November 15, 2018",
+      "January 1, 2000",
+      "November 15, 2010",
+      "February 10, 1999"
+    };
+
+    for (int i=0; i < acceptedDates.length; ++i) {
+      assertThat(service.formatDate(acceptedDates[i]), is(expectedDates[i]));
+    }
+
+    String rejectedDates[] = {
+      "Jan 1, 2010",
+      "02/10/2003",
+      "2018-12-10",
+      "not-a-date",
+      ""
+    };
+
+    for (int i=0; i < rejectedDates.length; ++i) {
+      assertThat(service.formatDate(rejectedDates[i]), is(""));
     }
   }
 

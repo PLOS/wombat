@@ -18,6 +18,7 @@ import org.xml.sax.SAXException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.format.FormatStyle;
 import java.util.UUID;
 import javax.xml.parsers.SAXParser;
@@ -48,6 +49,11 @@ import org.ambraproject.wombat.service.remote.CorpusContentApi;
 public class PeerReviewServiceImpl implements PeerReviewService {
 
   public static final String DEFAULT_PEER_REVIEW_XSL = "peer-review-transform.xsl";
+
+  private static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(""
+      + "[M d yyyy]"      // 9 15 2010
+      + "[d MMM yyyy]"    // 15 Sep 2010 
+    );
 
   @Autowired
   private CorpusContentApi corpusContentApi;
@@ -183,11 +189,25 @@ public class PeerReviewServiceImpl implements PeerReviewService {
       XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "day")),
       XmlUtil.extractText(XmlUtil.extractElement(receiveDateXml, "year")));
 
-    DateTimeFormatter parseFormatter = DateTimeFormatter.ofPattern("M d yyyy");
-    LocalDate receivedDate = LocalDate.parse(receivedDateString, parseFormatter);
+    return formatDate(receivedDateString);
+  }
 
-    // ex: January 1, 2018
-    return DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).format(receivedDate);
+  /**
+   * Formats recognized date string into a full month name format 
+   * (ex: January 1, 2010). It will strip all needless whitespace before
+   * processing.
+   *
+   * @param dateString date string to format.
+   * @return formatted date if recognized, else the empty string.
+   */
+  String formatDate(String dateString) {
+    try {
+      String normalizedDate = dateString.replaceAll("\\s{2,}"," ").trim();
+      return DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+        .format(LocalDate.parse(normalizedDate, DATE_FORMATTER));
+    } catch (DateTimeParseException e) {
+      return "";
+    }
   }
 
   /**

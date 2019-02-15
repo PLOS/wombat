@@ -229,7 +229,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
     Element attachmentElem = authorResponseDiv.select(".review-files .supplementary-material").first();
     assertThat(attachmentElem.text(), containsString("Response to Reviewers.docx"));
 
-    assertThat(doc.select(".review-history .decision-letter .letter__date").get(1).text(), containsString("October 29, 2018"));
+    assertThat(doc.select(".review-history .decision-letter .letter__date").get(1).text(), containsString("October 9, 2018"));
     assertThat(doc.select(".review-history .decision-letter span[itemprop=name]").get(1).text(), containsString("Qinghui Zhang, Editor"));
   }
 

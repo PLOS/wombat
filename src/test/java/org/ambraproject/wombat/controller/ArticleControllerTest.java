@@ -196,26 +196,4 @@ public class ArticleControllerTest extends ControllerTest {
     verify(mockArticleMetadata).getArticlePointer();
     verify(mockCorpusContentApi).readManuscript(any(), any(), any(), any());
   }
-
-  @Test
-  public void testPeerReviewNotFound(){
-    ArticleController articleController = new ArticleController();
-    Map<String, Object> map = new HashMap<String,Object>();
-
-    try {
-      articleController.throwIfPeerReviewNotFound(map);
-    } catch (NotFoundException e) {
-      return;
-    }
-    fail("should have thrown a NotFound exception");
-  }
-
-  @Test
-  public void testPeerReviewFound(){
-    ArticleController articleController = new ArticleController();
-    Map<String, Object> map = new HashMap<String,Object>();
-
-    map.put("peerReview", "foo");
-    articleController.throwIfPeerReviewNotFound(map);
-  }
 }

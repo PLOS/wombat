@@ -176,7 +176,7 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * Serves the peer review tab content for an article.
+   * Serves the peer review tab for an article.
    *
    * @param model     data to pass to the view
    * @param site      current site
@@ -186,14 +186,44 @@ public class ArticleController extends WombatController {
    */
   @RequestMapping(name = "articlePeerReview", value = "/article/peerReview")
   public String renderArticlePeerReview(HttpServletRequest request, Model model, @SiteParam Site site,
-                                            RequestedDoiVersion articleId) throws IOException {
+                                        RequestedDoiVersion articleId) throws IOException {
+
     articleMetadataFactory.get(site, articleId)
         .validateVisibility("articlePeerReview")
         .populate(request, model);
 
     throwIfPeerReviewNotFound(model.asMap());
-
     return site + "/ftl/article/peerReview";
+  }
+
+  /**
+   * Serves the peer review tab with a specific review expanded.
+   *
+   * @param model     data to pass to the view
+   * @param site      current site
+   * @param reviewDoi specifies the review
+   * @return path to the template
+   * @throws IOException
+   */
+  @RequestMapping(name = "peerReview", value = "/peerReview")
+  public String renderPeerReview(HttpServletRequest request, Model model, @SiteParam Site site,
+                                 RequestedDoiVersion reviewDoi) throws IOException {
+
+    RequestedDoiVersion articleDoi = getParentArticleDoiFromReviewDoi(reviewDoi);
+    articleMetadataFactory.get(site, articleDoi)
+        .validateVisibility("peerReview")
+        .populate(request, model);
+
+    model.addAttribute("reviewDoi", reviewDoi);
+    throwIfPeerReviewNotFound(model.asMap());
+    return site + "/ftl/article/peerReview";
+  }
+
+  private RequestedDoiVersion getParentArticleDoiFromReviewDoi(RequestedDoiVersion reviewDoiVersion) {
+    String reviewDoi = reviewDoiVersion.getDoi();
+    // remove the sub-doi (e.g. ".r001") from the end
+    String articleDoi = reviewDoi.substring(0, (reviewDoi.length() - 5));
+    return reviewDoiVersion.forDoi(articleDoi);
   }
 
   /**

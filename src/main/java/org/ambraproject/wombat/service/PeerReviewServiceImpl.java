@@ -37,6 +37,7 @@ import org.apache.http.util.EntityUtils;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
@@ -123,6 +124,13 @@ public class PeerReviewServiceImpl implements PeerReviewService {
       xml = xml.replaceAll("<\\?xml(.+?)\\?>", "");
 
       Document parsed = Jsoup.parse(xml, "", Parser.xmlParser());
+
+      // re-format letter date (9 Oct 2018 -> October 9, 2018)
+      Element letterDate = parsed.select("named-content[content-type$=letter-date]").first();
+      if(letterDate != null) {
+        letterDate.text(formatDate(letterDate.text()));
+      }
+
       Elements subArticle = parsed.select("sub-article");
       if(!subArticle.isEmpty() && subArticle.attr("specific-use").equals("acceptance-letter")){
         acceptanceLetter = xml;

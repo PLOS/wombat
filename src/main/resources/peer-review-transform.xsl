@@ -13,36 +13,6 @@
                 else $input"/>
   </xsl:function>
 
-  <xsl:function name="plos:parse-date">
-    <xsl:param name="apex-date" as="xs:string"/>
-    <xsl:variable name="day" select="format-number(number(substring($apex-date,1,2)),'00')"/>
-    <xsl:variable name="month">
-        <xsl:if test="contains($apex-date,'Jan')">01</xsl:if>
-        <xsl:if test="contains($apex-date,'Feb')">02</xsl:if>
-        <xsl:if test="contains($apex-date,'Mar')">03</xsl:if>
-        <xsl:if test="contains($apex-date,'Apr')">04</xsl:if>
-        <xsl:if test="contains($apex-date,'May')">05</xsl:if>
-        <xsl:if test="contains($apex-date,'Jun')">06</xsl:if>
-        <xsl:if test="contains($apex-date,'Jul')">07</xsl:if>
-        <xsl:if test="contains($apex-date,'Aug')">08</xsl:if>
-        <xsl:if test="contains($apex-date,'Sep')">09</xsl:if>
-        <xsl:if test="contains($apex-date,'Oct')">10</xsl:if>
-        <xsl:if test="contains($apex-date,'Nov')">11</xsl:if>
-        <xsl:if test="contains($apex-date,'Dec')">12</xsl:if>
-    </xsl:variable>
-	<xsl:variable name="year" select="format-number(number(substring($apex-date,7,5)),'####')"/>
-    <xsl:variable name="apex-iso-date" select="concat($year,'-',$month,'-',$day)"/>
-    <xsl:sequence select="xs:date($apex-iso-date)"/>
-  </xsl:function>
-
-  <xsl:function name="plos:format-date">
-    <xsl:param name="input" as="xs:string?"/>
-    <xsl:sequence 
-        select="if ($input != '')
-                then format-date(plos:parse-date(normalize-space($input)),'[MNn] [D], [Y]')
-                else $input"/>
-  </xsl:function>
-
   <xsl:output method="html"/>
 
   <xsl:template match="/">
@@ -97,7 +67,7 @@
           <div itemprop="itemReviewed" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
             <meta itemprop="url" content="articleUrl" />
             <time class="letter__date" itemprop="dateCreated" datetime="">
-              <xsl:value-of select="plos:format-date(.//named-content[@content-type = 'letter-date'])" />
+              <xsl:value-of select=".//named-content[@content-type = 'letter-date']" />
             </time>
             <div class="letter__title">
               <a class="peer-review-accordion-expander" href="#">Decision Letter</a>
@@ -139,7 +109,7 @@
           <div itemprop="itemReviewed" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
             <meta itemprop="url" content="articleUrl" />
             <time class="letter__date" itemprop="dateCreated" datetime="">
-              <xsl:value-of select="plos:format-date(.//named-content[@content-type = 'letter-date'])" />
+              <xsl:value-of select=".//named-content[@content-type = 'letter-date']" />
             </time>
             <div class="letter__title">
               <a class="peer-review-accordion-expander" href="#">Acceptance Letter</a>

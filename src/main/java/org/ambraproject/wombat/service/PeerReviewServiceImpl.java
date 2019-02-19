@@ -123,21 +123,21 @@ public class PeerReviewServiceImpl implements PeerReviewService {
       // strip the XML declaration, which is not allowed when these are aggregated
       xml = xml.replaceAll("<\\?xml(.+?)\\?>", "");
 
-      Document parsed = Jsoup.parse(xml, "", Parser.xmlParser());
+      Document parsedXml = Jsoup.parse(xml, "", Parser.xmlParser());
 
-      // re-format letter date (9 Oct 2018 -> October 9, 2018)
-      Element letterDate = parsed.select("named-content[content-type$=letter-date]").first();
-      if(letterDate != null) {
-        letterDate.text(formatDate(letterDate.text()));
+      // re-format review dates (9 Oct 2018 -> October 9, 2018)
+      Elements reviewDates = parsedXml.select("named-content[content-type~=(letter-date|author-response-date)]");
+      for (Element reviewDate : reviewDates) {
+        reviewDate.text(formatDate(reviewDate.text()));
       }
 
-      Elements subArticle = parsed.select("sub-article");
+      Elements subArticle = parsedXml.select("sub-article");
       if(!subArticle.isEmpty() && subArticle.attr("specific-use").equals("acceptance-letter")){
-        acceptanceLetter = xml;
+        acceptanceLetter = parsedXml.toString();
         continue;
       }
 
-      reviewLetters.add(xml);
+      reviewLetters.add(parsedXml.toString());
     }
 
     // group letters by revision

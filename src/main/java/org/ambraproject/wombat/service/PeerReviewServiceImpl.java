@@ -110,7 +110,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * Aggregate the XML for all rounds of Peer Review
    *
    * @param reviewLetterItems metadata about review letters
-   * @param articleMetadata metadata about article
+   * @param articleReceivedDate article received date (aka submission date)
    * @return entirety of peer review XML content
    * @throws IOException
    */

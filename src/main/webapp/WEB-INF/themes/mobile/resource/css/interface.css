@@ -145,6 +145,7 @@
   background-image: url('../img/sprites/structure.png');
   background-size: 300px 75px;
   margin: 15px auto 0 auto;
+  padding: 2rem 0 0;
 }
 
 /* Lists */
@@ -276,12 +277,12 @@
 }
 
 .close {
-  font-size: 1em;
-  height: 1em;
-  width: 1em;
+  font-size: 1.266em;
+  height: 1.266em;
+  width: 1.266em;
   display: block;
   font-family: 'ambraSymbols', sans-serif;
-
+  cursor: pointer;
 }
 
 .square-full {
@@ -613,7 +614,7 @@
 
 .search-expanded .search-form-container {
   background: #4A1010;
-  padding: 12px 0;
+  padding: 1rem 4%;
 }
 
 .search-expanded .search-form-container .search-field {
@@ -623,8 +624,8 @@
   line-height: 44px;
   display: inline;
   margin: 0 auto;
-  border-color: #333;
-  width: 94%;
+  border: 1px solid #333;
+  width: 100%;
 }
 
 .search-expanded .search-form-container .search-buttons {
@@ -835,13 +836,13 @@
 
 /* Accordions */
 .main-accordion .accordion-item {
-  border-bottom: 1px solid #d3d3d3;
+  border-bottom: 1px solid #eee;
 }
 
 .main-accordion .accordion-item > a {
   min-height: 40px;
   display: block;
-  padding: 1em;
+  padding: 1rem 0 1rem 2rem;
   margin: 0 -1em;
   color: #222;
   font-weight: 600;
@@ -862,7 +863,7 @@
 }
 
 .main-accordion .accordion-item:first-child {
-  border-top: 1px solid #d3d3d3;
+  border-top: 1px solid #eee;
 }
 
 .main-accordion .accordion-item.expanded > a {
@@ -884,13 +885,15 @@
   padding: 1.25rem 0;
 }
 
-
 .accordion-content li {
   margin: 0;
+  line-height: 2.25rem;
 }
 
 .section {
-  margin:0 auto;
+  margin:1rem auto;
+  padding: 1rem 0;
+  border-top: 1px solid #eee;
 }
 
 /* Headers */
@@ -924,7 +927,7 @@
   line-height: 55px;
 }
 
-/* Modals */
+/* Modals 
 .modal-info-window {
   position: fixed;
   z-index: 1000;
@@ -936,15 +939,21 @@
 }
 
 .modal-header {
-  background-size: 100% 9px;
-  padding: 12px;
-  height: 1.25rem;
-  position: absolute;
-  width: 100%;
+    background-size: 100% 9px;
+    padding: 10px;
+    height: 50px;
+    position: absolute;
+    width: 100%;
 }
 
-.modal-header .close {
-  float: right;
+.modal-info-window .modal-header .close {
+    width: 20px;
+    height: 20px;
+    display: block;
+    float: right;
+    font-size: 20px;
+    font-family: "ambraSymbols",sans-serif;
+    cursor: pointer;
 }
 
 .modal-content {
@@ -967,7 +976,7 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* Hiding author search button for now, as the functionality is broken */
+/* Hiding author search button for now, as the functionality is broken 
 .modal-info-window .modal-search {
   display: none;
 }
@@ -979,6 +988,108 @@
   opacity: 1;
   filter: alpha(opacity=100);
 }
+/* Modals */
+.modal-info-window {
+  position: fixed;
+  z-index: 1000;
+  background: #333;
+  height: 270px;
+  width: 100%;
+  bottom: -270px;
+  display: none;
+}
+
+.modal-info-window .modal-header {
+  padding: 1rem;
+  height: 50px;
+  position: absolute;
+  width: 100%;
+}
+
+.modal-info-window .modal-header .close {
+  float: right;
+}
+
+.modal-info-window .modal-content {
+  height: 190px;
+  padding: 0 1rem;
+  color: #fff;
+  position: relative;
+  top: 40px;
+  overflow-y: scroll;
+  -webkit-transition: opacity 300ms ease-in-out;
+  -moz-transition: opacity 300ms ease-in-out;
+  -ms-transition: opacity 300ms ease-in-out;
+  -o-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  -webkit-opacity: 0;
+  opacity: 0;
+  /*-ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0); TODO Syntax error? */
+  filter: alpha(opacity=0);
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/*.modal-info-window .modal-content.no-button {
+  height: 230px;
+}*/
+
+.modal-info-window .modal-search {
+  position: absolute;
+  bottom: 0;
+}
+
+.modal-info-window.active .modal-content {
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  -webkit-opacity: 1;
+  opacity: 1;
+  /*-ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=100); TODO Syntax error? */
+  filter: alpha(opacity=100);
+}
+
+/* Top Modal */
+.modal-info-window.top {
+  height: 100%;
+  bottom: -100%;
+  overflow-y: hidden;
+}
+
+.modal-info-window.top .modal-content {
+  padding: 1rem;
+  height: 100%;
+  color: #ccc;
+}
+
+
+
+.modal-info-window.top .modal-content a {
+  color: #fff;
+  font-weight: bold;
+}
+
+
+.modal-info-window.tab {
+  height: 100%;
+  bottom: -100%;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.modal-info-window.tab .modal-content {
+  height: 100%;
+  padding-bottom: 80px;
+}
+
+/* Hiding author search button for now, as the functionality is broken */
+.modal-info-window .modal-search {
+  display: none;
+}
+
+
+/* ================================================ */
 
 /* Top Modal */
 .modal-info-window.top {
@@ -1194,10 +1305,7 @@
   .modal-info-window #remove-article {
     margin-bottom: 60px;
   }
-  .modal-info-window .modal-search {
-    display: none;
-    /* Hide this for more room for content in landscape */
-  }
+ 
 }
 
 .error {
@@ -1239,3 +1347,7 @@
 .about-author {
   padding: 12px;
 }
+
+.table-basic tr td {
+  width:100%;
+  display:inline-block;}

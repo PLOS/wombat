@@ -1,4 +1,27 @@
-/* Issue */
+.nav-page li {
+  line-height: 2.25rem;
+}
+.img img {
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 1px solid #eee;
+  background: #f9f9f9;
+}
+
+#issue-articles-container .item {
+  margin: 2.25rem 0;
+}
+
+.item--article-title {
+  margin-bottom: 0.702em;
+}
+
+#issue-articles-container .authors,
+#issue-articles-container .article-info {
+  margin-bottom: 0.702em;
+}
+
+/* Issue 
 
 #container-main {
 }
@@ -50,7 +73,7 @@
   background: #fff;
 }
 
-#issue-articles-container .detail-container img {
+#issue-articles-container .detail-container .img {
   display: inline-block;
 }
 

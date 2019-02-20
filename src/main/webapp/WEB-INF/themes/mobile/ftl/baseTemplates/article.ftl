@@ -30,7 +30,7 @@
 <section id="article-info-window" class="modal-info-window">
 
   <div class="modal-header clearfix">
-    <a class="close coloration-text-color">v</a>
+    <a class="close coloration-light-text">v</a>
   </div>
 
   <div class="modal-content">

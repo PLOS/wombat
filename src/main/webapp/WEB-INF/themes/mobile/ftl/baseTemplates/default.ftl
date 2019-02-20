@@ -30,7 +30,7 @@
 <!DOCTYPE html>
 <!--[if IE 9]><html class="no-js ie9"><![endif]-->
 <!--[if gt IE 9]><!-->
-<html class="no-js">
+<html lang="en" class="no-js">
 <!--<![endif]-->
 <#macro base_page_head>
 

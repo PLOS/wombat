@@ -717,10 +717,10 @@ html:not(.positionfixed) #page-figure #site-header-container {
 }
 
 .references .label {
-  width: 20px;
+  width: 2rem;
   text-align: right;
   position: absolute;
-  left: -2em;
+  left: -3em;
 }
 
 .find-nolinks {

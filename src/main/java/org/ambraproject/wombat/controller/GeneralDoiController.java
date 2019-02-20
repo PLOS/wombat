@@ -150,6 +150,7 @@ public class GeneralDoiController extends WombatController {
       .put("article", redirectWithIdParameter("article"))
       .put("figure", redirectWithIdParameter("figurePage"))
       .put("table", redirectWithIdParameter("figurePage"))
+      .put("reviewLetter", redirectWithIdParameter("peerReview"))
 
       .put("supplementaryMaterial", redirectToAssetFile("supplementary"))
       .put("graphic", redirectToAssetFile("original"))

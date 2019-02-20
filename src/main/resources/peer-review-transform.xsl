@@ -75,7 +75,7 @@
               <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                 <span itemprop="name">
                   <!-- decision letter editor -->
-                  <xsl:apply-templates select="front-stub/contrib-group/contrib[1]" />, Editor
+                  <xsl:apply-templates select="front-stub/contrib-group/contrib[1]" />
                 </span>
               </span>
             </div>
@@ -91,9 +91,7 @@
   </xsl:template>
 
   <xsl:template match="contrib">
-    <xsl:value-of select="./name/given-names" />
-    <xsl:text> </xsl:text>
-    <xsl:value-of select="./name/surname" />
+    <xsl:value-of select="concat(normalize-space(./name/given-names),' ',normalize-space(./name/surname),', Editor')" />
   </xsl:template>
 
   <xsl:template match="sub-article[@specific-use = 'acceptance-letter']">

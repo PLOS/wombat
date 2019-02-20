@@ -2,49 +2,43 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.MoreCollectors;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import javax.xml.parsers.ParserConfigurationException;
+import org.ambraproject.wombat.service.remote.ContentKey;
+import org.ambraproject.wombat.service.remote.CorpusContentApi;
+import org.apache.commons.lang.CharEncoding;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.util.EntityUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Entities;
+import org.jsoup.parser.Parser;
+import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import org.xml.sax.XMLReader;
-
-import org.apache.http.client.methods.CloseableHttpResponse;
-
-import org.apache.http.util.EntityUtils;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.parser.Parser;
-import org.jsoup.select.Elements;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.ambraproject.wombat.service.remote.ContentKey;
-import org.ambraproject.wombat.service.remote.CorpusContentApi;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.FormatStyle;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.UUID;
 
 
 public class PeerReviewServiceImpl implements PeerReviewService {
@@ -124,6 +118,8 @@ public class PeerReviewServiceImpl implements PeerReviewService {
       xml = xml.replaceAll("<\\?xml(.+?)\\?>", "");
 
       Document parsedXml = Jsoup.parse(xml, "", Parser.xmlParser());
+      parsedXml.outputSettings().escapeMode(Entities.EscapeMode.xhtml);
+      parsedXml.outputSettings().charset(CharEncoding.UTF_8);
 
       // re-format review dates (9 Oct 2018 -> October 9, 2018)
       Elements reviewDates = parsedXml.select("named-content[content-type~=(letter-date|author-response-date)]");
@@ -167,7 +163,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     return peerReviewContent;
   }
 
-   /**
+  /**
    * Get received date (aka, original submission date) from article manuscript.
    * @param itemTable
    * @return article received date (as a string)

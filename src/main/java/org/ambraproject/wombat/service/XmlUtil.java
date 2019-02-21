@@ -79,7 +79,7 @@ public class XmlUtil {
     }
   }
 
-  private static Document createXmlDocument(InputSource xmlSource) throws IOException {
+  public static Document createXmlDocument(InputSource xmlSource) throws IOException {
     try {
       return newDocumentBuilder().parse(xmlSource);
     } catch (SAXException e) {
@@ -129,7 +129,17 @@ public class XmlUtil {
     }
   }
 
-  private static String createXmlString(Node node) {
+  public static NodeList getNodes(Document doc, String xpath) {
+    XPath xPath = XPathFactory.newInstance().newXPath();
+    try {
+      return (NodeList) xPath.compile(xpath).evaluate(doc, XPathConstants.NODESET);
+    } catch (XPathExpressionException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+
+  public static String createXmlString(Node node) {
     Transformer transformer;
     try {
       transformer = TransformerFactory.newInstance().newTransformer(); // not thread-safe

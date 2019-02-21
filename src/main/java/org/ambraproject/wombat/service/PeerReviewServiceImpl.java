@@ -119,44 +119,23 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     for (Map<String, ?> reviewLetterItem : reviewLetterItems) {
       String xml = getContentXml(reviewLetterItem, "letter");
 
-      DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-      DocumentBuilder docBuilder = null;
-      try {
-        docBuilder = docFactory.newDocumentBuilder();
-        Document doc = docBuilder.parse(new InputSource(new StringReader(xml)));
-
-        XPath xPath = XPathFactory.newInstance().newXPath();
-        String dateExpression = "//named-content[@content-type='letter-date' or @content-type='author-response-date']";
-        NodeList nodeList = (NodeList) xPath.compile(dateExpression).evaluate(doc, XPathConstants.NODESET);
-        int length = nodeList.getLength();
-        for (int i = 0; i < length; i++) {
-          Node node = nodeList.item(i);
-          node.setTextContent(formatDate(node.getTextContent()));
-        }
-
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        DOMSource source = new DOMSource(doc);
-        StringWriter writer = new StringWriter();
-        StreamResult result = new StreamResult(writer);
-        transformer.transform(source, result);
-        xml = writer.toString();
-
-        // strip the XML declaration, which is not allowed when these are aggregated
-        xml = xml.replaceAll("<\\?xml(.+?)\\?>", "");
-
-        String acceptLetterExpr = "sub-article[@specific-use='acceptance-letter']";
-        Node node = (Node) xPath.compile(acceptLetterExpr).evaluate(doc, XPathConstants.NODE);
-        if (node != null) {
-          acceptanceLetter = xml;
-        } else {
-          reviewLetters.add(xml);
-        }
-
-      } catch (ParserConfigurationException | SAXException | TransformerException | XPathExpressionException e) {
-        throw new RuntimeException(e);
+      Document doc = XmlUtil.createXmlDocument(new InputSource(new StringReader(xml)));
+      String dateExpression = "//named-content[@content-type='letter-date' or @content-type='author-response-date']";
+      NodeList dateNodes = XmlUtil.getNodes(doc, dateExpression);
+      int length = dateNodes.getLength();
+      for (int i = 0; i < length; i++) {
+        Node node = dateNodes.item(i);
+        node.setTextContent(formatDate(node.getTextContent()));
       }
+      xml = XmlUtil.createXmlString(doc);
 
+      String acceptLetterExpr = "sub-article[@specific-use='acceptance-letter']";
+      NodeList acceptLetterNodes = XmlUtil.getNodes(doc, acceptLetterExpr);
+      if (acceptLetterNodes.getLength() > 0) {
+        acceptanceLetter = xml;
+      } else {
+        reviewLetters.add(xml);
+      }
     }
 
     // group letters by revision

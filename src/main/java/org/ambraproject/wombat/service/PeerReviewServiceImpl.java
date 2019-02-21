@@ -4,28 +4,33 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.MoreCollectors;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
-import org.apache.commons.lang.CharEncoding;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.nodes.Entities;
-import org.jsoup.parser.Parser;
-import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -114,26 +119,44 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     for (Map<String, ?> reviewLetterItem : reviewLetterItems) {
       String xml = getContentXml(reviewLetterItem, "letter");
 
-      // strip the XML declaration, which is not allowed when these are aggregated
-      xml = xml.replaceAll("<\\?xml(.+?)\\?>", "");
+      DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+      DocumentBuilder docBuilder = null;
+      try {
+        docBuilder = docFactory.newDocumentBuilder();
+        Document doc = docBuilder.parse(new InputSource(new StringReader(xml)));
 
-      Document parsedXml = Jsoup.parse(xml, "", Parser.xmlParser());
-      parsedXml.outputSettings().escapeMode(Entities.EscapeMode.xhtml);
-      parsedXml.outputSettings().charset(CharEncoding.UTF_8);
+        XPath xPath = XPathFactory.newInstance().newXPath();
+        String dateExpression = "//named-content[@content-type='letter-date' or @content-type='author-response-date']";
+        NodeList nodeList = (NodeList) xPath.compile(dateExpression).evaluate(doc, XPathConstants.NODESET);
+        int length = nodeList.getLength();
+        for (int i = 0; i < length; i++) {
+          Node node = nodeList.item(i);
+          node.setTextContent(formatDate(node.getTextContent()));
+        }
 
-      // re-format review dates (9 Oct 2018 -> October 9, 2018)
-      Elements reviewDates = parsedXml.select("named-content[content-type~=(letter-date|author-response-date)]");
-      for (Element reviewDate : reviewDates) {
-        reviewDate.text(formatDate(reviewDate.text()));
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StringWriter writer = new StringWriter();
+        StreamResult result = new StreamResult(writer);
+        transformer.transform(source, result);
+        xml = writer.toString();
+
+        // strip the XML declaration, which is not allowed when these are aggregated
+        xml = xml.replaceAll("<\\?xml(.+?)\\?>", "");
+
+        String acceptLetterExpr = "sub-article[@specific-use='acceptance-letter']";
+        Node node = (Node) xPath.compile(acceptLetterExpr).evaluate(doc, XPathConstants.NODE);
+        if (node != null) {
+          acceptanceLetter = xml;
+        } else {
+          reviewLetters.add(xml);
+        }
+
+      } catch (ParserConfigurationException | SAXException | TransformerException | XPathExpressionException e) {
+        throw new RuntimeException(e);
       }
 
-      Elements subArticle = parsedXml.select("sub-article");
-      if(!subArticle.isEmpty() && subArticle.attr("specific-use").equals("acceptance-letter")){
-        acceptanceLetter = parsedXml.toString();
-        continue;
-      }
-
-      reviewLetters.add(parsedXml.toString());
     }
 
     // group letters by revision

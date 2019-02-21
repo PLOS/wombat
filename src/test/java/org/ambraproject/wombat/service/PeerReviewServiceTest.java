@@ -3,8 +3,6 @@ package org.ambraproject.wombat.service;
 import com.google.common.collect.ImmutableMap;
 
 import java.io.IOException;
-import java.io.StringWriter;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -18,22 +16,6 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
 import org.ambraproject.wombat.service.remote.ContentKey;
-import org.w3c.dom.Node;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import static java.lang.String.format;
 import static junit.framework.TestCase.assertNull;
@@ -262,7 +244,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     for (int i=0; i < expectedDates.length; ++i) {
       String receivedDate = read(prefix("article-received-date/" + format("received-date.%d.xml",i)));
-      assertThat(service.getReceivedDate(receivedDate), is(expectedDates[i]));
+      assertThat(service.parseArticleReceivedDate(receivedDate), is(expectedDates[i]));
     }
   }
 

@@ -14,23 +14,14 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -178,7 +169,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
 
     String articleXml = getContentXml(articleItem, "manuscript");
 
-    return getReceivedDate(articleXml);
+    return parseArticleReceivedDate(articleXml);
   }
 
   /**
@@ -186,7 +177,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * @param xml article xml
    * @return received date.
    */
-  String getReceivedDate(String xml) throws IOException {
+  String parseArticleReceivedDate(String xml) throws IOException {
 
     String receiveDateXml = XmlUtil.extractElement(xml, "date", "date-type", "received");
 

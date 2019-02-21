@@ -33,21 +33,24 @@
       </p>
     </div>
   </xsl:template>
-  
+
   <xsl:template match="revision">
+    <xsl:variable name="revision-row">
+      <xsl:number />  
+    </xsl:variable>
     <tr>
       <th class="revision">
-        <span class="letter__date">
-          <xsl:value-of select=".//named-content[@content-type = 'letter-date']" />
-        </span>
         <xsl:choose>
-          <xsl:when test="position() = 1">
+          <xsl:when test="$revision-row = 1">
             <span class="letter__title">Original Submission</span>
+            <span class="letter__date">
+              <xsl:value-of select="/peer-review/article-received-date" />
+            </span>
           </xsl:when>
           <xsl:otherwise>
             <span class="letter__title">
               Revision
-              <xsl:value-of select="position() - 1" />
+              <xsl:value-of select="$revision-row - 1" />
             </span>
           </xsl:otherwise>
         </xsl:choose>
@@ -55,7 +58,7 @@
     </tr>
     <xsl:apply-templates />
   </xsl:template>
-  
+
   <xsl:template match="sub-article[@specific-use = 'decision-letter']">
     <tr class="peer-review-accordion-item">
       <xsl:attribute name="data-doi"><xsl:value-of select="current()/@id" /></xsl:attribute>
@@ -70,9 +73,11 @@
               <a class="peer-review-accordion-expander" href="#">Decision Letter</a>
               -
               <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                <span itemprop="name">Nico Donkelope</span>
+                <span itemprop="name">
+                  <!-- decision letter editor -->
+                  <xsl:apply-templates select="front-stub/contrib-group/contrib[1]" />
+                </span>
               </span>
-              , Editor
             </div>
             <div itemprop="reviewBody" class="peer-review-accordion-content">
               <div class="letter__body">
@@ -83,6 +88,10 @@
         </div>
       </td>
     </tr>
+  </xsl:template>
+
+  <xsl:template match="contrib">
+    <xsl:value-of select="concat(normalize-space(./name/given-names),' ',normalize-space(./name/surname),', Editor')" />
   </xsl:template>
 
   <xsl:template match="sub-article[@specific-use = 'acceptance-letter']">
@@ -192,4 +201,9 @@
   </xsl:template>
   
   <xsl:template match="named-content" />
+
+  <!-- ignore received date found during template processing.
+       date is referenced directly in revision #0 block --> 
+  <xsl:template match="article-received-date" />
+
 </xsl:stylesheet>

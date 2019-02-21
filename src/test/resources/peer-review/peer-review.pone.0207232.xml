@@ -46,8 +46,7 @@
       </front-stub>
       <body>
         <p>
-          <named-content content-type="letter-date">12 Sep
-          2018</named-content>
+          <named-content content-type="letter-date">September 12, 2018</named-content>
         </p>
         <p>PONE-D-18-18642</p>
         <p>Dosimetric and radiobiological comparison in different
@@ -714,6 +713,13 @@
             </name>
             <role>Academic Editor</role>
           </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Zhang2</surname>
+              <given-names>Qinghui</given-names>
+            </name>
+            <role>Academic Editor</role>
+          </contrib>
         </contrib-group>
         <permissions>
           <copyright-year>2018</copyright-year>
@@ -743,7 +749,7 @@
       </front-stub>
       <body>
         <p>
-          <named-content content-type="letter-date">29 Oct
+          <named-content content-type="letter-date">October 9,
           2018</named-content>
         </p>
         <p>Dosimetric and radiobiological comparison in different
@@ -892,4 +898,5 @@
       </body>
     </sub-article>
   </revision>
+  <article-received-date>June 1, 2018</article-received-date>
 </peer-review>

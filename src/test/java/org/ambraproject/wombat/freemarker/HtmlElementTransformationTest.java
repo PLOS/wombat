@@ -79,7 +79,7 @@ public class HtmlElementTransformationTest {
             "<html>\n" +
             " <head></head>\n" +
             " <body>\n" +
-            "  <img src=\"path/to/an/internal/page\" />\n" +
+            "  <img src=\"path/to/an/internal/page\">\n" +
             "  <a href=\"path/to/an/internal/page\"></a>\n" +
             "  <a href=\"path/to/an/internal/page#anchor_string\">Lorem Ipsum</a>\n" +
             "  <a href=\"path/to/another/journal/page\">test cross-journal link</a>\n" +

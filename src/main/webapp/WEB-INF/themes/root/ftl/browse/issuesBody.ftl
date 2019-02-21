@@ -20,7 +20,8 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<h1>Table of Contents: ${issue.displayName} ${issue.parentVolume.displayName}</h1>
+<small class="item-title lead-in">Table of Contents</small>
+<h2>${issue.displayName} ${issue.parentVolume.displayName}</h2>
 
 <nav id="nav-toc">
   <ul class="nav-page">
@@ -44,9 +45,9 @@
     <a id="Cover" name="Cover" toc="Cover" title="Cover"></a>
 
     <div class="header">
-      <p class="kicker">COVER</p>
+      <small class="item-title lead-in">Cover</small>
       <@siteLink handlerName="browseIssues" queryParameters={"id": issue.doi}; issueLink>
-        <a href="${issueLink}" class="title">${issueTitle}</a>
+        <a href="${issueLink}">${issueTitle}</a>
       </@siteLink>
 
     </div>
@@ -74,15 +75,16 @@
       <#assign articleHeader="${articleGroup.type.name!'No Header Defined'}">
     </#if>
 
-    <h2>${articleHeader!"No Header Defined"}</h2>
+    <small class="item-title lead-in">${articleHeader!"No Header Defined"}</small>
     <#list articleGroup.articles as articleInfo>
       <div class="item cf">
         <@siteLink handlerName="article" queryParameters={"id": articleInfo.doi} ; articleLink>
-          <h3>
+          <h4 class="item--article-title"><b>
             <a href="${articleLink}" title="Read Open Access Article">
               <@xform xml=articleInfo.ingestion.title/>
             </a>
-          </h3>
+            </b>
+          </h4>
         </@siteLink>
 
         <p class="authors">
@@ -93,7 +95,7 @@
           </#if>
         </p>
 
-        <p class="article-info"><b>${journal.title}:</b> published
+        <p class="article-info"><i>${journal.title}</i>: published
           <@formatJsonDate date="${articleInfo.ingestion.publicationDate}" format="MMMM d, yyyy" /> |
           <#include "../macro/doiAsLink.ftl" />
           <@doiAsLink articleInfo.doi />
@@ -113,16 +115,17 @@
 
         <#if articleInfo.relatedArticles??>
           <#if (articleInfo.relatedArticles?size > 0)>
-            <h4>Related Articles</h4>
-            <ol>
+          <dl>
+            <dt><small class="item-title">Related Articles</small></dt>
+            
               <#list articleInfo.relatedArticles as relArticle>
-                <li>
+                <dd>
                   <a href="${doiResolverLink(relArticle.doi)}" title="Read Open Access Article">
                     <@xform xml=relArticle.title />
                   </a>
-                </li>
+                </dd>
               </#list>
-            </ol>
+          </dl>
           </#if>
         </#if>
       </div>

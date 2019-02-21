@@ -12,14 +12,16 @@
 }
 
 .form-group {
-  margin: 2.75rem 0 1rem;
+  margin: 1rem 0;
 }
 
 #feedbackCreate label,
-#emailThisArticleForm label {
+#emailThisArticleForm label,
+.form-group label {
   width: 100%;
   display: inline-block;
   font-weight: 600;
+  text-align: left;
 }
 
 #emailThisArticleForm input[type="text"],
@@ -39,6 +41,7 @@
 
 #submit-feedback-btn,
 #sendButton {
+  border: 1px solid #fff;
   margin: 2rem 0;
   width: 96%;
 }

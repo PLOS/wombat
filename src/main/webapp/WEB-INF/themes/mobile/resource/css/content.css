@@ -2,32 +2,37 @@
   display: none;
 }
 
-p {margin-bottom: 1.25em;}
+p {
+  margin-bottom: 1.25em;}
 
 h1, h2, h3, h4, h5 {
-  margin: 2.75rem 0 1rem;
+  margin: 1rem 0;
   font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 1.15;
 }
 
-
 h1 {
-  margin-top: 0;
-  font-size: 3.052em;
+  font-size: 1.802em; /* 28.83px */
 }
 
-h2 {font-size: 2.441em;}
+h2 {
+  font-size: 1.602em;} /* 25.63px */
 
-h3 {font-size: 1.953em;}
+h3 {
+  font-size: 1.424em;} /* 22.78px */
 
 h4,
-#article-metrics h2 {font-size: 1.563em;}
+.author-list,
+#article-metrics h2 {
+  font-size: 1.266em;} /* 20.25px */
 
 h5,
-#article-metrics h3 {font-size: 1.25em;}
+#article-metrics h3 {
+  font-size: 1.125em;} /* 18px */
 
-small, .text_small {font-size: 0.8em;}
+
+small, .text_small {font-size: 0.889em;}
 
 #content ul,
 #content ol {

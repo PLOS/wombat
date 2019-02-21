@@ -21,6 +21,7 @@
   -->
 
 <#include '../baseTemplates/default.ftl' />
+<#assign cssFile = 'issues.css' />
 <#assign mainId = "article-content" />
 <#assign mainClass = "content" />
 

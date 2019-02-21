@@ -41,7 +41,7 @@
 
   <#macro siteMenuCalloutSingleButton buttonText buttonTarget>
     <p class="button-contain special">
-      <a class="rounded coloration-white-on-color"" href="${buttonTarget}">
+      <a class="rounded coloration-white-on-color" href="${buttonTarget}">
       ${buttonText}
       </a>
     </p>
@@ -110,7 +110,7 @@
     </#macro>
     <#macro siteMenuCalloutButton href>
   
-      <p><a class="coloration-light-text" href="<@siteLink path='s/' + href/>" id="callout-button">
+      <p><a class="rounded coloration-white-on-color" href="<@siteLink path='s/' + href/>" id="callout-button">
         <#nested/>
       </a></p>
     </#macro>

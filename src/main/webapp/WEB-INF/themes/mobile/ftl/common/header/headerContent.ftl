@@ -26,7 +26,10 @@
   <div class="search-expanded">
     <div class="search-form-container coloration-bg">
       <form id="simpleSearchForm" action="<@siteLink handlerName='simpleSearch'/>" method="get">
-        <input name="q" id="search-input" type="text" class="search-field" placeholder="Search articles...">
+      <div class="form-group">
+        <label for="search-input" class="">Search articles</label>
+        <input name="q" id="search-input" type="text" class="search-field">
+      </div>
         <#if journal?has_content><input type="hidden" name="filterJournals" value="${journal}"/></#if>
         <div class="search-buttons">
           <button id="search-cancel" class="rounded" type="reset">cancel</button>

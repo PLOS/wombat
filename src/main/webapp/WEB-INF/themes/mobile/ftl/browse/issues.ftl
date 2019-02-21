@@ -22,7 +22,8 @@
 
 <#include '../baseTemplates/default.ftl' />
 <#assign cssFile = 'issues.css' />
-<#assign mainId = "feedback-form-container" />
+<#assign mainId = "issue-articles-container" />
+<#assign mainClass = "content" />
 <#include "../macro/doiResolverLink.ftl" />
 
 <@page_header />

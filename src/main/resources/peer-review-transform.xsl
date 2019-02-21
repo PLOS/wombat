@@ -58,6 +58,7 @@
   
   <xsl:template match="sub-article[@specific-use = 'decision-letter']">
     <tr class="peer-review-accordion-item">
+      <xsl:attribute name="data-doi"><xsl:value-of select="current()/@id" /></xsl:attribute>
       <td class="letter">
         <div class="decision-letter" itemscope="" itemtype="http://schema.org/Review">
           <div itemprop="itemReviewed" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
@@ -91,6 +92,7 @@
       </th>
     </tr>
     <tr class="peer-review-accordion-item">
+      <xsl:attribute name="data-doi"><xsl:value-of select="current()/@id" /></xsl:attribute>
       <td class="letter">
         <div class="acceptance-letter" itemscope="" itemtype="http://schema.org/Review">
           <div itemprop="itemReviewed" itemscope="" itemtype="http://schema.org/ScholarlyArticle">
@@ -115,6 +117,7 @@
 
   <xsl:template match="sub-article[@article-type = 'author-comment']">
     <tr class="peer-review-accordion-item">
+      <xsl:attribute name="data-doi"><xsl:value-of select="current()/@id" /></xsl:attribute>
       <td class="letter">
         <div class="author-response">
           <time class="letter__date">

@@ -57,11 +57,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.w3c.dom.Document;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.Serializable;
+import java.io.StringWriter;
 import java.net.URISyntaxException;
 import java.net.URLDecoder;
 import java.nio.charset.Charset;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -176,27 +187,6 @@ public class ArticleController extends WombatController {
   }
 
   /**
-   * Serves the peer review tab content for an article.
-   *
-   * @param model     data to pass to the view
-   * @param site      current site
-   * @param articleId specifies the article
-   * @return path to the template
-   * @throws IOException
-   */
-  @RequestMapping(name = "articlePeerReview", value = "/article/peerReview")
-  public String renderArticlePeerReview(HttpServletRequest request, Model model, @SiteParam Site site,
-                                            RequestedDoiVersion articleId) throws IOException {
-    articleMetadataFactory.get(site, articleId)
-        .validateVisibility("articlePeerReview")
-        .populate(request, model);
-
-    throwIfPeerReviewNotFound(model.asMap());
-
-    return site + "/ftl/article/peerReview";
-  }
-
-  /**
    * Returns a list of figures and tables of a given article; main usage is the figshare tile on the Metrics
    * tab
    *
@@ -259,12 +249,6 @@ public class ArticleController extends WombatController {
     public XmlContent(String html, List<Reference> references) {
       this.html = Objects.requireNonNull(html);
       this.references = ImmutableList.copyOf(references);
-    }
-  }
-  
-  void throwIfPeerReviewNotFound(Map<String, Object> map) {
-    if (null == map.get("peerReview")) {
-      throw new NotFoundException();
     }
   }
 

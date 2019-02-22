@@ -125,9 +125,9 @@ public class ArticleController extends WombatController {
         .fillAmendments(model)
         .getArticlePointer();
 
-    XmlContent xmlContent = getXmlContent(site, articlePointer, request);
-    model.addAttribute("articleText", xmlContent.html);
-    model.addAttribute("references", xmlContent.references);
+    HtmlWithReferences htmlWithReferences = getArticleHtmlWithReferences(site, articlePointer, request);
+    model.addAttribute("articleText", htmlWithReferences.html);
+    model.addAttribute("references", htmlWithReferences.references);
 
     return site + "/ftl/article/article";
   }
@@ -242,11 +242,11 @@ public class ArticleController extends WombatController {
   }
 
   @SuppressWarnings("serial")
-  static class XmlContent implements Serializable {
+  static class HtmlWithReferences implements Serializable {
     private final String html;
     private final ImmutableList<Reference> references;
 
-    public XmlContent(String html, List<Reference> references) {
+    public HtmlWithReferences(String html, List<Reference> references) {
       this.html = Objects.requireNonNull(html);
       this.references = ImmutableList.copyOf(references);
     }
@@ -258,70 +258,98 @@ public class ArticleController extends WombatController {
    *
    * @param articlePointer
    * @param request
-   * @return an XmlContent containing the list of references and article html
+   * @return an HtmlWithReferences containing the list of references and article html
    * @throws IOException
    */
-  private XmlContent getXmlContent(Site site, ArticlePointer articlePointer,
-                                   HttpServletRequest request) throws IOException {
+  private HtmlWithReferences getArticleHtmlWithReferences(Site site, ArticlePointer articlePointer,
+                                                          HttpServletRequest request) throws IOException {
     return corpusContentApi.readManuscript(articlePointer, site, "html", (InputStream stream) -> {
       byte[] xml = ByteStreams.toByteArray(stream);
-      final Document document = parseXmlService.getDocument(new ByteArrayInputStream(xml));
+      List<Reference> references = getReferences(site, request, xml);
+      String articleHtml = getArticleHtml(site, articlePointer, xml, references);
 
-      // do not supply Solr related link service now
-      List<Reference> references = parseXmlService.parseArticleReferences(document, null);
-
-      // invoke the Solr API once to resolve all journal keys
-      List<String> dois = references.stream().map(ref -> ref.getDoi()).filter(doi -> inPlosJournal(doi)).collect(Collectors.toList());
-      List<String> keys = doiToJournalResolutionService.getJournalKeysFromDois(dois, site);
-
-      // store the link text from journal key to references.
-      // since Reference is immutable, need to create a new list of new reference objects.
-      Iterator<Reference> itRef = references.iterator();
-      Iterator<String> itKey = keys.iterator();
-      List<Reference> referencesWithLinks = new ArrayList<Reference>();
-      while (itRef.hasNext()) {
-        Reference ref = itRef.next();
-        if (!inPlosJournal(ref.getDoi())) {
-          referencesWithLinks.add(ref);
-          continue;
-        }
-
-        String key = itKey.next();
-        if (Strings.isNullOrEmpty(key)) {
-          referencesWithLinks.add(ref);
-          continue;
-        }
-
-        Reference.Builder builder = new Reference.Builder(ref);
-        Reference refWithLink = builder.setFullArticleLink(getLinkText(site, request, ref.getDoi(), key)).build();
-        referencesWithLinks.add(refWithLink);
-      }
-
-      references = referencesWithLinks;
-
-      StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
-      try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
-        articleTransformService.transformArticle(site, articlePointer, references,
-            new ByteArrayInputStream(xml), outputStream);
-      }
-
-      return new XmlContent(articleHtml.toString(), references);
+      return new HtmlWithReferences(articleHtml, references);
     });
+  }
+
+  /**
+   * Convert article XML to HTML.
+   * Update references to PLOS journals with absolute URLs.
+   *
+   * @param site
+   * @param articlePointer
+   * @param xml
+   * @param references
+   * @return
+   * @throws IOException
+   */
+  private String getArticleHtml(Site site, ArticlePointer articlePointer, byte[] xml, List<Reference> references) throws IOException {
+    StringWriter articleHtml = new StringWriter(XFORM_BUFFER_SIZE);
+    try (OutputStream outputStream = new WriterOutputStream(articleHtml, charset)) {
+      articleTransformService.transformArticle(site, articlePointer, references, new ByteArrayInputStream(xml), outputStream);
+    }
+    return articleHtml.toString();
+  }
+
+  /**
+   * Get a list of references.
+   * References to PLOS articles are supplemented with the absolute link to the journal site.
+   *
+   * @param site
+   * @param request
+   * @param xml
+   * @return
+   * @throws IOException
+   */
+  private List<Reference> getReferences(Site site, HttpServletRequest request, byte[] xml) throws IOException {
+    final Document document = parseXmlService.getDocument(new ByteArrayInputStream(xml));
+    // do not supply Solr related link service now
+    List<Reference> references = parseXmlService.parseArticleReferences(document, null);
+
+    // invoke the Solr API once to resolve all journal keys
+    List<String> plosDois = references.stream().map(ref -> ref.getDoi()).filter(doi -> inPlosJournal(doi)).collect(Collectors.toList());
+    List<String> plosJournalKeys = doiToJournalResolutionService.getJournalKeysFromDois(plosDois, site);
+
+    // store the link text from journal key to references.
+    // since Reference is immutable, need to create a new list of new reference objects.
+    Iterator<Reference> refs = references.iterator();
+    Iterator<String> journalKeys = plosJournalKeys.iterator();
+    List<Reference> processedReferences = new ArrayList<Reference>();
+    while (refs.hasNext()) {
+      Reference ref = refs.next();
+      if (!inPlosJournal(ref.getDoi())) {
+        processedReferences.add(ref);
+        continue;
+      }
+
+      String key = journalKeys.next();
+      if (Strings.isNullOrEmpty(key)) {
+        processedReferences.add(ref);
+        continue;
+      }
+
+      Reference.Builder builder = new Reference.Builder(ref);
+      Reference refWithLink = builder.setFullArticleLink(getFullArticleLink(site, request, ref.getDoi(), key)).build();
+      processedReferences.add(refWithLink);
+    }
+
+    references = processedReferences;
+    return references;
   }
 
   private Boolean inPlosJournal(String doi) {
     return doi != null && doi.startsWith("10.1371/");
   }
 
-  private String getLinkText(Site site, HttpServletRequest request, String doi, String citationJournalKey) throws IOException {
-    String linkText = null;
+  private String getFullArticleLink(Site site, HttpServletRequest request, String doi, String citationJournalKey) throws IOException {
+    String articleLink = null;
     if (citationJournalKey != null) {
-      linkText = Link.toForeignSite(site, citationJournalKey, siteSet)
+      articleLink = Link.toForeignSite(site, citationJournalKey, siteSet)
           .toPattern(requestMappingContextDictionary, "article")
           .addQueryParameter("id", doi)
           .build()
           .get(request);
     }
-    return linkText;
+    return articleLink;
   }
 }

@@ -190,7 +190,6 @@
 .footer {
   background: #333;
   padding: 2rem 1rem 4rem;
-  margin-top: 2rem;
 }
 
 .footer .footer-credits {
@@ -229,7 +228,7 @@
 .btn-lg,
 .two-btn-container a,
 .rounded {
-    -webkit-border-top-right-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
   -webkit-border-bottom-right-radius: 3px;
   -webkit-border-bottom-left-radius: 3px;
   -webkit-border-top-left-radius: 3px;
@@ -484,7 +483,7 @@
 }
 
 .menu-bar li {
-    border-right: 1px solid #737373;
+  border-right: 1px solid #737373;
 }
 .menu-bar li a {
   color: #fff;
@@ -645,16 +644,16 @@
 
 .lead-in,
 .small-caps {
-    text-transform: uppercase;
-    font-weight: 400;
+  text-transform: uppercase;
+  font-weight: 400;
 }
 
 .lead-in {
-    letter-spacing: .15em;
-    color: #999;
-    margin-top: 1.25rem;
-    display: block;
-    font-weight: 600;
+  letter-spacing: .15em;
+  color: #999;
+  margin-top: 1.25rem;
+  display: block;
+  font-weight: 600;
 }
 
 .author-list a {
@@ -668,7 +667,7 @@
 
 .content .article-title {
   color: #222;
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 .article-item .citation > a {
@@ -891,7 +890,7 @@
 }
 
 .section {
-  margin:1rem auto;
+  margin: 1rem auto;
   padding: 1rem 0;
   border-top: 1px solid #eee;
 }
@@ -1305,7 +1304,6 @@
   .modal-info-window #remove-article {
     margin-bottom: 60px;
   }
- 
 }
 
 .error {
@@ -1349,5 +1347,6 @@
 }
 
 .table-basic tr td {
-  width:100%;
-  display:inline-block;}
+  width: 100%;
+  display: inline-block;
+}

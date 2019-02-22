@@ -121,11 +121,20 @@ table th {
   margin-top: 4px;
 }
 
-#averageViewsSummary .ir {
-  float: right;
-  border-radius: 8.5px;
-  -webkit-border-radius: 8.5px;
-  -moz-border-radius: 8.5px;
+
+
+.fa-question-circle {
+  font-weight: 900;
+  font-style: normal;
+  border-radius:50%;
+  background-color: #333;
+  color: #fff;
+  padding: 0 5px;
+  font-size:16px;
+  margin-left: 1rem;
+}
+.fa-question-circle:before {
+  content:" ?";
 }
 
 #averageViewsSummary select {

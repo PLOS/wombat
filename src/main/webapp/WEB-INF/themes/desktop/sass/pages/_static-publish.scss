@@ -413,12 +413,13 @@ div#social_icons h3 {
 
 
 div#publish_main_content div#social_icons_wrapper {
-  width: 120px;
+  width: 40%;
   margin: 0 auto;
+  text-align: center;
 
-  a {
+  .social {
     display: inline;
-    margin-right: 10px;
+    margin-left: 2rem;
   }
 }
 
@@ -435,8 +436,7 @@ div#social_icons img#social_icon_twitter {
 
 
 div#social_icons_wrapper a#blogs_link {
-  display: inline-block;
-  float: right;
+  width: 10rem;
   font-family: $font-face-fancy;
   font-size: $txt-size-xsmall;
   color: $white;

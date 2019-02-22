@@ -53,6 +53,10 @@ public abstract class ContentKey {
     return bucketName;
   }
 
+  public String getKey() {
+    return key;
+  }
+
   /**
    * Set the parameters for a Content Repo request to identify this key's entity.
    *

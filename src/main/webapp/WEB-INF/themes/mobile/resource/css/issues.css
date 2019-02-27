@@ -12,11 +12,33 @@
   margin: 2.25rem 0;
 }
 
+.article-info--date {
+  display:block;
+}
+
+.separator {
+  display: none;
+}
+
 .item--article-title {
+  font-weight: 600;
   margin-bottom: 0.702em;
+}
+
+.item--article-title a:link {
+  color: #000;
 }
 
 #issue-articles-container .authors,
 #issue-articles-container .article-info {
+  margin-bottom: 0.702em;
+}
+
+.related {
+  list-style: none;
+}
+
+.related-article {
+  list-style-type: none;
   margin-bottom: 0.702em;
 }

@@ -45,7 +45,7 @@
     <a id="Cover" name="Cover" toc="Cover" title="Cover"></a>
 
     <div class="header">
-      <small class="item-title lead-in">Cover</small>
+      <h2 class="item-title lead-in">Cover</h2>
       <@siteLink handlerName="browseIssues" queryParameters={"id": issue.doi}; issueLink>
         <a href="${issueLink}">${issueTitle}</a>
       </@siteLink>
@@ -75,16 +75,15 @@
       <#assign articleHeader="${articleGroup.type.name!'No Header Defined'}">
     </#if>
 
-    <small class="item-title lead-in">${articleHeader!"No Header Defined"}</small>
+    <h2 class="item-title lead-in">${articleHeader!"No Header Defined"}</h2>
     <#list articleGroup.articles as articleInfo>
       <div class="item cf">
         <@siteLink handlerName="article" queryParameters={"id": articleInfo.doi} ; articleLink>
-          <h4 class="item--article-title"><b>
+          <h3 class="item--article-title">
             <a href="${articleLink}" title="Read Open Access Article">
               <@xform xml=articleInfo.ingestion.title/>
             </a>
-            </b>
-          </h4>
+          </h3>
         </@siteLink>
 
         <p class="authors">
@@ -95,8 +94,8 @@
           </#if>
         </p>
 
-        <p class="article-info"><i>${journal.title}</i>: published
-          <@formatJsonDate date="${articleInfo.ingestion.publicationDate}" format="MMMM d, yyyy" /> |
+        <p class="article-info"><i>${journal.title}</i>: <span class="article-info--date">published
+          <@formatJsonDate date="${articleInfo.ingestion.publicationDate}" format="MMMM d, yyyy" /></span> <span class="separator">|</span>
           <#include "../macro/doiAsLink.ftl" />
           <@doiAsLink articleInfo.doi />
         </p>
@@ -115,19 +114,19 @@
 
         <#if articleInfo.relatedArticles??>
           <#if (articleInfo.relatedArticles?size > 0)>
-          <dl>
-            <dt><small class="item-title">Related Articles</small></dt>
-            
-              <#list articleInfo.relatedArticles as relArticle>
-                <dd>
-                  <a href="${doiResolverLink(relArticle.doi)}" title="Read Open Access Article">
-                    <@xform xml=relArticle.title />
-                  </a>
-                </dd>
-              </#list>
-          </dl>
+            <h4 class="item-title">Related Articles</h4>
+              <ol class="related">
+                <#list articleInfo.relatedArticles as relArticle>
+                  <li class="related-article">
+                    <a href="${doiResolverLink(relArticle.doi)}" title="Read Open Access Article">
+                      <@xform xml=relArticle.title />
+                      </a>
+                      </li>
+                </#list>
+              </ol>
           </#if>
         </#if>
+        
       </div>
     </#list>
   </div>

@@ -134,7 +134,8 @@
   float: right;
 }
 
-.site-search-button .icon {
+.site-search-button .icon,
+.editors-search-button .icon {
   overflow: hidden;
   text-indent: -1000px;
   display: block;
@@ -146,6 +147,12 @@
   background-size: 300px 75px;
   margin: 15px auto 0 auto;
   padding: 2rem 0 0;
+}
+
+
+.editors-search-button .icon {
+  margin: 0 auto;
+  padding: 0 0 0 0;
 }
 
 /* Lists */
@@ -638,6 +645,12 @@
 
 .search-expanded.active {
   display: block;
+}
+
+.form-group label {
+  display: block;
+  text-align: left;
+  font-weight: 600;
 }
 
 /* Article Item*/
@@ -1199,6 +1212,7 @@
 /* Pagination */
 .nav-pagination {
   text-align: center;
+  margin: 1rem auto 2rem;
 }
 
 .nav-pagination .previous,

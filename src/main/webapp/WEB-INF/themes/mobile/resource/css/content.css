@@ -23,14 +23,14 @@ h3 {
   font-size: 1.424em;} /* 22.78px */
 
 h4,
-.author-list,
-#article-metrics h2 {
-  font-size: 1.266em;} /* 20.25px */
+#article-metrics h2,
+.item--article-title  {
+  font-size: 1.266em; } /* 20.25px */
 
 h5,
-#article-metrics h3 {
+#article-metrics h3,
+.author-list {
   font-size: 1.125em;} /* 18px */
-
 
 small, .text_small {font-size: 0.889em;}
 
@@ -97,4 +97,3 @@ small, .text_small {font-size: 0.889em;}
 .block-important {
   background-color: #f4f6c3;
 }
-

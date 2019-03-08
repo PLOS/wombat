@@ -104,7 +104,7 @@ category: components
   text-align: center;
  
 
-  body.plosone & {
+  .plosone & {
 	  font-size: $txt-size-small;
 	  font-weight: $bold;
 	  text-transform: uppercase;
@@ -264,7 +264,7 @@ variable  | result   | default
   height: 0;
   width: 0;
   position: absolute;
-  pointer-events: none;
+
   border-top-color: $arrow-color;
   border-width: rem-calc($arrow-size);
   margin-left: -rem-calc($arrow-size);

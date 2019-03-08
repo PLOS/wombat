@@ -70,7 +70,7 @@ $tooltip-max-width: 300px !default;
         border-color: transparent transparent $tooltip-bg transparent;
         display: block;
         height: 0;
-        pointer-events: none;
+      
         position: absolute;
         top: -($tooltip-pip-size * 2);
         width: 0;

@@ -175,14 +175,14 @@ a#media-coverage-form-link {
 
   .btn.primary,
   .btn.main{
-    background: $grey-dark;
+    @extend %brand-background;
   }
 
   .btn.primary:hover,
   .btn.primary.active,
   .btn.active,
   .btn:hover{
-     @extend %brand-background;
+    background-color: $black;
     color: $white;
     text-decoration: none;
   }

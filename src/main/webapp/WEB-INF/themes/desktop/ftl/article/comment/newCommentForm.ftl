@@ -59,9 +59,10 @@
 
 <form class="cf" onsubmit="return false;">
   <fieldset>
-
-    <input type="text" name="comment_title" placeholder="Enter your comment title..." id="comment_title">
-    <textarea name="comment" placeholder="Enter your comment..." id="comment"></textarea>
+    <label for="comment_title">Your comment title:<label>
+    <input type="text" name="comment_title" id="comment_title">
+    <label for="comment">Your comment:<label>
+    <textarea name="comment" id="comment"></textarea>
 
     <div class="help">
       <p>Supported markup tags: ''<em>italic</em>'' '''<strong>bold</strong>''' '''''<strong><em>bold
@@ -79,10 +80,11 @@
       <label for="yes_competing">Yes, I have competing interests to declare (enter below):</label>
     </div>
     <div class="competing_text">
+    <label for="competing_interests">Your competing interests:<label>
       <textarea name="competing_interests" class="competing_interests"
                 id="competing_interests"
-                disabled="disabled"
-                placeholder="Enter your competing interests..."></textarea>
+                disabled="disabled">
+      </textarea>
     </div>
 
     <span class="btn flt-l btn_submit primary"

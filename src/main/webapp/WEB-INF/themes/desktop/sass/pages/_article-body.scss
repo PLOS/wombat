@@ -392,6 +392,7 @@ $line-height-small: ($line-height * .5);
   font-family: $font-face-plain;
   background: $off-white;
   padding: $line-height $pad-default $pad-smallish;
+  margin-bottom: $line-height;
 
   .img-box {
     display: table-cell;

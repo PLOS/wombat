@@ -571,17 +571,6 @@
                     <prefix>/opt/plos/wombat</prefix>
                   </mapper>
                 </data>
-
-                <data>
-                  <src>${project.basedir}/src/deb/wombat.sysv</src>
-                  <type>file</type>
-                  <dst>/etc/init.d/wombat</dst>
-                  <mapper>
-                    <type>perm</type>
-                    <filemode>755</filemode>
-                  </mapper>
-                </data>
-
               </dataSet>
             </configuration>
           </execution>

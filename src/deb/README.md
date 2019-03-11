@@ -26,7 +26,6 @@ The pom.xml file contains the configuration for the jdeb plugin, and controls th
   command line property by Team City.
 * extracting the tomcat8 config files (rendered with debconf-provided values as described below) into the install directory
 * placing the built wombat.war file into the webapps sub-folder within the install directory
-* moving the src/deb/tomcat8/wombat.sysv startup script into /etc/init.d/wombat
 
 NOTE: for more configuration options, see https://github.com/tcurdt/jdeb/blob/master/docs/maven.md
 

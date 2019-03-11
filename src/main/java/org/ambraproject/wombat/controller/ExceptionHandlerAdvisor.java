@@ -90,7 +90,7 @@ class ExceptionHandlerAdvisor {
 
   private String chooseExceptionView(Site site, Exception exception) {
     if (site == null) {
-      return "//error";
+      return "/NULLSITE/error";
     } else if (exception instanceof UserApi.UserApiException) {
       log.error("UserApiException", exception);
       return site.getKey() + "/ftl/error/userApiError";
@@ -115,7 +115,7 @@ class ExceptionHandlerAdvisor {
       return appRootPage.serveAppRoot();
     }
     response.setStatus(HttpStatus.NOT_FOUND.value());
-    String viewName = (site == null) ? "//notFound" : (site.getKey() + "/ftl/error/notFound");
+    String viewName = (site == null) ? "/NULLSITE/notFound" : (site.getKey() + "/ftl/error/notFound");
     return new ModelAndView(viewName);
   }
 

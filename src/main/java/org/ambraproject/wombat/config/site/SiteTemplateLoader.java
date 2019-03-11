@@ -50,7 +50,7 @@ public class SiteTemplateLoader extends DelegatingTemplateLoader {
     ImmutableMap.Builder<String, TemplateLoader> builder = ImmutableMap.builder();
 
     // Add the loader for the application root page
-    builder.put("", new WebappTemplateLoader(servletContext, "/WEB-INF/themes/root/app/"));
+    builder.put("NULLSITE", new WebappTemplateLoader(servletContext, "/WEB-INF/themes/root/app/"));
 
     // Add loader for each site
     for (Site site : siteSet.getSites()) {

@@ -209,7 +209,7 @@ example | extension
       .block-header {
         background-color: darken($setcolor, 0);
 
-        body.plos-one & {
+        .plosone & {
           background-color: $white;
         }
       }

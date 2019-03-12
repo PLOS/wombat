@@ -245,7 +245,7 @@ variable  | result   | default
 
   border-top-color: $arrow-color;
   border-width: rem-calc($arrow-size);
-  margin-left: -rem-calc($arrow-size);
+  margin-left: -(rem-calc($arrow-size));
 }}
 
  // this is for a tooltip with a bullet list.

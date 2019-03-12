@@ -43,7 +43,7 @@
     @extend %brand-color;
     text-decoration: underline;
 
-    body.plosone & {
+    .plosone & {
       color: $plos-one-purple;
     }
   }

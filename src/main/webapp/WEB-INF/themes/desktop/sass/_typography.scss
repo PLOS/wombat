@@ -469,7 +469,7 @@ figcaption {
   width: 100%;
 }
 
-table.table-basic {
+.table-basic {
   @extend %table-fancy;
   border-width: 0;
 
@@ -486,7 +486,7 @@ table.table-basic {
   }
 }
 
-table.table-borders {
+.table-borders {
   @extend %table-fancy;
   border: $table-separator;
 
@@ -500,7 +500,7 @@ table.table-borders {
   }
 }
 
-table.table-zebra-stripes {
+.table-zebra-stripes {
   @extend %table-fancy;
   border-width: 0;
 

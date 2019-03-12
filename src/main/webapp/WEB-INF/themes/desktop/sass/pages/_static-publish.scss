@@ -5,7 +5,7 @@
   margin: 0;
 }
 
-div#publish_main_content {
+#publish_main_content {
   width: 100%;
   h2,
   h3,
@@ -16,7 +16,7 @@ div#publish_main_content {
   }
 }
 
-div#publish_main_content #publish_banner_band {
+#publish_main_content #publish_banner_band {
   width: 100%;
   display: block;
   margin: 0 auto $line-height-large;
@@ -28,16 +28,16 @@ div#publish_main_content #publish_banner_band {
   background-position: -35%;
 }
 
-div#publish_main_content a.submit_manuscript {
+#publish_main_content a.submit_manuscript {
   display: none; // hiding for now, as there are already 2 other submit buttons on the page
 }
 
-div#publish_main_content .submit_manuscript:hover {
+#publish_main_content .submit_manuscript:hover {
   text-decoration: none;
   background-color: $white;
 }
 
-div#publish_main_content #publish_banner #publish_banner_content {
+#publish_main_content #publish_banner #publish_banner_content {
   h1,
   h4 {
     color: white;
@@ -55,23 +55,23 @@ div#publish_main_content #publish_banner #publish_banner_content {
   padding-left: rem-calc(-100px);
 }
 
-div#publish_main_content #publish_banner #publish_banner_content h1 {
+#publish_main_content #publish_banner #publish_banner_content h1 {
   font-size: $txt-size-xxxlarge;
   line-height: $line-height-large;
 }
 
-div#choose_plosone {
+#choose_plosone {
   font-family: $font-face-fancy;
 }
 
-div#choose_plosone h2 {
+#choose_plosone h2 {
   font-size: $txt-size-xxlarge;
   line-height: $line-height-large;
   text-align: center;
   margin-bottom: $line-height-large;
 }
 
-div#choose_plosone {
+#choose_plosone {
   width: rem-calc(830px);
   margin: 0 auto;
   display: block;
@@ -79,36 +79,36 @@ div#choose_plosone {
 }
 
 
-div#choose_plosone .half_column {
+#choose_plosone .half_column {
   width: 50%;
   float: left;
   height: 250px;
 }
 
-div#choose_plosone .full_column {
+#choose_plosone .full_column {
   float: none;
   width: 50%;
   height: 250px;
   margin: 0 auto;
 }
 
-div#choose_plosone .pull_right {
+#choose_plosone .pull_right {
   float: right;
 }
 
-div#choose_plosone div.icon_item {
+#choose_plosone div.icon_item {
   display: inline-block;
   margin: 0 auto;
   text-align: center;
   padding: 0 $line-height-large;
 }
 
-div#choose_plosone div.icon_item img {
+#choose_plosone div.icon_item img {
   width: 75px;
   height: auto;
 }
 
-div#choose_plosone div.icon_item a {
+#choose_plosone div.icon_item a {
   color: $plos-one-purple;
   font-size: $txt-size-small;
   font-weight: $bold;
@@ -119,17 +119,17 @@ div#choose_plosone div.icon_item a {
   }
 }
 
-div#choose_plosone div.icon_item p {
+#choose_plosone div.icon_item p {
   font-size: $txt-size-medium;
   line-height: $line-height;
   text-align: center;
 }
 
-div#choose_plosone div.icon_item h3 {
+#choose_plosone div.icon_item h3 {
   margin-top: $line-height-small;
 }
 
-div#choose_plosone div.icon_item h3 a {
+#choose_plosone div.icon_item h3 a {
   font-weight: normal;
   font-size: 18px;
   color: $black;
@@ -137,12 +137,12 @@ div#choose_plosone div.icon_item h3 a {
 }
 
 
-div#orange_wrapper div#orange_content_wrapper {
+#orange_wrapper #orange_content_wrapper {
   width: 830px;
   margin: 0 auto;
 }
 
-div#orange_wrapper div#orange_content_wrapper div#orange_content_container {
+#orange_wrapper #orange_content_wrapper #orange_content_container {
   margin: 0 auto;
   color: $white;
   text-align: center;
@@ -150,7 +150,7 @@ div#orange_wrapper div#orange_content_wrapper div#orange_content_container {
   font-family: $font-face-fancy;
 }
 
-div#orange_content_container h2 {
+#orange_content_container h2 {
   font-size: $txt-size-xxlarge;
   line-height: $line-height-large;
   a {
@@ -158,7 +158,7 @@ div#orange_content_container h2 {
   }
 }
 
-div#orange_content_container p a {
+#orange_content_container p a {
   color: $white;
   text-decoration: underline;
   &:hover {
@@ -166,47 +166,47 @@ div#orange_content_container p a {
   }
 }
 
-div#orange_content_container .submit_manuscript:hover {
+#orange_content_container .submit_manuscript:hover {
   color: $white;
   background-color: $plos-one-purple;
 }
 
-div#publish_main_content #publish_banner {
+#publish_main_content #publish_banner {
   display: block;
   margin: 0 auto;
   margin-top: -29px;
   z-index: 100;
 }
 
-div#publish_main_content #publish_banner p {
+#publish_main_content #publish_banner p {
   color: $grey-dark;
   display: inline;
   margin: 0 auto;
   float: right;
 }
 
-div#publish_main_content #top_wrapper {
+#publish_main_content #top_wrapper {
   display: block;
   margin: 0 auto;
   padding-right: 20px;
   width: 960px;
 }
 
-div#publish_main_content #top_wrapper h1 {
+#publish_main_content #top_wrapper h1 {
   font-family: $font-face-fancy;
   font-size: 46px;
   padding-top: 45px;
   text-align: center;
 }
 
-div#publish_main_content #top_wrapper h2 {
+#publish_main_content #top_wrapper h2 {
   font-size: 28px;
   color: $grey-dark;
   padding-bottom: 34px;
   text-align: center;
 }
 
-div#publish_main_content h2.white {
+#publish_main_content h2.white {
   text-align: center;
   font-size: 26px;
   color: white;
@@ -218,7 +218,7 @@ div#publish_main_content h2.white {
   padding-top: 35px;
 }
 
-div#publish_main_content h3.white {
+#publish_main_content h3.white {
   text-align: center;
   font-size: 16px;
   color: white;
@@ -228,20 +228,20 @@ div#publish_main_content h3.white {
   padding-right: 15px;
 }
 
-div#publish_main_content div.white-footer {
+#publish_main_content div.white-footer {
   float: left;
   margin-right: 15px;
   width: 600px;
   max-height: 100px;
 }
 
-div#publish_main_content .rightalign {
+#publish_main_content .rightalign {
   float: right;
   padding-top: 20px;
   padding-left: 40px;
 }
 
-div#publish_main_content #black_wrapper {
+#publish_main_content #black_wrapper {
   width: 100% !important;
   display: block;
   position: relative;
@@ -250,7 +250,7 @@ div#publish_main_content #black_wrapper {
   min-height: 300px;
 }
 
-div#publish_main_content .black_icons {
+#publish_main_content .black_icons {
   display: block;
   margin: 0 auto;
   width: 960px !important;
@@ -259,19 +259,19 @@ div#publish_main_content .black_icons {
   padding-top: 25px;
 }
 
-div#publish_main_content .black_icons div {
+#publish_main_content .black_icons div {
   display: inline;
   float: left;
   padding-right: 95px;
   text-align: center;
 }
 
-div#publish_main_content .black_icons div a {
+#publish_main_content .black_icons div a {
   color: $white;
   text-decoration: none;
 }
 
-div#publish_main_content .black_icons p {
+#publish_main_content .black_icons p {
   font-size: 18px;
   color: $white;
   padding-top: 12px;
@@ -279,13 +279,13 @@ div#publish_main_content .black_icons p {
   text-align: center;
 }
 
-div#publish_main_content #icon_content {
+#publish_main_content #icon_content {
   width: 960px;
   position: relative;
   margin: 0 auto;
 }
 
-div#publish_main_content .icon_left {
+#publish_main_content .icon_left {
   float: left;
   display: inline;
   width: 155px;
@@ -293,25 +293,25 @@ div#publish_main_content .icon_left {
   padding-bottom: 80px;
 }
 
-div#publish_main_content .icon_left1 {
+#publish_main_content .icon_left1 {
   padding-bottom: 50px;
   padding-top: 60px;
   top: 500px;
 }
 
-div#publish_main_content .icon_left2 {
+#publish_main_content .icon_left2 {
   padding-top: 70px;
 }
 
-div#publish_main_content .icon_left3 {
+#publish_main_content .icon_left3 {
   padding-top: 140px;
 }
 
-div#publish_main_content .icon_left4 {
+#publish_main_content .icon_left4 {
   padding-top: 110px;
 }
 
-div#publish_main_content .publishbody {
+#publish_main_content .publishbody {
   width: 700px;
   padding-left: 15px;
   padding-top: 25px;
@@ -322,31 +322,31 @@ div#publish_main_content .publishbody {
   position: relative;
 }
 
-div#publish_main_content .publishbody h2 {
+#publish_main_content .publishbody h2 {
   padding-bottom: 10px;
   font-family: $font-face-fancy;
   font-size: 36px;
   text-align: center;
 }
 
-div#publish_main_content .publishbody h3 {
+#publish_main_content .publishbody h3 {
   font-size: 21px;
   text-align: left;
 }
 
-div#publish_main_content #orange_wrapper {
+#publish_main_content #orange_wrapper {
   background-color: $plos-one-teal;
   min-height: 270px;
   min-width: 100% !important;
   position: relative;
 }
 
-div#publish_main_content #orange_wrapper .keyfacts h3 {
+#publish_main_content #orange_wrapper .keyfacts h3 {
   max-width: 630px;
   margin: 0 auto;
 }
 
-div#publish_main_content h2.keyfacts {
+#publish_main_content h2.keyfacts {
   font-family: $font-face-fancy;
   font-size: 36px;
   color: $grey-dark;
@@ -356,14 +356,14 @@ div#publish_main_content h2.keyfacts {
   padding-right: 15px;
 }
 
-div#publish_main_content h3.keyfacts {
+#publish_main_content h3.keyfacts {
   font-size: 21px;
   color: $grey-dark;
   padding-left: 25px;
   margin-bottom: 0px;
 }
 
-div#publish_main_content div#publishbottom {
+#publish_main_content #publishbottom {
   display: block;
   max-height: 200px;
   width: 750px;
@@ -373,7 +373,7 @@ div#publish_main_content div#publishbottom {
   margin-bottom: -50px;
 }
 
-div#publish_main_content div#social_icons {
+#publish_main_content #social_icons {
   display: block;
   width: 100%;
   background: #282425;
@@ -381,7 +381,7 @@ div#publish_main_content div#social_icons {
   margin: 0 auto;
 }
 
-div#social_icons h3 {
+#social_icons h3 {
   text-align: center;
   color: white;
   font-family: $font-face-fancy;
@@ -390,7 +390,7 @@ div#social_icons h3 {
 
 
 
-div#publish_main_content div#social_icons_wrapper {
+#publish_main_content #social_icons_wrapper {
   width: 40%;
   margin: 0 auto;
   text-align: center;
@@ -401,19 +401,19 @@ div#publish_main_content div#social_icons_wrapper {
   }
 }
 
-div#social_icons img#social_icon_facebook {
+#social_icons img#social_icon_facebook {
   width: 12px;
   height: auto;
 }
 
-div#social_icons img#social_icon_twitter {
+#social_icons img#social_icon_twitter {
   width: 25px;
   height: auto;
 }
 
 
 
-div#social_icons_wrapper a#blogs_link {
+#social_icons_wrapper a#blogs_link {
   width: 10rem;
   font-family: $font-face-fancy;
   font-size: $txt-size-xsmall;
@@ -421,17 +421,17 @@ div#social_icons_wrapper a#blogs_link {
   text-transform: uppercase;
 }
 
-div#social_icons a#blogs_link:hover {
+#social_icons a#blogs_link:hover {
   color: $plos-one;
 }
 
-div#publish_main_content #publishbottom img {
+#publish_main_content #publishbottom img {
   margin: 0 auto;
   padding-left: 15px;
   display: block;
 }
 
-div#publish_main_content #sticky-footer {
+#publish_main_content #sticky-footer {
   display: block;
   max-height: rem-calc(90px);
   h3 {

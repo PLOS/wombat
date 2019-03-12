@@ -21,8 +21,6 @@ $nav-spacing-full: $nav-spacing;
 
 header {
   background: $off-white;
-
-
   }
 
 .head-top {
@@ -81,7 +79,7 @@ $width-nav: $block-grid-elements - $width-logo;
         @extend %brand-background;
         color: $clr-highlight-text;
 
-        body.plosone & {
+        .plosone & {
           color: $black;
 
           &:hover {
@@ -296,7 +294,7 @@ $width-nav: $block-grid-elements - $width-logo;
       left: rem-calc(-594); //TODO- where do we get this value from should be more dynamic?
       position: relative;
       padding-bottom: 0;
-      body.plosone & {
+      .plosone & {
         left: rem-calc(-480);
       }
     }

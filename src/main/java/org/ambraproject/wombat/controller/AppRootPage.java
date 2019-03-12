@@ -112,7 +112,7 @@ public class AppRootPage {
   }
 
   private ModelAndView serveDebugPage() {
-    ModelAndView mav = new ModelAndView("//approot");
+    ModelAndView mav = new ModelAndView("/NULLSITE/approot");
     mav.addObject("siteKeys", siteSet.getSiteKeys());
     mav.addObject("mappingTable", buildMappingTable());
     mav.addObject("themeTable", ImmutableList.copyOf(themeGraph.describe(siteSet)));

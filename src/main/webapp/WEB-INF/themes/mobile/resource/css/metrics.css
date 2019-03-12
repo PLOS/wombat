@@ -1,81 +1,47 @@
-/*
- * Copyright (c) 2017 Public Library of Science
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- */
-
-
-.card { font-size: 13px;}
-.card h2 {
-  font-size: 1.5em;
-}
-
-#container-main, body{
-  background: #e5e4e4;
+#container-main {
+  background: #eee;
 }
 .highcharts-container {
   overflow: visible !important;
 }
 
-.card{
-  background-color: white;
+.card {
+  background-color: #fff;
   padding: 10px;
   border-radius: 3px;
-  margin: 20px;
+  margin: 2rem .5rem;
+}
 
+#article-metrics h2 {
+  margin: 1rem 0;
 }
 /* pageViewsSummary table */
-div#pageViewsSummary {
-  width: 100%;
-  display: table;
 
-  padding: 0;
-}
-
-div#pageViewsSummary div#left {
+#pageViewsSummary #left {
   float: none;
   padding: 8px 0;
   border: 0;
 }
 
-div#pageViewsSummary div#right {
+#pageViewsSummary #right {
   float: none;
   padding: 0;
   border: 0;
 }
 
-div#pageViewsSummary div.header {
-  font-size: 14px;
+#pageViewsSummary .header {
   color: #333;
 }
 
-div#pageViewsSummary div.totalCount {
+#pageViewsSummary .totalCount {
   padding-top: 3px;
   padding-bottom: 5px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #333
+  font-weight: 600;
+  color: #333;
 }
 
-div#pageViewsSummary div.pubDates {
-  font-size: 1em;
-  font-weight: bold;
+#pageViewsSummary .pubDates {
+  font-weight: 600;
   color: #666;
 }
 
@@ -97,8 +63,7 @@ table th,
   padding: 3px 8px 2px 8px;
   vertical-align: middle;
   height: 17px;
-  font-size: 1em;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 table th {
@@ -107,36 +72,36 @@ table th {
   text-align: left;
 }
 
-table#pageViewsTable td {
-  background-color: white;
+#pageViewsTable td {
+  background-color: #fff;
   color: #999;
 }
 
-table#pageViewsTable .source1 {
+#pageViewsTable .source1 {
   background-color: #3c63af;
-  font-weight: bold;
+  font-weight: 600;
   color: #fff;
 }
 
-table#pageViewsTable .source2 {
+#pageViewsTable .source2 {
   background-color: #6d84bf;
-  font-weight: bold;
+  font-weight: 600;
   color: #fff;
 }
 
-table#pageViewsTable .total {
-  font-weight: bold;
-  color: black;
+#pageViewsTable .total {
+  font-weight: 600;
+  color: #000;
 }
 
-table#pageViewsTable tr.percent td {
-  color: black;
+#pageViewsTable tr.percent td {
+  color: #000;
 }
 
 /* styling for average usage stat information */
 #averageViewsSummary {
   width: 100%;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   background-color: #e5e4e4;
   padding-bottom: 8px;
   margin-bottom: 10px;
@@ -147,7 +112,7 @@ table#pageViewsTable tr.percent td {
 }
 
 #averageViewsSummary .colorbox {
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   background-color: #01DF01;
   width: 9px;
   height: 9px;
@@ -156,77 +121,83 @@ table#pageViewsTable tr.percent td {
   margin-top: 4px;
 }
 
-#averageViewsSummary .ir {
-  float: right;
-  border-radius: 8.5px;
-  -webkit-border-radius: 8.5px;
-  -moz-border-radius: 8.5px;
+
+
+.fa-question-circle {
+  font-weight: 900;
+  font-style: normal;
+  border-radius:50%;
+  background-color: #333;
+  color: #fff;
+  padding: 0 5px;
+  font-size:16px;
+  margin-left: 1rem;
+}
+.fa-question-circle:before {
+  content:" ?";
 }
 
 #averageViewsSummary select {
   width: inherit;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 4px;
 }
 
 #averageViewsSummary select option {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 #beta {
-  font: italic bold 10px Arial;
+  font: 10px italic bold Arial;
   color: #00be00;
 }
 
 
 /************* Article Metrics page: Metrics Tiles and Rating Tile *****************/
 
-div.metrics_tile {
+.metrics_tile {
   vertical-align: text-top;
   border-radius: 3px;
   margin-right: 12px;
   margin-bottom: 25px;
-  *zoom: 1; /*  Workaround for IE */
-  *display: inline; /*  Workaround for IE */
+  zoom: 1; /*  Workaround for IE */
+  display: inline; /*  Workaround for IE */
 }
 
 img.metrics_tile_image {
 }
 
-div.metrics_tile_footer {
+.metrics_tile_footer {
   text-align: left;
   display: block;
-
 }
 
-div.metrics_tile_footer{
-  font-size: 1em;
+.metrics_tile_footer {
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-div.metrics_tile_no_link {
+.metrics_tile_no_link {
   vertical-align: text-top;
   display: inline-block;
   margin-right: 12px;
   margin-bottom: 12px;
-  /*background-color: #E5E4E4;*/
-  *zoom: 1; /*  Workaround for IE */
-  *display: inline; /*  Workaround for IE */
+  zoom: 1; /*  Workaround for IE */
+  display: inline; /*  Workaround for IE */
 }
 
-div.metrics_tile_footer_no_link {
+.metrics_tile_footer_no_link {
   line-height: 1.85em;
-  color: #999999;
-  font-size: 1em;
+  color: #999;
+
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-div.metrics_tile:hover .metrics_tile_rating_footer {
+.metrics_tile:hover .metrics_tile_rating_footer {
   border-top: 1px solid #90ABBD;
 }
 
-div#article-metrics div#views {
+#article-metrics #views {
   margin-top: 40px;
 }

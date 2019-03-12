@@ -27,16 +27,16 @@
   </@siteLink>
 
 <div class="journal_current">
-  <h2>Current Issue: <a href="${issueLink}">${currentIssue.displayName}</a></h2>
+  <h4>Current Issue: <a href="${issueLink}">${currentIssue.displayName}</a></h4>
 
-  <div class="issue_container">
+  <div class="detail-container">
 
     <#if currentIssue.imageArticle??>
-      <div class="journal_thumb">
+      <div class="img">
         <p>
           <a href="${issueLink}" class="">
             <img
-                src="<@siteLink handlerName="figureImage" queryParameters={"size": "small", "id": currentIssue.imageArticle.figureImageDoi}/>"
+                src="<@siteLink handlerName="figureImage" queryParameters={"size": "large", "id": currentIssue.imageArticle.figureImageDoi}/>"
                 class="center-block" alt="Current Issue"/>
           </a>
         </p>

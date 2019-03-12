@@ -31,7 +31,9 @@ import freemarker.template.SimpleScalar;
 import freemarker.template.TemplateModel;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
@@ -39,7 +41,26 @@ import static org.testng.Assert.assertEquals;
 public class ReplaceParametersDirectiveTest {
 
   @Test
-  public void testReplaceParameters() throws Exception {
+  public void testReplaceParametersList() throws Exception {
+    Map<String, List<String>> parameters = new HashMap<>();
+    parameters.put("foo", Arrays.asList("fooValue"));
+    parameters.put("multiValuedParam", Arrays.asList("value1", "value2"));
+    parameters.put("emptyParam", Arrays.asList(""));
+    parameters.put("paramToReplace", Arrays.asList("oldValue"));
+    Multimap<String, TemplateModel> replacements = ImmutableMultimap.of("paramToReplace", new SimpleScalar("newValue"));
+
+    Multimap<String, String> actual = ReplaceParametersDirective.replaceParameters(new SimpleHash(parameters),
+        replacements);
+    ImmutableSetMultimap.Builder<String, String> expected = ImmutableSetMultimap.builder();
+    expected.put("foo", "fooValue")
+        .putAll("multiValuedParam", "value1", "value2")
+        .put("emptyParam", "")
+        .put("paramToReplace", "newValue");
+    assertEquals(actual, expected.build());
+  }
+
+  @Test
+  public void testReplaceParametersArray() throws Exception {
     Map<String, String[]> parameters = new HashMap<>();
     parameters.put("foo", new String[]{"fooValue"});
     parameters.put("multiValuedParam", new String[]{"value1", "value2"});
@@ -55,6 +76,5 @@ public class ReplaceParametersDirectiveTest {
         .put("emptyParam", "")
         .put("paramToReplace", "newValue");
     assertEquals(actual, expected.build());
-
   }
 }

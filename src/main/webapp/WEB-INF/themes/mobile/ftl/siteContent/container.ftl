@@ -22,6 +22,7 @@
 
 <#include '../baseTemplates/default.ftl' />
 <#assign mainId = "content" />
+<#assign mainClass = "content" />
 
 <@page_header />
 <@fetchHtml type="siteContent" path=siteContentRepoKey/>

@@ -382,7 +382,7 @@
           <caption>
             <p>Submitted filename: 
             <named-content content-type="submitted-filename">
-            PONE-D-18-18642_Review.pdf</named-content></p>
+            docwithnodotspdf</named-content></p>
           </caption>
         </supplementary-material>
         <supplementary-material id="pone.0207232.s002"
@@ -393,7 +393,7 @@
           <caption>
             <p>Submitted filename: 
             <named-content content-type="submitted-filename">
-            Review.docx</named-content></p>
+            a.b.c.d.e.f.g.h.docx</named-content></p>
           </caption>
         </supplementary-material>
       </body>

@@ -39,9 +39,10 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
+import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -96,15 +97,16 @@ public class ReplaceParametersDirective implements TemplateDirectiveModel {
 
     // The map is passed in as a Map<String, String[]>, but Freemarker doesn't support generics
     // (and wraps the map in its own data structure).
-    Map map = parameterMap.toMap();
-    Iterator iter = map.entrySet().iterator();
-    while (iter.hasNext()) {
-      Map.Entry entry = (Map.Entry) iter.next();
-      String[] values = (String[]) entry.getValue();
-      for (String value : values) {
-        result.put((String) entry.getKey(), value);
-      }
-    }
+    
+    Map<String, Object> map = parameterMap.toMap();
+    map.forEach((key, values) -> {
+        if (values.getClass().isArray()) {
+          result.putAll(key, (Arrays.asList((String[]) values)));
+        } else {
+          result.putAll(key, (AbstractList<String>) values);
+        }
+      });
+          
 
     for (Map.Entry<String, Collection<TemplateModel>> replacementEntry : replacements.asMap().entrySet()) {
       Collection<String> replacementValues = Collections2.transform(replacementEntry.getValue(), Object::toString);

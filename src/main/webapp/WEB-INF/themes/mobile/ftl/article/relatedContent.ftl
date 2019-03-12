@@ -23,6 +23,7 @@
 <#include "../baseTemplates/articleSection.ftl" />
 <#assign mainclass = "related-content" />
 <#assign mainId = "content" />
+<#assign mainClass = "content" />
 
 <#assign title = article.title />
 <#assign cssFile = 'related-content.css' />

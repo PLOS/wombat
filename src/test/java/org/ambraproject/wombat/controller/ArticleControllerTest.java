@@ -38,13 +38,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.ui.Model;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -175,13 +173,13 @@ public class ArticleControllerTest extends ControllerTest {
         Reference.build().setTitle("Reference title").setPublisherName("Publisher Name")
             .setAuthors(ImmutableList.of()).setCollabAuthors(ImmutableList.of()).build();
     final ImmutableList<Reference> expectedReferences = ImmutableList.of(reference);
-    final ArticleController.XmlContent expectedXmlContent =
-        new ArticleController.XmlContent(expectedHtml, expectedReferences);
+    final ArticleController.HtmlWithReferences expectedHtmlWithReferences =
+        new ArticleController.HtmlWithReferences(expectedHtml, expectedReferences);
 
     final CorpusContentApi mockCorpusContentApi =
         applicationContext.getBean(CorpusContentApi.class);
     when(mockCorpusContentApi.readManuscript(any(), any(), any(), any()))
-        .thenReturn(expectedXmlContent);
+        .thenReturn(expectedHtmlWithReferences);
 
     final String expectedViewName = NOSPACE_JOINER.join(DESKTOP_PLOS_ONE, "/ftl/article/article");
     final String requestUri = NOSPACE_JOINER.join("/article?id=", EXPECTED_DOI);
@@ -195,27 +193,5 @@ public class ArticleControllerTest extends ControllerTest {
     verify(mockArticleApi, times(2)).requestObject(any(), eq(Map.class));
     verify(mockArticleMetadata).getArticlePointer();
     verify(mockCorpusContentApi).readManuscript(any(), any(), any(), any());
-  }
-
-  @Test
-  public void testPeerReviewNotFound(){
-    ArticleController articleController = new ArticleController();
-    Map<String, Object> map = new HashMap<String,Object>();
-
-    try {
-      articleController.throwIfPeerReviewNotFound(map);
-    } catch (NotFoundException e) {
-      return;
-    }
-    fail("should have thrown a NotFound exception");
-  }
-
-  @Test
-  public void testPeerReviewFound(){
-    ArticleController articleController = new ArticleController();
-    Map<String, Object> map = new HashMap<String,Object>();
-
-    map.put("peerReview", "foo");
-    articleController.throwIfPeerReviewNotFound(map);
   }
 }

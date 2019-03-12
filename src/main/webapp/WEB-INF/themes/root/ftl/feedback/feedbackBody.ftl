@@ -62,20 +62,20 @@
     <input type="text" name="userId" style="visibility: hidden" value="<#--TODO: Add userId if present-->"/>
     <ol>
       <li class="form-title"><i>All fields are required</i></li>
-      <li>
+      <li class="form-group">
       <@formInput "name">Name:</@formInput>
       <@formValidation "nameError">This field is required.</@formValidation>
       </li>
-      <li>
+      <li class="form-group">
       <@formInput "fromEmailAddress">E-mail Address:</@formInput>
       <@formValidation "emailAddressMissingError">This field is required.</@formValidation>
       <@formValidation "emailAddressInvalidError">Invalid e-mail address</@formValidation>
       </li>
-      <li>
+      <li class="form-group">
       <@formInput "subject">Subject:</@formInput>
       <@formValidation "subjectError">This field is required.</@formValidation>
       </li>
-      <li>
+      <li class="form-group">
         <label for="feedbackCreate_note">Message:</label>
         <textarea id="feedbackCreate_note" name="note" cols="70" rows="5">${note!''}</textarea>
       <@formValidation "noteError">This field is required.</@formValidation>
@@ -90,6 +90,6 @@
     </ol>
     <input type="text" name="authorAffiliation" placeholder="Affiliation (optional)..." id="authorAffiliation">
     <input type="text" name="authorPhone" placeholder="Phone ..." id="authorPhone">
-    <input id="submit-feedback-btn" type="submit" value="Submit Feedback" class="btn rounded"/>
+    <input id="submit-feedback-btn" type="submit" value="Submit Feedback" class="rounded coloration-white-on-color full"/>
   </fieldset>
 </form>

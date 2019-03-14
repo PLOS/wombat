@@ -245,14 +245,6 @@
       <version>2.4.7</version>
     </dependency>
 
-    <!-- Needed for org.mortbay.servlet.GzipFilter in web.xml -->
-    <dependency>
-      <groupId>org.mortbay.jetty</groupId>
-      <artifactId>jetty-util</artifactId>
-      <version>6.1.25</version>
-    </dependency>
-
-
     <!-- "Optional" for string but because ned-client also requires it
          we need to use this version. -->
     <dependency>

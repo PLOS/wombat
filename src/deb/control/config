@@ -13,8 +13,6 @@ case "$1" in
 
 # parameters provided by the debconf wizard
 $INPUT/wombat_port || true
-$INPUT/tomcat_admin_user || true
-$INPUT/tomcat_admin_password || true
 
 ########### END app-specific code ###########
 

@@ -49,16 +49,12 @@ case "$1" in
   # Fetching configuration from debconf
 
   $GET/wombat_port && export WOMBAT_PORT=$RET
-  $GET/tomcat_admin_user && export TOMCAT_ADMIN_USER=$RET
-  $GET/tomcat_admin_password && export TOMCAT_ADMIN_PASSWORD=$RET
 
 ########### END app-specific code ###########
 
 	process_env_template $HOME/conf/context.template.xml $HOME/conf/context.xml
 
 	process_env_template $HOME/conf/server.template.xml $HOME/conf/server.xml
-
-	process_env_template $HOME/conf/tomcat-users.template.xml $HOME/conf/tomcat-users.xml
 
 	process_env_template $HOME/bin/setenv.template.sh $HOME/bin/setenv.sh
 

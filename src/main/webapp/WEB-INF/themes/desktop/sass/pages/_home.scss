@@ -183,7 +183,7 @@ body {
   }
 }
 
-body.plosone {
+.plosone {
   .hero {
     &.overlay-dark > a:before {
       background-image: none;
@@ -429,7 +429,7 @@ body.plosone {
   @include blocks($grey-dark, $shadow: none, $radius: none, $padding: $pad-medium);
   position: relative;
 
-  body.plosone & {
+  .plosone & {
     @include blocks($white, $shadow: none, $radius: none);
     border: 1px solid $plos-one-pink;
     @include highlight-border($clr-highlight: $plos-one-pink, $width: 10px, $position: left);
@@ -451,7 +451,7 @@ body.plosone {
     line-height: $line-height;
     margin-bottom: $line-height-small;
 
-    body.plosone & {
+    .plosone & {
       font-size: $txt-size-medium;
       color: $plos-one-purple;
     }
@@ -471,7 +471,7 @@ body.plosone {
     font-size: rem-calc($txt-size-xsmall);
     text-transform: uppercase;
 
-    body.plosone & {
+    .plosone & {
       background-color: $plos-one-pink;
       color: $white;
       &:hover {
@@ -479,7 +479,7 @@ body.plosone {
       }
     }
   }
-  body.plosone & {
+ .plosone & {
     h3 {
       font-size: rem-calc($txt-size-large);
       line-height: $line-height-large;
@@ -595,7 +595,7 @@ body.plosone {
       }
     }
     .subhead {
-      font-face: $font-face-plain;
+      font-family: $font-face-plain;
       font-size: $txt-size-default;
       line-height: $line-height;
     }

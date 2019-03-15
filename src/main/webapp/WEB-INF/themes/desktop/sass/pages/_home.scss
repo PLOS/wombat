@@ -85,7 +85,7 @@ body {
   }
   p {
     line-height: rem-calc($txt-size-mediumish);
-    margin-bottom: 0.3125;
+    margin-bottom: $line-height;
   }
 }
 

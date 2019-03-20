@@ -2,6 +2,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.MoreCollectors;
+import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -39,7 +40,8 @@ import java.util.UUID;
 
 public class PeerReviewServiceImpl implements PeerReviewService {
 
-  public static final String DEFAULT_PEER_REVIEW_XSL = "peer-review-transform.xsl";
+  private static final SiteTransformerFactory SITE_TRANSFORMER_FACTORY = new SiteTransformerFactory(
+      "xform/", "peer-review-transform.xsl");
 
   private static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(""
       + "[M d yyyy]"      // 9 15 2010
@@ -52,15 +54,16 @@ public class PeerReviewServiceImpl implements PeerReviewService {
   /**
    * Given an article's items, generates an HTML snippet representing the Peer Review tab of an article page.
    * @param itemTable a list of article items as per ArticleService.getItemTable
+   * @param site
    * @return an HTML snippet
    * @throws IOException
    */
-  public String asHtml(Map<String, ?> itemTable) throws IOException {
+  public String asHtml(Map<String, ?> itemTable, Site site) throws IOException {
     List<Map<String, ?>> reviewLetterItems = getReviewItems(itemTable);
     if (reviewLetterItems.isEmpty()) return null;
 
     String xml = getAllReviewsAsXml(reviewLetterItems, getArticleReceivedDate(itemTable));
-    String html = transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+    String html = transformXmlToHtml(xml, site);
     return html;
   }
 
@@ -68,10 +71,10 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * Convert peer review XML to HTML
    *
    * @param allReviewsXml
-   * @param xsl
+   * @param site
    * @return an HTML representation of peer review content
    */
-  String transformXmlToHtml(String allReviewsXml, String xsl) {
+  String transformXmlToHtml(String allReviewsXml, Site site) {
     XMLReader xmlReader = null;
     try {
       SAXParser sp = SAXParserFactory.newInstance().newSAXParser();
@@ -80,20 +83,19 @@ public class PeerReviewServiceImpl implements PeerReviewService {
       throw new RuntimeException(e);
     }
     SAXSource xmlSource = new SAXSource(xmlReader, new InputSource(new StringReader(allReviewsXml)));
-
-    ClassLoader classLoader = getClass().getClassLoader();
-    InputStream stream = classLoader.getResourceAsStream(xsl);
-    StreamSource xslSource = new StreamSource(stream);
-
     StringWriter htmlWriter = new StringWriter();
     try {
-      Transformer transformer = SiteTransformerFactory.newTransformerFactory().newTransformer(xslSource);
+      Transformer transformer = buildTransformer(site);
       transformer.transform(xmlSource, new StreamResult(htmlWriter));
     } catch (TransformerException e) {
       throw new RuntimeException(e);
     }
 
     return htmlWriter.toString();
+  }
+
+  Transformer buildTransformer(Site site) {
+    return SITE_TRANSFORMER_FACTORY.build(site);
   }
 
   /**

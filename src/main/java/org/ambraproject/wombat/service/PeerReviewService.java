@@ -1,5 +1,7 @@
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.config.site.Site;
+
 import java.io.IOException;
 import java.util.Map;
 
@@ -11,5 +13,5 @@ public interface PeerReviewService {
    * @return an HTML snippet
    * @throws IOException
    */
-  String asHtml(Map<String, ?> itemTable) throws IOException;
+  String asHtml(Map<String, ?> itemTable, Site site) throws IOException;
 }

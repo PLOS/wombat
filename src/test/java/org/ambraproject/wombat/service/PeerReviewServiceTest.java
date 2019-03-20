@@ -3,9 +3,13 @@ package org.ambraproject.wombat.service;
 import com.google.common.collect.ImmutableMap;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 import java.util.UUID;
 
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
+import org.ambraproject.wombat.config.theme.StubTheme;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,9 +21,12 @@ import org.testng.annotations.Test;
 
 import org.ambraproject.wombat.service.remote.ContentKey;
 
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.stream.StreamSource;
+
 import static java.lang.String.format;
 import static junit.framework.TestCase.assertNull;
-import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
 import static org.ambraproject.wombat.util.FileUtils.deserialize;
 import static org.ambraproject.wombat.util.FileUtils.getFile;
 import static org.ambraproject.wombat.util.FileUtils.read;
@@ -34,9 +41,34 @@ import static org.mockito.Mockito.spy;
 @ContextConfiguration(classes = {PeerReviewServiceTest.class})
 public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
-  private PeerReviewServiceImpl service = new PeerReviewServiceImpl();
+  /**
+   * Fake the XSL loading. Theme-driven resource loading is out of scope for these unit tests.
+   */
+  class UnthemedPeerReviewService extends PeerReviewServiceImpl {
+    @Override
+    Transformer buildTransformer(Site site) {
+      ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+      InputStream stream = classLoader.getResourceAsStream("root/xform/peer-review-transform.xsl");
+      StreamSource xslSource = new StreamSource(stream);
+      Transformer transformer = null;
+      try {
+        transformer = SiteTransformerFactory.newTransformerFactory().newTransformer(xslSource);
+      } catch (TransformerConfigurationException e) {
+        e.printStackTrace();
+      }
+      return transformer;
+    }
+  }
 
-    @Test
+  Site makeFakeSite() {
+    StubTheme theme = new StubTheme("blah", "blah");
+    SiteRequestScheme scheme = SiteRequestScheme.builder().build();
+    return new Site("blah", theme, scheme,"");
+  }
+  private Site fakeSite = makeFakeSite();
+  private UnthemedPeerReviewService service = new UnthemedPeerReviewService();
+
+  @Test
   public void testAsHtml() throws IOException {
     ImmutableMap<String, ? extends Map<String, ?>> itemTable = new ImmutableMap.Builder<String, Map<String, ?>>()
         .put("10.1371/journal.pone.0207232.r001", ImmutableMap.of(
@@ -88,16 +120,14 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
             ))
         )).build();
 
-
-    PeerReviewService serviceWithMockedContent = new PeerReviewServiceImpl() {
-
+    PeerReviewService serviceWithMockData = new UnthemedPeerReviewService() {
       @Override
-      String getArticleReceivedDate(Map<String,?> itemTable) throws IOException {
+      String getArticleReceivedDate(Map<String,?> itemTable) {
         return "June 1, 2018";
       }
 
       @Override
-      String getContent(ContentKey contentKey) throws IOException {
+      String getContent(ContentKey contentKey)  {
         String crepoKey = (String) contentKey.getKey();
         
         String letterContent = null;
@@ -135,7 +165,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
       }
     };
 
-    String html = serviceWithMockedContent.asHtml(itemTable);
+    String html = serviceWithMockData.asHtml(itemTable, fakeSite);
     Document d = Jsoup.parse(html);
 
     assertThat(d.select(".review-history .revision").get(0).text(), containsString("Original Submission"));
@@ -159,7 +189,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
             "itemType", "table"
         )
     );
-    String html = service.asHtml(itemTable);
+    String html = service.asHtml(itemTable, fakeSite);
     assertNull(html);
   }
 
@@ -173,7 +203,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     Map<String,?> itemTable = (Map<String,?>) deserialize(getFile(prefix("item-table.pone.0207232.ser")));
 
-    String html = spy.asHtml(itemTable);
+    String html = spy.asHtml(itemTable, fakeSite);
 
     Document doc = Jsoup.parse(html);
 
@@ -188,8 +218,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
   public void testAttachmentAnchorTitles() throws IOException {
 
     String xml = read(prefix("peer-review-attachment-filenames.pone.0207232.xml"));
- 
-    String html = service.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+    String html = service.transformXmlToHtml(xml, fakeSite);
 
     Document doc = Jsoup.parse(html);
 
@@ -206,12 +235,11 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
   @Test
   public void testAuthorResponse() {
     String xml = read(prefix("peer-review.pone.0207232.xml"));
- 
-    String html = service.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+    String html = service.transformXmlToHtml(xml, fakeSite);
 
     Document doc = Jsoup.parse(html);
 
-    // ORIGINAL SUBMISSION 
+    // ORIGINAL SUBMISSION
 
     assertThat(doc.select(".review-history .revision .letter__title").get(0).text(), containsString("Original Submission"));
     assertThat(doc.select(".review-history .revision .letter__date").get(0).text(), containsString("June 1, 2018"));

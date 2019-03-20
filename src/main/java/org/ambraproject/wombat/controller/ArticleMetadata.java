@@ -252,7 +252,7 @@ public class ArticleMetadata {
    * Get peer review as an HTML snippet.
    */
   String getPeerReviewHtml() throws IOException {
-    return factory.peerReviewService.asHtml(itemTable);
+    return factory.peerReviewService.asHtml(itemTable, site);
   }
 
 

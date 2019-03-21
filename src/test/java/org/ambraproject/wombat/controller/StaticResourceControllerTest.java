@@ -102,8 +102,7 @@ public class StaticResourceControllerTest extends ControllerTest {
   private static final AssetService assetService = mock(AssetService.class);
 
   @BeforeMethod
-  public void setUp() throws IOException {
-    super.setUp();
+  public void resetAssetService() throws IOException {
     reset(assetService);
   }
 

@@ -91,30 +91,4 @@ public class TestSpringConfiguration {
   public Cache cache() {
     return new NullCache();
   }
-
-  @Bean
-  public JsonService jsonService() {
-
-    // TODO: stub out if necessary for any test.
-    return null;
-  }
-
-  @Bean
-  public CachedRemoteService<Reader> cachedRemoteReader() {
-
-    // TODO: stub out if necessary for any test.
-    return null;
-  }
-
-  @Bean
-  public ArticleApi articleApi() {
-
-    // TODO: stub out if necessary for any test.
-    return null;
-  }
-
-  @Bean
-  public SolrSearchApiImpl getSearchService() {
-    return new SolrSearchApiImpl();
-  }
 }

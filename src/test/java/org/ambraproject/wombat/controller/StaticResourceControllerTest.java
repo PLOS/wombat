@@ -22,71 +22,10 @@
 
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Charsets;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import freemarker.cache.FileTemplateLoader;
-import freemarker.cache.MultiTemplateLoader;
-import freemarker.cache.TemplateLoader;
-import freemarker.template.TemplateDirectiveModel;
-import org.ambraproject.wombat.config.TestSpringConfiguration;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteResolver;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
-import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
-import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.net.HttpHeaders;
-import com.google.gson.Gson;
-import freemarker.cache.TemplateLoader;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
-import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.service.AssetService;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
-
 import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_OK;
-import static org.mockito.Mockito.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -96,15 +35,58 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
+import com.google.common.base.Charsets;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.net.HttpHeaders;
+import com.google.gson.Gson;
+
+import org.ambraproject.wombat.config.TestSpringConfiguration;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteResolver;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
+import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
+import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
+import org.ambraproject.wombat.service.AssetService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+import org.testng.annotations.Test;
+
+import freemarker.cache.FileTemplateLoader;
+import freemarker.cache.MultiTemplateLoader;
+import freemarker.cache.TemplateLoader;
+import freemarker.template.TemplateDirectiveModel;
+
 @ContextConfiguration
 public class StaticResourceControllerTest extends ControllerTest {
-
-  private static final AssetService assetService = mock(AssetService.class);
-
-  @BeforeMethod
-  public void resetAssetService() throws IOException {
-    reset(assetService);
-  }
+  @Autowired
+  AssetService assetService;
 
   private static String getMockResource(String path) {
     return "This is a mock resource for: " + path;
@@ -200,6 +182,11 @@ public class StaticResourceControllerTest extends ControllerTest {
     public TemplateDirectiveModel getEmptyTemplateDirectiveModel() {
       return (env, params, loopVars, body) -> {
       };
+    }
+
+    @Bean
+    public AssetService assetService() {
+      return mock(AssetService.class);
     }
 
     @Override
@@ -299,11 +286,6 @@ public class StaticResourceControllerTest extends ControllerTest {
     @Bean
     public StaticResourceController staticResourceController() {
       return new StaticResourceController();
-    }
-
-    @Bean
-    public AssetService assetService() {
-      return assetService;
     }
 
     @Bean

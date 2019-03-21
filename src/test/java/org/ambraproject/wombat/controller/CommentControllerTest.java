@@ -23,7 +23,6 @@
 package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableMap;
-import org.ambraproject.wombat.config.SpringMvcConfiguration;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.*;
@@ -51,7 +50,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @ContextConfiguration(
-    classes = {SpringMvcConfiguration.class, CommentController.class, CommentControllerTest.class})
+    classes = {CommentController.class, CommentControllerTest.class})
 @Configuration
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class CommentControllerTest extends ControllerTest {

@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import com.google.common.base.Joiner;
 
+import org.ambraproject.wombat.config.SpringMvcConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -38,7 +39,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.testng.annotations.BeforeMethod;
 
 @WebAppConfiguration
-@ContextConfiguration(classes={ControllerTestConfiguration.class})
+@ContextConfiguration(classes={ControllerTestConfiguration.class, SpringMvcConfiguration.class})
 public class ControllerTest extends AbstractTestNGSpringContextTests {
   protected static final Joiner NOSPACE_JOINER = Joiner.on("").skipNulls();
   protected static final String DESKTOP_PLOS_ONE = "DesktopPlosOne";

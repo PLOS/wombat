@@ -24,7 +24,6 @@ package org.ambraproject.wombat.controller;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import org.ambraproject.wombat.config.SpringMvcConfiguration;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.Reference;
@@ -55,7 +54,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ContextConfiguration(
-    classes = {SpringMvcConfiguration.class, ArticleController.class, ArticleControllerTest.class})
+    classes = {ArticleController.class, ArticleControllerTest.class})
 @Configuration
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class ArticleControllerTest extends ControllerTest {

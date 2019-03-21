@@ -22,7 +22,6 @@
 
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.config.SpringMvcConfiguration;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleServiceImpl;
@@ -48,7 +47,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 @ContextConfiguration(
-    classes = {SpringMvcConfiguration.class, PeerReviewController.class, PeerReviewControllerTest.class})
+    classes = {PeerReviewController.class, PeerReviewControllerTest.class})
 @Configuration
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class PeerReviewControllerTest extends ControllerTest {

@@ -22,10 +22,15 @@
 
 package org.ambraproject.wombat.config;
 
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
+
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -34,17 +39,8 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeGraph;
 import org.ambraproject.wombat.service.AssetService;
 import org.ambraproject.wombat.service.AssetServiceImpl;
-import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.service.remote.CachedRemoteService;
-import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.io.Reader;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Defines spring beans needed by tests.

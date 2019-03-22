@@ -122,6 +122,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
         node.setTextContent(formatDate(node.getTextContent()));
       }
 
+      // add subarticle citation block
       Element citationEl = doc.createElement("review-citation");
       citationEl.setTextContent(baseCitation + reviewLetterItem.get("doi"));
       doc.getDocumentElement().getElementsByTagName("body").item(0).appendChild(citationEl);

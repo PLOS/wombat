@@ -43,7 +43,7 @@ import java.util.Map;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
+@ContextConfiguration(classes = TestSpringConfiguration.class)
 public class SearchControllerTest extends AbstractTestNGSpringContextTests {
 
   @Autowired

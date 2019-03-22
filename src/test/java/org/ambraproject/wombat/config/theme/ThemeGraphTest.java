@@ -38,7 +38,7 @@ import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
+@ContextConfiguration(classes = TestSpringConfiguration.class)
 public class ThemeGraphTest extends AbstractTestNGSpringContextTests {
 
   @Autowired

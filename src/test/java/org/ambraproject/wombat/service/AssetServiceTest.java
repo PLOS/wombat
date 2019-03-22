@@ -42,7 +42,7 @@ import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
+@ContextConfiguration(classes = TestSpringConfiguration.class)
 public class AssetServiceTest extends AbstractTestNGSpringContextTests {
 
   private static final String DATA_PATH = Joiner.on(File.separator).join("src", "test", "resources", "test_themes",

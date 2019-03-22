@@ -44,8 +44,13 @@ public class PeerReviewControllerTest extends ControllerTest {
   @Autowired
   ArticleMetadata.Factory articleMetadataFactory;
   
+  PeerReviewController controller = new PeerReviewController();
+  Map<String, Object> map;
+
   @BeforeMethod
   private void setup() throws IOException {
+    this.map = new HashMap<String,Object>();
+
     when(articleMetadata.validateVisibility(anyString())).thenReturn(articleMetadata);
     when(articleMetadata.populate(any(), any())).thenReturn(articleMetadata);
     when(articleMetadata.fillAmendments(any())).thenReturn(articleMetadata);
@@ -55,17 +60,11 @@ public class PeerReviewControllerTest extends ControllerTest {
     
   @Test(expectedExceptions = NotFoundException.class)
   public void testPeerReviewNotFound(){
-    PeerReviewController controller = new PeerReviewController();
-    Map<String, Object> map = new HashMap<String,Object>();
-
     controller.throwIfPeerReviewNotFound(map);
   }
 
   @Test
   public void testPeerReviewFound(){
-    PeerReviewController controller = new PeerReviewController();
-    Map<String, Object> map = new HashMap<String,Object>();
-
     map.put("peerReview", "foo");
     controller.throwIfPeerReviewNotFound(map);
   }

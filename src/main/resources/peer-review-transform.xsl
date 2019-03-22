@@ -153,8 +153,17 @@
         <xsl:apply-templates select="supplementary-material" />
       </dl>
     </xsl:if>
+
+    <xsl:variable name="review-doi-url">
+      <xsl:text>https://doi.org/10.1371/journal.</xsl:text><xsl:value-of select="../@id"/>
+    </xsl:variable>
+    <div class="review__doi">
+      <a href="{$review-doi-url}">
+        <xsl:value-of select="$review-doi-url"/>
+      </a>
+    </div>
   </xsl:template>
-  
+
   <xsl:template match="p">
     <xsl:copy>
       <xsl:apply-templates />

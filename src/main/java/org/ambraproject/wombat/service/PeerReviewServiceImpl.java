@@ -8,6 +8,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -52,14 +53,15 @@ public class PeerReviewServiceImpl implements PeerReviewService {
   /**
    * Given an article's items, generates an HTML snippet representing the Peer Review tab of an article page.
    * @param itemTable a list of article items as per ArticleService.getItemTable
+   * @param baseCitation citation string with DOI omitted
    * @return an HTML snippet
    * @throws IOException
    */
-  public String asHtml(Map<String, ?> itemTable) throws IOException {
+  public String asHtml(Map<String, ?> itemTable, String baseCitation) throws IOException {
     List<Map<String, ?>> reviewLetterItems = getReviewItems(itemTable);
     if (reviewLetterItems.isEmpty()) return null;
 
-    String xml = getAllReviewsAsXml(reviewLetterItems, getArticleReceivedDate(itemTable));
+    String xml = getAllReviewsAsXml(reviewLetterItems, getArticleReceivedDate(itemTable), baseCitation);
     String html = transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
     return html;
   }
@@ -101,10 +103,11 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    *
    * @param reviewLetterItems metadata about review letters
    * @param articleReceivedDate article received date (aka submission date)
+   * @param baseCitation citation string with DOI omitted
    * @return entirety of peer review XML content
    * @throws IOException
    */
-  String getAllReviewsAsXml(List<Map<String, ?>> reviewLetterItems, String articleReceivedDate) throws IOException {
+  String getAllReviewsAsXml(List<Map<String, ?>> reviewLetterItems, String articleReceivedDate, String baseCitation) throws IOException {
     List<String> reviewLetters = new ArrayList<>();
     String acceptanceLetter = "";
     for (Map<String, ?> reviewLetterItem : reviewLetterItems) {
@@ -118,6 +121,11 @@ public class PeerReviewServiceImpl implements PeerReviewService {
         Node node = dateNodes.item(i);
         node.setTextContent(formatDate(node.getTextContent()));
       }
+
+      Element citationEl = doc.createElement("review-citation");
+      citationEl.setTextContent(baseCitation + reviewLetterItem.get("doi"));
+      doc.getDocumentElement().getElementsByTagName("body").item(0).appendChild(citationEl);
+
       xml = XmlUtil.createXmlString(doc);
 
       String acceptLetterExpr = "sub-article[@specific-use='acceptance-letter']";

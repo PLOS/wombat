@@ -135,7 +135,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
       }
     };
 
-    String html = serviceWithMockedContent.asHtml(itemTable);
+    String html = serviceWithMockedContent.asHtml(itemTable, "fake citation string");
     Document d = Jsoup.parse(html);
 
     assertThat(d.select(".review-history .revision").get(0).text(), containsString("Original Submission"));
@@ -159,7 +159,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
             "itemType", "table"
         )
     );
-    String html = service.asHtml(itemTable);
+    String html = service.asHtml(itemTable, "fake citation string");
     assertNull(html);
   }
 
@@ -173,7 +173,7 @@ public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
 
     Map<String,?> itemTable = (Map<String,?>) deserialize(getFile(prefix("item-table.pone.0207232.ser")));
 
-    String html = spy.asHtml(itemTable);
+    String html = spy.asHtml(itemTable, "fake citation string");
 
     Document doc = Jsoup.parse(html);
 

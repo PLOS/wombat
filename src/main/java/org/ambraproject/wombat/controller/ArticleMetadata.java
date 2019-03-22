@@ -47,6 +47,7 @@ import org.ambraproject.wombat.service.XmlUtil;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
+import org.ambraproject.wombat.util.Citations;
 import org.ambraproject.wombat.util.TextUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -252,7 +253,14 @@ public class ArticleMetadata {
    * Get peer review as an HTML snippet.
    */
   String getPeerReviewHtml() throws IOException {
-    return factory.peerReviewService.asHtml(itemTable);
+
+    // citation string sans DOI, to be appended later with each sub-article DOI
+    List<Map<String, ?>> authors = (List<Map<String, ?>>) getAuthors().get("authors");
+    HashMap baseMetadata = new HashMap(ingestionMetadata);
+    baseMetadata.put("doi", "");
+    String baseCitation = Citations.buildCitation(baseMetadata, authors);
+
+    return factory.peerReviewService.asHtml(itemTable, baseCitation);
   }
 
 

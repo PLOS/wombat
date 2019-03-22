@@ -34,6 +34,13 @@
   float: right;
   font-weight: normal;
 }
+.letter__citation {
+  margin: 24px 24px 24px 0;
+  width: 90%;
+  border: 1px solid #eee;
+  padding: 10px;
+  background: #f9f9f9;
+}
 .revision-attachments {
   padding-top: $line-height-small;
 }

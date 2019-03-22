@@ -206,4 +206,11 @@
        date is referenced directly in revision #0 block --> 
   <xsl:template match="article-received-date" />
 
+  <xsl:template match="review-citation">
+    <div class="letter__citation">
+      <strong>Citation:</strong>
+      <xsl:apply-templates />
+    </div>
+  </xsl:template>
+
 </xsl:stylesheet>

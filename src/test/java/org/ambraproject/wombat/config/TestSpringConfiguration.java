@@ -22,6 +22,8 @@
 
 package org.ambraproject.wombat.config;
 
+import static org.mockito.Mockito.mock;
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -38,7 +40,6 @@ import org.ambraproject.wombat.config.theme.TestClasspathTheme;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeGraph;
 import org.ambraproject.wombat.service.AssetService;
-import org.ambraproject.wombat.service.AssetServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -80,7 +81,7 @@ public class TestSpringConfiguration {
 
   @Bean
   public AssetService assetService() {
-    return new AssetServiceImpl();
+    return mock(AssetService.class);
   }
 
   @Bean

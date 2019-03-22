@@ -22,73 +22,38 @@
 
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.service.ArticleResolutionService;
-import org.ambraproject.wombat.service.ArticleService;
-import org.ambraproject.wombat.service.ArticleServiceImpl;
-import org.ambraproject.wombat.service.PeerReviewService;
-import org.ambraproject.wombat.service.remote.CorpusContentApi;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.test.context.ContextConfiguration;
-import org.testng.annotations.Test;
+import static org.junit.Assert.fail;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.fail;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-@ContextConfiguration(
-    classes = {PeerReviewController.class, PeerReviewControllerTest.class})
-@Configuration
+@ContextConfiguration
 public class PeerReviewControllerTest extends ControllerTest {
-  @Bean
-  protected ArticleService articleService() {
-    final ArticleService articleService = spy(ArticleServiceImpl.class);
-    return articleService;
-  }
+  @Autowired
+  ArticleMetadata articleMetadata;
 
-  @Bean
-  protected ArticleMetadata articleMetadata() throws IOException {
-    final ArticleMetadata mockArticleMetadata = mock(ArticleMetadata.class);
-    when(mockArticleMetadata.validateVisibility(anyString())).thenReturn(mockArticleMetadata);
-    when(mockArticleMetadata.populate(any(), any())).thenReturn(mockArticleMetadata);
-    when(mockArticleMetadata.fillAmendments(any())).thenReturn(mockArticleMetadata);
-    return mockArticleMetadata;
-  }
+  @Autowired
+  ArticleMetadata.Factory articleMetadataFactory;
+  
+  @BeforeMethod
+  private void setup() throws IOException {
+    when(articleMetadata.validateVisibility(anyString())).thenReturn(articleMetadata);
+    when(articleMetadata.populate(any(), any())).thenReturn(articleMetadata);
+    when(articleMetadata.fillAmendments(any())).thenReturn(articleMetadata);
 
-  @Bean
-  protected ArticleMetadata.Factory articleMetadataFactory(ArticleMetadata mockArticleMetadata) {
-    final ArticleMetadata.Factory articleMetadataFactory = spy(new ArticleMetadata.Factory());
-    doReturn(mockArticleMetadata).when(articleMetadataFactory).newInstance(any(), any(), any(),
-        any(), any(), any());
-    return articleMetadataFactory;
+    doReturn(articleMetadata).when(articleMetadataFactory).newInstance(any(), any(), any(), any(), any(), any());
   }
-
-  @Bean
-  protected CorpusContentApi corpusContentApi() {
-    final CorpusContentApi corpusContentApi = mock(CorpusContentApi.class);
-    return corpusContentApi;
-  }
-
-  @Bean
-  protected PeerReviewService peerReviewService() {
-    final PeerReviewService peerReviewService = mock(PeerReviewService.class);
-    return peerReviewService;
-  }
-
-  @Bean
-  protected ArticleResolutionService articleResolutionService() {
-    final ArticleResolutionService articleResolutionService = mock(ArticleResolutionService.class);
-    return articleResolutionService;
-  }
-
+    
   @Test
   public void testPeerReviewNotFound(){
     PeerReviewController controller = new PeerReviewController();

@@ -21,6 +21,7 @@
                enableLookups="false"
                maxParameterCount="5000"
                scheme="http" URIEncoding="UTF-8"
+               compression="true"
                minSpareThreads="50" maxThreads="1000"/>
     <Engine name="Catalina" defaultHost="localhost">
       <Realm className="org.apache.catalina.realm.LockOutRealm">

@@ -30,6 +30,8 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
+import org.ambraproject.wombat.service.CommentService;
+import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.HoneypotService;
 import org.ambraproject.wombat.service.PeerReviewService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
@@ -73,6 +75,17 @@ public class ControllerTestConfiguration {
   @Bean
   protected Charset charset() {
     return Charsets.UTF_8;
+  }
+
+
+  @Bean
+  protected CommentValidationService commentValidationService() {
+    return mock(CommentValidationService.class);
+  }
+
+  @Bean
+  protected CommentService commentService() {
+    return mock(CommentService.class);
   }
 
   @Bean

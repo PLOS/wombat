@@ -22,7 +22,10 @@
 
 package org.ambraproject.wombat.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 import java.io.IOException;
@@ -52,5 +55,9 @@ public class ControllerTest extends AbstractTestNGSpringContextTests {
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws IOException {
     mockMvc = webAppContextSetup(wac).alwaysDo(print()).build();
+  }
+
+  public void verifyUriRender(String uri, String expectedViewName) throws Exception {
+    mockMvc.perform(get(uri)).andExpect(status().isOk()).andExpect(view().name(expectedViewName));
   }
 }

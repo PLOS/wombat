@@ -22,7 +22,6 @@
 
 package org.ambraproject.wombat.controller;
 
-import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doReturn;
@@ -54,17 +53,12 @@ public class PeerReviewControllerTest extends ControllerTest {
     doReturn(articleMetadata).when(articleMetadataFactory).newInstance(any(), any(), any(), any(), any(), any());
   }
     
-  @Test
+  @Test(expectedExceptions = NotFoundException.class)
   public void testPeerReviewNotFound(){
     PeerReviewController controller = new PeerReviewController();
     Map<String, Object> map = new HashMap<String,Object>();
 
-    try {
-      controller.throwIfPeerReviewNotFound(map);
-    } catch (NotFoundException e) {
-      return;
-    }
-    fail("should have thrown a NotFound exception");
+    controller.throwIfPeerReviewNotFound(map);
   }
 
   @Test

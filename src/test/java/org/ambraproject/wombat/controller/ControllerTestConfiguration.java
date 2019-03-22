@@ -30,6 +30,7 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
+import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.HoneypotService;
@@ -211,5 +212,10 @@ public class ControllerTestConfiguration {
   @Bean
   protected ArticleMetadata.Factory articleMetadataFactory(ArticleMetadata mockArticleMetadata) {
     return mock(ArticleMetadata.Factory.class);
+  }
+
+  @Bean
+  public BrowseTaxonomyService browseTaxonomyService() {
+    return mock(BrowseTaxonomyService.class);
   }
 }

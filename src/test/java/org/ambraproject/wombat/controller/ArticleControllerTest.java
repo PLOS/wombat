@@ -34,8 +34,6 @@ import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApiImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.Test;
 
@@ -56,7 +54,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(
     classes = {ArticleController.class, ArticleControllerTest.class})
 @Configuration
-@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class ArticleControllerTest extends ControllerTest {
 
   private static final String EXPECTED_DOI = "10.1371/journal.pbio.1001091";

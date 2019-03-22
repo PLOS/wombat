@@ -29,8 +29,6 @@ import org.ambraproject.wombat.service.PeerReviewService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.Test;
 
@@ -49,7 +47,6 @@ import static org.mockito.Mockito.when;
 @ContextConfiguration(
     classes = {PeerReviewController.class, PeerReviewControllerTest.class})
 @Configuration
-@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class PeerReviewControllerTest extends ControllerTest {
   @Bean
   protected ArticleService articleService() {

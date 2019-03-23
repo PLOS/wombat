@@ -33,7 +33,9 @@ import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.CommentService;
 import org.ambraproject.wombat.service.CommentValidationService;
+import org.ambraproject.wombat.service.DoiToJournalResolutionService;
 import org.ambraproject.wombat.service.HoneypotService;
+import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.PeerReviewService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleApiImpl;
@@ -43,6 +45,7 @@ import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.UserApi;
+import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.ambraproject.wombat.util.ThemeTest;
 import org.springframework.context.annotation.Bean;
@@ -217,5 +220,20 @@ public class ControllerTestConfiguration {
   @Bean
   public BrowseTaxonomyService browseTaxonomyService() {
     return mock(BrowseTaxonomyService.class);
+  }
+  
+  @Bean
+  protected ParseXmlService parseXmlService() {
+    return mock(ParseXmlService.class);
+  }
+
+  @Bean
+  protected OrcidApi orcidApi() {
+    return mock(OrcidApi.class);
+  }
+  
+  @Bean
+  protected DoiToJournalResolutionService doiToJournalResolutionService() {
+    return mock(DoiToJournalResolutionService.class);
   }
 }

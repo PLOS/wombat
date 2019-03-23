@@ -31,8 +31,8 @@ import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.spy;
 
 
-@ContextConfiguration(classes = {PeerReviewServiceTest.class})
-public class PeerReviewServiceTest extends AbstractTestNGSpringContextTests {
+@ContextConfiguration(classes = {PeerReviewServiceImplTest.class})
+public class PeerReviewServiceImplTest extends AbstractTestNGSpringContextTests {
 
   private PeerReviewServiceImpl service = new PeerReviewServiceImpl();
 

@@ -53,7 +53,7 @@ public class ControllerTest extends AbstractTestNGSpringContextTests {
   protected MockMvc mockMvc;
 
   @BeforeMethod(alwaysRun = true)
-  public void setUp() throws IOException {
+  public void setupMockMvc() throws IOException {
     mockMvc = webAppContextSetup(wac).alwaysDo(print()).build();
   }
 

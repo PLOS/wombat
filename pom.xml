@@ -533,19 +533,16 @@
       <plugin>
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
-        <!-- Use the latest released version:
-        https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
-        <version>1.3</version>
+        <version>1.7.5</version>
 
         <executions>
           <!-- Install Node and NPM -->
           <execution>
             <id>install node and npm</id>
+            <phase>prepare-package</phase>
             <goals>
               <goal>install-node-and-npm</goal>
             </goals>
-            <phase>generate-resources</phase>
-
             <configuration>
               <nodeVersion>v6.9.2</nodeVersion>
             </configuration>
@@ -553,6 +550,7 @@
           <!-- Install NPM Dependencies -->
           <execution>
             <id>npm install</id>
+            <phase>prepare-package</phase>
             <goals>
               <goal>npm</goal>
             </goals>
@@ -563,7 +561,7 @@
           <!-- Run gulp build -->
           <execution>
             <id>gulp build</id>
-            <phase>generate-resources</phase>
+            <phase>prepare-package</phase>
             <goals>
               <goal>gulp</goal>
             </goals>

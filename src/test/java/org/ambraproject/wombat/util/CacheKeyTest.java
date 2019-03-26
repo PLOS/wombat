@@ -26,14 +26,13 @@ package org.ambraproject.wombat.util;
 import com.google.common.collect.ImmutableList;
 import com.google.common.hash.Hashing;
 import com.google.common.io.BaseEncoding;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class CacheKeyTest {
-
   @Test
   public void testGetCacheKey(){
     String exampleUrl1 = "articles?journal=PLoSPathogens&min=3&since=Thu%2C+30+Oct+2014+00%3A55%3A34+GMT&type=" +
@@ -51,9 +50,9 @@ public class CacheKeyTest {
     String hash1 = CacheKey.createKeyHash(ImmutableList.of(exampleUrl1));
     String hash2 = CacheKey.createKeyHash(ImmutableList.of(exampleUrl2));
 
-    Assert.assertFalse(hash1.contentEquals(exampleUrl1), "Hash key generation failure");
-    Assert.assertTrue(hash1.contentEquals(CacheKey.createKeyHash(ImmutableList.of(exampleUrl1))), "Non-deterministic hash key");
-    Assert.assertFalse(hash1.contentEquals(hash2), "Hash keys are not unique");
+    Assert.assertFalse("Hash key generation failure", hash1.contentEquals(exampleUrl1));
+    Assert.assertTrue("Non-deterministic hash key", hash1.contentEquals(CacheKey.createKeyHash(ImmutableList.of(exampleUrl1))));
+    Assert.assertFalse("Hash keys are not unique", hash1.contentEquals(hash2));
     byte[] hash1Bytes;
     try {
       hash1Bytes = CacheKey.HASH_BASE.decode(hash1);
@@ -61,7 +60,7 @@ public class CacheKeyTest {
       Assert.fail("Hash keys are not in base-encoded format");
       throw e; // satisfy the compiler
     }
-    Assert.assertTrue(hash1Bytes.length == keyLen, "Incorrect hash length");
+    Assert.assertTrue("Incorrect hash length", hash1Bytes.length == keyLen);
 
     Map<Object, String> expectedHashes = new HashMap<>();
     expectedHashes.put(Hashing.md5(), "25FF3F5D3A44A1C19DD9F54773C4D32D");
@@ -71,7 +70,7 @@ public class CacheKeyTest {
             "F763BAB884DA75F91A0768DAD30D0E6F5E5AA2361A0B3F5AEF757B7");
     if (expectedHashes.keySet().contains(CacheKey.HASH_ALGORITHM)) {
       byte[] expectedHash = BaseEncoding.base16().decode(expectedHashes.get(CacheKey.HASH_ALGORITHM));
-      Assert.assertEquals(hash1Bytes, expectedHash, "Incorrect hash");
+      Assert.assertArrayEquals("Incorrect hash", hash1Bytes, expectedHash);
     }
   }
 }

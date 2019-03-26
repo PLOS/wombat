@@ -40,12 +40,12 @@ import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.model.TaxonomyGraph.CategoryView;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.apache.http.HttpStatus;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 @ContextConfiguration
 public class TaxonomyControllerTest extends ControllerTest {
@@ -66,8 +66,8 @@ public class TaxonomyControllerTest extends ControllerTest {
   @Autowired
   BrowseTaxonomyService browseTaxonomyService;
 
-  @BeforeMethod
-  private void setup() throws IOException {
+  @Before
+  public void setup() throws IOException {
     Map<String, Object> taxonomyBrowserConfig = new HashMap<String, Object>();
     taxonomyBrowserConfig.put("hasTaxonomyBrowser", true);
     when(theme.getConfigMap("taxonomyBrowser")).thenReturn(taxonomyBrowserConfig);

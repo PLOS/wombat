@@ -29,14 +29,14 @@ import com.google.common.collect.Multimap;
 import freemarker.template.SimpleHash;
 import freemarker.template.SimpleScalar;
 import freemarker.template.TemplateModel;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class ReplaceParametersDirectiveTest {
 
@@ -56,7 +56,7 @@ public class ReplaceParametersDirectiveTest {
         .putAll("multiValuedParam", "value1", "value2")
         .put("emptyParam", "")
         .put("paramToReplace", "newValue");
-    assertEquals(actual, expected.build());
+    assertEquals(expected.build(), actual);
   }
 
   @Test
@@ -75,6 +75,6 @@ public class ReplaceParametersDirectiveTest {
         .putAll("multiValuedParam", "value1", "value2")
         .put("emptyParam", "")
         .put("paramToReplace", "newValue");
-    assertEquals(actual, expected.build());
+    assertEquals(expected.build(), actual);
   }
 }

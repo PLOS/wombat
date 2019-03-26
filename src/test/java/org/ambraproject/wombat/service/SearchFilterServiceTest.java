@@ -9,9 +9,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Map;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ContextConfiguration(classes = {SearchFilterServiceTest.class})
-public class SearchFilterServiceTest extends AbstractTestNGSpringContextTests {
+public class SearchFilterServiceTest extends AbstractJUnit4SpringContextTests {
 
   @Mock
   private SolrSearchApi solrSearchApi;
@@ -33,7 +33,7 @@ public class SearchFilterServiceTest extends AbstractTestNGSpringContextTests {
   @InjectMocks
   private SearchFilterService searchFilterService;
 
-  @BeforeMethod
+  @Before
   public void initMocks() {
     MockitoAnnotations.initMocks(this);
   }

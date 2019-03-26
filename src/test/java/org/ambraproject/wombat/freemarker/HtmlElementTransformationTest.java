@@ -26,7 +26,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.mockito.ArgumentCaptor;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class HtmlElementTransformationTest {
 
@@ -68,12 +68,12 @@ public class HtmlElementTransformationTest {
     verify(sitePageContext).buildLink(any(SiteSet.class), journalKeyArg.capture(), pathArg.capture());
 
     List<String> pathArgs = pathArg.getAllValues();
-    assertEquals(pathArgs.get(0), "s/lorum_ipsum");
-    assertEquals(pathArgs.get(1), "s/file?id=file_4321");
-    assertEquals(pathArgs.get(2), "indirect/content_1234");
-    assertEquals(pathArgs.get(3), "article?id=10.1371/journal.pone.0008083");
-    assertEquals(pathArgs.get(4), "s/test-page");
-    assertEquals(journalKeyArg.getValue(), "PLoSCompBiol");
+    assertEquals("s/lorum_ipsum", pathArgs.get(0));
+    assertEquals("s/file?id=file_4321", pathArgs.get(1));
+    assertEquals("indirect/content_1234", pathArgs.get(2));
+    assertEquals("article?id=10.1371/journal.pone.0008083", pathArgs.get(3));
+    assertEquals("s/test-page", pathArgs.get(4));
+    assertEquals("PLoSCompBiol", journalKeyArg.getValue());
 
     assertEquals(document.toString(),
             "<html>\n" +

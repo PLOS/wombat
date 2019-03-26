@@ -22,8 +22,8 @@
 
 package org.ambraproject.wombat.util;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class GitInfoTest {
 
@@ -31,20 +31,20 @@ public class GitInfoTest {
   public void testCheckGitValues() {
     GitInfo gitInfo = new GitInfo();
 
-    Assert.assertEquals(gitInfo.getBranch(), "", "git branch value is incorrect");
+    Assert.assertEquals("git branch value is incorrect", "", gitInfo.getBranch());
 
-    Assert.assertEquals(gitInfo.getDescribe(), "", "git describe value is incorrect");
+    Assert.assertEquals("git describe value is incorrect", "", gitInfo.getDescribe());
 
-    Assert.assertEquals(gitInfo.getBuildUserName(), "", "git build user name value is incorrect");
-    Assert.assertEquals(gitInfo.getBuildUserEmail(), "", "git build user email value is incorrect");
-    Assert.assertEquals(gitInfo.getBuildTime(), "05.06.2014 @ 14:42:36 PDT", "git build time value is incorrect");
+    Assert.assertEquals("git build user name value is incorrect", "", gitInfo.getBuildUserName());
+    Assert.assertEquals("git build user email value is incorrect", "", gitInfo.getBuildUserEmail());
+    Assert.assertEquals("git build time value is incorrect", "05.06.2014 @ 14:42:36 PDT", gitInfo.getBuildTime());
 
-    Assert.assertEquals(gitInfo.getCommitId(), "bb2bdabf1d38c720a7871befa2e98e03ade1a2c3", "git commit id value is incorrect");
-    Assert.assertEquals(gitInfo.getCommitIdAbbrev(), "bb2bdab", "git commit id abbrev value is incorrect");
-    Assert.assertEquals(gitInfo.getCommitUserName(), "", "git commit user name value is incorrect");
-    Assert.assertEquals(gitInfo.getCommitUserEmail(), "", "git cinnut yser enauk value is incorrect");
-    Assert.assertEquals(gitInfo.getCommitMessageFull(), "commit message FULL!!", "git commit message full value is incorrect");
-    Assert.assertEquals(gitInfo.getCommitMessageShort(), "commit message short", "git commit message short value is incorrect");
-    Assert.assertEquals(gitInfo.getCommitTime(), "05.06.2014 @ 14:37:41 PDT", "git commit time value is incorrect");
+    Assert.assertEquals("git commit id value is incorrect", "bb2bdabf1d38c720a7871befa2e98e03ade1a2c3", gitInfo.getCommitId());
+    Assert.assertEquals("git commit id abbrev value is incorrect", "bb2bdab", gitInfo.getCommitIdAbbrev());
+    Assert.assertEquals("git commit user name value is incorrect", "", gitInfo.getCommitUserName());
+    Assert.assertEquals("git commit user email value is incorrect", "", gitInfo.getCommitUserEmail());
+    Assert.assertEquals("git commit message full value is incorrect", "commit message FULL!!", gitInfo.getCommitMessageFull());
+    Assert.assertEquals("git commit message short value is incorrect", "commit message short", gitInfo.getCommitMessageShort());
+    Assert.assertEquals("git commit time value is incorrect", "05.06.2014 @ 14:37:41 PDT", gitInfo.getCommitTime());
   }
 }

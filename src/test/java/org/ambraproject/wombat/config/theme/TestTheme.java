@@ -22,27 +22,36 @@
 
 package org.ambraproject.wombat.config.theme;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
-import java.util.Map;
-
-import static org.testng.Assert.assertEquals;
-
+@RunWith(Parameterized.class)
 public class TestTheme {
-
-  @DataProvider
-  public Object[][] booleans() {
-    return new Object[][]{{false}, {true}};
+  @Parameters
+  public static Collection<Object[]> data() {
+    return Arrays.asList(new Object[][]{{false}, {true}});
   }
 
-  @Test(dataProvider = "booleans")
-  public void testResolveForeignJournalKey(final boolean useJournalKeyMap) throws Exception {
+  @Parameter
+  public boolean useJournalKeyMap;
+
+  @Test
+  public void testResolveForeignJournalKey() throws Exception {
     SiteRequestScheme dummyScheme = SiteRequestScheme.builder().build();
 
     Theme homeTheme = new StubTheme("homeTheme", "homeJournal") {
@@ -63,7 +72,6 @@ public class TestTheme {
 
     SiteSet siteSet = new SiteSet(ImmutableList.of(homeSite, targetSite));
     Site resolved = homeTheme.resolveForeignJournalKey(siteSet, "targetJournal");
-    assertEquals(resolved, targetSite);
+    assertEquals(targetSite, resolved);
   }
-
 }

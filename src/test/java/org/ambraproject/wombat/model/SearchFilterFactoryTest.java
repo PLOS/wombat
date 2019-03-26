@@ -8,16 +8,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 
 @ContextConfiguration(classes = {ArticleResolutionServiceTest.class})
-public class SearchFilterFactoryTest extends AbstractTestNGSpringContextTests {
+public class SearchFilterFactoryTest extends AbstractJUnit4SpringContextTests {
 
   @Mock
   private SearchFilterTypeMap filterTypeMap;
@@ -25,7 +25,7 @@ public class SearchFilterFactoryTest extends AbstractTestNGSpringContextTests {
   @InjectMocks
   private SearchFilterFactory searchFilterFactory;
 
-  @BeforeMethod
+  @Before
   public void initMocks() {
     MockitoAnnotations.initMocks(this);
   }
@@ -50,10 +50,10 @@ public class SearchFilterFactoryTest extends AbstractTestNGSpringContextTests {
     String filterTypeMapKey = "journal";
     SearchFilter searchFilter = searchFilterFactory.createSearchFilter(results, filterTypeMapKey, params);
 
-    assertEquals("journal", searchFilter.getFilterTypeMapKey());
-    assertEquals("PLOS ONE", searchFilter.getSearchFilterResult().get(0).getDisplayName());
-    assertEquals(new Float(19.0f), new Float(searchFilter.getSearchFilterResult().get(0).getNumberOfHits()));
-    assertEquals("PLOS Computational Biology", searchFilter.getSearchFilterResult().get(1).getDisplayName());
-    assertEquals(new Float(412.0f), new Float(searchFilter.getSearchFilterResult().get(1).getNumberOfHits()));
+    assertEquals(searchFilter.getFilterTypeMapKey(), "journal");
+    assertEquals(searchFilter.getSearchFilterResult().get(0).getDisplayName(), "PLOS ONE");
+    assertEquals(new Float(searchFilter.getSearchFilterResult().get(0).getNumberOfHits()), new Float(19.0f));
+    assertEquals(searchFilter.getSearchFilterResult().get(1).getDisplayName(), "PLOS Computational Biology");
+    assertEquals(new Float(searchFilter.getSearchFilterResult().get(1).getNumberOfHits()), new Float(412.0f));
   }
 }

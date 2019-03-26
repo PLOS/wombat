@@ -1,16 +1,29 @@
 package org.ambraproject.wombat.controller;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
-import org.ambraproject.wombat.service.ArticleResolutionService;
-import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -18,31 +31,8 @@ import org.springframework.ui.Model;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static junit.framework.TestCase.assertNull;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-
 @ContextConfiguration(classes = {ArticleMetadataTest.class})
 public class ArticleMetadataTest extends AbstractTestNGSpringContextTests {
-
-  @Mock
-  public ArticleApi articleApi;
-
-  @InjectMocks
-  public CorpusContentApi corpusContentApi;
-
-  @InjectMocks
-  public ArticleResolutionService articleResolutionService;
-
   @InjectMocks
   public ArticleMetadata.Factory articleMetadataFactory;
 

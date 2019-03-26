@@ -55,7 +55,7 @@ import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
+@ContextConfiguration(classes = TestSpringConfiguration.class)
 public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
 
   @Autowired

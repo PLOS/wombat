@@ -118,12 +118,9 @@ public class PeerReviewServiceImplTest extends AbstractTestNGSpringContextTests 
                 "crepoUuid", UUID.randomUUID().toString()
             ))
         )).build();
-
-
+    
     PeerReviewService serviceWithMockedContent = getServiceWithMockedContent();
-
     String html = serviceWithMockedContent.asHtml(itemTable);
-    System.out.println(html);
     Document d = Jsoup.parse(html);
 
     assertThat(d.select(".review-history .review__doi").get(0).text(), containsString("https://doi.org/10.1371/journal.pone.0207232.r001"));

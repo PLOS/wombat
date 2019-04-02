@@ -62,6 +62,12 @@
     </@articleButton>
   </#if>
 
+  <#if peerReview??>
+    <@articleButton "articlePeerReview">
+      Peer Review
+    </@articleButton>
+  </#if>
+
   </ul>
 </nav><#--end article buttons-->
 

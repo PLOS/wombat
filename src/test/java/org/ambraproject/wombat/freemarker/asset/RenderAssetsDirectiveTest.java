@@ -33,7 +33,7 @@ import java.util.Arrays;
 
 import static org.testng.Assert.assertEquals;
 
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
+@ContextConfiguration(classes = TestSpringConfiguration.class)
 public class RenderAssetsDirectiveTest extends AbstractTestNGSpringContextTests {
 
   /*

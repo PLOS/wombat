@@ -1,4 +1,4 @@
-FROM tomcat:7.0-jre8-alpine
+FROM tomcat:8.5-jre8-alpine
 
 # replace root war, so this runs on port 8080
 RUN rm -rf /usr/local/tomcat/webapps/ROOT

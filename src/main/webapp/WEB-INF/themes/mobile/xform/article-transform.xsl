@@ -78,6 +78,8 @@
   <!-- ============================================================= -->
   <!--  "make-article" for the document architecture                 -->
   <!-- ============================================================= -->
+
+  <!-- Ambra modifications -->
   <xsl:template name="version-notes">
     <div class="retraction red-alert">
       <p>
@@ -93,7 +95,7 @@
         </xsl:when>
       </xsl:choose>
 
-    <xsl:apply-templates select="front/notes/p" mode="metadata"/>
+      <xsl:apply-templates select="front/notes/p" mode="metadata"/>
         <xsl:if test="front/notes/p/ext-link">
           <xsl:variable name="citedArticleDoi">
             <xsl:value-of select="front/notes/p/ext-link/@xlink:href"/>
@@ -280,7 +282,8 @@
       <!-- Data Availability -->
       <xsl:if test="custom-meta-group/custom-meta[@id='data-availability']">
         <p>
-        <xsl:apply-templates select="custom-meta-group/custom-meta[@id='data-availability']/meta-value" mode="metadata"/>
+          <xsl:apply-templates select="custom-meta-group/custom-meta[@id='data-availability']/meta-value"
+                               mode="metadata"/>
         </p>
       </xsl:if>
       <!-- funding statement -->
@@ -375,12 +378,12 @@
   <xsl:template match="permissions" mode="metadata"/>
   <xsl:template match="copyright-statement" mode="metadata"/>
 
-  <!-- 5/20/14: plos modifications -->
+  <!-- 5/20/14: Ambra modifications -->
   <xsl:template match="custom-meta-group/custom-meta[@id='data-availability']/meta-value" mode="metadata">
     <strong>Data Availability: </strong>
-    <xsl:apply-templates />
+    <xsl:apply-templates/>
   </xsl:template>
-  
+
   <!-- Ambra modifications -->
   <xsl:template match="license" mode="metadata">
     <xsl:apply-templates mode="metadata"/>
@@ -1361,7 +1364,7 @@
           <xsl:value-of select="@xlink:href"/>
         </xsl:variable>
         <xsl:attribute name="src">
-          <xsl:value-of select="concat('article/file?type=thumbnail&amp;id=', $graphicDOI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
+          <xsl:value-of select="concat('article/file?type=thumbnail&amp;id=',$graphicDOI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
         </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="class">
@@ -1441,7 +1444,7 @@
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
-  <!--add class to a specific paragraph for after styling-->
+  <!--3/1/13, add class to a specific paragraph for after styling-->
   <!--note that if 'match="p"' changes, this will have to change-->
   <xsl:template name="preSiClass">
     <a>
@@ -1453,7 +1456,7 @@
     <xsl:call-template name="newline1"/>
   </xsl:template>
 
-  <!--add class to paragraphs appearing after doi in supplementary doi-->
+  <!--3/4/13 add class to paragraphs appearing after doi in supplementary doi-->
   <!--for styling-->
   <xsl:template name="postSiClass">
     <a>
@@ -1580,7 +1583,7 @@
 
   <!-- Ambra-specific templates for legacy references (element-citation: journal/no citation, book/other, supporting templates -->
 
-  <!-- Ambra-specific template: legacy nlm-citation references (need separate transform to account for different tag order) -->
+  <!-- 6/8/12: Ambra-specific template: legacy nlm-citation references (need separate transform to account for different tag order) -->
   <xsl:template match="nlm-citation">
     <xsl:apply-templates select="person-group" mode="book"/>
     <xsl:apply-templates select="collab" mode="book"/>
@@ -1609,8 +1612,8 @@
     <xsl:apply-templates select="person-group" mode="book"/>
     <xsl:apply-templates select="collab" mode="book"/>
     <xsl:apply-templates
-        select="*[not(self::edition) and not(self::person-group) and not(self::collab) and not(self::comment)] | text()"
-        mode="none"/>
+      select="*[not(self::edition) and not(self::person-group) and not(self::collab) and not(self::comment)] | text()"
+      mode="none"/>
     <xsl:call-template name="citationComment"/>
     <xsl:if test="extraCitationInfo/@doi and not(ext-link) and not(comment/ext-link)">
       <xsl:variable name="citedArticleDoi">
@@ -1627,7 +1630,7 @@
   </xsl:template>
 
   <!-- Ambra-specific template: legacy references (publication-types book and other) -->
-  <!-- add nlm-citation and page-count for nlm-citation-->
+  <!-- 6/23/12: add nlm-citation and page-count for nlm-citation-->
   <xsl:template match="element-citation[@publication-type='book'] | element-citation[@publication-type='other'] |
                          nlm-citation[@publication-type='book'] | nlm-citation[@publication-type='other']">
     <xsl:variable name="augroupcount" select="count(person-group) + count(collab)"/>
@@ -1711,7 +1714,7 @@
   </xsl:template>
 
   <!-- Ambra-specific template -->
-  <!-- comment out call-template: don't need? -->
+  <!-- 6/8/12: comment out call-template: don't need? -->
   <xsl:template match="article-title" mode="none">
     <xsl:apply-templates/>
     <!--<xsl:call-template name="punctuation" />  -->
@@ -1813,7 +1816,7 @@
     <xsl:text>. </xsl:text>
   </xsl:template>
 
-  <!-- Ambra-specific template (replicate mode book as mode none for citations without publication-type) -->
+  <!-- 6/8/12: Ambra-specific template (replicate mode book as mode none for citations without publication-type) -->
   <xsl:template match="size" mode="none">
     <xsl:apply-templates/>
     <xsl:text> p.</xsl:text>
@@ -1822,7 +1825,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- Ambra-specific template (replicate size but use page-count for nlm-citation) -->
+  <!-- 6/12/12: Ambra-specific template (replicate size but use page-count for nlm-citation) -->
   <xsl:template match="page-count" mode="none">
     <xsl:apply-templates select="@count"/>
     <xsl:text> p.</xsl:text>
@@ -2004,7 +2007,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- Ambra-specific template (replicate size but use page-count for nlm-citation types book/other) -->
+  <!-- 6/23/12: Ambra-specific template (replicate size but use page-count for nlm-citation types book/other) -->
   <xsl:template match="page-count" mode="book">
     <xsl:apply-templates select="@count"/>
     <xsl:text> p.</xsl:text>
@@ -2013,7 +2016,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- Ambra-specific template -->
+  <!-- 6/8/12: Ambra-specific template -->
   <xsl:template match="comment">
     <xsl:if test="not(self::node()='.')">
       <xsl:text> </xsl:text>
@@ -2047,7 +2050,7 @@
   <xsl:template match="speech/p" mode="speech"/>
   <xsl:template match="speech/speaker"/>
 
-  <!-- Ambra modifications for figshare widget, FEND-2  -->
+  <!-- 1/7/13: Ambra modifications for figshare widget, FEND-2  -->
   <xsl:template match="supplementary-material[1]">
     <xsl:element name="div">
       <xsl:attribute name="class">figshare_widget</xsl:attribute>
@@ -2112,7 +2115,7 @@
         </xsl:for-each>
       </xsl:when>
 
-      <!--if 2 caption/p elements, each needs it's own class for styling-->
+      <!--if 2 caption/p elements, each needs its own class for styling-->
       <xsl:when test="count(caption/p) = 2">
         <!--the first -->
         <xsl:for-each select="caption/p[position() = 1]">
@@ -2245,8 +2248,6 @@
   <!-- suppress, we don't use. removed ext-link from list (we process independently) -->
   <xsl:template match="uri | inline-supplementary-material"/>
 
-  <!-- Ambra-specific template -->
-
   <!-- suppress, we don't use  -->
   <xsl:template match="funding-source"/>
   <xsl:template match="hr"/>
@@ -2343,7 +2344,7 @@
     </span>
   </xsl:template>
 
-  <!-- Ambra-specific template (superscript table-fn xrefs) -->
+  <!-- 1/4/12 Ambra-specific template (superscript table-fn xrefs) -->
   <xsl:template match="xref[@ref-type='table-fn']">
     <span class="xref">
       <xsl:call-template name="assign-id"/>
@@ -2371,7 +2372,7 @@
   </xsl:template>
 
   <!-- Ambra-specific template -->
-  <!-- added translate so names and ids of figs have dashes (for figure enhancement) -->
+  <!-- 6/13/12: added translate so names and ids of figs have dashes (for figure enhancement) -->
   <xsl:template match="xref[@ref-type='fig'] | xref[@ref-type='table']">
     <a class="xref" href="#{translate(@rid, '.', '-')}">
       <xsl:apply-templates/>

@@ -30,13 +30,12 @@ import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.spy;
 
-
-@ContextConfiguration(classes = {PeerReviewServiceTest.class})
-public class PeerReviewServiceTest extends AbstractJUnit4SpringContextTests {
+@ContextConfiguration(classes = {PeerReviewServiceImplTest.class})
+public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests {
 
   private PeerReviewServiceImpl service = new PeerReviewServiceImpl();
 
-    @Test
+  @Test
   public void testAsHtml() throws IOException {
     ImmutableMap<String, ? extends Map<String, ?>> itemTable = new ImmutableMap.Builder<String, Map<String, ?>>()
         .put("10.1371/journal.pone.0207232.r001", ImmutableMap.of(
@@ -89,51 +88,7 @@ public class PeerReviewServiceTest extends AbstractJUnit4SpringContextTests {
         )).build();
 
 
-    PeerReviewService serviceWithMockedContent = new PeerReviewServiceImpl() {
-
-      @Override
-      String getArticleReceivedDate(Map<String,?> itemTable) throws IOException {
-        return "June 1, 2018";
-      }
-
-      @Override
-      String getContent(ContentKey contentKey) throws IOException {
-        String crepoKey = (String) contentKey.getKey();
-        
-        String letterContent = null;
-        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r001.xml") {
-          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\">" +
-              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>0</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body><p>InitialDecisionLetterSampleBody</p></body></sub-article>";
-        }
-        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r002.xml") {
-          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article article-type=\"author-comment\">" +
-              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>1</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body><p>FirstRoundAuthorResponseSampleBody</p></body></sub-article>";
-        }
-        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r003.xml") {
-          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\">" +
-              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>1</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body><p>FirstRoundDecisionLetterSampleBody</p></body></sub-article>";
-        }
-        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r004.xml") {
-          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article article-type=\"author-comment\">" +
-              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>2</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body><p>SecondRoundAuthorResponseSampleBody</p></body></sub-article>";
-        }
-        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r005.xml") {
-          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\">" +
-              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>2</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body><p>SecondRoundDecisionLetterSampleBody</p></body></sub-article>";
-        }
-        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r006.xml") {
-          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"acceptance-letter\">" +
-              "<front-stub></front-stub>" +
-              "<body><p>AcceptanceLetterSampleBody</p></body></sub-article>";
-        }
-        return letterContent;
-      }
-    };
+    PeerReviewService serviceWithMockedContent = getServiceWithMockedContent();
 
     String html = serviceWithMockedContent.asHtml(itemTable);
     Document d = Jsoup.parse(html);
@@ -149,6 +104,73 @@ public class PeerReviewServiceTest extends AbstractJUnit4SpringContextTests {
     assertThat(d.select(".review-history .decision-letter").get(2).text(), containsString("SecondRoundDecisionLetterSampleBody"));
     assertThat(d.select(".review-history .revision").get(3).text(), containsString("Formally Accepted"));
     assertThat(d.select(".review-history .acceptance-letter").get(0).text(), containsString("AcceptanceLetterSampleBody"));
+  }
+
+  @Test
+  public void testSubarticleDoi() throws IOException {
+    ImmutableMap<String, ? extends Map<String, ?>> itemTable = new ImmutableMap.Builder<String, Map<String, ?>>()
+        .put("10.1371/journal.pone.0207232.r001", ImmutableMap.of(
+            "doi", "10.1371/journal.pone.0207232.r001",
+            "itemType", "reviewLetter",
+            "files", ImmutableMap.of("letter", ImmutableMap.of(
+                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r001.xml",
+                "crepoUuid", UUID.randomUUID().toString()
+            ))
+        )).build();
+    
+    PeerReviewService serviceWithMockedContent = getServiceWithMockedContent();
+    String html = serviceWithMockedContent.asHtml(itemTable);
+    Document d = Jsoup.parse(html);
+
+    assertThat(d.select(".review-history .review__doi").get(0).text(), containsString("https://doi.org/10.1371/journal.pone.0207232.r001"));
+  }
+
+  PeerReviewServiceImpl getServiceWithMockedContent() {
+    return new PeerReviewServiceImpl() {
+
+      @Override
+      String getArticleReceivedDate(Map<String,?> itemTable) throws IOException {
+        return "June 1, 2018";
+      }
+
+      @Override
+      String getContent(ContentKey contentKey) throws IOException {
+        String crepoKey = (String) contentKey.getKey();
+
+        String letterContent = null;
+        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r001.xml") {
+          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\" id=\"pone.0207232.r001\">" +
+              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>0</meta-value></custom-meta></custom-meta-group></front-stub>" +
+              "<body><p>InitialDecisionLetterSampleBody</p></body></sub-article>";
+        }
+        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r002.xml") {
+          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article article-type=\"author-comment\" id=\"pone.0207232.r002\">" +
+              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>1</meta-value></custom-meta></custom-meta-group></front-stub>" +
+              "<body><p>FirstRoundAuthorResponseSampleBody</p></body></sub-article>";
+        }
+        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r003.xml") {
+          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\" id=\"pone.0207232.r003\">" +
+              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>1</meta-value></custom-meta></custom-meta-group></front-stub>" +
+              "<body><p>FirstRoundDecisionLetterSampleBody</p></body></sub-article>";
+        }
+        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r004.xml") {
+          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article article-type=\"author-comment\" id=\"pone.0207232.r004\">" +
+              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>2</meta-value></custom-meta></custom-meta-group></front-stub>" +
+              "<body><p>SecondRoundAuthorResponseSampleBody</p></body></sub-article>";
+        }
+        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r005.xml") {
+          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\" id=\"pone.0207232.r005\">" +
+              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>2</meta-value></custom-meta></custom-meta-group></front-stub>" +
+              "<body><p>SecondRoundDecisionLetterSampleBody</p></body></sub-article>";
+        }
+        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r006.xml") {
+          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"acceptance-letter\" id=\"pone.0207232.r006\">" +
+              "<front-stub></front-stub>" +
+              "<body><p>AcceptanceLetterSampleBody</p></body></sub-article>";
+        }
+        return letterContent;
+      }
+    };
   }
 
   @Test

@@ -44,15 +44,15 @@ import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 @ContextConfiguration
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
@@ -89,8 +89,8 @@ public class CommentControllerTest extends ControllerTest {
   RequestedDoiVersion expectedRequestedDoi;
   ArticlePointer expectedArticlePointer;
 
-  @BeforeMethod
-  private void setup() throws IOException {
+  @Before
+  public void setup() throws IOException {
     when(articleMetadata.validateVisibility(anyString())).thenReturn(articleMetadata);
     when(articleMetadata.populate(any(), any())).thenReturn(articleMetadata);
     when(articleMetadata.fillAmendments(any())).thenReturn(articleMetadata);
@@ -119,8 +119,8 @@ public class CommentControllerTest extends ControllerTest {
 
   private static final int EXPECTED_INGESTION_NUMBER = 2;
 
-  @AfterMethod
-  private void verifyCalls() throws IOException {
+  @After
+  public void verifyCalls() throws IOException {
     verify(articleResolutionService).toIngestion(expectedRequestedDoi);
     verify(articleService).getItemTable(expectedArticlePointer);
     verify(articleApi, times(2)).requestObject(any(), eq(Map.class));

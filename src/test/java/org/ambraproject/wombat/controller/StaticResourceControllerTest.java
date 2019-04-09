@@ -71,12 +71,15 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
-import org.testng.annotations.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.MultiTemplateLoader;
@@ -85,6 +88,7 @@ import freemarker.template.TemplateDirectiveModel;
 
 @ContextConfiguration
 public class StaticResourceControllerTest extends ControllerTest {
+
   @Autowired
   AssetService assetService;
 

@@ -30,8 +30,8 @@ import org.ambraproject.wombat.util.MockSiteUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -40,12 +40,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @ContextConfiguration(classes = TestSpringConfiguration.class)
-public class SearchControllerTest extends AbstractTestNGSpringContextTests {
-
+public class SearchControllerTest extends AbstractJUnit4SpringContextTests {
   @Autowired
   private SiteSet siteSet;
 
@@ -59,15 +58,15 @@ public class SearchControllerTest extends AbstractTestNGSpringContextTests {
     SearchController.CommonParams commonParams = new SearchController.CommonParams(siteSet, site);
     commonParams.parseParams(params, false);
 
-    assertEquals(commonParams.start, 90);  // Default results per page should be 15
-    assertEquals(commonParams.sortOrder, SolrSearchApiImpl.SolrSortOrder.RELEVANCE);
-    assertEquals(commonParams.dateRange, SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
+    assertEquals(90, commonParams.start);  // Default results per page should be 15
+    assertEquals(SolrSearchApiImpl.SolrSortOrder.RELEVANCE, commonParams.sortOrder);
+    assertEquals(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME, commonParams.dateRange);
     assertTrue(commonParams.articleTypes.isEmpty());
     assertTrue(commonParams.journalKeys.isEmpty());
     assertTrue(commonParams.filterJournalNames.isEmpty());
-    assertEquals(commonParams.subjectList.size(), 2);
-    assertEquals(commonParams.subjectList.get(0), "subject1");
-    assertEquals(commonParams.subjectList.get(1), "subject2");
+    assertEquals(2, commonParams.subjectList.size());
+    assertEquals("subject1", commonParams.subjectList.get(0));
+    assertEquals("subject2", commonParams.subjectList.get(1));
     assertTrue(commonParams.isFiltered);
   }
 }

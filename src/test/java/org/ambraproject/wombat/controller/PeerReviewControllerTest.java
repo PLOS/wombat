@@ -31,10 +31,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 @ContextConfiguration
 public class PeerReviewControllerTest extends ControllerTest {
@@ -47,8 +47,8 @@ public class PeerReviewControllerTest extends ControllerTest {
   PeerReviewController controller = new PeerReviewController();
   Map<String, Object> map;
 
-  @BeforeMethod
-  private void setup() throws IOException {
+  @Before
+  public void setup() throws IOException {
     this.map = new HashMap<String,Object>();
 
     when(articleMetadata.validateVisibility(anyString())).thenReturn(articleMetadata);
@@ -58,7 +58,7 @@ public class PeerReviewControllerTest extends ControllerTest {
     doReturn(articleMetadata).when(articleMetadataFactory).newInstance(any(), any(), any(), any(), any(), any());
   }
     
-  @Test(expectedExceptions = NotFoundException.class)
+  @Test(expected = NotFoundException.class)
   public void testPeerReviewNotFound(){
     controller.throwIfPeerReviewNotFound(map);
   }

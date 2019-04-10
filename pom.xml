@@ -40,7 +40,6 @@
     <java-version>1.8</java-version>
     <org.springframework-version>4.3.14.RELEASE</org.springframework-version>
     <org.springsecurity-version>4.1.5.RELEASE</org.springsecurity-version>
-    <org.aspectj-version>1.6.10</org.aspectj-version>
     <org.slf4j-version>1.6.6</org.slf4j-version>
     <rhombat.version>1.0.1</rhombat.version>
     <maven.tomcat.uriEncoding>UTF-8</maven.tomcat.uriEncoding>
@@ -200,13 +199,6 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
       <version>${org.springframework-version}</version>
-    </dependency>
-
-    <!-- AspectJ -->
-    <dependency>
-      <groupId>org.aspectj</groupId>
-      <artifactId>aspectjrt</artifactId>
-      <version>${org.aspectj-version}</version>
     </dependency>
 
     <!-- Logging -->

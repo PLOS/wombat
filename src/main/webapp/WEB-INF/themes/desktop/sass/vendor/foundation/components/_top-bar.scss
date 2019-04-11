@@ -156,7 +156,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
     .top-bar {
       background: $topbar-bg;
       height: $topbar-height;
-      line-height: $topbar-height;
+      line-height: inherit;
       margin-bottom: $topbar-margin-bottom;
       overflow: hidden;
       position: relative;
@@ -213,7 +213,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
         h1, h2, h3, h4, p, span {
           font-size: $topbar-title-font-size;
-          line-height: $topbar-height;
+          line-height: inherit;
           margin: 0;
 
           a {
@@ -238,7 +238,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           font-size: $topbar-menu-link-font-size;
           font-weight: $topbar-menu-link-weight;
           height: $topbar-height;
-          line-height: $topbar-height;
+          line-height: inherit;
           padding: 0 $topbar-link-padding;
           position: relative;
           text-transform: $topbar-menu-link-transform;
@@ -562,7 +562,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           &:not(.has-form) {
             a:not(.button) {
               background: $topbar-link-bg;
-              line-height: $topbar-height;
+              line-height: inherit;
               padding: 0 $topbar-link-padding;
               &:hover {
                 background-color: $topbar-link-bg-color-hover;
@@ -577,7 +577,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             a:not(.button) {
               background: $topbar-link-bg-active;
               color: $topbar-link-color-active;
-              line-height: $topbar-height;
+              line-height: inherit;
               padding: 0 $topbar-link-padding;
               &:hover {
                 background: $topbar-link-bg-active-hover;
@@ -640,7 +640,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             a {
               background: $topbar-dropdown-link-bg;
               color: $topbar-dropdown-link-color;
-              line-height: $topbar-height;
+              line-height: $paragraph-font-family;
               padding: 12px $topbar-link-padding;
               white-space: nowrap;
             }

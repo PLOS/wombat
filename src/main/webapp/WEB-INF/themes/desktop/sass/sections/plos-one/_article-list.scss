@@ -1,4 +1,4 @@
-body.plosone {
+.plosone {
   background-color: $white;
 }
 /* ARTICLES LIST */
@@ -47,7 +47,7 @@ body.plosone {
   z-index: 2;
   box-sizing: content-box;
 
-  body.plosone & {
+  .plosone & {
     background-color: $grey-light;
   }
 }
@@ -70,7 +70,7 @@ body.plosone {
 .article-block .details h2 a {
   color: $grey-dark;
 
-  body.plosone & {
+  .plosone & {
     color: $plos-one-purple;
 
     &:hover {

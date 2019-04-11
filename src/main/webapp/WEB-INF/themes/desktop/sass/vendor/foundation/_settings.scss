@@ -40,7 +40,7 @@ $total-columns: 12;
 $body-bg: $clr-body-bg;
 $body-font-color: $clr-body-text;
 $body-font-family: $font-face-plain;
-$body-font-weight: normal;
+$body-font-weight: $normal;
 $body-font-style: normal;
 
 // We use this to control font-smoothing
@@ -116,8 +116,8 @@ $xlarge-range: (90.063em, 120em);
 
 // We use these to control header font styles
 $header-font-family: $font-face-fancy;
-$header-font-weight: normal;
-$header-font-style: normal;
+$header-font-weight: $normal;
+$header-font-style: $normal;
 $header-font-color: $clr-body-text;
 $header-line-height: $line-height-large-text;
 $header-top-margin: 0;
@@ -1049,7 +1049,7 @@ $table-border-color: $table-separator-color;
 $table-head-bg: $clr-body-bg;
 $table-head-font-size: rem-calc($txt-size-default);
 $table-head-font-color: $clr-body-text;
-$table-head-font-weight: bold;
+$table-head-font-weight: $bold;
 $table-head-padding: rem-calc($line-height-small) $pad-small;
 
 //These control the row padding and font styles
@@ -1104,7 +1104,7 @@ $tabs-vertical-navigation-margin-bottom: 0;//1.25rem;
 $include-html-tooltip-classes: $include-html-classes;
 
 $has-tip-border-bottom: none;
-$has-tip-font-weight: normal;
+$has-tip-font-weight: $normal;
 $has-tip-font-color: $clr-body-text;
 $has-tip-border-bottom-hover: none; //dotted 1px scale-color($primary-color, $lightness: -55%);
 $has-tip-font-color-hover: $primary-color;
@@ -1113,7 +1113,7 @@ $has-tip-cursor-type: pointer; //help;
 $tooltip-padding: $pad-default;
 $tooltip-bg: $grey-light;
 $tooltip-font-size: $txt-size-xxsmall;
-$tooltip-font-weight: normal;
+$tooltip-font-weight: $normal;
 $tooltip-font-color: $clr-body-text;
 $tooltip-line-height: 1.3;
 //$tooltip-close-font-size: rem-calc(10);
@@ -1139,14 +1139,14 @@ $topbar-height:auto;
 $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
-$topbar-title-weight: normal;
+$topbar-title-weight: $normal;
 $topbar-title-font-size: $txt-size-default;
 
 // Style the top bar dropdown elements
 $topbar-dropdown-bg: $topbar-bg-color;
 $topbar-dropdown-link-color: $clr-body-text;
 $topbar-dropdown-link-bg: transparent;
-$topbar-dropdown-link-weight: normal;
+$topbar-dropdown-link-weight: $normal;
  $topbar-dropdown-toggle-size: false;
  $topbar-dropdown-toggle-color: false;
  $topbar-dropdown-toggle-alpha: false;
@@ -1156,7 +1156,7 @@ $topbar-link-color: $plos-default;
 $topbar-link-color-hover: $clr-light-text;
 $topbar-link-color-active:  $clr-alert;
 $topbar-link-color-active-hover: $clr-light-text;
-$topbar-link-weight: normal;
+$topbar-link-weight: $normal;
 $topbar-link-font-size: $txt-size-default;
 $topbar-link-hover-lightness: 0; //-10%; // Darken by 10%
 $topbar-link-bg-hover:  $clr-highlight;
@@ -1169,20 +1169,20 @@ $topbar-link-padding: 0;
 // $topbar-button-font-size: 0.75rem;
 // $topbar-button-top: 7px;
 
- $topbar-dropdown-label-color: false;
- $topbar-dropdown-label-text-transform: false;
- $topbar-dropdown-label-font-weight: false;
- $topbar-dropdown-label-font-size: false;
- $topbar-dropdown-label-bg: false;
+ $topbar-dropdown-label-color: inherit;
+ $topbar-dropdown-label-text-transform: inherit;
+ $topbar-dropdown-label-font-weight: inherit;
+ $topbar-dropdown-label-font-size: inherit;
+ $topbar-dropdown-label-bg: inherit;
 
 // Top menu icon styles
- $topbar-menu-link-transform: false;
- $topbar-menu-link-font-size: false;
- $topbar-menu-link-weight: false;
- $topbar-menu-link-color: false;
- $topbar-menu-icon-color: false;
- $topbar-menu-link-color-toggled: false;
- $topbar-menu-icon-color-toggled: false;
+ $topbar-menu-link-transform: inherit;
+ $topbar-menu-link-font-size: inherit;
+ $topbar-menu-link-weight: inherit;
+ $topbar-menu-link-color: inherit;
+ $topbar-menu-icon-color: inherit;
+ $topbar-menu-link-color-toggled: inherit;
+ $topbar-menu-icon-color-toggled: inherit;
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;
 // Using rem-calc for the below breakpoint causes issues with top bar

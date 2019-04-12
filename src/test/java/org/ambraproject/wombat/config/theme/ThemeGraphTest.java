@@ -22,24 +22,24 @@
 
 package org.ambraproject.wombat.config.theme;
 
-import com.google.common.collect.ImmutableList;
-import org.ambraproject.wombat.config.TestSpringConfiguration;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.util.MockSiteUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.util.Map;
 
-import static org.testng.Assert.assertEquals;
+import com.google.common.collect.ImmutableList;
+
+import org.ambraproject.wombat.config.TestSpringConfiguration;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.util.MockSiteUtil;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 @ContextConfiguration(classes = TestSpringConfiguration.class)
-public class ThemeGraphTest extends AbstractTestNGSpringContextTests {
+public class ThemeGraphTest extends AbstractJUnit4SpringContextTests {
 
   @Autowired
   private SiteSet siteSet;
@@ -74,10 +74,10 @@ public class ThemeGraphTest extends AbstractTestNGSpringContextTests {
   private static void assertChainIs(ThemeGraph themeGraph, String themeKey, String... expectedParentKeys) {
     Theme themeUnderTest = themeGraph.getTheme(themeKey);
     ImmutableList<Theme> chain = themeUnderTest.getInheritanceChain();
-    assertEquals(chain.size(), 1 + expectedParentKeys.length);
-    assertEquals(chain.get(0), themeUnderTest);
+    assertEquals(1 + expectedParentKeys.length, chain.size());
+    assertEquals(themeUnderTest, chain.get(0));
     for (int i = 0; i < expectedParentKeys.length; i++) {
-      assertEquals(chain.get(i + 1), themeGraph.getTheme(expectedParentKeys[i]));
+      assertEquals(themeGraph.getTheme(expectedParentKeys[i]), chain.get(i + 1));
     }
   }
 
@@ -86,7 +86,7 @@ public class ThemeGraphTest extends AbstractTestNGSpringContextTests {
     TestClasspathTheme testClasspathTheme = new TestClasspathTheme();
     String classpathThemeKey = testClasspathTheme.getKey();
     ThemeGraph themeGraph = ThemeGraph.create(testClasspathTheme, ImmutableList.of(testClasspathTheme), THEME_GRAPH_CASE);
-    assertEquals(themeGraph.getThemes().size(), THEME_GRAPH_CASE.size() + 1);
+    assertEquals(THEME_GRAPH_CASE.size() + 1, themeGraph.getThemes().size());
 
     assertChainIs(themeGraph, classpathThemeKey);
     assertChainIs(themeGraph, "root1", classpathThemeKey);
@@ -103,7 +103,7 @@ public class ThemeGraphTest extends AbstractTestNGSpringContextTests {
     assertChainIs(themeGraph, "multichild2", "child1-1", "child1-2", "root1", "child2-1", "root2", classpathThemeKey);
   }
 
-  @Test(expectedExceptions = ThemeGraph.ThemeConfigurationException.class)
+  @Test(expected = ThemeGraph.ThemeConfigurationException.class)
   public void testParseCycle() throws ThemeGraph.ThemeConfigurationException {
     TestClasspathTheme testClasspathTheme = new TestClasspathTheme();
     ThemeGraph.create(testClasspathTheme, ImmutableList.of(testClasspathTheme), THEME_GRAPH_CYCLE_CASE);

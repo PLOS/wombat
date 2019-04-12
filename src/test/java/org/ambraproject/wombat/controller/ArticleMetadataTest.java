@@ -26,17 +26,18 @@ import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.ui.Model;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 @ContextConfiguration(classes = {ArticleMetadataTest.class})
-public class ArticleMetadataTest extends AbstractTestNGSpringContextTests {
+public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
+
   @InjectMocks
   public ArticleMetadata.Factory articleMetadataFactory;
 
-  @BeforeMethod
+  @Before
   public void initMocks() {
     MockitoAnnotations.initMocks(this);
   }
@@ -95,7 +96,7 @@ public class ArticleMetadataTest extends AbstractTestNGSpringContextTests {
     articleMetadata.validateVisibility("whatever");
   }
 
-  @Test(expectedExceptions = InternalRedirectException.class)
+  @Test(expected = InternalRedirectException.class)
   public void testValidateVisibilityFail() {
     HashMap<String, String> journalMetadata = new HashMap<>();
     journalMetadata.put("journalKey", "someKey");

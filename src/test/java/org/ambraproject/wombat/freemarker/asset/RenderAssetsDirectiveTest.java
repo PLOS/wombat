@@ -25,16 +25,22 @@ package org.ambraproject.wombat.freemarker.asset;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
+@RunWith(Parameterized.class)
 @ContextConfiguration(classes = TestSpringConfiguration.class)
-public class RenderAssetsDirectiveTest extends AbstractTestNGSpringContextTests {
+public class RenderAssetsDirectiveTest extends AbstractJUnit4SpringContextTests {
 
   /*
    * Convenience method.
@@ -42,10 +48,11 @@ public class RenderAssetsDirectiveTest extends AbstractTestNGSpringContextTests 
   private static AssetNode node(String path, String... dependencies) {
     return new AssetNode(path, Arrays.asList(dependencies));
   }
-
-  @DataProvider
-  public Object[][] assetNodes() {
-    return new Object[][]{
+  
+  @Parameters
+  public static Collection<Object[]> assetNodes() {
+    return Arrays
+      .asList(new Object[][]{
         {new AssetNode[]{}, new String[]{}},
         {new AssetNode[]{node("a"), node("b"), node("c")}, new String[]{"a", "b", "c"}},
         {new AssetNode[]{node("a"), node("b", "c"), node("c"), node("d")}, new String[]{"a", "c", "b", "d"}},
@@ -62,27 +69,38 @@ public class RenderAssetsDirectiveTest extends AbstractTestNGSpringContextTests 
             },
             new String[]{"3", "5", "7", "8", "11", "2", "9", "10"}
         },
-    };
+        });
   }
 
-  @Test(dataProvider = "assetNodes")
-  public void testSortNodes(AssetNode[] nodes, String[] expectedPaths) throws Exception {
-    assertEquals(RenderAssetsDirective.sortNodes(Arrays.asList(nodes)), Arrays.asList(expectedPaths));
+  @Parameter(0)
+  public AssetNode[] nodes;
+
+  @Parameter(1)
+  public String[] expectedPaths;
+
+  @Test
+  public void testSortNodes() throws Exception {
+    List<String> results = RenderAssetsDirective.sortNodes(Arrays.asList(nodes));
+    assertEquals(Arrays.asList(expectedPaths), results);
   }
 
-  @DataProvider
-  public Object[][] cyclicNodes() {
-    return new Object[][]{
-        {new AssetNode[]{node("a", "a")}},
-        {new AssetNode[]{node("a", "nonexistent")}},
-        {new AssetNode[]{node("a", "b"), node("b", "a")}},
-        {new AssetNode[]{node("a"), node("b", "c"), node("c", "b"), node("d")}},
-    };
+  @Test(expected = RuntimeException.class)
+  public void testSortNodesSelfDependency() throws Exception {
+    RenderAssetsDirective.sortNodes(Arrays.asList(node("a", "a")));
   }
 
-  @Test(dataProvider = "cyclicNodes", expectedExceptions = RuntimeException.class)
-  public void testSortNodesWithCycle(AssetNode[] nodes) throws Exception {
-    RenderAssetsDirective.sortNodes(Arrays.asList(nodes));
+  @Test(expected = RuntimeException.class)
+  public void testSortNodesMissingDep() throws Exception {
+    RenderAssetsDirective.sortNodes(Arrays.asList(node("a", "nonexistent")));
   }
 
+  @Test(expected = RuntimeException.class)
+  public void testSortNodesCyclic() throws Exception {
+    RenderAssetsDirective.sortNodes(Arrays.asList(node("a", "b"), node("b", "a")));
+  }
+
+  @Test(expected = RuntimeException.class)
+  public void testSortNodesMissingDepDeep() throws Exception {
+    RenderAssetsDirective.sortNodes(Arrays.asList(node("a"), node("b", "c"), node("c", "b"), node("d")));
+  }
 }

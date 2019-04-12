@@ -35,15 +35,17 @@ import com.google.common.base.Joiner;
 import org.ambraproject.wombat.config.SpringMvcConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.springframework.context.annotation.Bean;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
-import org.testng.annotations.BeforeMethod;
+import org.junit.Before;
 
 @WebAppConfiguration
 @ContextConfiguration(classes={ControllerTestConfiguration.class, SpringMvcConfiguration.class})
-public class ControllerTest extends AbstractTestNGSpringContextTests {
+public abstract class ControllerTest extends AbstractJUnit4SpringContextTests {
+
   protected static final Joiner NOSPACE_JOINER = Joiner.on("").skipNulls();
   protected static final String DESKTOP_PLOS_ONE = "DesktopPlosOne";
 
@@ -52,7 +54,7 @@ public class ControllerTest extends AbstractTestNGSpringContextTests {
 
   protected MockMvc mockMvc;
 
-  @BeforeMethod(alwaysRun = true)
+  @Before
   public void setupMockMvc() throws IOException {
     mockMvc = webAppContextSetup(wac).alwaysDo(print()).build();
   }

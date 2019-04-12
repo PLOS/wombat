@@ -9,9 +9,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Map;
@@ -20,10 +20,10 @@ import java.util.OptionalInt;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 @ContextConfiguration(classes = {ArticleResolutionServiceTest.class})
-public class ArticleResolutionServiceTest extends AbstractTestNGSpringContextTests {
+public class ArticleResolutionServiceTest extends AbstractJUnit4SpringContextTests {
 
   @Mock
   private ArticleApi articleApi;
@@ -31,7 +31,7 @@ public class ArticleResolutionServiceTest extends AbstractTestNGSpringContextTes
   @InjectMocks
   private ArticleResolutionService articleResolutionService;
 
-  @BeforeMethod
+  @Before
   public void initMocks() {
     MockitoAnnotations.initMocks(this);
   }
@@ -43,13 +43,13 @@ public class ArticleResolutionServiceTest extends AbstractTestNGSpringContextTes
 
     RequestedDoiVersion assetId = RequestedDoiVersion.of("info:doi/10.1371/journal.pcbi.1002012.g002");
     AssetPointer assetPointer = articleResolutionService.toParentIngestion(assetId);
-    assertEquals(assetPointer.getAssetDoi(), "10.1371/journal.pcbi.1002012.g002");
-    assertEquals(assetPointer.getParentArticle().getDoi(), "10.1371/journal.pcbi.1002012");
-    assertEquals(assetPointer.getParentArticle().getIngestionNumber(), 1);
-    assertEquals(assetPointer.getParentArticle().getRevisionNumber().getAsInt(), 1);
+    assertEquals("10.1371/journal.pcbi.1002012.g002", assetPointer.getAssetDoi());
+    assertEquals("10.1371/journal.pcbi.1002012", assetPointer.getParentArticle().getDoi());
+    assertEquals(1, assetPointer.getParentArticle().getIngestionNumber());
+    assertEquals(1, assetPointer.getParentArticle().getRevisionNumber().getAsInt());
   }
 
-  @Test(expectedExceptions = NotFoundException.class)
+  @Test(expected = NotFoundException.class)
   public void testToParentIngestionNotAnAsset() throws IOException {
     Map<String, Object> doiOverview = makeSampleDoiOverview();
     doiOverview.put("type", "not_an_asset_type");
@@ -67,10 +67,10 @@ public class ArticleResolutionServiceTest extends AbstractTestNGSpringContextTes
     RequestedDoiVersion assetId = RequestedDoiVersion.ofIngestion(
         "info:doi/10.1371/journal.pcbi.1002012.g002", 1);
     AssetPointer assetPointer = articleResolutionService.toParentIngestion(assetId);
-    assertEquals(assetPointer.getAssetDoi(), "10.1371/journal.pcbi.1002012.g002");
-    assertEquals(assetPointer.getParentArticle().getDoi(), "10.1371/journal.pcbi.1002012");
-    assertEquals(assetPointer.getParentArticle().getIngestionNumber(), 1);
-    assertEquals(assetPointer.getParentArticle().getRevisionNumber(), OptionalInt.empty());
+    assertEquals("10.1371/journal.pcbi.1002012.g002", assetPointer.getAssetDoi());
+    assertEquals("10.1371/journal.pcbi.1002012", assetPointer.getParentArticle().getDoi());
+    assertEquals(1, assetPointer.getParentArticle().getIngestionNumber());
+    assertEquals(OptionalInt.empty(), assetPointer.getParentArticle().getRevisionNumber());
   }
 
   @Test
@@ -81,10 +81,10 @@ public class ArticleResolutionServiceTest extends AbstractTestNGSpringContextTes
     RequestedDoiVersion assetId = RequestedDoiVersion.ofRevision(
         "info:doi/10.1371/journal.pcbi.1002012.g002", 1);
     AssetPointer assetPointer = articleResolutionService.toParentIngestion(assetId);
-    assertEquals(assetPointer.getAssetDoi(), "10.1371/journal.pcbi.1002012.g002");
-    assertEquals(assetPointer.getParentArticle().getDoi(), "10.1371/journal.pcbi.1002012");
-    assertEquals(assetPointer.getParentArticle().getIngestionNumber(), 1);
-    assertEquals(assetPointer.getParentArticle().getRevisionNumber().getAsInt(), 1);
+    assertEquals("10.1371/journal.pcbi.1002012.g002", assetPointer.getAssetDoi());
+    assertEquals("10.1371/journal.pcbi.1002012", assetPointer.getParentArticle().getDoi());
+    assertEquals(1, assetPointer.getParentArticle().getIngestionNumber());
+    assertEquals(1, assetPointer.getParentArticle().getRevisionNumber().getAsInt());
 
   }
 

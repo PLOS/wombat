@@ -11,9 +11,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import org.ambraproject.wombat.service.remote.ContentKey;
 
@@ -30,9 +30,8 @@ import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.spy;
 
-
 @ContextConfiguration(classes = {PeerReviewServiceImplTest.class})
-public class PeerReviewServiceImplTest extends AbstractTestNGSpringContextTests {
+public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests {
 
   private PeerReviewServiceImpl service = new PeerReviewServiceImpl();
 

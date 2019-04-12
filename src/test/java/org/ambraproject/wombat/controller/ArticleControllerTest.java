@@ -55,7 +55,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 @ContextConfiguration
 public class ArticleControllerTest extends ControllerTest {

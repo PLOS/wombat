@@ -228,18 +228,18 @@ public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests 
   @Test
   public void testAuthorResponse() {
     String xml = read(prefix("peer-review.pone.0207232.xml"));
- 
+
     String html = service.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
 
     Document doc = Jsoup.parse(html);
 
-    // ORIGINAL SUBMISSION 
+    // ORIGINAL SUBMISSION
 
     assertThat(doc.select(".review-history .revision .letter__title").get(0).text(), containsString("Original Submission"));
     assertThat(doc.select(".review-history .revision .letter__date").get(0).text(), containsString("June 1, 2018"));
 
     assertThat(doc.select(".review-history .decision-letter .letter__date").get(0).text(), containsString("September 12, 2018"));
-    assertThat(doc.select(".review-history .decision-letter span[itemprop=name]").get(0).text(), containsString("Qinghui Zhang, Editor"));
+    assertThat(doc.select(".review-history .decision-letter span[itemprop=name]").get(0).text(), containsString("Qinghui Zhang, Editor, Surachai Supattapone, Editor"));
 
     // REVISION 1
 

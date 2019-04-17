@@ -208,7 +208,6 @@
         <xsl:value-of select="@xlink:href" />
       </xsl:attribute>
       <xsl:value-of select="text()" />
-      &gt;
     </a>
   </xsl:template>
   

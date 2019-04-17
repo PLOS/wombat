@@ -217,6 +217,12 @@
        date is referenced directly in revision #0 block --> 
   <xsl:template match="article-received-date" />
 
+  <xsl:template match="bold">
+    <strong>
+      <xsl:apply-templates/>
+    </strong>
+  </xsl:template>
+
   <xsl:template match="italic">
     <em>
       <xsl:apply-templates/>

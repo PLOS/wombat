@@ -106,3 +106,15 @@
   font-weight: 600;
   text-decoration: underline;
 }
+
+span.underline {
+  text-decoration: underline;
+}
+
+span.strike {
+  text-decoration: line-through;
+}
+
+.monospace {
+  font-family: $font-face-monospace;
+}

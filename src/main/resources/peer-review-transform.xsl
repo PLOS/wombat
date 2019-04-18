@@ -191,17 +191,47 @@
   </xsl:template>
   
   <xsl:template match="list">
-    <ul>
-      <xsl:apply-templates />
-    </ul>
+    <xsl:if test="title">
+      <h5><xsl:value-of select="title"/></h5>
+    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="@list-type='bullet'">
+        <ul class="bulleted">
+          <xsl:apply-templates/>
+        </ul>
+      </xsl:when>
+      <xsl:otherwise>
+        <ol class="{@list-type}">
+          <xsl:apply-templates/>
+        </ol>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
-  
+
   <xsl:template match="list-item">
     <li>
-      <xsl:copy-of select="node()" />
+      <xsl:if test="../@prefix-word">
+        <xsl:value-of select="../@prefix-word"/>
+        <xsl:text> </xsl:text>
+      </xsl:if>
+      <xsl:apply-templates/>
     </li>
   </xsl:template>
-  
+
+  <xsl:template match="list-item/label">
+    <span class="list-label">
+      <xsl:apply-templates/>
+      <xsl:text>. </xsl:text>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="list-item/p">
+    <xsl:apply-templates/>
+    <xsl:if test="following-sibling::p">
+      <br/>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template match="ext-link">
     <a>
       <xsl:attribute name="href">
@@ -248,12 +278,10 @@
   </xsl:template>
 
   <xsl:template match="disp-quote">
-    <xsl:call-template name="newline1"/>
     <blockquote>
       <xsl:call-template name="assign-id"/>
       <xsl:apply-templates/>
     </blockquote>
-    <xsl:call-template name="newline1"/>
   </xsl:template>
 
   <xsl:template name="assign-id">
@@ -262,10 +290,6 @@
         <xsl:value-of select="@id"/>
       </xsl:attribute>
     </xsl:if>
-  </xsl:template>
-
-  <xsl:template name="newline1">
-    <xsl:text>&#xA;</xsl:text>
   </xsl:template>
 
   <xsl:template match="sub">
@@ -278,25 +302,6 @@
     <sup>
       <xsl:apply-templates/>
     </sup>
-  </xsl:template>
-
-  <xsl:template match="list-item">
-    <xsl:call-template name="newline1"/>
-    <li>
-      <xsl:if test="../@prefix-word">
-        <xsl:value-of select="../@prefix-word"/>
-        <xsl:text> </xsl:text>
-      </xsl:if>
-      <xsl:apply-templates/>
-    </li>
-    <xsl:call-template name="newline1"/>
-  </xsl:template>
-
-  <xsl:template match="list-item/label">
-    <span class="list-label">
-      <xsl:apply-templates/>
-      <xsl:text>. </xsl:text>
-    </span>
   </xsl:template>
 
   <xsl:template match="body//def-list">

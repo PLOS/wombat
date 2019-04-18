@@ -240,6 +240,12 @@
       <xsl:value-of select="text()" />
     </a>
   </xsl:template>
+
+  <xsl:template match="email">
+    <a href="mailto:{.}">
+      <xsl:apply-templates/>
+    </a>
+  </xsl:template>
   
   <xsl:template match="named-content" />
 

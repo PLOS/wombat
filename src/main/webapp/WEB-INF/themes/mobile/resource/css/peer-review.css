@@ -107,14 +107,14 @@
   text-decoration: underline;
 }
 
-span.underline {
+.underline {
   text-decoration: underline;
 }
 
-span.strike {
+.strike {
   text-decoration: line-through;
 }
 
 .monospace {
-  font-family: $font-face-monospace;
+  font-family: "Courier New", Courier, monospace;
 }

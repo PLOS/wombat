@@ -161,11 +161,11 @@
   list-style: disc inside none;
 }
 
-.bulletlist {
+.bulleted {
   list-style: disc inside;
 }
 
-.bulletlist li {
+.bulleted li {
   line-height: 1.45rem;
   margin-bottom: 1.25em;
 }

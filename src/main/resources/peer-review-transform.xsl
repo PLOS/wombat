@@ -191,24 +191,59 @@
   </xsl:template>
   
   <xsl:template match="list">
-    <ul>
-      <xsl:apply-templates />
-    </ul>
+    <xsl:if test="title">
+      <h5><xsl:value-of select="title"/></h5>
+    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="@list-type='bullet'">
+        <ul class="bulleted">
+          <xsl:apply-templates/>
+        </ul>
+      </xsl:when>
+      <xsl:otherwise>
+        <ol class="{@list-type}">
+          <xsl:apply-templates/>
+        </ol>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
-  
+
   <xsl:template match="list-item">
     <li>
-      <xsl:copy-of select="node()" />
+      <xsl:if test="../@prefix-word">
+        <xsl:value-of select="../@prefix-word"/>
+        <xsl:text> </xsl:text>
+      </xsl:if>
+      <xsl:apply-templates/>
     </li>
   </xsl:template>
-  
+
+  <xsl:template match="list-item/label">
+    <span class="list-label">
+      <xsl:apply-templates/>
+      <xsl:text>. </xsl:text>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="list-item/p">
+    <xsl:apply-templates/>
+    <xsl:if test="following-sibling::p">
+      <br/>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template match="ext-link">
     <a>
       <xsl:attribute name="href">
         <xsl:value-of select="@xlink:href" />
       </xsl:attribute>
       <xsl:value-of select="text()" />
-      &gt;
+    </a>
+  </xsl:template>
+
+  <xsl:template match="email">
+    <a href="mailto:{.}">
+      <xsl:apply-templates/>
     </a>
   </xsl:template>
   
@@ -217,5 +252,100 @@
   <!-- ignore received date found during template processing.
        date is referenced directly in revision #0 block --> 
   <xsl:template match="article-received-date" />
+
+  <xsl:template match="bold">
+    <strong>
+      <xsl:apply-templates/>
+    </strong>
+  </xsl:template>
+
+  <xsl:template match="italic">
+    <em>
+      <xsl:apply-templates/>
+    </em>
+  </xsl:template>
+
+  <xsl:template match="monospace">
+    <span class="monospace">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="strike">
+    <span class="strike">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="underline">
+    <span class="underline">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="disp-quote">
+    <blockquote>
+      <xsl:call-template name="assign-id"/>
+      <xsl:apply-templates/>
+    </blockquote>
+  </xsl:template>
+
+  <xsl:template name="assign-id">
+    <xsl:if test="@id">
+      <xsl:attribute name="id">
+        <xsl:value-of select="@id"/>
+      </xsl:attribute>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="sub">
+    <sub>
+      <xsl:apply-templates/>
+    </sub>
+  </xsl:template>
+
+  <xsl:template match="sup">
+    <sup>
+      <xsl:apply-templates/>
+    </sup>
+  </xsl:template>
+
+  <xsl:template match="body//def-list">
+    <dl>
+      <xsl:for-each select="def-item">
+        <dt>
+          <xsl:apply-templates select="term"/>
+        </dt>
+        <dd>
+          <xsl:apply-templates select="def"/>
+        </dd>
+      </xsl:for-each>
+    </dl>
+  </xsl:template>
+
+  <xsl:template match="def-item//p">
+    <xsl:apply-templates/>
+  </xsl:template>
+
+  <xsl:template match="def-item//named-content">
+    <span class="{@content-type}">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="def-item//sup | def-item//sub | def-item//em | def-item//strong">
+    <xsl:element name="{local-name()}">
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="term">
+    <xsl:apply-templates/>
+  </xsl:template>
+
+  <xsl:template match="def">
+    <xsl:apply-templates/>
+  </xsl:template>
+
 
 </xsl:stylesheet>

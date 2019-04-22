@@ -34,6 +34,10 @@
   color: #222;
 }
 
+.letter__body a {
+  word-wrap: anywhere;
+}
+
 .letter__label {
   display: inline-block;
 }

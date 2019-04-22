@@ -57,6 +57,18 @@ small {
   font-size: 80%;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.monospace {
+  font-family: "Courier New", Courier, monospace;
+}
+
 sub,
 sup {
   font-size: 75%;

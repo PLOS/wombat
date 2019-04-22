@@ -106,15 +106,3 @@
   font-weight: 600;
   text-decoration: underline;
 }
-
-.underline {
-  text-decoration: underline;
-}
-
-.strike {
-  text-decoration: line-through;
-}
-
-.monospace {
-  font-family: "Courier New", Courier, monospace;
-}

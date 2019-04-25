@@ -72,7 +72,7 @@
             <div class="letter__title">
               <a class="peer-review-accordion-expander" href="#">Decision Letter</a>
               -
-              <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+              <span class="letter_author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                 <span itemprop="name">
                   <!-- decision letter editor -->
                   <xsl:apply-templates select="front-stub/contrib-group/contrib" />

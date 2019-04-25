@@ -36,156 +36,6 @@ public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests 
   private PeerReviewServiceImpl service = new PeerReviewServiceImpl();
 
   @Test
-  public void testAsHtml() throws IOException {
-    ImmutableMap<String, ? extends Map<String, ?>> itemTable = new ImmutableMap.Builder<String, Map<String, ?>>()
-        .put("10.1371/journal.pone.0207232.r001", ImmutableMap.of(
-            "doi", "10.1371/journal.pone.0207232.r001",
-            "itemType", "reviewLetter",
-            "files", ImmutableMap.of("letter", ImmutableMap.of(
-                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r001.xml",
-                "crepoUuid", UUID.randomUUID().toString()
-            ))
-        ))
-        .put("10.1371/journal.pone.0207232.r002", ImmutableMap.of(
-            "doi", "10.1371/journal.pone.0207232.r002",
-            "itemType", "reviewLetter",
-            "files", ImmutableMap.of("letter", ImmutableMap.of(
-                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r002.xml",
-                "crepoUuid", UUID.randomUUID().toString()
-            ))
-        ))
-        .put("10.1371/journal.pone.0207232.r003", ImmutableMap.of(
-            "doi", "10.1371/journal.pone.0207232.r003",
-            "itemType", "reviewLetter",
-            "files", ImmutableMap.of("letter", ImmutableMap.of(
-                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r003.xml",
-                "crepoUuid", UUID.randomUUID().toString()
-            ))
-        ))
-        .put("10.1371/journal.pone.0207232.r004", ImmutableMap.of(
-            "doi", "10.1371/journal.pone.0207232.r004",
-            "itemType", "reviewLetter",
-            "files", ImmutableMap.of("letter", ImmutableMap.of(
-                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r004.xml",
-                "crepoUuid", UUID.randomUUID().toString()
-            ))
-        ))
-        .put("10.1371/journal.pone.0207232.r005", ImmutableMap.of(
-            "doi", "10.1371/journal.pone.0207232.r005",
-            "itemType", "reviewLetter",
-            "files", ImmutableMap.of("letter", ImmutableMap.of(
-                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r005.xml",
-                "crepoUuid", UUID.randomUUID().toString()
-            ))
-        ))
-        .put("10.1371/journal.pone.0207232.r006", ImmutableMap.of(
-            "doi", "10.1371/journal.pone.0207232.r006",
-            "itemType", "reviewLetter",
-            "files", ImmutableMap.of("letter", ImmutableMap.of(
-                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r006.xml",
-                "crepoUuid", UUID.randomUUID().toString()
-            ))
-        )).build();
-
-
-    PeerReviewService serviceWithMockedContent = getServiceWithMockedContent();
-
-    String html = serviceWithMockedContent.asHtml(itemTable);
-    Document d = Jsoup.parse(html);
-
-    assertThat(d.select(".review-history .revision").get(0).text(), containsString("Original Submission"));
-    assertThat(d.select(".review-history .revision").get(0).text(), containsString("June 1, 2018"));
-    assertThat(d.select(".review-history .decision-letter").get(0).text(), containsString("InitialDecisionLetterSampleBody"));
-    assertThat(d.select(".review-history .revision").get(1).text(), containsString("Revision 1"));
-    assertThat(d.select(".review-history .author-response").get(0).text(), containsString("FirstRoundAuthorResponseSampleBody"));
-    assertThat(d.select(".review-history .decision-letter").get(1).text(), containsString("FirstRoundDecisionLetterSampleBody"));
-    assertThat(d.select(".review-history .revision").get(2).text(), containsString("Revision 2"));
-    assertThat(d.select(".review-history .author-response").get(1).text(), containsString("SecondRoundAuthorResponseSampleBody"));
-    assertThat(d.select(".review-history .decision-letter").get(2).text(), containsString("SecondRoundDecisionLetterSampleBody"));
-    assertThat(d.select(".review-history .revision").get(3).text(), containsString("Formally Accepted"));
-    assertThat(d.select(".review-history .acceptance-letter").get(0).text(), containsString("AcceptanceLetterSampleBody"));
-  }
-
-  @Test
-  public void testSubarticleDoi() throws IOException {
-    ImmutableMap<String, ? extends Map<String, ?>> itemTable = new ImmutableMap.Builder<String, Map<String, ?>>()
-        .put("10.1371/journal.pone.0207232.r001", ImmutableMap.of(
-            "doi", "10.1371/journal.pone.0207232.r001",
-            "itemType", "reviewLetter",
-            "files", ImmutableMap.of("letter", ImmutableMap.of(
-                "crepoKey", "info:doi/10.1371/journal.pone.0207232.r001.xml",
-                "crepoUuid", UUID.randomUUID().toString()
-            ))
-        )).build();
-    
-    PeerReviewService serviceWithMockedContent = getServiceWithMockedContent();
-    String html = serviceWithMockedContent.asHtml(itemTable);
-    Document d = Jsoup.parse(html);
-
-    assertThat(d.select(".review-history .review__doi").get(0).text(), containsString("https://doi.org/10.1371/journal.pone.0207232.r001"));
-  }
-
-  PeerReviewServiceImpl getServiceWithMockedContent() {
-    return new PeerReviewServiceImpl() {
-
-      @Override
-      String getArticleReceivedDate(Map<String,?> itemTable) throws IOException {
-        return "June 1, 2018";
-      }
-
-      @Override
-      String getContent(ContentKey contentKey) throws IOException {
-        String crepoKey = (String) contentKey.getKey();
-
-        String letterContent = null;
-        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r001.xml") {
-          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\" id=\"pone.0207232.r001\">" +
-              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>0</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body><p>InitialDecisionLetterSampleBody</p></body></sub-article>";
-        }
-        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r002.xml") {
-          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article article-type=\"author-comment\" id=\"pone.0207232.r002\">" +
-              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>1</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body><p>FirstRoundAuthorResponseSampleBody</p></body></sub-article>";
-        }
-        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r003.xml") {
-          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\" id=\"pone.0207232.r003\">" +
-              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>1</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body><p>FirstRoundDecisionLetterSampleBody</p></body></sub-article>";
-        }
-        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r004.xml") {
-          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article article-type=\"author-comment\" id=\"pone.0207232.r004\">" +
-              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>2</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body><p>SecondRoundAuthorResponseSampleBody</p></body></sub-article>";
-        }
-        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r005.xml") {
-          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"decision-letter\" id=\"pone.0207232.r005\">" +
-              "<front-stub><custom-meta-group><custom-meta><meta-name>Submission Version</meta-name><meta-value>2</meta-value></custom-meta></custom-meta-group></front-stub>" +
-              "<body><p>SecondRoundDecisionLetterSampleBody</p></body></sub-article>";
-        }
-        if (crepoKey == "info:doi/10.1371/journal.pone.0207232.r006.xml") {
-          letterContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><sub-article specific-use=\"acceptance-letter\" id=\"pone.0207232.r006\">" +
-              "<front-stub></front-stub>" +
-              "<body><p>AcceptanceLetterSampleBody</p></body></sub-article>";
-        }
-        return letterContent;
-      }
-    };
-  }
-
-  @Test
-  public void testAsHtmlHandlesNoPeerReviewItems() throws IOException {
-    ImmutableMap<String, ? extends Map<String, ?>> itemTable = ImmutableMap.of(
-        "10.1371/journal.pone.0207232.t001", ImmutableMap.of(
-            "doi", "10.1371/journal.pone.0207232.t001",
-            "itemType", "table"
-        )
-    );
-    String html = service.asHtml(itemTable);
-    assertNull(html);
-  }
-
-  @Test
   public void testAttachmentLink() throws IOException {
 
     PeerReviewServiceImpl spy = spy(service);
@@ -226,33 +76,39 @@ public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests 
   }
 
   @Test
-  public void testAuthorResponse() {
+  public void testTransformXmlToHtml() {
     String xml = read(prefix("peer-review.pone.0207232.xml"));
-
     String html = service.transformXmlToHtml(xml);
-
     Document doc = Jsoup.parse(html);
 
     // ORIGINAL SUBMISSION
 
-    assertThat(doc.select(".review-history .revision .letter__title").get(0).text(), containsString("Original Submission"));
-    assertThat(doc.select(".review-history .revision .letter__date").get(0).text(), containsString("June 1, 2018"));
+    Element firstHeader = doc.select(".review-history .revision").get(0);
+    assertThat(firstHeader.select(".letter__title").text(), containsString("Original Submission"));
+    assertThat(firstHeader.select(".letter__date").text(), containsString("June 1, 2018"));
 
-    assertThat(doc.select(".review-history .decision-letter .letter__date").get(0).text(), containsString("September 12, 2018"));
-    assertEquals("Qinghui Zhang, Editor, Surachai Supattapone, Editor", doc.select(".review-history .decision-letter span[itemprop=name]").get(0).text());
+    Element firstDecision = doc.select(".review-history .decision-letter").get(0);
+    assertThat(firstDecision.select(".letter__date").text(), containsString("September 12, 2018"));
+    assertEquals("Qinghui Zhang, Editor, Surachai Supattapone, Editor", firstDecision.select(".letter_author").get(0).text());
+    assertThat(firstDecision.select(".letter__body").text(), containsString("Thank you for submitting"));
+    assertThat(firstDecision.select(".review__doi a[href]").text(), containsString("https://doi.org/10.1371/journal.pone.0207232.r001"));
 
     // REVISION 1
 
-    assertThat(doc.select(".review-history .revision .letter__title").get(1).text(), containsString("Revision 1"));
+    Element secondHeader = doc.select(".review-history .revision").get(1);
+    assertThat(secondHeader.select(".letter__title").text(), containsString("Revision 1"));
 
-    Element authorResponseDiv = doc.select(".author-response").first();
-    assertThat(authorResponseDiv.text(), containsString("Author Response"));
+    Element authorResponse = doc.select(".author-response").get(0);
+    assertThat(authorResponse.text(), containsString("Author Response"));
+    assertThat(authorResponse.select(".letter__body").text(), containsString("[Response to Reviewers]"));
+    assertThat(authorResponse.select(".supplementary-material").get(0).text(), containsString("Response to Reviewers.docx"));
+    assertThat(authorResponse.select(".review__doi a[href]").text(), containsString("https://doi.org/10.1371/journal.pone.0207232.r002"));
 
-    Element attachmentElem = authorResponseDiv.select(".review-files .supplementary-material").first();
-    assertThat(attachmentElem.text(), containsString("Response to Reviewers.docx"));
-
-    assertThat(doc.select(".review-history .decision-letter .letter__date").get(1).text(), containsString("October 9, 2018"));
-    assertEquals("Qinghui Zhang, Editor", doc.select(".review-history .decision-letter span[itemprop=name]").get(1).text());
+    Element secondDecision = doc.select(".review-history .decision-letter").get(1);
+    assertThat(secondDecision.select(".letter__date").text(), containsString("October 9, 2018"));
+    assertEquals("Qinghui Zhang, Editor", secondDecision.select(".letter_author").text());
+    assertThat(secondDecision.select(".letter__body").text(), containsString("We are pleased"));
+    assertThat(secondDecision.select(".review__doi a[href]").text(), containsString("https://doi.org/10.1371/journal.pone.0207232.r003"));
   }
 
   @Test

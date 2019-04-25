@@ -19,7 +19,6 @@ import org.ambraproject.wombat.service.remote.ContentKey;
 
 import static java.lang.String.format;
 import static junit.framework.TestCase.assertNull;
-import static org.ambraproject.wombat.service.PeerReviewServiceImpl.DEFAULT_PEER_REVIEW_XSL;
 import static org.ambraproject.wombat.util.FileUtils.deserialize;
 import static org.ambraproject.wombat.util.FileUtils.getFile;
 import static org.ambraproject.wombat.util.FileUtils.read;
@@ -212,7 +211,7 @@ public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests 
 
     String xml = read(prefix("peer-review-attachment-filenames.pone.0207232.xml"));
  
-    String html = service.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+    String html = service.transformXmlToHtml(xml);
 
     Document doc = Jsoup.parse(html);
 
@@ -230,7 +229,7 @@ public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests 
   public void testAuthorResponse() {
     String xml = read(prefix("peer-review.pone.0207232.xml"));
 
-    String html = service.transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+    String html = service.transformXmlToHtml(xml);
 
     Document doc = Jsoup.parse(html);
 

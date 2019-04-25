@@ -81,34 +81,45 @@ public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests 
     String html = service.transformXmlToHtml(xml);
     Document doc = Jsoup.parse(html);
 
-    // ORIGINAL SUBMISSION
+    // SUBMISSION
 
-    Element firstHeader = doc.select(".review-history .revision").get(0);
-    assertThat(firstHeader.select(".letter__title").text(), containsString("Original Submission"));
-    assertThat(firstHeader.select(".letter__date").text(), containsString("June 1, 2018"));
+    Element submissionHeader = doc.select(".review-history .revision").get(0);
+    assertEquals("Original Submission", submissionHeader.select(".letter__title").text());
+    assertEquals("June 1, 2018", submissionHeader.select(".letter__date").text());
 
     Element firstDecision = doc.select(".review-history .decision-letter").get(0);
-    assertThat(firstDecision.select(".letter__date").text(), containsString("September 12, 2018"));
-    assertEquals("Qinghui Zhang, Editor, Surachai Supattapone, Editor", firstDecision.select(".letter_author").get(0).text());
+    assertEquals("September 12, 2018", firstDecision.select(".letter__date").text());
+    assertEquals("Qinghui Zhang, Editor, Surachai Supattapone, Editor", firstDecision.select(".letter__author").text());
     assertThat(firstDecision.select(".letter__body").text(), containsString("Thank you for submitting"));
-    assertThat(firstDecision.select(".review__doi a[href]").text(), containsString("https://doi.org/10.1371/journal.pone.0207232.r001"));
+    assertEquals("https://doi.org/10.1371/journal.pone.0207232.r001", firstDecision.select(".review__doi a[href]").text());
 
-    // REVISION 1
+    // REVISION
 
-    Element secondHeader = doc.select(".review-history .revision").get(1);
-    assertThat(secondHeader.select(".letter__title").text(), containsString("Revision 1"));
+    Element revisionHeader = doc.select(".review-history .revision").get(1);
+    assertEquals("Revision 1", revisionHeader.select(".letter__title").text());
 
     Element authorResponse = doc.select(".author-response").get(0);
     assertThat(authorResponse.text(), containsString("Author Response"));
     assertThat(authorResponse.select(".letter__body").text(), containsString("[Response to Reviewers]"));
     assertThat(authorResponse.select(".supplementary-material").get(0).text(), containsString("Response to Reviewers.docx"));
-    assertThat(authorResponse.select(".review__doi a[href]").text(), containsString("https://doi.org/10.1371/journal.pone.0207232.r002"));
+    assertEquals("https://doi.org/10.1371/journal.pone.0207232.r002", authorResponse.select(".review__doi a[href]").text());
 
     Element secondDecision = doc.select(".review-history .decision-letter").get(1);
-    assertThat(secondDecision.select(".letter__date").text(), containsString("October 9, 2018"));
-    assertEquals("Qinghui Zhang, Editor", secondDecision.select(".letter_author").text());
+    assertEquals("October 9, 2018", secondDecision.select(".letter__date").text());
+    assertEquals("Qinghui Zhang, Editor", secondDecision.select(".letter__author").text());
     assertThat(secondDecision.select(".letter__body").text(), containsString("We are pleased"));
-    assertThat(secondDecision.select(".review__doi a[href]").text(), containsString("https://doi.org/10.1371/journal.pone.0207232.r003"));
+    assertEquals("https://doi.org/10.1371/journal.pone.0207232.r003", secondDecision.select(".review__doi a[href]").text());
+
+    // ACCEPTANCE
+
+    Element acceptanceHeader = doc.select(".review-history .revision").get(2);
+    assertEquals("Formally Accepted", acceptanceHeader.select(".letter__title").text());
+
+    Element acceptanceLetter = doc.select(".review-history .acceptance-letter").get(0);
+    assertEquals("November 1, 2018", acceptanceLetter.select(".letter__date").text());
+    assertEquals("Agatha Scepter, Editor", acceptanceLetter.select(".letter__author").text());
+    assertThat(acceptanceLetter.select(".letter__body").text(), containsString("I am pleased"));
+    assertEquals("https://doi.org/10.1371/journal.pone.0207232.r004", acceptanceLetter.select(".review__doi a[href]").text());
   }
 
   @Test

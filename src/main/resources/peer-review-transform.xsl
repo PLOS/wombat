@@ -72,7 +72,7 @@
             <div class="letter__title">
               <a class="peer-review-accordion-expander" href="#">Decision Letter</a>
               -
-              <span class="letter_author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+              <span class="letter__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                 <span itemprop="name">
                   <!-- decision letter editor -->
                   <xsl:apply-templates select="front-stub/contrib-group/contrib" />
@@ -114,6 +114,13 @@
             </time>
             <div class="letter__title">
               <a class="peer-review-accordion-expander" href="#">Acceptance Letter</a>
+              -
+              <span class="letter__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                <span itemprop="name">
+                  <!-- acceptance letter editor -->
+                  <xsl:apply-templates select="front-stub/contrib-group/contrib" />
+                </span>
+              </span>
             </div>
             <!-- accordion container -->
             <div itemprop="reviewBody" class="peer-review-accordion-content">

@@ -39,7 +39,7 @@ import java.util.UUID;
 
 public class PeerReviewServiceImpl implements PeerReviewService {
 
-  public static final String DEFAULT_PEER_REVIEW_XSL = "peer-review-transform.xsl";
+  public static final String PEER_REVIEW_XSL = "peer-review-transform.xsl";
 
   private static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(""
       + "[M d yyyy]"      // 9 15 2010
@@ -60,7 +60,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     if (reviewLetterItems.isEmpty()) return null;
 
     String xml = getAllReviewsAsXml(reviewLetterItems, getArticleReceivedDate(itemTable));
-    String html = transformXmlToHtml(xml, DEFAULT_PEER_REVIEW_XSL);
+    String html = transformXmlToHtml(xml);
     return html;
   }
 
@@ -68,10 +68,9 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    * Convert peer review XML to HTML
    *
    * @param allReviewsXml
-   * @param xsl
    * @return an HTML representation of peer review content
    */
-  String transformXmlToHtml(String allReviewsXml, String xsl) {
+  String transformXmlToHtml(String allReviewsXml) {
     XMLReader xmlReader = null;
     try {
       SAXParser sp = SAXParserFactory.newInstance().newSAXParser();
@@ -82,7 +81,7 @@ public class PeerReviewServiceImpl implements PeerReviewService {
     SAXSource xmlSource = new SAXSource(xmlReader, new InputSource(new StringReader(allReviewsXml)));
 
     ClassLoader classLoader = getClass().getClassLoader();
-    InputStream stream = classLoader.getResourceAsStream(xsl);
+    InputStream stream = classLoader.getResourceAsStream(PEER_REVIEW_XSL);
     StreamSource xslSource = new StreamSource(stream);
 
     StringWriter htmlWriter = new StringWriter();

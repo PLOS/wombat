@@ -22,97 +22,109 @@
 
 package org.ambraproject.wombat.controller;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Map;
+
 import com.google.common.collect.ImmutableMap;
-import org.ambraproject.wombat.config.SpringMvcConfiguration;
+
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
-import org.ambraproject.wombat.service.*;
+import org.ambraproject.wombat.service.ArticleResolutionService;
+import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.service.remote.CorpusContentApi;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
-import org.testng.annotations.Test;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Map;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-
-@ContextConfiguration(
-    classes = {SpringMvcConfiguration.class, CommentController.class, CommentControllerTest.class})
-@Configuration
+@ContextConfiguration
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class CommentControllerTest extends ControllerTest {
+
+  @Configuration
+  static class ContextConfiguration {
+    @Bean
+    CommentController commentController() {
+      return new CommentController();
+    }
+
+    @Bean
+    protected ArticleMetadata.Factory articleMetadataFactory(ArticleMetadata articleMetadata) {
+      return spy(new ArticleMetadata.Factory());
+    }
+  }
+
+  @Autowired
+  ArticleMetadata articleMetadata;
+
+  @Autowired
+  ArticleResolutionService articleResolutionService;
+
+  @Autowired
+  ArticleMetadata.Factory articleMetadataFactory;
+
+  @Autowired
+  ArticleService articleService;
+
+  @Autowired
+  ArticleApi articleApi;
+  
+  RequestedDoiVersion expectedRequestedDoi;
+  ArticlePointer expectedArticlePointer;
+
+  @Before
+  public void setup() throws IOException {
+    when(articleMetadata.validateVisibility(anyString())).thenReturn(articleMetadata);
+    when(articleMetadata.populate(any(), any())).thenReturn(articleMetadata);
+    when(articleMetadata.fillAmendments(any())).thenReturn(articleMetadata);
+
+    doReturn(articleMetadata).when(articleMetadataFactory).newInstance(any(), any(), any(), any(), any(), any());
+    expectedRequestedDoi = RequestedDoiVersion.of(EXPECTED_DOI);
+
+    expectedArticlePointer = new ArticlePointer(expectedRequestedDoi, EXPECTED_DOI,
+        EXPECTED_INGESTION_NUMBER, expectedRequestedDoi.getRevisionNumber());
+
+    when(articleResolutionService.toIngestion(expectedRequestedDoi)).thenReturn(expectedArticlePointer);
+
+    Map<String, Object> itemResponse = ImmutableMap.of("items", ImmutableMap.of());
+    doAnswer(invocation -> {
+      return itemResponse;
+    }).when(articleService).getItemTable(expectedArticlePointer);
+
+    ImmutableMap<String, String> journal = ImmutableMap.of("journalKey", DESKTOP_PLOS_ONE);
+    ImmutableMap<String, Object> ingestionMetadata = ImmutableMap.of("journal", journal);
+    ImmutableMap<String, List<Map<String, ?>>> relationships = ImmutableMap.of();
+
+    doReturn(ingestionMetadata, relationships).when(articleApi).requestObject(any(), eq(Map.class));
+  }
 
   private static final String EXPECTED_DOI = "10.1371/journal.pbio.1001091";
 
   private static final int EXPECTED_INGESTION_NUMBER = 2;
 
-  @Bean
-  protected ArticleService articleService() {
-    final ArticleService articleService = spy(ArticleServiceImpl.class);
-    return articleService;
+  @After
+  public void verifyCalls() throws IOException {
+    verify(articleResolutionService).toIngestion(expectedRequestedDoi);
+    verify(articleService).getItemTable(expectedArticlePointer);
+    verify(articleApi, times(2)).requestObject(any(), eq(Map.class));
   }
-
-  @Bean
-  protected ArticleMetadata articleMetadata() throws IOException {
-    final ArticleMetadata mockArticleMetadata = mock(ArticleMetadata.class);
-    when(mockArticleMetadata.validateVisibility(anyString())).thenReturn(mockArticleMetadata);
-    when(mockArticleMetadata.populate(any(), any())).thenReturn(mockArticleMetadata);
-    when(mockArticleMetadata.fillAmendments(any())).thenReturn(mockArticleMetadata);
-    return mockArticleMetadata;
-  }
-
-  @Bean
-  protected ArticleMetadata.Factory articleMetadataFactory(ArticleMetadata mockArticleMetadata) {
-    final ArticleMetadata.Factory articleMetadataFactory = spy(new ArticleMetadata.Factory());
-    doReturn(mockArticleMetadata).when(articleMetadataFactory).newInstance(any(), any(), any(),
-        any(), any(), any());
-    return articleMetadataFactory;
-  }
-
-  @Bean
-  protected CorpusContentApi corpusContentApi() {
-    final CorpusContentApi corpusContentApi = mock(CorpusContentApi.class);
-    return corpusContentApi;
-  }
-
-  @Bean
-  protected PeerReviewService peerReviewService() {
-    final PeerReviewService peerReviewService = mock(PeerReviewService.class);
-    return peerReviewService;
-  }
-
-  @Bean
-  protected ArticleResolutionService articleResolutionService() {
-    final ArticleResolutionService articleResolutionService = mock(ArticleResolutionService.class);
-    return articleResolutionService;
-  }
-
-  @Bean
-  protected CommentValidationService commentValidationService() {
-    final CommentValidationService commentValidationService = mock(CommentValidationService.class);
-    return commentValidationService;
-  }
-
-  @Bean
-  protected CommentService commentService() {
-    final CommentService commentService = mock(CommentService.class);
-    return commentService;
-  }
-
 
   /**
    * Test successful rendering of an article's comments.
@@ -122,40 +134,8 @@ public class CommentControllerTest extends ControllerTest {
    */
   @Test
   public void testRenderArticleCommentsShouldSucceed() throws URISyntaxException, Exception {
-    final RequestedDoiVersion expectedRequestedDoi = RequestedDoiVersion.of(EXPECTED_DOI);
-
-    final ArticlePointer expectedArticlePointer =
-        new ArticlePointer(
-            expectedRequestedDoi, EXPECTED_DOI, EXPECTED_INGESTION_NUMBER,
-            expectedRequestedDoi.getRevisionNumber());
-
-    final ArticleResolutionService mockArticleResolutionService =
-        applicationContext.getBean(ArticleResolutionService.class);
-    when(mockArticleResolutionService.toIngestion(expectedRequestedDoi))
-        .thenReturn(expectedArticlePointer);
-
-    final Map<String, Object> itemResponse = ImmutableMap.of("items", ImmutableMap.of());
-    final ArticleService mockArticleService = applicationContext.getBean(ArticleService.class);
-    doAnswer(invocation -> {
-      return itemResponse;
-    }).when(mockArticleService).getItemTable(expectedArticlePointer);
-
-    final ImmutableMap<String, String> journal = ImmutableMap.of("journalKey", DESKTOP_PLOS_ONE);
-    final ImmutableMap<String, Object> ingestionMetadata = ImmutableMap.of("journal", journal);
-    final ImmutableMap<String, List<Map<String, ?>>> relationships = ImmutableMap.of();
-
-    final ArticleApi mockArticleApi = applicationContext.getBean(ArticleApi.class);
-    doReturn(ingestionMetadata, relationships).when(mockArticleApi)
-        .requestObject(any(), eq(Map.class));
-
-    final String expectedViewName = NOSPACE_JOINER.join(DESKTOP_PLOS_ONE, "/ftl/article/comment/comments");
-    final String requestUri = NOSPACE_JOINER.join("/article/comments?id=", EXPECTED_DOI);
-    mockMvc.perform(get(new URI(requestUri))).andExpect(status().isOk())
-        .andExpect(view().name(expectedViewName));
-
-    verify(mockArticleResolutionService).toIngestion(expectedRequestedDoi);
-    verify(mockArticleService).getItemTable(expectedArticlePointer);
-    verify(mockArticleApi, times(2)).requestObject(any(), eq(Map.class));
+    verifyUriRender(NOSPACE_JOINER.join("/article/comments?id=", EXPECTED_DOI),
+                    NOSPACE_JOINER.join(DESKTOP_PLOS_ONE, "/ftl/article/comment/comments"));
   }
 
   /**
@@ -166,39 +146,7 @@ public class CommentControllerTest extends ControllerTest {
    */
   @Test
   public void testRenderArticleCommentFormShouldSucceed() throws URISyntaxException, Exception {
-    final RequestedDoiVersion expectedRequestedDoi = RequestedDoiVersion.of(EXPECTED_DOI);
-
-    final ArticlePointer expectedArticlePointer =
-        new ArticlePointer(
-            expectedRequestedDoi, EXPECTED_DOI, EXPECTED_INGESTION_NUMBER,
-            expectedRequestedDoi.getRevisionNumber());
-
-    final ArticleResolutionService mockArticleResolutionService =
-        applicationContext.getBean(ArticleResolutionService.class);
-    when(mockArticleResolutionService.toIngestion(expectedRequestedDoi))
-        .thenReturn(expectedArticlePointer);
-
-    final Map<String, Object> itemResponse = ImmutableMap.of("items", ImmutableMap.of());
-    final ArticleService mockArticleService = applicationContext.getBean(ArticleService.class);
-    doAnswer(invocation -> {
-      return itemResponse;
-    }).when(mockArticleService).getItemTable(expectedArticlePointer);
-
-    final ImmutableMap<String, String> journal = ImmutableMap.of("journalKey", DESKTOP_PLOS_ONE);
-    final ImmutableMap<String, Object> ingestionMetadata = ImmutableMap.of("journal", journal);
-    final ImmutableMap<String, List<Map<String, ?>>> relationships = ImmutableMap.of();
-
-    final ArticleApi mockArticleApi = applicationContext.getBean(ArticleApi.class);
-    doReturn(ingestionMetadata, relationships).when(mockArticleApi)
-        .requestObject(any(), eq(Map.class));
-
-    final String expectedViewName = NOSPACE_JOINER.join(DESKTOP_PLOS_ONE, "/ftl/article/comment/newComment");
-    final String requestUri = NOSPACE_JOINER.join("/article/comments/new?id=", EXPECTED_DOI);
-    mockMvc.perform(get(new URI(requestUri))).andExpect(status().isOk())
-        .andExpect(view().name(expectedViewName));
-
-    verify(mockArticleResolutionService).toIngestion(expectedRequestedDoi);
-    verify(mockArticleService).getItemTable(expectedArticlePointer);
-    verify(mockArticleApi, times(2)).requestObject(any(), eq(Map.class));
+    verifyUriRender(NOSPACE_JOINER.join("/article/comments/new?id=", EXPECTED_DOI),
+                    NOSPACE_JOINER.join(DESKTOP_PLOS_ONE, "/ftl/article/comment/newComment"));
   }
 }

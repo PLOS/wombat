@@ -22,17 +22,21 @@
 
 package org.ambraproject.wombat.config.site.url;
 
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.theme.StubTheme;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.theme.StubTheme;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+import org.springframework.mock.web.MockHttpServletRequest;
 
+@RunWith(Parameterized.class)
 public class LinkTest {
 
   private static Site dummySite(String siteName, SiteRequestScheme scheme) {
@@ -52,8 +56,8 @@ public class LinkTest {
   private static final Site HOST_ONLY = dummySite("hostOnly",
       SiteRequestScheme.builder().specifyHost("hostOnly.example.com").build());
 
-  @DataProvider
-  public Object[][] toPathCases() {
+  @Parameters
+  public static List<Object[]> toPathCases() {
     List<Object[]> cases = new ArrayList<>();
 
     // Cases where the HttpServletRequest has no interesting properties
@@ -124,15 +128,23 @@ public class LinkTest {
     cases.add(new Object[]{Link.toLocalSite(HOST_ONLY).toPath("path"), proxiedPortReq, "/path"});
     cases.add(new Object[]{Link.toForeignSite(TOKEN_1, HOST_ONLY).toPath("path"), proxiedPortReq, "http://hostOnly.example.com:8082/path"});
 
-    return cases.toArray(new Object[0][]);
+    return cases;
   }
 
-  @Test(dataProvider = "toPathCases")
-  public void testToPath(Link link, MockHttpServletRequest request, String expectedPath) {
-    assertEquals(link.get(request), expectedPath);
+  @Parameter(0)
+  public Link link;
+
+  @Parameter(1)
+  public MockHttpServletRequest request;
+
+  @Parameter(2)
+  public String expectedPath;
+
+  public void testToPath() {
+    assertEquals(expectedPath, link.get(request));
   }
 
-  @Test(expectedExceptions = RuntimeException.class)
+  @Test(expected = RuntimeException.class)
   public void testInvalidToPathCase() {
     Link.toForeignSite(HOST_AND_TOKEN_1, TOKEN_1);
   }

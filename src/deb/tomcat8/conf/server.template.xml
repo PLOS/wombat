@@ -8,25 +8,15 @@
   <Listener className="org.apache.catalina.mbeans.JmxRemoteLifecycleListener"
             rmiRegistryPortPlatform="0" rmiServerPortPlatform="0"
             useLocalPorts="true" />
-  <GlobalNamingResources>
-    <Resource name="UserDatabase" auth="Container"
-              type="org.apache.catalina.UserDatabase"
-              description="User database that can be updated and saved"
-              factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
-              pathname="conf/tomcat-users.xml" />
-  </GlobalNamingResources>
   <Service name="Catalina">
     <Connector port="${WOMBAT_PORT}"
                connectionTimeout="20000"
                enableLookups="false"
                maxParameterCount="5000"
                scheme="http" URIEncoding="UTF-8"
+               compression="on"
                minSpareThreads="50" maxThreads="1000"/>
     <Engine name="Catalina" defaultHost="localhost">
-      <Realm className="org.apache.catalina.realm.LockOutRealm">
-        <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
-               resourceName="UserDatabase"/>
-      </Realm>
       <Host name="localhost" appBase="webapps" autoDeploy="true">
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                prefix="localhost_access_log" suffix=".txt"

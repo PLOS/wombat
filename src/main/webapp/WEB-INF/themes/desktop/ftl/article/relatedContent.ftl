@@ -20,7 +20,8 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <#assign title = article.title, articleDoi = article.doi />
 <#assign cssFile="related-content.css"/>
 

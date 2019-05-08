@@ -32,6 +32,11 @@
 
 .letter__body {
   color: #222;
+  padding-top: 1rem;
+}
+
+.letter__body a {
+  word-wrap: anywhere;
 }
 
 .letter__label {
@@ -40,6 +45,8 @@
 
 .review-files__title {
   font-weight: 600;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
 }
 
 .supplementary-material__caption {

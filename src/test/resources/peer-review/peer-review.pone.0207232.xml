@@ -17,6 +17,13 @@
             </name>
             <role>Academic Editor</role>
           </contrib>
+          <contrib contrib-type="author">
+            <name name-style="western">
+              <surname>Supattapone</surname>
+              <given-names>Surachai</given-names>
+            </name>
+            <role>Associate Editor</role>
+          </contrib>
         </contrib-group>
         <permissions>
           <copyright-year>2018</copyright-year>
@@ -713,13 +720,6 @@
             </name>
             <role>Academic Editor</role>
           </contrib>
-          <contrib contrib-type="author">
-            <name>
-              <surname>Zhang2</surname>
-              <given-names>Qinghui</given-names>
-            </name>
-            <role>Academic Editor</role>
-          </contrib>
         </contrib-group>
         <permissions>
           <copyright-year>2018</copyright-year>
@@ -898,5 +898,46 @@
       </body>
     </sub-article>
   </revision>
+  <sub-article article-type="editor-report" id="pone.0207232.r004" specific-use="acceptance-letter" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <front-stub>
+      <article-id pub-id-type="doi">10.1371/journal.pone.0207232.r004</article-id>
+      <title-group>
+        <article-title>Acceptance letter</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Scepter</surname>
+            <given-names>Agatha</given-names>
+          </name>
+          <role>Academic Editor</role>
+        </contrib>
+      </contrib-group>
+      <permissions>
+        <copyright-year>2018</copyright-year>
+        <copyright-holder>Agatha Scepter</copyright-holder>
+        <license xlink:href="http://creativecommons.org/licenses/by/4.0/">
+          <license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+        </license>
+      </permissions>
+      <related-object document-id="10.1371/journal.pone.0207232" document-id-type="doi" document-type="article" id="rel-obj004" link-type="peer-reviewed-article"/>
+    </front-stub>
+    <body>
+      <p><named-content content-type="letter-date">November 1, 2018</named-content></p>
+      <p>PONE-D-18-18642R1 </p>
+      <p>Dosimetric and radiobiological comparison in different dose calculation grid sizes between Acuros XB and anisotropic analytical algorithm for prostate VMAT </p>
+      <p>Dear Dr. Chung:</p>
+      <p>I am pleased to inform you that your manuscript has been deemed suitable for publication in PLOS ONE. Congratulations! Your manuscript is now with our production department. </p>
+      <p>If your institution or institutions have a press office, please notify them about your upcoming paper at this point, to enable them to help maximize its impact. If they will be preparing press materials for this manuscript, please inform our press team within the next 48 hours. Your manuscript will remain under strict press embargo until 2 pm Eastern Time on the date of publication. For more information please contact onepress@plos.org.</p>
+      <p>For any other questions or concerns, please email plosone@plos.org. </p>
+      <p>Thank you for submitting your work to PLOS ONE.</p>
+      <p>With kind regards,</p>
+      <p>PLOS ONE Editorial Office Staff</p>
+      <p>on behalf of</p>
+      <p>Dr. Qinghui Zhang  </p>
+      <p>Academic Editor</p>
+      <p>PLOS ONE</p>
+    </body>
+  </sub-article>
   <article-received-date>June 1, 2018</article-received-date>
 </peer-review>

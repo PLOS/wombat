@@ -1,52 +1,43 @@
 package org.ambraproject.wombat.controller;
 
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.url.Link;
-import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
-import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.identity.ArticlePointer;
-import org.ambraproject.wombat.identity.RequestedDoiVersion;
-import org.ambraproject.wombat.service.ArticleResolutionService;
-import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.service.remote.CorpusContentApi;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.springframework.ui.Model;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static junit.framework.TestCase.assertNull;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import javax.servlet.http.HttpServletRequest;
+
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
+import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.springframework.ui.Model;
+import org.junit.Before;
+import org.junit.Test;
 
 @ContextConfiguration(classes = {ArticleMetadataTest.class})
-public class ArticleMetadataTest extends AbstractTestNGSpringContextTests {
-
-  @Mock
-  public ArticleApi articleApi;
-
-  @InjectMocks
-  public CorpusContentApi corpusContentApi;
-
-  @InjectMocks
-  public ArticleResolutionService articleResolutionService;
+public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
 
   @InjectMocks
   public ArticleMetadata.Factory articleMetadataFactory;
 
-  @BeforeMethod
+  @Before
   public void initMocks() {
     MockitoAnnotations.initMocks(this);
   }
@@ -105,7 +96,7 @@ public class ArticleMetadataTest extends AbstractTestNGSpringContextTests {
     articleMetadata.validateVisibility("whatever");
   }
 
-  @Test(expectedExceptions = InternalRedirectException.class)
+  @Test(expected = InternalRedirectException.class)
   public void testValidateVisibilityFail() {
     HashMap<String, String> journalMetadata = new HashMap<>();
     journalMetadata.put("journalKey", "someKey");

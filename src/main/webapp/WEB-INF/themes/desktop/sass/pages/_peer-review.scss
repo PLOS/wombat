@@ -32,7 +32,14 @@
 .letter__date {
   width: 20%;
   float: right;
-  font-weight: normal;
+  font-weight: $normal;
+}
+.letter__body {
+  padding-top: $line-height;  
+}
+.review-files {
+  border-top: 1px solid $grey-med;
+  padding-top: $line-height;
 }
 .revision-attachments {
   padding-top: $line-height-small;
@@ -42,4 +49,13 @@
 }
 .peer-review-accordion-content {
   display: none;
+}
+.underline {
+  text-decoration: underline;
+}
+.strike {
+  text-decoration: line-through;
+}
+.monospace {
+  font-family: $font-face-monospace;
 }

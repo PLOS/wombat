@@ -22,10 +22,17 @@
 
 package org.ambraproject.wombat.config;
 
+import static org.mockito.Mockito.mock;
+
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
+
 import org.ambraproject.rhombat.cache.Cache;
 import org.ambraproject.rhombat.cache.NullCache;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -33,18 +40,8 @@ import org.ambraproject.wombat.config.theme.TestClasspathTheme;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeGraph;
 import org.ambraproject.wombat.service.AssetService;
-import org.ambraproject.wombat.service.AssetServiceImpl;
-import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.service.remote.CachedRemoteService;
-import org.ambraproject.wombat.service.remote.JsonService;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.io.Reader;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Defines spring beans needed by tests.
@@ -84,37 +81,11 @@ public class TestSpringConfiguration {
 
   @Bean
   public AssetService assetService() {
-    return new AssetServiceImpl();
+    return mock(AssetService.class);
   }
 
   @Bean
   public Cache cache() {
     return new NullCache();
-  }
-
-  @Bean
-  public JsonService jsonService() {
-
-    // TODO: stub out if necessary for any test.
-    return null;
-  }
-
-  @Bean
-  public CachedRemoteService<Reader> cachedRemoteReader() {
-
-    // TODO: stub out if necessary for any test.
-    return null;
-  }
-
-  @Bean
-  public ArticleApi articleApi() {
-
-    // TODO: stub out if necessary for any test.
-    return null;
-  }
-
-  @Bean
-  public SolrSearchApiImpl getSearchService() {
-    return new SolrSearchApiImpl();
   }
 }

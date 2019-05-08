@@ -25,15 +25,20 @@ package org.ambraproject.wombat.service;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.service.CommentFormatting.FormattedComment;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
+@RunWith(Parameterized.class)
 public class CommentFormattingTest {
 
   private static class TestCase {
@@ -90,20 +95,23 @@ public class CommentFormattingTest {
     }
   }
 
-  @DataProvider
-  public Object[][] getTestCases() {
+  @Parameters
+  public static List<Object[]> getTestCases() {
     return TEST_CASES.stream()
-        .map(testCase -> new Object[]{testCase})
-        .collect(Collectors.toList()).toArray(new Object[0][]);
+      .map(testCase -> new Object[]{testCase})
+      .collect(Collectors.toList());
   }
 
-  @Test(dataProvider = "getTestCases")
-  public void testCommentFormatting(TestCase testCase) {
+  @Parameter(0)
+  public TestCase testCase;
+
+  @Test
+  public void testCommentFormatting() {
     Map<String, Object> view = testCase.createView();
     CommentFormatting.addFormattingFields(view);
     FormattedComment formatted = (FormattedComment) view.get("formatting");
-    assertEquals(formatted.getBodyWithHighlightedText(), testCase.expectedBodyWithHighlightedText);
-    assertEquals(formatted.getCompetingInterestStatement(), testCase.expectedCompetingInterestStatement);
+    assertEquals(testCase.expectedBodyWithHighlightedText, formatted.getBodyWithHighlightedText());
+    assertEquals(testCase.expectedCompetingInterestStatement, formatted.getCompetingInterestStatement());
   }
 
   private static final ImmutableList<TestCase> TEST_CASES = ImmutableList.copyOf(new TestCase[]{

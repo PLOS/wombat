@@ -22,21 +22,22 @@
 
 package org.ambraproject.wombat.util;
 
-import com.google.common.collect.ImmutableList;
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-import org.apache.http.entity.BasicHttpEntity;
-import org.apache.http.message.BasicHttpResponse;
-import org.springframework.http.HttpStatus;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.testng.annotations.Test;
+import static org.ambraproject.wombat.util.HttpMessageUtil.copyResponseWithHeaders;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-import static org.ambraproject.wombat.util.HttpMessageUtil.HeaderFilter;
-import static org.ambraproject.wombat.util.HttpMessageUtil.copyResponseWithHeaders;
-import static org.testng.Assert.assertEquals;
+import com.google.common.collect.ImmutableList;
+
+import org.ambraproject.wombat.util.HttpMessageUtil.HeaderFilter;
+import org.apache.http.HttpResponse;
+import org.apache.http.entity.BasicHttpEntity;
+import org.apache.http.message.BasicHttpResponse;
+import org.junit.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.mock.web.MockHttpServletResponse;
 
 public class HttpMessageUtilTest {
 
@@ -63,12 +64,12 @@ public class HttpMessageUtilTest {
 
     copyResponseWithHeaders(input, output, headerFilter);
 
-    assertEquals(output.getContentAsByteArray(), testContent);
+    assertArrayEquals(testContent, output.getContentAsByteArray());
 
-    assertEquals(output.getHeaderNames().size(), 2);
-    assertEquals(output.getHeaders("includeMe"), ImmutableList.of("foo"));
-    assertEquals(output.getHeaders("alterMe"), ImmutableList.of("altered"));
-    assertEquals(output.getHeaders("excludeMe"), ImmutableList.of());
+    assertEquals(2, output.getHeaderNames().size());
+    assertEquals(ImmutableList.of("foo"), output.getHeaders("includeMe"));
+    assertEquals(ImmutableList.of("altered"), output.getHeaders("alterMe"));
+    assertEquals(ImmutableList.of(), output.getHeaders("excludeMe"));
   }
 
 }

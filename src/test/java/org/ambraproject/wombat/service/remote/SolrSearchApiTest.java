@@ -35,8 +35,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,13 +50,13 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestSpringConfiguration.class)
-public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
+@ContextConfiguration(classes = TestSpringConfiguration.class)
+public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
   @Autowired
   private SiteSet siteSet;
@@ -78,27 +78,27 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
     // query string not null
     List<NameValuePair> actual = buildCommonParams("foo", true, 0, 10, SolrSearchApiImpl.SolrSortOrder.MOST_CITED, true);
     SetMultimap<String, String> actualMap = convertToMap(actual);
-    assertCommonParams(actualMap, 2);
-    assertSingle(actualMap.get("rows"), "10");
+    assertCommonParams(2, actualMap);
+    assertSingle("10", actualMap.get("rows"));
 
     // if start == 0 no param should be present.
-    assertEquals(actualMap.get("start").size(), 0);
-    assertSingle(actualMap.get("sort"), "alm_scopusCiteCount desc,id desc");
-    assertSingle(actualMap.get("defType"), "dismax");
-    assertSingle(actualMap.get("q"), "foo");
+    assertEquals(0, actualMap.get("start").size());
+    assertSingle("alm_scopusCiteCount desc,id desc", actualMap.get("sort"));
+    assertSingle("dismax", actualMap.get("defType"));
+    assertSingle("foo", actualMap.get("q"));
 
     // empty query string
     actual = buildCommonParams("", false, 0, 10, SolrSearchApiImpl.SolrSortOrder.MOST_CITED, true);
     actualMap = convertToMap(actual);
-    assertCommonParams(actualMap, 2);
-    assertEquals(actualMap.get("defType").size(), 0);
-    assertSingle(actualMap.get("q"), "*:*");
+    assertCommonParams(2, actualMap);
+    assertEquals(0, actualMap.get("defType").size());
+    assertSingle("*:*", actualMap.get("q"));
 
     // not home page
     actual = buildCommonParams("", false, 0, 10, SolrSearchApiImpl.SolrSortOrder.RELEVANCE, false);
     actualMap = convertToMap(actual);
-    assertCommonParams(actualMap, 2);
-    assertSingle(actualMap.get("sort"), "score desc,publication_date desc,id desc");
+    assertSingle("score desc,publication_date desc,id desc", actualMap.get("sort"));
+    assertCommonParams(2, actualMap);
 
   }
 
@@ -115,18 +115,18 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
     // query string not null
     List<NameValuePair> actual = buildFacetParams("journal", "foo", true);
     SetMultimap<String, String> actualMap = convertToMap(actual);
-    assertFacetParams(actualMap, 2);
-    assertSingle(actualMap.get("facet.field"), "journal");
-    assertSingle(actualMap.get("defType"), "dismax");
-    assertSingle(actualMap.get("q"), "foo");
+    assertFacetParams(2, actualMap);
+    assertSingle("journal", actualMap.get("facet.field"));
+    assertSingle("dismax", actualMap.get("defType"));
+    assertSingle("foo", actualMap.get("q"));
 
     // empty query string
     actual = buildFacetParams("journal", "", false);
     actualMap = convertToMap(actual);
-    assertFacetParams(actualMap, 2);
-    assertSingle(actualMap.get("facet.field"), "journal");
+    assertFacetParams(2, actualMap);
+    assertSingle("journal", actualMap.get("facet.field"));
     assertEquals(actualMap.get("defType").size(), 0);
-    assertSingle(actualMap.get("q"), "*:*");
+    assertSingle("*:*", actualMap.get("q"));
   }
 
   private static void setQueryFilters(List<NameValuePair> params, List<String> journalKeys,
@@ -157,7 +157,7 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
     setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, subjects,
         SolrSearchApiImpl.SolrEnumeratedDateRange.LAST_3_MONTHS);
     actualMap = convertToMap(actual);
-    assertEquals(actualMap.get("fq").size(), 2);
+    assertEquals(2, actualMap.get("fq").size());
     for (String s : actualMap.get("fq")) {
       if (!s.contains("publication_date:") && !s.contains("journal_key:")) {
         fail(s);
@@ -232,9 +232,9 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
   @Test
   public void testAddArticleLinks() throws IOException {
     SolrSearchApi solrSearchApiForTest = new SearchApiForAddArticleLinksTest();
-    Map<String, List<Map>> searchResults = new HashMap<>();
-    List<Map> docs = new ArrayList<>(1);
-    Map doc = new HashMap();
+    Map<String, List<Map<String,String>>> searchResults = new HashMap<>();
+    List<Map<String,String>> docs = new ArrayList<>(1);
+    Map<String,String> doc = new HashMap<>();
     List<String> crossPubbedJournals = new ArrayList<>(1);
     crossPubbedJournals.add("journal1Key");
     doc.put("id", "12345");
@@ -247,15 +247,15 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
 
     Map<?, ?> actual = solrSearchApiForTest.addArticleLinks(searchResults, request, site, siteSet);
     List<Map> actualDocs = (List) actual.get("docs");
-    assertEquals(actualDocs.size(), 1);
+    assertEquals(1, actualDocs.size());
     Map actualDoc = (Map) actualDocs.get(0);
-    assertEquals(actualDoc.get("id"), "12345");
+    assertEquals("12345", actualDoc.get("id"));
     assertTrue(actualDoc.get("link").toString().endsWith("someContextPath/site1/article?id=12345"));
   }
 
   @Test
   public void testBuildSubjectClause() {
-    assertEquals(ArticleSearchQuery.buildSubjectClause(Arrays.asList("foo")), "subject:\"foo\"");
+    assertEquals("subject:\"foo\"", ArticleSearchQuery.buildSubjectClause(Arrays.asList("foo")));
     assertEquals(ArticleSearchQuery.buildSubjectClause(Arrays.asList("foo", "2nd subject")),
         "subject:\"foo\" AND subject:\"2nd subject\"");
   }
@@ -281,41 +281,40 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
   /**
    * Tests for parameters expected to be the same across all tests.
    */
-  private void assertCommonParams(SetMultimap<String, String> actual, int expectedNumFqParams) {
-    assertSingle(actual.get("wt"), "json");
+  private void assertCommonParams(int expectedNumFqParams, SetMultimap<String, String> actual) {
+    assertSingle("json", actual.get("wt"));
     Set<String> fq = actual.get("fq");
 
     // We check two of the fq params here; the caller should check the others.
     Joiner joiner = Joiner.on(",");
-    assertEquals(fq.size(), expectedNumFqParams, joiner.join(fq));
+    assertEquals(expectedNumFqParams, fq.size());
     assertTrue(fq.contains("doc_type:full"));
     assertTrue(fq.contains("!article_type_facet:\"Issue Image\""));
-    assertSingle(actual.get("hl"), "false");
-    assertSingle(actual.get("facet"), "false");
+    assertSingle("false", actual.get("hl"));
+    assertSingle("false", actual.get("facet"));
   }
 
   /**
    * Tests for parameters expected to be the same across all tests.
    */
-  private void assertFacetParams(SetMultimap<String, String> actual, int expectedNumFqParams) {
-    assertSingle(actual.get("wt"), "json");
-    assertSingle(actual.get("json.nl"), "map");
+  private void assertFacetParams(int expectedNumFqParams, SetMultimap<String, String> actual) {
+    assertSingle("json", actual.get("wt"));
+    assertSingle("map", actual.get("json.nl"));
     Set<String> fq = actual.get("fq");
 
     // We check two of the fq params here; the caller should check the others.
-    Joiner joiner = Joiner.on(",");
-    assertEquals(fq.size(), expectedNumFqParams, joiner.join(fq));
+    assertEquals(expectedNumFqParams, fq.size());
     assertTrue(fq.contains("doc_type:full"));
     assertTrue(fq.contains("!article_type_facet:\"Issue Image\""));
-    assertSingle(actual.get("hl"), "false");
-    assertSingle(actual.get("facet"), "true");
+    assertSingle("false", actual.get("hl"));
+    assertSingle("true", actual.get("facet"));
   }
 
   /**
    * Asserts that the given set (all values of a single parameter) has exactly one entry with the expected value.
    */
-  private void assertSingle(Set<String> multimapSet, String expected) {
-    assertEquals(multimapSet.size(), 1);
+  private void assertSingle(String expected, Set<String> multimapSet) {
+    assertEquals(1, multimapSet.size());
     assertTrue(multimapSet.contains(expected));
   }
 
@@ -355,7 +354,7 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
     // For multiple journals, the expected format of the param is
     // "journal_key:PLoSBiology OR journal_key:PLoSONE"
     String[] parts = journals.split(" OR ");
-    assertEquals(parts.length, expectedJournals.length);
+    assertEquals(expectedJournals.length, parts.length);
     Set<String> actualJournals = new HashSet<>();
     for (String part : parts) {
       actualJournals.add(part.substring("journal_key:".length()));
@@ -391,7 +390,7 @@ public class SolrSearchApiTest extends AbstractTestNGSpringContextTests {
     // For multiple subjects, the expected format of the param is
     // "subject:Teeth AND subject:Head"
     String[] parts = subjects.split(" AND ");
-    assertEquals(parts.length, expectedSubjects.length);
+    assertEquals(expectedSubjects.length, parts.length);
     Set<String> actualSubjects = new HashSet<>();
     for (String part : parts) {
       actualSubjects.add(part.substring("subject:".length()));

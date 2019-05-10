@@ -47,7 +47,7 @@
 }
 
 .letter__body a:after {
-  content: " [LINK]";
+  content: "[LINK]";
   font-size: 1rem;
   font-weight: 600;
 }

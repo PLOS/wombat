@@ -17,6 +17,7 @@
 .supplementary-material,
 .peer-review-open-letter {
   line-height: 1.25em;
+  margin-top: 1.25rem;
   width: 100%;
 }
 
@@ -67,6 +68,11 @@
   top-right-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+}
+
+.supplementary-material__caption,
+.review__doi a {
+  word-wrap: anywhere;
 }
 
 .letter__body .supplementary-material__label:after,

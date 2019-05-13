@@ -1,7 +1,7 @@
 <#setting url_escaping_charset="UTF-8">
 <#include "../../macro/doiResolverLink.ftl" />
 <#assign urlParameter = doiResolverLink(article.doi)?url,
-titleFix = article.title?replace("<[^>]*>", "", "r") />
+titleFix = article.title?replace("<[^>]*>", "", "r"), journalTitle = article.journal.title />
 
 <#-- There are some old articles that have titles saved in the DB with long stretches
      of spaces and/or newlines.  This appears to be due to an old ingestion bug

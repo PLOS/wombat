@@ -24,10 +24,9 @@
   text-align: left;
 }
 
-#emailThisArticleForm input[type="text"],
-#feedbackCreate textarea,
+
 #feedbackCreate input[type="text"],
-#emailThisArticleForm textarea {
+#feedbackCreate textarea {
   width: 100%;
   border: 1px solid #999;
   line-height: 44px;
@@ -55,13 +54,6 @@
 .form-consent input[type="checkbox"] {
   display: inline;
   margin-right: 1rem;
-}
-
-#emailThisArticleForm .error {
-  margin-left: 24%;
-  padding: 5px 5px 5px 8px;
-  display: block;
-  text-align: left;
 }
 
 .error,

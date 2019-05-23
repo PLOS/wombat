@@ -28,7 +28,3 @@ feedback:
 
   defaultSubject: null
   # The default subject line for feedback messages. Should be provided with a non-empty string if 'destination' is added.
-
-emailThisArticle:
-  url: null
-# TODO

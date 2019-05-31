@@ -20,5 +20,5 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-<div> Questions or concerns about usage data? <a href="<@siteLink handlerName="feedback" />">Please let us know.</a>
+<div> Questions or concerns about usage data? <a href="mailto:webmaster@plos.org">Please let us know.</a>
 </div>

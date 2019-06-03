@@ -1,3 +1,5 @@
+build: [![Build Status Badge]][Build Status]&#8193;&#9733;&#8193;
+
 "Wombat" is the nickname for the front-end component in the Ambra stack.
 
 A Wombat server hosts one or more sites. Each site represents an online
@@ -13,3 +15,6 @@ See the [Ambra Project documentation](https://plos.github.io/ambraproject/) for
 an overview of the stack and user instructions. If you have any questions or
 comments, please email dev@ambraproject.org, open a [GitHub
 issue](https://github.com/PLOS/wombat/issues), or submit a pull request.
+
+[Build Status]: https://teamcity.plos.org/teamcity/viewType.html?buildTypeId=Wombat_Build
+[Build Status Badge]: https://teamcity.plos.org/teamcity/app/rest/builds/buildType:(id:Wombat_Build)/statusIcon.svg

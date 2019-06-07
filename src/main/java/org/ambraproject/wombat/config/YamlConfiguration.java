@@ -84,11 +84,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getMailServer() {
-    return input.mailServer;
-  }
-
-  @Override
   public ImmutableSet<String> getEnabledDevFeatures() {
     return ImmutableSet.copyOf(MoreObjects.firstNonNull(input.enableDevFeatures, ImmutableSet.<String>of()));
   }
@@ -336,7 +331,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
      */
 
     private String server;
-    private String mailServer;
     private String compiledAssetDir;
     private String rootPagePath;
     private String environment;
@@ -357,14 +351,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setServer(String server) {
       this.server = server;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setMailServer(String mailServer) {
-      this.mailServer = mailServer;
     }
 
     /**

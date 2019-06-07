@@ -84,11 +84,6 @@ public interface RuntimeConfiguration {
   URL getServer();
 
   /**
-   * Get the host name of the server to which to send SMTP messages;
-   */
-  String getMailServer();
-
-  /**
    * Get the path of an HTML document to display on the root page
    */
   String getRootPagePath();

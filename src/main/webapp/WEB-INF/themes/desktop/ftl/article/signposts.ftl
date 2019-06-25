@@ -47,7 +47,7 @@
       <%= s.numberFormat(saveCount, 0) %>
       <div class="tools" data-js-tooltip-hover="trigger">
         <a class="metric-term" href="${metricsUrl}#savedHeader">Save</a>
-        <p class="saves-tip" data-js-tooltip-hover="target"><a href="${metricsUrl}#savedHeader">Total Mendeley and CiteULike bookmarks.</a></p>
+        <p class="saves-tip" data-js-tooltip-hover="target"><a href="${metricsUrl}#savedHeader">Total Mendeley bookmarks.</a></p>
       </div>
     </li>
 

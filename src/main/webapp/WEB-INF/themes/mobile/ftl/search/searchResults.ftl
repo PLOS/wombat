@@ -121,7 +121,7 @@
 
         <#assign views = doc.counter_total_all!0 />
         <#assign citations = doc.alm_scopusCiteCount!0 />
-        <#assign saves = doc.alm_citeulikeCount!0 + doc.alm_mendeleyCount!0 />
+        <#assign saves = doc.alm_mendeleyCount!0 />
         <#assign shares = doc.alm_twitterCount!0 + doc.alm_facebookCount!0 />
         <a><small class="small-caps">Views:</small> <b>${views}</b></a> 
         <a><small class="small-caps">Citations:</small> <b>${(citations > 0)?string("Yes", "none")}</b></a> 

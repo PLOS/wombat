@@ -481,6 +481,9 @@ var SearchResult;
         jsonp: 'callback',
         dataType: 'json',
         timeout: 20000,
+        beforeSend: function(request) {
+          request.setRequestHeader("Accept", "application/json;charset=UTF-8");
+        },
         success: function (response) {
           that.$resultListEl.html('');
           if (response.cannotParseQueryError) {

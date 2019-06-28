@@ -82,8 +82,6 @@ import org.ambraproject.wombat.service.CommentServiceImpl;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.CommentValidationServiceImpl;
 import org.ambraproject.wombat.service.DoiToJournalResolutionService;
-import org.ambraproject.wombat.service.FreemarkerMailService;
-import org.ambraproject.wombat.service.FreemarkerMailServiceImpl;
 import org.ambraproject.wombat.service.ParseReferenceService;
 import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.ParseXmlServiceImpl;
@@ -99,11 +97,8 @@ import org.ambraproject.wombat.service.SearchFilterService;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApiImpl;
 import org.ambraproject.wombat.util.GitInfo;
-import org.ambraproject.wombat.util.NullJavaMailSender;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
@@ -251,11 +246,6 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public FreemarkerMailService freemarkerMailService() {
-    return new FreemarkerMailServiceImpl();
-  }
-
-  @Bean
   public Charset charset() {
     return Charsets.UTF_8;
   }
@@ -268,15 +258,6 @@ public class SpringConfiguration {
   @Bean
   public AppRootPage appRootPage() {
     return new AppRootPage();
-  }
-
-  @Bean
-  public JavaMailSender javaMailSender(RuntimeConfiguration runtimeConfiguration) {
-    String mailServer = runtimeConfiguration.getMailServer();
-    if (mailServer == null) return NullJavaMailSender.INSTANCE;
-    JavaMailSenderImpl sender = new JavaMailSenderImpl();
-    sender.setHost(mailServer);
-    return sender;
   }
 
   @Bean

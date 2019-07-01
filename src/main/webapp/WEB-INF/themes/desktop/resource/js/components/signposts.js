@@ -62,6 +62,7 @@ var Signposts;
         data.sources
         var citation_used = "Scopus";
         var citation_count = 0;
+        var saved_count;
         if (!_.isUndefined(data.sources)) {
           var scopus = _.findWhere(data.sources, {name: 'scopus'});
           var crossref = _.findWhere(data.sources, {name: 'crossref'});
@@ -72,11 +73,12 @@ var Signposts;
             citation_used = "Crossref";
             citation_count = crossref.metrics.total;
           }
+          saved_count = _.findWhere(data.sources, {name: 'mendeley'}).metrics.total;
         }
 
         var template = _.template($('#signpostsTemplate').html());
         var templateData = {
-          saveCount: data.saved,
+          saveCount: saved_count,
           citationCount: citation_count,
           shareCount: data.discussed,
           viewCount: getPmcViewsAndDownloads(articleData) + counter_views

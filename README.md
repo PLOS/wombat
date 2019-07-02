@@ -1,4 +1,4 @@
-![Test Coverage](https://teamcity.plos.org/teamcity/repository/download/Wombat_Build/.lastFinished/coverage.svg)
+[![Coverage Status Badge][Coverage Status]]
 
 "Wombat" is the nickname for the front-end component in the Ambra stack.
 
@@ -15,3 +15,6 @@ See the [Ambra Project documentation](https://plos.github.io/ambraproject/) for
 an overview of the stack and user instructions. If you have any questions or
 comments, please email dev@ambraproject.org, open a [GitHub
 issue](https://github.com/PLOS/wombat/issues), or submit a pull request.
+
+[Coverage Status]: https://teamcity.plos.org/teamcity/viewType.html?buildTypeId=Wombat_Build
+[Coverage Status Badge]: https://teamcity.plos.org/teamcity/repository/download/Wombat_Build/.lastFinished/coverage.svg

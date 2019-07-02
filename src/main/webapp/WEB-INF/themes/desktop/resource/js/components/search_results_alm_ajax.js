@@ -61,9 +61,10 @@ var SearchResultsALMData;
       var template = _.template($('#searchResultsAlm').html());
       _.each(data, function (i) {
         var doi = i.doi;
+        var saved_count = _.findWhere(i.sources, {name: 'mendeley'}).metrics.total;
         var templateData = {
           itemDoi: doi,
-          saveCount: i.saved,
+          saveCount: saved_count,
           citationCount: i.cited,
           shareCount: i.discussed,
           viewCount: i.viewed

@@ -1,3 +1,5 @@
+![Test Coverage](https://teamcity.plos.org/teamcity/repository/download/Wombat_Build/.lastFinished/coverage.svg)
+
 "Wombat" is the nickname for the front-end component in the Ambra stack.
 
 A Wombat server hosts one or more sites. Each site represents an online

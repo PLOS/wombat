@@ -24,4 +24,13 @@ $(document).ready(function () {
   if(reviewEl){
     PeerReview.togglePeerReviewAccordion($(reviewEl));
   }
+
+  $('a.supplementary-material__label').each(function(index, item) {
+    var href = $(item).attr('href');
+    var pathname = window.location.pathname;
+    if (!pathname.match(/\/article\/peerReview$/) && pathname.match(/\/peerReview$/)) {
+      href = 'article/' + href;
+      $(item).attr('href', href);
+    }
+  });
 });

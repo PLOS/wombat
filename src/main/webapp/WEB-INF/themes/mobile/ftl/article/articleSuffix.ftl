@@ -38,9 +38,9 @@
     </@articleButton>
   </#if>
 
-  <#if commentCount.root &gt; 0 && isSectionLinkDisplayed("Comments")>
+  <#if commentCount.all &gt; 0 && isSectionLinkDisplayed("Comments")>
     <@articleButton "articleComments">
-      Reader Comments (${commentCount.root})
+      Reader Comments (${commentCount.all})
     </@articleButton>
   </#if>
 

@@ -181,7 +181,7 @@
   <xsl:template match="supplementary-material">
       <dd class="supplementary-material">
         <a class="supplementary-material__label coloration-white-on-color" 
-           href="{concat('file?id=10.1371/journal.',@id,'&amp;type=supplementary')}" 
+           href="{concat('file?id=10.1371/journal.',@id,'&amp;type=supplementary')}"
            title="{string-join(('Download',plos:get-file-extension(normalize-space(caption/p/named-content)),'file'),' ')}"
            target="_blank">
           <xsl:value-of select="label"/>

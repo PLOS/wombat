@@ -409,14 +409,7 @@ var SearchResult;
     processSearchAlert: function () {
       var that = this;
       var name = $('#text_name_savedsearch').val();
-      var query = {};
-
-      _.mapObject(this.currentSearchParams, function (item, key) {
-        if (!_.isEmpty(item)) {
-          query[key] = item;
-        }
-      });
-      query = JSON.stringify(query);
+      var query = $('#alert_query_savedsearch').val();
       var weekly = $('#cb_weekly_savedsearch').is(':checked');
       var monthly = $('#cb_monthly_savedsearch').is(':checked');
 

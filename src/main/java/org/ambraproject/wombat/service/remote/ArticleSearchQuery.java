@@ -45,7 +45,7 @@ public class ArticleSearchQuery {
    */
   private static final String ARTICLE_FIELDS = Joiner.on(',').join("id", "eissn",
       "publication_date", "title", "title_display", "journal_name", "author_display",
-      "article_type", "counter_total_all", "alm_scopusCiteCount", "alm_citeulikeCount",
+      "article_type", "counter_total_all", "alm_scopusCiteCount", 
       "alm_mendeleyCount", "alm_twitterCount", "alm_facebookCount", "retraction",
       "expression_of_concern", "striking_image", "figure_table_caption", "journal_key");
   private static final String RSS_FIELDS = Joiner.on(',').join("id", "publication_date",
@@ -54,7 +54,7 @@ public class ArticleSearchQuery {
   private static final String CSV_FIELDS = Joiner.on(',').join(
       "id", "publication_date", "title", "author_display", "author_affiliate",
       "article_type", "received_date", "accepted_date", "counter_total_all", "alm_scopusCiteCount",
-      "alm_citeulikeCount", "alm_connoteaCount", "alm_mendeleyCount", "alm_twitterCount",
+      "alm_connoteaCount", "alm_mendeleyCount", "alm_twitterCount",
       "alm_facebookCount", "alm_pmc_usage_total_all", "alm_webOfScienceCount", "editor_display",
       "abstract", "subject", "reference");
   private static final String JOURNAL_FIELDS = Joiner.on(',').join(

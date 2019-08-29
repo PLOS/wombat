@@ -99,7 +99,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     MOST_VIEWS_30_DAYS("Most views, last 30 days", "counter_total_month desc"),
     MOST_VIEWS_ALL_TIME("Most views, all time", "counter_total_all desc"),
     MOST_CITED("Most cited, all time", "alm_scopusCiteCount desc"),
-    MOST_BOOKMARKED("Most bookmarked", "sum(alm_citeulikeCount, alm_mendeleyCount) desc"),
+    MOST_BOOKMARKED("Most bookmarked", "alm_mendeleyCount desc"),
     MOST_SHARED("Most shared in social media", "sum(alm_twitterCount, alm_facebookCount) desc");
 
     private String description;

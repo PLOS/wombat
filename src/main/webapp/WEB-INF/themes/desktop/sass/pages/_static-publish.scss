@@ -16,31 +16,32 @@
   }
 }
 
-#publish_main_content #publish_banner_band {
-  width: 100%;
+#publish_banner_band {
+  width: 830px;
   display: block;
   margin: 0 auto $line-height-large;
-  background-color: $black;
-  height: rem-calc(340px);
+  background-color: $white;
+  height: rem-calc(800px);
   overflow: hidden;
-  background: image-url('droplet-on-leaf-treated.jpg');
+  background: image-url('ONEimage.png');
   background-size: cover;
-  background-position: -35%;
+  background-position: -30%;
 }
 
-#publish_main_content a.submit_manuscript {
+.submit_manuscript {
   display: none; // hiding for now, as there are already 2 other submit buttons on the page
 }
 
-#publish_main_content .submit_manuscript:hover {
+.submit_manuscript:hover {
   text-decoration: none;
   background-color: $white;
 }
 
-#publish_main_content #publish_banner #publish_banner_content {
+#publish_banner_content {
   h1,
   h4 {
-    color: white;
+    color: $plos-one-purple;
+    font-weight: 600;
   }
 
   h4 {
@@ -50,18 +51,22 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  width: rem-calc(830px);
-  margin-top: rem-calc(100px);
+  width: rem-calc(380px);
+  margin-top: rem-calc(360px);
   padding-left: rem-calc(-100px);
 }
 
-#publish_main_content #publish_banner #publish_banner_content h1 {
+#publish_banner_content h1 {
   font-size: $txt-size-xxxlarge;
   line-height: $line-height-large;
 }
 
 #choose_plosone {
   font-family: $font-face-fancy;
+    width: rem-calc(830px);
+  margin: 0 auto;
+  display: block;
+  min-height: 900px;
 }
 
 #choose_plosone h2 {
@@ -69,46 +74,40 @@
   line-height: $line-height-large;
   text-align: center;
   margin-bottom: $line-height-large;
-}
-
-#choose_plosone {
-  width: rem-calc(830px);
-  margin: 0 auto;
-  display: block;
-  min-height: 900px;
+  color: $plos-one-teal;
 }
 
 
-#choose_plosone .half_column {
+.half_column {
   width: 50%;
   float: left;
   height: 250px;
 }
 
-#choose_plosone .full_column {
+.full_column {
   float: none;
   width: 50%;
   height: 250px;
   margin: 0 auto;
 }
 
-#choose_plosone .pull_right {
+.pull_right {
   float: right;
 }
 
-#choose_plosone div.icon_item {
+.icon_item {
   display: inline-block;
   margin: 0 auto;
   text-align: center;
   padding: 0 $line-height-large;
 }
 
-#choose_plosone div.icon_item img {
+.icon_item img {
   width: 75px;
   height: auto;
 }
 
-#choose_plosone div.icon_item a {
+.icon_item a {
   color: $plos-one-purple;
   font-size: $txt-size-small;
   font-weight: $bold;
@@ -119,17 +118,17 @@
   }
 }
 
-#choose_plosone div.icon_item p {
+.icon_item p {
   font-size: $txt-size-medium;
   line-height: $line-height;
   text-align: center;
 }
 
-#choose_plosone div.icon_item h3 {
+.icon_item h3 {
   margin-top: $line-height-small;
 }
 
-#choose_plosone div.icon_item h3 a {
+.icon_item h3 a {
   font-weight: normal;
   font-size: 18px;
   color: $black;
@@ -137,12 +136,12 @@
 }
 
 
-#orange_wrapper #orange_content_wrapper {
+#orange_content_wrapper {
   width: 830px;
   margin: 0 auto;
 }
 
-#orange_wrapper #orange_content_wrapper #orange_content_container {
+#orange_content_container {
   margin: 0 auto;
   color: $white;
   text-align: center;
@@ -166,47 +165,47 @@
   }
 }
 
-#orange_content_container .submit_manuscript:hover {
+.submit_manuscript:hover {
   color: $white;
   background-color: $plos-one-purple;
 }
 
-#publish_main_content #publish_banner {
+#publish_banner {
   display: block;
   margin: 0 auto;
   margin-top: -29px;
   z-index: 100;
 }
 
-#publish_main_content #publish_banner p {
+#publish_banner p {
   color: $grey-dark;
   display: inline;
   margin: 0 auto;
   float: right;
 }
 
-#publish_main_content #top_wrapper {
+#top_wrapper {
   display: block;
   margin: 0 auto;
   padding-right: 20px;
   width: 960px;
 }
 
-#publish_main_content #top_wrapper h1 {
+#top_wrapper h1 {
   font-family: $font-face-fancy;
   font-size: 46px;
   padding-top: 45px;
   text-align: center;
 }
 
-#publish_main_content #top_wrapper h2 {
+#top_wrapper h2 {
   font-size: 28px;
   color: $grey-dark;
   padding-bottom: 34px;
   text-align: center;
 }
 
-#publish_main_content h2.white {
+h2.white {
   text-align: center;
   font-size: 26px;
   color: white;
@@ -218,7 +217,7 @@
   padding-top: 35px;
 }
 
-#publish_main_content h3.white {
+h3.white {
   text-align: center;
   font-size: 16px;
   color: white;
@@ -228,20 +227,20 @@
   padding-right: 15px;
 }
 
-#publish_main_content div.white-footer {
+.white-footer {
   float: left;
   margin-right: 15px;
   width: 600px;
   max-height: 100px;
 }
 
-#publish_main_content .rightalign {
+.rightalign {
   float: right;
   padding-top: 20px;
   padding-left: 40px;
 }
 
-#publish_main_content #black_wrapper {
+#black_wrapper {
   width: 100% !important;
   display: block;
   position: relative;
@@ -250,7 +249,7 @@
   min-height: 300px;
 }
 
-#publish_main_content .black_icons {
+.black_icons {
   display: block;
   margin: 0 auto;
   width: 960px !important;
@@ -259,19 +258,19 @@
   padding-top: 25px;
 }
 
-#publish_main_content .black_icons div {
+.black_icons div {
   display: inline;
   float: left;
   padding-right: 95px;
   text-align: center;
 }
 
-#publish_main_content .black_icons div a {
+.black_icons div a {
   color: $white;
   text-decoration: none;
 }
 
-#publish_main_content .black_icons p {
+.black_icons p {
   font-size: 18px;
   color: $white;
   padding-top: 12px;
@@ -279,13 +278,13 @@
   text-align: center;
 }
 
-#publish_main_content #icon_content {
+#icon_content {
   width: 960px;
   position: relative;
   margin: 0 auto;
 }
 
-#publish_main_content .icon_left {
+.icon_left {
   float: left;
   display: inline;
   width: 155px;
@@ -293,25 +292,25 @@
   padding-bottom: 80px;
 }
 
-#publish_main_content .icon_left1 {
+.icon_left1 {
   padding-bottom: 50px;
   padding-top: 60px;
   top: 500px;
 }
 
-#publish_main_content .icon_left2 {
+.icon_left2 {
   padding-top: 70px;
 }
 
-#publish_main_content .icon_left3 {
+.icon_left3 {
   padding-top: 140px;
 }
 
-#publish_main_content .icon_left4 {
+.icon_left4 {
   padding-top: 110px;
 }
 
-#publish_main_content .publishbody {
+.publishbody {
   width: 700px;
   padding-left: 15px;
   padding-top: 25px;
@@ -322,31 +321,31 @@
   position: relative;
 }
 
-#publish_main_content .publishbody h2 {
+.publishbody h2 {
   padding-bottom: 10px;
   font-family: $font-face-fancy;
   font-size: 36px;
   text-align: center;
 }
 
-#publish_main_content .publishbody h3 {
+.publishbody h3 {
   font-size: 21px;
   text-align: left;
 }
 
-#publish_main_content #orange_wrapper {
+#orange_wrapper {
   background-color: $plos-one-teal;
   min-height: 270px;
   min-width: 100% !important;
   position: relative;
 }
 
-#publish_main_content #orange_wrapper .keyfacts h3 {
+.keyfacts h3 {
   max-width: 630px;
   margin: 0 auto;
 }
 
-#publish_main_content h2.keyfacts {
+h2.keyfacts {
   font-family: $font-face-fancy;
   font-size: 36px;
   color: $grey-dark;
@@ -356,14 +355,14 @@
   padding-right: 15px;
 }
 
-#publish_main_content h3.keyfacts {
+h3.keyfacts {
   font-size: 21px;
   color: $grey-dark;
   padding-left: 25px;
   margin-bottom: 0px;
 }
 
-#publish_main_content #publishbottom {
+#publishbottom {
   display: block;
   max-height: 200px;
   width: 750px;
@@ -373,7 +372,7 @@
   margin-bottom: -50px;
 }
 
-#publish_main_content #social_icons {
+#social_icons {
   display: block;
   width: 100%;
   background: #282425;
@@ -390,7 +389,7 @@
 
 
 
-#publish_main_content #social_icons_wrapper {
+#social_icons_wrapper {
   width: 40%;
   margin: 0 auto;
   text-align: center;
@@ -401,19 +400,19 @@
   }
 }
 
-#social_icons img#social_icon_facebook {
+#social_icon_facebook {
   width: 12px;
   height: auto;
 }
 
-#social_icons img#social_icon_twitter {
+#social_icon_twitter {
   width: 25px;
   height: auto;
 }
 
 
 
-#social_icons_wrapper a#blogs_link {
+#blogs_link {
   width: 10rem;
   font-family: $font-face-fancy;
   font-size: $txt-size-xsmall;
@@ -421,17 +420,17 @@
   text-transform: uppercase;
 }
 
-#social_icons a#blogs_link:hover {
+#blogs_link:hover {
   color: $plos-one;
 }
 
-#publish_main_content #publishbottom img {
+#publishbottom img {
   margin: 0 auto;
   padding-left: 15px;
   display: block;
 }
 
-#publish_main_content #sticky-footer {
+#sticky-footer {
   display: block;
   max-height: rem-calc(90px);
   h3 {

@@ -70,4 +70,9 @@
   <#if amendmentGroup.type == 'retraction'>
     <@amendmentNotice amendmentGroup "Retraction" "View retraction" amendmentGroup_index />
   </#if>
+  <#if amendmentGroup.type == 'update'>
+    <@amendmentNotice amendmentGroup,
+    (amendmentGroup.amendments?size == 1)?string("Update", "Updates"),
+    "View update" amendmentGroup_index />
+  </#if>
 </#list>

@@ -58,16 +58,14 @@
 </div>
 </#macro>
 
+<#-- Supports custom singular and plural titles for amendment types -->
+<#assign customStrings = {"eoc": ["Expression of Concern", "Expressions of Concern"]}>
 <#list amendments as amendmentGroup>
-  <#if amendmentGroup.type == 'correction'>
-    <@amendmentNotice amendmentGroup,
-    (amendmentGroup.amendments?size == 1)?string("Correction", "Corrections"),
-    "View correction" amendmentGroup_index />
-  </#if>
-  <#if amendmentGroup.type == 'eoc'>
-    <@amendmentNotice amendmentGroup "Expression of Concern" "View expression of concern" amendmentGroup_index />
-  </#if>
-  <#if amendmentGroup.type == 'retraction'>
-    <@amendmentNotice amendmentGroup "Retraction" "View retraction" amendmentGroup_index />
-  </#if>
+  <#assign type = amendmentGroup.type>
+  <#assign typeStrings = customStrings[type]![type?capitalize, "${type?capitalize}s"]>
+  <#assign singular = typeStrings[0]>
+  <#assign plural = typeStrings[1]>
+  <#assign title = (amendmentGroup.amendments?size == 1)?string(singular, plural)>
+  <#assign link_text = "View ${singular?lower_case}">
+  <@amendmentNotice amendmentGroup, title, link_text, amendmentGroup_index />
 </#list>

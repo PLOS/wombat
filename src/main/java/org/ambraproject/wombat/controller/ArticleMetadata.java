@@ -69,6 +69,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ArticleMetadata {
@@ -500,6 +501,7 @@ public class ArticleMetadata {
    * Types of related articles that get special display handling.
    */
   private static enum AmendmentType {
+    UPDATE("updated-article"),
     CORRECTION("corrected-article"),
     EOC("object-of-concern"),
     RETRACTION("retracted-article");
@@ -531,6 +533,9 @@ public class ArticleMetadata {
     return Optional.ofNullable(amendmentType);
   }
 
+  //  These amendment types display the full body of the related article. Otherwise just show the citation.
+  private static Set<AmendmentType> FULL_BODY_AMENDMENTS = EnumSet.of(AmendmentType.EOC, AmendmentType.RETRACTION);
+
   /**
    * @param site           the site being rendered
    * @param relatedArticle a relationship to an amendment to this article
@@ -555,8 +560,7 @@ public class ArticleMetadata {
 
     amendment.putAll(authors);
 
-    // Display the body only on non-correction amendments. Would be better if this were configurable per theme.
-    if (amendmentType != AmendmentType.CORRECTION) {
+    if (FULL_BODY_AMENDMENTS.contains(amendmentType)) {
       String body;
       try {
         body = getAmendmentBody(amendmentId);

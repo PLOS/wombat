@@ -809,6 +809,15 @@ body.article .ui-widget-overlay {
       }
     }
   }
+  .related-article-downloads {
+    display: flex;
+    .related-article-download {
+      margin-right: 10px;
+      a {
+          text-decoration: underline;
+      }
+     }
+  }
 }
 
 .skyscraper-container {

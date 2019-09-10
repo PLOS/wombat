@@ -28,9 +28,26 @@
   <ul>
   <#list relatedArticles as relatedArticle>
       <li>
-        <a href="<@siteLink handlerName="article" journalKey=relatedArticle.journal.journalKey queryParameters={"id": relatedArticle.doi} />">
+        <div>
           <@xform xml=relatedArticle.title/>
-        </a>
+        </div>
+        <div class="related-article-downloads">
+          <div class="related-article-download">
+            <a href="<@siteLink handlerName="article" journalKey=relatedArticle.journal.journalKey
+                queryParameters={"id": relatedArticle.doi} />">
+              View Page
+            </a>
+          </div>
+          <!--  Annotations and issue images do not have printables. They can be filtered by doi. -->
+          <#if relatedArticle.doi?contains("10.1371/journal")>
+            <div class="related-article-download">
+              <a href="<@siteLink handlerName="assetFile" journalKey=relatedArticle.journal.journalKey
+                  queryParameters={"type": "printable", "id": relatedArticle.doi} />" target="_blank">
+                PDF
+              </a>
+          </div>
+        </#if>
+        </div>
       </li>
   </#list>
   </ul>

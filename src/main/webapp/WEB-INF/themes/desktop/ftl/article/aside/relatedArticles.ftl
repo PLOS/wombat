@@ -42,7 +42,8 @@
           <#if relatedArticle.doi?contains("10.1371/journal")>
             <div class="related-article-download">
               <a href="<@siteLink handlerName="assetFile" journalKey=relatedArticle.journal.journalKey
-                  queryParameters={"type": "printable", "id": relatedArticle.doi} />" target="_blank">
+                  queryParameters={"type": "printable", "id": relatedArticle.doi} />"
+                  target="_blank" title="PDF opens in new window">
                 PDF
               </a>
           </div>

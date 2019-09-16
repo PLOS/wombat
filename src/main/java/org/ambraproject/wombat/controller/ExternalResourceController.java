@@ -30,7 +30,6 @@ import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.HttpMessageUtil;
-import org.ambraproject.wombat.util.ReproxyUtil;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.slf4j.Logger;
@@ -95,8 +94,6 @@ public class ExternalResourceController extends WombatController {
     serve(response, request, ContentKey.createForLatestVersion(key));
   }
 
-  private static final int REPROXY_CACHE_FOR = 6 * 60 * 60; // 6 hours
-
   private void serve(HttpServletResponse responseToClient, HttpServletRequest requestFromClient,
                      ContentKey key)
       throws IOException {
@@ -118,11 +115,6 @@ public class ExternalResourceController extends WombatController {
     String downloadName = (String) fileMetadata.get("downloadName");
     if (downloadName != null) {
       responseToClient.setHeader(HttpHeaders.CONTENT_DISPOSITION, "filename=" + downloadName);
-    }
-
-    List<String> reproxyUrls = (List<String>) fileMetadata.get("reproxyURL");
-    if (ReproxyUtil.applyReproxy(requestFromClient, responseToClient, reproxyUrls, REPROXY_CACHE_FOR)) {
-      return;
     }
 
     Collection<Header> assetHeaders = HttpMessageUtil.getRequestHeaders(requestFromClient, ASSET_REQUEST_HEADER_WHITELIST);

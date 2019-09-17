@@ -784,31 +784,32 @@ body.article .ui-widget-overlay {
 
 .related-articles-container {
   @extend .aside-container;
-
-  ul {
-    list-style: none;
-    margin-left: 0;
-
-    li {
-      margin-bottom: $line-height;
-      a {
-        @extend %brand-color;
-        font-size: $txt-size-xsmall;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+}
+.related-articles {
+  list-style: none;
+  margin-left: 0;
+}
+.related-article-links {
+  list-style: none;
+  margin-left: 0;
+  margin-bottom: $line-height;
+  li {
+    display: inline;
+  }
+  a {
+    font-size: $txt-size-xsmall;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
+    @extend %brand-color;
+    .plosone & {
+      color: $plos-one-purple;
     }
   }
-  .plosone & {
-    ul {
-      li {
-        a {
-          color: $plos-one-purple;
-        }
-      }
-    }
-  }
+}
+.related-article-link-download {
+  margin-left: 10px;
 }
 
 .skyscraper-container {

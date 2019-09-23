@@ -78,17 +78,12 @@
 }
 
 
-.half_column {
-  width: 50%;
-  float: left;
-  height: 250px;
+.rows_columns {
+  display: flex; flex-flow: row wrap;
+  justify-content: center;
 }
-
-.full_column {
-  float: none;
-  width: 50%;
-  height: 250px;
-  margin: 0 auto;
+.rows_columns > div {
+  width: 33%;
 }
 
 .pull_right {
@@ -108,14 +103,10 @@
 }
 
 .icon_item a {
-  color: $plos-one-purple;
   font-size: $txt-size-small;
   font-weight: $bold;
-  text-transform: uppercase;
   font-family: $font-face-fancy;
-  &:hover {
-    text-decoration: underline;
-  }
+  text-decoration: underline;
 }
 
 .icon_item p {
@@ -126,15 +117,16 @@
 
 .icon_item h3 {
   margin-top: $line-height-small;
+
 }
 
 .icon_item h3 a {
   font-weight: normal;
   font-size: 18px;
-  color: $black;
-  text-transform: none;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $plos-one-purple;
 }
-
 
 #orange_content_wrapper {
   width: 830px;

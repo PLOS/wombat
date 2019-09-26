@@ -18,7 +18,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.ambraproject.rhombat.gson.Iso8601DateAdapter;
+import com.google.gson.typeadapters.UtcDateTypeAdapter;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.TestRuntimeConfiguration;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
@@ -61,7 +61,7 @@ public class ControllerTestConfiguration {
   protected Gson gson() {
     GsonBuilder builder = new GsonBuilder();
     builder.setPrettyPrinting();
-    builder.registerTypeAdapter(Date.class, new Iso8601DateAdapter());
+    builder.registerTypeAdapter(Date.class, new UtcDateTypeAdapter());
     builder.registerTypeAdapter(org.joda.time.LocalDate.class, JodaTimeLocalDateAdapter.INSTANCE);
     return builder.create();
   }

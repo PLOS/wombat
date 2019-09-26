@@ -22,24 +22,26 @@
 
 package org.ambraproject.wombat.service.remote;
 
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Optional;
+import java.util.TimeZone;
+
 import com.google.common.base.Preconditions;
-import org.ambraproject.rhombat.HttpDateUtil;
-import org.ambraproject.rhombat.cache.Cache;
+
+import org.ambraproject.wombat.cache.Cache;
 import org.ambraproject.wombat.util.CacheKey;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Calendar;
-import java.util.Optional;
 
 /**
  * Decorator class that adds caching capability to a wrapped {@link RemoteService} object. The uncached RemoteService
@@ -203,7 +205,7 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
     CloseableHttpResponse response = null;
     boolean returningStream = false;
     try {
-      target.addHeader(HttpHeaders.IF_MODIFIED_SINCE, HttpDateUtil.format(lastModified));
+      target.addHeader(HttpHeaders.IF_MODIFIED_SINCE, DateUtils.formatDate(lastModified.getTime()));
       response = remoteService.getResponse(target);
       Header[] lastModifiedHeaders = response.getHeaders(HttpHeaders.LAST_MODIFIED);
       if (lastModifiedHeaders.length == 0) {
@@ -214,8 +216,10 @@ public class CachedRemoteService<S extends Closeable> implements RemoteService<S
       if (lastModifiedHeaders.length != 1) {
         throw new RuntimeException("Expecting 1 Last-Modified header, got " + lastModifiedHeaders.length);
       }
-      Calendar resultLastModified = HttpDateUtil.parse(lastModifiedHeaders[0].getValue());
-
+      Calendar resultLastModified = Calendar.getInstance();
+      resultLastModified.setTimeZone(TimeZone.getTimeZone("GMT"));
+      resultLastModified.setTime(DateUtils.parseDate(lastModifiedHeaders[0].getValue()));
+      
       int statusCode = response.getStatusLine().getStatusCode();
       if (statusCode == HttpStatus.OK.value()) {
         TimestampedResponse timestamped = new TimestampedResponse(resultLastModified, response);
